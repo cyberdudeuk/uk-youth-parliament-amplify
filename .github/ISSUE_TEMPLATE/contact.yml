@@ -1,0 +1,29 @@
+name: Contact
+description: Get in touch about the Amplify portal (questions, corrections, feedback). This is the only contact route; no email address is published.
+title: "Contact: "
+labels: [contact]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is public. Please do not include personal details such as your
+        home address, phone number, school, or anything that identifies you or
+        anyone else. If you are under 18, ask a trusted adult before posting.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is this about?
+      options:
+        - A question about the portal
+        - Something is wrong or out of date
+        - An idea or feedback
+        - Accessibility
+    validations:
+      required: true
+  - type: textarea
+    id: message
+    attributes:
+      label: Your message
+      description: Tell us what you need. Link to the page or section if you can.
+    validations:
+      required: true
