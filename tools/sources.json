@@ -7,17 +7,42 @@
     "folder": "project/"
   },
   "files": {
-    "app/Amplify Portal.dc.html": {"from": "project/Amplify Portal.dc.html", "size": 445969, "sha256": "733692763aa74e76d1ed34b1c20ee8eda56ba2324ed584f6ce75dced10c4b1e5"},
-    "app/Local Routes Map.html": {"from": "project/Local Routes Map.html", "size": 27275, "sha256": "841228024acef6d86cb55d7e3528ff6bef41af12566f61ace94fe57908563313"},
-    "app/support.js": {"from": "project/support.js", "size": 69150, "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"},
-    "app/image-slot.js": {"from": "project/image-slot.js", "size": 65350, "sha256": "fff26d081c8d9d60870f86c7539a5d179b9cdab15e67f2b205508a068e7c7ff6"},
-    "app/compat.json": {"from": "project/compat.json", "size": 1385, "sha256": "7fbf46f3c82a9853d440982adb08f45ff4f7fc5fa05f3ce0c6d7a96ead6947c9"},
-    "app/petition-754954.json": {"from": "project/petition-754954.json", "size": 38373, "sha256": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a"}
+    "app/Amplify Portal.dc.html": {
+      "from": "project/Amplify Portal.dc.html",
+      "size": 445969,
+      "sha256": "733692763aa74e76d1ed34b1c20ee8eda56ba2324ed584f6ce75dced10c4b1e5"
+    },
+    "app/Local Routes Map.html": {
+      "from": "project/Local Routes Map.html",
+      "size": 27275,
+      "sha256": "841228024acef6d86cb55d7e3528ff6bef41af12566f61ace94fe57908563313"
+    },
+    "app/support.js": {
+      "from": "project/support.js",
+      "size": 69150,
+      "sha256": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe"
+    },
+    "app/image-slot.js": {
+      "from": "project/image-slot.js",
+      "size": 65350,
+      "sha256": "fff26d081c8d9d60870f86c7539a5d179b9cdab15e67f2b205508a068e7c7ff6"
+    },
+    "app/compat.json": {
+      "from": "project/compat.json",
+      "size": 1385,
+      "sha256": "7fbf46f3c82a9853d440982adb08f45ff4f7fc5fa05f3ce0c6d7a96ead6947c9"
+    },
+    "app/petition-754954.json": {
+      "from": "project/petition-754954.json",
+      "size": 38373,
+      "sha256": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a"
+    }
   },
   "petition": {
     "number": 754954,
     "source": "https://petition.parliament.uk/petitions/754954.json",
-    "snapshot_date": null,
-    "snapshot_date_rule": "the record's own data.attributes.updated_at, copied here when the file is imported; R5 checks they agree"
+    "snapshot_date": "2026-10-01",
+    "snapshot_date_rule": "the summary's own fetched field (ISO date); R5 checks they agree. The file is a summary made from the record, not the record itself",
+    "state_at_snapshot": "closed (closed 2026-08-11), so the counts are final"
   }
 }

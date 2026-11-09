@@ -1,0 +1,52 @@
+{
+  "v": 1,
+  "mode": "omelette",
+  "root": "project/",
+  "title": "UK Youth Parliament Portal Design",
+  "entry": "Amplify Portal.dc.html",
+  "pages": [
+    {
+      "path": "Amplify Portal.dc.html",
+      "title": "Amplify Portal",
+      "kind": "page"
+    },
+    {
+      "path": "Local Routes Map.html",
+      "title": "Local routes in — Amplify",
+      "kind": "plain"
+    }
+  ],
+  "migratorVersion": "artifact-migrator (claude-design-backend ed667f7ac9c1)",
+  "createdAt": "2026-11-06T11:13:42.747Z",
+  "source": {
+    "v": 1,
+    "app": "claude-design",
+    "url": "https://claude.ai/design/p/c71ae8e5-00fd-48fc-8607-e5a90a628b20",
+    "projectId": "c71ae8e5-00fd-48fc-8607-e5a90a628b20",
+    "exportedAt": "2026-11-06T11:13:42.747Z"
+  },
+  "report": {
+    "itemsVersion": 2,
+    "pages": {
+      "total": 2,
+      "ok": 1,
+      "partial": 1,
+      "notMigrated": 0
+    },
+    "items": [
+      {
+        "kind": "needs_capability",
+        "path": "Amplify Portal.dc.html",
+        "text": "its calls to Claude (window.claude.complete) may not work after the move, or may ask viewers for permission first",
+        "capability": "claude_calls"
+      },
+      {
+        "kind": "external_blocked",
+        "path": "Amplify Portal.dc.html",
+        "text": "https://petition.parliament.uk/petitions/754954.json"
+      }
+    ],
+    "truncated": 0,
+    "truncatedLeftOut": 0
+  }
+}

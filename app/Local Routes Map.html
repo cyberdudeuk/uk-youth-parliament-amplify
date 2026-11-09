@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Local routes in — Amplify</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink-rgb: 234 243 241; --film-rgb: 234 243 241; --sheen-rgb: 255 255 255;
+    --bg: #070f0e; --t1: 0.86; --t2: 0.9; --t3: 0.9; --t4: 0.94; --on-accent: #041110;
+  }
+  body[data-theme="light"] {
+    --ink-rgb: 8 28 25; --film-rgb: 8 28 25; --sheen-rgb: 255 255 255;
+    --bg: #f5f9f6; --t1: 0.55; --t2: 0.6; --t3: 0.45; --t4: 0.38; --on-accent: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: rgb(var(--ink-rgb));
+    font-family: "Chivo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty;
+  }
+  button, input { font: inherit; }
+  button { cursor: pointer; }
+  a { color: oklch(var(--t3) 0.14 175); }
+  a:hover { color: oklch(var(--t4) 0.16 300); }
+  :focus-visible { outline: 3px solid oklch(var(--t2) 0.16 70); outline-offset: 3px; border-radius: 4px; }
+  .mono { font-family: "Space Mono", monospace; }
+  .skip { position: absolute; left: -9999px; top: 8px; z-index: 2000; padding: 12px 18px; border-radius: 12px; background: oklch(var(--t2) 0.16 175); color: var(--on-accent); font-weight: 700; }
+  .skip:focus { left: 12px; }
+  .glass {
+    border: 1px solid rgb(var(--film-rgb) / 0.13); border-radius: 20px;
+    background: linear-gradient(155deg, rgb(var(--film-rgb) / 0.085), rgb(var(--film-rgb) / 0.025));
+    backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: inset 0 1px 0 rgb(var(--sheen-rgb) / 0.16);
+  }
+  #map { height: 100%; width: 100%; border-radius: 18px; background: #0b1614; }
+  body[data-theme="light"] #map { background: #dfe9e3; }
+  .leaflet-container { font-family: "Space Mono", monospace; font-size: 12px; background: transparent; }
+  .leaflet-popup-content-wrapper { background: #0b1614; color: #eaf3f1; border-radius: 14px; }
+  body[data-theme="light"] .leaflet-popup-content-wrapper { background: #ffffff; color: #081c19; }
+  .leaflet-popup-tip { background: #0b1614; }
+  body[data-theme="light"] .leaflet-popup-tip { background: #ffffff; }
+  .pin { border-radius: 50%; border: 2.5px solid; box-shadow: 0 0 0 6px rgb(0 0 0 / 0.12); }
+  @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.25); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  body[data-motion="off"] *, body[data-motion="off"] *::before, body[data-motion="off"] *::after { animation: none !important; transition: none !important; }
+</style>
+</head>
+<body data-theme="dark">
+<a class="skip" href="#area-detail">Skip to area detail</a>
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid rgb(var(--film-rgb) / 0.1);">
+  <a href="./Amplify Portal.dc.html" style="display: flex; align-items: baseline; gap: 9px; text-decoration: none; color: inherit;">
+    <span style="font-size: 18px; font-weight: 900; letter-spacing: -0.03em;">Amplify</span>
+    <span class="mono" style="font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; color: rgb(var(--ink-rgb) / 0.7);">&lsaquo; back to portal</span>
+  </a>
+  <h1 style="margin: 0 auto 0 8px; font-size: 17px; font-weight: 900; letter-spacing: -0.03em;">Local routes in</h1>
+  <button id="theme" style="border: 1px solid rgb(var(--film-rgb) / 0.14); border-radius: 999px; padding: 8px 16px; white-space: nowrap; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb));">Light theme</button>
+  <button id="motion" style="border: 1px solid rgb(var(--film-rgb) / 0.14); border-radius: 999px; padding: 8px 16px; white-space: nowrap; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb));">Motion on</button>
+</header>
+
+<main style="display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 16px; padding: 16px 20px 28px; align-items: start;">
+
+  <section class="glass" aria-label="Search areas" style="padding: 16px 16px 12px; position: sticky; top: 16px;">
+    <label for="q" class="mono" style="display: block; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.7); margin-bottom: 8px;">Find your area</label>
+    <input id="q" type="search" placeholder="council, region or nation &middot; press /" autocomplete="off" style="width: 100%; border: 1px solid rgb(var(--film-rgb) / 0.16); border-radius: 12px; background: rgb(var(--film-rgb) / 0.07); color: rgb(var(--ink-rgb)); padding: 10px 12px; font-size: 13px;" />
+    <div id="count" class="mono" style="font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(var(--t3) 0.19 70); padding: 10px 2px 6px;"></div>
+    <div id="list" role="listbox" aria-label="Areas" style="max-height: 60vh; overflow-y: auto; display: flex; flex-direction: column; gap: 3px;"></div>
+  </section>
+
+  <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+    <div class="glass" style="padding: 10px; height: 460px; position: relative;">
+      <div id="map" role="application" aria-label="Interactive map of UK youth representation routes"></div>
+      <p id="tile-note" hidden class="mono" style="position: absolute; left: 22px; bottom: 22px; margin: 0; max-width: 34ch; padding: 8px 11px; border-radius: 10px; background: rgb(var(--film-rgb) / 0.1); font-size: 10px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Basemap tiles could not load in this view. Markers and search still work.</p>
+    </div>
+
+    <section id="area-detail" class="glass" style="padding: 22px 24px;" aria-live="polite">
+      <div id="detail"></div>
+    </section>
+
+    <p class="mono" style="margin: 0; font-size: 10.5px; line-height: 1.8; color: rgb(var(--ink-rgb) / 0.72);">
+      Basemap &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>. Petition figures are the published per-constituency totals for petition 754954 at close, 11 August 2026. Coordinates are real; area boundaries are represented by seat markers rather than polygons.
+      Structures shown are the published national ones &mdash; the UK Youth Parliament delivery partners, the devolved youth parliaments and assemblies, and the statutory local authority duty.
+      Per-area election dates and service listings are held by the local authority youth service, not centrally: this page tells you which door that is.
+    </p>
+  </div>
+</main>
+
+<script>
+(function () {
+  var HUES = { eng: 175, sco: 145, wal: 300, nir: 70 };
+
+  var NATIONS = {
+    eng: {
+      name: "England", body: "UK Youth Parliament", partner: "Regional Youth Work Units",
+      seat: "Member of Youth Parliament, aged 11\u201318",
+      vote: "16- and 17-year-olds have never voted in an English election. The Representation of the People Bill is the first route to it.",
+      routes: [
+        "UKYP election, run by your local authority youth service, every two years",
+        "Local youth council or youth forum \u2014 no election needed",
+        "School or college student council",
+        "Make Your Mark, the UK-wide ballot of youth views",
+        "Youth Select Committee call for evidence \u2014 open to anyone"
+      ]
+    },
+    sco: {
+      name: "Scotland", body: "Scottish Youth Parliament", partner: "Scottish Youth Parliament",
+      seat: "MSYP \u2014 stand from 14, vote from 12 with a National Entitlement Card",
+      vote: "16- and 17-year-olds have voted in Scottish Parliament and Scottish local elections since 2014.",
+      routes: [
+        "MSYP election, every two years, in all 32 local authority areas",
+        "Around 160 MSYPs sit, plus seats for national voluntary organisations",
+        "Three SYP sittings a year, with committee places",
+        "UKYP election, delivered in Scotland with the Scottish Youth Parliament",
+        "Make Your Mark and the Youth Select Committee call for evidence"
+      ]
+    },
+    wal: {
+      name: "Wales", body: "Welsh Youth Parliament / Senedd Ieuenctid Cymru", partner: "Children in Wales",
+      seat: "Member of the Welsh Youth Parliament, hosted by the Senedd",
+      vote: "16- and 17-year-olds have voted in Senedd and Welsh local elections since 2021.",
+      routes: [
+        "Welsh Youth Parliament election \u2014 now in its third term since 2018",
+        "UKYP election, delivered in Wales with Children in Wales",
+        "Local authority youth service and youth forum routes",
+        "Make Your Mark and the Youth Select Committee call for evidence",
+        "Everything is available in Welsh and English"
+      ]
+    },
+    nir: {
+      name: "Northern Ireland", body: "Northern Ireland Youth Assembly", partner: "UKYP consultants in Northern Ireland",
+      seat: "Member of the NI Youth Assembly \u2014 core age range 13\u201317",
+      vote: "There is no vote at 16 in Northern Ireland. Elections are not devolved to Stormont in the same way as in Scotland and Wales.",
+      routes: [
+        "NI Youth Assembly, seated through the Assembly Commission",
+        "UKYP election, delivered through consultants in Northern Ireland",
+        "Northern Ireland Youth Forum",
+        "NUS-USI once you reach further or higher education",
+        "Make Your Mark and the Youth Select Committee call for evidence"
+      ]
+    }
+  };
+
+  // [name, lat, lon, nation, tier, partner]
+  var AREAS = [
+    ["North East England", 54.9, -1.61, "eng", "region", "Youth Focus: North East"],
+    ["North West England", 53.48, -2.24, "eng", "region", "Youth Focus: North West"],
+    ["Yorkshire and the Humber", 53.8, -1.55, "eng", "region", "Youth Work Unit Yorkshire & Humber"],
+    ["East Midlands", 52.63, -1.13, "eng", "region", "Regional Youth Work Unit \u2014 East Midlands"],
+    ["West Midlands", 52.48, -1.9, "eng", "region", "Regional Youth Work Unit \u2014 West Midlands"],
+    ["East of England", 52.2, 0.12, "eng", "region", "Regional Youth Work Unit \u2014 East of England"],
+    ["London", 51.507, -0.128, "eng", "region", "Partnership for Young London"],
+    ["South East England", 51.28, -0.77, "eng", "region", "Regional Youth Work Unit \u2014 South East"],
+    ["South West England", 51.45, -2.59, "eng", "region", "Regional Youth Work Unit \u2014 South West"],
+
+    ["Aberdeen City", 57.149, -2.094, "sco", "council", ""],
+    ["Aberdeenshire", 57.28, -2.38, "sco", "council", ""],
+    ["Angus", 56.7, -2.9, "sco", "council", ""],
+    ["Argyll and Bute", 56.25, -5.2, "sco", "council", ""],
+    ["City of Edinburgh", 55.953, -3.188, "sco", "council", ""],
+    ["Clackmannanshire", 56.11, -3.75, "sco", "council", ""],
+    ["Dumfries and Galloway", 55.07, -3.6, "sco", "council", ""],
+    ["Dundee City", 56.462, -2.97, "sco", "council", ""],
+    ["East Ayrshire", 55.61, -4.5, "sco", "council", ""],
+    ["East Dunbartonshire", 55.94, -4.24, "sco", "council", ""],
+    ["East Lothian", 55.95, -2.77, "sco", "council", ""],
+    ["East Renfrewshire", 55.77, -4.33, "sco", "council", ""],
+    ["Falkirk", 56.0, -3.78, "sco", "council", ""],
+    ["Fife", 56.25, -3.15, "sco", "council", ""],
+    ["Glasgow City", 55.864, -4.252, "sco", "council", ""],
+    ["Highland", 57.48, -4.22, "sco", "council", ""],
+    ["Inverclyde", 55.94, -4.75, "sco", "council", ""],
+    ["Midlothian", 55.83, -3.1, "sco", "council", ""],
+    ["Moray", 57.51, -3.2, "sco", "council", ""],
+    ["Na h-Eileanan Siar", 58.0, -6.9, "sco", "council", ""],
+    ["North Ayrshire", 55.62, -4.75, "sco", "council", ""],
+    ["North Lanarkshire", 55.85, -3.95, "sco", "council", ""],
+    ["Orkney Islands", 58.98, -2.96, "sco", "council", ""],
+    ["Perth and Kinross", 56.4, -3.44, "sco", "council", ""],
+    ["Renfrewshire", 55.85, -4.43, "sco", "council", ""],
+    ["Scottish Borders", 55.55, -2.79, "sco", "council", ""],
+    ["Shetland Islands", 60.34, -1.28, "sco", "council", ""],
+    ["South Ayrshire", 55.42, -4.6, "sco", "council", ""],
+    ["South Lanarkshire", 55.6, -3.85, "sco", "council", ""],
+    ["Stirling", 56.12, -3.94, "sco", "council", ""],
+    ["West Dunbartonshire", 55.94, -4.56, "sco", "council", ""],
+    ["West Lothian", 55.9, -3.55, "sco", "council", ""],
+
+    ["Blaenau Gwent", 51.78, -3.2, "wal", "council", ""],
+    ["Bridgend", 51.5, -3.58, "wal", "council", ""],
+    ["Caerphilly", 51.58, -3.22, "wal", "council", ""],
+    ["Cardiff", 51.481, -3.179, "wal", "council", ""],
+    ["Carmarthenshire", 51.86, -4.31, "wal", "council", ""],
+    ["Ceredigion", 52.22, -4.0, "wal", "council", ""],
+    ["Conwy", 53.28, -3.83, "wal", "council", ""],
+    ["Denbighshire", 53.18, -3.42, "wal", "council", ""],
+    ["Flintshire", 53.22, -3.13, "wal", "council", ""],
+    ["Gwynedd", 52.93, -4.13, "wal", "council", ""],
+    ["Isle of Anglesey", 53.28, -4.35, "wal", "council", ""],
+    ["Merthyr Tydfil", 51.75, -3.38, "wal", "council", ""],
+    ["Monmouthshire", 51.75, -2.9, "wal", "council", ""],
+    ["Neath Port Talbot", 51.66, -3.79, "wal", "council", ""],
+    ["Newport", 51.585, -2.998, "wal", "council", ""],
+    ["Pembrokeshire", 51.83, -4.85, "wal", "council", ""],
+    ["Powys", 52.35, -3.4, "wal", "council", ""],
+    ["Rhondda Cynon Taf", 51.62, -3.42, "wal", "council", ""],
+    ["Swansea", 51.62, -3.94, "wal", "council", ""],
+    ["Torfaen", 51.7, -3.05, "wal", "council", ""],
+    ["Vale of Glamorgan", 51.42, -3.42, "wal", "council", ""],
+    ["Wrexham", 53.05, -2.99, "wal", "council", ""],
+
+    ["Antrim and Newtownabbey", 54.7, -6.0, "nir", "council", ""],
+    ["Ards and North Down", 54.6, -5.6, "nir", "council", ""],
+    ["Armagh City, Banbridge and Craigavon", 54.35, -6.45, "nir", "council", ""],
+    ["Belfast", 54.597, -5.93, "nir", "council", ""],
+    ["Causeway Coast and Glens", 55.05, -6.5, "nir", "council", ""],
+    ["Derry City and Strabane", 54.997, -7.309, "nir", "council", ""],
+    ["Fermanagh and Omagh", 54.5, -7.5, "nir", "council", ""],
+    ["Lisburn and Castlereagh", 54.51, -6.04, "nir", "council", ""],
+    ["Mid and East Antrim", 54.86, -5.93, "nir", "council", ""],
+    ["Mid Ulster", 54.6, -6.75, "nir", "council", ""],
+    ["Newry, Mourne and Down", 54.18, -6.34, "nir", "council", ""]
+  ];
+
+  var PREF_KEY = "amplify.portal.prefs";
+  function readPrefs() { try { return JSON.parse(localStorage.getItem(PREF_KEY) || "{}") || {}; } catch (e) { return {}; } }
+  function writePref(k, v) { try { var p = readPrefs(); p[k] = v; localStorage.setItem(PREF_KEY, JSON.stringify(p)); } catch (e) { /* storage unavailable */ } }
+  var prefs = readPrefs();
+  if (prefs.theme === "light") document.body.dataset.theme = "light";
+  if (prefs.motion === false) document.body.dataset.motion = "off";
+  document.getElementById("theme").textContent = document.body.dataset.theme === "light" ? "Dark theme" : "Light theme";
+  document.getElementById("motion").textContent = document.body.dataset.motion === "off" ? "Motion off" : "Motion on";
+
+  var map = L.map("map", { scrollWheelZoom: false, zoomControl: true }).setView([54.6, -3.6], 5);
+  var tiles = null, tileFailed = false;
+  function setTiles() {
+    var light = document.body.dataset.theme === "light";
+    if (tiles) map.removeLayer(tiles);
+    tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/" + (light ? "light_all" : "dark_all") + "/{z}/{x}/{y}{r}.png", {
+      attribution: "\u00a9 OpenStreetMap contributors \u00a9 CARTO", subdomains: "abcd", maxZoom: 12, crossOrigin: true
+    });
+    tiles.on("tileerror", function () {
+      if (tileFailed) return; tileFailed = true;
+      var note = document.getElementById("tile-note"); if (note) note.hidden = false;
+    });
+    tiles.addTo(map);
+  }
+  setTiles();
+
+  var PETITION = null;
+  var REGION_KEY = { "north east england": "North East", "north west england": "North West", "yorkshire and the humber": "Yorkshire and The Humber", "east midlands": "East Midlands", "west midlands": "West Midlands", "east of england": "East of England", "london": "London", "south east england": "South East", "south west england": "South West" };
+  var NATION_KEY = { eng: "E", sco: "S", wal: "W", nir: "N" };
+  fetch(new URL("./petition-754954.json", document.baseURI).href).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { PETITION = d; renderDetail(current); }).catch(function () { /* detail renders without petition figures */ });
+  function petitionCard(a, hue) {
+    if (!PETITION) return "";
+    var isRegion = a[4] === "region", n = PETITION.nations[NATION_KEY[a[3]]];
+    var region = null;
+    if (isRegion) { var key = REGION_KEY[a[0].toLowerCase()]; PETITION.regions.forEach(function (r) { if (r.name === key) region = r; }); }
+    var value, note;
+    if (region) { value = region.sigs.toLocaleString("en-GB") + " signatures \u00b7 " + region.share + "% of the total"; note = "What petition 754954 drew from this region before it closed. The South East gave 344; the whole of Northern Ireland gave 19."; }
+    else if (n) { value = n.sigs.toLocaleString("en-GB") + " signatures across " + n.reached + " of " + n.seats + " seats"; note = "What petition 754954 drew from " + NATIONS[a[3]].name + " before it closed. The published breakdown stops at constituency level, so this is the nation total."; }
+    else return "";
+    return card("Petition 754954 here", value, note, hue);
+  }
+
+  var markers = {};
+  function pin(nation, tier) {
+    var size = tier === "region" ? 20 : 13;
+    var hue = HUES[nation];
+    return L.divIcon({
+      className: "",
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
+      html: '<div class="pin" style="width:' + size + 'px;height:' + size + 'px;background:oklch(0.72 0.16 ' + hue + ' / 0.85);border-color:oklch(0.94 0.14 ' + hue + ');"></div>'
+    });
+  }
+
+  AREAS.forEach(function (a, i) {
+    var m = L.marker([a[1], a[2]], { icon: pin(a[3], a[4]), title: a[0], alt: a[0], keyboard: true }).addTo(map);
+    m.on("click", function () { select(i, true); });
+    m.bindTooltip(a[0], { direction: "top" });
+    markers[i] = m;
+  });
+
+  var listEl = document.getElementById("list");
+  var countEl = document.getElementById("count");
+  var detailEl = document.getElementById("detail");
+  var qEl = document.getElementById("q");
+  var current = 6;
+
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+  function renderList(filter) {
+    var f = (filter || "").trim().toLowerCase();
+    var rows = AREAS.map(function (a, i) { return { a: a, i: i }; }).filter(function (r) {
+      if (!f) return true;
+      return (r.a[0] + " " + NATIONS[r.a[3]].name + " " + r.a[5]).toLowerCase().indexOf(f) > -1;
+    });
+    countEl.textContent = rows.length + (rows.length === 1 ? " area" : " areas");
+    listEl.innerHTML = rows.map(function (r) {
+      var hue = HUES[r.a[3]];
+      var on = r.i === current;
+      return '<button role="option" aria-selected="' + (on ? "true" : "false") + '" data-i="' + r.i + '" style="display:flex;align-items:center;gap:9px;text-align:left;border:0;border-radius:11px;padding:9px 10px;font-size:13px;font-weight:600;' +
+        'color:' + (on ? "oklch(var(--t4) 0.16 " + hue + ")" : "rgb(var(--ink-rgb) / 0.86)") + ';' +
+        'background:' + (on ? "oklch(var(--t1) 0.16 " + hue + " / 0.18)" : "transparent") + ';">' +
+        '<span aria-hidden="true" style="flex:0 0 ' + (r.a[4] === "region" ? "10px" : "7px") + ';height:' + (r.a[4] === "region" ? "10px" : "7px") + ';border-radius:50%;background:oklch(var(--t2) 0.19 ' + hue + ');"></span>' +
+        '<span style="flex:1 1 auto;min-width:0;">' + esc(r.a[0]) + '</span>' +
+        '<span class="mono" style="font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgb(var(--ink-rgb) / 0.72);">' + esc(NATIONS[r.a[3]].name.slice(0, 3)) + '</span>' +
+        '</button>';
+    }).join("");
+    [].forEach.call(listEl.querySelectorAll("button"), function (b) {
+      b.addEventListener("click", function () { select(+b.getAttribute("data-i"), true); });
+    });
+  }
+
+  function renderDetail(i) {
+    var a = AREAS[i], n = NATIONS[a[3]], hue = HUES[a[3]];
+    var partner = a[5] || n.partner;
+    detailEl.innerHTML =
+      '<div style="display:flex;align-items:center;gap:10px;" class="mono">' +
+        '<span aria-hidden="true" style="width:26px;height:5px;border-radius:999px;background:oklch(var(--t2) 0.19 ' + hue + ');"></span>' +
+        '<span style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:oklch(var(--t3) 0.19 ' + hue + ');">' + esc(n.name) + ' &middot; ' + (a[4] === "region" ? "region" : "local authority") + '</span>' +
+      '</div>' +
+      '<h2 style="margin:6px 0 8px;font-size:25px;font-weight:900;letter-spacing:-0.035em;">' + esc(a[0]) + '</h2>' +
+      '<p style="margin:0 0 20px;font-size:14.5px;line-height:1.55;color:rgb(var(--ink-rgb) / 0.82);max-width:70ch;">' + esc(n.vote) + '</p>' +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;">' +
+        card("Who runs elections here", partner, "The National Youth Agency does not hold your area\u2019s timetable. This is the body that does, alongside your local authority youth service.", hue) +
+        card("Your seat", n.seat, n.body, hue) +
+        card("Statutory route", "Local authority youth service", "Councils hold a statutory duty for youth provision, and have to consult on it. That duty is a lever, not a courtesy.", hue) +
+        petitionCard(a, hue) +
+      '</div>' +
+      '<div style="margin-top:18px;padding-top:16px;border-top:1px solid rgb(var(--film-rgb) / 0.11);">' +
+        '<div class="mono" style="font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgb(var(--ink-rgb) / 0.78);margin-bottom:11px;">Routes open here \u2014 elected and not</div>' +
+        '<div style="display:flex;flex-direction:column;gap:9px;">' +
+        n.routes.map(function (r) {
+          return '<div style="display:flex;gap:10px;font-size:13.5px;line-height:1.5;"><span aria-hidden="true" style="flex:0 0 6px;height:6px;border-radius:50%;background:oklch(var(--t2) 0.19 ' + hue + ');margin-top:7px;"></span>' + esc(r) + '</div>';
+        }).join("") +
+        '</div>' +
+      '</div>' +
+      '<div style="margin-top:18px;padding-top:16px;border-top:1px solid rgb(var(--film-rgb) / 0.11);">' +
+        '<div class="mono" style="font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgb(var(--ink-rgb) / 0.78);margin-bottom:11px;">Local youth services to look for</div>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:7px;">' +
+        ["Open access youth club", "Detached and street-based team", "Young Futures Hub", "Youth council or forum", "School and college councils", "Youth sports clubs", "Uniformed groups", "Careers and Youth Guarantee support", "Youth mental health services", "Care-experienced participation group", "Young carers service", "Youth justice participation panel"].map(function (s) {
+          return '<span style="border:1px solid rgb(var(--film-rgb) / 0.14);border-radius:999px;padding:6px 12px;white-space:nowrap;background:rgb(var(--film-rgb) / 0.05);font-size:12.5px;">' + esc(s) + '</span>';
+        }).join("") +
+        '</div>' +
+        '<p class="mono" style="margin:14px 0 0;font-size:10.5px;line-height:1.7;color:rgb(var(--ink-rgb) / 0.72);">Which of these exist near you varies enormously by area \u2014 that variation is the reason the National Youth Work Curriculum exists. Your local authority youth service holds the actual list.</p>' +
+      '</div>';
+  }
+
+  function card(label, value, note, hue) {
+    return '<div style="border:1px solid oklch(var(--t1) 0.16 ' + hue + ' / 0.28);border-radius:16px;background:oklch(var(--t1) 0.16 ' + hue + ' / 0.07);padding:16px 18px;">' +
+      '<div class="mono" style="font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgb(var(--ink-rgb) / 0.78);">' + esc(label) + '</div>' +
+      '<div style="font-size:15px;font-weight:700;line-height:1.3;margin-top:5px;">' + esc(value) + '</div>' +
+      '<div style="font-size:12.5px;line-height:1.5;color:rgb(var(--ink-rgb) / 0.8);margin-top:6px;">' + esc(note) + '</div>' +
+      '</div>';
+  }
+
+  function slug(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+  function select(i, fly) {
+    current = i;
+    renderList(qEl.value);
+    renderDetail(i);
+    try { if (location.hash !== "#" + slug(AREAS[i][0])) history.replaceState(null, "", "#" + slug(AREAS[i][0])); } catch (e) { /* sandboxed */ }
+    if (fly) {
+      map.flyTo([AREAS[i][1], AREAS[i][2]], AREAS[i][3] === "eng" && AREAS[i][4] === "region" ? 7 : 8, { duration: 0.6 });
+      markers[i].openTooltip();
+    }
+  }
+
+  qEl.addEventListener("input", function () { renderList(qEl.value); });
+  qEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") { var first = listEl.querySelector("button"); if (first) { select(+first.getAttribute("data-i"), true); } }
+    if (e.key === "Escape") { qEl.value = ""; renderList(""); }
+  });
+  window.addEventListener("keydown", function (e) {
+    var tag = ((e.target && e.target.tagName) || "").toLowerCase();
+    if (e.key === "/" && tag !== "input" && tag !== "textarea" && !e.metaKey && !e.ctrlKey) { e.preventDefault(); qEl.focus(); qEl.select(); }
+  });
+  function fromHash() {
+    var h = (location.hash || "").replace(/^#/, "");
+    if (!h) return -1;
+    for (var i = 0; i < AREAS.length; i++) if (slug(AREAS[i][0]) === h) return i;
+    return -1;
+  }
+  window.addEventListener("hashchange", function () { var i = fromHash(); if (i > -1 && i !== current) select(i, true); });
+
+  document.getElementById("theme").addEventListener("click", function () {
+    var light = document.body.dataset.theme === "light";
+    document.body.dataset.theme = light ? "dark" : "light";
+    this.textContent = light ? "Light theme" : "Dark theme";
+    writePref("theme", light ? "dark" : "light");
+    setTiles();
+    renderList(qEl.value); renderDetail(current);
+  });
+  document.getElementById("motion").addEventListener("click", function () {
+    var off = document.body.dataset.motion === "off";
+    document.body.dataset.motion = off ? "on" : "off";
+    this.textContent = off ? "Motion on" : "Motion off";
+    writePref("motion", off);
+  });
+
+  var start = fromHash();
+  select(start > -1 ? start : 6, start > -1);
+  setTimeout(function () { map.invalidateSize(); }, 60);
+})();
+</script>
+</body>
+</html>

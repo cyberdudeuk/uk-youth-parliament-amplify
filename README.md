@@ -50,11 +50,14 @@ python3 -m http.server --directory app 8000
 - **Petition data:** UK Parliament e-petitions data, which Parliament publishes
   under the Open Parliament Licence v3.0 (UK Parliament's dataset certificate
   for e-petitions; some reusers cite the Open Government Licence, so confirm
-  on petition.parliament.uk before relying on it). The snapshot is a point in
-  time. Its date is the petition record's own `updated_at` timestamp, recorded
-  in `tools/sources.json`; the file itself is kept exactly as Parliament served
-  it. Contains Parliamentary information licensed under the Open Parliament
-  Licence v3.0.
+  on petition.parliament.uk before relying on it). The file is not Parliament's
+  record itself: it is a summary made from that record (signature totals, the
+  count by nation, region and constituency, and the named MPs, who are public
+  office holders), and it names its own source URL. It was fetched on
+  1 October 2026 (its `fetched` field, also recorded in `tools/sources.json`).
+  The petition closed on 11 August 2026, so its counts are final. The summary is
+  kept byte for byte as the portal uses it. Contains Parliamentary information
+  licensed under the Open Parliament Licence v3.0.
 
 ## Checks
 

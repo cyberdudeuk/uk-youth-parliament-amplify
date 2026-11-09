@@ -9,7 +9,9 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
       kept once their features are built (owner's rule, 8 November 2026)
   R4  every portal file is the source artifact's bytes: present, and its SHA-256 matches tools/sources.json
       (copies are made on the server, never retyped; a retyped copy is how a page silently drifts)
-  R5  the petition snapshot is dated: tools/sources.json records the record's own updated_at, and they agree
+  R5  the petition snapshot is dated: tools/sources.json records the summary's own fetched date, and they agree;
+      the file must also name its source (a summary made from Parliament's record; R5 was first written against
+      an assumed raw-record shape, data.attributes.updated_at, before the file was seen: 9 November 2026)
       (the estate review's open action for this portal: "Date the petition snapshot on the page")
   R6  every relative src/href in the pages resolves to a tracked file (a page that loads a missing file is broken)
 """
@@ -51,8 +53,10 @@ def r5(src, read):
     p = src["petition"]; path = next(k for k in src["files"] if k.endswith(f"petition-{p['number']}.json"))
     b = read(path)
     if b is None: return [f"R5 {path} is missing"]
-    try: stamp = json.loads(b)["data"]["attributes"]["updated_at"]
-    except Exception: return [f"R5 {path} has no data.attributes.updated_at to date it by"]
+    try: rec = json.loads(b); stamp = rec["fetched"]
+    except Exception: return [f"R5 {path} has no fetched date to date it by"]
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(stamp)): return [f"R5 {path} has a fetched value that is not a date: {stamp!r}"]
+    if not str(rec.get("source", "")).startswith("https://petition.parliament.uk/"): return [f"R5 {path} does not name its source on petition.parliament.uk"]
     if not p.get("snapshot_date"): return [f"R5 the petition snapshot is undated: record {stamp} in tools/sources.json"]
     if p["snapshot_date"] != stamp: return [f"R5 tools/sources.json dates the snapshot {p['snapshot_date']} but the record says {stamp}"]
     return []
@@ -96,6 +100,10 @@ expect("R3", r3(tracked + ["app/scraps/notes.txt"]))
 expect("R4", r4(SRC, lambda p: (read(p) + b" ") if p == page else read(p)))                    # one byte changed
 expect("R4", r4(SRC, lambda p: None if p == page else read(p)))                                # a file lost
 s = copy.deepcopy(SRC); s["petition"]["snapshot_date"] = None; expect("R5", r5(s, read))       # undated snapshot
-s = copy.deepcopy(SRC); s["petition"]["snapshot_date"] = "2000-01-01T00:00:00.000Z"; expect("R5", r5(s, read))
+s = copy.deepcopy(SRC); s["petition"]["snapshot_date"] = "2000-01-01"; expect("R5", r5(s, read))           # wrong date
+pet = next(k for k in SRC["files"] if k.endswith(".json") and "petition" in k)
+def strip(key): return lambda p: json.dumps({k: v for k, v in json.loads(read(p)).items() if k != key}).encode() if p == pet else read(p)
+expect("R5", r5(SRC, strip("fetched")))                                                        # summary with no date
+expect("R5", r5(SRC, strip("source")))                                                         # summary with no source
 expect("R6", r6({page: '<script src="missing-runtime.js"></script>'}, tracked))                # a page loads a missing file
 sys.exit(1 if fails else 0)
