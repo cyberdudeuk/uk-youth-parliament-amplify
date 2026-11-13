@@ -1,0 +1,13 @@
+version: 2
+# Based on cyberdudeuk/dcat-ap-uk, including its CodeQL group. Ecosystems match what this repository contains.
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: {interval: weekly}
+    cooldown: {default-days: 7}
+    # CodeQL's init, analyze and upload-sarif steps must run the same version. Bumped
+    # one at a time they fail with "Loaded a configuration file for version X, but running
+    # version Y" (seen on 13 Nov 2026). This group moves them in one pull request.
+    groups:
+      codeql:
+        patterns: ["github/codeql-action*"]

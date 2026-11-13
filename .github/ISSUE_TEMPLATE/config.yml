@@ -1,1 +1,5 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Report a security problem (private)
+    url: https://github.com/cyberdudeuk/uk-youth-parliament-amplify/security/advisories/new
+    about: Report security problems privately. Do not open a public issue.

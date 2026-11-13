@@ -16,6 +16,10 @@ may reuse govukOS's shared page runtime, but it is not a govukOS app.
 | `app/support.js`, `app/image-slot.js` | The page runtime the portal loads |
 | `app/petition-754954.json` | A snapshot of UK Parliament petition 754954, with the date it was taken (see below) |
 | `tools/check_repo.py` | The repository's checks (run by CI on every push) |
+| `SECURITY.md` | How to report a security problem privately, and the automated security checks |
+| `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` | How to take part, and the conduct expected |
+| `.github/workflows/` | CI: the repository checks, CodeQL, dependency review and OpenSSF Scorecard |
+| `.github/dependabot.yml` | Weekly updates for the pinned GitHub Actions |
 
 The portal files are copied byte for byte from the private Claude artifact
 they were built in. Each copy is checked against that artifact's SHA-256 (see
