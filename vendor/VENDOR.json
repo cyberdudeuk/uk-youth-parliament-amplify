@@ -96,6 +96,12 @@
       "sha384": "sha384-I7l5uhQ+vjctsQSBmAlvdsRw1TGfnxh9i840J0eJbIM5Uw7Quor4V1WZSnm/alNX",
       "version": "1.66.0"
     },
+    "icons/award.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-ViYxMuDJO21oxscwPkgSWy6Xyg2kwtDZFIoU8wYqE0zQmk5CunLqBbw3V5CcQy6k",
+      "version": "1.66.0"
+    },
     "icons/book-open-check.svg": {
       "licence": "ISC",
       "package": "lucide-static",
@@ -144,10 +150,28 @@
       "sha384": "sha384-9+jIXq3aFlclsLhQvJbQhDfZ/opDzCOQWx7p8tG4G+7Xu5++KB5TFE+JfGCIbJ31",
       "version": "1.66.0"
     },
+    "icons/circle-help.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-02crc05XfROZX+nkd1EjBrmq1i/VKWOmTYQSJDibDWXSemJOTaCZds2Zhn1ABM7/",
+      "version": "1.66.0"
+    },
+    "icons/clipboard-list.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-wMCSww+8UmJSDNKETvuWkr45k+LL+9y0eB6rK+uDfMkI5rgM++10k4oT5fWL3UzD",
+      "version": "1.66.0"
+    },
     "icons/clock.svg": {
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-F/Eq6TU5WrtZj+ODaCZ2/rY+xNQOKAUAMGVd04bo1WbIduglQTIDhdslWcYkt119",
+      "version": "1.66.0"
+    },
+    "icons/code-xml.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-ofoqZnPAaXyzBibdeOpvq+ukFwoTeM+BaTX557IYHAYAtbjgjyXZDta6Li7atslF",
       "version": "1.66.0"
     },
     "icons/coins.svg": {
@@ -160,6 +184,18 @@
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-noAsJxYZyqFmXJvfZXjnpaKlPjUXadQdDuIPXGRuzsgsMQuVEJ3wVc28RzLypdCq",
+      "version": "1.66.0"
+    },
+    "icons/cpu.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-1HF4wP7Mfp4fduEK6dCtqqE6cwuXaywB4vcrsymOt/MMI5/p8/CwUFB7kwbFvByr",
+      "version": "1.66.0"
+    },
+    "icons/drafting-compass.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-jzGotWBK8ZcT+FhtHGpM/fIX0dQAJSg9utjqXRkR6KW1L1OhvMPURNFFHjT96VrR",
       "version": "1.66.0"
     },
     "icons/external-link.svg": {
@@ -186,10 +222,22 @@
       "sha384": "sha384-T1YZJdcm2feTt1ee1AKyU2T+N29+0y7tMyOLCj6AtOSLQPjYwzfuMX6zLltLS7p9",
       "version": "1.66.0"
     },
+    "icons/gauge.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-ObDUdhmbfjNnD+q7uhLPkPbz1R8imVi0lXWXofFr1YyAw1ButeAhGwbWm22Mjnbs",
+      "version": "1.66.0"
+    },
     "icons/git-branch.svg": {
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-SDsY7roXdzrZZV42FnD7dIPyFtJT69jLo/nDOG+FF+gs8PvjTJkRwPGk7waza+T9",
+      "version": "1.66.0"
+    },
+    "icons/git-pull-request.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-tNO6y+kRHb3qCt5/lorbGmVhmixqXQxP6+SKE+Sod9I+C/IqtXgCe0WJPAHP9OUE",
       "version": "1.66.0"
     },
     "icons/globe.svg": {
@@ -312,6 +360,24 @@
       "sha384": "sha384-jv6N8MdDidim/jJiJBF7s4d3q2JmuCA4S9h7VLWoTDf+ros+oGK1Jm+h+qpVpfeq",
       "version": "1.66.0"
     },
+    "icons/pen-tool.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-jwuwT95v2WyGr3KaC7dUrgEpkvK9owKMPtlqDiHZR+yGHoTMg6/93lslvaH2sVWK",
+      "version": "1.66.0"
+    },
+    "icons/pencil-ruler.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-pvG/M4ifSEFipsFhYutO/duMsgLj7IDJwdKLNPI4abMlXmq56iQyPSbxlVE+EzDC",
+      "version": "1.66.0"
+    },
+    "icons/presentation.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-Jp6cvKGOVymED9KbOfv4l+aUhqfgqkLU77vZ0whtwukXFfmFghCwzZ5Zfqi6djQe",
+      "version": "1.66.0"
+    },
     "icons/radar.svg": {
       "licence": "ISC",
       "package": "lucide-static",
@@ -322,6 +388,12 @@
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-KLhveiC957PHrPNn+qqfl/z6Gf7UtbS7iz0+LZOKQSpkuL3X16atibCFWjAAqJQn",
+      "version": "1.66.0"
+    },
+    "icons/rocket.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-6aFRk2pwkvnEeDyLbDLxu/7pTkqUMdstA4x5L0DMtI0C43mFN4UAAf2C8FIJ2sAW",
       "version": "1.66.0"
     },
     "icons/route.svg": {
@@ -360,6 +432,12 @@
       "sha384": "sha384-mzsOGsCZZIvjQlioiPfBJ2KA+cNkYXrMjUDBNa6yE/PzL/vZIq1kZ0sBvyNLIVFP",
       "version": "1.66.0"
     },
+    "icons/star.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-nspi6SdTRsX3FmwAxjafNQVXE4uZMsePyy/2JwYFz4SqvVk3J83jRJYCOdFiBc6i",
+      "version": "1.66.0"
+    },
     "icons/trending-up.svg": {
       "licence": "ISC",
       "package": "lucide-static",
@@ -382,6 +460,12 @@
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-BQF8YWSKKm4DEL7ggwMGEkUEeifRc+ES/lGVq63I/GQf/X+zZ0MpRBbL1rWi2ubp",
+      "version": "1.66.0"
+    },
+    "icons/wrench.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-1ZLE3LvWMekHnIGqNj5Of8qxBuQ8OwF5h3otj2rW16zzpj/NNUoCvKzZqpSQELQy",
       "version": "1.66.0"
     },
     "runtime/LICENSE-babel.txt": {

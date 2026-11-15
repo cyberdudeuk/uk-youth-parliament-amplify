@@ -1,12 +1,12 @@
 {
   "what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
-  "build_id": "AMP-20261115-3779db74",
+  "build_id": "AMP-20261115-cc2c9d2b",
   "built": "2026-11-15",
   "built_long": "15 November 2026",
   "petition_date_long": "1 October 2026",
-  "inputs_sha256": "3779db74f84af3e22de9260ee5502e3e36177d01d0cdd528096663a06beae6a4",
+  "inputs_sha256": "cc2c9d2bb954c49db6f587b1b23f3ec77a69b0ffac417523c9a6b4688b7b6fba",
   "review": "2026-12-15",
-  "n_sources": 55,
+  "n_sources": 67,
   "n_latest": 13,
   "review_long": "15 December 2026",
   "design_artifact": {
@@ -79,7 +79,11 @@
     },
     {
       "id": "S11",
-      "what": "CHANGELOG.md and docs/registers.md are exactly what tools/make_docs.py writes from data/ (no hand-kept copy)"
+      "what": "CHANGELOG.md, docs/registers.md and docs/research/ are exactly what tools/make_docs.py writes from data/ (no hand-kept copy)"
+    },
+    {
+      "id": "S12",
+      "what": "every drawer screen has a tooltip and explainer in data/tooltips.json, and every term or control tooltip the page names (data-tip=\"term:...\" or \"ui:...\") exists, so no tooltip is ever empty (owner's request, 15 Nov 2026)"
     },
     {
       "id": "S10",
@@ -394,6 +398,141 @@
       "matches": 1
     },
     {
+      "name": "ext4-css",
+      "why": "tooltip and term styles",
+      "matches": 1
+    },
+    {
+      "name": "ext4-load",
+      "why": "the tooltip and Get involved data load with the rest",
+      "matches": 1
+    },
+    {
+      "name": "ext4-load-vars",
+      "why": "name the two new data sets",
+      "matches": 1
+    },
+    {
+      "name": "ext4-load-state",
+      "why": "keep them in state",
+      "matches": 1
+    },
+    {
+      "name": "ext4-group",
+      "why": "the Get involved group sits after Help & get involved, before the closing bracket of the drawer",
+      "matches": 1
+    },
+    {
+      "name": "ext4-hash",
+      "why": "the new screens can be linked to",
+      "matches": 1
+    },
+    {
+      "name": "ext4-logic",
+      "why": "tooltip layer and Get involved logic",
+      "matches": 1
+    },
+    {
+      "name": "ext4-vals",
+      "why": "their values join renderVals",
+      "matches": 1
+    },
+    {
+      "name": "ext4-mount",
+      "why": "start the tooltip layer and restore the reader's persona when the page mounts",
+      "matches": 1
+    },
+    {
+      "name": "ext4-unmount",
+      "why": "remove the tooltip layer on unmount, inside the design's own unmount",
+      "matches": 1
+    },
+    {
+      "name": "ext4-nav-id",
+      "why": "each drawer item carries its id for its tooltip",
+      "matches": 1
+    },
+    {
+      "name": "ext4-nav-tip",
+      "why": "every drawer item explains itself on hover and focus",
+      "matches": 1
+    },
+    {
+      "name": "ext4-ui-portal",
+      "why": "header control tooltip",
+      "matches": 1
+    },
+    {
+      "name": "ext4-ui-both",
+      "why": "header control tooltip",
+      "matches": 1
+    },
+    {
+      "name": "ext4-ui-app",
+      "why": "header control tooltip",
+      "matches": 1
+    },
+    {
+      "name": "ext4-ui-replay",
+      "why": "header control tooltip",
+      "matches": 1
+    },
+    {
+      "name": "ext4-ui-access",
+      "why": "header control tooltip",
+      "matches": 1
+    },
+    {
+      "name": "ext4-explainer",
+      "why": "the explainer bar opens every screen, above the ribbon",
+      "matches": 1
+    },
+    {
+      "name": "ext4-screens",
+      "why": "the five Get involved screens",
+      "matches": 1
+    },
+    {
+      "name": "ext5-load",
+      "why": "the research data loads with the rest",
+      "matches": 1
+    },
+    {
+      "name": "ext5-load-vars",
+      "why": "name it",
+      "matches": 1
+    },
+    {
+      "name": "ext5-load-state",
+      "why": "keep it in state",
+      "matches": 1
+    },
+    {
+      "name": "ext5-nav",
+      "why": "Research & design joins Get involved, after Contribute",
+      "matches": 1
+    },
+    {
+      "name": "ext5-hash",
+      "why": "the screen can be linked to",
+      "matches": 1
+    },
+    {
+      "name": "ext5-logic",
+      "why": "Research & design logic",
+      "matches": 1
+    },
+    {
+      "name": "ext5-vals",
+      "why": "its values join renderVals",
+      "matches": 1
+    },
+    {
+      "name": "ext5-screen",
+      "why": "the Research & design screen",
+      "matches": 1
+    },
+    {
       "name": "footer",
       "why": "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
       "matches": 1
@@ -461,28 +600,35 @@
   ],
   "files": {
     "Local Routes Map.html": "30941ecd81d9acf11db66678b24e7cdf5a0b43bf09c3cccbcd5f035941807c78",
-    "art/barcode.svg": "9958ec8febc9b096fa06b59926e8aff33f860f27aa068d5f786819b472dfc129",
+    "art/badge-ambassador.svg": "8aad9c8ef9ef13a125bc27cb4a048cf7f132e431f36cf10dcc4cc7581a47e137",
+    "art/barcode.svg": "acc646ef5ea8b8b93c66269f414bec538ae8e5794b4682aa5d3e8d320a4c8f11",
     "art/education.svg": "1e654b11eeb077f1cd08a84048bdb3f6aff365a6caa19eb9905fd540cf0e9cee",
     "art/empowerment.svg": "6a1f93604c95d5be736278c8a86c1862ded148dd1c59d81b5a72930d53ed6d86",
     "art/equality.svg": "2a516ba220b00b6d2ca210659da6c92bc08a0911a97cc71bcbc4a0ea0535a67a",
     "art/favicon.svg": "4bc404bcd672e0797c4548dc113ea64756e2b7e95ae94df522aa607666e03b21",
     "art/hero.svg": "b7937db570cd2a1a9e6721f7b11175dfb18b7bdf58ce6d29af5201ff9886512b",
     "art/participation.svg": "4c6a91a5905f0f492efcb5c195d101f5e7182c0cdbb0eaf127283354ffc42e3d",
+    "art/poster-involve.svg": "b2b757eb090d34cf7d8240f0cfdd62f50c8b0141f63643dcd1b12db17371e35c",
+    "art/poster-stem.svg": "c7bf91b67f2a2cd7ed7e1f340abe3d81699223dadcc3426aaa46516d1b26696f",
     "art/qr.svg": "f8859fb08c558177c84808a963028e81410458f2de09ccebae362ffac92e90c8",
+    "art/social-card.svg": "c902116e615663a41139332bbbe5b1c7074863c751c7b13f2ea3fadb2fc163ce",
     "data/about.json": "99a5eca5e00594284bf19694674f37ca519780a14563657b50dddd3b6a736633",
-    "data/changelog.json": "ef5ad65afb82bb8a8a0c22fc9fafbcd809584e8f1f19a6ac30716b2f540d2e8c",
+    "data/changelog.json": "90424d8ed5ba0434b2dda2ee53d6fb3b18838120b5d57ec69958cac65d521278",
     "data/communities.json": "1398865a0f63a268fa17424fdcb62f8e52bf535adc61e3acfdce9fa7f2ded4e5",
     "data/help.json": "86315b45d1ae8b53352e6be9daba535a62831640a538e32b15a66a01ade47584",
     "data/home.json": "040a44465a3654cf136c2bafa0582aa8e03bf235e2d3e839378aec9d2af0fd99",
-    "data/integrity.json": "c6f27e7b1f094621d1eb281bc4c758b41f407613bb3be3460bf11af15d93a901",
+    "data/integrity.json": "aaf87145b2e23072fc7ffb7f6fc0f984955dc4dd3894d5bf1cbee14bb78249fa",
+    "data/involve.json": "1564ff8a574e9f61fe47970b8902efe9c60f821174a339e270771523413d8036",
     "data/latest.json": "5eb9e4fc30de410532cf0af2253e63527cb95d333c5182003f32dd4fe331eb2c",
     "data/launch.json": "2f69c38ca8aae84e7f7f329b261e48e2eb17e3e4c21da029eec0f6a87d0d7472",
     "data/media.json": "dd6f558cf067c18a2c89632019d3787309430315aa1792d1810ff9b372779aa3",
     "data/moscow.json": "9cc44b2176f2d899c137244567fc45d59b707bfbede87bb1493f21a5c5b99f00",
-    "data/registers.json": "3aa153d8a8292f97bac8817ccdae0a33897a693d57936be9adaf8adc6c64e473",
+    "data/registers.json": "37e62fac369cf3cd72005a2b7f1ba0680c8d2d91b38da8cc40d3d452afca1757",
+    "data/research.json": "df2d165e1c7badf5cabb2ee90a18ac3c404a7d16499b7c18831a854ba7e0b2ef",
     "data/safeguards.json": "542f65ea588cf327078046e6bac0e6664ee3f4256faba08d5ec24eb4b5e7ff81",
-    "data/youth-sources.json": "794bd27e449c128e2d3ee83732bd769cc2258e117cb17d6964be86599cd2f1a9",
-    "index.html": "3d85e1231a403d486753e6e5e4d44a5f582065a1ca213f6c0620b038812f3580",
+    "data/tooltips.json": "433637bc05fc190c42283d65b3dc61f744531c2028bce7aeb063b1ff6e668a71",
+    "data/youth-sources.json": "99197ecffb22a8ed517c54485593478a748e57a54585afc76ac4bed9adc858c8",
+    "index.html": "bf3b4a8bfe03cc937e42e238f36c658b02f839da71b33f3a7d818ebdd963d8af",
     "petition-754954.json": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a",
     "support.js": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe",
     "vendor/fonts/LICENSE-atkinson-hyperlegible.txt": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
@@ -502,6 +648,7 @@
     "vendor/icons/LICENSE.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
     "vendor/icons/accessibility.svg": "43f7615a4f3cd176ded0f0219259ca7690a7fe8714b4b6634f2a2a6264611fa0",
     "vendor/icons/activity.svg": "655ae1c9f68ccd6be5648ee997cb5a5647488e72fc22fb9f3f30a3bac6e3bcae",
+    "vendor/icons/award.svg": "5ec59f0463262d412b967913a6fc06cca9dd6dd79fadb375573dba573fb1a32d",
     "vendor/icons/book-open-check.svg": "71f2d4c1b9785bbb1c57c784210c7e91ea014e62e3dc8037eebf5a9590ee6232",
     "vendor/icons/briefcase.svg": "31834303e2bf8122f590420d04e14d97fc2d50870729bba2035c53c25c7cee13",
     "vendor/icons/bug.svg": "215a446389b0e8f551336c18bd5c4769d20bb6fa2987373d84f674af62e63f11",
@@ -510,14 +657,21 @@
     "vendor/icons/chart-line.svg": "2a2143f5a0d3276a93b92c1e25816ca5126c3d78d94827490063bb8f5efc44f8",
     "vendor/icons/circle-alert.svg": "0d9e1ce02e17b59fa0a469109af33bef465f2e9520fc2c2a14b5f46bc008ec8f",
     "vendor/icons/circle-check.svg": "8060d78fab415a2a84470a845ee29d59f02b8f5361e2a238f8d1cdbf99d2955c",
+    "vendor/icons/circle-help.svg": "ffff66b160a6448913edc2dafb7a1d87cd320bf37c22483e3ed93b1818b26b4a",
+    "vendor/icons/clipboard-list.svg": "1f2bbeec4aeab134803df014d41d286c6bc9b7c171309d2c6b32ffd611dd6f51",
     "vendor/icons/clock.svg": "b90eaf98b9e9a0fe3afafaf4be9645a93f16ebe57473c84fd02de89389655191",
+    "vendor/icons/code-xml.svg": "50dccc0b5236e739126323110be8eaf2611be471e2d0c83adde384aa6cacf8ec",
     "vendor/icons/coins.svg": "8ecd31ec5c7951e4f1367d5ebdd7061335d5c95ab30032158a5d907a6cd312c1",
     "vendor/icons/compass.svg": "e57132e420efc910f689665a2767f1cb1960ae7c7d9d329ef8712638ecbc0dc9",
+    "vendor/icons/cpu.svg": "b2aa3fd7000a5607c99506fe765e091dd869a5ed0746927a43ba0ec297d3fe5e",
+    "vendor/icons/drafting-compass.svg": "ee691fbe2ccfb86073a54cf7dc021fcfce72cc828076739bbac38c6b84a761af",
     "vendor/icons/external-link.svg": "11534bf842a070702d1d97b61e7b6e239e981831141606ef376333f8eaeba623",
     "vendor/icons/file-search.svg": "13a59bd6f4c6aa02a613d2efbf0d69a26b0826d38a6262aff1f9c038ba02deb2",
     "vendor/icons/filter.svg": "1291ee2930b8e230d8138bc8cc9290bd21a65fae236d1f4af3b30b53fe71a8f8",
     "vendor/icons/flag-triangle-right.svg": "238eefe6544c29409e6e119a772f26ba7a3dababfc61755631eafd6de4d3d30d",
+    "vendor/icons/gauge.svg": "4e277a50cb4be29e544e17760828bbded07faf72ccc1188c0875c8575178360d",
     "vendor/icons/git-branch.svg": "9109e7222531e6f688d19d6bd2c017b2de8c387aec8bdaf3277a46951790aa64",
+    "vendor/icons/git-pull-request.svg": "d634e8612597d26acdf06fe61652eaba79e49cbad7c92e8dc6e8f05ae2befc78",
     "vendor/icons/globe.svg": "a2917fe24ca4aefed772c875dd95bbe07dbd146c2ef6501f5dd3032e0c4cb001",
     "vendor/icons/graduation-cap.svg": "8fe183714eedc32f6fc80631083bb76c315dd788bdb72c2db43181a29132ee8d",
     "vendor/icons/hand-heart.svg": "1611bbd2880d094d4d3ed2ca88b2c007587b584f976565e44e70ee651745aceb",
@@ -538,18 +692,24 @@
     "vendor/icons/newspaper.svg": "b3fdcb78d2cfc24da1dfb38bc3423e4321aa459875ca1c74ea02efebb9f556bf",
     "vendor/icons/package.svg": "74ca507badc7abc5fcb33bf57b014516266dd1c5295a48df715d67f0af787671",
     "vendor/icons/palette.svg": "fae62350370df7a045ed664621cc58e7eb3043a88bdaf42bac0ca2f3040def30",
+    "vendor/icons/pen-tool.svg": "a78bde5adecc4b08d981e0bdcaa81b056509eda9f1bd63d779ecbf497ac62b7b",
+    "vendor/icons/pencil-ruler.svg": "8b9d9c972829e313c723d54cd7e3288ea144ee908573b35e66570da1d86141de",
+    "vendor/icons/presentation.svg": "4e9db5f8322c98e57c7f981dc968535fdbbd53d852463041ca4ec7364cd0351b",
     "vendor/icons/radar.svg": "383f83bb1cb09d951e71ecd9a3247e78f1461ebd91c0d4e8303f0972e8afe823",
     "vendor/icons/refresh-cw.svg": "aca5b435761bf7556421dbf5f1950f1b8486184290501e05480af6395f36dcd1",
+    "vendor/icons/rocket.svg": "f6eca720a80a9b3692a8c6806839b9ac7c7d57706ba9b8e6ec579e992636bcfd",
     "vendor/icons/route.svg": "e174ec31f8a974fcd2fd775d7e498d44cde705d2d802695b9ef5abb0f640d09f",
     "vendor/icons/scale.svg": "280e24e8ab9d2286d4d7cbf75ee246361575ea0b0c350c1d9f36d7d406de1070",
     "vendor/icons/scroll-text.svg": "c10a849bdf7b54c63400b3afedccc17c7cfa89b73f6066b3f0c0870121e3dd8b",
     "vendor/icons/search.svg": "aad1fb44a964c5841a107239b45bfbe6ab08ac62bf3a13377b5412002e8068db",
     "vendor/icons/shield-check.svg": "618ad09c689bbaa4eed347793083255fee2c0547d8531db4767e4264577fd65a",
     "vendor/icons/sparkles.svg": "4dd096584e2b7b9349ec94b104918eddc5a8e687e22ff272c6f2a6ba31813933",
+    "vendor/icons/star.svg": "3772fe68c01f245c817bde473c17735d9ec727e1df6609538f0596bf13288e58",
     "vendor/icons/trending-up.svg": "6d91b60bc5941db33993fc13c839fcf4407a96910c5eec93ea54eb55bafd30ce",
     "vendor/icons/triangle-alert.svg": "456054288ade09e5d0b77d80b75cfb5733bbf32e3eb09a78522e6a6a09def275",
     "vendor/icons/users.svg": "4465a8282a15897fcf70ee4ac7a752db10664051335d2c0967c9a7a903f13904",
     "vendor/icons/vote.svg": "e27e0f817ad272494b1bedec7043e64577abbe14993c500045fd87b24ba63c90",
+    "vendor/icons/wrench.svg": "df07a2e5719ab56e8db417958ca772dbe0d2334d00a401dbacd7c8a8f6f2d20c",
     "vendor/leaflet-1.9.4/LICENSE.txt": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b",
     "vendor/leaflet-1.9.4/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
     "vendor/leaflet-1.9.4/leaflet.js": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",

@@ -6,6 +6,11 @@ Needs Playwright with Chromium (pip install -r tools/requirements-browser.txt; p
   W3  axe-core finds no serious or critical accessibility issue beyond the recorded baseline for that screen; the
       baseline is the original design's own findings (open item O3) and may only shrink
   W4  the self-reporting screens fill from their data: Trusted sources shows cards, Portal health shows a status
+  W5  tooltips work: hovering a drawer item shows its explainer, keyboard focus on a term links it with
+      aria-describedby, and Escape closes it (vaccinated against a page with no tooltip layer)
+
+Screens are read from data/integrity.json, which check_sources C9 keeps in step with the drawer, so a new screen is
+tested without editing this file.
 
 The axe check is vaccinated against a page with a deliberately unlabelled image, which it must flag.
 """
@@ -15,8 +20,20 @@ R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(R, "site")
 BASE = os.path.join(R, "tools", "a11y-baseline.json")
 AXE = os.path.join(R, "vendor", "test", "axe.min.js")
-SCREENS = ("hub momentum plan coal kit pledge radar policy map acad ysc post track prof incl res ai brand care graph corner "
-           "route state issues guide sources latest trust health changes help feedback launch about home media communities").split()
+SCREENS = [x["screen"] for x in json.load(open(os.path.join(R, "data", "integrity.json"), encoding="utf-8"))["screens"]]
+
+
+async def tips(pg):
+    """W5 on an open page: returns a list of problems (empty when tooltips behave)."""
+    bad = []
+    nav = pg.locator('[data-tip^="nav:"]').first
+    if await nav.count() == 0: return ["W5 no drawer item carries a tooltip"]
+    await nav.hover(); await pg.wait_for_timeout(150)
+    tip = pg.locator("#amp-tip")
+    if await tip.count() == 0 or not await tip.is_visible() or not (await tip.inner_text()).strip(): bad.append("W5 hovering a drawer item shows no tooltip")
+    await pg.keyboard.press("Escape"); await pg.wait_for_timeout(100)
+    if await tip.count() and await tip.is_visible(): bad.append("W5 Escape does not close the tooltip")
+    return bad
 
 
 def serve():
@@ -57,6 +74,11 @@ async def run(update):
                         rid, n = v.split(":"); prev = next((int(a.split(":")[1]) for a in allowed if a.startswith(rid + ":")), None)
                         if prev is None or int(n) > prev: bad.append(f"W3 #{sc}: new or worse accessibility issue {v} (baseline {prev})")
                     if sc == "sources" and await pg.locator("article.amp-card").count() < 5: bad.append("W4 #sources shows no source cards")
+                    if sc == "stem":
+                        t = pg.locator(".amp-term").first
+                        await t.focus(); await pg.wait_for_timeout(100)
+                        if await t.get_attribute("aria-describedby") != "amp-tip": bad.append("W5 #stem: a focused term is not linked to its tooltip")
+                    if sc == "home": bad += [f"{x} (#home)" for x in await tips(pg)]
                     if sc == "health" and (await pg.locator("[role=status]").first.inner_text()).strip() in ("", "Checking…"): bad.append("W4 #health never reached a status")
                 await pg.close()
             await ctx.close()
@@ -65,6 +87,10 @@ async def run(update):
         v = await pg.evaluate("axe.run(document).then(r => r.violations.map(v => v.id))")
         print(("caught     " if "image-alt" in v else "NOT CAUGHT ") + "W3 (axe flags an unlabelled image)")
         if "image-alt" not in v: bad.append("W3 vaccination failed: axe did not flag an unlabelled image")
+        await pg.set_content('<!doctype html><html lang="en"><title>t</title><button data-tip="nav:home">Home</button>')
+        hit = bool(await tips(pg))
+        print(("caught     " if hit else "NOT CAUGHT ") + "W5 (a page with no tooltip layer)")
+        if not hit: bad.append("W5 vaccination failed: a page with no tooltip layer passed")
         await b.close()
     srv.shutdown()
     if update:
@@ -73,7 +99,7 @@ async def run(update):
         for sc, got in found.items():  # the baseline may only shrink: note improvements so it can be tightened
             if set(got) != set(base.get(sc, [])) and not any(b.startswith("W3 #" + sc) for b in bad):
                 print(f"note: #{sc} improved against its baseline; run with --update-baseline to lock that in")
-    print(f"amplify browser: {len(SCREENS)} screens at 1440 and 360 px, W1-W4 problems: {len(bad)}")
+    print(f"amplify browser: {len(SCREENS)} screens at 1440 and 360 px, W1-W5 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 

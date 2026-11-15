@@ -19,6 +19,8 @@ import art  # noqa: E402
 import extend  # noqa: E402
 import extend2  # noqa: E402
 import extend3  # noqa: E402
+import extend4  # noqa: E402
+import extend5  # noqa: E402
 import make_docs  # noqa: E402
 
 APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
@@ -190,6 +192,8 @@ def transforms(meta):
         *extend.transforms(meta["n_sources"], meta["n_latest"]),
         *extend2.transforms(),
         *extend3.transforms(),
+        *extend4.transforms(),
+        *extend5.transforms(),
         ("footer", "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
          "    </sc-if>\n\n  </div>\n</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;",
          "    </sc-if>\n\n  </div>\n" + footer(meta) + "</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;", 1),
@@ -271,7 +275,7 @@ def build(date, out=SITE):
     h = hashlib.sha256()
     for f in sorted(src["files"]):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
-    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
+    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
     digest = h.hexdigest()
     d = datetime.date.fromisoformat(date)
@@ -336,11 +340,13 @@ def build(date, out=SITE):
     arts = {"hero.svg": art.hero(), "favicon.svg": art.favicon()}
     for n in art.HUE:
         arts[f"{n}.svg"] = art.corner(n)
-    for f, s in arts.items():
-        open(os.path.join(out, "art", f), "w", encoding="utf-8").write(s)
-
     import segno, barcode
     from barcode.writer import SVGWriter
+    qr_inline = segno.make(REPO_URL, error="m").svg_inline(scale=3, border=0, dark="#06100f", light="#ffffff")
+    arts.update({"poster-involve.svg": art.poster_involve(qr_inline), "poster-stem.svg": art.poster_stem(qr_inline),
+                 "social-card.svg": art.social_card(), "badge-ambassador.svg": art.badge_ambassador()})
+    for f, s in arts.items():
+        open(os.path.join(out, "art", f), "w", encoding="utf-8").write(s)
     segno.make(REPO_URL, error="m").save(os.path.join(out, "art", "qr.svg"), scale=4, border=2, dark="#06100f", light="#ffffff")
     buf = io.BytesIO()
     barcode.get("code128", meta["build_id"], writer=SVGWriter()).write(buf, {"module_height": 12, "font_size": 6, "text_distance": 3, "quiet_zone": 2})

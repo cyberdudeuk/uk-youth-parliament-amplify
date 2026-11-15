@@ -18,6 +18,9 @@ body:
         - Something is wrong or out of date
         - An idea or feedback
         - Accessibility
+        - Take part in user research (say only your role, age band and nation)
+        - Join a design crit or working group
+        - Withdraw my research contribution (give only your session code)
     validations:
       required: true
   - type: textarea

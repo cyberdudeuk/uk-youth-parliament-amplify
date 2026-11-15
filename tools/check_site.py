@@ -19,7 +19,10 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
   S8  site/build.json lists every file in site/ with the SHA-256 it has
   S9  nothing in a site page reaches another host before the visitor clicks: no external script, stylesheet,
       preconnect or font (defect D5: the design told unpkg and Google every visitor's IP address)
-  S11 CHANGELOG.md and docs/registers.md are exactly what tools/make_docs.py writes from data/ (no hand-kept copy)
+  S11 CHANGELOG.md, docs/registers.md and docs/research/ are exactly what tools/make_docs.py writes from data/ (no
+      hand-kept copy)
+  S12 every drawer screen has a tooltip and explainer in data/tooltips.json, and every term or control tooltip the
+      page names (data-tip="term:..." or "ui:...") exists, so no tooltip is ever empty (owner's request, 15 Nov 2026)
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -133,10 +136,26 @@ def s10(texts):
     return [f"S10 the runtime would fetch {u} from the CDN: map it in window.__resources" for u in sorted(set(re.findall(r"https://unpkg\.com/[^\"'\s]+", sup))) if u not in mapped]
 
 
+def s12(texts):
+    page, raw = texts.get("index.html", ""), texts.get("data/tooltips.json", "")
+    try: tt = json.loads(raw)
+    except ValueError: return ["S12 site/data/tooltips.json is missing or not JSON"]
+    bad = []
+    screens = set(re.findall(r'\["([a-z0-9]+)", "[^"]+", "(?:dot|ring|sq|dia|bar|tri)", \d+', page))
+    for sid in sorted(screens):
+        if not (tt.get("screens", {}).get(sid) or {}).get("tip"): bad.append(f"S12 drawer screen {sid} has no tooltip")
+    for kind, key in sorted(set(re.findall(r'data-tip="(term|ui):([a-z0-9]+)"', page))):
+        pool = tt.get("terms" if kind == "term" else "ui", {})
+        if key not in pool: bad.append(f"S12 the page names a {kind} tooltip {key} that data/tooltips.json does not define")
+    if not screens: bad.append("S12 no drawer screens found in the page")
+    return bad
+
+
 def s11(read):
     import make_docs
     bad = []
-    for path, want in (("CHANGELOG.md", make_docs.changelog()), ("docs/registers.md", make_docs.registers())):
+    for path, fn in make_docs.DOCS.items():
+        want = fn()
         if read(path) != want: bad.append(f"S11 {path} differs from data/: run tools/build_site.py")
     return bad
 
@@ -159,7 +178,7 @@ def texts_of(files):
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t)
 
 
 if __name__ == "__main__":
@@ -171,7 +190,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S11 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S12 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -198,7 +217,11 @@ if __name__ == "__main__":
     expect("S7", s7(texts_of(broken("Local Routes Map.html", lambda s: s + 'L.tileLayer("https://{s}.basemaps.cartocdn.com/{z}/{x}/{y}.png")'))))
     expect("S8", s8(broken("art/qr.svg", lambda s: s + " ")))
     expect("S11", s11(lambda p: "edited by hand" if p == "CHANGELOG.md" else rd(p)))
+    expect("S11", s11(lambda p: "edited by hand" if p == "docs/research/consent-forms.md" else rd(p)))   # a hand-kept research doc
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<link rel="preconnect" href="https://fonts.gstatic.com">'))))
+    tj = "data/tooltips.json"
+    expect("S12", s12(texts_of(broken(tj, lambda s: s.replace('"stem": {"tip"', '"stem-gone": {"tip"').replace('"stem": {\n   "tip"', '"stem-gone": {\n   "tip"')))))  # a screen loses its tooltip
+    expect("S12", s12(texts_of(broken(idx, lambda s: s + '<span data-tip="term:nosuchterm">x</span>'))))   # a tooltip with no text
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<SCRIPT SRC="https://cdn.example/x.js"></SCRIPT>'))))   # upper case (D10)
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<script src = //cdn.example/x.js></script>'))))          # spaced, unquoted (D10)
     expect("S7", s7(texts_of(broken(idx, lambda s: s + '<IMG SRC="https://cdn.example/a.png">'))))                # upper case (D10)

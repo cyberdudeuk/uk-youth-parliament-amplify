@@ -16,6 +16,8 @@ Generated from `data/registers.json` by `tools/make_docs.py`; shown live on the 
 | D8 | 2026-11-15 | R6 and S6 read a share link being built in JavaScript (href=" + u + ") as a missing file. | The link pattern matched inside script strings. | Both checks skip values that are string concatenations; their negative tests still catch a real missing file. | R6, S6 |
 | D9 | 2026-11-15 | CI rebuilt site/build.json with its file list in a different order, so S1 failed on GitHub but passed locally. | The file list followed the filesystem's directory order, which differs between machines. | The file list is sorted. | S1 (caught it in CI) |
 | D10 | 2026-11-15 | The outbound-host checks S7 and S9 missed upper-case or spaced tags such as <SCRIPT SRC=...>, so a remote script could have slipped past. Found by GitHub's code scanning. | The patterns were case-sensitive and expected src= with no spaces. | S7 and S9 ignore case and spacing, and S9 also covers img and iframe tags. | S7 and S9, with three new negative tests |
+| D11 | 2026-11-15 | The new explainer bar's persona picker pushed every screen 89px sideways on a 360px phone. | The picker's label could not wrap and the select kept the width of its longest option. | The label wraps and the select can shrink to the width available. | W2 (caught it before release) |
+| D12 | 2026-11-15 | A keyboard user's tooltip vanished as soon as it appeared, when focusing a term scrolled it into view. | The tooltip closed on any scroll, including the scroll that focus itself causes. | On scroll, a tooltip whose trigger has keyboard focus moves with it; only a hover tooltip closes. | W5 (caught it before release) |
 
 ## Open, and who must act
 
@@ -32,3 +34,6 @@ Generated from `data/registers.json` by `tools/make_docs.py`; shown live on the 
 | O9 | A line-by-line audit of every figure in the original design's screens against its source; screens are classified, but individual figures not yet re-verified are the design's own. | Maintainer, one screen per weekly run |
 | O10 | BSL and ISL versions of key screens, and Welsh, Gaelic and Irish versions of the portal, need deaf-led and native-speaker production. | Owner, with deaf-led organisations and language bodies |
 | O11 | Before public launch, the owner confirms that publishing a personal, non-partisan youth participation tool under his own name raises no propriety issue with his employer. | Owner |
+| O12 | Before the ambassador programme opens, the owner confirms he can run it safely: time to respond, a safeguarding lead, named adult contacts for under-18s, and how recognition and references work. | Owner |
+| O13 | File the starter good first issues in docs/good-first-issues.md and create the 'good first issue' label, so new contributors have somewhere to start. | Owner |
+| O14 | Before any research session runs, the owner sets up a private sign-up form that keeps contact details off GitHub, confirms a budget to thank participants at the same rate, and names a safeguarding lead for research with under 18s. | Owner |

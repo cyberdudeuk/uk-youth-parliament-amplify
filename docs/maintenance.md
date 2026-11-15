@@ -26,6 +26,9 @@ A scheduled task runs a maintenance session each week. It:
 2. Re-verifies helplines first, then sources past their review date, against each primary site.
 3. Updates `data/*.json` (sources, What's new, registers, release log), rebuilds, and reruns every check.
 4. Opens a pull request with the changes and a plain report: what changed, what was checked, what stays open.
+5. Checks the Get involved content: STEM sources and programme dates (seasons and rounds change each year), any
+   "Lead, to confirm" campaign date, and new ambassador-interest issues. If an issue contains anything that identifies
+   a person, it flags it to the owner at once rather than replying in public.
 
 It never merges, deletes, publishes or changes who can see anything: **people decide the irreversible**. The owner merges.
 
@@ -40,3 +43,6 @@ It never merges, deletes, publishes or changes who can see anything: **people de
 - Sources, updates, safeguards, help, launch and integrity live in `data/*.json`: edit there, never in `site/`.
 - Every new fact needs a provenance: V (verified against the primary source, with a date), S (search-sourced) or K (a lead).
 - Every new screen needs a content-integrity class (C9).
+- Every new screen needs a tooltip and explainer in `data/tooltips.json` (S12); a persona line is optional.
+- Every term marked in a screen (`data-tip="term:..."`) needs an entry in `data/tooltips.json` terms (S12).
+- Posters, cards and the badge are drawn by `tools/art.py`; change them there and rebuild.

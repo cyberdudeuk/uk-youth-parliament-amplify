@@ -27,6 +27,14 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 - **UPD** `corner`: Cornerstone illustrations drawn from the brand's six shapes.
 - **NEW** `media`: Media centre: approved descriptions with copy buttons, key facts with sources, illustrations and the rules for using them.
 - **NEW** `communities`: Communities, networks and youth groups hub, by kind of group, for every UK nation.
+- **NEW** `involve`: Contribute: ways to help build, check and look after the portal by time and skill, the roles you could take on, how a change gets in, and the rules that keep contributors safe.
+- **NEW** `research`: Research & design: join the research panel, or help with UI, UX, graphic and content design. It sets out a safeguarding promise for young people and families, research questions and rounds, You said we did, working groups, badges and a usability score worked out on your device. It also lists, by MoSCoW, what was ported from DQ Commons, the GitHub repos asset catalogue and govukOS. A research bundle is generated in docs/research/.
+- **NEW** `ambassadors`: Ambassadors and champions: supporter, champion and ambassador levels, a safeguarding promise and code of conduct, and a no-personal-details form to register interest. A pilot until the owner confirms it (O12).
+- **NEW** `campaign`: Campaign kit: two printable posters, a social card and an ambassador badge drawn in code, posts to adapt, a five-minute assembly and dates to plan around.
+- **NEW** `learn`: Training and sessions: eight ready-to-run sessions, from Democracy in 20 minutes to DevOps in an afternoon, each with outcomes, steps and the screens to use.
+- **NEW** `stem`: STEM spotlight: a shout-out for girls and young women in coding, engineering, architecture and DevOps, with sourced facts, free opportunities and a DevOps path built on this portal's own pipeline.
+- **UPD** `sources`: Trusted sources: a new STEM, coding and engineering theme with twelve sourced organisations and programmes, including TechFirst, which took over CyberFirst on 1 September 2026.
+- **UPD** `home`: Tooltips everywhere: every drawer item and header control explains itself on hover or keyboard focus, and an explainer bar on each screen can be tailored to who you are: young person, parent or carer, youth worker, teacher, club leader or ally.
 
 ## 0.1.0 · 2026-11-15 · Published
 

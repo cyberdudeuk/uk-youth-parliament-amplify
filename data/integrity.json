@@ -195,6 +195,37 @@
    "screen": "communities",
    "class": "Sourced",
    "why": "Groups and networks from the Trusted sources list, each labelled for how sure it is."
+  },
+  {
+   "screen": "involve",
+   "class": "Editorial",
+   "why": "Ways to contribute written for this portal; the repository, issues and checks it describes are real and linked."
+  },
+  {
+   "screen": "ambassadors",
+   "class": "Editorial",
+   "why": "A proposed programme written for this portal. It is a pilot: nobody is an ambassador yet, and it opens only when the owner confirms it can run safely."
+  },
+  {
+   "screen": "campaign",
+   "class": "Generated",
+   "why": "Posters, cards and posts are templates written and drawn for this portal. Adapt and check them before use; key dates show whether they are sourced or still to confirm.",
+   "check": "Dates marked 'Lead, to confirm' must be checked on the organiser's site."
+  },
+  {
+   "screen": "learn",
+   "class": "Editorial",
+   "why": "Session plans written for this portal, based on its own screens. Adapt them to your group and your setting's safeguarding policy."
+  },
+  {
+   "screen": "stem",
+   "class": "Sourced",
+   "why": "Facts and opportunities are taken from named sources (WISE, EngineeringUK, NCSC, DSIT, the Raspberry Pi Foundation and others), each linked and dated."
+  },
+  {
+   "screen": "research",
+   "class": "Editorial",
+   "why": "A research plan and design routes written for this portal, ported from the owner's other portals. No research has run yet; findings so far come from published evidence and feedback and are labelled that way."
   }
  ],
  "views": [

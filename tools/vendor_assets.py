@@ -15,7 +15,7 @@ ICONS = ("scale route landmark layers compass megaphone trending-up calendar-ran
          "scroll-text map graduation-cap messages-square file-search list-checks users accessibility library sparkles "
          "palette heart-handshake network book-open-check newspaper activity vote shield-check heart-pulse briefcase "
          "chart-column chart-line coins life-buoy search external-link circle-check triangle-alert clock refresh-cw bug "
-         "list-todo git-branch filter globe info circle-alert flag-triangle-right").split()
+         "list-todo git-branch filter globe info circle-alert flag-triangle-right code-xml cpu rocket award git-pull-request wrench star circle-help drafting-compass presentation pencil-ruler clipboard-list pen-tool gauge").split()
 FONTS = {"chivo": ["300", "400", "400-italic", "600", "700", "900"], "space-mono": ["400", "700"],
          "atkinson-hyperlegible": ["400", "700"]}
 FAMILY = {"chivo": "Chivo", "space-mono": "Space Mono", "atkinson-hyperlegible": "Atkinson Hyperlegible"}

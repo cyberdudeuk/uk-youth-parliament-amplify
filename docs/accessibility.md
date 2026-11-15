@@ -9,6 +9,9 @@ d/Deaf users and people on slow connections.
 - Theme, contrast, text size, dyslexia-friendly type, reduced motion, low-data mode and an 11 to 13 reading mode,
   all in the Access panel and all kept in the browser only.
 - Motion stops under the in-page switch and under the system's reduced-motion setting.
+- Tooltips appear on keyboard focus as well as hover, are linked with `aria-describedby`, stay while the pointer
+  moves onto them, never cover what they explain, and close with Escape (WCAG 1.4.13). Every screen also has a
+  visible explainer bar, so nothing is available only through a tooltip; touch users read the bar.
 - No account, no sign-in, no phone-only contact: every route is a web form.
 - Every font, script and icon is served by the portal itself, so it works without third-party services.
 

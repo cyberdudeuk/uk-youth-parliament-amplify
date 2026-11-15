@@ -17,7 +17,8 @@
   "evidence": "Data & evidence",
   "policy": "Policy & strategy",
   "inclusion": "Every voice",
-  "community": "Communities & networks"
+  "community": "Communities & networks",
+  "stem": "STEM, coding & engineering"
  },
  "sources": [
   {
@@ -1100,6 +1101,243 @@
     "allies"
    ],
    "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "codeclub",
+   "name": "Code Club",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Programme",
+   "url": "https://codeclub.org/en/",
+   "what": "Free coding clubs for school-aged young people, run by the Raspberry Pi Foundation, with hundreds of free step-by-step projects.",
+   "use": "Join a club near you, start one at school or a library, or volunteer: you do not need coding experience to run one.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "coderdojo",
+   "name": "CoderDojo",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Network",
+   "url": "https://coderdojo.com/",
+   "what": "Free, volunteer-led community coding clubs for young people, part of the Raspberry Pi Foundation alongside Code Club.",
+   "use": "Find a Dojo, including library clubs such as CoderDojo Scotland in Glasgow, or mentor at one.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "stemettes",
+   "name": "Stemettes",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://stemettes.org/",
+   "what": "Award-winning social enterprise inspiring girls, young women and non-binary young people aged 5 to 25 into STEAM, with events, clubs, mentoring and a youth advisory network.",
+   "use": "Free events, the Student to Stemette mentoring programme for 15 to 25 year olds, and volunteer roles for young people.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "techfirst",
+   "name": "TechFirst (DSIT)",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Government programme",
+   "url": "https://www.gov.uk/guidance/techfirst",
+   "what": "The government's flagship tech skills programme. Its youth strand, TechYouth, aims to reach one million 11 to 18 year olds; it took over CyberFirst from 1 September 2026, and DSIT now runs the girls' competition.",
+   "use": "Look for TechYouth activities through your school or college, the TechFirst Girls Competition, and TechGrad scholarships for later study.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "ncsccyber",
+   "name": "NCSC cyber skills",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Government programme",
+   "url": "https://www.ncsc.gov.uk/cyber-skills",
+   "what": "The National Cyber Security Centre still leads the cyber pathway inside TechFirst, after CyberFirst moved across on 1 September 2026.",
+   "use": "Cyber security courses, bursary information and the history of the CyberFirst Girls Competition.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "technovation",
+   "name": "Technovation Girls",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Programme",
+   "url": "https://technovationchallenge.org/",
+   "what": "A free global programme where teams of girls aged 8 to 18 build an app or other digital solution to a problem in their community, with a mentor.",
+   "use": "Register a team for the 2026-27 season, or volunteer as a mentor, judge or local ambassador.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "bigbang",
+   "name": "The Big Bang Competition",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Competition",
+   "url": "https://www.thebigbang.org.uk/",
+   "what": "EngineeringUK's free competition for 11 to 19 year olds in state-funded education, home education or community groups, with UK Young Engineer, Technologist and Scientist awards.",
+   "use": "Enter a STEM project; finalists show their work at The Big Bang Fair in Birmingham.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "appsforgood",
+   "name": "Apps for Good",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.appsforgood.org/",
+   "what": "An education charity whose free courses help young people use tech, including AI, to solve problems they care about, with an annual showcase.",
+   "use": "Ask a teacher to run a course or computing club; enter the Showcase.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "opencity",
+   "name": "Open City Accelerate",
+   "theme": "stem",
+   "nations": [
+    "England"
+   ],
+   "kind": "Programme",
+   "url": "https://open-city.org.uk/accelerate",
+   "what": "A free programme for 16 to 18 year olds from under-represented backgrounds exploring careers in architecture, landscape, planning and engineering, with workshops and professional mentoring.",
+   "use": "Apply when the next round opens (the 2026-27 round has closed); architects can volunteer as DBS-checked mentors.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "stemamb",
+   "name": "STEM Ambassadors",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Volunteer network",
+   "url": "https://www.stem.org.uk/stem-ambassadors",
+   "what": "A UK-wide network of volunteers from STEM jobs who visit schools, colleges, clubs and youth groups, run by STEM Learning and supported by UKRI.",
+   "use": "Invite a STEM Ambassador into a club or youth group, or become one (with a background check, such as PVG in Scotland).",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "allies",
+    "parents"
+   ]
+  },
+  {
+   "id": "wise",
+   "name": "WISE (part of the IET)",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Campaign",
+   "url": "https://wise.theiet.org/",
+   "what": "The campaign for women in science, technology and engineering, part of the IET since 2025, which publishes workforce data for women in core STEM roles.",
+   "use": "Workforce statistics, role models and resources for schools and employers.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "engineeringuk",
+   "name": "EngineeringUK",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.engineeringuk.com/",
+   "what": "A not-for-profit working to bring more young people from every background into engineering and technology. It publishes workforce data and runs The Big Bang.",
+   "use": "Gender and diversity data for engineering and tech, and the Tomorrow's Engineers Code.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "allies",
+    "parents"
+   ]
   }
  ],
  "audiences": {

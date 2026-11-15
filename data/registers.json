@@ -81,6 +81,22 @@
    "root_cause": "The patterns were case-sensitive and expected src= with no spaces.",
    "fix": "S7 and S9 ignore case and spacing, and S9 also covers img and iframe tags.",
    "check": "S7 and S9, with three new negative tests"
+  },
+  {
+   "id": "D11",
+   "found": "2026-11-15",
+   "what": "The new explainer bar's persona picker pushed every screen 89px sideways on a 360px phone.",
+   "root_cause": "The picker's label could not wrap and the select kept the width of its longest option.",
+   "fix": "The label wraps and the select can shrink to the width available.",
+   "check": "W2 (caught it before release)"
+  },
+  {
+   "id": "D12",
+   "found": "2026-11-15",
+   "what": "A keyboard user's tooltip vanished as soon as it appeared, when focusing a term scrolled it into view.",
+   "root_cause": "The tooltip closed on any scroll, including the scroll that focus itself causes.",
+   "fix": "On scroll, a tooltip whose trigger has keyboard focus moves with it; only a hover tooltip closes.",
+   "check": "W5 (caught it before release)"
   }
  ],
  "open": [
@@ -137,6 +153,21 @@
   {
    "id": "O11",
    "what": "Before public launch, the owner confirms that publishing a personal, non-partisan youth participation tool under his own name raises no propriety issue with his employer.",
+   "who": "Owner"
+  },
+  {
+   "id": "O12",
+   "what": "Before the ambassador programme opens, the owner confirms he can run it safely: time to respond, a safeguarding lead, named adult contacts for under-18s, and how recognition and references work.",
+   "who": "Owner"
+  },
+  {
+   "id": "O13",
+   "what": "File the starter good first issues in docs/good-first-issues.md and create the 'good first issue' label, so new contributors have somewhere to start.",
+   "who": "Owner"
+  },
+  {
+   "id": "O14",
+   "what": "Before any research session runs, the owner sets up a private sign-up form that keeps contact details off GitHub, confirms a budget to thank participants at the same rate, and names a safeguarding lead for research with under 18s.",
    "who": "Owner"
   }
  ]

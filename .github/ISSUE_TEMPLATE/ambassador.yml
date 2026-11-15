@@ -1,0 +1,54 @@
+name: Ambassador or champion (register interest)
+description: Register interest in being a supporter, champion or ambassador. Public; no names or contact details.
+title: "Ambassador interest: "
+labels: [ambassador]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is public. Do not include your name, school, area smaller than a nation, contact details, photo,
+        or anything that identifies you or anyone else. The owner replies in this issue.
+
+        The programme is a pilot and opens only when the owner confirms it can run safely. If you are under 18,
+        agree this with a parent or carer first; ambassadors under 18 always have a named adult contact, arranged
+        privately and never in this issue. If you are worried about your safety, do not post here: use the
+        helplines on the portal's Safeguarding & support screen.
+  - type: dropdown
+    id: role
+    attributes:
+      label: Which best describes you?
+      options: [A young person, A parent or carer, A teacher or tutor, A youth worker or group leader, A coding or STEM club leader or mentor, Someone else]
+    validations: {required: true}
+  - type: dropdown
+    id: age
+    attributes:
+      label: Age band
+      options: [Under 13 (a trusted adult is filling this in), 13 to 15, 16 to 17, 18 to 25, Over 25]
+    validations: {required: true}
+  - type: dropdown
+    id: nation
+    attributes:
+      label: Nation
+      options: [England, Scotland, Wales, Northern Ireland, Prefer not to say]
+    validations: {required: false}
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Which level interests you?
+      options: [Supporter, Champion, Ambassador, Not sure yet]
+    validations: {required: true}
+  - type: textarea
+    id: how
+    attributes:
+      label: How would you like to help?
+      description: For example, run a session at school, check sources, test accessibility, translate, design, code.
+    validations: {required: true}
+  - type: checkboxes
+    id: ok
+    attributes:
+      label: Before you post
+      options:
+        - label: I have not included my name, school, contact details or anything that identifies me or anyone else.
+          required: true
+        - label: If I am under 18, a parent or carer knows I am registering interest.
+          required: false

@@ -7,11 +7,11 @@
 <meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">
 <link rel="icon" href="./art/favicon.svg" type="image/svg+xml">
 <meta name="artefact:id" content="amplify-portal">
-<meta name="artefact:version" content="AMP-20261115-3779db74">
+<meta name="artefact:version" content="AMP-20261115-cc2c9d2b">
 <meta name="artefact:class" content="portal">
 <meta name="artefact:as-of" content="2026-11-15">
 <meta name="artefact:review-date" content="2026-12-15">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-3779db74", "version": "AMP-20261115-3779db74", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-cc2c9d2b", "version": "AMP-20261115-cc2c9d2b", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
 <script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/babel.min.js"};</script>
 <script src="./support.js"></script>
 </head>
@@ -62,6 +62,14 @@
   .amp-card:hover { transform: translateY(-2px); }
   .amp-pulse { animation: amp-pulse 2.2s ease-out infinite; }
   main [role="region"], .amp-card, main [role="table"] { position: relative; }
+
+  .amp-tip { position: fixed; z-index: 90; padding: 9px 12px; border-radius: 12px; font: 600 13px/1.45 'Atkinson Hyperlegible', Chivo, sans-serif;
+    color: #f3faf8; background: #0b1f1c; border: 1px solid rgba(94, 234, 212, 0.55); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); pointer-events: auto; }
+  .amp-tip[hidden] { display: none; }
+  .amp-term { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; border-radius: 4px; }
+  .amp-term:focus-visible { outline: 3px solid oklch(0.8 0.15 175); outline-offset: 2px; }
+  body[data-motion="off"] .amp-tip { transition: none; }
+
   .amp-sr { position: absolute !important; left: 0; top: 0; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   @media (max-width: 420px) { main div[style*="grid-template-columns"]:not([role="row"]) { grid-template-columns: minmax(0, 1fr) !important; } main a { overflow-wrap: anywhere; max-width: 100%; white-space: normal !important; flex-shrink: 1 !important; box-sizing: border-box; } main a span { min-width: 0; overflow-wrap: anywhere; } }
   @media (max-width: 640px) { .amp-row4 { grid-template-columns: minmax(0, 1fr) !important; gap: 2px !important; } .amp-agehead { display: none !important; } .amp-agelabel { display: inline !important; } }
@@ -216,12 +224,12 @@
       <span title="Not a service of the UK Youth Parliament, the National Youth Agency or UK Parliament" style="border: 1px solid oklch(var(--t2) 0.14 70 / 0.5); border-radius: 999px; padding: 3px 9px; font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.8);">Unofficial prototype</span>
     </div>
     <div style="display: flex; gap: 4px; padding: 3px; border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 999px; background: rgb(var(--film-rgb) / 0.05);">
-      <button onClick="{{ viewPortal }}" style="border: 0; border-radius: 999px; padding: 6px 13px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ vpFg }}; background: {{ vpBg }};">Portal</button>
-      <button onClick="{{ viewBoth }}" style="border: 0; border-radius: 999px; padding: 6px 13px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ vbFg }}; background: {{ vbBg }};">Both</button>
-      <button onClick="{{ viewApp }}" style="border: 0; border-radius: 999px; padding: 6px 13px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ vaFg }}; background: {{ vaBg }};">App</button>
+      <button onClick="{{ viewPortal }}" data-tip="ui:portal" style="border: 0; border-radius: 999px; padding: 6px 13px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ vpFg }}; background: {{ vpBg }};">Portal</button>
+      <button onClick="{{ viewBoth }}" data-tip="ui:both" style="border: 0; border-radius: 999px; padding: 6px 13px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ vbFg }}; background: {{ vbBg }};">Both</button>
+      <button onClick="{{ viewApp }}" data-tip="ui:app" style="border: 0; border-radius: 999px; padding: 6px 13px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: {{ vaFg }}; background: {{ vaBg }};">App</button>
     </div>
-    <button onClick="{{ replay }}" style="border: 1px solid rgb(var(--film-rgb) / 0.12); background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb) / 0.7); border-radius: 999px; padding: 7px 13px; white-space: nowrap; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">Splash</button>
-    <button onClick="{{ toggleA11y }}" aria-label="Access and language settings" style="border: 1px solid oklch(var(--t2) 0.16 70 / 0.4); background: oklch(var(--t2) 0.16 70 / 0.12); color: oklch(var(--t3) 0.13 70); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">Access</button>
+    <button onClick="{{ replay }}" data-tip="ui:replay" style="border: 1px solid rgb(var(--film-rgb) / 0.12); background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb) / 0.7); border-radius: 999px; padding: 7px 13px; white-space: nowrap; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">Splash</button>
+    <button onClick="{{ toggleA11y }}" data-tip="ui:access" aria-label="Access and language settings" style="border: 1px solid oklch(var(--t2) 0.16 70 / 0.4); background: oklch(var(--t2) 0.16 70 / 0.12); color: oklch(var(--t3) 0.13 70); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;">Access</button>
   </header>
 
   <sc-if value="{{ a11yOpen }}" hint-placeholder-val="{{ false }}">
@@ -295,7 +303,7 @@
               </button>
               <sc-if value="{{ g.open }}" hint-placeholder-val="{{ true }}">
                 <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="4">
-                  <button onClick="{{ i.go }}" aria-current="{{ i.cur }}" style="display: flex; align-items: center; gap: 9px; text-align: left; border: 0; position: relative; border-radius: 12px; padding: 9px 10px; font-size: 13.5px; font-weight: 600; color: {{ i.fg }}; background: {{ i.bg }};">
+                  <button onClick="{{ i.go }}" data-tip="{{ i.tip }}" aria-current="{{ i.cur }}" style="display: flex; align-items: center; gap: 9px; text-align: left; border: 0; position: relative; border-radius: 12px; padding: 9px 10px; font-size: 13.5px; font-weight: 600; color: {{ i.fg }}; background: {{ i.bg }};">
                     <span aria-hidden="true" style="{{ i.icon }}"></span>
                     <span style="flex: 1 1 auto; min-width: 0;">{{ i.label }}</span>
                     <span aria-hidden="true" style="{{ i.flagDot }}"></span>
@@ -321,6 +329,16 @@
       </button>
 
       <main id="amp-main" tabindex="-1" style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; outline: none;">
+
+        <sc-if value="{{ exShow }}" hint-placeholder-val="{{ false }}">
+        <div role="note" aria-label="What this screen is for" class="amp-explainer" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; border-radius: 16px; padding: 10px 14px; border: 1px solid oklch(var(--t1) 0.16 215 / 0.45); background: oklch(var(--t1) 0.16 215 / 0.1); font-size: 13.5px; line-height: 1.5;">
+          <span aria-hidden="true" style="{{ icHelp }}"></span>
+          <span style="flex: 1 1 300px; min-width: 0;"><span style="font-weight: 800;">This screen:</span> {{ exTip }}<sc-if value="{{ exHasFor }}" hint-placeholder-val="{{ false }}"> <span style="color: rgb(var(--ink-rgb) / 0.8);">For {{ exWho }}: {{ exFor }}</span></sc-if></span>
+          <label data-tip="ui:persona" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; flex: 0 1 auto; min-width: 0; max-width: 100%; font-size: 12.5px; color: rgb(var(--ink-rgb) / 0.8);">Explain for
+            <select value="{{ persona }}" onChange="{{ setPersona }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><option value="everyone">Everyone</option><option value="young11">Young person, 11 to 15</option><option value="young16">Young person, 16 to 25</option><option value="parent">Parent, guardian or carer</option><option value="worker">Youth worker or group leader</option><option value="teacher">Teacher, tutor or school staff</option><option value="club">Coding or STEM club leader or mentor</option><option value="ally">Councillor, policy maker, researcher or journalist</option></select>
+          </label>
+        </div>
+        </sc-if>
         <sc-if value="{{ tbShow }}" hint-placeholder-val="{{ false }}">
         <div role="region" aria-label="Guided tour" class="amp-tourbar" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; border-radius: 18px; padding: 12px 16px; border: 1px solid oklch(var(--t2) 0.16 300 / 0.6); background: linear-gradient(120deg, oklch(var(--t1) 0.16 300 / 0.22), oklch(var(--t1) 0.16 175 / 0.12));">
           <span aria-hidden="true" style="{{ icTour }}"></span>
@@ -2647,6 +2665,169 @@
         </div>
         </sc-if>
 
+
+        <sc-if value="{{ sInvolve }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 175);"><span aria-hidden="true" style="{{ icInvolve }}"></span>Get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Help build and look after Amplify</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ ivIntro }}</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px 20px;"><a href="{{ ivRepo }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">The code on GitHub<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a> <a href="{{ ivContrib }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">How to contribute<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a> <a href="{{ ivGood }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Good first issues<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px;">
+            <sc-for list="{{ ivWays }}" as="w" hint-placeholder-count="4">
+              <section class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+                <h2 style="margin: 0; display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 800;"><span aria-hidden="true" style="{{ w.icon }}"></span>{{ w.time }}</h2>
+                <sc-for list="{{ w.items }}" as="i" hint-placeholder-count="3"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14px; font-weight: 800;">{{ i.t }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ i.how }}</div><button type="button" onClick="{{ i.go }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">Go to {{ i.where }}</button></div></sc-for>
+              </section>
+            </sc-for>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">How a change gets in</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">This portal is built the way professional teams work: <span class="amp-term" tabindex="0" data-tip="term:opensource">open source</span>, <span class="amp-term" tabindex="0" data-tip="term:issue">issues</span>, <span class="amp-term" tabindex="0" data-tip="term:pullrequest">pull requests</span> and <span class="amp-term" tabindex="0" data-tip="term:ci">continuous integration</span>.</p>
+            <ol style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ ivHow }}" as="h" hint-placeholder-count="5"><li><span style="font-weight: 800;">{{ h.s }}.</span> {{ h.d }}</li></sc-for></ol></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Roles you could take on</h2><div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 10px;"><sc-for list="{{ ivRoles }}" as="r" hint-placeholder-count="6"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14px; font-weight: 800;">{{ r.r }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ r.d }}</div></div></sc-for></div></section>
+          <div role="note" style="border-radius: 16px; padding: 12px 16px; font-size: 13.5px; line-height: 1.55; border: 1px solid oklch(var(--t1) 0.16 25 / 0.45); background: oklch(var(--t1) 0.16 25 / 0.1);"><div style="font-weight: 800; margin-bottom: 6px;">Rules that keep everyone safe</div><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px;"><sc-for list="{{ ivRules }}" as="r" hint-placeholder-count="5"><li>{{ r.t }}</li></sc-for></ul></div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sAmbassadors }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 70);"><span aria-hidden="true" style="{{ icAmb }}"></span>Get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Ambassadors and champions</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ amIntro }}</p>
+          </div>
+          <div role="note" style="border-radius: 16px; padding: 12px 16px; font-size: 13.5px; line-height: 1.55; border: 1px dashed oklch(var(--t2) 0.16 70 / 0.8); background: oklch(var(--t1) 0.16 70 / 0.12);"><span style="font-weight: 800;">Pilot.</span> {{ amStatus }}</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px;">
+            <sc-for list="{{ amTiers }}" as="t" hint-placeholder-count="3">
+              <section class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 8px;">
+                <h2 style="margin: 0; font-size: 20px; font-weight: 900;">{{ t.tier }}</h2>
+                <div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Who:</span> {{ t.who }}</div>
+                <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px;"><sc-for list="{{ t.does }}" as="d" hint-placeholder-count="3"><li>{{ d.d }}</li></sc-for></ul>
+                <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ t.time }}</div>
+              </section>
+            </sc-for>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Our promise to you</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ amPromise }}" as="x" hint-placeholder-count="4"><li>{{ x.t }}</li></sc-for></ul></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Code of conduct</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ amConduct }}" as="x" hint-placeholder-count="4"><li>{{ x.t }}</li></sc-for></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Anyone working with young people for the programme follows <span class="amp-term" tabindex="0" data-tip="term:safeguarding">safeguarding</span> rules and, where needed, has a <span class="amp-term" tabindex="0" data-tip="term:dbs">background check</span>.</p></section>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px;"><div style="flex: 1 1 280px; min-width: 0;"><h2 style="margin: 0 0 4px; font-size: 17px; font-weight: 800;">Register your interest</h2><p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">A short public form on GitHub that asks only for your role, nation, age band and what you would like to do. No names or contact details.</p></div><a href="{{ amRegister }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Open the form<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></section>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sCampaign }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 25);"><span aria-hidden="true" style="{{ icCamp }}"></span>Get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Campaign and awareness kit</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ cpIntro }}</p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px;">
+            <sc-for list="{{ cpAssets }}" as="a" hint-placeholder-count="4"><figure class="amp-card" style="margin: 0; border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><img src="{{ a.src }}" alt="{{ a.alt }}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 10px; background: rgb(var(--film-rgb) / 0.04);" /><figcaption style="font-size: 13.5px; font-weight: 800;">{{ a.name }}</figcaption><a href="{{ a.href }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; font-size: 12.5px;">Open to print or save<span class="amp-sr"> (opens in a new tab)</span></a></figure></sc-for>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Posts and messages to adapt</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px;"><sc-for list="{{ cpPosts }}" as="x" hint-placeholder-count="4"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ x.channel }}</div><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{ x.text }}</p><button type="button" onClick="{{ x.copy }}" style="align-self: flex-start; min-height: 36px; border-radius: 999px; padding: 6px 14px; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{ x.copied }}</button></div></sc-for></div>
+            <p style="margin: 12px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ cpSocial }}</p>
+            <p style="margin: 6px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-family: 'Space Mono', monospace; font-weight: 700;">{{ cpTags }}</span> &middot; {{ cpTagNote }}</p>
+          </section>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">{{ cpAsmTitle }}</h2><ol style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ cpAsm }}" as="a" hint-placeholder-count="5"><li>{{ a.t }}</li></sc-for></ol></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Moments to plan around</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ cpMoments }}" as="m" hint-placeholder-count="5"><li style="font-size: 13.5px;"><span style="font-weight: 800;">{{ m.when }}</span> &middot; {{ m.what }} <span style="font-style: italic; color: rgb(var(--ink-rgb) / 0.72);">({{ m.prov }})</span></li></sc-for></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ cpMomNote }}</p></section>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sLearn }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 300);"><span aria-hidden="true" style="{{ icLearn }}"></span>Get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Training and education sessions</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ lnIntro }}</p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <sc-for list="{{ lnMods }}" as="m" hint-placeholder-count="4">
+              <section class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ m.id }} &middot; {{ m.mins }}</div>
+                <h2 style="margin: 0; font-size: 17px; font-weight: 800;">{{ m.t }}</h2>
+                <div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">For:</span> {{ m.who }}</div>
+                <div style="font-size: 13px; font-weight: 800;">Afterwards, people can</div>
+                <ul style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.5;"><sc-for list="{{ m.out }}" as="o" hint-placeholder-count="2"><li>{{ o.o }}</li></sc-for></ul>
+                <div style="font-size: 13px; font-weight: 800;">Steps</div>
+                <ol style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.5;"><sc-for list="{{ m.steps }}" as="x" hint-placeholder-count="3"><li>{{ x.x }}</li></sc-for></ol>
+                <div style="display: flex; flex-wrap: wrap; gap: 4px 14px;"><sc-for list="{{ m.screens }}" as="g" hint-placeholder-count="2"><button type="button" onClick="{{ g.go }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">{{ g.label }}</button></sc-for></div>
+              </section>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sStem }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 200);"><span aria-hidden="true" style="{{ icStem }}"></span>Get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">STEM spotlight: girls in code, engineering, architecture and DevOps</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ stIntro }}</p>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">The picture, with sources</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ stFacts }}" as="f" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.5;">{{ f.f }} <a href="{{ f.url }}" target="_blank" rel="noopener noreferrer" style="font-size: 12.5px;">Source: {{ f.src }}<span class="amp-sr"> (opens in a new tab)</span></a></li></sc-for></ul></section>
+          <sc-for list="{{ stPaths }}" as="x" hint-placeholder-count="5">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <h2 style="margin: 0 0 4px; display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 800;"><span aria-hidden="true" style="{{ x.icon }}"></span>{{ x.p }}</h2>
+              <p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">First step:</span> {{ x.first }}</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px;"><sc-for list="{{ x.items }}" as="o" hint-placeholder-count="3"><div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 800;">{{ o.name }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ o.what }}</div><div style="font-size: 12px;">{{ o.nations }} &middot; <span style="font-style: italic;">{{ o.prov }}</span></div><a href="{{ o.url }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; font-size: 12.5px;">Visit<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></sc-for></div>
+            </section>
+          </sc-for>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Learn <span class="amp-term" tabindex="0" data-tip="term:devops">DevOps</span> on this portal</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ stDevIntro }}</p>
+            <ol style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ stDev }}" as="d" hint-placeholder-count="7"><li><span style="font-weight: 800;">{{ d.s }}.</span> {{ d.d }} <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: rgb(var(--ink-rgb) / 0.78);">{{ d.where }}</span></li></sc-for></ol>
+            <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 12px 20px;"><a href="{{ ivRepo }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Explore the repository<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a> <a href="{{ ivGood }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Find a good first issue<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div>
+          </section>
+          <div role="note" style="border-radius: 16px; padding: 12px 16px; font-size: 13.5px; line-height: 1.55; border: 1px solid oklch(var(--t1) 0.16 25 / 0.45); background: oklch(var(--t1) 0.16 25 / 0.1);">{{ stNote }}</div>
+        </div>
+        </sc-if>
+
+
+        <sc-if value="{{ sResearch }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 300);"><span aria-hidden="true" style="{{ icResearch }}"></span>Get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Shape Amplify: user research and design</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ rsIntro }}</p>
+          </div>
+          <div role="note" style="border-radius: 16px; padding: 12px 16px; font-size: 13.5px; line-height: 1.55; border: 1px dashed oklch(var(--t2) 0.16 70 / 0.8); background: oklch(var(--t1) 0.16 70 / 0.12);"><span style="font-weight: 800;">Status.</span> {{ rsStatus }}</div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+            <h2 style="margin: 0; font-size: 17px; font-weight: 800;">Join the research panel</h2>
+            <sc-if value="{{ rsHasForm }}" hint-placeholder-val="{{ false }}"><a href="{{ rsForm }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Open the private sign-up form<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></sc-if>
+            <sc-if value="{{ rsNoFormShow }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{ rsNoForm }}</p><div><a href="{{ rsInterest }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Register interest with the contact form<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></sc-if>
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">As a group:</span> {{ rsGroup }}</p>
+          </section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Our promise to young people and families</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ rsPromise }}" as="p" hint-placeholder-count="6"><li>{{ p.t }}</li></sc-for></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Every session follows <span class="amp-term" tabindex="0" data-tip="term:safeguarding">safeguarding</span> rules, and facilitators have a <span class="amp-term" tabindex="0" data-tip="term:dbs">background check</span>.</p></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Design with us</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">You do not need to take part in a session to shape Amplify. Pick a kind of design and share your work in the open, without names, faces or school logos.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 10px;"><sc-for list="{{ rsDesign }}" as="d" hint-placeholder-count="4"><div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 800;"><span aria-hidden="true" style="{{ d.icon }}"></span>{{ d.name }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ d.how }}</div><div style="font-size: 12.5px;"><span style="font-weight: 800;">Share it:</span> {{ d.share }}</div></div></sc-for></div>
+            <div style="margin-top: 10px;"><a href="{{ rsIdea }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Share a design or rewrite<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Ways to take part</h2><div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px;"><sc-for list="{{ rsMethods }}" as="m" hint-placeholder-count="6"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14px; font-weight: 800;">{{ m.name }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ m.time }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ m.what }}</div><div style="font-size: 12.5px; font-style: italic;">{{ m.young }}</div></div></sc-for></div></section>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">What we want to learn</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;"><sc-for list="{{ rsQs }}" as="q" hint-placeholder-count="5"><li style="font-size: 13.5px; line-height: 1.5;"><span style="font-family: 'Space Mono', monospace; font-size: 11.5px; font-weight: 700;">{{ q.id }} &middot; {{ q.horizon }}</span><br />{{ q.text }}<br /><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ q.how }} &middot; {{ q.status }}</span></li></sc-for></ul></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Research rounds</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;"><sc-for list="{{ rsRounds }}" as="r" hint-placeholder-count="3"><li style="font-size: 13.5px; line-height: 1.5;"><span style="font-weight: 800;">{{ r.name }}</span><br />{{ r.when }} &middot; {{ r.status }}<br /><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ r.who }}. {{ r.how }}.</span></li></sc-for></ul><div style="margin-top: 10px;"><a href="{{ rsBundle }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">The research bundle: information, consent, screener, guides<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></section>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">You said, we did</h2><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 10px;"><sc-for list="{{ rsFindings }}" as="f" hint-placeholder-count="4"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ f.id }} &middot; {{ f.source }}</div><div style="font-size: 14px; font-weight: 800;">{{ f.theme }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">We did:</span> {{ f.change }}</div><div style="font-size: 12px; color: rgb(var(--ink-rgb) / 0.75);">Evidence: {{ f.evidence }}</div><button type="button" onClick="{{ f.go }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">See {{ f.where }}</button></div></sc-for></div></section>
+          <section aria-labelledby="amp-sus-h" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <h2 id="amp-sus-h" style="margin: 0 0 4px; display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 800;"><span aria-hidden="true" style="{{ icGauge }}"></span>How easy is Amplify to use? (16 and over)</h2>
+            <p style="margin: 0 0 12px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Ten quick statements. Your score is worked out on this device and nothing is sent or stored. {{ susCredit }}</p>
+            <ol style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 12px;"><sc-for list="{{ susItems }}" as="i" hint-placeholder-count="10"><li style="font-size: 13.5px;"><div style="margin-bottom: 6px; font-weight: 700;">{{ i.text }}</div><div role="group" aria-label="{{ i.text }}" style="display: flex; flex-wrap: wrap; gap: 6px;"><sc-for list="{{ i.opts }}" as="o" hint-placeholder-count="5"><button type="button" onClick="{{ o.pick }}" aria-pressed="{{ o.pressed }}" style="{{ o.style }}">{{ o.lab }}</button></sc-for></div></li></sc-for></ol>
+            <div role="status" aria-live="polite" style="margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+              <sc-if value="{{ susDone }}" hint-placeholder-val="{{ false }}"><span style="font-size: 22px; font-weight: 900;">Your score: {{ susScore }} out of 100</span><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ susReading }}</span></sc-if>
+              <sc-if value="{{ susShowLeft }}" hint-placeholder-val="{{ true }}"><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ susLeft }} statements left to answer.</span></sc-if>
+              <button type="button" onClick="{{ susReset }}" style="min-height: 36px; border-radius: 999px; padding: 6px 14px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">Start again</button>
+            </div>
+          </section>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Working groups</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ rsGroups }}" as="g" hint-placeholder-count="5"><li style="font-size: 13.5px; line-height: 1.5;"><span style="font-weight: 800;">{{ g.name }}</span> <span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ g.status }}</span><br />{{ g.purpose }}</li></sc-for></ul><ul style="margin: 12px 0 0; padding-left: 20px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><sc-for list="{{ rsTerms }}" as="t" hint-placeholder-count="4"><li>{{ t.t }}</li></sc-for></ul></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Recognition</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ rsBadges }}" as="b" hint-placeholder-count="6"><li style="font-size: 13.5px; line-height: 1.5;"><span style="font-weight: 800;">{{ b.name }}</span> <span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ b.confirm }}</span><br />{{ b.how }}</li></sc-for></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ rsBadgeNote }}</p></section>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">What we brought over from the owner's other portals</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">How participation and research work in DQ Commons, the GitHub repos asset catalogue and govukOS, and what Amplify has taken from each, prioritised as Must, Should, Could or Won't have this time.</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ rsPorted }}" as="p" hint-placeholder-count="8"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 6px 12px;"><span style="{{ p.pill }}">{{ p.moscow }}</span><span style="flex: 1 1 280px; min-width: 0; font-size: 13.5px; font-weight: 700;">{{ p.what }}</span><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ p.from }} &middot; {{ p.done }}</span><sc-if value="{{ p.hasNote }}" hint-placeholder-val="{{ false }}"><span style="flex: 1 1 100%; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ p.note }}</span></sc-if></div></sc-for></div></section>
+        </div>
+        </sc-if>
+
         <div data-slot="portal-end" style="display: none;"></div>
       </main>
     </div>
@@ -2851,7 +3032,7 @@
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Transparency</h2>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-3779db74</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-cc2c9d2b</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Next review due 15 December 2026. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Source, checks and history: <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Contact</h2>
@@ -2862,8 +3043,8 @@
     </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
-        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-3779db74" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
-        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-3779db74</p>
+        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-cc2c9d2b" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
+        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-cc2c9d2b</p>
       </div>
   </footer>
 </div>
@@ -2988,7 +3169,7 @@ class Component extends DCLogic {
 
   screenFromHash() {
     const id = (location.hash || "").replace(/^#\/?/, "");
-    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities)$/.test(id) ? id : null;
+    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities|involve|ambassadors|campaign|learn|stem|research)$/.test(id) ? id : null;
   }
   screenLabel(id) {
     for (const [, items] of this.GROUPS) for (const it of items) if (it[0] === id) return it[1];
@@ -3008,8 +3189,8 @@ class Component extends DCLogic {
 
   async loadAmplifyData() {
     const get = async (f) => { try { const r = await fetch(new URL(f, document.baseURI).href, { cache: "no-store" }); return r.ok ? await r.json() : null; } catch (e) { return null; } };
-    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json"].map(get));
-    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
+    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json", "./data/tooltips.json", "./data/involve.json", "./data/research.json"].map(get));
+    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
   }
   ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
   ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
@@ -3033,8 +3214,8 @@ class Component extends DCLogic {
   ampVals(s) {
     const A = s.amp || {}, src = A.src || { sources: [], themes: {}, audiences: {} }, lat = A.lat || { items: [], categories: {} };
     const sg = A.sg || { audiences: [], parents: [], frameworks: [], every_voice: [], ucd: [] }, mo = A.mo || { rows: [] }, reg = A.reg || { defects: [], open: [] }, bld = A.bld || {};
-    const TI = { voice: "megaphone", democracy: "vote", rights: "scale", safety: "shield-check", wellbeing: "heart-pulse", work: "coins", evidence: "chart-column", policy: "scroll-text", inclusion: "users" };
-    const TH = { voice: 175, democracy: 215, rights: 300, safety: 25, wellbeing: 340, work: 70, evidence: 145, policy: 260, inclusion: 120 };
+    const TI = { voice: "megaphone", democracy: "vote", rights: "scale", safety: "shield-check", wellbeing: "heart-pulse", work: "coins", evidence: "chart-column", policy: "scroll-text", inclusion: "users", stem: "code-xml" };
+    const TH = { voice: 175, democracy: 215, rights: 300, safety: 25, wellbeing: 340, work: 70, evidence: 145, policy: 260, inclusion: 120, stem: 200 };
     const PV = { V: "Verified", S: "Search-sourced", K: "Lead, to confirm" };
     const PH = { V: 145, S: 215, K: 70 };
     const NATIONS = ["UK", "England", "Scotland", "Wales", "Northern Ireland"];
@@ -3124,7 +3305,8 @@ class Component extends DCLogic {
     const N = { corner: "scale", route: "route", state: "landmark", issues: "layers", guide: "compass", hub: "megaphone", momentum: "trending-up", plan: "calendar-range",
       coal: "handshake", kit: "package", pledge: "hand-heart", radar: "radar", policy: "scroll-text", map: "map", acad: "graduation-cap", ysc: "messages-square",
       post: "file-search", track: "list-checks", prof: "users", incl: "accessibility", res: "library", ai: "sparkles", brand: "palette", care: "heart-handshake",
-      graph: "network", sources: "book-open-check", latest: "newspaper", trust: "shield-check", health: "activity" };
+      graph: "network", sources: "book-open-check", latest: "newspaper", trust: "shield-check", health: "activity",
+      involve: "git-pull-request", ambassadors: "award", campaign: "rocket", learn: "presentation", stem: "cpu", research: "pencil-ruler" };
     const n = N[id];
     if (!n) return this.ICONS[shape];
     const u = "url(./vendor/icons/" + n + ".svg)";
@@ -3258,6 +3440,139 @@ class Component extends DCLogic {
       copyLink: () => this.copy(here, "link"), copyLinkLabel: s.copied === "link" ? "Link copied" : "Copy link",
       icMedia: this.ampIcon("newspaper", "oklch(var(--t3) 0.16 300)", 16), icComm: this.ampIcon("users", "oklch(var(--t3) 0.16 175)", 16),
       icPrev: this.ampIcon("chart-line", "currentColor", 14), icShare: this.ampIcon("external-link", "currentColor", 13)
+    };
+  }
+
+
+  ampTipText(key) {
+    const tt = (this.state.amp || {}).tt || {}, p = this.state.persona || "everyone";
+    const [kind, id] = String(key || "").split(":");
+    if (kind === "nav") { const e = (tt.screens || {})[id]; if (!e) return ""; const extra = (e.for || {})[p]; return e.tip + (extra ? " " + extra : ""); }
+    if (kind === "term") { const e = (tt.terms || {})[id]; return e ? e.term + ": " + e.tip : ""; }
+    if (kind === "ui") return (tt.ui || {})[id] || "";
+    return "";
+  }
+  ampTipsOn() {
+    if (this._tip || typeof document === "undefined") return;
+    const el = document.createElement("div");
+    el.id = "amp-tip"; el.setAttribute("role", "tooltip"); el.className = "amp-tip"; el.hidden = true;
+    document.body.appendChild(el); this._tip = el;
+    const hide = () => { if (this._tipFor) this._tipFor.removeAttribute("aria-describedby"); this._tipFor = null; el.hidden = true; };
+    const show = (n) => {
+      const text = this.ampTipText(n.getAttribute("data-tip"));
+      if (!text) return hide();
+      if (this._tipFor && this._tipFor !== n) this._tipFor.removeAttribute("aria-describedby");
+      el.textContent = text; el.hidden = false; n.setAttribute("aria-describedby", "amp-tip"); this._tipFor = n;
+      const r = n.getBoundingClientRect(), w = Math.min(320, window.innerWidth - 16);
+      el.style.maxWidth = w + "px";
+      if (String(n.getAttribute("data-tip")).indexOf("nav:") === 0 && r.right + 12 + w < window.innerWidth) {
+        // drawer items: beside the item, so the tooltip never covers the items above or below it
+        el.style.left = (r.right + 10) + "px"; el.style.top = Math.max(8, Math.min(r.top, window.innerHeight - el.offsetHeight - 8)) + "px";
+      } else {
+        const left = Math.max(8, Math.min(r.left, window.innerWidth - w - 8));
+        const below = r.bottom + 8 + el.offsetHeight < window.innerHeight;
+        el.style.left = left + "px"; el.style.top = (below ? r.bottom + 8 : Math.max(8, r.top - el.offsetHeight - 8)) + "px";
+      }
+    };
+    const find = (t) => (t && t.closest ? t.closest("[data-tip]") : null);
+    this._tipH = {
+      over: (e) => { const n = find(e.target); if (n) show(n); },
+      out: (e) => { const to = e.relatedTarget; if (this._tipFor && !(to && (this._tipFor.contains(to) || el.contains(to)))) hide(); },
+      leave: (e) => { const to = e.relatedTarget; if (!(to && this._tipFor && this._tipFor.contains(to))) hide(); },
+      focus: (e) => { const n = find(e.target); if (n) show(n); else hide(); },
+      blur: () => hide(),
+      key: (e) => { if (e.key === "Escape" && !el.hidden) hide(); },
+      scroll: () => { const f = this._tipFor; if (f && document.activeElement === f) show(f); else hide(); }  // keep a focused trigger's tooltip (D12)
+    };
+    document.addEventListener("mouseover", this._tipH.over); document.addEventListener("mouseout", this._tipH.out);
+    el.addEventListener("mouseleave", this._tipH.leave);
+    document.addEventListener("focusin", this._tipH.focus); document.addEventListener("focusout", this._tipH.blur);
+    document.addEventListener("keydown", this._tipH.key); window.addEventListener("scroll", this._tipH.scroll, true);
+  }
+  ampTipsOff() {
+    if (!this._tip) return;
+    const h = this._tipH;
+    document.removeEventListener("mouseover", h.over); document.removeEventListener("mouseout", h.out);
+    document.removeEventListener("focusin", h.focus); document.removeEventListener("focusout", h.blur);
+    document.removeEventListener("keydown", h.key); window.removeEventListener("scroll", h.scroll, true);
+    this._tip.remove(); this._tip = null;
+  }
+  ampPersona() { try { return window.localStorage.getItem("amp-persona") || "everyone"; } catch (e) { return "everyone"; } }
+  ampVals4(s) {
+    const A = s.amp || {}, tt = A.tt || { personas: [], screens: {}, terms: {} }, iv = A.iv || {};
+    const inv = iv.involve || { ways: [], roles: [], rules: [], how: [] }, amb = iv.ambassadors || { tiers: [], promise: [], conduct: [] };
+    const cp = iv.campaign || { assets: [], posts: [], hashtags: [], moments: [], assembly: { steps: [] } };
+    const ln = iv.learn || { modules: [] }, st = iv.stem || { facts: [], paths: [], devops: { steps: [] } };
+    const src = (A.src || { sources: [] }).sources, byId = {}; src.forEach((x) => { byId[x.id] = x; });
+    const label = (id) => { try { return this.screenLabel(id) || id; } catch (e) { return id; } };
+    const go = (id) => () => this.setState({ screen: id });
+    const p = s.persona || "everyone", pe = (tt.personas || []).find((x) => x.id === p) || {};
+    const scr = (tt.screens || {})[s.screen] || null, extra = scr && (scr.for || {})[p];
+    const repo = iv.repo || "";
+    const PV = { V: "Verified", S: "Search-sourced", K: "Lead, to confirm" };
+    return {
+      sInvolve: s.screen === "involve", sAmbassadors: s.screen === "ambassadors", sCampaign: s.screen === "campaign", sLearn: s.screen === "learn", sStem: s.screen === "stem",
+      exShow: !!scr && !s.splash, exTip: scr ? scr.tip : "", exFor: extra || pe.lens || "", exHasFor: !!(extra || (p !== "everyone" && pe.lens)), exWho: pe.label || "Everyone",
+      persona: p, setPersona: (e) => { const v = e.target.value; try { window.localStorage.setItem("amp-persona", v); } catch (err) { /* storage unavailable: keep it in memory */ } this.setState({ persona: v }); },
+      ivIntro: inv.intro || "", ivRepo: repo, ivContrib: repo + "/blob/main/CONTRIBUTING.md", ivGood: repo + "/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22",
+      ivWays: inv.ways.map((w) => ({ time: w.time, icon: this.ampIcon(w.icon, "oklch(var(--t3) 0.16 175)", 18), items: w.items.map((i) => ({ t: i.t, how: i.how, go: go(i.screen), where: label(i.screen) })) })),
+      ivRoles: inv.roles, ivRules: inv.rules.map((t) => ({ t })), ivHow: inv.how.map((h, k) => ({ n: String(k + 1), s: h.s, d: h.d })),
+      amStatus: amb.status || "", amIntro: amb.intro || "", amTiers: amb.tiers.map((t) => ({ tier: t.tier, who: t.who, time: t.time, does: t.does.map((d) => ({ d })) })),
+      amPromise: amb.promise.map((t) => ({ t })), amConduct: amb.conduct.map((t) => ({ t })),
+      amRegister: repo + "/issues/new?template=" + (amb.register || "ambassador.yml"),
+      cpIntro: cp.intro || "", cpAssets: cp.assets.map((a) => ({ name: a.name, href: "./" + a.file, src: "./" + a.file, alt: a.alt })),
+      cpPosts: cp.posts.map((x, k) => ({ channel: x.channel, text: x.text, copy: () => this.copy(x.text, "post" + k), copied: s.copied === "post" + k ? "Copied" : "Copy" })),
+      cpSocial: cp.social_note || "", cpTags: (cp.hashtags || []).join("  "), cpTagNote: cp.hashtag_note || "",
+      cpAsmTitle: (cp.assembly || {}).title || "", cpAsm: ((cp.assembly || {}).steps || []).map((t, k) => ({ n: String(k + 1), t })),
+      cpMoments: cp.moments.map((m) => ({ when: m.when, what: m.what, prov: PV[m.prov] || m.prov })), cpMomNote: cp.moments_note || "",
+      lnIntro: ln.intro || "",
+      lnMods: ln.modules.map((m) => ({ id: m.id, t: m.t, who: m.who, mins: m.mins + " min", out: m.out.map((o) => ({ o })), steps: m.steps.map((x) => ({ x })), screens: m.screens.map((id) => ({ label: label(id), go: go(id) })) })),
+      stIntro: st.intro || "", stNote: st.note || "", stDevIntro: (st.devops || {}).intro || "",
+      stFacts: st.facts.map((f) => ({ f: f.f, src: f.src, url: f.url })),
+      stPaths: st.paths.map((x) => ({ p: x.p, first: x.first, icon: this.ampIcon(x.icon, "oklch(var(--t3) 0.16 200)", 18),
+        items: x.ids.map((id) => byId[id]).filter(Boolean).map((o) => ({ name: o.name, what: o.what, url: o.url, nations: o.nations.join(" · "), prov: PV[o.provenance] || o.provenance })) })),
+      stDev: ((st.devops || {}).steps || []).map((x, k) => ({ n: String(k + 1), s: x.s, d: x.d, where: x.where })),
+      icInvolve: this.ampIcon("git-pull-request", "oklch(var(--t3) 0.16 175)", 16), icAmb: this.ampIcon("award", "oklch(var(--t3) 0.16 70)", 16),
+      icCamp: this.ampIcon("rocket", "oklch(var(--t3) 0.16 25)", 16), icLearn: this.ampIcon("presentation", "oklch(var(--t3) 0.16 300)", 16),
+      icStem: this.ampIcon("cpu", "oklch(var(--t3) 0.16 200)", 16), icHelp: this.ampIcon("circle-help", "oklch(var(--t3) 0.16 215)", 16)
+    };
+  }
+
+
+  ampVals5(s) {
+    const A = s.amp || {}, rs = A.rs || {}, iv = A.iv || {}, repo = iv.repo || "";
+    const label = (id) => { try { return this.screenLabel(id) || id; } catch (e) { return id; } };
+    const M = {}; (rs.methods || []).forEach((m) => { M[m.id] = m.name; });
+    const names = (ids) => (ids || []).map((i) => M[i] || i).join(", ");
+    const bm = rs.benchmark || { items: [], scale: [] }, ans = s.sus || [];
+    const done = bm.items.length > 0 && bm.items.every((x, k) => ans[k]);
+    const score = done ? ans.reduce((t, a, k) => t + (k % 2 === 0 ? a - 1 : 5 - a), 0) * 2.5 : null;
+    const MO = { Must: 25, Should: 70, Could: 175, "Won't": 300 };
+    const formUrl = (rs.sign_up || {}).form_url || "";
+    return {
+      sResearch: s.screen === "research",
+      rsStatus: rs.status || "", rsIntro: rs.intro || "", rsWhy: rs.why || "",
+      rsHasForm: !!formUrl, rsNoFormShow: !formUrl, rsForm: formUrl, rsNoForm: (rs.sign_up || {}).status_when_empty || "", rsGroup: (rs.sign_up || {}).group_route || "",
+      rsInterest: repo + "/issues/new?template=contact.yml",
+      rsPromise: (rs.promise || []).map((t) => ({ t })),
+      rsDesign: (rs.design || []).map((d) => ({ name: d.name, how: d.how, share: d.share, icon: this.ampIcon(d.icon, "oklch(var(--t3) 0.16 300)", 18) })),
+      rsIdea: repo + "/issues/new?template=idea.yml",
+      rsMethods: (rs.methods || []).map((m) => ({ name: m.name, time: m.time, what: m.what, young: m.young })),
+      rsQs: (rs.questions || []).map((q) => ({ id: q.id, text: q.text, horizon: q.horizon, how: names(q.methods), status: q.status })),
+      rsRounds: (rs.rounds || []).map((r) => ({ name: r.name, when: r.when, who: r.who, how: names(r.methods), status: r.status })),
+      rsFindings: (rs.findings || []).map((f) => ({ id: f.id, source: f.source, theme: f.theme, evidence: f.evidence, change: f.change, where: label(f.screen), go: () => this.setState({ screen: f.screen }) })),
+      rsGroups: rs.groups || [], rsTerms: (rs.group_terms || []).map((t) => ({ t })),
+      rsBadges: rs.badges || [], rsBadgeNote: rs.badge_note || "",
+      rsPorted: (rs.ported || []).map((p) => ({ what: p.what, from: p.from, moscow: p.moscow, note: p.note, hasNote: !!p.note, done: p.done ? "Done" : "Not yet",
+        pill: "display:inline-block;border-radius:999px;padding:2px 9px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;background:oklch(var(--t1) 0.16 " + (MO[p.moscow] || 175) + " / 0.28);color:oklch(var(--t4) 0.15 " + (MO[p.moscow] || 175) + ");" })),
+      rsBundle: repo + "/tree/main/docs/research",
+      susCredit: bm.credit || "", susReading: bm.reading || "",
+      susItems: bm.items.map((text, k) => ({ n: String(k + 1), text, opts: bm.scale.map((lab, j) => ({ lab, pressed: ans[k] === j + 1 ? "true" : "false",
+        pick: () => { const a = (this.state.sus || []).slice(); a[k] = j + 1; this.setState({ sus: a }); },
+        style: "min-height:36px;border-radius:999px;padding:6px 11px;font-size:12.5px;font-weight:700;cursor:pointer;border:1px solid " + (ans[k] === j + 1 ? "oklch(var(--t2) 0.16 145)" : "rgb(var(--film-rgb) / 0.2)") + ";background:" + (ans[k] === j + 1 ? "oklch(var(--t1) 0.16 145 / 0.3)" : "transparent") + ";color:rgb(var(--ink-rgb));" })) })),
+      susDone: done, susScore: done ? String(score) : "", susLeft: String(bm.items.length - ans.filter(Boolean).length), susShowLeft: !done,
+      susReset: () => this.setState({ sus: [] }),
+      icResearch: this.ampIcon("pencil-ruler", "oklch(var(--t3) 0.16 300)", 16), icGauge: this.ampIcon("gauge", "oklch(var(--t3) 0.16 145)", 18)
     };
   }
 
@@ -3869,7 +4184,7 @@ class Component extends DCLogic {
       ["graph", "Glossary & graph", "ring", 145, 4, "NEW", "knowledge graph glossary thesaurus definitions terms jargon synonyms"]
     ]],
     ["Sources & updates", [
-      ["sources", "Trusted sources", "sq", 215, 55, "NEW", "trusted sources directory official government parliament regulator charity helpline commissioner parents carers allies nation Scotland Wales Northern Ireland England filter verified"],
+      ["sources", "Trusted sources", "sq", 215, 67, "NEW", "trusted sources directory official government parliament regulator charity helpline commissioner parents carers allies nation Scotland Wales Northern Ireland England filter verified"],
       ["latest", "What's new", "bar", 70, 13, "NEW", "latest news updates changes votes at 16 bill minimum wage NEET social media ban strategy helpline closed"],
       ["changes", "Release log", "bar", 145, 3, "NEW", "release log changelog changes new updated version history what changed"],
       ["trust", "Safeguards & audiences", "dia", 25, 5, "NEW", "safeguards frameworks Children's code ICO Online Safety Act Ofcom parents carers guardians parental responsibility audiences DEI inclusion every voice UCD Lundy"],
@@ -3882,6 +4197,14 @@ class Component extends DCLogic {
       ["media", "Media centre", "sq", 300, 4, "NEW", "media centre press blurb description facts illustrations logo brand assets rules share"],
       ["help", "Help & tutorials", "ring", 300, 5, "NEW", "help user manual adoption guide tutorials guided tours how to get started parents schools youth groups"],
       ["feedback", "Have your say", "dot", 175, 3, "NEW", "feedback idea suggestion feature request bug issue problem report correction"]
+    ]],
+    ["Get involved", [
+      ["involve", "Contribute", "dot", 175, 4, "NEW", "contribute help build open source github issue pull request volunteer check source accessibility test translate code devops"],
+      ["research", "Research & design", "dia", 300, 4, "NEW", "user research design ux ui interaction graphic content design co-design usability test panel survey interview feedback participate"],
+      ["ambassadors", "Ambassadors & champions", "dia", 70, 4, "NEW", "ambassador champion supporter volunteer represent mentor badge programme"],
+      ["campaign", "Campaign kit", "tri", 25, 4, "NEW", "campaign marketing advertising poster flyer social post assembly hashtag awareness collateral"],
+      ["learn", "Training & sessions", "sq", 300, 4, "NEW", "training education lesson session plan teacher youth worker workshop module course"],
+      ["stem", "STEM spotlight", "ring", 200, 4, "NEW", "stem science technology engineering maths coding code club girls women architecture devops cyber"]
     ]]
   ];
 
@@ -4013,6 +4336,8 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
     this._prev = Object.assign({}, this.state);
     this.loadPetition();
     this.loadAmplifyData();
+    this.ampTipsOn();
+    this.setState({ persona: this.ampPersona() });
     this.onHash = () => { const id = this.screenFromHash(); if (id && id !== this.state.screen) this.setState({ screen: id, splash: false, copied: "" }); };
     window.addEventListener("hashchange", this.onHash);
     window.addEventListener("popstate", this.onHash);
@@ -4057,6 +4382,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
     if (keys.some((k) => prevState[k] !== s[k])) this.savePrefs(keys);
   }
   componentWillUnmount() {
+    this.ampTipsOff();
     if (this._carT) clearInterval(this._carT);
     clearInterval(this.type); clearTimeout(this.auto);
     window.removeEventListener("hashchange", this.onHash); window.removeEventListener("popstate", this.onHash); window.removeEventListener("keydown", this.onKey);
@@ -4263,7 +4589,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
           caret: "flex:0 0 0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left-width:6px;border-left-style:solid;border-left-color:oklch(var(--t2) 0.16 70);transition:transform .18s ease;transform:rotate(" + (open ? "90deg" : "0deg") + ");",
           toggle: () => this.setState({ groups: Object.assign({}, s.groups, { [label]: !open }) }),
           items: items.map(([id, lbl, shape, hue, sub, flag0]) => { const flag = this.ampFlag(id, flag0); return {
-            label: lbl, sub: sub, flag: flag, cur: s.screen === id ? "page" : "false",
+            label: lbl, sub: sub, flag: flag, tip: "nav:" + id, cur: s.screen === id ? "page" : "false",
             icon: this.navIcon(id, shape) + "oklch(var(--t2) 0.16 " + hue + ");",
             fg: s.screen === id ? "oklch(var(--t4) 0.16 " + hue + ")" : "rgb(var(--ink-rgb) / 0.86)",
             bg: s.screen === id ? "oklch(var(--t1) 0.16 " + hue + " / 0.18)" : "transparent",
@@ -4371,7 +4697,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
         br: "oklch(var(--t1) 0.16 " + hue + " / 0.3)", bg: "oklch(var(--t1) 0.16 " + hue + " / 0.08)",
         dot: "oklch(var(--t2) 0.19 " + hue + ")", fg: "oklch(var(--t3) 0.19 " + hue + ")"
       })),
-      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
+      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
       issueTabs: Object.keys(this.ISSUES).map((k) => {
         const it = this.ISSUES[k];
         return {

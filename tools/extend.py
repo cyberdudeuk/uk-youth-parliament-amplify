@@ -41,8 +41,8 @@ LOGIC = r'''
   ampVals(s) {
     const A = s.amp || {}, src = A.src || { sources: [], themes: {}, audiences: {} }, lat = A.lat || { items: [], categories: {} };
     const sg = A.sg || { audiences: [], parents: [], frameworks: [], every_voice: [], ucd: [] }, mo = A.mo || { rows: [] }, reg = A.reg || { defects: [], open: [] }, bld = A.bld || {};
-    const TI = { voice: "megaphone", democracy: "vote", rights: "scale", safety: "shield-check", wellbeing: "heart-pulse", work: "coins", evidence: "chart-column", policy: "scroll-text", inclusion: "users" };
-    const TH = { voice: 175, democracy: 215, rights: 300, safety: 25, wellbeing: 340, work: 70, evidence: 145, policy: 260, inclusion: 120 };
+    const TI = { voice: "megaphone", democracy: "vote", rights: "scale", safety: "shield-check", wellbeing: "heart-pulse", work: "coins", evidence: "chart-column", policy: "scroll-text", inclusion: "users", stem: "code-xml" };
+    const TH = { voice: 175, democracy: 215, rights: 300, safety: 25, wellbeing: 340, work: 70, evidence: 145, policy: 260, inclusion: 120, stem: 200 };
     const PV = { V: "Verified", S: "Search-sourced", K: "Lead, to confirm" };
     const PH = { V: 145, S: 215, K: 70 };
     const NATIONS = ["UK", "England", "Scotland", "Wales", "Northern Ireland"];
@@ -132,7 +132,8 @@ LOGIC = r'''
     const N = { corner: "scale", route: "route", state: "landmark", issues: "layers", guide: "compass", hub: "megaphone", momentum: "trending-up", plan: "calendar-range",
       coal: "handshake", kit: "package", pledge: "hand-heart", radar: "radar", policy: "scroll-text", map: "map", acad: "graduation-cap", ysc: "messages-square",
       post: "file-search", track: "list-checks", prof: "users", incl: "accessibility", res: "library", ai: "sparkles", brand: "palette", care: "heart-handshake",
-      graph: "network", sources: "book-open-check", latest: "newspaper", trust: "shield-check", health: "activity" };
+      graph: "network", sources: "book-open-check", latest: "newspaper", trust: "shield-check", health: "activity",
+      involve: "git-pull-request", ambassadors: "award", campaign: "rocket", learn: "presentation", stem: "cpu", research: "pencil-ruler" };
     const n = N[id];
     if (!n) return this.ICONS[shape];
     const u = "url(./vendor/icons/" + n + ".svg)";
