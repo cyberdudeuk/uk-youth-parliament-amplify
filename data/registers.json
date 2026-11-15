@@ -153,6 +153,22 @@
    "root_cause": "Labels that could not wrap and two-column rows with a fixed minimum width.",
    "fix": "Below 420px, labels wrap and those rows stack.",
    "check": "W2 (now also at 320px and 768px)"
+  },
+  {
+   "id": "D20",
+   "found": "2026-11-15, by the browser checks (W1, W4) before release",
+   "what": "Adding the new vocabulary to the knowledge graph stopped the whole portal from starting: every screen rendered empty.",
+   "root_cause": "The design's last GRAPH and GLOSSARY entries have no trailing comma, so the first injected entry followed without one, a JavaScript syntax error in the page's logic class. The text-presence checks passed because the words were all there.",
+   "fix": "The injection now opens with a comma (extend9, ext9-graph and ext9-glossary).",
+   "check": "S16 now parses GRAPH and GLOSSARY as JavaScript with Node, vaccinated by removing the comma"
+  },
+  {
+   "id": "D21",
+   "found": "2026-11-15, by the browser check W9 before release",
+   "what": "Under reduced motion the news ticker stopped, but its hidden duplicate copy still showed, so every headline appeared twice.",
+   "root_cause": "The duplicate list's inline display: flex outranked the stylesheet rule that hides it under prefers-reduced-motion.",
+   "fix": "The reduced-motion rule now uses !important, the one way a stylesheet beats an inline style.",
+   "check": "W9 opens Home with reduced motion and fails if the duplicate is visible"
   }
  ],
  "open": [

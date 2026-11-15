@@ -16,6 +16,11 @@ Needs Playwright with Chromium (pip install -r tools/requirements-browser.txt; p
       against a drawer with no scroll of its own)
   W5  tooltips work: hovering a drawer item shows its explainer, keyboard focus on a term links it with
       aria-describedby, and Escape closes it (vaccinated against a page with no tooltip layer)
+  W9  the news ticker, alerts, Share and product screens behave: the ticker is a labelled list of links that its button
+      pauses (and says so), that stands still under reduced motion with no duplicate read out; an alert can be
+      dismissed; Share opens a menu with a copy option when the device has no share sheet; the backlog filter narrows
+      the list; and turning the ticker off on Alerts & notifications removes it (vaccinated against a ticker that
+      keeps moving after its pause button is pressed)
 
 Screens are read from data/integrity.json, which check_sources C9 keeps in step with the drawer, so a new screen is
 tested without editing this file.
@@ -89,6 +94,54 @@ async def drawer_and_viewer(b, url):
     hit = bool(await pg.evaluate(DRAWER_JS))
     print(("caught     " if hit else "NOT CAUGHT ") + "W8 (a drawer with no scroll of its own)")
     if not hit: bad.append("W8 vaccination failed")
+    await ctx.close()
+    return bad
+
+
+TK_MOVING = "(() => { const t = document.querySelector('.amp-tk-track'); return t ? getComputedStyle(t).animationPlayState : 'none'; })()"
+
+
+async def ticker_and_friends(b, url):
+    bad = []
+    ctx = await b.new_context(viewport={"width": 1440, "height": 900}); pg = await ctx.new_page()
+    await pg.goto(url + "#home", wait_until="networkidle"); await pg.wait_for_timeout(600)
+    tk = pg.locator('section[aria-label="News for this screen"]')
+    if await tk.count() == 0: bad.append("W9 #home has no news ticker"); await ctx.close(); return bad
+    if await tk.locator("ul[role=list]:not([aria-hidden]) a[href^='http']").count() < 2: bad.append("W9 the ticker items are not links")
+    await pg.mouse.move(5, 5)
+    if await pg.evaluate(TK_MOVING) != "running": bad.append("W9 the ticker does not move when nobody is pausing it")
+    btn = tk.locator("button[aria-pressed]")
+    await btn.click(); await pg.mouse.move(5, 5); await pg.wait_for_timeout(200)
+    if await btn.get_attribute("aria-pressed") != "true": bad.append("W9 the ticker's pause button does not say it is pressed")
+    if await pg.evaluate(TK_MOVING) != "paused": bad.append("W9 pressing pause does not stop the ticker")
+    al = pg.locator('section[aria-label="Alerts for you"] button[aria-label^="Dismiss"]')
+    n = await al.count()
+    if n == 0: bad.append("W9 #home shows no alert (the launch countdown is due)")
+    else:
+        await al.first.click(); await pg.wait_for_timeout(200)
+        if await pg.locator('section[aria-label="Alerts for you"] button[aria-label^="Dismiss"]').count() != n - 1: bad.append("W9 dismissing an alert does not remove it")
+    await pg.evaluate("Object.defineProperty(navigator, 'share', { value: undefined, configurable: true })")
+    await pg.locator('button[aria-controls="amp-share-menu"]').first.click(); await pg.wait_for_timeout(200)
+    if await pg.locator("#amp-share-menu").count() == 0: bad.append("W9 Share opens nothing when the device has no share sheet")
+    elif await pg.locator('#amp-share-menu button:has-text("Copy link")').count() == 0: bad.append("W9 the share menu has no Copy link")
+    await pg.goto(url + "#product", wait_until="networkidle"); await pg.wait_for_timeout(500)
+    rows = await pg.locator("article.amp-req").count()
+    if rows < 10: bad.append(f"W9 #product shows {rows} requirements")
+    await pg.locator('select').filter(has=pg.locator('option[value="Could"]')).first.select_option("Could"); await pg.wait_for_timeout(200)
+    if not 0 < await pg.locator("article.amp-req").count() < rows: bad.append("W9 the backlog priority filter does not narrow the list")
+    await pg.goto(url + "#notify", wait_until="networkidle"); await pg.wait_for_timeout(500)
+    await pg.locator('label:has-text("News ticker") input[type=checkbox]').uncheck(); await pg.wait_for_timeout(200)
+    await pg.evaluate("location.hash = '#home'"); await pg.wait_for_timeout(400)
+    if await pg.locator('section[aria-label="News for this screen"]').count(): bad.append("W9 turning the ticker off does not remove it")
+    await ctx.close()
+    ctx = await b.new_context(viewport={"width": 1440, "height": 900}, reduced_motion="reduce"); pg = await ctx.new_page()
+    await pg.goto(url + "#home", wait_until="networkidle"); await pg.wait_for_timeout(500)
+    if await pg.evaluate("(() => { const t = document.querySelector('.amp-tk-track'); return t ? getComputedStyle(t).animationName : 'gone'; })()") != "none": bad.append("W9 the ticker moves under reduced motion")
+    if await pg.locator(".amp-tk-dup").first.is_visible(): bad.append("W9 the ticker's duplicate is shown under reduced motion")
+    await pg.set_content('<!doctype html><html lang="en"><title>t</title><style>@keyframes m{to{transform:translateX(-50%)}}.amp-tk-track{animation:m 9s linear infinite}</style><section class="amp-tk"><div class="amp-tk-track">x</div><button aria-pressed="true">Pause</button></section>')
+    hit = await pg.evaluate(TK_MOVING) == "running"
+    print(("caught     " if hit else "NOT CAUGHT ") + "W9 (a ticker that keeps moving after pause)")
+    if not hit: bad.append("W9 vaccination failed")
     await ctx.close()
     return bad
 
@@ -183,6 +236,7 @@ async def run(update):
             await ctx.close()
         bad += await splash_checks(b, url)
         bad += await drawer_and_viewer(b, url)
+        bad += await ticker_and_friends(b, url)
         bad += await light_and_speed(b, url, axe, base)
         # vaccination: W6 must fail on a splash with no keyboard handling
         pg = await b.new_page(); await pg.set_content('<!doctype html><html lang="en"><title>t</title><div data-amp-splash role="dialog" aria-label="x"><button>a</button></div><main id="amp-main" tabindex="-1">m</main>')
@@ -207,7 +261,7 @@ async def run(update):
         for sc, got in found.items():  # the baseline may only shrink: note improvements so it can be tightened
             if set(got) != set(base.get(sc, [])) and not any(b.startswith("W3 #" + sc) for b in bad):
                 print(f"note: #{sc} improved against its baseline; run with --update-baseline to lock that in")
-    print(f"amplify browser: {len(SCREENS)} screens at 1440, 768 and 320 px, W1-W8 problems: {len(bad)}")
+    print(f"amplify browser: {len(SCREENS)} screens at 1440, 768 and 320 px, W1-W9 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 

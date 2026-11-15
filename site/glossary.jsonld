@@ -1,0 +1,1165 @@
+{
+ "@context": {
+  "skos": "http://www.w3.org/2004/02/skos/core#",
+  "dcterms": "http://purl.org/dc/terms/"
+ },
+ "@graph": [
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#",
+   "@type": "skos:ConceptScheme",
+   "dcterms:title": "Amplify glossary and thesaurus",
+   "dcterms:modified": "2026-11-15",
+   "dcterms:identifier": "AMP-20261115-f69b9708"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#myp",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "MYP",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Member of Youth Parliament",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "youth MP",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Member of Youth Parliament: a young person aged 11 to 18, elected to represent their area in the UK Youth Parliament.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ukyp"
+    }
+   ],
+   "dcterms:created": "0.1.0"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#makeyourmark",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Make Your Mark",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "the youth ballot",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "MYM",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The UK's largest youth ballot, which chooses the issues the UK Youth Parliament debates.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ukyp"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#manifesto"
+    }
+   ],
+   "dcterms:created": "0.1.0"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#votes16",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Votes at 16",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "votes at sixteen",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "lowering the voting age",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "franchise extension",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Lowering the voting age to 16 for UK general elections. 16 and 17 year olds already vote in Scottish and Welsh parliament and council elections; the Representation of the People Bill is before the House of Lords.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#votes16"
+    }
+   ],
+   "dcterms:created": "0.1.0"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#selectcommittee",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Select committee",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "committee inquiry",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "YSC",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A group of MPs or peers who look into a subject and report. The Youth Select Committee is the young people's version.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ysc"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    }
+   ],
+   "dcterms:created": "0.1.0"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#safeguarding",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Safeguarding",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "child protection",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "keeping young people safe",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Protecting children and young people from harm, and acting when you are worried about someone.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#nya"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#dbs"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#osa"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#dbs",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Background check",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "DBS check",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "PVG scheme",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "AccessNI",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "vetting",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A criminal record check for adults working with young people: DBS in England and Wales, PVG in Scotland and AccessNI in Northern Ireland.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#safeguarding"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#osa",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Online Safety Act",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "online safety rules",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "under-16 social media ban",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The law requiring online services to protect children, including checking ages for some content. Further rules for under 16s on social media are due to apply from spring 2027.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#agecheck"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#safeguarding"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ailiteracy"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#agecheck",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Age assurance",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "age verification",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "age checks",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "age estimation",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Ways online services check a user's age, required for some content under the Online Safety Act.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#osa"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#provenance",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Provenance",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "source label",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "V, S and K",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Where a fact came from. On Amplify, V means verified against the source, S means found by search, and K means a lead still to confirm.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#moscow"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ci"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#moscow",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "MoSCoW",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "prioritisation",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "must, should, could, won't",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A way to prioritise: Must have, Should have, Could have, Won't have this time.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#backlog"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#roadmap"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#opensource",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Open source",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "open code",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "public repository",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Code anyone can read, learn from and suggest changes to. Amplify's code is open on GitHub.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#issue"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#pullrequest"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#issue",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Issue",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "GitHub issue",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "ticket",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A note on GitHub describing an idea, a bug or a question. Anyone 13 or over with an account can open one.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#opensource"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#backlog"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#pullrequest"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#pullrequest",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Pull request",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "PR",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "merge request",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "proposed change",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A proposed change to the code or content. A person reviews it, and automated checks must pass, before it is accepted.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ci"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#issue"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ci",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Continuous integration",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "CI",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "automated checks",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "GitHub Actions",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Automated checks that run on every proposed change, so mistakes are caught before they reach the portal.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#devops"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#pullrequest"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#devops",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "DevOps",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "development and operations",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "delivery pipeline",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Building, testing, releasing and running software together, with automation, so changes are small, safe and frequent.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ci"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ddat"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#wcag",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "WCAG 2.2 AA",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Web Content Accessibility Guidelines",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "accessibility standard",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The international accessibility standard Amplify aims to meet, so disabled people can use it.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#bsl"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ucd"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#bsl",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "BSL and ISL",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "sign language",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "British Sign Language",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "Irish Sign Language",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "British Sign Language and Irish Sign Language, both recognised in law in the UK.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#devo"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#wcag"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ukpw",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "UK Parliament Week",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "UKPW",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "Parliament Week",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "An annual week of events about democracy for young people across the UK. Amplify launches during it, 23 to 29 November 2026.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ukyp"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#rc",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Release candidate",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "RC",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "pre-release",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "beta",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A version that is ready to test but not yet launched.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#roadmap"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ci"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ucd",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "User-centred design",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "UCD",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "human-centred design",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "service design",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Designing around the real needs of the people who use a service, found through research and tested with them.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#persona"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#journey"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#research"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#persona",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Persona",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "proto-persona",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "user profile",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A short portrait of a kind of user, with their goals, needs and pain points. Amplify's are proto-personas until research tests them.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ucd"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#userstory"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#userstory",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "User story",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "story",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "acceptance criteria",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A need written as 'As a ..., I want to ..., so that ...', with what must be true for it to be done.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#persona"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#backlog"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ci"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#journey",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "User journey",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "journey map",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "customer journey",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The steps someone takes to reach a goal, with what they do and feel at each stage.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ucd"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#blueprint"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#blueprint",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Service blueprint",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "blueprint",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "front stage and back stage",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A map of a service from what users do, through what the page shows and what happens behind it, to the processes and checks that keep it working.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#journey"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ci"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#research",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "User research",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "usability testing",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "co-design",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "research panel",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Learning from the people who use a service, through interviews, testing and co-design, to decide what to build.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ucd"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#sus"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#sus",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "System Usability Scale",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "SUS",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "usability score",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Ten standard questions that give a usability score from 0 to 100, compared between research rounds. By John Brooke, 1986.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#research"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ea",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Enterprise architecture",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "EA",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "business, data, application, technology and security architecture",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Designing how an organisation's business, data, applications, technology and security fit together, layer by layer, in line with its strategy.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ddat"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ddat",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Government Digital and Data profession",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "DDaT",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "digital, data and technology profession",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "GDD",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The profession for digital, data and technology roles across government, described in its capability framework, from trainee levels up.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ea"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#devops"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#apprenticeship"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#apprenticeship",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Apprenticeship",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Modern Apprenticeship",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "degree apprenticeship",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "TechTrack",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A paid job with training towards a recognised qualification. Government and the public sector offer them in every nation, many with no degree needed.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ddat"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#local"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ailiteracy",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "AI literacy",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "artificial intelligence",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "machine learning",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "responsible AI",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Understanding how artificial intelligence works, where it goes wrong (such as bias and privacy) and how to use it responsibly.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#osa"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ddat"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#backlog",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Requirements backlog",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "backlog",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "requirements",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "product backlog",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The ordered list of everything asked for, each with a priority, a status and links to where it is built and how it is checked.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#roadmap"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#moscow"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#userstory"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#issue"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#roadmap",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Roadmap",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "now, next, later",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "product roadmap",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "What is being worked on now, next and later, and why, updated as priorities change.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#backlog"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#rc"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.1"
+  }
+ ]
+}

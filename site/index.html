@@ -7,11 +7,11 @@
 <meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">
 <link rel="icon" href="./art/favicon.svg" type="image/svg+xml">
 <meta name="artefact:id" content="amplify-portal">
-<meta name="artefact:version" content="AMP-20261115-3c409c95">
+<meta name="artefact:version" content="AMP-20261115-f69b9708">
 <meta name="artefact:class" content="portal">
 <meta name="artefact:as-of" content="2026-11-15">
 <meta name="artefact:review-date" content="2026-12-15">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-3c409c95", "version": "AMP-20261115-3c409c95", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-f69b9708", "version": "AMP-20261115-f69b9708", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
 <script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/babel.min.js"};</script>
 <script src="./support.js"></script>
 </head>
@@ -77,6 +77,15 @@
   @media (max-width: 1024px) { .amp-dots { grid-template-columns: repeat(65, 1fr) !important; } }
   @media (max-width: 420px) { main li[style*="grid-template-columns"] { grid-template-columns: minmax(0, 1fr) !important; gap: 2px !important; } main [style*="white-space: nowrap"] { white-space: normal !important; } }
   @media (max-width: 640px) { .amp-dots { grid-template-columns: repeat(26, 1fr) !important; gap: 3px !important; } }
+
+
+  .amp-tk-track { display: flex; width: max-content; animation-name: amp-tk; animation-timing-function: linear; animation-iteration-count: infinite; }
+  .amp-tk[data-paused="true"] .amp-tk-track, .amp-tk:hover .amp-tk-track, .amp-tk:focus-within .amp-tk-track { animation-play-state: paused; }
+  .amp-tk[data-paused="true"] .amp-tk-view { overflow-x: auto; }
+  @keyframes amp-tk { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .amp-tk-track { animation: none; } .amp-tk-dup { display: none !important; } .amp-tk-view { overflow-x: auto; } }
+  @media (max-width: 560px) { .amp-tk-btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
+  @media print { .amp-tk { display: none !important; } }
 
   .amp-sr { position: absolute !important; left: 0; top: 0; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   @media (max-width: 420px) { main div[style*="grid-template-columns"]:not([role="row"]) { grid-template-columns: minmax(0, 1fr) !important; } main a { overflow-wrap: anywhere; max-width: 100%; white-space: normal !important; flex-shrink: 1 !important; box-sizing: border-box; } main a span { min-width: 0; overflow-wrap: anywhere; } }
@@ -348,6 +357,38 @@
             <select value="{{ persona }}" onChange="{{ setPersona }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><option value="everyone">Everyone</option><option value="young11">Young person, 11 to 15</option><option value="young16">Young person, 16 to 25</option><option value="parent">Parent, guardian or carer</option><option value="worker">Youth worker or group leader</option><option value="teacher">Teacher, tutor or school staff</option><option value="club">Coding or STEM club leader or mentor</option><option value="access">d/Deaf or disabled young person</option><option value="ally">Councillor, policy maker, researcher or journalist</option></select>
           </label>
         </div>
+        </sc-if>
+
+        <div class="amp-share" style="position: relative; display: flex; justify-content: flex-end; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: -6px;">
+          <span aria-live="polite" style="font-size: 12.5px; color: rgb(var(--ink-rgb) / 0.82);">{{ shMsg }}</span>
+          <button onClick="{{ shBtn }}" aria-expanded="{{ shExpanded }}" aria-controls="amp-share-menu" data-tip="ui:share" style="display: inline-flex; align-items: center; gap: 6px; min-height: 34px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 999px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 5px 13px; font-size: 12.5px; font-weight: 800; cursor: pointer;"><span aria-hidden="true" style="{{ shIcon }}"></span>Share</button>
+          <sc-if value="{{ shOpen }}" hint-placeholder-val="{{ false }}">
+          <div id="amp-share-menu" role="group" aria-label="Share this screen" style="position: absolute; top: calc(100% + 6px); right: 0; z-index: 30; width: min(300px, calc(100vw - 32px)); display: flex; flex-direction: column; gap: 6px; border-radius: 14px; border: 1px solid rgb(var(--film-rgb) / 0.22); background: var(--bg2); box-shadow: 0 12px 30px rgb(0 0 0 / 0.35); padding: 10px;">
+            <button onClick="{{ shCopy }}" style="min-height: 34px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 10px; background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 800; cursor: pointer;">{{ shCopyLabel }}</button>
+            <sc-for list="{{ shLinks }}" as="l" hint-placeholder-count="3"><a href="{{ l.href }}" target="_blank" rel="noopener" style="display: block; min-height: 30px; padding: 6px 8px; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; text-underline-offset: 3px;">Share to {{ l.label }}</a></sc-for>
+            <p style="margin: 0; font-size: 12px; line-height: 1.45; color: rgb(var(--ink-rgb) / 0.8);">Sharing opens that service in a new tab. Amplify does not see or keep what you share.</p>
+            <button onClick="{{ shClose }}" style="align-self: flex-end; min-height: 30px; border: none; background: transparent; color: rgb(var(--ink-rgb)); font-size: 12.5px; text-decoration: underline; cursor: pointer;">Close</button>
+          </div>
+          </sc-if>
+        </div>
+        <sc-if value="{{ alShow }}" hint-placeholder-val="{{ false }}">
+        <section aria-label="Alerts for you" style="display: flex; flex-direction: column; gap: 6px;">
+          <sc-for list="{{ alerts }}" as="a" hint-placeholder-count="1"><div style="{{ a.box }}"><span aria-hidden="true" style="{{ icBell }}"></span><span style="{{ a.tagStyle }}">{{ a.tag }}</span><span style="flex: 1 1 240px; min-width: 0;">{{ a.text }}</span><button onClick="{{ a.go }}" style="min-height: 32px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb)); padding: 4px 12px; font-size: 12.5px; font-weight: 800; cursor: pointer;">{{ a.act }}</button><button onClick="{{ a.dismiss }}" aria-label="{{ a.dLabel }}" style="min-width: 32px; min-height: 32px; border: none; border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb) / 0.8); font-size: 18px; line-height: 1; cursor: pointer;">&times;</button></div></sc-for>
+        </section>
+        </sc-if>
+        <sc-if value="{{ tkShow }}" hint-placeholder-val="{{ false }}">
+        <section class="amp-tk" data-paused="{{ tkPaused }}" aria-label="News for this screen" style="display: flex; align-items: center; gap: 8px; min-width: 0; border-radius: 14px; border: 1px solid rgb(var(--film-rgb) / 0.16); background: rgb(var(--film-rgb) / 0.05); padding: 4px 6px 4px 10px;">
+          <span aria-hidden="true" style="{{ icNews }}"></span>
+          <span style="font-family: 'Space Mono', monospace; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(var(--t3) 0.16 70); flex: 0 0 auto;">News</span>
+          <div class="amp-tk-view" style="flex: 1 1 0; min-width: 0; overflow: hidden;">
+            <div class="amp-tk-track" style="{{ tkDur }}">
+              <ul class="amp-tk-list" role="list" style="display: flex; gap: 28px; margin: 0; padding: 0 28px 0 0; list-style: none;"><sc-for list="{{ tkItems }}" as="t" hint-placeholder-count="3"><li style="flex: 0 0 auto;"><a href="{{ t.url }}" target="_blank" rel="noopener" aria-label="{{ t.label }}" style="display: inline-flex; align-items: baseline; gap: 8px; min-height: 30px; padding: 4px 0; color: rgb(var(--ink-rgb)); text-decoration: none; font-size: 13.5px; white-space: nowrap;"><span style="font-family: 'Space Mono', monospace; font-size: 11px; color: rgb(var(--ink-rgb) / 0.75);">{{ t.date }} &middot; {{ t.cat }}</span><span style="font-weight: 700; text-decoration: underline; text-underline-offset: 3px;">{{ t.title }}</span></a></li></sc-for></ul>
+              <ul class="amp-tk-list amp-tk-dup" aria-hidden="true" style="display: flex; gap: 28px; margin: 0; padding: 0 28px 0 0; list-style: none;"><sc-for list="{{ tkItems }}" as="t" hint-placeholder-count="3"><li style="flex: 0 0 auto;"><a href="{{ t.url }}" tabindex="-1" target="_blank" rel="noopener" style="display: inline-flex; align-items: baseline; gap: 8px; min-height: 30px; padding: 4px 0; color: rgb(var(--ink-rgb)); text-decoration: none; font-size: 13.5px; white-space: nowrap;"><span style="font-family: 'Space Mono', monospace; font-size: 11px; color: rgb(var(--ink-rgb) / 0.75);">{{ t.date }} &middot; {{ t.cat }}</span><span style="font-weight: 700; text-decoration: underline; text-underline-offset: 3px;">{{ t.title }}</span></a></li></sc-for></ul>
+            </div>
+          </div>
+          <button onClick="{{ tkToggle }}" aria-pressed="{{ tkPaused }}" class="amp-tk-btn" style="flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb)); padding: 4px 11px; font-size: 12px; font-weight: 800; cursor: pointer;"><span aria-hidden="true" style="{{ tkIcon }}"></span><span class="amp-tk-btn-label">{{ tkBtn }}</span></button>
+          <button onClick="{{ tkAll }}" style="flex: 0 0 auto; min-height: 32px; border: none; background: transparent; color: rgb(var(--ink-rgb)); padding: 4px 8px; font-size: 12px; font-weight: 800; text-decoration: underline; cursor: pointer;">All news</button>
+        </section>
         </sc-if>
         <sc-if value="{{ tbShow }}" hint-placeholder-val="{{ false }}">
         <div role="region" aria-label="Guided tour" class="amp-tourbar" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; border-radius: 18px; padding: 12px 16px; border: 1px solid oklch(var(--t2) 0.16 300 / 0.6); background: linear-gradient(120deg, oklch(var(--t1) 0.16 300 / 0.22), oklch(var(--t1) 0.16 175 / 0.12));">
@@ -2681,12 +2722,13 @@
           <div class="amp-lightbox-controls" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #fff;">
             <span style="flex: 1 1 200px; min-width: 0; font-size: 15px; font-weight: 800;">{{ artName }}</span>
             <button type="button" onClick="{{ artPrint }}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 0; background: oklch(0.85 0.15 145); color: #06100f; font-size: 13.5px; font-weight: 800; cursor: pointer;">Print</button>
-            <a href="{{ artSrc }}" download="{{ artFile }}" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; color: #fff; font-size: 13.5px; font-weight: 800;">Save</a>
+            <button type="button" onClick="{{ artSave }}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; background: transparent; color: #fff; font-size: 13.5px; font-weight: 800; cursor: pointer;">Save</button>
             <a href="{{ artGit }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid rgb(255 255 255 / 0.5); color: #fff; font-size: 13.5px; font-weight: 700;">Copy on GitHub<span class="amp-sr"> (opens in a new tab)</span></a>
             <button type="button" id="amp-art-close" onClick="{{ artClose }}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; background: transparent; color: #fff; font-size: 13.5px; font-weight: 800; cursor: pointer;">Close</button>
           </div>
           <img class="amp-lightbox-art" src="{{ artSrc }}" alt="{{ artAlt }}" style="flex: 1 1 auto; min-height: 0; width: 100%; max-height: calc(100vh - 120px); object-fit: contain; background: #fff; border-radius: 12px;" />
-          <p class="amp-lightbox-controls" style="margin: 0; font-size: 12.5px; color: rgb(255 255 255 / 0.85);">If Print or Save does nothing, the page you are viewing this in is blocking it: use Copy on GitHub, or your browser's own print menu while this view is open. Escape closes this view.</p>
+          <p class="amp-lightbox-controls" role="status" aria-live="polite" style="margin: 0; font-size: 13px; font-weight: 700; color: #fff;">{{ artMsg }}</p>
+          <p class="amp-lightbox-controls" style="margin: 0; font-size: 12.5px; color: rgb(255 255 255 / 0.85);">Save asks you to confirm the file first. If Print does nothing, the page you are viewing this in is blocking it: save the file and print it from your device, or use Copy on GitHub. Escape closes this view.</p>
         </div>
         </sc-if>
         <sc-if value="{{ sInvolve }}" hint-placeholder-val="{{ false }}">
@@ -2920,6 +2962,68 @@
         </div>
         </sc-if>
 
+
+        <sc-if value="{{ sProduct }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 70);"><span aria-hidden="true" style="{{ icProduct }}"></span>Sources &amp; updates</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Product, roadmap &amp; backlog</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Where Amplify is going and why, what it is and is not, when it is updated, and every requirement with the screens that deliver it and the checks that prove it. Reviewed every 30 days; last checked {{ pdChecked }}.</p>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Vision</h2><p style="margin: 0 0 8px; font-size: 18px; font-weight: 800; line-height: 1.4; text-wrap: balance;">{{ pdVision }}</p><p style="margin: 0; font-size: 14px; line-height: 1.55;"><span style="font-weight: 800;">Mission:</span> {{ pdMission }}</p></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Strategy</h2><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 8px;"><sc-for list="{{ pdStrategy }}" as="p" hint-placeholder-count="5"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 900;">{{ p.pillar }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ p.what }}</div></div></sc-for></div></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Product specification</h2>
+            <p style="margin: 0 0 6px; font-size: 14px; line-height: 1.55;"><span style="font-weight: 800;">What it is:</span> {{ pdWhat }}</p>
+            <p style="margin: 0 0 10px; font-size: 14px; line-height: 1.55;"><span style="font-weight: 800;">Who it is for:</span> {{ pdWho }}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 8px;">
+              <div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">In scope</div><ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ pdIn }}" as="x" hint-placeholder-count="4"><li>{{ x.t }}</li></sc-for></ul></div>
+              <div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Out of scope</div><ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ pdOut }}" as="x" hint-placeholder-count="4"><li>{{ x.t }}</li></sc-for></ul></div>
+              <div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Constraints</div><ul style="margin: 0; padding-left: 18px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ pdCons }}" as="x" hint-placeholder-count="4"><li>{{ x.t }}</li></sc-for></ul></div>
+            </div></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Update schedule</h2><div style="display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ pdSchedule }}" as="r" hint-placeholder-count="6"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;"><span style="flex: 1 1 220px; min-width: 0; font-size: 14px; font-weight: 800;">{{ r.what }}</span><span style="flex: 1 1 180px; min-width: 0; font-size: 13.5px;">{{ r.when }}</span><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ r.how }}</span></div></sc-for></div></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Roadmap</h2><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px;"><sc-for list="{{ pdLanes }}" as="l" hint-placeholder-count="3"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 15px; font-weight: 900;">{{ l.lane }}</div><sc-for list="{{ l.items }}" as="it" hint-placeholder-count="2"><div style="font-size: 13.5px; line-height: 1.5;">{{ it.t }} <sc-for list="{{ it.reqs }}" as="q" hint-placeholder-count="1"><button onClick="{{ q.go }}" style="border: none; background: transparent; padding: 0 3px; color: rgb(var(--ink-rgb)); font-family: 'Space Mono', monospace; font-size: 11.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">{{ q.r }}</button></sc-for></div></sc-for></div></sc-for></div></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Requirements backlog</h2>
+            <p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Every request, prioritised with MoSCoW, with its status, where it came from, the screens that deliver it and the checks that prove it. Showing {{ pdShown }} of {{ pdTotal }}.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; margin-bottom: 10px;">
+              <label style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12.5px;">Priority <select value="{{ pdFm }}" onChange="{{ setPdFm }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><option value="All">All</option><option value="Must">Must</option><option value="Should">Should</option><option value="Could">Could</option></select></label>
+              <label style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12.5px;">Status <select value="{{ pdFs }}" onChange="{{ setPdFs }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><option value="All">All</option><option value="Done">Done</option><option value="In progress">In progress</option><option value="Planned">Planned</option><option value="Waiting on owner">Waiting on owner</option></select></label>
+              <sc-for list="{{ pdCounts }}" as="c" hint-placeholder-count="4"><span style="font-size: 13px;"><span style="{{ c.style }}">{{ c.k }}</span> {{ c.n }}</span></sc-for>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ pdRows }}" as="b" hint-placeholder-count="4"><article class="amp-req" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; {{ b.at }}"><div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;"><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ b.id }}</span><span style="{{ b.mStyle }}">{{ b.moscow }}</span><span style="{{ b.sStyle }}">{{ b.status }}</span><span style="flex: 1 1 260px; min-width: 0; font-size: 14px; font-weight: 700;">{{ b.title }}</span></div>
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12.5px;"><span style="font-weight: 800;">Delivered on</span><sc-for list="{{ b.screens }}" as="x" hint-placeholder-count="2"><button onClick="{{ x.go }}" style="border: none; background: transparent; padding: 0; color: rgb(var(--ink-rgb)); font-size: 12.5px; text-decoration: underline; cursor: pointer;">{{ x.label }}</button></sc-for><span style="font-weight: 800;">Proved by</span><sc-for list="{{ b.checks }}" as="c" hint-placeholder-count="2"><span title="{{ c.what }}" style="font-family: 'Space Mono', monospace; font-weight: 700;">{{ c.c }}</span></sc-for></div>
+              <div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">From: {{ b.from }}</div></article></sc-for></div>
+          </section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">New words in release {{ pdRelease }}</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Each release adds its new terms to the glossary, the thesaurus (other names), the knowledge graph and the tooltips at the same time, and the build fails if one is missing. {{ pdWordsN }} new in this release, {{ glTotal }} added so far. <a href="{{ pdGlossDoc }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">Glossary on GitHub</a></p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px;"><sc-for list="{{ pdWords }}" as="w" hint-placeholder-count="4"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><button onClick="{{ w.go }}" style="align-self: flex-start; border: none; background: transparent; padding: 0; color: rgb(var(--ink-rgb)); font-size: 14px; font-weight: 900; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: left;">{{ w.term }}</button><div style="font-size: 13px; line-height: 1.5;">{{ w.def }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Also: {{ w.also }}</div></div></sc-for></div></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">How it is traced, tracked and managed on GitHub</h2>
+            <ol style="margin: 0 0 10px; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ pdGit }}" as="g" hint-placeholder-count="6"><li><span style="font-weight: 800;">{{ g.step }}.</span> {{ g.what }} <span style="font-family: 'Space Mono', monospace; font-size: 12px; overflow-wrap: anywhere;">{{ g.where }}</span></li></sc-for></ol>
+            <p style="margin: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13.5px;"><a href="{{ pdIssues }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">Issues</a><a href="{{ pdPulls }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">Pull requests</a><a href="{{ pdActions }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">Checks and workflows</a><a href="{{ pdFollow }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">Follow-ups due</a><a href="{{ pdDoc }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">This page as a document</a></p>
+          </section>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sNotify }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 215);"><span aria-hidden="true" style="{{ icNotify }}"></span>Sources &amp; updates</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Alerts &amp; notifications</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Choose which alerts appear at the top of each screen, bring back ones you dismissed, and follow updates from outside the portal. Your choices stay in this browser only: nothing is sent anywhere, and there is no account.</p>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Alerts right now</h2><sc-if value="{{ ntNone }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Nothing to alert you about today.</p></sc-if>
+            <div style="display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ ntAll }}" as="a" hint-placeholder-count="3"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 10px;"><span style="{{ a.tagStyle }}">{{ a.tag }}</span><span style="flex: 1 1 240px; min-width: 0; font-size: 13.5px;">{{ a.text }}</span><sc-if value="{{ a.hidden }}" hint-placeholder-val="{{ false }}"><button onClick="{{ a.restore }}" style="min-height: 32px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb)); padding: 4px 12px; font-size: 12.5px; font-weight: 800; cursor: pointer;">Show again</button></sc-if></div></sc-for></div></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">What to show</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Safety notices always show, because they may matter to someone's safety; you can still dismiss each one once you have read it.</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ ntPrefs }}" as="p" hint-placeholder-count="5"><label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.45; cursor: pointer;"><input type="checkbox" checked="{{ p.on }}" onChange="{{ p.toggle }}" style="width: 22px; height: 22px; margin: 1px 0 0; flex: 0 0 auto;"><span><span style="font-weight: 800;">{{ p.lbl }}</span><br><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ p.why }}</span></span></label></sc-for></div>
+            <p style="margin: 12px 0 0;"><button onClick="{{ ntReset }}" style="min-height: 32px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb)); padding: 4px 12px; font-size: 12.5px; font-weight: 800; cursor: pointer;">Reset my choices</button> <span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ ntDismissedN }} dismissed.</span></p></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Follow updates from outside the portal</h2>
+            <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; line-height: 1.5;">
+              <li><span style="font-weight: 800;">A news feed.</span> Add this address to any feed reader to get What's new and every release: <span style="font-family: 'Space Mono', monospace; font-size: 12px; overflow-wrap: anywhere;">{{ ntFeed }}</span></li>
+              <li><span style="font-weight: 800;">GitHub.</span> With a GitHub account (13 or over), <a href="{{ ntWatch }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">watch the repository</a> and choose Releases, or follow the <a href="{{ ntReleases }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">releases feed</a>.</li>
+              <li><span style="font-weight: 800;">Follow-ups.</span> Every Monday a public issue lists what is due: open items, dates and re-checks. See it on the Product screen.</li>
+            </ul></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">What we never do</h2><ul style="margin: 0; padding-left: 20px; font-size: 13.5px; line-height: 1.55;"><li>Ask for an email address, a phone number or an account to send you updates.</li><li>Send push notifications, or track what you read.</li><li>Use alerts to sell, campaign for a party, or rush you.</li></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">What this portal keeps on your device, and nowhere else: your Explain-for choice, your alert choices, which alerts you dismissed, the last release you saw and whether the news is paused (browser storage named amp-persona and amp-notify). Reset my choices clears the alert ones; your browser's settings clear all of it.</p></section>
+        </div>
+        </sc-if>
+
         <div data-slot="portal-end" style="display: none;"></div>
       </main>
     </div>
@@ -3124,7 +3228,7 @@
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Transparency</h2>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-3c409c95</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-f69b9708</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Next review due 15 December 2026. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Source, checks and history: <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Contact</h2>
@@ -3135,8 +3239,8 @@
     </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
-        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-3c409c95" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
-        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-3c409c95</p>
+        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-f69b9708" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
+        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-f69b9708</p>
       </div>
   </footer>
 </div>
@@ -3261,7 +3365,7 @@ class Component extends DCLogic {
 
   screenFromHash() {
     const id = (location.hash || "").replace(/^#\/?/, "");
-    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities|involve|ambassadors|campaign|learn|stem|research|service|golive)$/.test(id) ? id : null;
+    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities|involve|ambassadors|campaign|learn|stem|research|service|golive|product|notify)$/.test(id) ? id : null;
   }
   screenLabel(id) {
     for (const [, items] of this.GROUPS) for (const it of items) if (it[0] === id) return it[1];
@@ -3281,8 +3385,8 @@ class Component extends DCLogic {
 
   async loadAmplifyData() {
     const get = async (f) => { try { const r = await fetch(new URL(f, document.baseURI).href, { cache: "no-store" }); return r.ok ? await r.json() : null; } catch (e) { return null; } };
-    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json", "./data/tooltips.json", "./data/involve.json", "./data/research.json", "./data/service-design.json", "./data/readiness.json"].map(get));
-    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
+    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, gl, pd] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json", "./data/tooltips.json", "./data/involve.json", "./data/research.json", "./data/service-design.json", "./data/readiness.json", "./data/glossary.json", "./data/product.json"].map(get));
+    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, gl, pd, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
   }
   ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
   ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
@@ -3540,7 +3644,7 @@ class Component extends DCLogic {
     const tt = (this.state.amp || {}).tt || {}, p = this.state.persona || "everyone";
     const [kind, id] = String(key || "").split(":");
     if (kind === "nav") { const e = (tt.screens || {})[id]; if (!e) return ""; const extra = (e.for || {})[p]; return e.tip + (extra ? " " + extra : ""); }
-    if (kind === "term") { const e = (tt.terms || {})[id]; return e ? e.term + ": " + e.tip : ""; }
+    if (kind === "term") { const g = (((this.state.amp || {}).gl || {}).terms || []).find((t) => t.id === id); if (g) return g.term + ": " + g.def; const e = (tt.terms || {})[id]; return e ? e.term + ": " + e.tip : ""; }
     if (kind === "ui") return (tt.ui || {})[id] || "";
     return "";
   }
@@ -3591,7 +3695,21 @@ class Component extends DCLogic {
   }
   ampArt(name, src, alt, file) {
     this._artBack = document.activeElement;
-    this.setState({ art: { name, src, alt, file } }, () => { const c = document.getElementById("amp-art-close"); if (c) c.focus(); });
+    this.setState({ art: { name, src, alt, file }, artMsg: "" }, () => { const c = document.getElementById("amp-art-close"); if (c) c.focus(); });
+  }
+  async ampArtSave() {
+    const a = this.state.art || {}, name = (a.file || "artwork.svg").split("/").pop();
+    const say = (t) => this.setState({ artMsg: t });
+    let dl = null;
+    try { dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null; } catch (e) { dl = null; }
+    if (!dl) { say("Saving is not available in this view: use Copy on GitHub, or right-click the picture and save it."); return; }
+    try {
+      const r = await fetch(new URL(a.src, document.baseURI).href); const text = await r.text();
+      await dl.save({ filename: name, data: text }); say("Saved " + name + ".");
+    } catch (e) {
+      const c = (e && e.code) || "";
+      say(c === "declined" ? "Not saved." : c === "rate_limited" ? "A save is already waiting for your answer." : "Saving did not work here: use Copy on GitHub instead.");
+    }
   }
   ampArtClose() { this.setState({ art: null }, () => { if (this._artBack && this._artBack.focus) this._artBack.focus(); }); }
   ampArtPrint() {
@@ -3619,7 +3737,7 @@ class Component extends DCLogic {
       exShow: !!scr && !s.splash, exTip: scr ? scr.tip : "", exFor: extra || pe.lens || "", exHasFor: !!(extra || (p !== "everyone" && pe.lens)), exWho: pe.label || "Everyone",
       artOpen: !!s.art, artName: (s.art || {}).name || "", artSrc: (s.art || {}).src || "", artAlt: (s.art || {}).alt || "",
       artFile: ((s.art || {}).file || "").split("/").pop(), artGit: repo + "/blob/main/site/" + ((s.art || {}).file || ""),
-      artClose: () => this.ampArtClose(), artPrint: () => this.ampArtPrint(),
+      artClose: () => this.ampArtClose(), artPrint: () => this.ampArtPrint(), artSave: () => this.ampArtSave(), artMsg: s.artMsg || "",
       persona: p, setPersona: (e) => { const v = e.target.value; try { window.localStorage.setItem("amp-persona", v); } catch (err) { /* storage unavailable: keep it in memory */ } this.setState({ persona: v }); },
       ivIntro: inv.intro || "", ivRepo: repo, ivContrib: repo + "/blob/main/CONTRIBUTING.md", ivGood: repo + "/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22",
       ivWays: inv.ways.map((w) => ({ time: w.time, icon: this.ampIcon(w.icon, "oklch(var(--t3) 0.16 175)", 18), items: w.items.map((i) => ({ t: i.t, how: i.how, go: go(i.screen), where: label(i.screen) })) })),
@@ -3775,6 +3893,119 @@ class Component extends DCLogic {
       rdRoutines: rd.routines.map((r) => ({ routine: r.routine, kind: r.kind, what: r.what, cadence: r.cadence, where: r.where, moscow: r.moscow, status: r.status,
         mStyle: pill(MH[r.moscow] || 175), sStyle: pill(r.status === "Running" ? 145 : (r.status.indexOf("Set up") === 0 ? 70 : 25)) })),
       icGolive: this.ampIcon("rocket", "oklch(var(--t3) 0.16 145)", 16)
+    };
+  }
+
+
+  ampNote() {
+    if (this._note) return this._note;
+    let n = {};
+    try { n = JSON.parse(window.localStorage.getItem("amp-notify") || "{}") || {}; } catch (e) { n = {}; }
+    this._note = { off: n.off || [], dismissed: n.dismissed || [], seen: n.seen || "", paused: !!n.paused, first: !n.seen };
+    return this._note;
+  }
+  ampNoteSave(patch) {
+    const n = Object.assign(this.ampNote(), patch); this._note = n;
+    try { window.localStorage.setItem("amp-notify", JSON.stringify({ off: n.off, dismissed: n.dismissed, seen: n.seen, paused: n.paused })); }
+    catch (e) { /* storage unavailable: keep it in memory for this visit */ }
+    this.setState({ noteTick: (this.state.noteTick || 0) + 1 });
+  }
+  async ampShareNow() {
+    const here = (location.href || "").split("#")[0] + "#" + (this.state.screen || "home");
+    const title = "Amplify: " + (this.ampScreenName(this.state.screen) || "youth voice, carried further");
+    try {
+      if (navigator.share) { await navigator.share({ title, text: "Youth voice, carried further.", url: here }); this.setState({ shareMsg: "Shared." }); return; }
+    } catch (e) { if (e && e.name === "AbortError") return; /* blocked here: offer the menu instead */ }
+    this.setState({ shareOpen: !this.state.shareOpen, shareMsg: "" });
+  }
+  ampScreenName(id) { let n = ""; this.GROUPS.forEach(([g, items]) => items.forEach(([k, lbl]) => { if (k === id) n = lbl; })); return n; }
+  ampAlerts(s) {
+    const A = s.amp || {}, ch = A.ch || { releases: [] }, lat = (A.lat || {}).items || [], src = (A.src || {}).sources || [];
+    const n = this.ampNote(), out = [], go = (screen) => () => this.setState({ screen });
+    const launch = ch.releases.find((r) => r.status === "Planned launch");
+    if (launch) { const d = -this.ampDays(launch.date);
+      if (d >= 0) out.push({ id: "launch-" + launch.version, pref: "launch", level: "info", text: d === 0 ? "Amplify launches today, at UK Parliament Week." : "Amplify launches in " + d + (d === 1 ? " day" : " days") + ", on " + this.ampDate(launch.date) + ", at UK Parliament Week.", act: "Launch plans", go: go("launch") }); }
+    if (ch.current && n.seen && n.seen !== ch.current) out.push({ id: "release-" + ch.current, pref: "release", level: "info", text: "Updated since your last visit: release " + ch.current + ". The drawer flags what is new (NEW) and changed (UPD).", act: "See what changed", go: () => { this.ampNoteSave({ seen: ch.current }); this.setState({ screen: "changes" }); } });
+    lat.filter((i) => i.cat === "safety" && i.status && this.ampDays(i.date) >= 0 && this.ampDays(i.date) <= 120).forEach((i) =>
+      out.push({ id: "safety-" + i.date, pref: "safety", level: "safety", text: "Safety notice: " + i.title + " (" + i.status.toLowerCase() + ").", act: "Read it", go: go("latest") }));
+    lat.filter((i) => { const d = -this.ampDays(i.date); return d > 0 && d <= 21 && !(launch && i.date === launch.date); }).forEach((i) =>
+      out.push({ id: "date-" + i.date + "-" + i.cat, pref: "dates", level: "info", text: "Coming up on " + this.ampDate(i.date) + ": " + i.title + ".", act: "What's new", go: go("latest") }));
+    if (["sources", "health", "golive", "product", "notify"].indexOf(s.screen) >= 0) {
+      const due = src.filter((x) => this.ampFresh(x.checked, x.review_days || 90).label === "Overdue").length;
+      if (due) out.push({ id: "upkeep-" + due, pref: "upkeep", level: "warn", text: due + (due === 1 ? " source is" : " sources are") + " past the re-check date. The weekly upkeep re-verifies them, oldest first.", act: "Portal health", go: go("health") });
+    }
+    return out;
+  }
+  // The news ticker's sense of "relevant here". Returns a score for one news item on one screen, or -1 to leave it
+  // out. The ticker shows the highest scores first, up to eight items.
+  ampTickerScore(item, screen, cats) {
+    const want = cats[screen] || cats["*"] || [], age = this.ampDays(item.date);
+    if (age === null) return -1;
+    let score = want.indexOf(item.cat) >= 0 ? 100 : (want.length ? 10 : 50);
+    if (age < 0) score += 30;                               // coming up beats past
+    score += Math.max(0, 40 - Math.floor(Math.abs(age) / 7)); // fresher is better, a point a week for 40 weeks
+    if (item.cat === "safety" && item.status && age <= 120) score += 60; // a live safety notice leads everywhere
+    return score;
+  }
+  ampVals9(s) {
+    const A = s.amp || {}, pd = A.pd || { strategy: [], spec: { in: [], out: [], constraints: [] }, schedule: [], roadmap: [], backlog: [], github: [] };
+    const gl = (A.gl || { terms: [] }).terms, ch = A.ch || {}, latD = A.lat || { items: [], categories: {} }, n = this.ampNote();
+    const W = {}; ((A.bld || {}).checks || []).forEach((c) => { W[c.id] = c.what; });
+    const L = {}; this.GROUPS.forEach(([g, items]) => items.forEach(([id, lbl]) => { L[id] = lbl; }));
+    const pill = (h) => "display:inline-block;border-radius:999px;padding:2px 9px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;background:oklch(var(--t1) 0.16 " + h + " / 0.28);color:oklch(var(--t4) 0.15 " + h + ");";
+    const MH = { Must: 25, Should: 70, Could: 175, "Won't": 300 }, SH = { Done: 145, "In progress": 70, Planned: 215, "Waiting on owner": 25 };
+    if (n.first && ch.current && !this._noteInit) { this._noteInit = true; Promise.resolve().then(() => this.ampNoteSave({ seen: ch.current, first: false })); }
+    if (s.screen === "changes" && ch.current && n.seen && n.seen !== ch.current) Promise.resolve().then(() => this.ampNoteSave({ seen: ch.current }));
+    const fm = s.pdFm || "All", fs = s.pdFs || "All";
+    const rows = pd.backlog.filter((b) => (fm === "All" || b.moscow === fm) && (fs === "All" || b.status === fs));
+    const alerts = this.ampAlerts(s), shown = alerts.filter((a) => (a.pref === "safety" || n.off.indexOf(a.pref) < 0) && n.dismissed.indexOf(a.id) < 0);
+    const lv = { info: [215, "Notice"], warn: [70, "Check"], safety: [25, "Safety"] };
+    const tk = (latD.ticker || {}), cats = tk.screens || {}, items = (latD.items || []).map((i) => ({ i, sc: this.ampTickerScore(i, s.screen, cats) }))
+      .filter((x) => x.sc >= 0).sort((a, b) => b.sc - a.sc).slice(0, 8).map((x) => x.i);
+    const tkItems = items.map((i, k) => ({ key: "tk" + k, url: i.url, cat: (latD.categories || {})[i.cat] || i.cat, date: this.ampDate(i.date), title: i.title, source: i.source,
+      label: i.title + ". " + ((latD.categories || {})[i.cat] || i.cat) + ", " + this.ampDate(i.date) + ", from " + i.source + ". Opens in a new tab." }));
+    const prefs = [["launch", "Launch countdown", "Days to the launch at UK Parliament Week."], ["release", "Updated since your last visit", "When a new release lands, with a link to what changed."],
+      ["dates", "Dates coming up", "Things happening in the next three weeks, from What's new."], ["upkeep", "Upkeep notices", "On the source and health screens: sources past their re-check date."],
+      ["ticker", "News ticker", "The strip of news for the screen you are on."]];
+    return {
+      sProduct: s.screen === "product", sNotify: s.screen === "notify",
+      icProduct: this.ampIcon("milestone", "oklch(var(--t3) 0.16 70)", 16), icNotify: this.ampIcon("bell", "oklch(var(--t3) 0.16 215)", 16),
+      icBell: this.ampIcon("bell-ring", "currentColor", 15), icRss: this.ampIcon("rss", "currentColor", 15), icNews: this.ampIcon("newspaper", "oklch(var(--t3) 0.16 70)", 15),
+      pdVision: pd.vision || "", pdMission: pd.mission || "", pdChecked: pd.checked ? this.ampDate(pd.checked) : "",
+      pdStrategy: pd.strategy.map((p) => ({ pillar: p.pillar, what: p.what })),
+      pdWhat: (pd.spec || {}).what || "", pdWho: (pd.spec || {}).who || "",
+      pdIn: ((pd.spec || {}).in || []).map((t) => ({ t })), pdOut: ((pd.spec || {}).out || []).map((t) => ({ t })), pdCons: ((pd.spec || {}).constraints || []).map((t) => ({ t })),
+      pdSchedule: pd.schedule.map((r) => ({ what: r.what, when: r.when, how: r.how })),
+      pdLanes: pd.roadmap.map((l) => ({ lane: l.lane, items: l.items.map((it) => ({ t: it.t, reqs: it.reqs.map((r) => ({ r, go: () => this.setState({ pdFm: "All", pdFs: "All", pdAt: r }) })) })) })),
+      pdFm: fm, pdFs: fs, pdShown: String(rows.length), pdTotal: String(pd.backlog.length),
+      setPdFm: (e) => this.setState({ pdFm: e.target.value }), setPdFs: (e) => this.setState({ pdFs: e.target.value }),
+      pdCounts: ["Done", "In progress", "Planned", "Waiting on owner"].map((k) => ({ k, n: String(pd.backlog.filter((b) => b.status === k).length), style: pill(SH[k]) })),
+      pdRows: rows.map((b) => ({ id: b.id, title: b.title, from: b.from, moscow: b.moscow, status: b.status, mStyle: pill(MH[b.moscow] || 175), sStyle: pill(SH[b.status] || 175),
+        at: s.pdAt === b.id ? "outline: 2px solid oklch(var(--t2) 0.18 70); outline-offset: 2px;" : "",
+        screens: b.screens.map((id) => ({ label: L[id] || id, go: () => this.setState({ screen: id }) })), checks: b.checks.map((c) => ({ c, what: W[c] || c })) })),
+      pdGit: pd.github.map((g, k) => ({ n: String(k + 1), step: g.step, what: g.what, where: g.where })),
+      pdRepo: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify", pdIssues: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/issues", pdPulls: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/pulls", pdActions: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/actions", pdDoc: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/blob/main/docs/product.md",
+      pdFollow: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/issues?q=is%3Aissue+is%3Aopen+label%3Afollow-up", pdGlossDoc: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/blob/main/docs/glossary.md",
+      pdRelease: ch.current || "", pdWords: gl.filter((t) => t.added === ch.current).map((t) => ({ term: t.term, def: t.def, also: t.also, go: () => this.setState({ screen: "graph", node: t.graph === false ? s.node : t.id }) })),
+      pdWordsN: String(gl.filter((t) => t.added === ch.current).length), glTotal: String(gl.length),
+      alShow: shown.length > 0 && !s.splash, alerts: shown.map((a) => ({ id: a.id, text: a.text, act: a.act, go: a.go, tag: lv[a.level][1],
+        box: "display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;border-radius:14px;padding:8px 12px;font-size:13.5px;line-height:1.45;border:1px solid oklch(var(--t2) 0.16 " + lv[a.level][0] + " / 0.6);background:oklch(var(--t1) 0.16 " + lv[a.level][0] + " / 0.12);",
+        tagStyle: pill(lv[a.level][0]), dismiss: () => this.ampNoteSave({ dismissed: n.dismissed.concat([a.id]) }), dLabel: "Dismiss: " + a.text })),
+      ntAll: alerts.map((a) => ({ text: a.text, tag: lv[a.level][1], tagStyle: pill(lv[a.level][0]), hidden: n.dismissed.indexOf(a.id) >= 0 || (a.pref !== "safety" && n.off.indexOf(a.pref) >= 0),
+        restore: () => this.ampNoteSave({ dismissed: n.dismissed.filter((x) => x !== a.id), off: n.off.filter((x) => x !== a.pref) }) })),
+      ntNone: alerts.length === 0, ntDismissedN: String(n.dismissed.length),
+      ntPrefs: prefs.map(([k, lbl, why]) => ({ k, lbl, why, on: n.off.indexOf(k) < 0, toggle: (e) => this.ampNoteSave({ off: e.target.checked ? n.off.filter((x) => x !== k) : n.off.concat([k]) }) })),
+      ntReset: () => this.ampNoteSave({ off: [], dismissed: [], paused: false }),
+      ntFeed: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify".replace("https://github.com/", "https://raw.githubusercontent.com/") + "/main/site/feed.xml", ntWatch: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/subscription", ntReleases: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify" + "/releases.atom",
+      shBtn: () => this.ampShareNow(), shOpen: !!s.shareOpen, shExpanded: s.shareOpen ? "true" : "false", shMsg: s.shareMsg || "",
+      shClose: () => this.setState({ shareOpen: false }),
+      shLinks: this.ampShare("Amplify: " + (this.ampScreenName(s.screen) || "youth voice"), (location.href || "").split("#")[0] + "#" + (s.screen || "home")),
+      shCopy: () => { this.copy((location.href || "").split("#")[0] + "#" + (s.screen || "home"), "shlink"); this.setState({ shareMsg: "Link copied. Until the owner shares the portal publicly, others may not be able to open it." }); },
+      shCopyLabel: s.copied === "shlink" ? "Link copied" : "Copy link to this screen", shIcon: this.ampIcon("external-link", "currentColor", 14),
+      tkShow: tkItems.length > 0 && n.off.indexOf("ticker") < 0 && !s.splash && s.screen !== "latest", tkItems,
+      tkPaused: n.paused ? "true" : "false", tkBtn: n.paused ? "Play the news" : "Pause the news", tkIcon: this.ampIcon(n.paused ? "play" : "pause", "currentColor", 14),
+      tkToggle: () => this.ampNoteSave({ paused: !n.paused }), tkAll: () => this.setState({ screen: "latest" }),
+      tkDur: "animation-duration: " + Math.max(24, tkItems.length * 7) + "s;"
     };
   }
 
@@ -4208,7 +4439,37 @@ class Component extends DCLogic {
     marginal: { name: "Marginal seats", shape: "bar", hue: 70, url: "https://members.parliament.uk/FindYourMP", urlLabel: "Find your MP", def: "Constituencies won by a small margin. Research finds e-petitions have essentially no effect on frontbenchers and much more on newly elected MPs and those in marginal seats.", also: "Swing seats; battleground constituencies", edges: ["commons", "thresh", "local"] },
     local: { name: "Local government", shape: "dot", hue: 70, url: "https://nya.org.uk/support-for-local-authorities/statutory-duty/", urlLabel: "Statutory duty guidance", def: "Local authorities hold the statutory duty for youth provision and run UKYP elections. Also where a bus fare cap, a youth centre or a detached worker is decided.", also: "Councils; local authorities; combined authorities", edges: ["devo", "nya", "marginal"] },
     nya: { name: "National Youth Agency", shape: "dia", hue: 175, url: "https://nya.org.uk/", urlLabel: "National Youth Agency", def: "The Professional Statutory Regulatory Body for youth work in England. Sets the National Occupational Standards and the National Youth Work Curriculum, and runs the UK Youth Parliament under a DCMS grant.", also: "NYA; the youth work regulator", edges: ["ukyp", "ysc", "corner4", "local"] },
-    corner4: { name: "Four cornerstones", shape: "dia", hue: 175, url: "https://nya.org.uk/national-youth-work-curriculum/", urlLabel: "National Youth Work Curriculum", def: "Participation, Equality, Education and Empowerment \u2014 the framework of the National Youth Work Curriculum, and the frame this whole portal is organised around.", also: "The curriculum cornerstones; youth work principles", edges: ["nya", "polit", "ukyp"] }
+    corner4: { name: "Four cornerstones", shape: "dia", hue: 175, url: "https://nya.org.uk/national-youth-work-curriculum/", urlLabel: "National Youth Work Curriculum", def: "Participation, Equality, Education and Empowerment \u2014 the framework of the National Youth Work Curriculum, and the frame this whole portal is organised around.", also: "The curriculum cornerstones; youth work principles", edges: ["nya", "polit", "ukyp"] },  // the design's last entry has no trailing comma
+    myp: { name: "MYP", shape: "dot", hue: 175, url: "https://nya.org.uk/ukyp/", urlLabel: "UK Youth Parliament", def: "Member of Youth Parliament: a young person aged 11 to 18, elected to represent their area in the UK Youth Parliament.", also: "Member of Youth Parliament; youth MP", edges: ["ukyp"] },
+    makeyourmark: { name: "Make Your Mark", shape: "dot", hue: 175, url: "https://nya.org.uk/ukyp/", urlLabel: "UK Youth Parliament", def: "The UK's largest youth ballot, which chooses the issues the UK Youth Parliament debates.", also: "the youth ballot; MYM", edges: ["ukyp", "manifesto"] },
+    safeguarding: { name: "Safeguarding", shape: "dia", hue: 25, url: "https://nya.org.uk/safeguarding-hub/", urlLabel: "NYA safeguarding hub", def: "Protecting children and young people from harm, and acting when you are worried about someone.", also: "child protection; keeping young people safe", edges: ["nya", "dbs", "osa"] },
+    dbs: { name: "Background check", shape: "bar", hue: 25, url: "https://www.gov.uk/government/organisations/disclosure-and-barring-service", urlLabel: "Disclosure and Barring Service", def: "A criminal record check for adults working with young people: DBS in England and Wales, PVG in Scotland and AccessNI in Northern Ireland.", also: "DBS check; PVG scheme; AccessNI; vetting", edges: ["safeguarding"] },
+    osa: { name: "Online Safety Act", shape: "sq", hue: 25, url: "https://www.gov.uk/government/collections/online-safety-act", urlLabel: "Online Safety Act collection", def: "The law requiring online services to protect children, including checking ages for some content. Further rules for under 16s on social media are due to apply from spring 2027.", also: "online safety rules; under-16 social media ban", edges: ["agecheck", "safeguarding", "ailiteracy"] },
+    agecheck: { name: "Age assurance", shape: "bar", hue: 25, url: "https://www.gov.uk/government/collections/online-safety-act", urlLabel: "Online Safety Act collection", def: "Ways online services check a user's age, required for some content under the Online Safety Act.", also: "age verification; age checks; age estimation", edges: ["osa"] },
+    provenance: { name: "Provenance", shape: "ring", hue: 145, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "Where a fact came from. On Amplify, V means verified against the source, S means found by search, and K means a lead still to confirm.", also: "source label; V, S and K", edges: ["moscow", "ci"] },
+    moscow: { name: "MoSCoW", shape: "bar", hue: 70, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "A way to prioritise: Must have, Should have, Could have, Won't have this time.", also: "prioritisation; must, should, could, won't", edges: ["backlog", "roadmap"] },
+    opensource: { name: "Open source", shape: "dot", hue: 300, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify", urlLabel: "Amplify on GitHub", def: "Code anyone can read, learn from and suggest changes to. Amplify's code is open on GitHub.", also: "open code; public repository", edges: ["issue", "pullrequest"] },
+    issue: { name: "Issue", shape: "sq", hue: 300, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues", urlLabel: "Amplify's issues", def: "A note on GitHub describing an idea, a bug or a question. Anyone 13 or over with an account can open one.", also: "GitHub issue; ticket", edges: ["opensource", "backlog", "pullrequest"] },
+    pullrequest: { name: "Pull request", shape: "sq", hue: 300, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "A proposed change to the code or content. A person reviews it, and automated checks must pass, before it is accepted.", also: "PR; merge request; proposed change", edges: ["ci", "issue"] },
+    ci: { name: "Continuous integration", shape: "ring", hue: 300, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "Automated checks that run on every proposed change, so mistakes are caught before they reach the portal.", also: "CI; automated checks; GitHub Actions", edges: ["devops", "pullrequest"] },
+    devops: { name: "DevOps", shape: "tri", hue: 300, url: "https://ddat-capability-framework.service.gov.uk/", urlLabel: "Government digital and data roles", def: "Building, testing, releasing and running software together, with automation, so changes are small, safe and frequent.", also: "development and operations; delivery pipeline", edges: ["ci", "ddat"] },
+    wcag: { name: "WCAG 2.2 AA", shape: "ring", hue: 145, url: "https://www.w3.org/TR/WCAG22/", urlLabel: "WCAG 2.2", def: "The international accessibility standard Amplify aims to meet, so disabled people can use it.", also: "Web Content Accessibility Guidelines; accessibility standard", edges: ["bsl", "ucd"] },
+    bsl: { name: "BSL and ISL", shape: "dot", hue: 145, url: "https://www.legislation.gov.uk/ukpga/2022/34", urlLabel: "British Sign Language Act 2022", def: "British Sign Language and Irish Sign Language, both recognised in law in the UK.", also: "sign language; British Sign Language; Irish Sign Language", edges: ["devo", "wcag"] },
+    ukpw: { name: "UK Parliament Week", shape: "dot", hue: 70, url: "https://learning.parliament.uk/en/uk-parliament-week/", urlLabel: "UK Parliament Week", def: "An annual week of events about democracy for young people across the UK. Amplify launches during it, 23 to 29 November 2026.", also: "UKPW; Parliament Week", edges: ["commons", "ukyp"] },
+    rc: { name: "Release candidate", shape: "bar", hue: 70, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "A version that is ready to test but not yet launched.", also: "RC; pre-release; beta", edges: ["roadmap", "ci"] },
+    ucd: { name: "User-centred design", shape: "dia", hue: 175, url: "https://www.gov.uk/service-manual/user-research", urlLabel: "GOV.UK Service Manual: user research", def: "Designing around the real needs of the people who use a service, found through research and tested with them.", also: "UCD; human-centred design; service design", edges: ["persona", "journey", "research"] },
+    persona: { name: "Persona", shape: "dot", hue: 175, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "A short portrait of a kind of user, with their goals, needs and pain points. Amplify's are proto-personas until research tests them.", also: "proto-persona; user profile", edges: ["ucd", "userstory"] },
+    userstory: { name: "User story", shape: "sq", hue: 175, url: "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories", urlLabel: "Writing user stories", def: "A need written as 'As a ..., I want to ..., so that ...', with what must be true for it to be done.", also: "story; acceptance criteria", edges: ["persona", "backlog", "ci"] },
+    journey: { name: "User journey", shape: "bar", hue: 175, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "The steps someone takes to reach a goal, with what they do and feel at each stage.", also: "journey map; customer journey", edges: ["ucd", "blueprint"] },
+    blueprint: { name: "Service blueprint", shape: "sq", hue: 175, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "A map of a service from what users do, through what the page shows and what happens behind it, to the processes and checks that keep it working.", also: "blueprint; front stage and back stage", edges: ["journey", "ci"] },
+    research: { name: "User research", shape: "ring", hue: 175, url: "https://www.gov.uk/service-manual/user-research", urlLabel: "GOV.UK Service Manual", def: "Learning from the people who use a service, through interviews, testing and co-design, to decide what to build.", also: "usability testing; co-design; research panel", edges: ["ucd", "sus"] },
+    sus: { name: "System Usability Scale", shape: "bar", hue: 175, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "Ten standard questions that give a usability score from 0 to 100, compared between research rounds. By John Brooke, 1986.", also: "SUS; usability score", edges: ["research"] },
+    ea: { name: "Enterprise architecture", shape: "dia", hue: 200, url: "https://ddat-capability-framework.service.gov.uk/", urlLabel: "Architecture roles in government", def: "Designing how an organisation's business, data, applications, technology and security fit together, layer by layer, in line with its strategy.", also: "EA; business, data, application, technology and security architecture", edges: ["ddat"] },
+    ddat: { name: "Government Digital and Data profession", shape: "dot", hue: 200, url: "https://ddat-capability-framework.service.gov.uk/", urlLabel: "Capability framework", def: "The profession for digital, data and technology roles across government, described in its capability framework, from trainee levels up.", also: "DDaT; digital, data and technology profession; GDD", edges: ["ea", "devops", "apprenticeship"] },
+    apprenticeship: { name: "Apprenticeship", shape: "tri", hue: 70, url: "https://www.findapprenticeship.service.gov.uk/", urlLabel: "Find an apprenticeship", def: "A paid job with training towards a recognised qualification. Government and the public sector offer them in every nation, many with no degree needed.", also: "Modern Apprenticeship; degree apprenticeship; TechTrack", edges: ["ddat", "local"] },
+    ailiteracy: { name: "AI literacy", shape: "ring", hue: 200, url: "https://experience-ai.org/", urlLabel: "Experience AI", def: "Understanding how artificial intelligence works, where it goes wrong (such as bias and privacy) and how to use it responsibly.", also: "artificial intelligence; machine learning; responsible AI", edges: ["osa", "ddat"] },
+    backlog: { name: "Requirements backlog", shape: "sq", hue: 70, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "The ordered list of everything asked for, each with a priority, a status and links to where it is built and how it is checked.", also: "backlog; requirements; product backlog", edges: ["roadmap", "moscow", "userstory", "issue"] },
+    roadmap: { name: "Roadmap", shape: "bar", hue: 70, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "What is being worked on now, next and later, and why, updated as priorities change.", also: "now, next, later; product roadmap", edges: ["backlog", "rc"] },
   };
 
   ALLIES = [
@@ -4253,6 +4514,35 @@ class Component extends DCLogic {
         ["Non-institutional intermediary", "A charity, union or influencer outside the originating body. Research says these decide whether a petition surges.", 70, "https://nya.org.uk/policy-research/policy-influencing/"],
         ["Non-partisan", "Not aligned to a party. Required of MYPs by the UKYP Rulebook, and what makes teaching resources usable in every school.", 175, "https://nya.org.uk/wp-content/uploads/2024/06/NEW-UK-Youth-Parliament-Rulebook-2023-2025-June-24-compressed.pdf"],
         ["Political literacy", "Knowing how power works and how to use it. The subject petition 754954 asked to have funded properly.", 300, "https://petition.parliament.uk/petitions/754954"]
+        ,
+        ["Safeguarding", "Protecting children and young people from harm, and acting when you are worried about someone.", 25, "https://nya.org.uk/safeguarding-hub/"],
+        ["Background check", "A criminal record check for adults working with young people: DBS in England and Wales, PVG in Scotland and AccessNI in Northern Ireland.", 25, "https://www.gov.uk/government/organisations/disclosure-and-barring-service"],
+        ["Online Safety Act", "The law requiring online services to protect children, including checking ages for some content. Further rules for under 16s on social media are due to apply from spring 2027.", 25, "https://www.gov.uk/government/collections/online-safety-act"],
+        ["Age assurance", "Ways online services check a user's age, required for some content under the Online Safety Act.", 25, "https://www.gov.uk/government/collections/online-safety-act"],
+        ["Provenance", "Where a fact came from. On Amplify, V means verified against the source, S means found by search, and K means a lead still to confirm.", 145, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["MoSCoW", "A way to prioritise: Must have, Should have, Could have, Won't have this time.", 70, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["Open source", "Code anyone can read, learn from and suggest changes to. Amplify's code is open on GitHub.", 300, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"],
+        ["Issue", "A note on GitHub describing an idea, a bug or a question. Anyone 13 or over with an account can open one.", 300, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues"],
+        ["Pull request", "A proposed change to the code or content. A person reviews it, and automated checks must pass, before it is accepted.", 300, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["Continuous integration", "Automated checks that run on every proposed change, so mistakes are caught before they reach the portal.", 300, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["DevOps", "Building, testing, releasing and running software together, with automation, so changes are small, safe and frequent.", 300, "https://ddat-capability-framework.service.gov.uk/"],
+        ["WCAG 2.2 AA", "The international accessibility standard Amplify aims to meet, so disabled people can use it.", 145, "https://www.w3.org/TR/WCAG22/"],
+        ["BSL and ISL", "British Sign Language and Irish Sign Language, both recognised in law in the UK.", 145, "https://www.legislation.gov.uk/ukpga/2022/34"],
+        ["UK Parliament Week", "An annual week of events about democracy for young people across the UK. Amplify launches during it, 23 to 29 November 2026.", 70, "https://learning.parliament.uk/en/uk-parliament-week/"],
+        ["Release candidate", "A version that is ready to test but not yet launched.", 70, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["User-centred design", "Designing around the real needs of the people who use a service, found through research and tested with them.", 175, "https://www.gov.uk/service-manual/user-research"],
+        ["Persona", "A short portrait of a kind of user, with their goals, needs and pain points. Amplify's are proto-personas until research tests them.", 175, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["User story", "A need written as 'As a ..., I want to ..., so that ...', with what must be true for it to be done.", 175, "https://www.gov.uk/service-manual/agile-delivery/writing-user-stories"],
+        ["User journey", "The steps someone takes to reach a goal, with what they do and feel at each stage.", 175, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["Service blueprint", "A map of a service from what users do, through what the page shows and what happens behind it, to the processes and checks that keep it working.", 175, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["User research", "Learning from the people who use a service, through interviews, testing and co-design, to decide what to build.", 175, "https://www.gov.uk/service-manual/user-research"],
+        ["System Usability Scale", "Ten standard questions that give a usability score from 0 to 100, compared between research rounds. By John Brooke, 1986.", 175, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["Enterprise architecture", "Designing how an organisation's business, data, applications, technology and security fit together, layer by layer, in line with its strategy.", 200, "https://ddat-capability-framework.service.gov.uk/"],
+        ["Government Digital and Data profession", "The profession for digital, data and technology roles across government, described in its capability framework, from trainee levels up.", 200, "https://ddat-capability-framework.service.gov.uk/"],
+        ["Apprenticeship", "A paid job with training towards a recognised qualification. Government and the public sector offer them in every nation, many with no degree needed.", 70, "https://www.findapprenticeship.service.gov.uk/"],
+        ["AI literacy", "Understanding how artificial intelligence works, where it goes wrong (such as bias and privacy) and how to use it responsibly.", 200, "https://experience-ai.org/"],
+        ["Requirements backlog", "The ordered list of everything asked for, each with a priority, a status and links to where it is built and how it is checked.", 70, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
+        ["Roadmap", "What is being worked on now, next and later, and why, updated as priorities change.", 70, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
       ];
 
   STANDARDS = [
@@ -4391,7 +4681,9 @@ class Component extends DCLogic {
       ["changes", "Release log", "bar", 145, 3, "NEW", "release log changelog changes new updated version history what changed"],
       ["trust", "Safeguards & audiences", "dia", 25, 5, "NEW", "safeguards frameworks Children's code ICO Online Safety Act Ofcom parents carers guardians parental responsibility audiences DEI inclusion every voice UCD Lundy"],
       ["health", "Portal health", "ring", 145, 4, "NEW", "health self check freshness staleness provenance checks defects open register status"],
-      ["golive", "Go-live readiness", "tri", 145, 4, "NEW", "go live readiness launch checklist gates tests routines release blockers moscow"]
+      ["golive", "Go-live readiness", "tri", 145, 4, "NEW", "go live readiness launch checklist gates tests routines release blockers moscow"],
+      ["product", "Product & roadmap", "sq", 70, 25, "NEW", "product vision strategy specification roadmap backlog requirements update schedule traceability github issues milestones"],
+      ["notify", "Alerts & notifications", "dot", 215, 5, "NEW", "alerts notifications notify updates feed rss atom subscribe watch news ticker preferences dismiss"]
     ]],
     ["Help & get involved", [
       ["about", "About Amplify", "dot", 175, 5, "NEW", "about who mission purpose aims goals objectives outcomes rationale why owner GitHub profile"],
@@ -4903,7 +5195,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
         br: "oklch(var(--t1) 0.16 " + hue + " / 0.3)", bg: "oklch(var(--t1) 0.16 " + hue + " / 0.08)",
         dot: "oklch(var(--t2) 0.19 " + hue + ")", fg: "oklch(var(--t3) 0.19 " + hue + ")"
       })),
-      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), ...this.ampVals6(s), ...this.ampVals7(s), ...this.ampVals8(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
+      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), ...this.ampVals6(s), ...this.ampVals7(s), ...this.ampVals8(s), ...this.ampVals9(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
       issueTabs: Object.keys(this.ISSUES).map((k) => {
         const it = this.ISSUES[k];
         return {

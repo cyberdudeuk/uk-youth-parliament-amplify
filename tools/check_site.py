@@ -31,6 +31,10 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       always credited as Amplify's own words, not a quotation (D15)
   S15 go-live readiness is honest: every passed or partial gate names evidence that is a real check (or a named
       workflow), every gate not passed names who must act, and every open item it cites exists in the registers
+  S16 every new word is in the glossary, thesaurus, knowledge graph and tooltips at once: each glossary term is in a
+      release, written into the built graph and list, links only to real nodes, and every tooltip term has an entry
+  S17 the product backlog and roadmap trace to real screens and real checks, and the alerts strip, Share button and a
+      pausable, reduced-motion-safe news ticker are on the page
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -224,6 +228,82 @@ def s15(texts):
     return bad
 
 
+def s16(texts):
+    """S16 every new word is in the glossary, the thesaurus, the graph and the tooltips at once."""
+    try:
+        gl, tt, ch = (json.loads(texts.get(k, "")) for k in ("data/glossary.json", "data/tooltips.json", "data/changelog.json"))
+    except ValueError:
+        return ["S16 glossary, tooltips or changelog is missing or not JSON"]
+    page, bad = texts.get("index.html", ""), []
+    terms = {t["id"]: t for t in gl.get("terms", [])}
+    if len(terms) != len(gl.get("terms", [])): bad.append("S16 two glossary terms share an id")
+    m = re.search(r"\n  GRAPH = \{(.*?)\n  \};", page, re.S)
+    nodes = set(re.findall(r"^    (\w+): \{ name:", m.group(1), re.M)) if m else set()
+    versions = {r["version"] for r in ch.get("releases", [])}
+    for t in terms.values():
+        for k in ("term", "def", "also", "added"):
+            if not str(t.get(k, "")).strip(): bad.append(f"S16 glossary term {t.get('id')} has no {k}")
+        if t.get("added") not in versions: bad.append(f"S16 glossary term {t['id']} says it was added in {t.get('added')}, which is not a release")
+        if t.get("graph") is not False and t["id"] not in nodes: bad.append(f"S16 glossary term {t['id']} is not in the knowledge graph")
+        for e in t.get("edges", []):
+            if e not in nodes: bad.append(f"S16 glossary term {t['id']} links to {e}, which is not in the knowledge graph")
+        if t.get("list") is not False and json.dumps(t["term"]) + ", " + json.dumps(t["def"]) not in page: bad.append(f"S16 glossary term {t['id']} is not in the glossary list")
+    for k, e in tt.get("terms", {}).items():
+        if k not in terms: bad.append(f"S16 tooltip term {k} has no glossary entry: add it to data/glossary.json")
+        elif e.get("term") != terms[k]["term"]: bad.append(f"S16 tooltip term {k} is called {e.get('term')!r} but the glossary says {terms[k]['term']!r}")
+    for k in set(re.findall(r'data-tip="term:([\w-]+)"', page)):
+        if k not in terms: bad.append(f"S16 a term tooltip ({k}) has no glossary entry")
+    bad += parses(page)
+    return bad
+
+
+def parses(page):
+    """D20: the injected vocabulary must leave GRAPH and GLOSSARY valid JavaScript, or the whole page fails to start."""
+    import shutil, subprocess
+    g = re.search(r"\n  GRAPH = (\{.*?\n  \});", page, re.S); l = re.search(r"\n  GLOSSARY = (\[.*?\n      \]);", page, re.S)
+    if not g or not l: return ["S16 the page has no GRAPH or GLOSSARY to check"]
+    node = shutil.which("node")
+    if not node: print("note: S16 could not parse GRAPH and GLOSSARY: node is not installed"); return []
+    js = "const v=[" + g.group(1) + "," + l.group(1) + "];if(!v[0]||!v[1].length)process.exit(2);"
+    r = subprocess.run([node, "-e", js], capture_output=True, text=True)
+    return [] if r.returncode == 0 else ["S16 GRAPH or GLOSSARY is not valid JavaScript, so the portal would not start (D20): " + (r.stderr.strip().splitlines() or ["?"])[-1][:120]]
+
+
+SCREEN_ID = re.compile(r'^\s*\["([a-z0-9]+)", "[^"]+", "(?:dot|ring|sq|dia|bar|tri)", ', re.M)
+
+
+def s17(texts):
+    """S17 the backlog and roadmap trace to real screens and real checks; the strip and ticker are in place."""
+    try:
+        pd, man = (json.loads(texts.get(k, "")) for k in ("data/product.json", "build.json"))
+    except ValueError:
+        return ["S17 product.json or build.json is missing or not JSON"]
+    page, bad = texts.get("index.html", ""), []
+    screens = set(SCREEN_ID.findall(page))
+    checks = {c["id"] for c in man.get("checks", [])} | NAMED_EVIDENCE
+    ids = [b["id"] for b in pd.get("backlog", [])]
+    if len(set(ids)) != len(ids): bad.append("S17 two requirements share an id")
+    for b in pd.get("backlog", []):
+        if not re.fullmatch(r"REQ-\d{2,}", b["id"]): bad.append(f"S17 {b['id']} is not a REQ-nn id")
+        if b["moscow"] not in ("Must", "Should", "Could", "Won't"): bad.append(f"S17 {b['id']} has no MoSCoW priority")
+        if b["status"] not in ("Done", "In progress", "Planned", "Waiting on owner"): bad.append(f"S17 {b['id']} has an unknown status {b['status']!r}")
+        if not b.get("from"): bad.append(f"S17 {b['id']} does not say where it came from")
+        for x in b["screens"]:
+            if x not in screens: bad.append(f"S17 {b['id']} is delivered on {x}, which is not a screen")
+        for c in b["checks"]:
+            if c not in checks: bad.append(f"S17 {b['id']} is proved by {c}, which is not a check")
+        if b["status"] == "Done" and not b["checks"]: bad.append(f"S17 {b['id']} is Done with no check proving it")
+    for lane in pd.get("roadmap", []):
+        for it in lane["items"]:
+            for r in it["reqs"]:
+                if r not in ids: bad.append(f"S17 the roadmap ({lane['lane']}) cites {r}, which is not in the backlog")
+    for need, why in (('aria-label="News for this screen"', "the news ticker"), ('aria-pressed="{{ tkPaused }}"', "the ticker's pause button"),
+                      ("prefers-reduced-motion: reduce) { .amp-tk-track { animation: none; } .amp-tk-dup { display: none !important; }", "the ticker standing still under reduced motion, without its duplicate (D21)"),
+                      ('aria-label="Alerts for you"', "the alerts strip"), ('aria-controls="amp-share-menu"', "the Share button")):
+        if need not in page: bad.append(f"S17 the page has lost {why}")
+    return bad
+
+
 def s11(read):
     import make_docs
     bad = []
@@ -251,7 +331,7 @@ def texts_of(files):
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t)
 
 
 if __name__ == "__main__":
@@ -263,7 +343,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S15 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S17 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -316,4 +396,14 @@ if __name__ == "__main__":
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<script src = //cdn.example/x.js></script>'))))          # spaced, unquoted (D10)
     expect("S7", s7(texts_of(broken(idx, lambda s: s + '<IMG SRC="https://cdn.example/a.png">'))))                # upper case (D10)
     expect("S10", s10(texts_of(broken(idx, lambda s: s.replace("window.__resources", "window.__unused")))))
+    glj, pdj = "data/glossary.json", "data/product.json"
+    expect("S16", s16(texts_of(broken(glj, edit(lambda d: d["terms"].pop([t["id"] for t in d["terms"]].index("ci")))))))   # a tooltip term with no glossary entry
+    expect("S16", s16(texts_of(broken(glj, edit(lambda d: d["terms"][4]["edges"].append("nowhere"))))))                   # an edge to no node
+    expect("S16", s16(texts_of(broken(glj, edit(lambda d: d["terms"][4].update(added="9.9.9"))))))                         # added in no release
+    expect("S16", s16(texts_of(broken(idx, lambda s: s.replace("\n    safeguarding: { name:", "\n    safeguardingX: { name:")))))   # injection lost
+    expect("S16", s16(texts_of(broken(idx, lambda s: s.replace(",  // the design's last entry has no trailing comma", "")))))  # the comma lost (D20)
+    expect("S17", s17(texts_of(broken(pdj, edit(lambda d: d["backlog"][0].update(screens=["nowhere"]))))))                # traced to no screen
+    expect("S17", s17(texts_of(broken(pdj, edit(lambda d: d["backlog"][0].update(checks=["Z9"]))))))                      # proved by no check
+    expect("S17", s17(texts_of(broken(pdj, edit(lambda d: d["roadmap"][0]["items"][0]["reqs"].append("REQ-99"))))))      # roadmap cites a missing requirement
+    expect("S17", s17(texts_of(broken(idx, lambda s: s.replace('aria-pressed="{{ tkPaused }}"', "")))))                   # ticker cannot be paused
     sys.exit(1 if fails else 0)

@@ -133,5 +133,89 @@
    "source": "Department for Communities (Northern Ireland)",
    "provenance": "S"
   }
- ]
+ ],
+ "ticker": {
+  "why": "Which news categories the ticker leads with on each screen; '*' is every other screen.",
+  "screens": {
+   "*": [],
+   "care": [
+    "safety"
+   ],
+   "trust": [
+    "safety"
+   ],
+   "launch": [
+    "voice",
+    "law"
+   ],
+   "campaign": [
+    "voice",
+    "law"
+   ],
+   "ambassadors": [
+    "voice"
+   ],
+   "communities": [
+    "voice"
+   ],
+   "home": [
+    "voice",
+    "law",
+    "safety"
+   ],
+   "hub": [
+    "voice",
+    "law"
+   ],
+   "stem": [
+    "data",
+    "strategy",
+    "pay"
+   ],
+   "learn": [
+    "voice",
+    "data"
+   ],
+   "policy": [
+    "strategy",
+    "law"
+   ],
+   "track": [
+    "law",
+    "strategy"
+   ],
+   "radar": [
+    "voice",
+    "law"
+   ],
+   "map": [
+    "law",
+    "voice"
+   ],
+   "momentum": [
+    "law",
+    "voice"
+   ],
+   "research": [
+    "data",
+    "strategy"
+   ],
+   "service": [
+    "data",
+    "strategy"
+   ],
+   "product": [
+    "strategy"
+   ],
+   "golive": [
+    "strategy"
+   ],
+   "health": [
+    "data"
+   ],
+   "involve": [
+    "voice"
+   ]
+  }
+ }
 }

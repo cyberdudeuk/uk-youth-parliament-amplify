@@ -79,7 +79,21 @@ LOGIC4 = r'''
   }
   ampArt(name, src, alt, file) {
     this._artBack = document.activeElement;
-    this.setState({ art: { name, src, alt, file } }, () => { const c = document.getElementById("amp-art-close"); if (c) c.focus(); });
+    this.setState({ art: { name, src, alt, file }, artMsg: "" }, () => { const c = document.getElementById("amp-art-close"); if (c) c.focus(); });
+  }
+  async ampArtSave() {
+    const a = this.state.art || {}, name = (a.file || "artwork.svg").split("/").pop();
+    const say = (t) => this.setState({ artMsg: t });
+    let dl = null;
+    try { dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null; } catch (e) { dl = null; }
+    if (!dl) { say("Saving is not available in this view: use Copy on GitHub, or right-click the picture and save it."); return; }
+    try {
+      const r = await fetch(new URL(a.src, document.baseURI).href); const text = await r.text();
+      await dl.save({ filename: name, data: text }); say("Saved " + name + ".");
+    } catch (e) {
+      const c = (e && e.code) || "";
+      say(c === "declined" ? "Not saved." : c === "rate_limited" ? "A save is already waiting for your answer." : "Saving did not work here: use Copy on GitHub instead.");
+    }
   }
   ampArtClose() { this.setState({ art: null }, () => { if (this._artBack && this._artBack.focus) this._artBack.focus(); }); }
   ampArtPrint() {
@@ -107,7 +121,7 @@ LOGIC4 = r'''
       exShow: !!scr && !s.splash, exTip: scr ? scr.tip : "", exFor: extra || pe.lens || "", exHasFor: !!(extra || (p !== "everyone" && pe.lens)), exWho: pe.label || "Everyone",
       artOpen: !!s.art, artName: (s.art || {}).name || "", artSrc: (s.art || {}).src || "", artAlt: (s.art || {}).alt || "",
       artFile: ((s.art || {}).file || "").split("/").pop(), artGit: repo + "/blob/main/site/" + ((s.art || {}).file || ""),
-      artClose: () => this.ampArtClose(), artPrint: () => this.ampArtPrint(),
+      artClose: () => this.ampArtClose(), artPrint: () => this.ampArtPrint(), artSave: () => this.ampArtSave(), artMsg: s.artMsg || "",
       persona: p, setPersona: (e) => { const v = e.target.value; try { window.localStorage.setItem("amp-persona", v); } catch (err) { /* storage unavailable: keep it in memory */ } this.setState({ persona: v }); },
       ivIntro: inv.intro || "", ivRepo: repo, ivContrib: repo + "/blob/main/CONTRIBUTING.md", ivGood: repo + "/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22",
       ivWays: inv.ways.map((w) => ({ time: w.time, icon: this.ampIcon(w.icon, "oklch(var(--t3) 0.16 175)", 18), items: w.items.map((i) => ({ t: i.t, how: i.how, go: go(i.screen), where: label(i.screen) })) })),
@@ -197,12 +211,13 @@ SCREENS4 = f'''
           <div class="amp-lightbox-controls" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #fff;">
             <span style="flex: 1 1 200px; min-width: 0; font-size: 15px; font-weight: 800;">{{{{ artName }}}}</span>
             <button type="button" onClick="{{{{ artPrint }}}}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 0; background: oklch(0.85 0.15 145); color: #06100f; font-size: 13.5px; font-weight: 800; cursor: pointer;">Print</button>
-            <a href="{{{{ artSrc }}}}" download="{{{{ artFile }}}}" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; color: #fff; font-size: 13.5px; font-weight: 800;">Save</a>
+            <button type="button" onClick="{{{{ artSave }}}}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; background: transparent; color: #fff; font-size: 13.5px; font-weight: 800; cursor: pointer;">Save</button>
             <a href="{{{{ artGit }}}}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid rgb(255 255 255 / 0.5); color: #fff; font-size: 13.5px; font-weight: 700;">Copy on GitHub<span class="amp-sr"> (opens in a new tab)</span></a>
             <button type="button" id="amp-art-close" onClick="{{{{ artClose }}}}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; background: transparent; color: #fff; font-size: 13.5px; font-weight: 800; cursor: pointer;">Close</button>
           </div>
           <img class="amp-lightbox-art" src="{{{{ artSrc }}}}" alt="{{{{ artAlt }}}}" style="flex: 1 1 auto; min-height: 0; width: 100%; max-height: calc(100vh - 120px); object-fit: contain; background: #fff; border-radius: 12px;" />
-          <p class="amp-lightbox-controls" style="margin: 0; font-size: 12.5px; color: rgb(255 255 255 / 0.85);">If Print or Save does nothing, the page you are viewing this in is blocking it: use Copy on GitHub, or your browser's own print menu while this view is open. Escape closes this view.</p>
+          <p class="amp-lightbox-controls" role="status" aria-live="polite" style="margin: 0; font-size: 13px; font-weight: 700; color: #fff;">{{{{ artMsg }}}}</p>
+          <p class="amp-lightbox-controls" style="margin: 0; font-size: 12.5px; color: rgb(255 255 255 / 0.85);">Save asks you to confirm the file first. If Print does nothing, the page you are viewing this in is blocking it: save the file and print it from your device, or use Copy on GitHub. Escape closes this view.</p>
         </div>
         </sc-if>
         <sc-if value="{{{{ sInvolve }}}}" hint-placeholder-val="{{{{ false }}}}">

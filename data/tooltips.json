@@ -238,6 +238,21 @@
    "for": {
     "ally": "Check the gates and the open items before you rely on or share the portal."
    }
+  },
+  "product": {
+   "tip": "Where Amplify is going and why, what it will and won't do, when it is updated, and every requirement traced to the screens and checks behind it.",
+   "for": {
+    "young16": "See what is planned next, and suggest something through Have your say.",
+    "ally": "Use the backlog and roadmap to see what you can rely on today and what is still planned.",
+    "teacher": "The update schedule tells you how fresh the content is before you use it in class."
+   }
+  },
+  "notify": {
+   "tip": "Choose which alerts appear, bring back ones you dismissed, and follow updates by feed or GitHub. Nothing leaves your browser.",
+   "for": {
+    "parent": "No email or account is needed to follow updates, and nothing about your child is collected.",
+    "young11": "You can turn off the news strip and the alerts here. Safety notices still show."
+   }
   }
  },
  "terms": {
@@ -322,6 +337,7 @@
   "access": "Access and language settings: text size, contrast, motion, dyslexia-friendly type and languages.",
   "persona": "Choose who you are to tailor the explainers. The choice stays on this device and is never sent anywhere.",
   "signal": "Signal: the petition's story in numbers, with every constituency as a dot.",
-  "manifesto": "Manifesto: one line about why political education matters, typed out, with the petition's figures."
+  "manifesto": "Manifesto: one line about why political education matters, typed out, with the petition's figures.",
+  "share": "Share this screen: uses your device's share menu if it has one, otherwise copy the link or share to Teams, Classroom or WhatsApp."
  }
 }

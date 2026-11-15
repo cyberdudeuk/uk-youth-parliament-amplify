@@ -14,6 +14,9 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
       an assumed raw-record shape, data.attributes.updated_at, before the file was seen: 9 November 2026)
       (the estate review's open action for this portal: "Date the petition snapshot on the page")
   R6  every relative src/href in the pages resolves to a tracked file (a page that loads a missing file is broken)
+  R7  people decide the irreversible: no GitHub workflow merges, pushes, force-pushes, deletes a branch, repository or
+      release, publishes a release or a site, or asks for write access to contents (vaccinated against a workflow
+      that runs gh pr merge)
 """
 import copy, hashlib, json, os, re, subprocess, sys, urllib.parse
 
@@ -73,8 +76,21 @@ def r6(texts, tracked):
             if q not in have: bad.append(f"R6 {f} loads {v}, which is not in the repository")
     return bad
 
+IRREVERSIBLE = [(r"\bgh\s+pr\s+merge\b", "merges a pull request"), (r"\bgit\s+push\b", "pushes"), (r"--force\b", "forces a change"),
+                (r"\bgh\s+(?:repo|release)\s+delete\b", "deletes a repository or release"), (r"\bgh\s+release\s+create\b", "publishes a release"),
+                (r"actions/deploy-pages|peaceiris/actions-gh-pages", "publishes a site"), (r"\bcontents\s*:\s*write\b", "asks to write to the repository"),
+                (r"\bgh\s+issue\s+delete\b", "deletes an issue"), (r"\bgh\s+api\s+.*-X\s*DELETE", "deletes through the API")]
+
+def r7(texts):
+    bad = []
+    for f, s in texts.items():
+        if not f.startswith(".github/workflows/"): continue
+        for pat, what in IRREVERSIBLE:
+            if re.search(pat, s, re.I): bad.append(f"R7 {f} {what}: only a person does that")
+    return bad
+
 def run(tracked, texts, src, read):
-    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked)
+    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -83,7 +99,7 @@ def read(path):
 texts = {f: (read(f) or b"").decode("utf-8", "replace") for f in tracked if f.endswith(TEXT)}
 
 bad = run(tracked, texts, SRC, read)
-print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R6 problems: {len(bad)}")
+print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R7 problems: {len(bad)}")
 if bad:
     print("\n".join(bad[:40])); sys.exit(1)
 
@@ -107,4 +123,6 @@ def strip(key): return lambda p: json.dumps({k: v for k, v in json.loads(read(p)
 expect("R5", r5(SRC, strip("fetched")))                                                        # summary with no date
 expect("R5", r5(SRC, strip("source")))                                                         # summary with no source
 expect("R6", r6({page: '<script src="missing-runtime.js"></script>'}, tracked))                # a page loads a missing file
+expect("R7", r7({".github/workflows/x.yml": "run: gh pr merge 5 --squash"}))                 # a workflow that merges
+expect("R7", r7({".github/workflows/x.yml": "permissions:\n  contents: write"}))              # one that may write
 sys.exit(1 if fails else 0)

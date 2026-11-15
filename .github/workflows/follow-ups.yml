@@ -1,0 +1,28 @@
+name: follow-ups
+# Self-reporting: every Monday (and on demand) gather everything that needs a follow-up action from data/ (gates not
+# passed, open items, requirements not done, sources and data files due a re-check, dates coming up) into one
+# "Follow-ups due" issue. It reads and reports; it never edits data, merges, pushes or publishes.
+on:
+  schedule:
+    - cron: "41 6 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  follow-ups:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 -I tools/follow_ups.py > follow-ups.md
+      - name: Report to the follow-ups issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh label create follow-up --color fbca04 --description "Weekly list of follow-up actions" 2>/dev/null || true
+          n=$(gh issue list --label follow-up --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then gh issue edit "$n" --body-file follow-ups.md; else gh issue create --title "Follow-ups due" --label follow-up --body-file follow-ups.md; fi

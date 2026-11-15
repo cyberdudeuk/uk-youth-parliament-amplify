@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">
+  <title>Amplify: what's new</title>
+  <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#feed</id>
+  <updated>2026-11-15T00:00:00Z</updated>
+  <link rel="alternate" href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify"/>
+  <author><name>Amplify (independent, unofficial)</name></author>
+  <subtitle>Youth voice news and Amplify releases. Generated from data/latest.json and data/changelog.json.</subtitle>
+  <entry>
+    <title>UK Parliament Week, 23 to 29 November 2026</title>
+    <link href="https://learning.parliament.uk/en/uk-parliament-week/"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-11-23-voice</id>
+    <updated>2026-11-23T00:00:00Z</updated>
+    <summary>Parliament's annual week of democracy activity, with free kits for schools, youth groups and adults. Amplify plans to launch on its first day. Source: UK Parliament Education.</summary>
+  </entry>
+  <entry>
+    <title>Amplify 1.0.0: Launch at UK Parliament Week 2026</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0</id>
+    <updated>2026-11-23T00:00:00Z</updated>
+    <summary>Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.</summary>
+  </entry>
+  <entry>
+    <title>Amplify 1.0.0-rc.1: Sources, safeguards, self-checks and help</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.1</id>
+    <updated>2026-11-15T00:00:00Z</updated>
+    <summary>Everything below is new or changed since the first published build earlier today.</summary>
+  </entry>
+  <entry>
+    <title>Amplify 0.1.0: First published build</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-0.1.0</id>
+    <updated>2026-11-15T00:00:00Z</updated>
+    <summary>The Claude Design project turned into a page that can be sent: portal view first, unofficial-prototype notices, the footer and colophon, and fonts and scripts served by the portal itself.</summary>
+  </entry>
+  <entry>
+    <title>April 2027 minimum wage rates announced</title>
+    <link href="https://www.gov.uk/government/publications/minimum-wage-rates-for-2027"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-10-28-pay</id>
+    <updated>2026-10-28T00:00:00Z</updated>
+    <summary>The Government accepted the Low Pay Commission's advice in full: £13.21 for 21 and over and £11.27 for 18 to 20, from 1 April 2027. Until then the April 2026 rates apply. Source: GOV.UK, Low Pay Commission.</summary>
+  </entry>
+  <entry>
+    <title>HOPELINE247 has closed</title>
+    <link href="https://opusllp.com/restructuring-insolvency/case-papyrus-in-administration/"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-09-07-safety</id>
+    <updated>2026-09-07T00:00:00Z</updated>
+    <summary>PAPYRUS Prevention of Young Suicide entered administration on 7 September 2026 and its HOPELINE247 helpline is no longer operating. The administrators point people to Samaritans (116 123), Shout (text SHOUT to 85258), NHS 111, or 999 in an emergency. This portal has removed HOPELINE247 from its helplines. Source: Joint Administrators, Opus Restructuring.</summary>
+  </entry>
+  <entry>
+    <title>Votes at 16 Bill clears the Commons</title>
+    <link href="https://bills.parliament.uk/bills/4080"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-09-02-law</id>
+    <updated>2026-09-02T00:00:00Z</updated>
+    <summary>The Representation of the People Bill completed its Commons third reading on 2 September 2026 and moved to the House of Lords. It is not yet law. Source: Reported by MPs and bill trackers; confirm each stage on Parliament's bill page.</summary>
+  </entry>
+  <entry>
+    <title>981,000 young people not earning or learning</title>
+    <link href="https://youthfuturesfoundation.org/"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-08-27-data</id>
+    <updated>2026-08-27T00:00:00Z</updated>
+    <summary>Official estimates show around 981,000 16 to 24 year olds were NEET in April to June 2026, down from 1,012,000 in January to March, the highest since 2013. Source: Office for National Statistics, via Youth Futures Foundation.</summary>
+  </entry>
+  <entry>
+    <title>Sign Language Act (Northern Ireland) becomes law</title>
+    <link href="https://www.communities-ni.gov.uk/news/sign-language-act-receives-royal-assent"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-07-09-law</id>
+    <updated>2026-07-09T00:00:00Z</updated>
+    <summary>Northern Ireland's Sign Language Act received Royal Assent on 9 July 2026, recognising both British Sign Language and Irish Sign Language and placing duties on public bodies to make information and services accessible. Source: Department for Communities (Northern Ireland).</summary>
+  </entry>
+  <entry>
+    <title>Social media ban for under 16s announced</title>
+    <link href="https://www.gov.uk/"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-06-15-safety</id>
+    <updated>2026-06-15T00:00:00Z</updated>
+    <summary>The Government announced that major social media platforms will be barred from serving under 16s, with livestreaming banned for under 16s and stranger contact blocked by default for under 17s. Regulations are due before Christmas 2026, to apply from spring 2027. Campaigners under 16 should plan to work through MYPs, school councils and adult allies rather than personal accounts. Source: UK Government announcement, widely reported (Reuters, BBC).</summary>
+  </entry>
+  <entry>
+    <title>New minimum wage rates in force</title>
+    <link href="https://www.gov.uk/national-minimum-wage-rates"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-04-01-pay</id>
+    <updated>2026-04-01T00:00:00Z</updated>
+    <summary>£12.71 for 21 and over, £10.85 for 18 to 20, and £8 for under 18s and apprentices, from 1 April 2026. The 18 to 20 rate rose 8.5%. Source: GOV.UK.</summary>
+  </entry>
+  <entry>
+    <title>Youth Select Committee reports on PSHE</title>
+    <link href="https://nya.org.uk/?p=43843"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-03-25-voice</id>
+    <updated>2026-03-25T00:00:00Z</updated>
+    <summary>The Youth Select Committee called on the UK Government to end the postcode lottery in PSHE teaching. Source: National Youth Agency.</summary>
+  </entry>
+  <entry>
+    <title>Representation of the People Bill introduced</title>
+    <link href="https://www.gov.uk/government/publications/representation-of-the-people-bill-policy-summaries/votes-at-16"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-02-12-law</id>
+    <updated>2026-02-12T00:00:00Z</updated>
+    <summary>The Government introduced the Bill that would extend the vote to 16 and 17 year olds in all UK elections. Source: GOV.UK.</summary>
+  </entry>
+  <entry>
+    <title>National Youth Strategy published</title>
+    <link href="https://www.gov.uk/government/publications/youth-matters-your-national-youth-strategy"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2025-12-10-strategy</id>
+    <updated>2025-12-10T00:00:00Z</updated>
+    <summary>Youth Matters, a ten-year strategy for 10 to 21 year olds in England (up to 25 with SEND), backed by over £500 million and shaped by over 14,000 young people. Source: Department for Culture, Media and Sport.</summary>
+  </entry>
+  <entry>
+    <title>UK Youth Parliament sits in the Commons</title>
+    <link href="https://nya.org.uk/ukyp/"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2025-11-01-voice</id>
+    <updated>2025-11-01T00:00:00Z</updated>
+    <summary>Members of Youth Parliament debated the 2025 manifesto priorities in the House of Commons Chamber in November 2025, chaired by the Speaker. Source: Scottish Youth Parliament and local councils' reports.</summary>
+  </entry>
+  <entry>
+    <title>National Citizen Service closed</title>
+    <link href="https://www.gov.uk/government/organisations/national-citizen-service"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2025-07-11-strategy</id>
+    <updated>2025-07-11T00:00:00Z</updated>
+    <summary>NCS programme delivery ended on 31 March 2025 and the NCS Trust closed on 11 July 2025. Source: GOV.UK.</summary>
+  </entry>
+</feed>
