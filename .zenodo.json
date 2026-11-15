@@ -1,0 +1,26 @@
+{
+  "upload_type": "software",
+  "title": "UK Youth Parliament: Amplify portal",
+  "creators": [
+    {
+      "name": "Silva, Emanuel",
+      "orcid": "0009-0000-5880-7219"
+    }
+  ],
+  "description": "A youth voice portal: young people's issues, a local routes map, and a dated snapshot of a UK Parliament petition.",
+  "keywords": [
+    "youth-voice",
+    "uk-parliament",
+    "civic-tech",
+    "accessibility"
+  ],
+  "notes": "Prototype or personal project, not an official GOV.UK service or endorsed standard unless its README says otherwise. Status at release: Prototype.",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "license": "mit"
+}
