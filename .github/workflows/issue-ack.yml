@@ -1,0 +1,31 @@
+name: issue-ack
+# Acknowledge every new issue, label it for triage by its form, and flag anything that looks like personal data
+# (an email address or a UK phone number) so a maintainer can remove it. Young people use these forms: nothing is
+# edited or deleted automatically; a person does that. It never merges, pushes or publishes.
+on:
+  issues:
+    types: [opened]
+permissions:
+  issues: write
+jobs:
+  ack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Thank, label and flag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          NUM: ${{ github.event.issue.number }}
+          BODY: ${{ github.event.issue.body }}
+          TITLE: ${{ github.event.issue.title }}
+        shell: bash
+        run: |
+          gh label create triage --color c5def5 --description "New, not yet looked at" -R "$REPO" 2>/dev/null || true
+          gh label create personal-data --color b60205 --description "May contain personal details: a maintainer must remove them" -R "$REPO" 2>/dev/null || true
+          gh issue edit "$NUM" -R "$REPO" --add-label triage
+          msg="Thank you. A person reads every issue and will reply here. Please do not add your name, school, address, email or phone number. If you need help now, Childline is 0800 1111 (free, 24 hours) and Samaritans is 116 123."
+          if printf '%s\n%s' "$TITLE" "$BODY" | grep -Eiq '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|(\+44|\b0)7[0-9 ]{9,11}'; then
+            gh issue edit "$NUM" -R "$REPO" --add-label personal-data
+            msg="$msg"$'\n\n'"This issue looks as if it may contain an email address or phone number. A maintainer will remove it. You can also edit your issue to take it out."
+          fi
+          gh issue comment "$NUM" -R "$REPO" --body "$msg"

@@ -22,6 +22,9 @@ def registers():
     out += [f"| {d['id']} | {d['found']} | {d['what']} | {d['root_cause']} | {d['fix']} | {d['check']} |" for d in g["defects"]]
     out += ["", "## Open, and who must act", "", "| Id | What | Who |", "|---|---|---|"]
     out += [f"| {o['id']} | {o['what']} | {o['who']} |" for o in g["open"]]
+    if g.get("closed"):
+        out += ["", "## Closed", "", "| Id | What | Closed | How |", "|---|---|---|---|"]
+        out += [f"| {o['id']} | {o['what']} | {o['closed']} | {o['how']} |" for o in g["closed"]]
     return "\n".join(out) + "\n"
 
 
@@ -191,6 +194,36 @@ def golive():
     return "\n".join(out) + "\n"
 
 
+def product():
+    with open(os.path.join(R, "data", "product.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    out = ["# Product: vision, strategy, roadmap and backlog", "", "Generated from `data/product.json` by `tools/make_docs.py`; edit that, not this file. The portal shows the same content on its Product & roadmap screen.", "",
+           f"Last checked {d['checked']}, reviewed every {d['review_days']} days.", "", "## Vision", "", d["vision"], "", f"**Mission:** {d['mission']}", "", "## Strategy", ""]
+    out += [f"- **{p['pillar']}:** {p['what']}" for p in d["strategy"]]
+    sp = d["spec"]
+    out += ["", "## Product specification", "", f"**What it is:** {sp['what']}", "", f"**Who it is for:** {sp['who']}", "", "In scope:", ""] + [f"- {x}" for x in sp["in"]]
+    out += ["", "Out of scope:", ""] + [f"- {x}" for x in sp["out"]] + ["", "Constraints:", ""] + [f"- {x}" for x in sp["constraints"]]
+    out += ["", "## Update schedule", "", "| What | When | How |", "|---|---|---|"] + [f"| {r['what']} | {r['when']} | {r['how']} |" for r in d["schedule"]]
+    out += ["", "## Roadmap", ""]
+    for l in d["roadmap"]:
+        out += [f"### {l['lane']}", ""] + [f"- {i['t']} ({', '.join(i['reqs'])})" for i in l["items"]] + [""]
+    out += ["## Requirements backlog", "", "| Id | Requirement | MoSCoW | Status | From | Screens | Proved by |", "|---|---|---|---|---|---|---|"]
+    out += [f"| {b['id']} | {b['title']} | {b['moscow']} | {b['status']} | {b['from']} | {', '.join(b['screens'])} | {', '.join(b['checks'])} |" for b in d["backlog"]]
+    out += ["", "## How it is traced, tracked and managed on GitHub", ""] + [f"{k}. **{g['step']}.** {g['what']} (`{g['where']}`)" for k, g in enumerate(d["github"], 1)]
+    return "\n".join(out) + "\n"
+
+
+def glossary():
+    with open(os.path.join(R, "data", "glossary.json"), encoding="utf-8") as f:
+        d = json.load(f)
+    out = ["# Glossary and thesaurus", "", "Generated from `data/glossary.json` by `tools/make_docs.py`; edit that, not this file. The same terms appear in the portal's Glossary & graph screen and its tooltips, and as a SKOS vocabulary in `site/glossary-skos.json`.", "",
+           f"**Rule:** {d['rule']}", "", "| Term | Definition | Also called (thesaurus) | Related | Added in |", "|---|---|---|---|---|"]
+    names = {t["id"]: t["term"] for t in d["terms"]}
+    for t in sorted(d["terms"], key=lambda t: t["term"].lower()):
+        out.append(f"| <a id=\"{t['id']}\"></a>{t['term']} | {t['def']} | {t['also']} | {', '.join(names.get(e, e) for e in t['edges'])} | {t['added']} |")
+    return "\n".join(out) + "\n"
+
+
 DOCS = {"CHANGELOG.md": changelog, "docs/registers.md": registers, "docs/research/README.md": r_readme,
         "docs/research/participant-information.md": r_info, "docs/research/consent-forms.md": r_consent,
         "docs/research/screener.md": r_screener, "docs/research/session-guides.md": r_sessions,
@@ -198,7 +231,7 @@ DOCS = {"CHANGELOG.md": changelog, "docs/registers.md": registers, "docs/researc
         "docs/service-design/README.md": sd_readme, "docs/service-design/personas.md": sd_personas,
         "docs/service-design/user-stories.md": sd_stories, "docs/service-design/journeys.md": sd_journeys,
         "docs/service-design/service-blueprints.md": sd_blueprints, "docs/service-design/processes-and-workflows.md": sd_workflows,
-        "docs/go-live.md": golive}
+        "docs/go-live.md": golive, "docs/product.md": product, "docs/glossary.md": glossary}
 
 
 def write():

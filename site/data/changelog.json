@@ -152,7 +152,7 @@
     {
      "screen": "golive",
      "kind": "NEW",
-     "what": "Go-live readiness: the gates for the public launch by area and MoSCoW, each with its status, the checks that prove it and who must act, plus the self-routines that keep the portal right once it is live."
+     "what": "Go-live readiness: the gates for the public launch by area and MoSCoW, each with its status, the checks that prove it and who must act, plus the self-routines that keep the portal right once it is live. Since then: the owner's publishing decision is recorded (public on GitHub Pages since 15 November 2026), the public address opens this portal rather than the original design, and posters and sharing point to it."
     },
     {
      "screen": "home",
@@ -168,6 +168,26 @@
      "screen": "stem",
      "kind": "UPD",
      "what": "STEM & tech: now covers science, innovation, data and AI, digital, cyber, engineering and enterprise architecture (its business, data, application, technology and security layers, each with its government role). It adds a section on careers in government and the public sector, with apprenticeships, internships and graduate schemes across all four nations, and links tech to youth voice. 16 new sourced organisations and schemes."
+    },
+    {
+     "screen": "product",
+     "kind": "NEW",
+     "what": "Product, roadmap & backlog: vision, mission, strategy, product specification, update schedule, roadmap (now, next, later) and a requirements backlog, each requirement traced to the screens that deliver it and the checks that prove it, plus how it is all tracked on GitHub and the new words in this release."
+    },
+    {
+     "screen": "notify",
+     "kind": "NEW",
+     "what": "Alerts & notifications: launch countdown, updated since your last visit, safety notices, dates coming up and upkeep notices, each dismissible, with choices kept in this browser only; plus an Atom news feed and GitHub watching, with no email list and no tracking."
+    },
+    {
+     "screen": "graph",
+     "kind": "UPD",
+     "what": "Glossary & graph: the new terms from this release (safeguarding, Online Safety Act, open source, CI, DevOps, user-centred design, enterprise architecture, apprenticeships, AI literacy, roadmap and more), each with other names, links in the graph and a matching tooltip. Also published as a SKOS vocabulary (glossary-skos.json)."
+    },
+    {
+     "screen": "home",
+     "kind": "UPD",
+     "what": "Every screen: a Share button (your device's share menu, or copy the link and share to Teams, Classroom or WhatsApp), the alerts that apply, and a news ticker chosen for that screen, which pauses on hover, on focus and with its own button, and stands still if you prefer reduced motion."
     }
    ]
   },

@@ -1,0 +1,572 @@
+{
+ "title": "Product: vision, strategy, specification, roadmap and backlog",
+ "checked": "2026-11-15",
+ "review_days": 30,
+ "vision": "Every young person in the UK knows how to make their voice heard, and is heard, safely.",
+ "mission": "Carry youth voice further: bring together trusted sources, safe routes into participation and campaign tools for young people, and for the adults who support them, across all four nations.",
+ "strategy": [
+  {
+   "pillar": "Trusted",
+   "what": "Every fact sourced and dated; models, samples and generated text labelled; checks that prove it on every change."
+  },
+  {
+   "pillar": "Safe",
+   "what": "Safeguarding first, no personal data, age-appropriate routes, adults acting on a young person's behalf where needed."
+  },
+  {
+   "pillar": "For everyone",
+   "what": "Accessible to WCAG 2.2 AA, pan-UK, every voice and language, including sign languages."
+  },
+  {
+   "pillar": "Built with its users",
+   "what": "User-centred design, open research, contributions and ambassadors, all in the open."
+  },
+  {
+   "pillar": "Looked after",
+   "what": "Self-checking, self-reporting and updated every week, with people deciding anything irreversible."
+  }
+ ],
+ "spec": {
+  "what": "An independent, unofficial, open-source web portal about youth voice and participation in the UK.",
+  "who": "Young people aged 11 to 25, parents and carers, youth workers, teachers, club leaders, and adult allies such as councillors, researchers and journalists.",
+  "in": [
+   "Trusted sources and dated updates",
+   "Routes into youth voice by age and nation",
+   "Campaign planning and tools",
+   "Safeguards, age and access rules",
+   "Get involved: contribute, research, ambassadors, campaign kit, training, STEM and tech",
+   "Self-checking and transparency"
+  ],
+  "out": [
+   "Collecting personal data or accounts",
+   "Acting for, or speaking as, the UK Youth Parliament, NYA or UK Parliament",
+   "Tracking or advertising",
+   "Party-political positions"
+  ],
+  "constraints": [
+   "No request to another host when a page loads",
+   "Contact by form only, never an email address",
+   "Everything generated from data; nothing hand-edited in the built site",
+   "People decide merges and publishing"
+  ]
+ },
+ "schedule": [
+  {
+   "what": "Helplines re-verified",
+   "when": "Every 30 days, checked weekly",
+   "how": "Weekly upkeep task"
+  },
+  {
+   "what": "Sources re-verified",
+   "when": "Every 90 days, in turn",
+   "how": "Weekly upkeep task"
+  },
+  {
+   "what": "What's new and the news ticker",
+   "when": "Weekly, and straight away for anything safety-critical",
+   "how": "Weekly upkeep task"
+  },
+  {
+   "what": "Health checks and link check",
+   "when": "Every Monday",
+   "how": "GitHub Actions: health.yml"
+  },
+  {
+   "what": "Follow-ups due",
+   "when": "Every Monday",
+   "how": "GitHub Actions: follow-ups.yml"
+  },
+  {
+   "what": "Glossary, thesaurus, graph and tooltips",
+   "when": "With every release that adds a term",
+   "how": "data/glossary.json, enforced by S16"
+  },
+  {
+   "what": "Releases",
+   "when": "When the owner merges a reviewed pull request",
+   "how": "Release log and drawer flags"
+  },
+  {
+   "what": "This page",
+   "when": "Every 30 days",
+   "how": "data/product.json"
+  }
+ ],
+ "roadmap": [
+  {
+   "lane": "Now",
+   "items": [
+    {
+     "t": "Launch at UK Parliament Week (23 to 29 November 2026)",
+     "reqs": [
+      "REQ-01",
+      "REQ-13"
+     ]
+    },
+    {
+     "t": "Owner decisions before going public: merge, propriety, sharing",
+     "reqs": [
+      "REQ-25"
+     ]
+    }
+   ]
+  },
+  {
+   "lane": "Next",
+   "items": [
+    {
+     "t": "Research round 1 with young people, parents and youth workers (January to February 2027)",
+     "reqs": [
+      "REQ-16",
+      "REQ-17"
+     ]
+    },
+    {
+     "t": "Ambassador programme pilot, once safeguarding is confirmed",
+     "reqs": [
+      "REQ-14"
+     ]
+    },
+    {
+     "t": "Faster pages on low-end phones by compiling at build time",
+     "reqs": [
+      "REQ-23"
+     ]
+    }
+   ]
+  },
+  {
+   "lane": "Later",
+   "items": [
+    {
+     "t": "Welsh, Gaelic, Irish and sign-language versions of the most-used screens",
+     "reqs": [
+      "REQ-08"
+     ]
+    },
+    {
+     "t": "Personas and journeys rewritten from research findings",
+     "reqs": [
+      "REQ-17"
+     ]
+    },
+    {
+     "t": "Availability monitoring and a vendored-library watch",
+     "reqs": [
+      "REQ-24"
+     ]
+    }
+   ]
+  }
+ ],
+ "backlog": [
+  {
+   "id": "REQ-01",
+   "title": "Build and publish the portal from the original design",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "home",
+    "hub"
+   ],
+   "checks": [
+    "S1",
+    "R4"
+   ]
+  },
+  {
+   "id": "REQ-02",
+   "title": "Trusted, authoritative youth sources, prioritised with MoSCoW",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "sources"
+   ],
+   "checks": [
+    "C1",
+    "C2"
+   ]
+  },
+  {
+   "id": "REQ-03",
+   "title": "Maintenance and upkeep with self-routines",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "health",
+    "golive"
+   ],
+   "checks": [
+    "S8",
+    "S11"
+   ]
+  },
+  {
+   "id": "REQ-04",
+   "title": "Professional iconography, visual effects and motion, with reduced motion respected",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "home"
+   ],
+   "checks": [
+    "W1",
+    "W6"
+   ]
+  },
+  {
+   "id": "REQ-05",
+   "title": "Safeguards for every audience, including parents and carers",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "trust",
+    "care"
+   ],
+   "checks": [
+    "C3",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "id": "REQ-06",
+   "title": "User-centred, inclusive and accessible to all",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "trust",
+    "service"
+   ],
+   "checks": [
+    "W3",
+    "W7"
+   ]
+  },
+  {
+   "id": "REQ-07",
+   "title": "Pan-UK coverage",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "sources",
+    "map"
+   ],
+   "checks": [
+    "C1"
+   ]
+  },
+  {
+   "id": "REQ-08",
+   "title": "d/Deaf participation and all UK official and sign languages",
+   "moscow": "Should",
+   "status": "In progress",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "trust"
+   ],
+   "checks": [
+    "W3"
+   ]
+  },
+  {
+   "id": "REQ-09",
+   "title": "New and changed flags, release log, ideas and bugs, manual, tours",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "changes",
+    "help",
+    "feedback"
+   ],
+   "checks": [
+    "S11"
+   ]
+  },
+  {
+   "id": "REQ-10",
+   "title": "Label sample, model and generated content and say why; otherwise sourced content",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "health"
+   ],
+   "checks": [
+    "C9",
+    "S14"
+   ]
+  },
+  {
+   "id": "REQ-11",
+   "title": "Social media ban, age-related access and adults acting on a young person's behalf",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "trust"
+   ],
+   "checks": [
+    "W4"
+   ]
+  },
+  {
+   "id": "REQ-12",
+   "title": "Who is behind the portal, its purpose and outcomes",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "about"
+   ],
+   "checks": [
+    "S5"
+   ]
+  },
+  {
+   "id": "REQ-13",
+   "title": "Home page, carousel, media centre, communities hub, sharing into everyday tools, map labels",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "home",
+    "media",
+    "communities",
+    "launch"
+   ],
+   "checks": [
+    "S9",
+    "W1"
+   ]
+  },
+  {
+   "id": "REQ-14",
+   "title": "Tooltips for every persona; contribute, ambassadors, campaign kit, training, STEM",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "involve",
+    "ambassadors",
+    "campaign",
+    "learn",
+    "stem"
+   ],
+   "checks": [
+    "S12",
+    "W5",
+    "W8"
+   ]
+  },
+  {
+   "id": "REQ-15",
+   "title": "Participation in research and design, ported from the owner's other portals",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "research"
+   ],
+   "checks": [
+    "S11"
+   ]
+  },
+  {
+   "id": "REQ-16",
+   "title": "Run user research with young people",
+   "moscow": "Should",
+   "status": "Planned",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "research"
+   ],
+   "checks": [
+    "C9"
+   ]
+  },
+  {
+   "id": "REQ-17",
+   "title": "Personas, stories, journeys, blueprints and workflows",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "service"
+   ],
+   "checks": [
+    "S13"
+   ]
+  },
+  {
+   "id": "REQ-18",
+   "title": "Review and elevate the splash, phones and tablets; full pre-launch testing",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "golive",
+    "home"
+   ],
+   "checks": [
+    "W2",
+    "W6",
+    "S14",
+    "S15"
+   ]
+  },
+  {
+   "id": "REQ-19",
+   "title": "Fix campaign kit viewing, printing and saving; independent drawer scrolling",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "campaign",
+    "media"
+   ],
+   "checks": [
+    "W8"
+   ]
+  },
+  {
+   "id": "REQ-20",
+   "title": "Enterprise architecture, government professions, apprenticeships and schemes; science, innovation, data, digital, cyber and technology",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "stem"
+   ],
+   "checks": [
+    "C1"
+   ]
+  },
+  {
+   "id": "REQ-21",
+   "title": "Glossary, thesaurus, graph and tooltips updated with every new term",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "graph"
+   ],
+   "checks": [
+    "S16"
+   ]
+  },
+  {
+   "id": "REQ-22",
+   "title": "Transparent vision, strategy, roadmap and backlog, traced on GitHub with follow-up workflows; alerts; news ticker",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner, 15 Nov 2026",
+   "screens": [
+    "product",
+    "latest"
+   ],
+   "checks": [
+    "S17",
+    "W9"
+   ]
+  },
+  {
+   "id": "REQ-23",
+   "title": "Faster loading on low-end phones",
+   "moscow": "Should",
+   "status": "Planned",
+   "from": "Readiness review, 15 Nov 2026",
+   "screens": [
+    "golive"
+   ],
+   "checks": [
+    "W7"
+   ]
+  },
+  {
+   "id": "REQ-24",
+   "title": "Availability monitoring and vendored-library watch",
+   "moscow": "Could",
+   "status": "Planned",
+   "from": "Readiness review, 15 Nov 2026",
+   "screens": [
+    "golive"
+   ],
+   "checks": [
+    "S15"
+   ]
+  },
+  {
+   "id": "REQ-25",
+   "title": "Owner decisions before the public launch (publishing decided 15 Nov 2026; propriety and safeguarding lead still open)",
+   "moscow": "Must",
+   "status": "Waiting on owner",
+   "from": "Readiness review, 15 Nov 2026",
+   "screens": [
+    "golive"
+   ],
+   "checks": [
+    "S15"
+   ]
+  },
+  {
+   "id": "REQ-26",
+   "title": "The public address opens the built portal, labelled independent and unofficial",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Gap review, 15 Nov 2026",
+   "screens": [
+    "home",
+    "about"
+   ],
+   "checks": [
+    "R8"
+   ]
+  }
+ ],
+ "github": [
+  {
+   "step": "Ask",
+   "what": "Ideas, bugs, contact, research interest and ambassador interest arrive through public issue forms that ask for no personal details.",
+   "where": ".github/ISSUE_TEMPLATE/"
+  },
+  {
+   "step": "Acknowledge",
+   "what": "A workflow thanks the person, labels the issue for triage, and flags anything that looks like personal data so it can be removed.",
+   "where": ".github/workflows/issue-ack.yml"
+  },
+  {
+   "step": "Triage",
+   "what": "Each week the upkeep run decides: accept, adapt, defer or decline, with a reason. Accepted items become requirements here (REQ ids).",
+   "where": "Scheduled task"
+  },
+  {
+   "step": "Build",
+   "what": "Changes are made in data/ or tools/ on a branch; a pull request links the requirement and issue it serves.",
+   "where": "Pull requests (template with a checklist)"
+  },
+  {
+   "step": "Check",
+   "what": "Every check runs on every pull request, in a real browser too; each requirement names the checks that prove it.",
+   "where": ".github/workflows/checks.yml"
+  },
+  {
+   "step": "Release",
+   "what": "The owner merges and republishes; the release log and drawer flags update from data/changelog.json.",
+   "where": "data/changelog.json"
+  },
+  {
+   "step": "Follow up",
+   "what": "Every Monday a workflow gathers what is due: open items, gates not passed, overdue sources and coming dates, into one Follow-ups issue.",
+   "where": ".github/workflows/follow-ups.yml"
+  }
+ ]
+}

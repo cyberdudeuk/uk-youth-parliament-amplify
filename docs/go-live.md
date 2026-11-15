@@ -4,7 +4,7 @@ Generated from `data/readiness.json` by `tools/make_docs.py`; edit that, not thi
 
 What must be true before Amplify goes public at UK Parliament Week, what has been tested and how, what is still open and who must act, and the self-routines that keep it right once it is live. Must items block the public launch; Should and Could items do not, but are tracked.
 
-**Verdict:** not ready to go public yet: 4 Must gates open (G06, G19, G20, G21).
+**Verdict:** not ready to go public yet: 3 Must gates open (G06, G19, G20).
 
 ## Gates
 
@@ -30,7 +30,7 @@ What must be true before Amplify goes public at UK Parliament Week, what has bee
 | G18 | Operations | Posters and cards print on their own; other screens are not yet print-tested | Could | Partial | W8 | Weekly upkeep |
 | G19 | Governance | The release candidate is reviewed and merged | Must | Open |  | Owner (pull request 5) |
 | G20 | Governance | Propriety: publishing under the owner's own name raises no issue with his employer | Must | Open |  | Owner (O11) |
-| G21 | Governance | Decide how the portal is shared (the artifact is private until shared) and the address posters should point to | Must | Open |  | Owner (O15) |
+| G21 | Governance | Decide how the portal is shared (the artifact is private until shared) and the address posters should point to | Must | Pass | R8 |  |
 | G22 | Research and UCD | Personas, journeys and stories tested with real users | Should | Open |  | Owner (O1, research Round 1) |
 | G23 | Research and UCD | Welsh, Gaelic, Irish and sign-language versions of the most-used screens | Could | Open |  | Owner (O10) |
 
@@ -56,3 +56,6 @@ What must be true before Amplify goes public at UK Parliament Week, what has bee
 | Could | Availability monitoring | Self-reporting | A check that the published portal loads, from outside the build | Daily | Not yet chosen | Not yet |
 | Could | Vendored library watch | Self-updating | Notice when React, Babel, Leaflet or the icons have security releases | Monthly | Not yet chosen | Not yet |
 | Could | Retirement plan | Self-retiring | How the portal is archived or handed over if it stops being maintained | Once, reviewed yearly | docs/maintenance.md | Not yet |
+| Should | Follow-ups due | Self-reporting | Gathers gates not passed, open items, requirements not done, sources and data files due a re-check and dates coming up into one public issue. | Every Monday | .github/workflows/follow-ups.yml | Set up, runs once merged |
+| Must | Issue acknowledgement | Self-protecting | Thanks each new issue, labels it for triage, gives the helplines and flags anything that looks like an email address or phone number for a person to remove. | On every new issue | .github/workflows/issue-ack.yml | Set up, runs once merged |
+| Must | Vocabulary in step | Self-verification | Fails the build if a release adds a term, tooltip, graph link or version without its glossary entry, or leaves the graph unparseable. | Every change | check_site S16 | Running |

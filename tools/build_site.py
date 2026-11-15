@@ -24,10 +24,12 @@ import extend5  # noqa: E402
 import extend6  # noqa: E402
 import extend7  # noqa: E402
 import extend8  # noqa: E402
+import extend9  # noqa: E402
 import make_docs  # noqa: E402
 
 APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
 REPO_URL = "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"
+LIVE_URL = "https://cyberdudeuk.github.io/uk-youth-parliament-amplify/"  # public on GitHub Pages: owner's decision, 15 Nov 2026 (PR 7)
 CONTACT_URL = REPO_URL + "/issues/new?template=contact.yml"
 PORTAL_SRC, MAP_SRC = "Amplify Portal.dc.html", "Local Routes Map.html"
 
@@ -99,7 +101,7 @@ GF_P = '''<link rel="preconnect" href="https://fonts.googleapis.com" />
 def meta_tags(meta):
     ld = {"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": meta["build_id"], "version": meta["build_id"],
           "dateModified": meta["built"], "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}],
-          "isAccessibleForFree": True, "license": REPO_URL + "/blob/main/LICENSE", "url": REPO_URL}
+          "isAccessibleForFree": True, "license": REPO_URL + "/blob/main/LICENSE", "url": LIVE_URL, "codeRepository": REPO_URL}
     return (f'<meta name="artefact:id" content="amplify-portal">\n<meta name="artefact:version" content="{meta["build_id"]}">\n'
             f'<meta name="artefact:class" content="portal">\n<meta name="artefact:as-of" content="{meta["built"]}">\n'
             f'<meta name="artefact:review-date" content="{meta["review"]}">\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
@@ -200,6 +202,7 @@ def transforms(meta):
         *extend6.transforms(),
         *extend7.transforms(),
         *extend8.transforms(),
+        *extend9.transforms(),
         ("footer", "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
          "    </sc-if>\n\n  </div>\n</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;",
          "    </sc-if>\n\n  </div>\n" + footer(meta) + "</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;", 1),
@@ -281,7 +284,7 @@ def build(date, out=SITE):
     h = hashlib.sha256()
     for f in sorted(src["files"]):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
-    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/extend6.py", "tools/extend7.py", "tools/extend8.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
+    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/extend6.py", "tools/extend7.py", "tools/extend8.py", "tools/extend9.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
     digest = h.hexdigest()
     d = datetime.date.fromisoformat(date)
@@ -348,7 +351,7 @@ def build(date, out=SITE):
         arts[f"{n}.svg"] = art.corner(n)
     import segno, barcode
     from barcode.writer import SVGWriter
-    qr_inline = segno.make(REPO_URL, error="m").svg_inline(scale=3, border=0, dark="#06100f", light="#ffffff")
+    qr_inline = segno.make(LIVE_URL, error="m").svg_inline(scale=3, border=0, dark="#06100f", light="#ffffff")  # posters send people to the live portal
     arts.update({"poster-involve.svg": art.poster_involve(qr_inline), "poster-stem.svg": art.poster_stem(qr_inline),
                  "social-card.svg": art.social_card(), "badge-ambassador.svg": art.badge_ambassador()})
     for f, s in arts.items():
@@ -357,6 +360,10 @@ def build(date, out=SITE):
     buf = io.BytesIO()
     barcode.get("code128", meta["build_id"], writer=SVGWriter()).write(buf, {"module_height": 12, "font_size": 6, "text_distance": 3, "quiet_zone": 2})
     open(os.path.join(out, "art", "barcode.svg"), "wb").write(buf.getvalue())
+
+    for name, text in (("feed.xml", extend9.feed(meta)), ("glossary-skos.json", extend9.skos(meta))):  # Atom feed; SKOS vocabulary
+        with open(os.path.join(out, name), "w", encoding="utf-8") as f:
+            f.write(text)
 
     files = {}
     for root, _, names in os.walk(out):

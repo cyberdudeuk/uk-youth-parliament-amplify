@@ -1,0 +1,9 @@
+# CodeQL configuration for Amplify. Every security query still runs on every file, including the built site/.
+# One quality query is turned off: js/useless-expression reads the design runtime's template bindings, such as
+# onClick="{{ handler }}", as inline JavaScript where {{ x }} is an empty block, and reports "no effect" on each of
+# the page's event bindings. The runtime (support.js) swaps each binding for its handler; check_browser W8 and W9
+# click the new ones in a real browser. Decided 15 Nov 2026 (pull request 9).
+name: amplify-codeql
+query-filters:
+  - exclude:
+      id: js/useless-expression

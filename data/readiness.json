@@ -253,11 +253,13 @@
    "id": "G21",
    "area": "Governance",
    "item": "Decide how the portal is shared (the artifact is private until shared) and the address posters should point to",
-   "status": "Open",
+   "status": "Pass",
    "moscow": "Must",
-   "evidence": [],
-   "who": "Owner (O15)",
-   "note": "Posters point to the public GitHub repository until then."
+   "evidence": [
+    "R8"
+   ],
+   "who": "",
+   "note": "Decided by the owner on 15 November 2026 (pull request 7): public on GitHub Pages at https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ . R8 keeps that address opening the built portal."
   },
   {
    "id": "G22",
@@ -442,6 +444,33 @@
    "where": "docs/maintenance.md",
    "moscow": "Could",
    "status": "Not yet"
+  },
+  {
+   "routine": "Follow-ups due",
+   "kind": "Self-reporting",
+   "what": "Gathers gates not passed, open items, requirements not done, sources and data files due a re-check and dates coming up into one public issue.",
+   "cadence": "Every Monday",
+   "where": ".github/workflows/follow-ups.yml",
+   "moscow": "Should",
+   "status": "Set up, runs once merged"
+  },
+  {
+   "routine": "Issue acknowledgement",
+   "kind": "Self-protecting",
+   "what": "Thanks each new issue, labels it for triage, gives the helplines and flags anything that looks like an email address or phone number for a person to remove.",
+   "cadence": "On every new issue",
+   "where": ".github/workflows/issue-ack.yml",
+   "moscow": "Must",
+   "status": "Set up, runs once merged"
+  },
+  {
+   "routine": "Vocabulary in step",
+   "kind": "Self-verification",
+   "what": "Fails the build if a release adds a term, tooltip, graph link or version without its glossary entry, or leaves the graph unparseable.",
+   "cadence": "Every change",
+   "where": "check_site S16",
+   "moscow": "Must",
+   "status": "Running"
   }
  ]
 }

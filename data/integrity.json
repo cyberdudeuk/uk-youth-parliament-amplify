@@ -237,6 +237,16 @@
    "screen": "golive",
    "class": "Editorial",
    "why": "A readiness assessment written for this portal; each passed gate names the automated checks that prove it, and the live counts come from the data and the latest build."
+  },
+  {
+   "screen": "product",
+   "class": "Editorial",
+   "why": "The vision, strategy, roadmap and backlog are written from the owner's requests and the readiness review, dated and traced; each requirement names the screens and checks behind it, so the trace can be verified."
+  },
+  {
+   "screen": "notify",
+   "class": "Generated",
+   "why": "Alerts are worked out in your browser from the release log, What's new and the source dates; nothing is sent or collected. The choices you make are kept in this browser only."
   }
  ],
  "views": [

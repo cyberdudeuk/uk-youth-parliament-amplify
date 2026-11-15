@@ -168,7 +168,7 @@ def poster_involve(qr_svg):
             _lines(28, 570, ["No coding needed. Check a fact, test it with", "your screen reader, suggest an idea, design a",
                              "poster, or write code: every bit helps."], 15, 22, weight=600),
             _lines(28, 660, ["Launching in UK Parliament Week", "23 to 29 November 2026"], 16, 22, weight=800, fill=_c(0.45, 0.14, 25)),
-            _qr(qr_svg, w - 158, 590, "The code on GitHub"), _footer(w, h)]
+            _qr(qr_svg, w - 158, 590, "Scan to open Amplify"), _footer(w, h)]
     return _doc(w, h, 0, "".join(body), "Poster: Help build the portal that carries youth voice further. Launching in UK Parliament Week, 23 to 29 November 2026.", "meet")
 
 
@@ -186,7 +186,7 @@ def poster_stem(qr_svg):
             _lines(28, 580, ["Coding clubs, cyber and engineering competitions,", "enterprise architecture and a real DevOps pipeline",
                              "to learn on. Free, and open to beginners."], 15, 22, weight=600, fill="#d8efe9"),
             _text(28, 670, "You belong in tech.", 20, 900, _c(0.82, 0.16, 70)),
-            _qr(qr_svg, w - 158, 590, ""), _text(w - 108, 726, "Find the code", 11, 700, "#d8efe9", "middle"),
+            _qr(qr_svg, w - 158, 590, ""), _text(w - 108, 726, "Scan to open Amplify", 11, 700, "#d8efe9", "middle"),
             diamond(w - 60, 360, 34, _c(0.8, 0.16, hue, 0.9)), _footer(w, h)]
     return _doc(w, h, 0, "".join(body), "Poster: Girls code. Girls engineer. Girls ship. You belong in tech.", "meet")
 

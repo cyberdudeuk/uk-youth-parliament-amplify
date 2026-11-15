@@ -102,6 +102,18 @@
       "sha384": "sha384-ViYxMuDJO21oxscwPkgSWy6Xyg2kwtDZFIoU8wYqE0zQmk5CunLqBbw3V5CcQy6k",
       "version": "1.66.0"
     },
+    "icons/bell-ring.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-NOUCEaYLIAZpkQ6z2fsddsVWcjfubZnIrnnerqQoVbj6Lz+0lpaXCiaEr8+JYBmc",
+      "version": "1.66.0"
+    },
+    "icons/bell.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-XNym3hNr0WIHF9z35QrH6knp8C8ZrHeRhdiGFin1uJv7nZAl6eBiIINFmn9+/I8w",
+      "version": "1.66.0"
+    },
     "icons/book-open-check.svg": {
       "licence": "ISC",
       "package": "lucide-static",
@@ -342,6 +354,12 @@
       "sha384": "sha384-XFT93HdgbnTNOnUrHs3xv/bZYbBalQamaxr5MFnvtxkYnb3L7krzrb1mug+ztd75",
       "version": "1.66.0"
     },
+    "icons/milestone.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-0iyTnZM2dHtFjvn/dmOlgRN9Mwbvt7WArvwu0atA8no0QBu6EEjt74vLooBInnjw",
+      "version": "1.66.0"
+    },
     "icons/network.svg": {
       "licence": "ISC",
       "package": "lucide-static",
@@ -366,6 +384,12 @@
       "sha384": "sha384-jv6N8MdDidim/jJiJBF7s4d3q2JmuCA4S9h7VLWoTDf+ros+oGK1Jm+h+qpVpfeq",
       "version": "1.66.0"
     },
+    "icons/pause.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-FfSXOrwNDRM1A2LZGgQvuc1XoYSWhL2MidhWWnh3bk9VzpqCc56U0TXu57OIbnw6",
+      "version": "1.66.0"
+    },
     "icons/pen-tool.svg": {
       "licence": "ISC",
       "package": "lucide-static",
@@ -376,6 +400,12 @@
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-pvG/M4ifSEFipsFhYutO/duMsgLj7IDJwdKLNPI4abMlXmq56iQyPSbxlVE+EzDC",
+      "version": "1.66.0"
+    },
+    "icons/play.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-5T53kz7/FE9W3UclSsIzmoXP2OPVlndMNMxuK3NjXB7P567ZU0TXLM8FE2eu2TWf",
       "version": "1.66.0"
     },
     "icons/presentation.svg": {
@@ -406,6 +436,12 @@
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-EI6SOuejvb5x0ZA1Z/+WeDmAS46eU1XZuH5TjE3CmnCpRkNb9Koqk7PkP/9Da7fR",
+      "version": "1.66.0"
+    },
+    "icons/rss.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-cNdl/VwVrAQJu34r0JOZRHURaGM5uOJqzsgjiIaj9tFKfso5HNc1l4o1dlWuffth",
       "version": "1.66.0"
     },
     "icons/scale.svg": {
@@ -442,6 +478,12 @@
       "licence": "ISC",
       "package": "lucide-static",
       "sha384": "sha384-nspi6SdTRsX3FmwAxjafNQVXE4uZMsePyy/2JwYFz4SqvVk3J83jRJYCOdFiBc6i",
+      "version": "1.66.0"
+    },
+    "icons/target.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-bjZy5UFyPqU1nUcXXwNb78lpe++6fCPqCYmPnAvBU+xe0Xd19264f1fOuxGZiaU1",
       "version": "1.66.0"
     },
     "icons/trending-up.svg": {
