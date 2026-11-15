@@ -27,6 +27,8 @@ Generated from `data/registers.json` by `tools/make_docs.py`; shown live on the 
 | D19 | 2026-11-15 | Pledge wall, Issue domains and the launch plan scrolled sideways on a 320px phone. | Labels that could not wrap and two-column rows with a fixed minimum width. | Below 420px, labels wrap and those rows stack. | W2 (now also at 320px and 768px) |
 | D20 | 2026-11-15, by the browser checks (W1, W4) before release | Adding the new vocabulary to the knowledge graph stopped the whole portal from starting: every screen rendered empty. | The design's last GRAPH and GLOSSARY entries have no trailing comma, so the first injected entry followed without one, a JavaScript syntax error in the page's logic class. The text-presence checks passed because the words were all there. | The injection now opens with a comma (extend9, ext9-graph and ext9-glossary). | S16 now parses GRAPH and GLOSSARY as JavaScript with Node, vaccinated by removing the comma |
 | D21 | 2026-11-15, by the browser check W9 before release | Under reduced motion the news ticker stopped, but its hidden duplicate copy still showed, so every headline appeared twice. | The duplicate list's inline display: flex outranked the stylesheet rule that hides it under prefers-reduced-motion. | The reduced-motion rule now uses !important, the one way a stylesheet beats an inline style. | W9 opens Home with reduced motion and fails if the duplicate is visible |
+| D22 | 2026-11-15, in a gap review after pull request 7 | The public GitHub Pages address opened the unbuilt design in app/, without the portal's safeguards, provenance labels, helplines or unofficial labelling, and its entry page was titled 'UK Youth Parliament: Amplify portal', as if it were a UK Youth Parliament service. | The entry page was written before the built portal in site/ was on main, and no check covered the root page. | index.html now opens site/index.html, says Amplify is independent and unofficial, and carries the two 24-hour helplines. | R8: the entry page must open site/index.html, never app/, and its title must say unofficial and not name a UKYP service; vaccinated with both breaks |
+| D23 | 2026-11-15, by CodeQL (high: bad HTML filtering regexp) | S7 missed a remote script written in upper case or with spaces, such as <SCRIPT SRC = https://...>, so a page loading code from another host could pass. | D10 made S9 case- and space-insensitive but S7's own script pattern was left case-sensitive and strict about spacing. | The S7 script pattern now ignores case, allows spaces and unquoted values, and catches protocol-relative addresses. | S7 negative tests with an upper-case, spaced and an unquoted protocol-relative script |
 
 ## Open, and who must act
 
@@ -37,14 +39,19 @@ Generated from `data/registers.json` by `tools/make_docs.py`; shown live on the 
 | O3 | Pre-existing accessibility findings in the original design are tracked as a baseline and must not grow. | Maintainer |
 | O4 | Housing, transport, climate and justice sources are not yet vetted. | Maintainer |
 | O5 | Easy Read and BSL versions need specialist production. | Owner |
-| O6 | Publishing beyond a private artifact (for example GitHub Pages) is the owner's decision. | Owner |
 | O7 | Framework entries labelled K (background knowledge) are to be checked against each primary text. | Maintainer, on the next scheduled run with page access |
 | O8 | Revise the Toolkit's social media assets for under 16s before the ban applies in spring 2027. | Maintainer, with UKYP input |
 | O9 | A line-by-line audit of every figure in the original design's screens against its source; screens are classified, but individual figures not yet re-verified are the design's own. | Maintainer, one screen per weekly run |
 | O10 | BSL and ISL versions of key screens, and Welsh, Gaelic and Irish versions of the portal, need deaf-led and native-speaker production. | Owner, with deaf-led organisations and language bodies |
 | O11 | Before public launch, the owner confirms that publishing a personal, non-partisan youth participation tool under his own name raises no propriety issue with his employer. | Owner |
 | O12 | Before the ambassador programme opens, the owner confirms he can run it safely: time to respond, a safeguarding lead, named adult contacts for under-18s, and how recognition and references work. | Owner |
-| O13 | File the starter good first issues in docs/good-first-issues.md and create the 'good first issue' label, so new contributors have somewhere to start. | Owner |
 | O14 | Before any research session runs, the owner sets up a private sign-up form that keeps contact details off GitHub, confirms a budget to thank participants at the same rate, and names a safeguarding lead for research with under 18s. | Owner |
-| O15 | Decide how and when the portal is shared publicly (the artifact is private until shared, or move it to a public host), and the address posters and QR codes should point to. | Owner |
 | O16 | Decide whether to compile the page at build time, removing the in-browser compiler so it loads much faster on low-end phones; W7 measures it every run. | Owner |
+
+## Closed
+
+| Id | What | Closed | How |
+|---|---|---|---|
+| O6 | Publishing beyond a private artifact (for example GitHub Pages) is the owner's decision. | 2026-11-15 | The owner published the portal on GitHub Pages (pull request 7). Public address: https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ . Posters, the share button and the page metadata now point there. |
+| O15 | Decide how and when the portal is shared publicly (the artifact is private until shared, or move it to a public host), and the address posters and QR codes should point to. | 2026-11-15 | The owner published the portal on GitHub Pages (pull request 7). Public address: https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ . Posters, the share button and the page metadata now point there. |
+| O13 | File the starter good first issues in docs/good-first-issues.md and create the 'good first issue' label, so new contributors have somewhere to start. | 2026-11-15 | Filed as GitHub issues 10 to 19, labelled good first issue, each with the safety note; docs/good-first-issues.md links to them. |

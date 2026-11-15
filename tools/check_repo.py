@@ -14,6 +14,9 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
       an assumed raw-record shape, data.attributes.updated_at, before the file was seen: 9 November 2026)
       (the estate review's open action for this portal: "Date the petition snapshot on the page")
   R6  every relative src/href in the pages resolves to a tracked file (a page that loads a missing file is broken)
+  R8  the public entry page (index.html at the root, served by GitHub Pages) opens the built portal in site/, never
+      the unbuilt design in app/, and never names itself as a UK Youth Parliament service (D22; vaccinated against
+      a redirect to app/ and a UKYP title)
   R7  people decide the irreversible: no GitHub workflow merges, pushes, force-pushes, deletes a branch, repository or
       release, publishes a release or a site, or asks for write access to contents (vaccinated against a workflow
       that runs gh pr merge)
@@ -89,8 +92,19 @@ def r7(texts):
             if re.search(pat, s, re.I): bad.append(f"R7 {f} {what}: only a person does that")
     return bad
 
+def r8(read):
+    b = read("index.html")
+    if b is None: return ["R8 there is no index.html at the root for GitHub Pages to serve"]
+    s = b.decode("utf-8", "replace"); bad = []
+    m = re.search(r'http-equiv="refresh"\s+content="0;\s*url=([^"]+)"', s, re.I)
+    if not m or not m.group(1).startswith("site/index.html"): bad.append("R8 index.html does not send visitors to the built portal, site/index.html (D22)")
+    if re.search(r'(href|url)=["\']?app/', s, re.I): bad.append("R8 index.html points visitors at the unbuilt design in app/ (D22)")
+    t = re.search(r"<title>(.*?)</title>", s, re.S | re.I)
+    if not t or re.search(r"\bUK Youth Parliament\b", t.group(1), re.I) or "unofficial" not in t.group(1).lower(): bad.append("R8 the entry page title must say Amplify is unofficial and must not name it as a UK Youth Parliament service (D22, D13)")
+    return bad
+
 def run(tracked, texts, src, read):
-    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts)
+    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -99,7 +113,7 @@ def read(path):
 texts = {f: (read(f) or b"").decode("utf-8", "replace") for f in tracked if f.endswith(TEXT)}
 
 bad = run(tracked, texts, SRC, read)
-print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R7 problems: {len(bad)}")
+print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R8 problems: {len(bad)}")
 if bad:
     print("\n".join(bad[:40])); sys.exit(1)
 
@@ -125,4 +139,7 @@ expect("R5", r5(SRC, strip("source")))                                          
 expect("R6", r6({page: '<script src="missing-runtime.js"></script>'}, tracked))                # a page loads a missing file
 expect("R7", r7({".github/workflows/x.yml": "run: gh pr merge 5 --squash"}))                 # a workflow that merges
 expect("R7", r7({".github/workflows/x.yml": "permissions:\n  contents: write"}))              # one that may write
+ent = (read("index.html") or b"").decode()
+expect("R8", r8(lambda p: ent.replace("url=site/index.html", "url=app/Amplify%20Portal.dc.html").encode() if p == "index.html" else read(p)))   # redirect to the design (D22)
+expect("R8", r8(lambda p: ent.replace("<title>Amplify: youth voice, carried further (independent, unofficial)</title>", "<title>UK Youth Parliament: Amplify portal</title>").encode() if p == "index.html" else read(p)))  # a UKYP title
 sys.exit(1 if fails else 0)

@@ -253,11 +253,13 @@
    "id": "G21",
    "area": "Governance",
    "item": "Decide how the portal is shared (the artifact is private until shared) and the address posters should point to",
-   "status": "Open",
+   "status": "Pass",
    "moscow": "Must",
-   "evidence": [],
-   "who": "Owner (O15)",
-   "note": "Posters point to the public GitHub repository until then."
+   "evidence": [
+    "R8"
+   ],
+   "who": "",
+   "note": "Decided by the owner on 15 November 2026 (pull request 7): public on GitHub Pages at https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ . R8 keeps that address opening the built portal."
   },
   {
    "id": "G22",

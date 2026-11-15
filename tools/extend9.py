@@ -185,7 +185,7 @@ LOGIC9 = r'''
       shBtn: () => this.ampShareNow(), shOpen: !!s.shareOpen, shExpanded: s.shareOpen ? "true" : "false", shMsg: s.shareMsg || "",
       shClose: () => this.setState({ shareOpen: false }),
       shLinks: this.ampShare("Amplify: " + (this.ampScreenName(s.screen) || "youth voice"), (location.href || "").split("#")[0] + "#" + (s.screen || "home")),
-      shCopy: () => { this.copy((location.href || "").split("#")[0] + "#" + (s.screen || "home"), "shlink"); this.setState({ shareMsg: "Link copied. Until the owner shares the portal publicly, others may not be able to open it." }); },
+      shCopy: () => { this.copy((location.href || "").split("#")[0] + "#" + (s.screen || "home"), "shlink"); this.setState({ shareMsg: "Link copied." }); },
       shCopyLabel: s.copied === "shlink" ? "Link copied" : "Copy link to this screen", shIcon: this.ampIcon("external-link", "currentColor", 14),
       tkShow: tkItems.length > 0 && n.off.indexOf("ticker") < 0 && !s.splash && s.screen !== "latest", tkItems,
       tkPaused: n.paused ? "true" : "false", tkBtn: n.paused ? "Play the news" : "Pause the news", tkIcon: this.ampIcon(n.paused ? "play" : "pause", "currentColor", 14),

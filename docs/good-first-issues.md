@@ -1,8 +1,8 @@
 # Good first issues
 
 Small, real tasks for a first contribution. Each one has a clear finish line and a check that tells you if anything
-broke. The owner files these as GitHub issues labelled `good first issue` (open item O13); until then, pick one here and
-say which in an issue.
+broke. Each is filed as a GitHub issue labelled [`good first issue`](../../../issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+(issues 10 to 19, filed 15 November 2026): comment on the issue to pick it up.
 
 Everything on GitHub is public: never post your name, school, contact details or anyone else's. GitHub is for people
 aged 13 and over; 13 to 17 year olds should agree it with a parent or carer first.

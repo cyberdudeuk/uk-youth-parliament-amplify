@@ -120,7 +120,7 @@ def s7(texts):
     bad = []
     for f, s in texts.items():
         if not f.endswith((".html", ".js")): continue
-        for u in re.findall(r"""<script[^>]+src=["'](https?://[^"']+)""", s):
+        for u in re.findall(r"""<script\b[^>]*?\bsrc\s*=\s*["']?((?:https?:)?//[^"'\s>]+)""", s, re.I):  # any case, spaced or unquoted (D23)
             if not u.startswith(SCRIPT_HOSTS): bad.append(f"S7 site/{f} loads a script from a blocked host: {u[:60]}")
         for u in re.findall(r"""<link[^>]+rel\s*=\s*["']stylesheet["'][^>]*href\s*=\s*["'](https?://[^"']+)""", s, re.I):
             if not u.startswith(STYLE_HOSTS): bad.append(f"S7 site/{f} loads a stylesheet from a blocked host: {u[:60]}")
@@ -395,6 +395,8 @@ if __name__ == "__main__":
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<SCRIPT SRC="https://cdn.example/x.js"></SCRIPT>'))))   # upper case (D10)
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<script src = //cdn.example/x.js></script>'))))          # spaced, unquoted (D10)
     expect("S7", s7(texts_of(broken(idx, lambda s: s + '<IMG SRC="https://cdn.example/a.png">'))))                # upper case (D10)
+    expect("S7", s7(texts_of(broken(idx, lambda s: s + '<SCRIPT SRC = "https://cdn.example/x.js"></SCRIPT>'))))   # upper case, spaced (D23)
+    expect("S7", s7(texts_of(broken(idx, lambda s: s + '<script src=//cdn.example/x.js></script>'))))            # unquoted, protocol-relative (D23)
     expect("S10", s10(texts_of(broken(idx, lambda s: s.replace("window.__resources", "window.__unused")))))
     glj, pdj = "data/glossary.json", "data/product.json"
     expect("S16", s16(texts_of(broken(glj, edit(lambda d: d["terms"].pop([t["id"] for t in d["terms"]].index("ci")))))))   # a tooltip term with no glossary entry

@@ -169,6 +169,22 @@
    "root_cause": "The duplicate list's inline display: flex outranked the stylesheet rule that hides it under prefers-reduced-motion.",
    "fix": "The reduced-motion rule now uses !important, the one way a stylesheet beats an inline style.",
    "check": "W9 opens Home with reduced motion and fails if the duplicate is visible"
+  },
+  {
+   "id": "D22",
+   "found": "2026-11-15, in a gap review after pull request 7",
+   "what": "The public GitHub Pages address opened the unbuilt design in app/, without the portal's safeguards, provenance labels, helplines or unofficial labelling, and its entry page was titled 'UK Youth Parliament: Amplify portal', as if it were a UK Youth Parliament service.",
+   "root_cause": "The entry page was written before the built portal in site/ was on main, and no check covered the root page.",
+   "fix": "index.html now opens site/index.html, says Amplify is independent and unofficial, and carries the two 24-hour helplines.",
+   "check": "R8: the entry page must open site/index.html, never app/, and its title must say unofficial and not name a UKYP service; vaccinated with both breaks"
+  },
+  {
+   "id": "D23",
+   "found": "2026-11-15, by CodeQL (high: bad HTML filtering regexp)",
+   "what": "S7 missed a remote script written in upper case or with spaces, such as <SCRIPT SRC = https://...>, so a page loading code from another host could pass.",
+   "root_cause": "D10 made S9 case- and space-insensitive but S7's own script pattern was left case-sensitive and strict about spacing.",
+   "fix": "The S7 script pattern now ignores case, allows spaces and unquoted values, and catches protocol-relative addresses.",
+   "check": "S7 negative tests with an upper-case, spaced and an unquoted protocol-relative script"
   }
  ],
  "open": [
@@ -195,11 +211,6 @@
   {
    "id": "O5",
    "what": "Easy Read and BSL versions need specialist production.",
-   "who": "Owner"
-  },
-  {
-   "id": "O6",
-   "what": "Publishing beyond a private artifact (for example GitHub Pages) is the owner's decision.",
    "who": "Owner"
   },
   {
@@ -233,24 +244,37 @@
    "who": "Owner"
   },
   {
-   "id": "O13",
-   "what": "File the starter good first issues in docs/good-first-issues.md and create the 'good first issue' label, so new contributors have somewhere to start.",
-   "who": "Owner"
-  },
-  {
    "id": "O14",
    "what": "Before any research session runs, the owner sets up a private sign-up form that keeps contact details off GitHub, confirms a budget to thank participants at the same rate, and names a safeguarding lead for research with under 18s.",
-   "who": "Owner"
-  },
-  {
-   "id": "O15",
-   "what": "Decide how and when the portal is shared publicly (the artifact is private until shared, or move it to a public host), and the address posters and QR codes should point to.",
    "who": "Owner"
   },
   {
    "id": "O16",
    "what": "Decide whether to compile the page at build time, removing the in-browser compiler so it loads much faster on low-end phones; W7 measures it every run.",
    "who": "Owner"
+  }
+ ],
+ "closed": [
+  {
+   "id": "O6",
+   "what": "Publishing beyond a private artifact (for example GitHub Pages) is the owner's decision.",
+   "who": "Owner",
+   "closed": "2026-11-15",
+   "how": "The owner published the portal on GitHub Pages (pull request 7). Public address: https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ . Posters, the share button and the page metadata now point there."
+  },
+  {
+   "id": "O15",
+   "what": "Decide how and when the portal is shared publicly (the artifact is private until shared, or move it to a public host), and the address posters and QR codes should point to.",
+   "who": "Owner",
+   "closed": "2026-11-15",
+   "how": "The owner published the portal on GitHub Pages (pull request 7). Public address: https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ . Posters, the share button and the page metadata now point there."
+  },
+  {
+   "id": "O13",
+   "what": "File the starter good first issues in docs/good-first-issues.md and create the 'good first issue' label, so new contributors have somewhere to start.",
+   "who": "Owner",
+   "closed": "2026-11-15",
+   "how": "Filed as GitHub issues 10 to 19, labelled good first issue, each with the safety note; docs/good-first-issues.md links to them."
   }
  ]
 }

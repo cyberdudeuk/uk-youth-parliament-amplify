@@ -22,6 +22,9 @@ def registers():
     out += [f"| {d['id']} | {d['found']} | {d['what']} | {d['root_cause']} | {d['fix']} | {d['check']} |" for d in g["defects"]]
     out += ["", "## Open, and who must act", "", "| Id | What | Who |", "|---|---|---|"]
     out += [f"| {o['id']} | {o['what']} | {o['who']} |" for o in g["open"]]
+    if g.get("closed"):
+        out += ["", "## Closed", "", "| Id | What | Closed | How |", "|---|---|---|---|"]
+        out += [f"| {o['id']} | {o['what']} | {o['closed']} | {o['how']} |" for o in g["closed"]]
     return "\n".join(out) + "\n"
 
 

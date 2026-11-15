@@ -29,6 +29,7 @@ import make_docs  # noqa: E402
 
 APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
 REPO_URL = "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"
+LIVE_URL = "https://cyberdudeuk.github.io/uk-youth-parliament-amplify/"  # public on GitHub Pages: owner's decision, 15 Nov 2026 (PR 7)
 CONTACT_URL = REPO_URL + "/issues/new?template=contact.yml"
 PORTAL_SRC, MAP_SRC = "Amplify Portal.dc.html", "Local Routes Map.html"
 
@@ -100,7 +101,7 @@ GF_P = '''<link rel="preconnect" href="https://fonts.googleapis.com" />
 def meta_tags(meta):
     ld = {"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": meta["build_id"], "version": meta["build_id"],
           "dateModified": meta["built"], "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}],
-          "isAccessibleForFree": True, "license": REPO_URL + "/blob/main/LICENSE", "url": REPO_URL}
+          "isAccessibleForFree": True, "license": REPO_URL + "/blob/main/LICENSE", "url": LIVE_URL, "codeRepository": REPO_URL}
     return (f'<meta name="artefact:id" content="amplify-portal">\n<meta name="artefact:version" content="{meta["build_id"]}">\n'
             f'<meta name="artefact:class" content="portal">\n<meta name="artefact:as-of" content="{meta["built"]}">\n'
             f'<meta name="artefact:review-date" content="{meta["review"]}">\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
@@ -350,7 +351,7 @@ def build(date, out=SITE):
         arts[f"{n}.svg"] = art.corner(n)
     import segno, barcode
     from barcode.writer import SVGWriter
-    qr_inline = segno.make(REPO_URL, error="m").svg_inline(scale=3, border=0, dark="#06100f", light="#ffffff")
+    qr_inline = segno.make(LIVE_URL, error="m").svg_inline(scale=3, border=0, dark="#06100f", light="#ffffff")  # posters send people to the live portal
     arts.update({"poster-involve.svg": art.poster_involve(qr_inline), "poster-stem.svg": art.poster_stem(qr_inline),
                  "social-card.svg": art.social_card(), "badge-ambassador.svg": art.badge_ambassador()})
     for f, s in arts.items():
