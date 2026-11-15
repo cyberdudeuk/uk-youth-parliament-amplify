@@ -1,0 +1,28 @@
+# User stories
+
+Generated from `data/service-design.json` by `tools/make_docs.py`; edit that, not this file. The portal shows the same content on its Personas & journeys screen.
+
+> **Status:** Proto-personas and assumed journeys, written from the owner's requests, published guidance and the portal's own safeguards. They have not been tested with users yet: research Round 1 (January to February 2027) tests them, and they will change.
+
+Each story names the checks that prove it; they run on every change.
+
+| Id | Story | Where | Done when | Proved by |
+|---|---|---|---|---|
+| ST01 | As a young person, 11 to 15, I want to see the ages and the organisations at each stage of youth representation, and find my own area, so that I can get involved without being told I'm too young. | route | Each stage shows who runs it and the age you need to be<br>The local routes map finds my council or region | W1, W4 |
+| ST02 | As a young person, 11 to 15, I want to know who to contact if I'm worried, wherever I am in the portal, so that I can get help quickly. | care | Helplines are current and checked every 30 days<br>Safeguarding is linked from every Get involved screen | C3, C4, C5 |
+| ST03 | As a young person, 11 to 15, I want to understand words like MYP or select committee where I meet them, so that I don't give up on a screen. | graph | Marked terms explain themselves on hover and focus<br>No tooltip is ever empty | S12, W5 |
+| ST04 | As a young person, 16 to 25, I want to contribute to the portal and have it recognised, so that I can show what I've done. | involve | Ways to help by time and skill<br>Recognition and badges described | W1 |
+| ST05 | As a young person, 16 to 25, I want to see what changed because people like me took part, so that I know it's worth my time. | research | You said, we did links each finding to a change<br>Status says honestly that no research has run yet | C9 |
+| ST06 | As a parent, guardian or carer, I want to act on my child's behalf where a service is age-limited, so that they are not shut out. | trust | Age and access table by service<br>On-behalf guidance in plain English | W4 |
+| ST07 | As a parent, guardian or carer, I want to know exactly what research would ask of my child, so that I can give informed consent. | research | Promise, consent and data rules published<br>Under 16s need a parent's consent | S11 |
+| ST08 | As a youth worker or group leader, I want to a session plan I can run tonight, so that my group can take part without extra preparation. | learn | Each session has audience, timing, outcomes and steps<br>Sessions link to the screens they use | W1 |
+| ST09 | As a youth worker or group leader, I want to find local and national groups for young people least often heard, so that I can refer and connect them. | communities | Groups by kind with nations and provenance<br>Listing is not endorsement, said on screen | C1, C2 |
+| ST10 | As a teacher, tutor or school staff, I want to sourced, neutral facts for a UK Parliament Week lesson, so that I can teach with confidence. | launch | Launch dates sourced<br>Calendar and Classroom sharing on click only | S9, C1 |
+| ST11 | As a teacher, tutor or school staff, I want to show girls in my class that STEM is for them, so that more of them choose computing and engineering. | stem | Facts with linked sources<br>Free opportunities by path, for every nation where available | C1, C6 |
+| ST12 | As a coding or stem club leader or mentor, I want to a real pipeline my club can learn DevOps on, so that they practise how professionals work. | stem | DevOps steps point to real files<br>Every check proves it catches a deliberate break | S1, W5 |
+| ST13 | As a coding or stem club leader or mentor, I want to clear rules for under 18s contributing on GitHub, so that my club stays safe in public. | involve | Age rules and no personal data stated<br>Ambassador and research forms ask no names | R1, S4 |
+| ST14 | As a councillor, policy maker, researcher or journalist, I want to cite every fact with its source and date, so that my reporting or policy is accurate. | sources | Every source has a provenance and check date<br>Overdue sources are flagged | C1, C2, C7 |
+| ST15 | As a councillor, policy maker, researcher or journalist, I want to describe Amplify accurately, so that I don't present it as an official service. | media | Approved descriptions to copy<br>Unofficial status in three places | S5 |
+| ST16 | As a d/deaf or disabled young person (any age), I want to use every screen with a keyboard and screen reader, so that I am not excluded. | trust | No serious or critical axe issues beyond the baseline<br>Tooltips work on focus and close with Escape | W3, W5 |
+| ST17 | As a d/deaf or disabled young person (any age), I want to use the portal on a small phone at large text, so that I can read it the way I need. | home | No sideways scrolling at 360px<br>Explainer bar wraps | W2 |
+| ST18 | As a d/deaf or disabled young person (any age), I want to take part in research in BSL or ISL, so that my experience counts. | research | Interpreters booked before sessions are offered<br>Any modality accepted | S11 |

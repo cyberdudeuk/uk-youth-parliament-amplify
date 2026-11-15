@@ -183,7 +183,7 @@ def poster_stem(qr_svg):
     body = [f'<rect width="{w}" height="{h}" fill="{INK}"/>', "".join(grid),
             _text(28, 350, "STEM SPOTLIGHT", 16, 800, _c(0.82, 0.14, 175), spacing=4),
             _lines(28, 400, ["Girls code.", "Girls engineer.", "Girls ship."], 46, 52, weight=900, fill="#ffffff"),
-            _lines(28, 580, ["Coding clubs, cyber and engineering competitions,", "architecture mentoring and a real DevOps pipeline",
+            _lines(28, 580, ["Coding clubs, cyber and engineering competitions,", "enterprise architecture and a real DevOps pipeline",
                              "to learn on. Free, and open to beginners."], 15, 22, weight=600, fill="#d8efe9"),
             _text(28, 670, "You belong in tech.", 20, 900, _c(0.82, 0.16, 70)),
             _qr(qr_svg, w - 158, 590, ""), _text(w - 108, 726, "Find the code", 11, 700, "#d8efe9", "middle"),

@@ -220,12 +220,23 @@
   {
    "screen": "stem",
    "class": "Sourced",
-   "why": "Facts and opportunities are taken from named sources (WISE, EngineeringUK, NCSC, DSIT, the Raspberry Pi Foundation and others), each linked and dated."
+   "why": "Facts, opportunities and careers come from named sources (WISE, EngineeringUK, NCSC, DSIT, GDS, the Civil Service, NHS, devolved governments and others), each linked and dated. The enterprise architecture layers are a plain-English explanation, with roles from the government's digital and data framework."
   },
   {
    "screen": "research",
    "class": "Editorial",
    "why": "A research plan and design routes written for this portal, ported from the owner's other portals. No research has run yet; findings so far come from published evidence and feedback and are labelled that way."
+  },
+  {
+   "screen": "service",
+   "class": "Model",
+   "why": "Proto-personas and assumed journeys: a design model written from the owner's requests and published guidance, not yet tested with users. Research Round 1 tests them.",
+   "check": "Treat personas and journeys as hypotheses until research findings replace them."
+  },
+  {
+   "screen": "golive",
+   "class": "Editorial",
+   "why": "A readiness assessment written for this portal; each passed gate names the automated checks that prove it, and the live counts come from the data and the latest build."
   }
  ],
  "views": [

@@ -21,6 +21,9 @@ import extend2  # noqa: E402
 import extend3  # noqa: E402
 import extend4  # noqa: E402
 import extend5  # noqa: E402
+import extend6  # noqa: E402
+import extend7  # noqa: E402
+import extend8  # noqa: E402
 import make_docs  # noqa: E402
 
 APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
@@ -194,6 +197,9 @@ def transforms(meta):
         *extend3.transforms(),
         *extend4.transforms(),
         *extend5.transforms(),
+        *extend6.transforms(),
+        *extend7.transforms(),
+        *extend8.transforms(),
         ("footer", "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
          "    </sc-if>\n\n  </div>\n</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;",
          "    </sc-if>\n\n  </div>\n" + footer(meta) + "</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;", 1),
@@ -255,11 +261,11 @@ def map_transforms():
 def rule_ids():
     """The checks that guard the build, read from the check scripts' own docstrings (one master, no copy)."""
     out = []
-    for f in ("check_repo.py", "check_site.py", "check_sources.py"):
+    for f in ("check_repo.py", "check_site.py", "check_sources.py", "check_browser.py"):
         p = os.path.join(R, "tools", f)
         if not os.path.exists(p): continue
         doc = open(p, encoding="utf-8").read().split('"""')[1]
-        for m in re.finditer(r"^\s{2}([RSC]\d+)\s{1,3}(.+(?:\n\s{5,}\S.*)*)", doc, re.M):
+        for m in re.finditer(r"^\s{2}([RSCW]\d+)\s{1,3}(.+(?:\n\s{5,}\S.*)*)", doc, re.M):
             out.append({"id": m.group(1), "what": re.sub(r"\s+", " ", m.group(2)).strip()})
     return out
 
@@ -275,7 +281,7 @@ def build(date, out=SITE):
     h = hashlib.sha256()
     for f in sorted(src["files"]):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
-    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
+    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/extend6.py", "tools/extend7.py", "tools/extend8.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
     digest = h.hexdigest()
     d = datetime.date.fromisoformat(date)

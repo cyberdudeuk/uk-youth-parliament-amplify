@@ -23,6 +23,14 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       hand-kept copy)
   S12 every drawer screen has a tooltip and explainer in data/tooltips.json, and every term or control tooltip the
       page names (data-tip="term:..." or "ui:...") exists, so no tooltip is ever empty (owner's request, 15 Nov 2026)
+  S13 the service design hangs together: every explainer persona has a service-design persona and the reverse,
+      every story, journey stage and persona names a real persona and drawer screen, every story is proved by a real
+      check id, and every blueprint layer has one cell per phase (UCD artefacts must not drift from the portal)
+  S14 accuracy guards on what the page claims: no other organisation linked inside the UK Youth Parliament's name (D13),
+      votes at 16 never stated as law while the Bill is before Parliament (D14), and the splash's typed manifesto line
+      always credited as Amplify's own words, not a quotation (D15)
+  S15 go-live readiness is honest: every passed or partial gate names evidence that is a real check (or a named
+      workflow), every gate not passed names who must act, and every open item it cites exists in the registers
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -151,6 +159,71 @@ def s12(texts):
     return bad
 
 
+def s13(texts):
+    page = texts.get("index.html", "")
+    try:
+        tt, sd, man = (json.loads(texts.get(k, "")) for k in ("data/tooltips.json", "data/service-design.json", "build.json"))
+    except ValueError:
+        return ["S13 tooltips, service design or build.json is missing or not JSON"]
+    bad, screens = [], set(re.findall(r'\["([a-z0-9]+)", "[^"]+", "(?:dot|ring|sq|dia|bar|tri)", \d+', page))
+    checks = {c["id"] for c in man.get("checks", [])}
+    tp = {p["id"] for p in tt.get("personas", [])} - {"everyone"}
+    sp = {p["id"] for p in sd.get("personas", [])}
+    for x in sorted(tp ^ sp): bad.append(f"S13 persona {x} is in only one of tooltips.json and service-design.json")
+    for p in sd.get("personas", []):
+        for sc in [p["starts"]] + p["uses"]:
+            if sc not in screens: bad.append(f"S13 persona {p['id']} names a screen {sc} that is not in the drawer")
+    for x in sd.get("stories", []):
+        if x["persona"] not in sp: bad.append(f"S13 story {x['id']} names an unknown persona {x['persona']}")
+        if x["screen"] not in screens: bad.append(f"S13 story {x['id']} names a screen {x['screen']} that is not in the drawer")
+        for c in x["proved"]:
+            if c not in checks: bad.append(f"S13 story {x['id']} is proved by {c}, which is not a check")
+    for j in sd.get("journeys", []):
+        if j["persona"] not in sp: bad.append(f"S13 journey {j['id']} names an unknown persona")
+        for g in j["stages"]:
+            if g["screen"] not in screens: bad.append(f"S13 journey {j['id']} stage {g['stage']} names a screen {g['screen']} that is not in the drawer")
+    for b in sd.get("blueprints", []):
+        for l in b["layers"]:
+            if len(l["cells"]) != len(b["phases"]): bad.append(f"S13 blueprint {b['id']} layer {l['layer']} has {len(l['cells'])} cells for {len(b['phases'])} phases")
+    return bad
+
+
+ACCURACY = [  # (pattern that must not appear, why) - each from a defect found in review
+    (r"</a>\s*Parliament", "S14 a link ends just before 'Parliament', so another organisation reads as part of the UK Youth Parliament's name (D13)"),
+    (r"(?i)(?:get|gets|getting|have|has) the vote at(?:&nbsp;|\s)+16", "S14 the page states votes at 16 as law; the Bill is still before Parliament (D14)"),
+]
+
+
+def s14(texts):
+    page, bad = texts.get("index.html", ""), []
+    for pat, why in ACCURACY:
+        if re.search(pat, page): bad.append(why)
+    if "MANIFESTO = " in page and "it is not a quotation" not in page:
+        bad.append("S14 the splash types a manifesto line without saying it is Amplify's own words, not a quotation (D15)")
+    return bad
+
+
+NAMED_EVIDENCE = {"CodeQL", "health.yml", "upkeep task"}
+
+
+def s15(texts):
+    try:
+        rd, man, reg = (json.loads(texts.get(k, "")) for k in ("data/readiness.json", "build.json", "data/registers.json"))
+    except ValueError:
+        return ["S15 readiness, build.json or registers is missing or not JSON"]
+    checks = {c["id"] for c in man.get("checks", [])} | NAMED_EVIDENCE
+    opens = {o["id"] for o in reg.get("open", [])}
+    bad = []
+    for g in rd.get("gates", []):
+        if g["status"] in ("Pass", "Partial") and not g["evidence"]: bad.append(f"S15 gate {g['id']} is {g['status']} with no evidence")
+        for e in g["evidence"]:
+            if e not in checks: bad.append(f"S15 gate {g['id']} cites {e}, which is not a check")
+        if g["status"] != "Pass" and not g["who"]: bad.append(f"S15 gate {g['id']} is {g['status']} but names nobody who must act")
+        for o in re.findall(r"\bO\d+\b", g["who"] + " " + g["note"]):
+            if o not in opens: bad.append(f"S15 gate {g['id']} cites open item {o}, which is not in the registers")
+    return bad
+
+
 def s11(read):
     import make_docs
     bad = []
@@ -178,7 +251,7 @@ def texts_of(files):
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t)
 
 
 if __name__ == "__main__":
@@ -190,7 +263,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S12 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S15 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -219,6 +292,23 @@ if __name__ == "__main__":
     expect("S11", s11(lambda p: "edited by hand" if p == "CHANGELOG.md" else rd(p)))
     expect("S11", s11(lambda p: "edited by hand" if p == "docs/research/consent-forms.md" else rd(p)))   # a hand-kept research doc
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<link rel="preconnect" href="https://fonts.gstatic.com">'))))
+    expect("S14", s14(texts_of(broken(idx, lambda s: s.replace("Independent &middot; not a UKYP service", '<a href="https://www.ukyouth.org/">UK Youth</a> Parliament')))))
+    expect("S14", s14(texts_of(broken(idx, lambda s: s.replace("Votes at 16 is in the&nbsp;Lords.", "We get the vote at&nbsp;16.")))))
+    expect("S14", s14(texts_of(broken(idx, lambda s: s.replace("it is not a quotation", "it is a line")))))
+    expect("S14", s14(texts_of(broken(idx, lambda s: s + '"Your child gets the vote at 16."'))))   # a template states it as law
+    rdj = "data/readiness.json"
+    expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**json.loads(s)["gates"][0], "evidence": ["Z9"]}]})))))       # evidence is not a check
+    expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**json.loads(s)["gates"][5], "who": ""}]})))))           # open gate, nobody to act
+    expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**json.loads(s)["gates"][5], "who": "Owner (O99)"}]})))))  # cites a missing open item
+    sdj = "data/service-design.json"
+    def edit(fn):  # change the parsed data, not the text, so the break survives any reformatting
+        def go(s):
+            d = json.loads(s); fn(d); return json.dumps(d)
+        return go
+    expect("S13", s13(texts_of(broken(sdj, edit(lambda d: d["stories"][0].update(screen="nowhere"))))))      # a story on no screen
+    expect("S13", s13(texts_of(broken(sdj, edit(lambda d: d["stories"][0].update(proved=["Z9"]))))))         # proved by no check
+    expect("S13", s13(texts_of(broken(sdj, edit(lambda d: d["blueprints"][0]["layers"][0]["cells"].pop())))))  # a blueprint cell lost
+    expect("S13", s13(texts_of(broken("data/tooltips.json", edit(lambda d: d["personas"].pop())))))          # personas drift
     tj = "data/tooltips.json"
     expect("S12", s12(texts_of(broken(tj, lambda s: s.replace('"stem": {"tip"', '"stem-gone": {"tip"').replace('"stem": {\n   "tip"', '"stem-gone": {\n   "tip"')))))  # a screen loses its tooltip
     expect("S12", s12(texts_of(broken(idx, lambda s: s + '<span data-tip="term:nosuchterm">x</span>'))))   # a tooltip with no text

@@ -97,6 +97,62 @@
    "root_cause": "The tooltip closed on any scroll, including the scroll that focus itself causes.",
    "fix": "On scroll, a tooltip whose trigger has keyboard focus moves with it; only a hover tooltip closes.",
    "check": "W5 (caught it before release)"
+  },
+  {
+   "id": "D13",
+   "found": "2026-11-15",
+   "what": "The splash linked 'UK Youth', a different charity, inside the words 'UK Youth Parliament', so it read as an affiliation.",
+   "root_cause": "A link was placed on part of an organisation's name in the original design.",
+   "fix": "The splash says 'Independent, not a UKYP service', with no link.",
+   "check": "S14"
+  },
+  {
+   "id": "D14",
+   "found": "2026-11-15",
+   "what": "The splash headline and four Toolkit messages said young people 'get the vote at 16', while the Bill is still in the Lords.",
+   "root_cause": "Campaign copy written as if the Bill had passed.",
+   "fix": "The headline and messages now say the Bill is going through Parliament.",
+   "check": "S14"
+  },
+  {
+   "id": "D15",
+   "found": "2026-11-15",
+   "what": "The Manifesto splash typed a line under the UKYP manifesto's title, so it could be read as a quotation from it.",
+   "root_cause": "The line had no attribution.",
+   "fix": "The splash says the line is Amplify's own words, not a quotation, and points to the real manifesto.",
+   "check": "S14"
+  },
+  {
+   "id": "D16",
+   "found": "2026-11-15",
+   "what": "The splash closed by itself after 14 seconds even while someone was reading it, Escape did nothing, and Tab moved focus behind the overlay where it could not be seen.",
+   "root_cause": "The design's splash was a timed overlay, not a dialog.",
+   "fix": "A labelled dialog: Escape enters and focuses the main content, Tab stays inside, and any interaction or reduced-motion setting cancels the timer.",
+   "check": "W6"
+  },
+  {
+   "id": "D17",
+   "found": "2026-11-15",
+   "what": "On some screens the drawer could not be scrolled on its own: its lower items were reachable only by scrolling the whole page (reported by the owner).",
+   "root_cause": "The drawer was sticky with no height limit or scroll of its own, and grew taller than the screen as sections were added.",
+   "fix": "The drawer is capped at the screen's height and scrolls on its own, without moving the page.",
+   "check": "W8"
+  },
+  {
+   "id": "D18",
+   "found": "2026-11-15",
+   "what": "Campaign kit and Media centre artwork could not be viewed, printed or saved (reported by the owner).",
+   "root_cause": "The artwork opened as a separate file in a new tab, which the host page blocks.",
+   "fix": "An in-page viewer with Print (only the artwork prints), Save and a copy on GitHub, with Escape to close.",
+   "check": "W8"
+  },
+  {
+   "id": "D19",
+   "found": "2026-11-15",
+   "what": "Pledge wall, Issue domains and the launch plan scrolled sideways on a 320px phone.",
+   "root_cause": "Labels that could not wrap and two-column rows with a fixed minimum width.",
+   "fix": "Below 420px, labels wrap and those rows stack.",
+   "check": "W2 (now also at 320px and 768px)"
   }
  ],
  "open": [
@@ -168,6 +224,16 @@
   {
    "id": "O14",
    "what": "Before any research session runs, the owner sets up a private sign-up form that keeps contact details off GitHub, confirms a budget to thank participants at the same rate, and names a safeguarding lead for research with under 18s.",
+   "who": "Owner"
+  },
+  {
+   "id": "O15",
+   "what": "Decide how and when the portal is shared publicly (the artifact is private until shared, or move it to a public host), and the address posters and QR codes should point to.",
+   "who": "Owner"
+  },
+  {
+   "id": "O16",
+   "what": "Decide whether to compile the page at build time, removing the in-browser compiler so it loads much faster on low-end phones; W7 measures it every run.",
    "who": "Owner"
   }
  ]

@@ -7,11 +7,11 @@
 <meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">
 <link rel="icon" href="./art/favicon.svg" type="image/svg+xml">
 <meta name="artefact:id" content="amplify-portal">
-<meta name="artefact:version" content="AMP-20261115-cc2c9d2b">
+<meta name="artefact:version" content="AMP-20261115-3c409c95">
 <meta name="artefact:class" content="portal">
 <meta name="artefact:as-of" content="2026-11-15">
 <meta name="artefact:review-date" content="2026-12-15">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-cc2c9d2b", "version": "AMP-20261115-cc2c9d2b", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-3c409c95", "version": "AMP-20261115-3c409c95", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
 <script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/babel.min.js"};</script>
 <script src="./support.js"></script>
 </head>
@@ -69,6 +69,14 @@
   .amp-term { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; border-radius: 4px; }
   .amp-term:focus-visible { outline: 3px solid oklch(0.8 0.15 175); outline-offset: 2px; }
   body[data-motion="off"] .amp-tip { transition: none; }
+  @media print { body.amp-print-art * { visibility: hidden !important; } body.amp-print-art .amp-lightbox, body.amp-print-art .amp-lightbox-art { visibility: visible !important; }
+    body.amp-print-art .amp-lightbox { position: absolute !important; inset: 0 !important; background: #fff !important; padding: 0 !important; }
+    body.amp-print-art .amp-lightbox-art { max-height: none !important; height: 100vh !important; border-radius: 0 !important; } }
+
+
+  @media (max-width: 1024px) { .amp-dots { grid-template-columns: repeat(65, 1fr) !important; } }
+  @media (max-width: 420px) { main li[style*="grid-template-columns"] { grid-template-columns: minmax(0, 1fr) !important; gap: 2px !important; } main [style*="white-space: nowrap"] { white-space: normal !important; } }
+  @media (max-width: 640px) { .amp-dots { grid-template-columns: repeat(26, 1fr) !important; gap: 3px !important; } }
 
   .amp-sr { position: absolute !important; left: 0; top: 0; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   @media (max-width: 420px) { main div[style*="grid-template-columns"]:not([role="row"]) { grid-template-columns: minmax(0, 1fr) !important; } main a { overflow-wrap: anywhere; max-width: 100%; white-space: normal !important; flex-shrink: 1 !important; box-sizing: border-box; } main a span { min-width: 0; overflow-wrap: anywhere; } }
@@ -101,7 +109,7 @@
 </helmet>
 
 <sc-if value="{{ splash }}" hint-placeholder-val="{{ true }}">
-<div style="position: fixed; inset: 0; z-index: 90; background: radial-gradient(60% 50% at 8% 6%, oklch(var(--bl) 0.15 175 / 0.38) 0%, transparent 62%), radial-gradient(52% 46% at 92% 12%, oklch(var(--bl) 0.15 300 / 0.34) 0%, transparent 62%), radial-gradient(70% 60% at 50% 104%, oklch(var(--bl) 0.15 70 / 0.32) 0%, transparent 60%), linear-gradient(var(--bg0), var(--bg-deep)); color: rgb(var(--ink-rgb)); font-family: Chivo, system-ui, sans-serif; overflow: hidden; display: flex; flex-direction: column;">
+<div data-amp-splash role="dialog" aria-modal="true" aria-label="Welcome to Amplify" style="position: fixed; inset: 0; z-index: 90; background: radial-gradient(60% 50% at 8% 6%, oklch(var(--bl) 0.15 175 / 0.38) 0%, transparent 62%), radial-gradient(52% 46% at 92% 12%, oklch(var(--bl) 0.15 300 / 0.34) 0%, transparent 62%), radial-gradient(70% 60% at 50% 104%, oklch(var(--bl) 0.15 70 / 0.32) 0%, transparent 60%), linear-gradient(var(--bg0), var(--bg-deep)); color: rgb(var(--ink-rgb)); font-family: Chivo, system-ui, sans-serif; overflow: hidden; display: flex; flex-direction: column;">
 
   <div style="position: absolute; width: 60vw; height: 60vw; left: -16vw; top: -18vw; border-radius: 50%; background: radial-gradient(circle, oklch(var(--t1) 0.16 175 / 0.30) 0%, transparent 68%); filter: blur(30px); animation: amp-blob 26s ease-in-out infinite; pointer-events: none;"></div>
   <div style="position: absolute; width: 46vw; height: 46vw; right: -12vw; bottom: -16vw; border-radius: 50%; background: radial-gradient(circle, oklch(var(--t1) 0.16 70 / 0.22) 0%, transparent 68%); filter: blur(34px); animation: amp-blob 34s ease-in-out infinite reverse; pointer-events: none;"></div>
@@ -109,11 +117,11 @@
   <div style="position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 28px; flex-wrap: wrap;">
     <div style="display: flex; align-items: baseline; gap: 10px;">
       <span style="font-size: 21px; font-weight: 900; letter-spacing: -0.03em;">Amplify</span>
-      <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.7);"><a href="https://www.ukyouth.org/" target="_blank" rel="noopener">UK Youth</a> Parliament</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.7);">Independent &middot; not a UKYP service</span>
     </div>
     <div style="display: flex; gap: 8px; align-items: center;">
-      <button onClick="{{ setSplashA }}" style="border: 1px solid rgb(var(--film-rgb) / 0.16); background: rgb(var(--film-rgb) / 0.06); color: rgb(var(--ink-rgb)); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Signal</button>
-      <button onClick="{{ setSplashB }}" style="border: 1px solid rgb(var(--film-rgb) / 0.16); background: rgb(var(--film-rgb) / 0.06); color: rgb(var(--ink-rgb)); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Manifesto</button>
+      <button onClick="{{ setSplashA }}" aria-pressed="{{ splashAPressed }}" data-tip="ui:signal" style="border: 1px solid rgb(var(--film-rgb) / 0.16); background: rgb(var(--film-rgb) / 0.06); color: rgb(var(--ink-rgb)); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Signal</button>
+      <button onClick="{{ setSplashB }}" aria-pressed="{{ splashBPressed }}" data-tip="ui:manifesto" style="border: 1px solid rgb(var(--film-rgb) / 0.16); background: rgb(var(--film-rgb) / 0.06); color: rgb(var(--ink-rgb)); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Manifesto</button>
       <button onClick="{{ enter }}" style="border: 1px solid rgb(var(--film-rgb) / 0.14); background: transparent; color: rgb(var(--ink-rgb) / 0.62); border-radius: 999px; padding: 7px 14px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">Skip &rsaquo;</button>
     </div>
   </div>
@@ -123,8 +131,9 @@
 
     <div style="grid-column: 1 / -1; animation: amp-rise 0.9s cubic-bezier(0.2,0.8,0.2,1) both;">
       <div style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: oklch(var(--t1) 0.16 70); margin-bottom: 12px;"><a href="https://petition.parliament.uk/petitions/754954" target="_blank" rel="noopener">Petition 754954</a> &middot; closed 11 August 2026</div>
-      <h1 style="margin: 0; font-size: clamp(38px, 6.4vw, 92px); line-height: 0.92; font-weight: 900; letter-spacing: -0.045em; max-width: 15ch;">We get the vote at&nbsp;16.</h1>
-      <p style="margin: 14px 0 0; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.5; color: rgb(var(--ink-rgb) / 0.66); max-width: 46ch;">Youth Parliament UK asked the Government to fund non-partisan political and citizenship teaching resources. It closed on 1,192 signatures of the 10,000 needed for any response at all. Amplify exists so the next one does not.</p>
+      <h1 style="margin: 0; font-size: clamp(38px, 6.4vw, 92px); line-height: 0.92; font-weight: 900; letter-spacing: -0.045em; max-width: 15ch;">Votes at 16 is in the&nbsp;Lords. Are we&nbsp;ready?</h1>
+      <p style="margin: 14px 0 0; font-size: clamp(15px, 1.5vw, 19px); line-height: 1.5; color: rgb(var(--ink-rgb) / 0.66); max-width: 46ch;">The Representation of the People Bill cleared the Commons on 2 September 2026. Before that, Youth Parliament UK asked the Government to fund non-partisan political and citizenship teaching resources. It closed on 1,192 signatures of the 10,000 needed for any response at all. Amplify exists so the next one does not.</p>
+      <p style="margin: 12px 0 0; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(var(--t1) 0.16 70);">Launching in UK Parliament Week &middot; 23 to 29 November 2026 &middot; no sign-in needed</p>
     </div>
 
     <div style="border: 1px solid rgb(var(--film-rgb) / 0.13); border-radius: 22px; background: linear-gradient(160deg, rgb(var(--film-rgb) / 0.10), rgb(var(--film-rgb) / 0.03)); backdrop-filter: blur(22px) saturate(170%); -webkit-backdrop-filter: blur(22px) saturate(170%); box-shadow: inset 0 1px 0 rgb(var(--sheen-rgb) / 0.22), 0 24px 60px var(--sh-1); padding: 20px 22px; animation: amp-rise 1s 0.1s cubic-bezier(0.2,0.8,0.2,1) both;">
@@ -153,7 +162,7 @@
         <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.7);">650 constituencies &middot; {{ petReached }} signed, {{ petCold }} never did</span>
         <a href="https://petitionmap.unboxedconsulting.com/?petition=754954" target="_blank" rel="noopener" style="font-family: 'Space Mono', monospace; font-size: 10px;">petitionmap.unboxedconsulting.com</a>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(130, 1fr); gap: 2px;">
+      <div class="amp-dots" role="img" aria-label="650 constituencies: each dot is a seat, lit where someone signed" style="display: grid; grid-template-columns: repeat(130, 1fr); gap: 2px;">
         <sc-for list="{{ splashDots }}" as="d" hint-placeholder-count="650">
           <div title="{{ d.t }}" style="aspect-ratio: 1; border-radius: 1px; background: {{ d.bg }}; animation: {{ d.anim }};"></div>
         </sc-for>
@@ -182,6 +191,7 @@
       <span style="margin-left: 6px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 999px; padding: 6px 12px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Unofficial prototype</span>
     </div>
     <h1 style="margin: 0; font-size: clamp(30px, 4.6vw, 68px); line-height: 1.08; font-weight: 700; letter-spacing: -0.035em; max-width: 30ch; min-height: 2.2em;">{{ typed }}<span style="display: inline-block; width: 0.5ch; background: oklch(var(--t2) 0.16 70); animation: amp-caret 1.05s step-end infinite;">&nbsp;</span></h1>
+    <p style="margin: 14px 0 0; max-width: 62ch; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">The line above is Amplify's own, on the petition's ask: it is not a quotation. The UK Youth Parliament's manifesto, <i>Shaping Our Future, Today Not Tomorrow</i> (2024 to 2026), is linked from Issue domains.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 26px; padding-top: 16px; border-top: 1px solid rgb(var(--film-rgb) / 0.10);">
       <div>
         <div style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.62);">Signatures</div>
@@ -276,7 +286,7 @@
     <div style="flex: 1 1 640px; min-width: 0; display: flex; align-items: flex-start; gap: 14px;">
 
       <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ true }}">
-      <nav aria-label="Portal sections" style="flex: 0 0 236px; position: sticky; top: 74px; border: 1px solid rgb(var(--film-rgb) / 0.11); border-radius: 20px; background: linear-gradient(170deg, rgb(var(--film-rgb) / 0.075), rgb(var(--film-rgb) / 0.025)); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); box-shadow: inset 0 1px 0 rgb(var(--sheen-rgb) / 0.16); padding: 12px 10px; display: flex; flex-direction: column; gap: 3px;">
+      <nav aria-label="Portal sections" style="flex: 0 0 236px; position: sticky; top: 74px; align-self: flex-start; max-height: calc(100vh - 90px); overflow-y: auto; overscroll-behavior: contain; border: 1px solid rgb(var(--film-rgb) / 0.11); border-radius: 20px; background: linear-gradient(170deg, rgb(var(--film-rgb) / 0.075), rgb(var(--film-rgb) / 0.025)); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); box-shadow: inset 0 1px 0 rgb(var(--sheen-rgb) / 0.16); padding: 12px 10px; display: flex; flex-direction: column; gap: 3px;">
         <label for="amp-search" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.62); padding: 2px 6px 6px;">Search portal</label>
         <input id="amp-search" type="search" value="{{ query }}" onChange="{{ setQuery }}" placeholder="petition, ally, PSHE, Guildford&hellip;  /" style="width: 100%; box-sizing: border-box; border: 1px solid rgb(var(--film-rgb) / 0.16); border-radius: 12px; background: rgb(var(--film-rgb) / 0.07); color: rgb(var(--ink-rgb)); padding: 9px 11px; font-size: 13px; margin-bottom: 4px;" />
 
@@ -335,7 +345,7 @@
           <span aria-hidden="true" style="{{ icHelp }}"></span>
           <span style="flex: 1 1 300px; min-width: 0;"><span style="font-weight: 800;">This screen:</span> {{ exTip }}<sc-if value="{{ exHasFor }}" hint-placeholder-val="{{ false }}"> <span style="color: rgb(var(--ink-rgb) / 0.8);">For {{ exWho }}: {{ exFor }}</span></sc-if></span>
           <label data-tip="ui:persona" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; flex: 0 1 auto; min-width: 0; max-width: 100%; font-size: 12.5px; color: rgb(var(--ink-rgb) / 0.8);">Explain for
-            <select value="{{ persona }}" onChange="{{ setPersona }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><option value="everyone">Everyone</option><option value="young11">Young person, 11 to 15</option><option value="young16">Young person, 16 to 25</option><option value="parent">Parent, guardian or carer</option><option value="worker">Youth worker or group leader</option><option value="teacher">Teacher, tutor or school staff</option><option value="club">Coding or STEM club leader or mentor</option><option value="ally">Councillor, policy maker, researcher or journalist</option></select>
+            <select value="{{ persona }}" onChange="{{ setPersona }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><option value="everyone">Everyone</option><option value="young11">Young person, 11 to 15</option><option value="young16">Young person, 16 to 25</option><option value="parent">Parent, guardian or carer</option><option value="worker">Youth worker or group leader</option><option value="teacher">Teacher, tutor or school staff</option><option value="club">Coding or STEM club leader or mentor</option><option value="access">d/Deaf or disabled young person</option><option value="ally">Councillor, policy maker, researcher or journalist</option></select>
           </label>
         </div>
         </sc-if>
@@ -2631,7 +2641,7 @@
           </div>
           <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 16px; font-weight: 800;">Key facts, with sources</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ mdFacts }}" as="f" hint-placeholder-count="3"><li style="font-size: 13.5px; line-height: 1.5;">{{ f.f }} <span style="color: rgb(var(--ink-rgb) / 0.72);">Source: {{ f.src }}.</span></li></sc-for></ul></section>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
-            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 16px; font-weight: 800;">Illustrations and marks</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ mdAssets }}" as="a" hint-placeholder-count="4"><li style="font-size: 13.5px;"><a href="{{ a.href }}" target="_blank" rel="noopener" style="font-weight: 700;">{{ a.name }}</a> <span style="color: rgb(var(--ink-rgb) / 0.7);">&middot; {{ a.file }}</span></li></sc-for></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Illustrations are drawn in code from the portal's own shapes and may be reused with credit to Amplify.</p></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 16px; font-weight: 800;">Illustrations and marks</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ mdAssets }}" as="a" hint-placeholder-count="4"><li style="font-size: 13.5px;"><button type="button" onClick="{{ a.view }}" style="border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 13.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">{{ a.name }}</button> <span style="color: rgb(var(--ink-rgb) / 0.7);">&middot; view, print or save</span></li></sc-for></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Illustrations are drawn in code from the portal's own shapes and may be reused with credit to Amplify.</p></section>
             <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 16px; font-weight: 800;">Rules for using them</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ mdRules }}" as="r" hint-placeholder-count="3"><li style="font-size: 13.5px; line-height: 1.5;">{{ r.t }}</li></sc-for></ul></section>
           </div>
           <section aria-label="Share Amplify into your tools" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
@@ -2666,6 +2676,19 @@
         </sc-if>
 
 
+        <sc-if value="{{ artOpen }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-lightbox" role="dialog" aria-modal="true" aria-label="{{ artName }}" style="position: fixed; inset: 0; z-index: 95; display: flex; flex-direction: column; gap: 12px; padding: clamp(10px, 3vw, 28px); background: rgb(0 0 0 / 0.82); overflow: auto;">
+          <div class="amp-lightbox-controls" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #fff;">
+            <span style="flex: 1 1 200px; min-width: 0; font-size: 15px; font-weight: 800;">{{ artName }}</span>
+            <button type="button" onClick="{{ artPrint }}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 0; background: oklch(0.85 0.15 145); color: #06100f; font-size: 13.5px; font-weight: 800; cursor: pointer;">Print</button>
+            <a href="{{ artSrc }}" download="{{ artFile }}" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; color: #fff; font-size: 13.5px; font-weight: 800;">Save</a>
+            <a href="{{ artGit }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid rgb(255 255 255 / 0.5); color: #fff; font-size: 13.5px; font-weight: 700;">Copy on GitHub<span class="amp-sr"> (opens in a new tab)</span></a>
+            <button type="button" id="amp-art-close" onClick="{{ artClose }}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; background: transparent; color: #fff; font-size: 13.5px; font-weight: 800; cursor: pointer;">Close</button>
+          </div>
+          <img class="amp-lightbox-art" src="{{ artSrc }}" alt="{{ artAlt }}" style="flex: 1 1 auto; min-height: 0; width: 100%; max-height: calc(100vh - 120px); object-fit: contain; background: #fff; border-radius: 12px;" />
+          <p class="amp-lightbox-controls" style="margin: 0; font-size: 12.5px; color: rgb(255 255 255 / 0.85);">If Print or Save does nothing, the page you are viewing this in is blocking it: use Copy on GitHub, or your browser's own print menu while this view is open. Escape closes this view.</p>
+        </div>
+        </sc-if>
         <sc-if value="{{ sInvolve }}" hint-placeholder-val="{{ false }}">
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
           <div>
@@ -2723,7 +2746,7 @@
             <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ cpIntro }}</p>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px;">
-            <sc-for list="{{ cpAssets }}" as="a" hint-placeholder-count="4"><figure class="amp-card" style="margin: 0; border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><img src="{{ a.src }}" alt="{{ a.alt }}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 10px; background: rgb(var(--film-rgb) / 0.04);" /><figcaption style="font-size: 13.5px; font-weight: 800;">{{ a.name }}</figcaption><a href="{{ a.href }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; font-size: 12.5px;">Open to print or save<span class="amp-sr"> (opens in a new tab)</span></a></figure></sc-for>
+            <sc-for list="{{ cpAssets }}" as="a" hint-placeholder-count="4"><figure class="amp-card" style="margin: 0; border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><button type="button" onClick="{{ a.view }}" aria-label="View {{ a.name }}" style="border: 0; padding: 0; background: rgb(var(--film-rgb) / 0.04); border-radius: 10px; cursor: zoom-in;"><img src="{{ a.src }}" alt="{{ a.alt }}" style="display: block; width: 100%; height: 200px; object-fit: contain; border-radius: 10px;" /></button><figcaption style="font-size: 13.5px; font-weight: 800;">{{ a.name }}</figcaption><button type="button" onClick="{{ a.view }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">View, print or save</button></figure></sc-for>
           </div>
           <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Posts and messages to adapt</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px;"><sc-for list="{{ cpPosts }}" as="x" hint-placeholder-count="4"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ x.channel }}</div><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{ x.text }}</p><button type="button" onClick="{{ x.copy }}" style="align-self: flex-start; min-height: 36px; border-radius: 999px; padding: 6px 14px; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{ x.copied }}</button></div></sc-for></div>
@@ -2765,7 +2788,7 @@
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
           <div>
             <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 200);"><span aria-hidden="true" style="{{ icStem }}"></span>Get involved</div>
-            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">STEM spotlight: girls in code, engineering, architecture and DevOps</h1>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">STEM and tech: science, innovation, data, digital, cyber and technology</h1>
             <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ stIntro }}</p>
           </div>
           <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">The picture, with sources</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ stFacts }}" as="f" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.5;">{{ f.f }} <a href="{{ f.url }}" target="_blank" rel="noopener noreferrer" style="font-size: 12.5px;">Source: {{ f.src }}<span class="amp-sr"> (opens in a new tab)</span></a></li></sc-for></ul></section>
@@ -2776,6 +2799,12 @@
               <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px;"><sc-for list="{{ x.items }}" as="o" hint-placeholder-count="3"><div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 800;">{{ o.name }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ o.what }}</div><div style="font-size: 12px;">{{ o.nations }} &middot; <span style="font-style: italic;">{{ o.prov }}</span></div><a href="{{ o.url }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; font-size: 12.5px;">Visit<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></sc-for></div>
             </section>
           </sc-for>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Enterprise architecture, layer by layer</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ stEaIntro }}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 10px;"><sc-for list="{{ stEa }}" as="l" hint-placeholder-count="6"><div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 800;">{{ l.layer }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ l.what }}</div><div style="font-size: 12.5px;"><span style="font-weight: 800;">Government role:</span> {{ l.role }}</div></div></sc-for></div>
+            <p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ stEaSrc }}</p></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Careers in government and the public sector</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ stCarIntro }}</p>
+            <sc-for list="{{ stCareers }}" as="g" hint-placeholder-count="4"><div style="margin-bottom: 12px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 6px;">{{ g.g }}</div><div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px;"><sc-for list="{{ g.items }}" as="o" hint-placeholder-count="3"><div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 800;">{{ o.name }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ o.what }}</div><div style="font-size: 12.5px;">{{ o.use }}</div><div style="font-size: 12px;">{{ o.kind }} &middot; {{ o.nations }} &middot; <span style="font-style: italic;">{{ o.prov }}</span></div><a href="{{ o.url }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; font-size: 12.5px;">Visit<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></sc-for></div></div></sc-for></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Tech is a youth voice issue</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ stVoiceIntro }}</p><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ stVoice }}" as="v" hint-placeholder-count="4"><li style="font-size: 13.5px;">{{ v.t }} <button type="button" onClick="{{ v.go }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">{{ v.where }}</button></li></sc-for></ul></section>
           <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Learn <span class="amp-term" tabindex="0" data-tip="term:devops">DevOps</span> on this portal</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ stDevIntro }}</p>
             <ol style="margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ stDev }}" as="d" hint-placeholder-count="7"><li><span style="font-weight: 800;">{{ d.s }}.</span> {{ d.d }} <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: rgb(var(--ink-rgb) / 0.78);">{{ d.where }}</span></li></sc-for></ol>
             <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 12px 20px;"><a href="{{ ivRepo }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Explore the repository<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a> <a href="{{ ivGood }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Find a good first issue<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div>
@@ -2825,6 +2854,69 @@
           </div>
           <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">What we brought over from the owner's other portals</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">How participation and research work in DQ Commons, the GitHub repos asset catalogue and govukOS, and what Amplify has taken from each, prioritised as Must, Should, Could or Won't have this time.</p>
             <div style="display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ rsPorted }}" as="p" hint-placeholder-count="8"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 6px 12px;"><span style="{{ p.pill }}">{{ p.moscow }}</span><span style="flex: 1 1 280px; min-width: 0; font-size: 13.5px; font-weight: 700;">{{ p.what }}</span><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ p.from }} &middot; {{ p.done }}</span><sc-if value="{{ p.hasNote }}" hint-placeholder-val="{{ false }}"><span style="flex: 1 1 100%; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ p.note }}</span></sc-if></div></sc-for></div></section>
+        </div>
+        </sc-if>
+
+
+        <sc-if value="{{ sService }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 215);"><span aria-hidden="true" style="{{ icService }}"></span>Get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Service design: personas, journeys and blueprints</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ sdIntro }}</p>
+          </div>
+          <div role="note" style="border-radius: 16px; padding: 12px 16px; font-size: 13.5px; line-height: 1.55; border: 1px dashed oklch(var(--t2) 0.16 70 / 0.8); background: oklch(var(--t1) 0.16 70 / 0.12);"><span style="font-weight: 800;">Status.</span> {{ sdStatus }}</div>
+          <div role="group" aria-label="Choose a persona" style="display: flex; flex-wrap: wrap; gap: 8px;"><sc-for list="{{ sdChips }}" as="c" hint-placeholder-count="8"><button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">{{ c.label }}</button></sc-for></div>
+          <section aria-label="Persona" class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+            <h2 style="margin: 0; font-size: 20px; font-weight: 900;">{{ sdRole }}</h2>
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ sdContext }}</p>
+            <p style="margin: 0; font-size: 15px; font-weight: 800;">Goal: {{ sdGoal }}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px;">
+              <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Needs</div><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ sdNeeds }}" as="x" hint-placeholder-count="3"><li>{{ x.t }}</li></sc-for></ul></div>
+              <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Pain points</div><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ sdPains }}" as="x" hint-placeholder-count="3"><li>{{ x.t }}</li></sc-for></ul></div>
+              <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Kept safe by</div><p style="margin: 4px 0 0; font-size: 13.5px; line-height: 1.5;">{{ sdSafety }}</p></div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;"><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Starts at</span><button type="button" onClick="{{ sdGoStart }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">{{ sdStart }}</button><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Uses</span><sc-for list="{{ sdUses }}" as="u" hint-placeholder-count="5"><button type="button" onClick="{{ u.go }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">{{ u.label }}</button></sc-for></div>
+          </section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">User stories</h2>
+            <div style="display: flex; flex-direction: column; gap: 10px;"><sc-for list="{{ sdStories }}" as="x" hint-placeholder-count="3"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ x.id }}</div><div style="font-size: 14px; font-weight: 800; line-height: 1.45;">{{ x.text }}</div><div style="font-size: 12.5px; font-weight: 800;">Done when</div><ul style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.5;"><sc-for list="{{ x.accept }}" as="a" hint-placeholder-count="2"><li>{{ a.t }}</li></sc-for></ul><div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: 12.5px;"><span style="font-weight: 800;">Proved by</span><sc-for list="{{ x.proved }}" as="p" hint-placeholder-count="2"><span title="{{ p.what }}" style="font-family: 'Space Mono', monospace; font-weight: 700;">{{ p.id }}</span></sc-for><button type="button" onClick="{{ x.go }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">On {{ x.where }}</button></div></div></sc-for></div>
+            <p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ sdAllStories }} stories in all; the checks that prove them run on every change, and Portal health lists what each one does.</p></section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Journeys</h2>
+            <sc-if value="{{ sdNoJourney }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">No journey is mapped for this persona yet: suggest one with the Idea form.</p></sc-if>
+            <sc-for list="{{ sdJourneys }}" as="j" hint-placeholder-count="1"><div style="margin-bottom: 12px;"><div style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">{{ j.id }}: {{ j.title }}</div>
+              <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 8px;"><sc-for list="{{ j.stages }}" as="g" hint-placeholder-count="5"><li style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ g.n }} &middot; {{ g.stage }}</div><div style="font-size: 13.5px; font-weight: 700;">{{ g.doing }}</div><div style="font-size: 12.5px; font-style: italic;">Feels: {{ g.feeling }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ g.opp }}</div><button type="button" onClick="{{ g.go }}" style="align-self: flex-start; border: 0; background: transparent; padding: 4px 0; color: oklch(var(--t4) 0.15 175); font-size: 12.5px; font-weight: 700; text-decoration: underline; cursor: pointer;">{{ g.where }}</button></li></sc-for></ol></div></sc-for>
+          </section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Service blueprints</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">What people do, what the page shows, what happens behind it, the processes that keep it working, and the checks that prove it. Scroll sideways on a small screen.</p>
+            <sc-for list="{{ sdBlue }}" as="b" hint-placeholder-count="2"><div style="margin-bottom: 16px;"><div style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">{{ b.id }}: {{ b.title }}</div>
+              <div role="region" aria-label="{{ b.title }}" tabindex="0" style="overflow-x: auto; max-width: 100%;"><div style="{{ b.cols }}"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); padding: 6px 4px;">Layer</div><sc-for list="{{ b.phases }}" as="p" hint-placeholder-count="4"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); padding: 6px 4px; font-weight: 700;">{{ p.ph }}</div></sc-for>
+                <sc-for list="{{ b.layers }}" as="l" hint-placeholder-count="5"><div style="font-size: 12.5px; font-weight: 800; padding: 8px 4px;">{{ l.layer }}</div><sc-for list="{{ l.cells }}" as="c" hint-placeholder-count="4"><div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 10px; padding: 8px 10px; font-size: 12.5px; line-height: 1.45;"><span class="amp-sr">{{ l.layer }}, {{ c.ph }}: </span>{{ c.c }}</div></sc-for></sc-for></div></div></div></sc-for>
+          </section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Processes and workflows</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px;"><sc-for list="{{ sdFlows }}" as="w" hint-placeholder-count="3"><div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ w.id }}</div><div style="font-size: 14.5px; font-weight: 800;">{{ w.title }}</div><ol style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.5;"><sc-for list="{{ w.steps }}" as="t" hint-placeholder-count="4"><li>{{ t.t }}</li></sc-for></ol><div style="font-size: 13px; font-weight: 800;">{{ w.decision }}</div><div style="font-size: 12.5px;"><span style="font-weight: 800;">Yes:</span> {{ w.yes }}</div><div style="font-size: 12.5px;"><span style="font-weight: 800;">No:</span> {{ w.no }}</div></div></sc-for></div>
+            <p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">The same content, with flowcharts, is generated in the repository's docs/service-design folder.</p></section>
+        </div>
+        </sc-if>
+
+
+        <sc-if value="{{ sGolive }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 145);"><span aria-hidden="true" style="{{ icGolive }}"></span>Sources &amp; updates</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Go-live readiness</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ rdIntro }}</p>
+          </div>
+          <div role="status" style="border-radius: 16px; padding: 12px 16px; font-size: 13.5px; line-height: 1.55; border: 1px solid oklch(var(--t2) 0.16 70 / 0.7); background: oklch(var(--t1) 0.16 70 / 0.12); font-size: 15px; font-weight: 800;">{{ rdVerdict }}</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;"><sc-for list="{{ rdCounts }}" as="c" hint-placeholder-count="3"><span style="font-size: 13.5px;"><span style="{{ c.style }}">{{ c.k }}</span> {{ c.n }}</span></sc-for><span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Sources: {{ rdV }} verified, {{ rdS }} search-sourced, {{ rdK }} leads. Build {{ rdBuild }}, {{ rdChecks }} checks.</span></div>
+          <sc-for list="{{ rdAreas }}" as="a" hint-placeholder-count="4">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">{{ a.area }}</h2>
+              <div style="display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ a.gates }}" as="g" hint-placeholder-count="3"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;"><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ g.id }}</span><span style="{{ g.sStyle }}">{{ g.status }}</span><span style="{{ g.mStyle }}">{{ g.moscow }}</span><span style="flex: 1 1 260px; min-width: 0; font-size: 14px; font-weight: 700;">{{ g.item }}</span></div>
+                <sc-if value="{{ g.hasEv }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12.5px;"><span style="font-weight: 800;">Proved by</span><sc-for list="{{ g.ev }}" as="e" hint-placeholder-count="2"><span title="{{ e.what }}" style="font-family: 'Space Mono', monospace; font-weight: 700;">{{ e.e }}</span></sc-for></div></sc-if>
+                <sc-if value="{{ g.hasWho }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12.5px;"><span style="font-weight: 800;">Who must act:</span> {{ g.who }}</div></sc-if>
+                <sc-if value="{{ g.hasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ g.note }}</div></sc-if></div></sc-for></div>
+            </section>
+          </sc-for>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Self-routines that keep it right</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">What runs on its own, how often, and where, prioritised as Must, Should or Could have.</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ rdRoutines }}" as="r" hint-placeholder-count="6"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;"><span style="{{ r.mStyle }}">{{ r.moscow }}</span><span style="{{ r.sStyle }}">{{ r.status }}</span><span style="font-size: 14px; font-weight: 800;">{{ r.routine }}</span><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ r.kind }} &middot; {{ r.cadence }}</span></div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ r.what }} <span style="font-family: 'Space Mono', monospace; font-size: 12px;">{{ r.where }}</span></div></div></sc-for></div></section>
         </div>
         </sc-if>
 
@@ -3032,7 +3124,7 @@
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Transparency</h2>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-cc2c9d2b</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-3c409c95</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Next review due 15 December 2026. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Source, checks and history: <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Contact</h2>
@@ -3043,8 +3135,8 @@
     </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
-        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-cc2c9d2b" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
-        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-cc2c9d2b</p>
+        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-3c409c95" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
+        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-3c409c95</p>
       </div>
   </footer>
 </div>
@@ -3135,17 +3227,17 @@ class Component extends DCLogic {
       graphic: "Staffroom poster \u2014 A4, QR to petition"
     },
     parent: {
-      post: "Our kids get the vote at 16. Right now, whether they learn how any of it works depends on which school they walked into. Sign for funded, non-partisan citizenship teaching in every secondary.",
-      subject: "Your child gets the vote at 16. Are they being taught anything about it?",
+      post: "Votes at 16 is going through Parliament. Right now, whether they learn how any of it works depends on which school they walked into. Sign for funded, non-partisan citizenship teaching in every secondary.",
+      subject: "Your child could soon vote at 16. Are they being taught anything about it?",
       mail: "From the next election, 16- and 17-year-olds will vote. Whether your child has been taught how Parliament, elections and media literacy actually work is currently down to their school's timetable. This petition asks the Government to fund proper resources for every secondary school.",
       chat: "Parents' group: forty seconds. Votes at 16 is happening; the teaching that should come with it isn't guaranteed. Sign here.",
       graphic: "Parent-facing square \u2014 one stat, one action"
     },
     peer: {
-      post: "We get the vote at 16 and nobody taught us how to use it. Sign this so the year below us gets taught properly. Forty seconds, no account needed.",
+      post: "Votes at 16 is going through Parliament and nobody has taught us how to use a vote. Sign this so the year below us gets taught properly. Forty seconds, no account needed.",
       subject: "Forty seconds. Then send it to five people in your year.",
-      mail: "You are getting the vote at 16, and most of us have had about one lesson on how any of it works. This petition asks for funded teaching in every school, not just the lucky ones. Sign it, then send it to five people in your year \u2014 that is how it moves.",
-      chat: "Forty seconds, no login. We get the vote at 16 and nobody taught us how it works. Sign, then send to five people in your year.",
+      mail: "Votes at 16 is going through Parliament, and most of us have had about one lesson on how any of it works. This petition asks for funded teaching in every school, not just the lucky ones. Sign it, then send it to five people in your year \u2014 that is how it moves.",
+      chat: "Forty seconds, no login. Votes at 16 is coming through Parliament and nobody has taught us how voting works. Sign, then send to five people in your year.",
       graphic: "Story asset \u2014 9:16, big number, swipe-up"
     },
     union: {
@@ -3169,7 +3261,7 @@ class Component extends DCLogic {
 
   screenFromHash() {
     const id = (location.hash || "").replace(/^#\/?/, "");
-    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities|involve|ambassadors|campaign|learn|stem|research)$/.test(id) ? id : null;
+    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities|involve|ambassadors|campaign|learn|stem|research|service|golive)$/.test(id) ? id : null;
   }
   screenLabel(id) {
     for (const [, items] of this.GROUPS) for (const it of items) if (it[0] === id) return it[1];
@@ -3189,8 +3281,8 @@ class Component extends DCLogic {
 
   async loadAmplifyData() {
     const get = async (f) => { try { const r = await fetch(new URL(f, document.baseURI).href, { cache: "no-store" }); return r.ok ? await r.json() : null; } catch (e) { return null; } };
-    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json", "./data/tooltips.json", "./data/involve.json", "./data/research.json"].map(get));
-    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
+    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json", "./data/tooltips.json", "./data/involve.json", "./data/research.json", "./data/service-design.json", "./data/readiness.json"].map(get));
+    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
   }
   ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
   ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
@@ -3432,7 +3524,7 @@ class Component extends DCLogic {
       carPill: "align-self:flex-start;border-radius:999px;padding:3px 11px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:oklch(var(--t2) 0.17 " + (KH[sl.kind] || 175) + ");color:var(--on-accent);",
       carBg: "position:relative;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;align-items:center;border-radius:28px;padding:clamp(20px,3vw,32px);border:1px solid oklch(var(--t1) 0.16 " + (KH[sl.kind] || 175) + " / 0.45);background:linear-gradient(135deg,oklch(var(--t1) 0.16 " + (KH[sl.kind] || 175) + " / 0.22),oklch(var(--t1) 0.16 300 / 0.08));",
       mdBlurbs: md.blurbs.map((b, k) => ({ len: b.len, text: b.text, copy: () => this.copy(b.text, "blurb" + k), copied: s.copied === "blurb" + k ? "Copied" : "Copy" })),
-      mdFacts: md.facts, mdAssets: md.assets.map((a) => ({ name: a.name, href: "./" + a.file, file: a.file })), mdRules: md.rules.map((t) => ({ t })),
+      mdFacts: md.facts, mdAssets: md.assets.map((a) => ({ name: a.name, href: "./" + a.file, file: a.file, view: () => this.ampArt(a.name, "./" + a.file, a.name, a.file) })), mdRules: md.rules.map((t) => ({ t })),
       cmIntro: cm.intro || "", cmSafety: cm.safety || "",
       cmKinds: cm.kinds.map((k) => ({ k: k.k, note: k.note || "", hasNote: !!k.note, items: k.ids.map((id) => byId[id]).filter(Boolean).map((x) => ({ name: x.name, what: x.what, url: x.url, nations: x.nations.join(" · "), prov: PV[x.provenance] || x.provenance })) })),
       shareLaunch: this.ampShare(ln.name || "UK Parliament Week", ln.url || here, ln.start, ln.end),
@@ -3481,7 +3573,7 @@ class Component extends DCLogic {
       leave: (e) => { const to = e.relatedTarget; if (!(to && this._tipFor && this._tipFor.contains(to))) hide(); },
       focus: (e) => { const n = find(e.target); if (n) show(n); else hide(); },
       blur: () => hide(),
-      key: (e) => { if (e.key === "Escape" && !el.hidden) hide(); },
+      key: (e) => { if (e.key === "Escape" && !el.hidden) hide(); else if (e.key === "Escape" && this.state.art) this.ampArtClose(); else if (e.key === "Tab" && this.state.art) { const bx = document.querySelector(".amp-lightbox"); const f = bx ? Array.from(bx.querySelectorAll("a[href], button")) : []; if (f.length) { const a = document.activeElement, i = f.indexOf(a); if (i < 0 || (e.shiftKey && i === 0) || (!e.shiftKey && i === f.length - 1)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); } } } },
       scroll: () => { const f = this._tipFor; if (f && document.activeElement === f) show(f); else hide(); }  // keep a focused trigger's tooltip (D12)
     };
     document.addEventListener("mouseover", this._tipH.over); document.addEventListener("mouseout", this._tipH.out);
@@ -3496,6 +3588,18 @@ class Component extends DCLogic {
     document.removeEventListener("focusin", h.focus); document.removeEventListener("focusout", h.blur);
     document.removeEventListener("keydown", h.key); window.removeEventListener("scroll", h.scroll, true);
     this._tip.remove(); this._tip = null;
+  }
+  ampArt(name, src, alt, file) {
+    this._artBack = document.activeElement;
+    this.setState({ art: { name, src, alt, file } }, () => { const c = document.getElementById("amp-art-close"); if (c) c.focus(); });
+  }
+  ampArtClose() { this.setState({ art: null }, () => { if (this._artBack && this._artBack.focus) this._artBack.focus(); }); }
+  ampArtPrint() {
+    const b = document.body; b.classList.add("amp-print-art");
+    const done = () => { b.classList.remove("amp-print-art"); window.removeEventListener("afterprint", done); };
+    window.addEventListener("afterprint", done);
+    try { window.print(); } catch (e) { /* printing blocked by the host: the fallback link stays on screen */ }
+    setTimeout(done, 60000);
   }
   ampPersona() { try { return window.localStorage.getItem("amp-persona") || "everyone"; } catch (e) { return "everyone"; } }
   ampVals4(s) {
@@ -3513,6 +3617,9 @@ class Component extends DCLogic {
     return {
       sInvolve: s.screen === "involve", sAmbassadors: s.screen === "ambassadors", sCampaign: s.screen === "campaign", sLearn: s.screen === "learn", sStem: s.screen === "stem",
       exShow: !!scr && !s.splash, exTip: scr ? scr.tip : "", exFor: extra || pe.lens || "", exHasFor: !!(extra || (p !== "everyone" && pe.lens)), exWho: pe.label || "Everyone",
+      artOpen: !!s.art, artName: (s.art || {}).name || "", artSrc: (s.art || {}).src || "", artAlt: (s.art || {}).alt || "",
+      artFile: ((s.art || {}).file || "").split("/").pop(), artGit: repo + "/blob/main/site/" + ((s.art || {}).file || ""),
+      artClose: () => this.ampArtClose(), artPrint: () => this.ampArtPrint(),
       persona: p, setPersona: (e) => { const v = e.target.value; try { window.localStorage.setItem("amp-persona", v); } catch (err) { /* storage unavailable: keep it in memory */ } this.setState({ persona: v }); },
       ivIntro: inv.intro || "", ivRepo: repo, ivContrib: repo + "/blob/main/CONTRIBUTING.md", ivGood: repo + "/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22",
       ivWays: inv.ways.map((w) => ({ time: w.time, icon: this.ampIcon(w.icon, "oklch(var(--t3) 0.16 175)", 18), items: w.items.map((i) => ({ t: i.t, how: i.how, go: go(i.screen), where: label(i.screen) })) })),
@@ -3520,7 +3627,7 @@ class Component extends DCLogic {
       amStatus: amb.status || "", amIntro: amb.intro || "", amTiers: amb.tiers.map((t) => ({ tier: t.tier, who: t.who, time: t.time, does: t.does.map((d) => ({ d })) })),
       amPromise: amb.promise.map((t) => ({ t })), amConduct: amb.conduct.map((t) => ({ t })),
       amRegister: repo + "/issues/new?template=" + (amb.register || "ambassador.yml"),
-      cpIntro: cp.intro || "", cpAssets: cp.assets.map((a) => ({ name: a.name, href: "./" + a.file, src: "./" + a.file, alt: a.alt })),
+      cpIntro: cp.intro || "", cpAssets: cp.assets.map((a) => ({ name: a.name, src: "./" + a.file, alt: a.alt, view: () => this.ampArt(a.name, "./" + a.file, a.alt, a.file) })),
       cpPosts: cp.posts.map((x, k) => ({ channel: x.channel, text: x.text, copy: () => this.copy(x.text, "post" + k), copied: s.copied === "post" + k ? "Copied" : "Copy" })),
       cpSocial: cp.social_note || "", cpTags: (cp.hashtags || []).join("  "), cpTagNote: cp.hashtag_note || "",
       cpAsmTitle: (cp.assembly || {}).title || "", cpAsm: ((cp.assembly || {}).steps || []).map((t, k) => ({ n: String(k + 1), t })),
@@ -3531,6 +3638,9 @@ class Component extends DCLogic {
       stFacts: st.facts.map((f) => ({ f: f.f, src: f.src, url: f.url })),
       stPaths: st.paths.map((x) => ({ p: x.p, first: x.first, icon: this.ampIcon(x.icon, "oklch(var(--t3) 0.16 200)", 18),
         items: x.ids.map((id) => byId[id]).filter(Boolean).map((o) => ({ name: o.name, what: o.what, url: o.url, nations: o.nations.join(" · "), prov: PV[o.provenance] || o.provenance })) })),
+      stEaIntro: (st.ea || {}).intro || "", stEaSrc: (st.ea || {}).source || "", stEa: ((st.ea || {}).layers || []).map((l) => ({ layer: l.layer, what: l.what, role: l.role })),
+      stCarIntro: (st.careers || {}).intro || "", stCareers: ((st.careers || {}).groups || []).map((g) => ({ g: g.g, items: g.ids.map((id) => byId[id]).filter(Boolean).map((o) => ({ name: o.name, what: o.what, use: o.use, url: o.url, nations: o.nations.join(" · "), kind: o.kind, prov: PV[o.provenance] || o.provenance })) })),
+      stVoiceIntro: (st.tech_voice || {}).intro || "", stVoice: ((st.tech_voice || {}).links || []).map((l) => ({ t: l.t, where: label(l.screen), go: go(l.screen) })),
       stDev: ((st.devops || {}).steps || []).map((x, k) => ({ n: String(k + 1), s: x.s, d: x.d, where: x.where })),
       icInvolve: this.ampIcon("git-pull-request", "oklch(var(--t3) 0.16 175)", 16), icAmb: this.ampIcon("award", "oklch(var(--t3) 0.16 70)", 16),
       icCamp: this.ampIcon("rocket", "oklch(var(--t3) 0.16 25)", 16), icLearn: this.ampIcon("presentation", "oklch(var(--t3) 0.16 300)", 16),
@@ -3573,6 +3683,98 @@ class Component extends DCLogic {
       susDone: done, susScore: done ? String(score) : "", susLeft: String(bm.items.length - ans.filter(Boolean).length), susShowLeft: !done,
       susReset: () => this.setState({ sus: [] }),
       icResearch: this.ampIcon("pencil-ruler", "oklch(var(--t3) 0.16 300)", 16), icGauge: this.ampIcon("gauge", "oklch(var(--t3) 0.16 145)", 18)
+    };
+  }
+
+
+  ampVals6(s) {
+    const A = s.amp || {}, sd = A.sd || { personas: [], stories: [], journeys: [], blueprints: [], workflows: [] };
+    const label = (id) => { try { return this.screenLabel(id) || id; } catch (e) { return id; } };
+    const go = (id) => () => this.setState({ screen: id });
+    const ids = sd.personas.map((p) => p.id);
+    const cur = ids.indexOf(s.svcP) >= 0 ? s.svcP : (ids.indexOf(s.persona) >= 0 ? s.persona : ids[0]);
+    const P = sd.personas.find((p) => p.id === cur) || { needs: [], pains: [], uses: [] };
+    const role = (id) => (sd.personas.find((p) => p.id === id) || {}).role || id;
+    const W = {}; ((A.bld || {}).checks || []).forEach((c) => { W[c.id] = c.what; });
+    const js = sd.journeys.filter((j) => j.persona === cur);
+    return {
+      sService: s.screen === "service", sdStatus: sd.status || "", sdIntro: sd.intro || "",
+      sdChips: sd.personas.map((p) => ({ label: p.role, pressed: p.id === cur ? "true" : "false", style: this.ampChip(p.id === cur, 215), pick: () => this.setState({ svcP: p.id }) })),
+      sdRole: P.role || "", sdContext: P.context || "", sdGoal: P.goal || "", sdSafety: P.safety || "",
+      sdNeeds: P.needs.map((t) => ({ t })), sdPains: P.pains.map((t) => ({ t })),
+      sdUses: P.uses.map((id) => ({ label: label(id), go: go(id) })), sdStart: label(P.starts), sdGoStart: go(P.starts),
+      sdStories: sd.stories.filter((x) => x.persona === cur).map((x) => ({ id: x.id, text: "As a " + role(x.persona).toLowerCase() + ", I want to " + x.want + ", so that " + x.so + ".",
+        where: label(x.screen), go: go(x.screen), accept: x.accept.map((t) => ({ t })), proved: x.proved.map((c) => ({ id: c, what: W[c] || "" })) })),
+      sdAllStories: String(sd.stories.length),
+      sdJourneys: js.map((j) => ({ id: j.id, title: j.title, stages: j.stages.map((g, k) => ({ n: String(k + 1), stage: g.stage, doing: g.doing, feeling: g.feeling, opp: g.opportunity, where: label(g.screen), go: go(g.screen) })) })),
+      sdHasJourney: js.length > 0, sdNoJourney: js.length === 0,
+      sdBlue: sd.blueprints.map((b) => ({ id: b.id, title: b.title, cols: "display:grid;grid-template-columns:minmax(120px,0.8fr) repeat(" + b.phases.length + ",minmax(120px,1fr));gap:6px;min-width:" + (140 + b.phases.length * 130) + "px;",
+        phases: b.phases.map((ph) => ({ ph })), layers: b.layers.map((l) => ({ layer: l.layer, cells: l.cells.map((c, k) => ({ c, ph: b.phases[k] || "" })) })) })),
+      sdFlows: sd.workflows.map((w) => ({ id: w.id, title: w.title, steps: w.steps.map((t) => ({ t })), decision: w.decision, yes: w.yes, no: w.no })),
+      sdDocs: ((A.iv || {}).repo || "") + "/tree/main/docs/service-design",
+      icService: this.ampIcon("route", "oklch(var(--t3) 0.16 215)", 16)
+    };
+  }
+
+
+  ampSplashOn() {
+    if (this._spl || typeof document === "undefined") return;
+    const box = () => document.querySelector("[data-amp-splash]");
+    const hold = () => { if (this.auto) { clearTimeout(this.auto); this.auto = null; } };
+    const enter = () => { hold(); this.setState({ splash: false }, () => { const m = document.getElementById("amp-main"); if (m) m.focus(); }); };
+    let reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { /* no media queries */ }
+    if (reduce) setTimeout(hold, 0);  // nothing moves on by itself for people who ask for less motion
+    this._spl = {
+      key: (e) => {
+        const b = box(); if (!this.state.splash || !b) return;
+        hold();
+        if (e.key === "Escape") { e.preventDefault(); enter(); return; }
+        if (e.key === "Tab") {
+          const f = Array.from(b.querySelectorAll("a[href], button, [tabindex]:not([tabindex='-1'])")).filter((x) => !x.disabled && x.offsetParent !== null);
+          if (!f.length) return;
+          const first = f[0], last = f[f.length - 1], a = document.activeElement;
+          if (!b.contains(a)) { e.preventDefault(); first.focus(); }
+          else if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
+        }
+      },
+      touch: (e) => { const b = box(); if (b && b.contains(e.target)) hold(); }
+    };
+    document.addEventListener("keydown", this._spl.key, true);
+    document.addEventListener("pointerdown", this._spl.touch, true);
+    document.addEventListener("mouseover", this._spl.touch, true);
+  }
+  ampSplashOff() {
+    if (!this._spl) return;
+    document.removeEventListener("keydown", this._spl.key, true);
+    document.removeEventListener("pointerdown", this._spl.touch, true);
+    document.removeEventListener("mouseover", this._spl.touch, true);
+    this._spl = null;
+  }
+  ampVals7(s) {
+    return { splashAPressed: s.splashVar === "a" ? "true" : "false", splashBPressed: s.splashVar === "b" ? "true" : "false" };
+  }
+
+
+  ampVals8(s) {
+    const A = s.amp || {}, rd = A.rd || { gates: [], routines: [] }, src = (A.src || { sources: [] }).sources;
+    const SH = { Pass: 145, Partial: 70, Open: 25, Fail: 25 }, MH = { Must: 25, Should: 70, Could: 175 };
+    const W = {}; ((A.bld || {}).checks || []).forEach((c) => { W[c.id] = c.what; });
+    const mustOpen = rd.gates.filter((g) => g.moscow === "Must" && g.status !== "Pass");
+    const pill = (h) => "display:inline-block;border-radius:999px;padding:2px 9px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;background:oklch(var(--t1) 0.16 " + h + " / 0.28);color:oklch(var(--t4) 0.15 " + h + ");";
+    const areas = []; rd.gates.forEach((g) => { if (areas.indexOf(g.area) < 0) areas.push(g.area); });
+    const n = (p) => String(src.filter((x) => x.provenance === p).length);
+    return {
+      sGolive: s.screen === "golive", rdIntro: rd.intro || "",
+      rdReady: mustOpen.length === 0, rdNotReady: mustOpen.length > 0,
+      rdVerdict: mustOpen.length === 0 ? "Ready to go live: every Must gate is passed." : "Not ready to go public yet: " + mustOpen.length + " Must " + (mustOpen.length === 1 ? "gate is" : "gates are") + " still open, and each one is for the owner to decide.",
+      rdCounts: [["Pass", 145], ["Partial", 70], ["Open", 25]].map(([k, h]) => ({ k, n: String(rd.gates.filter((g) => g.status === k).length), style: pill(h) })),
+      rdV: n("V"), rdS: n("S"), rdK: n("K"), rdBuild: (A.bld || {}).build_id || "", rdChecks: String(Object.keys(W).length),
+      rdAreas: areas.map((a) => ({ area: a, gates: rd.gates.filter((g) => g.area === a).map((g) => ({ id: g.id, item: g.item, status: g.status, moscow: g.moscow, sStyle: pill(SH[g.status] || 25), mStyle: pill(MH[g.moscow] || 175),
+        who: g.who, hasWho: !!g.who, note: g.note, hasNote: !!g.note, ev: g.evidence.map((e) => ({ e, what: W[e] || e })), hasEv: g.evidence.length > 0 })) })),
+      rdRoutines: rd.routines.map((r) => ({ routine: r.routine, kind: r.kind, what: r.what, cadence: r.cadence, where: r.where, moscow: r.moscow, status: r.status,
+        mStyle: pill(MH[r.moscow] || 175), sStyle: pill(r.status === "Running" ? 145 : (r.status.indexOf("Set up") === 0 ? 70 : 25)) })),
+      icGolive: this.ampIcon("rocket", "oklch(var(--t3) 0.16 145)", 16)
     };
   }
 
@@ -4184,11 +4386,12 @@ class Component extends DCLogic {
       ["graph", "Glossary & graph", "ring", 145, 4, "NEW", "knowledge graph glossary thesaurus definitions terms jargon synonyms"]
     ]],
     ["Sources & updates", [
-      ["sources", "Trusted sources", "sq", 215, 67, "NEW", "trusted sources directory official government parliament regulator charity helpline commissioner parents carers allies nation Scotland Wales Northern Ireland England filter verified"],
+      ["sources", "Trusted sources", "sq", 215, 83, "NEW", "trusted sources directory official government parliament regulator charity helpline commissioner parents carers allies nation Scotland Wales Northern Ireland England filter verified"],
       ["latest", "What's new", "bar", 70, 13, "NEW", "latest news updates changes votes at 16 bill minimum wage NEET social media ban strategy helpline closed"],
       ["changes", "Release log", "bar", 145, 3, "NEW", "release log changelog changes new updated version history what changed"],
       ["trust", "Safeguards & audiences", "dia", 25, 5, "NEW", "safeguards frameworks Children's code ICO Online Safety Act Ofcom parents carers guardians parental responsibility audiences DEI inclusion every voice UCD Lundy"],
-      ["health", "Portal health", "ring", 145, 4, "NEW", "health self check freshness staleness provenance checks defects open register status"]
+      ["health", "Portal health", "ring", 145, 4, "NEW", "health self check freshness staleness provenance checks defects open register status"],
+      ["golive", "Go-live readiness", "tri", 145, 4, "NEW", "go live readiness launch checklist gates tests routines release blockers moscow"]
     ]],
     ["Help & get involved", [
       ["about", "About Amplify", "dot", 175, 5, "NEW", "about who mission purpose aims goals objectives outcomes rationale why owner GitHub profile"],
@@ -4201,10 +4404,11 @@ class Component extends DCLogic {
     ["Get involved", [
       ["involve", "Contribute", "dot", 175, 4, "NEW", "contribute help build open source github issue pull request volunteer check source accessibility test translate code devops"],
       ["research", "Research & design", "dia", 300, 4, "NEW", "user research design ux ui interaction graphic content design co-design usability test panel survey interview feedback participate"],
+      ["service", "Personas & journeys", "ring", 215, 4, "NEW", "service design personas user stories journeys blueprints processes workflows ucd user centred design needs"],
       ["ambassadors", "Ambassadors & champions", "dia", 70, 4, "NEW", "ambassador champion supporter volunteer represent mentor badge programme"],
       ["campaign", "Campaign kit", "tri", 25, 4, "NEW", "campaign marketing advertising poster flyer social post assembly hashtag awareness collateral"],
       ["learn", "Training & sessions", "sq", 300, 4, "NEW", "training education lesson session plan teacher youth worker workshop module course"],
-      ["stem", "STEM spotlight", "ring", 200, 4, "NEW", "stem science technology engineering maths coding code club girls women architecture devops cyber"]
+      ["stem", "STEM & tech", "ring", 200, 4, "NEW", "stem science innovation data ai digital cyber technology engineering maths coding code club girls women enterprise architecture devops apprenticeships careers government fast stream"]
     ]]
   ];
 
@@ -4337,6 +4541,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
     this.loadPetition();
     this.loadAmplifyData();
     this.ampTipsOn();
+    this.ampSplashOn();
     this.setState({ persona: this.ampPersona() });
     this.onHash = () => { const id = this.screenFromHash(); if (id && id !== this.state.screen) this.setState({ screen: id, splash: false, copied: "" }); };
     window.addEventListener("hashchange", this.onHash);
@@ -4383,6 +4588,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
   }
   componentWillUnmount() {
     this.ampTipsOff();
+    this.ampSplashOff();
     if (this._carT) clearInterval(this._carT);
     clearInterval(this.type); clearTimeout(this.auto);
     window.removeEventListener("hashchange", this.onHash); window.removeEventListener("popstate", this.onHash); window.removeEventListener("keydown", this.onKey);
@@ -4697,7 +4903,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
         br: "oklch(var(--t1) 0.16 " + hue + " / 0.3)", bg: "oklch(var(--t1) 0.16 " + hue + " / 0.08)",
         dot: "oklch(var(--t2) 0.19 " + hue + ")", fg: "oklch(var(--t3) 0.19 " + hue + ")"
       })),
-      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
+      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), ...this.ampVals6(s), ...this.ampVals7(s), ...this.ampVals8(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
       issueTabs: Object.keys(this.ISSUES).map((k) => {
         const it = this.ISSUES[k];
         return {

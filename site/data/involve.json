@@ -271,6 +271,16 @@
     "prov": "S"
    },
    {
+    "when": "February 2027",
+    "what": "National Apprenticeship Week: public sector apprenticeships",
+    "prov": "K"
+   },
+   {
+    "when": "5 to 14 March 2027",
+    "what": "British Science Week, themed Creativity",
+    "prov": "S"
+   },
+   {
     "when": "February each year",
     "what": "Safer Internet Day: talk about safe campaigning online",
     "prov": "K"
@@ -325,7 +335,7 @@
      "Know when and how to act on a safeguarding concern"
     ],
     "steps": [
-     "Use Your route in to pick an activity for the group's age and nation",
+     "Use Your route in to show the stages and ages, and the local map to find the group's own area",
      "Agree ground rules together",
      "Close by pointing to Safeguarding & support"
     ],
@@ -444,7 +454,7 @@
     ],
     "steps": [
      "Invite a STEM Ambassador (book through STEM Learning)",
-     "Explore the STEM spotlight together",
+     "Explore STEM & tech together, including careers in government",
      "Each person picks one opportunity to try"
     ],
     "screens": [
@@ -454,7 +464,7 @@
   ]
  },
  "stem": {
-  "intro": "A special shout-out to young people in science, technology, engineering and maths, and especially to girls and young women who code, build, design and engineer, or who might. Tech decides a lot about young people's lives; it should be built by people like them.",
+  "intro": "A special shout-out to young people in science, technology, engineering and maths, and especially to girls and young women who code, build, design, engineer and architect systems, or who might. Tech decides a lot about young people's lives; it should be built by people like them.",
   "facts": [
    {
     "f": "Women were 27.2% of the UK's core STEM workforce in September 2025, and over 1.4 million women work in core STEM roles.",
@@ -484,42 +494,77 @@
   ],
   "paths": [
    {
-    "p": "Coding",
+    "p": "Science and research",
+    "icon": "flask-conical",
+    "ids": [
+     "crest",
+     "bsweek",
+     "bigbang",
+     "stemamb"
+    ],
+    "first": "Turn a project into a CREST Award, or enter The Big Bang Competition."
+   },
+   {
+    "p": "Innovation and enterprise",
+    "icon": "rocket",
+    "ids": [
+     "younginnovators",
+     "appsforgood",
+     "technovation"
+    ],
+    "first": "Got an idea that solves a problem? Build it with Apps for Good or Technovation, then aim for a Young Innovators award at 18."
+   },
+   {
+    "p": "Data and artificial intelligence",
+    "icon": "chart-column",
+    "ids": [
+     "experienceai",
+     "ddatframework",
+     "nhsapprentice"
+    ],
+    "first": "Start with Experience AI to learn how AI works and where it goes wrong."
+   },
+   {
+    "p": "Digital and coding",
     "icon": "code-xml",
     "ids": [
      "codeclub",
      "coderdojo",
-     "appsforgood",
-     "technovation"
+     "techtrack",
+     "techfirst"
     ],
     "first": "Join a free Code Club or CoderDojo. You do not need to know anything to start."
    },
    {
-    "p": "Cyber and tech careers",
+    "p": "Cyber security",
     "icon": "shield-check",
     "ids": [
      "techfirst",
-     "ncsccyber"
+     "ncsccyber",
+     "gchqearly",
+     "govsecurity"
     ],
     "first": "Ask your school about TechYouth activities and the TechFirst Girls Competition."
    },
    {
-    "p": "Engineering and science",
+    "p": "Engineering and technology",
     "icon": "cpu",
     "ids": [
      "bigbang",
      "engineeringuk",
+     "wise",
      "stemamb"
     ],
-    "first": "Enter The Big Bang Competition with a project you care about."
+    "first": "Invite a STEM Ambassador who works in engineering into your club or class."
    },
    {
-    "p": "Architecture and the built environment",
+    "p": "Enterprise architecture",
     "icon": "drafting-compass",
     "ids": [
-     "opencity"
+     "ddatframework",
+     "techtrack"
     ],
-    "first": "16 to 18 in London? Watch for the next Open City Accelerate round."
+    "first": "Read the architecture roles in the government's digital and data framework: business architect has a trainee level."
    },
    {
     "p": "For girls, young women and non-binary young people",
@@ -573,6 +618,100 @@
     }
    ]
   },
-  "note": "Listing an organisation is not an endorsement. Check each one's age rules and safeguarding before you sign up, and ask a parent or carer if you are under 16."
+  "note": "Listing an organisation is not an endorsement. Check each one's age rules and safeguarding before you sign up, and ask a parent or carer if you are under 16.",
+  "ea": {
+   "intro": "In technology, architecture means designing how an organisation's people, processes, information and systems fit together. Enterprise architecture looks at the whole picture in layers, and government has a named role for each.",
+   "layers": [
+    {
+     "layer": "Business architecture",
+     "what": "What the organisation does: its capabilities, services, processes and how they change.",
+     "role": "Business architect"
+    },
+    {
+     "layer": "Data and information architecture",
+     "what": "What information exists, where it lives, who owns it and how it flows and is kept safe.",
+     "role": "Data architect"
+    },
+    {
+     "layer": "Application and solution architecture",
+     "what": "Which applications and services meet a need, and how a particular solution is put together.",
+     "role": "Solution architect"
+    },
+    {
+     "layer": "Technology and infrastructure architecture",
+     "what": "The platforms, hosting, networks and integration that everything runs on.",
+     "role": "Technical architect and network architect"
+    },
+    {
+     "layer": "Security architecture",
+     "what": "How every layer is protected, by design rather than as an afterthought.",
+     "role": "Security architect"
+    },
+    {
+     "layer": "Enterprise architecture",
+     "what": "Joining all the layers into one direction of travel that serves the organisation's strategy.",
+     "role": "Enterprise architect"
+    }
+   ],
+   "source": "Roles from the Government Digital and Data Profession Capability Framework (search-sourced, 15 November 2026)."
+  },
+  "careers": {
+   "intro": "Government and the wider public sector employ young people in every profession, and many routes need no degree. Each listing below is search-sourced and dated; check the scheme's own page for open dates and eligibility.",
+   "groups": [
+    {
+     "g": "Apprenticeships",
+     "ids": [
+      "techtrack",
+      "csapprentice",
+      "nhsapprentice",
+      "nicsapprentice",
+      "sdsapprentice",
+      "gchqearly"
+     ]
+    },
+    {
+     "g": "Internships and graduate schemes",
+     "ids": [
+      "csinternship",
+      "faststream",
+      "impactlg"
+     ]
+    },
+    {
+     "g": "Support into work",
+     "ids": [
+      "jgwplus"
+     ]
+    },
+    {
+     "g": "Professions to aim for",
+     "ids": [
+      "ddatframework",
+      "govsecurity"
+     ]
+    }
+   ]
+  },
+  "tech_voice": {
+   "intro": "Technology shapes young people's lives, and young people have a right to shape technology: online safety, AI, misinformation, data about them and access to digital services are all youth voice issues.",
+   "links": [
+    {
+     "t": "Online safety, AI and misinformation as a campaign issue",
+     "screen": "issues"
+    },
+    {
+     "t": "The rules on age and online access, and acting on a young person's behalf",
+     "screen": "trust"
+    },
+    {
+     "t": "Copilot and connectors: what AI tools could and could not do for a campaign",
+     "screen": "ai"
+    },
+    {
+     "t": "Learn DevOps and user-centred design on this portal",
+     "screen": "service"
+    }
+   ]
+  }
  }
 }

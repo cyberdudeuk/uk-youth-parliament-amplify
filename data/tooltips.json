@@ -40,6 +40,11 @@
    "lens": "The Get involved and STEM screens turn this portal into a real open-source project your club can learn from and contribute to."
   },
   {
+   "id": "access",
+   "label": "d/Deaf or disabled young person",
+   "lens": "Every tooltip also works with a keyboard and screen reader, the explainer bar says the same thing in plain text, and Access settings change text size, contrast, motion and type."
+  },
+  {
    "id": "ally",
    "label": "Councillor, policy maker, researcher or journalist",
    "lens": "Every fact links to its source and date; the Media centre has approved descriptions and the rules for using them."
@@ -57,9 +62,9 @@
    "tip": "The values behind youth voice: participation, equality, education and empowerment."
   },
   "route": {
-   "tip": "A step-by-step route into youth voice that fits your age, where you live and how much time you have.",
+   "tip": "The stages of youth representation, from a school council to Parliament: who runs each one, the age you need to be, and a map to find your own area.",
    "for": {
-    "young11": "Pick your nation and age to see what you can join now."
+    "young11": "Check the age for each stage, then open the map to find your area."
    }
   },
   "state": {
@@ -154,7 +159,10 @@
    "tip": "The release log: what changed in the portal and when."
   },
   "trust": {
-   "tip": "Safeguards by audience, age and access rules, sign languages and every voice."
+   "tip": "Safeguards by audience, age and access rules, sign languages and every voice.",
+   "for": {
+    "access": "d/Deaf and sign-language guidance, and the accessibility statement, are here."
+   }
   },
   "health": {
    "tip": "The portal's own health checks, freshness and open issues, in public."
@@ -203,10 +211,11 @@
    }
   },
   "stem": {
-   "tip": "A shout-out for young people in STEM, especially girls and young women in coding, engineering, architecture and DevOps.",
+   "tip": "Science, innovation, data and AI, digital, cyber, engineering and enterprise architecture: free opportunities, careers in government and the public sector, and a shout-out for girls and young women in tech.",
    "for": {
     "young11": "Coding clubs are free and you do not need to know anything to start.",
-    "club": "Includes a DevOps learning path built on this portal's own pipeline."
+    "club": "Includes a DevOps learning path built on this portal's own pipeline.",
+    "young16": "Apprenticeships and schemes in government and the public sector, many with no degree needed."
    }
   },
   "research": {
@@ -215,6 +224,19 @@
     "young11": "Under 16s take part with a parent's or carer's consent, and never alone with a researcher.",
     "worker": "Your group can take part together, in your setting and under your safeguarding policy.",
     "teacher": "Content testing and card sorting work well as a lesson activity."
+   }
+  },
+  "service": {
+   "tip": "Who Amplify is for: personas, their user stories, journeys, and the service blueprints and workflows behind every screen.",
+   "for": {
+    "ally": "Each story names the automated checks that prove it.",
+    "club": "A worked example of user-centred design you can learn from."
+   }
+  },
+  "golive": {
+   "tip": "What must be true before Amplify goes public, what has been tested, what is still open and who must act, and the routines that keep it right.",
+   "for": {
+    "ally": "Check the gates and the open items before you rely on or share the portal."
    }
   }
  },
@@ -298,6 +320,8 @@
   "app": "Show the app view, a design concept for a future phone app. It is not a real app yet.",
   "replay": "Replay the opening splash screen.",
   "access": "Access and language settings: text size, contrast, motion, dyslexia-friendly type and languages.",
-  "persona": "Choose who you are to tailor the explainers. The choice stays on this device and is never sent anywhere."
+  "persona": "Choose who you are to tailor the explainers. The choice stays on this device and is never sent anywhere.",
+  "signal": "Signal: the petition's story in numbers, with every constituency as a dot.",
+  "manifesto": "Manifesto: one line about why political education matters, typed out, with the petition's figures."
  }
 }

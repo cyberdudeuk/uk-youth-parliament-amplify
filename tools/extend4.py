@@ -9,7 +9,9 @@
   ambassadors  Supporter, champion and ambassador levels; a pilot until the owner confirms it can run safely (O12)
   campaign     Posters, a social card and badge drawn in code, template posts, an assembly script and key dates
   learn        Ready-to-run training sessions with audiences, timings, outcomes and the screens to use
-  stem         The STEM spotlight: sourced facts, free opportunities by path, and a DevOps path built on this repo
+  stem         STEM and tech: sourced facts, free opportunities in eight lanes (science, innovation, data and AI, digital,
+               cyber, engineering, enterprise architecture, girls in tech), enterprise architecture layers, careers in
+               government and the public sector, tech as a youth voice issue, and a DevOps path built on this repo
 All text comes from data/tooltips.json and data/involve.json; persona options are read from the data at build time
 because an HTML parser drops anything inside a <select> that is not an <option>.
 """
@@ -59,7 +61,7 @@ LOGIC4 = r'''
       leave: (e) => { const to = e.relatedTarget; if (!(to && this._tipFor && this._tipFor.contains(to))) hide(); },
       focus: (e) => { const n = find(e.target); if (n) show(n); else hide(); },
       blur: () => hide(),
-      key: (e) => { if (e.key === "Escape" && !el.hidden) hide(); },
+      key: (e) => { if (e.key === "Escape" && !el.hidden) hide(); else if (e.key === "Escape" && this.state.art) this.ampArtClose(); else if (e.key === "Tab" && this.state.art) { const bx = document.querySelector(".amp-lightbox"); const f = bx ? Array.from(bx.querySelectorAll("a[href], button")) : []; if (f.length) { const a = document.activeElement, i = f.indexOf(a); if (i < 0 || (e.shiftKey && i === 0) || (!e.shiftKey && i === f.length - 1)) { e.preventDefault(); (e.shiftKey ? f[f.length - 1] : f[0]).focus(); } } } },
       scroll: () => { const f = this._tipFor; if (f && document.activeElement === f) show(f); else hide(); }  // keep a focused trigger's tooltip (D12)
     };
     document.addEventListener("mouseover", this._tipH.over); document.addEventListener("mouseout", this._tipH.out);
@@ -74,6 +76,18 @@ LOGIC4 = r'''
     document.removeEventListener("focusin", h.focus); document.removeEventListener("focusout", h.blur);
     document.removeEventListener("keydown", h.key); window.removeEventListener("scroll", h.scroll, true);
     this._tip.remove(); this._tip = null;
+  }
+  ampArt(name, src, alt, file) {
+    this._artBack = document.activeElement;
+    this.setState({ art: { name, src, alt, file } }, () => { const c = document.getElementById("amp-art-close"); if (c) c.focus(); });
+  }
+  ampArtClose() { this.setState({ art: null }, () => { if (this._artBack && this._artBack.focus) this._artBack.focus(); }); }
+  ampArtPrint() {
+    const b = document.body; b.classList.add("amp-print-art");
+    const done = () => { b.classList.remove("amp-print-art"); window.removeEventListener("afterprint", done); };
+    window.addEventListener("afterprint", done);
+    try { window.print(); } catch (e) { /* printing blocked by the host: the fallback link stays on screen */ }
+    setTimeout(done, 60000);
   }
   ampPersona() { try { return window.localStorage.getItem("amp-persona") || "everyone"; } catch (e) { return "everyone"; } }
   ampVals4(s) {
@@ -91,6 +105,9 @@ LOGIC4 = r'''
     return {
       sInvolve: s.screen === "involve", sAmbassadors: s.screen === "ambassadors", sCampaign: s.screen === "campaign", sLearn: s.screen === "learn", sStem: s.screen === "stem",
       exShow: !!scr && !s.splash, exTip: scr ? scr.tip : "", exFor: extra || pe.lens || "", exHasFor: !!(extra || (p !== "everyone" && pe.lens)), exWho: pe.label || "Everyone",
+      artOpen: !!s.art, artName: (s.art || {}).name || "", artSrc: (s.art || {}).src || "", artAlt: (s.art || {}).alt || "",
+      artFile: ((s.art || {}).file || "").split("/").pop(), artGit: repo + "/blob/main/site/" + ((s.art || {}).file || ""),
+      artClose: () => this.ampArtClose(), artPrint: () => this.ampArtPrint(),
       persona: p, setPersona: (e) => { const v = e.target.value; try { window.localStorage.setItem("amp-persona", v); } catch (err) { /* storage unavailable: keep it in memory */ } this.setState({ persona: v }); },
       ivIntro: inv.intro || "", ivRepo: repo, ivContrib: repo + "/blob/main/CONTRIBUTING.md", ivGood: repo + "/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22",
       ivWays: inv.ways.map((w) => ({ time: w.time, icon: this.ampIcon(w.icon, "oklch(var(--t3) 0.16 175)", 18), items: w.items.map((i) => ({ t: i.t, how: i.how, go: go(i.screen), where: label(i.screen) })) })),
@@ -98,7 +115,7 @@ LOGIC4 = r'''
       amStatus: amb.status || "", amIntro: amb.intro || "", amTiers: amb.tiers.map((t) => ({ tier: t.tier, who: t.who, time: t.time, does: t.does.map((d) => ({ d })) })),
       amPromise: amb.promise.map((t) => ({ t })), amConduct: amb.conduct.map((t) => ({ t })),
       amRegister: repo + "/issues/new?template=" + (amb.register || "ambassador.yml"),
-      cpIntro: cp.intro || "", cpAssets: cp.assets.map((a) => ({ name: a.name, href: "./" + a.file, src: "./" + a.file, alt: a.alt })),
+      cpIntro: cp.intro || "", cpAssets: cp.assets.map((a) => ({ name: a.name, src: "./" + a.file, alt: a.alt, view: () => this.ampArt(a.name, "./" + a.file, a.alt, a.file) })),
       cpPosts: cp.posts.map((x, k) => ({ channel: x.channel, text: x.text, copy: () => this.copy(x.text, "post" + k), copied: s.copied === "post" + k ? "Copied" : "Copy" })),
       cpSocial: cp.social_note || "", cpTags: (cp.hashtags || []).join("  "), cpTagNote: cp.hashtag_note || "",
       cpAsmTitle: (cp.assembly || {}).title || "", cpAsm: ((cp.assembly || {}).steps || []).map((t, k) => ({ n: String(k + 1), t })),
@@ -109,6 +126,9 @@ LOGIC4 = r'''
       stFacts: st.facts.map((f) => ({ f: f.f, src: f.src, url: f.url })),
       stPaths: st.paths.map((x) => ({ p: x.p, first: x.first, icon: this.ampIcon(x.icon, "oklch(var(--t3) 0.16 200)", 18),
         items: x.ids.map((id) => byId[id]).filter(Boolean).map((o) => ({ name: o.name, what: o.what, url: o.url, nations: o.nations.join(" · "), prov: PV[o.provenance] || o.provenance })) })),
+      stEaIntro: (st.ea || {}).intro || "", stEaSrc: (st.ea || {}).source || "", stEa: ((st.ea || {}).layers || []).map((l) => ({ layer: l.layer, what: l.what, role: l.role })),
+      stCarIntro: (st.careers || {}).intro || "", stCareers: ((st.careers || {}).groups || []).map((g) => ({ g: g.g, items: g.ids.map((id) => byId[id]).filter(Boolean).map((o) => ({ name: o.name, what: o.what, use: o.use, url: o.url, nations: o.nations.join(" · "), kind: o.kind, prov: PV[o.provenance] || o.provenance })) })),
+      stVoiceIntro: (st.tech_voice || {}).intro || "", stVoice: ((st.tech_voice || {}).links || []).map((l) => ({ t: l.t, where: label(l.screen), go: go(l.screen) })),
       stDev: ((st.devops || {}).steps || []).map((x, k) => ({ n: String(k + 1), s: x.s, d: x.d, where: x.where })),
       icInvolve: this.ampIcon("git-pull-request", "oklch(var(--t3) 0.16 175)", 16), icAmb: this.ampIcon("award", "oklch(var(--t3) 0.16 70)", 16),
       icCamp: this.ampIcon("rocket", "oklch(var(--t3) 0.16 25)", 16), icLearn: this.ampIcon("presentation", "oklch(var(--t3) 0.16 300)", 16),
@@ -124,6 +144,9 @@ TIP_CSS = '''
   .amp-term { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; border-radius: 4px; }
   .amp-term:focus-visible { outline: 3px solid oklch(0.8 0.15 175); outline-offset: 2px; }
   body[data-motion="off"] .amp-tip { transition: none; }
+  @media print { body.amp-print-art * { visibility: hidden !important; } body.amp-print-art .amp-lightbox, body.amp-print-art .amp-lightbox-art { visibility: visible !important; }
+    body.amp-print-art .amp-lightbox { position: absolute !important; inset: 0 !important; background: #fff !important; padding: 0 !important; }
+    body.amp-print-art .amp-lightbox-art { max-height: none !important; height: 100vh !important; border-radius: 0 !important; } }
 '''
 
 
@@ -169,6 +192,19 @@ NOTE = "border-radius: 16px; padding: 12px 16px; font-size: 13.5px; line-height:
 OL = "margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"
 
 SCREENS4 = f'''
+        <sc-if value="{{{{ artOpen }}}}" hint-placeholder-val="{{{{ false }}}}">
+        <div class="amp-lightbox" role="dialog" aria-modal="true" aria-label="{{{{ artName }}}}" style="position: fixed; inset: 0; z-index: 95; display: flex; flex-direction: column; gap: 12px; padding: clamp(10px, 3vw, 28px); background: rgb(0 0 0 / 0.82); overflow: auto;">
+          <div class="amp-lightbox-controls" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #fff;">
+            <span style="flex: 1 1 200px; min-width: 0; font-size: 15px; font-weight: 800;">{{{{ artName }}}}</span>
+            <button type="button" onClick="{{{{ artPrint }}}}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 0; background: oklch(0.85 0.15 145); color: #06100f; font-size: 13.5px; font-weight: 800; cursor: pointer;">Print</button>
+            <a href="{{{{ artSrc }}}}" download="{{{{ artFile }}}}" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; color: #fff; font-size: 13.5px; font-weight: 800;">Save</a>
+            <a href="{{{{ artGit }}}}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid rgb(255 255 255 / 0.5); color: #fff; font-size: 13.5px; font-weight: 700;">Copy on GitHub<span class="amp-sr"> (opens in a new tab)</span></a>
+            <button type="button" id="amp-art-close" onClick="{{{{ artClose }}}}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid #fff; background: transparent; color: #fff; font-size: 13.5px; font-weight: 800; cursor: pointer;">Close</button>
+          </div>
+          <img class="amp-lightbox-art" src="{{{{ artSrc }}}}" alt="{{{{ artAlt }}}}" style="flex: 1 1 auto; min-height: 0; width: 100%; max-height: calc(100vh - 120px); object-fit: contain; background: #fff; border-radius: 12px;" />
+          <p class="amp-lightbox-controls" style="margin: 0; font-size: 12.5px; color: rgb(255 255 255 / 0.85);">If Print or Save does nothing, the page you are viewing this in is blocking it: use Copy on GitHub, or your browser's own print menu while this view is open. Escape closes this view.</p>
+        </div>
+        </sc-if>
         <sc-if value="{{{{ sInvolve }}}}" hint-placeholder-val="{{{{ false }}}}">
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
           {head("icInvolve", 175, "Help build and look after Amplify", "{{ ivIntro }}")}
@@ -214,7 +250,7 @@ SCREENS4 = f'''
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
           {head("icCamp", 25, "Campaign and awareness kit", "{{ cpIntro }}")}
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px;">
-            <sc-for list="{{{{ cpAssets }}}}" as="a" hint-placeholder-count="4"><figure class="amp-card" style="margin: 0; {CARD}"><img src="{{{{ a.src }}}}" alt="{{{{ a.alt }}}}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 10px; background: rgb(var(--film-rgb) / 0.04);" /><figcaption style="font-size: 13.5px; font-weight: 800;">{{{{ a.name }}}}</figcaption><a href="{{{{ a.href }}}}" target="_blank" rel="noopener" style="{LINK} font-size: 12.5px;">Open to print or save<span class="amp-sr"> (opens in a new tab)</span></a></figure></sc-for>
+            <sc-for list="{{{{ cpAssets }}}}" as="a" hint-placeholder-count="4"><figure class="amp-card" style="margin: 0; {CARD}"><button type="button" onClick="{{{{ a.view }}}}" aria-label="View {{{{ a.name }}}}" style="border: 0; padding: 0; background: rgb(var(--film-rgb) / 0.04); border-radius: 10px; cursor: zoom-in;"><img src="{{{{ a.src }}}}" alt="{{{{ a.alt }}}}" style="display: block; width: 100%; height: 200px; object-fit: contain; border-radius: 10px;" /></button><figcaption style="font-size: 13.5px; font-weight: 800;">{{{{ a.name }}}}</figcaption><button type="button" onClick="{{{{ a.view }}}}" style="{GOBTN}">View, print or save</button></figure></sc-for>
           </div>
           <section style="{PANEL}"><h2 style="{H2}">Posts and messages to adapt</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px;"><sc-for list="{{{{ cpPosts }}}}" as="x" hint-placeholder-count="4"><div style="{CARD}"><div style="{LABEL}">{{{{ x.channel }}}}</div><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{{{ x.text }}}}</p><button type="button" onClick="{{{{ x.copy }}}}" style="align-self: flex-start; min-height: 36px; border-radius: 999px; padding: 6px 14px; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{{{ x.copied }}}}</button></div></sc-for></div>
@@ -250,7 +286,7 @@ SCREENS4 = f'''
 
         <sc-if value="{{{{ sStem }}}}" hint-placeholder-val="{{{{ false }}}}">
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
-          {head("icStem", 200, "STEM spotlight: girls in code, engineering, architecture and DevOps", "{{ stIntro }}")}
+          {head("icStem", 200, "STEM and tech: science, innovation, data, digital, cyber and technology", "{{ stIntro }}")}
           <section style="{PANEL}"><h2 style="{H2}">The picture, with sources</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{{{ stFacts }}}}" as="f" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.5;">{{{{ f.f }}}} <a href="{{{{ f.url }}}}" target="_blank" rel="noopener noreferrer" style="font-size: 12.5px;">Source: {{{{ f.src }}}}<span class="amp-sr"> (opens in a new tab)</span></a></li></sc-for></ul></section>
           <sc-for list="{{{{ stPaths }}}}" as="x" hint-placeholder-count="5">
             <section style="{PANEL}">
@@ -259,6 +295,12 @@ SCREENS4 = f'''
               <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px;"><sc-for list="{{{{ x.items }}}}" as="o" hint-placeholder-count="3"><div class="amp-card" style="{CARD}"><div style="font-size: 14.5px; font-weight: 800;">{{{{ o.name }}}}</div><div style="{SMALL}">{{{{ o.what }}}}</div><div style="font-size: 12px;">{{{{ o.nations }}}} &middot; <span style="font-style: italic;">{{{{ o.prov }}}}</span></div><a href="{{{{ o.url }}}}" target="_blank" rel="noopener" style="{LINK} font-size: 12.5px;">Visit<span aria-hidden="true" style="{{{{ icExt }}}}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></sc-for></div>
             </section>
           </sc-for>
+          <section style="{PANEL}"><h2 style="{H2}">Enterprise architecture, layer by layer</h2><p style="margin: 0 0 10px; {SMALL}">{{{{ stEaIntro }}}}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 10px;"><sc-for list="{{{{ stEa }}}}" as="l" hint-placeholder-count="6"><div class="amp-card" style="{CARD}"><div style="font-size: 14.5px; font-weight: 800;">{{{{ l.layer }}}}</div><div style="{SMALL}">{{{{ l.what }}}}</div><div style="font-size: 12.5px;"><span style="font-weight: 800;">Government role:</span> {{{{ l.role }}}}</div></div></sc-for></div>
+            <p style="margin: 10px 0 0; {SMALL}">{{{{ stEaSrc }}}}</p></section>
+          <section style="{PANEL}"><h2 style="{H2}">Careers in government and the public sector</h2><p style="margin: 0 0 10px; {SMALL}">{{{{ stCarIntro }}}}</p>
+            <sc-for list="{{{{ stCareers }}}}" as="g" hint-placeholder-count="4"><div style="margin-bottom: 12px;"><div style="{LABEL} margin-bottom: 6px;">{{{{ g.g }}}}</div><div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px;"><sc-for list="{{{{ g.items }}}}" as="o" hint-placeholder-count="3"><div class="amp-card" style="{CARD}"><div style="font-size: 14.5px; font-weight: 800;">{{{{ o.name }}}}</div><div style="{SMALL}">{{{{ o.what }}}}</div><div style="font-size: 12.5px;">{{{{ o.use }}}}</div><div style="font-size: 12px;">{{{{ o.kind }}}} &middot; {{{{ o.nations }}}} &middot; <span style="font-style: italic;">{{{{ o.prov }}}}</span></div><a href="{{{{ o.url }}}}" target="_blank" rel="noopener" style="{LINK} font-size: 12.5px;">Visit<span aria-hidden="true" style="{{{{ icExt }}}}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></sc-for></div></div></sc-for></section>
+          <section style="{PANEL}"><h2 style="{H2}">Tech is a youth voice issue</h2><p style="margin: 0 0 10px; {SMALL}">{{{{ stVoiceIntro }}}}</p><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{{{ stVoice }}}}" as="v" hint-placeholder-count="4"><li style="font-size: 13.5px;">{{{{ v.t }}}} <button type="button" onClick="{{{{ v.go }}}}" style="{GOBTN}">{{{{ v.where }}}}</button></li></sc-for></ul></section>
           <section style="{PANEL}"><h2 style="{H2}">Learn {term("devops", "DevOps")} on this portal</h2><p style="margin: 0 0 10px; {SMALL}">{{{{ stDevIntro }}}}</p>
             <ol style="{OL}"><sc-for list="{{{{ stDev }}}}" as="d" hint-placeholder-count="7"><li><span style="font-weight: 800;">{{{{ d.s }}}}.</span> {{{{ d.d }}}} <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: rgb(var(--ink-rgb) / 0.78);">{{{{ d.where }}}}</span></li></sc-for></ol>
             <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 12px 20px;">{ext("ivRepo", "Explore the repository")} {ext("ivGood", "Find a good first issue")}</div>
@@ -273,7 +315,7 @@ GROUP4 = '''    ["Get involved", [
       ["ambassadors", "Ambassadors & champions", "dia", 70, 4, "NEW", "ambassador champion supporter volunteer represent mentor badge programme"],
       ["campaign", "Campaign kit", "tri", 25, 4, "NEW", "campaign marketing advertising poster flyer social post assembly hashtag awareness collateral"],
       ["learn", "Training & sessions", "sq", 300, 4, "NEW", "training education lesson session plan teacher youth worker workshop module course"],
-      ["stem", "STEM spotlight", "ring", 200, 4, "NEW", "stem science technology engineering maths coding code club girls women architecture devops cyber"]
+      ["stem", "STEM & tech", "ring", 200, 4, "NEW", "stem science innovation data ai digital cyber technology engineering maths coding code club girls women enterprise architecture devops apprenticeships careers government fast stream"]
     ]],
 '''
 

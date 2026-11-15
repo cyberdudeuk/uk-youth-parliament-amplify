@@ -1,0 +1,447 @@
+{
+ "title": "Go-live readiness",
+ "checked": "2026-11-15",
+ "review_days": 7,
+ "intro": "What must be true before Amplify goes public at UK Parliament Week, what has been tested and how, what is still open and who must act, and the self-routines that keep it right once it is live. Must items block the public launch; Should and Could items do not, but are tracked.",
+ "gates": [
+  {
+   "id": "G01",
+   "area": "Accuracy and content",
+   "item": "Every screen says whether its content is sourced, a planning model, a sample, generated or editorial",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "C9"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G02",
+   "area": "Accuracy and content",
+   "item": "Claims checked against review findings: no other organisation inside UKYP's name, votes at 16 not stated as law, manifesto line credited",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "S14"
+   ],
+   "who": "",
+   "note": "Found and fixed during this review (D13 to D15)."
+  },
+  {
+   "id": "G03",
+   "area": "Accuracy and content",
+   "item": "Every source has a provenance and a check date; overdue ones are flagged",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "C1",
+    "C2",
+    "C7"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G04",
+   "area": "Accuracy and content",
+   "item": "Search-sourced facts (S) and leads (K) verified against primary sources where they matter most",
+   "status": "Partial",
+   "moscow": "Should",
+   "evidence": [
+    "C1"
+   ],
+   "who": "Owner and weekly upkeep",
+   "note": "Most sources are search-sourced; the weekly run verifies them in turn. The live count is shown below."
+  },
+  {
+   "id": "G05",
+   "area": "Safeguarding",
+   "item": "Helplines current and re-checked every 30 days; safeguarding linked from every Get involved screen",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "C3",
+    "C4",
+    "C5"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G06",
+   "area": "Safeguarding",
+   "item": "A named safeguarding lead and procedure before the ambassador programme or any research with under 18s starts",
+   "status": "Open",
+   "moscow": "Must",
+   "evidence": [],
+   "who": "Owner (O12, O14)",
+   "note": "Blocks those programmes, which stay as pilots; it does not block the information portal."
+  },
+  {
+   "id": "G07",
+   "area": "Accessibility",
+   "item": "WCAG 2.2 AA automated checks: axe-core in dark and light themes, keyboard, tooltips on focus, splash dialog",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "W3",
+    "W5",
+    "W6",
+    "W7"
+   ],
+   "who": "",
+   "note": "The original design's own axe findings are a recorded baseline that may only shrink (O3)."
+  },
+  {
+   "id": "G08",
+   "area": "Accessibility",
+   "item": "Testing with disabled people using their own technology, including d/Deaf BSL and ISL users",
+   "status": "Open",
+   "moscow": "Should",
+   "evidence": [],
+   "who": "Owner (research Round 2, O14)",
+   "note": "Automated checks find perhaps a third of barriers; people find the rest."
+  },
+  {
+   "id": "G09",
+   "area": "Phones and tablets",
+   "item": "No sideways scrolling at 320 px (small phone), 768 px (tablet) and 1440 px, on every screen and the splash; the drawer scrolls on its own",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "W2",
+    "W6",
+    "W8"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G10",
+   "area": "Phones and tablets",
+   "item": "Fast enough on a phone: the page is compiled in the browser by a bundled runtime, which is slow on low-end phones",
+   "status": "Partial",
+   "moscow": "Should",
+   "evidence": [
+    "W7"
+   ],
+   "who": "Owner decides (O16)",
+   "note": "Measured every run against a budget. Compiling the page at build time would remove the runtime and make it much faster."
+  },
+  {
+   "id": "G11",
+   "area": "Privacy and security",
+   "item": "Nothing reaches another host on load; no tracking; every library and font served by the portal",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "S7",
+    "S9",
+    "W1"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G12",
+   "area": "Privacy and security",
+   "item": "No email address anywhere; no personal data collected; contact by form only",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "R1",
+    "S4"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G13",
+   "area": "Privacy and security",
+   "item": "Code scanning clean on every change",
+   "status": "Pass",
+   "moscow": "Should",
+   "evidence": [
+    "CodeQL"
+   ],
+   "who": "",
+   "note": "One high finding (a case-sensitive check) was fixed as D10."
+  },
+  {
+   "id": "G14",
+   "area": "Privacy and security",
+   "item": "A privacy notice for the research sign-up form",
+   "status": "Open",
+   "moscow": "Should",
+   "evidence": [],
+   "who": "Owner (O14)",
+   "note": "Needed only when the private form exists."
+  },
+  {
+   "id": "G15",
+   "area": "Operations",
+   "item": "Every build verified, every check vaccinated, defects logged with a check",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "S1",
+    "S8",
+    "S11"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G16",
+   "area": "Operations",
+   "item": "Weekly upkeep and weekly health checks scheduled, reporting to one place",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "health.yml",
+    "upkeep task"
+   ],
+   "who": "",
+   "note": ""
+  },
+  {
+   "id": "G17",
+   "area": "Operations",
+   "item": "Rollback: the previous version is kept and can be restored",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "S1"
+   ],
+   "who": "",
+   "note": "Git history and the artifact's own version history."
+  },
+  {
+   "id": "G18",
+   "area": "Operations",
+   "item": "Posters and cards print on their own; other screens are not yet print-tested",
+   "status": "Partial",
+   "moscow": "Could",
+   "evidence": [
+    "W8"
+   ],
+   "who": "Weekly upkeep",
+   "note": "The artwork viewer prints only the artwork. Whole screens have not been print-tested."
+  },
+  {
+   "id": "G19",
+   "area": "Governance",
+   "item": "The release candidate is reviewed and merged",
+   "status": "Open",
+   "moscow": "Must",
+   "evidence": [],
+   "who": "Owner (pull request 5)",
+   "note": ""
+  },
+  {
+   "id": "G20",
+   "area": "Governance",
+   "item": "Propriety: publishing under the owner's own name raises no issue with his employer",
+   "status": "Open",
+   "moscow": "Must",
+   "evidence": [],
+   "who": "Owner (O11)",
+   "note": ""
+  },
+  {
+   "id": "G21",
+   "area": "Governance",
+   "item": "Decide how the portal is shared (the artifact is private until shared) and the address posters should point to",
+   "status": "Open",
+   "moscow": "Must",
+   "evidence": [],
+   "who": "Owner (O15)",
+   "note": "Posters point to the public GitHub repository until then."
+  },
+  {
+   "id": "G22",
+   "area": "Research and UCD",
+   "item": "Personas, journeys and stories tested with real users",
+   "status": "Open",
+   "moscow": "Should",
+   "evidence": [],
+   "who": "Owner (O1, research Round 1)",
+   "note": "Launch is labelled as a prototype, with every model and sample marked."
+  },
+  {
+   "id": "G23",
+   "area": "Research and UCD",
+   "item": "Welsh, Gaelic, Irish and sign-language versions of the most-used screens",
+   "status": "Open",
+   "moscow": "Could",
+   "evidence": [],
+   "who": "Owner (O10)",
+   "note": ""
+  }
+ ],
+ "routines": [
+  {
+   "routine": "Build verification",
+   "kind": "Self-verification",
+   "what": "Every named change to the design must match exactly; vendored files match their pinned hashes; data parses",
+   "cadence": "Every build",
+   "where": "tools/build_site.py (B1 to B3)",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Static checks",
+   "kind": "Self-verification",
+   "what": "Repository, site and content rules, each proved by a deliberate break",
+   "cadence": "Every change, in CI",
+   "where": "tools/check_repo.py, check_site.py, check_sources.py",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Browser checks",
+   "kind": "Self-testing",
+   "what": "Every screen at three widths, axe-core in both themes, tooltips, splash, phone speed",
+   "cadence": "Every change, in CI",
+   "where": "tools/check_browser.py",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Weekly health",
+   "kind": "Self-reporting",
+   "what": "All checks plus the online link check, reported to one issue",
+   "cadence": "Mondays",
+   "where": ".github/workflows/health.yml",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Weekly upkeep",
+   "kind": "Self-updating",
+   "what": "Helplines first, then sources past review, new developments, issue triage, a pull request with a report",
+   "cadence": "Mondays 07:23",
+   "where": "Scheduled task",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Staleness",
+   "kind": "Self-assessment",
+   "what": "Freshness of every source and data file, with 30-day helpline and 90-day source reviews",
+   "cadence": "Live on Portal health",
+   "where": "Portal health screen",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Defect to check",
+   "kind": "Self-repair",
+   "what": "Every defect gets a root cause, a fix, a check with a negative test and a register entry in one commit",
+   "cadence": "Every defect",
+   "where": "data/registers.json",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Accessibility baseline",
+   "kind": "Self-assessment",
+   "what": "The design's own axe findings may only shrink",
+   "cadence": "Every change",
+   "where": "tools/a11y-baseline.json",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Generated documents",
+   "kind": "Self-documenting",
+   "what": "Release log, registers, research bundle and service design are written from data, never by hand",
+   "cadence": "Every build",
+   "where": "tools/make_docs.py (S11)",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Personal data watch",
+   "kind": "Self-protection",
+   "what": "Issues are checked for anything that identifies a person; the owner is told at once",
+   "cadence": "Weekly",
+   "where": "Scheduled task",
+   "moscow": "Must",
+   "status": "Running"
+  },
+  {
+   "routine": "Code scanning",
+   "kind": "Self-verification",
+   "what": "CodeQL on Python, JavaScript and workflows",
+   "cadence": "Every change",
+   "where": "GitHub code scanning",
+   "moscow": "Should",
+   "status": "Running"
+  },
+  {
+   "routine": "Release flags",
+   "kind": "Self-describing",
+   "what": "NEW and UPD flags in the drawer and on each screen come from the release log",
+   "cadence": "Every release",
+   "where": "data/changelog.json",
+   "moscow": "Should",
+   "status": "Running"
+  },
+  {
+   "routine": "Research loop",
+   "kind": "Self-improving",
+   "what": "Rounds, synthesis and You said, we did",
+   "cadence": "Each round",
+   "where": "Research & design screen",
+   "moscow": "Should",
+   "status": "Set up, not yet run"
+  },
+  {
+   "routine": "Persona and journey review",
+   "kind": "Self-improving",
+   "what": "Personas, stories and journeys updated from research findings",
+   "cadence": "After each round",
+   "where": "data/service-design.json (S13)",
+   "moscow": "Should",
+   "status": "Set up, not yet run"
+  },
+  {
+   "routine": "Accessibility audit by people",
+   "kind": "Self-assessment",
+   "what": "Testing with disabled people using their own technology",
+   "cadence": "Yearly",
+   "where": "Research Round 2",
+   "moscow": "Should",
+   "status": "Not yet"
+  },
+  {
+   "routine": "Availability monitoring",
+   "kind": "Self-reporting",
+   "what": "A check that the published portal loads, from outside the build",
+   "cadence": "Daily",
+   "where": "Not yet chosen",
+   "moscow": "Could",
+   "status": "Not yet"
+  },
+  {
+   "routine": "Vendored library watch",
+   "kind": "Self-updating",
+   "what": "Notice when React, Babel, Leaflet or the icons have security releases",
+   "cadence": "Monthly",
+   "where": "Not yet chosen",
+   "moscow": "Could",
+   "status": "Not yet"
+  },
+  {
+   "routine": "Retirement plan",
+   "kind": "Self-retiring",
+   "what": "How the portal is archived or handed over if it stops being maintained",
+   "cadence": "Once, reviewed yearly",
+   "where": "docs/maintenance.md",
+   "moscow": "Could",
+   "status": "Not yet"
+  }
+ ]
+}

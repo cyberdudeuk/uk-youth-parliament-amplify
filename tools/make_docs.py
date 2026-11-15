@@ -1,4 +1,5 @@
-"""Generate CHANGELOG.md, docs/registers.md and the research bundle in docs/research/ from data/ (one master, no
+"""Generate CHANGELOG.md, docs/registers.md and the research bundle in docs/research/ and the service design in docs/service-design/
+from data/ (one master, no
 hand-kept copies). Run by build_site.py; check_site.py S11 fails if any file differs from what this would write."""
 import json, os
 
@@ -107,10 +108,97 @@ def r_ported():
     return "\n".join(out) + "\n"
 
 
+def _sd():
+    return json.load(open(os.path.join(R, "data", "service-design.json"), encoding="utf-8"))
+
+
+SDGEN = "Generated from `data/service-design.json` by `tools/make_docs.py`; edit that, not this file. The portal shows the same content on its Personas & journeys screen."
+
+
+def _sdhead(title):
+    d = _sd()
+    return [f"# {title}", "", SDGEN, "", f"> **Status:** {d['status']}", ""]
+
+
+def _role(d, pid):
+    return next((p["role"] for p in d["personas"] if p["id"] == pid), pid)
+
+
+def sd_readme():
+    d = _sd()
+    out = _sdhead("Service design") + [d["intro"], "", "| File | What it is |", "|---|---|"]
+    out += [f"| [{f}]({f}) | {w} |" for f, w in (("personas.md", "Who Amplify is for"), ("user-stories.md", "What each persona needs to do, and the checks that prove it"),
+                                                ("journeys.md", "Journeys through the portal, stage by stage"), ("service-blueprints.md", "From user actions to evidence"),
+                                                ("processes-and-workflows.md", "The processes behind every screen, as flowcharts"))]
+    return "\n".join(out) + "\n"
+
+
+def sd_personas():
+    d = _sd()
+    out = _sdhead("Personas")
+    for p in d["personas"]:
+        out += [f"## {p['role']}", "", f"*{p['context']}*", "", f"**Goal:** {p['goal']}", "", f"**Needs:** {'; '.join(p['needs'])}", "",
+                f"**Pain points:** {'; '.join(p['pains'])}", "", f"**Kept safe by:** {p['safety']}", "", f"**Starts at:** {p['starts']}", "", f"**Uses:** {', '.join(p['uses'])}", ""]
+    return "\n".join(out).rstrip() + "\n"
+
+
+def sd_stories():
+    d = _sd()
+    out = _sdhead("User stories") + ["Each story names the checks that prove it; they run on every change.", "", "| Id | Story | Where | Done when | Proved by |", "|---|---|---|---|---|"]
+    out += [f"| {x['id']} | As a {_role(d, x['persona']).lower()}, I want to {x['want']}, so that {x['so']}. | {x['screen']} | {'<br>'.join(x['accept'])} | {', '.join(x['proved'])} |" for x in d["stories"]]
+    return "\n".join(out) + "\n"
+
+
+def sd_journeys():
+    d = _sd()
+    out = _sdhead("Journeys")
+    for j in d["journeys"]:
+        out += [f"## {j['id']}: {j['title']} ({_role(d, j['persona'])})", "", "| Stage | Doing | Feeling | Screen | Opportunity |", "|---|---|---|---|---|"]
+        out += [f"| {g['stage']} | {g['doing']} | {g['feeling']} | {g['screen']} | {g['opportunity']} |" for g in j["stages"]] + [""]
+    return "\n".join(out).rstrip() + "\n"
+
+
+def sd_blueprints():
+    d = _sd()
+    out = _sdhead("Service blueprints")
+    for b in d["blueprints"]:
+        out += [f"## {b['id']}: {b['title']}", "", "| Layer | " + " | ".join(b["phases"]) + " |", "|---|" + "---|" * len(b["phases"])]
+        out += [f"| **{l['layer']}** | " + " | ".join(l["cells"]) + " |" for l in b["layers"]] + [""]
+    return "\n".join(out).rstrip() + "\n"
+
+
+def sd_workflows():
+    d = _sd()
+    out = _sdhead("Processes and workflows")
+    q = lambda t: t.replace('"', "'")
+    for w in d["workflows"]:
+        out += [f"## {w['id']}: {w['title']}", "", "```mermaid", "flowchart TD"]
+        out += [f'  S{i}["{q(t)}"]' for i, t in enumerate(w["steps"])]
+        out += [f"  S{i} --> S{i + 1}" for i in range(len(w["steps"]) - 1)]
+        out += [f'  S{len(w["steps"]) - 1} --> D{{"{q(w["decision"])}"}}', f'  D -- Yes --> Y["{q(w["yes"])}"]', f'  D -- No --> N["{q(w["no"])}"]', "```", ""]
+    return "\n".join(out).rstrip() + "\n"
+
+
+def golive():
+    d = json.load(open(os.path.join(R, "data", "readiness.json"), encoding="utf-8"))
+    out = ["# Go-live readiness", "", "Generated from `data/readiness.json` by `tools/make_docs.py`; edit that, not this file. The portal shows the same content on its Go-live readiness screen.", "", d["intro"], ""]
+    must = [g for g in d["gates"] if g["moscow"] == "Must" and g["status"] != "Pass"]
+    out += [f"**Verdict:** {'ready to go live' if not must else 'not ready to go public yet: ' + str(len(must)) + ' Must gates open (' + ', '.join(g['id'] for g in must) + ')'}.", "",
+            "## Gates", "", "| Id | Area | Gate | MoSCoW | Status | Proved by | Who must act |", "|---|---|---|---|---|---|---|"]
+    out += [f"| {g['id']} | {g['area']} | {g['item']} | {g['moscow']} | {g['status']} | {', '.join(g['evidence'])} | {g['who']} |" for g in d["gates"]]
+    out += ["", "## Self-routines", "", "| MoSCoW | Routine | Kind | What | Cadence | Where | Status |", "|---|---|---|---|---|---|---|"]
+    out += [f"| {r['moscow']} | {r['routine']} | {r['kind']} | {r['what']} | {r['cadence']} | {r['where']} | {r['status']} |" for r in d["routines"]]
+    return "\n".join(out) + "\n"
+
+
 DOCS = {"CHANGELOG.md": changelog, "docs/registers.md": registers, "docs/research/README.md": r_readme,
         "docs/research/participant-information.md": r_info, "docs/research/consent-forms.md": r_consent,
         "docs/research/screener.md": r_screener, "docs/research/session-guides.md": r_sessions,
-        "docs/research/synthesis.md": r_synthesis, "docs/research/ported.md": r_ported}
+        "docs/research/synthesis.md": r_synthesis, "docs/research/ported.md": r_ported,
+        "docs/service-design/README.md": sd_readme, "docs/service-design/personas.md": sd_personas,
+        "docs/service-design/user-stories.md": sd_stories, "docs/service-design/journeys.md": sd_journeys,
+        "docs/service-design/service-blueprints.md": sd_blueprints, "docs/service-design/processes-and-workflows.md": sd_workflows,
+        "docs/go-live.md": golive}
 
 
 def write():

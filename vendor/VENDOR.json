@@ -222,6 +222,12 @@
       "sha384": "sha384-T1YZJdcm2feTt1ee1AKyU2T+N29+0y7tMyOLCj6AtOSLQPjYwzfuMX6zLltLS7p9",
       "version": "1.66.0"
     },
+    "icons/flask-conical.svg": {
+      "licence": "ISC",
+      "package": "lucide-static",
+      "sha384": "sha384-TUW9nhBjp+rTVwkQ3kKpn9ZBTvPVdfcdSMxcFz4eTXsal4a8jPy/6DTGXUTUPACx",
+      "version": "1.66.0"
+    },
     "icons/gauge.svg": {
       "licence": "ISC",
       "package": "lucide-static",

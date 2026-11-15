@@ -18,7 +18,7 @@
   "policy": "Policy & strategy",
   "inclusion": "Every voice",
   "community": "Communities & networks",
-  "stem": "STEM, coding & engineering"
+  "stem": "Science, tech & engineering"
  },
  "sources": [
   {
@@ -1264,7 +1264,7 @@
   {
    "id": "opencity",
    "name": "Open City Accelerate",
-   "theme": "stem",
+   "theme": "work",
    "nations": [
     "England"
    ],
@@ -1337,6 +1337,315 @@
    "audiences": [
     "allies",
     "parents"
+   ]
+  },
+  {
+   "id": "ddatframework",
+   "name": "Government Digital and Data Profession Capability Framework",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Framework",
+   "url": "https://ddat-capability-framework.service.gov.uk/",
+   "what": "The government's description of every digital and data role and the skills for each level, including seven architecture roles: business, data, enterprise, network, security, solution and technical architect.",
+   "use": "See what each role does, from trainee level up, and the skills to build for it.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "techtrack",
+   "name": "TechTrack apprenticeship (GDS)",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Apprenticeship",
+   "url": "https://www.civil-service-careers.gov.uk/professions/working-in-digital-data-and-technology/techtrack/",
+   "what": "A Level 4 digital apprenticeship led by the Government Digital Service, for business analysts, software developers, DevOps engineers and cyber security technologists, open to people outside the Civil Service too.",
+   "use": "Register interest to hear when the next cohort opens.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "csapprentice",
+   "name": "Civil Service apprenticeships",
+   "theme": "work",
+   "nations": [
+    "England"
+   ],
+   "kind": "Apprenticeship",
+   "url": "https://www.findapprenticeship.service.gov.uk/",
+   "what": "Apprenticeships across government departments, from digital support to IT service management, advertised on Find an apprenticeship and Civil Service Jobs.",
+   "use": "Search Find an apprenticeship for 'Civil Service' roles near you.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "faststream",
+   "name": "Civil Service Fast Stream",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Graduate scheme",
+   "url": "https://www.civil-service-careers.gov.uk/fast-stream/",
+   "what": "The government's graduate development programme, with schemes including Digital, Cyber Security and Science and Engineering; applications open each autumn.",
+   "use": "Check the schemes and the next application window; serving civil servants may apply without a degree.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "csinternship",
+   "name": "Fast Stream Summer Internship Programme",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Internship",
+   "url": "https://www.civil-service-careers.gov.uk/fast-stream/fs-summer-internship-programme",
+   "what": "A paid two-month summer internship in a government department for people from lower socio-economic backgrounds, with a Fast Pass into the Fast Stream after a positive appraisal.",
+   "use": "Apply in the autumn for the following summer; you can take part once.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "impactlg",
+   "name": "Impact: The Local Government Graduate Programme",
+   "theme": "work",
+   "nations": [
+    "England"
+   ],
+   "kind": "Graduate scheme",
+   "url": "https://www.local.gov.uk/national-graduate-development-programme/about-ngdp",
+   "what": "The Local Government Association's two-year graduate programme in councils (formerly the NGDP), with placements across council services.",
+   "use": "Applications reopen each October; there is also a planning pathway.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "nhsapprentice",
+   "name": "NHS apprenticeships",
+   "theme": "work",
+   "nations": [
+    "England"
+   ],
+   "kind": "Apprenticeship",
+   "url": "https://www.stepintothenhs.nhs.uk/apprenticeships",
+   "what": "Apprenticeships into many of the NHS's more than 350 careers, including digital and data roles such as data technician.",
+   "use": "Explore roles on Step into the NHS and Health Careers.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "nicsapprentice",
+   "name": "Northern Ireland Civil Service apprenticeships",
+   "theme": "work",
+   "nations": [
+    "Northern Ireland"
+   ],
+   "kind": "Apprenticeship",
+   "url": "https://www.finance-ni.gov.uk/",
+   "what": "NICS trainee and apprenticeship schemes, including ICT apprenticeships in networking or software development and an Operational Delivery Apprenticeship.",
+   "use": "Watch NICS recruitment for the next schemes.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "sdsapprentice",
+   "name": "Apprenticeships in Scotland",
+   "theme": "work",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Apprenticeship",
+   "url": "https://www.apprenticeships.scot/",
+   "what": "Foundation Apprenticeships alongside school, Modern Apprenticeships at work, and Graduate Apprenticeships to degree level, including digital frameworks.",
+   "use": "Search apprenticeships.scot and My World of Work.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "jgwplus",
+   "name": "Jobs Growth Wales+",
+   "theme": "work",
+   "nations": [
+    "Wales"
+   ],
+   "kind": "Employment programme",
+   "url": "https://workingwales.gov.wales/",
+   "what": "A Welsh Government programme, part of the Young Person's Guarantee, giving 16 to 19 year olds not in education, employment or training training, work placements and an allowance.",
+   "use": "Contact Working Wales to be referred.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "gchqearly",
+   "name": "GCHQ early careers",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Programme",
+   "url": "https://www.gchq-careers.co.uk/",
+   "what": "Early-career routes at the UK's intelligence, cyber and security agency, including a paid Cyber Insights Summer School and software engineering degree apprenticeships.",
+   "use": "Look for the summer school and apprenticeship windows; security vetting and nationality rules apply.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "govsecurity",
+   "name": "Government Security Profession careers",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Profession",
+   "url": "https://www.security.gov.uk/careers-and-learning/",
+   "what": "Careers and learning in government security, including cyber, with routes such as the Cyber Security Fast Stream.",
+   "use": "See the roles and the early-career routes into them.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "younginnovators",
+   "name": "Innovate UK Young Innovators",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Award",
+   "url": "https://iuk-business-connect.org.uk/",
+   "what": "Innovate UK's award for 18 to 30 year olds with a business idea: a grant, a living allowance for two days a week and a year of mentoring.",
+   "use": "Watch for the next round; follow-on Next Steps awards support the most successful.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "crest",
+   "name": "CREST Awards (British Science Association)",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Award",
+   "url": "https://www.crestawards.org/",
+   "what": "The British Science Association's hands-on STEM project awards for ages 3 to 19, at levels from Discovery to Gold; free for all young people in Scotland.",
+   "use": "Turn a science or engineering project into a recognised award, alongside a Big Bang entry if you like.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "experienceai",
+   "name": "Experience AI",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Programme",
+   "url": "https://experience-ai.org/",
+   "what": "Free AI literacy lessons for 11 to 14 year olds from the Raspberry Pi Foundation and Google DeepMind, covering how AI works, bias, privacy and using AI responsibly; usable in coding clubs too.",
+   "use": "Ask a teacher or club leader to run the lessons.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "bsweek",
+   "name": "British Science Week",
+   "theme": "stem",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Event",
+   "url": "https://www.britishscienceweek.org/",
+   "what": "A ten-day celebration of science, technology, engineering and maths run by the British Science Association; 5 to 14 March 2027, themed Creativity.",
+   "use": "Free resource packs, a poster competition and grants for schools and community groups.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
    ]
   }
  ],
