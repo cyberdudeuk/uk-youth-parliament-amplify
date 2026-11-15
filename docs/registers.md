@@ -1,0 +1,48 @@
+# Defect and open registers
+
+Generated from `data/registers.json` by `tools/make_docs.py`; shown live on the portal's Portal health screen.
+
+## Defects found and fixed
+
+| Id | Found | What | Root cause | Fix | Check |
+|---|---|---|---|---|---|
+| D1 | 2026-11-15 | Six design-time image drop-zones would have shipped ('Drop the UKYP or partner logo'). | The design canvas was published as-is. | Build replaces them with illustrations. | S2 |
+| D2 | 2026-11-15 | The map's CARTO tiles return 'API key required' images, so its own failure note never showed. | The tile host now needs a key and answers with a 200 image. | Local land outline is the basemap. | S7 |
+| D3 | 2026-11-15 | Safeguarding listed HOPELINE247, which closed on 7 September 2026. | Helplines were fixed in the design with no re-verification cadence. | Removed; helplines now carry a checked date and a 30-day review. | S9, C3 |
+| D4 | 2026-11-15 | Safeguarding gave The Mix's phone number; its phone helpline has closed. | As D3. | Replaced with its 24/7 text route (THEMIX to 85258). | S9, C3 |
+| D5 | 2026-11-15 | The page loaded React, Babel and fonts from unpkg and Google, exposing every visitor's IP address. | The design runtime defaults to CDNs. | Vendored, SRI-verified files served by the portal itself. | S10, B2 |
+| D6 | 2026-11-15 | Moving the first build between clones as a patch changed the vendored Leaflet stylesheet's bytes. | Text patches normalise whitespace; vendored files must be byte-exact. | Restored from the package; .gitattributes marks vendor/, site/ and app/ as binary. | B2 |
+| D7 | 2026-11-15 | After fonts and scripts were self-hosted, the footer still said they loaded from Google Fonts and unpkg. | The disclosure was hand-written copy with no check tying it to how the page actually loads. | Disclosure rewritten. | S3 |
+| D8 | 2026-11-15 | R6 and S6 read a share link being built in JavaScript (href=" + u + ") as a missing file. | The link pattern matched inside script strings. | Both checks skip values that are string concatenations; their negative tests still catch a real missing file. | R6, S6 |
+| D9 | 2026-11-15 | CI rebuilt site/build.json with its file list in a different order, so S1 failed on GitHub but passed locally. | The file list followed the filesystem's directory order, which differs between machines. | The file list is sorted. | S1 (caught it in CI) |
+| D10 | 2026-11-15 | The outbound-host checks S7 and S9 missed upper-case or spaced tags such as <SCRIPT SRC=...>, so a remote script could have slipped past. Found by GitHub's code scanning. | The patterns were case-sensitive and expected src= with no spaces. | S7 and S9 ignore case and spacing, and S9 also covers img and iframe tags. | S7 and S9, with three new negative tests |
+| D11 | 2026-11-15 | The new explainer bar's persona picker pushed every screen 89px sideways on a 360px phone. | The picker's label could not wrap and the select kept the width of its longest option. | The label wraps and the select can shrink to the width available. | W2 (caught it before release) |
+| D12 | 2026-11-15 | A keyboard user's tooltip vanished as soon as it appeared, when focusing a term scrolled it into view. | The tooltip closed on any scroll, including the scroll that focus itself causes. | On scroll, a tooltip whose trigger has keyboard focus moves with it; only a hover tooltip closes. | W5 (caught it before release) |
+| D13 | 2026-11-15 | The splash linked 'UK Youth', a different charity, inside the words 'UK Youth Parliament', so it read as an affiliation. | A link was placed on part of an organisation's name in the original design. | The splash says 'Independent, not a UKYP service', with no link. | S14 |
+| D14 | 2026-11-15 | The splash headline and four Toolkit messages said young people 'get the vote at 16', while the Bill is still in the Lords. | Campaign copy written as if the Bill had passed. | The headline and messages now say the Bill is going through Parliament. | S14 |
+| D15 | 2026-11-15 | The Manifesto splash typed a line under the UKYP manifesto's title, so it could be read as a quotation from it. | The line had no attribution. | The splash says the line is Amplify's own words, not a quotation, and points to the real manifesto. | S14 |
+| D16 | 2026-11-15 | The splash closed by itself after 14 seconds even while someone was reading it, Escape did nothing, and Tab moved focus behind the overlay where it could not be seen. | The design's splash was a timed overlay, not a dialog. | A labelled dialog: Escape enters and focuses the main content, Tab stays inside, and any interaction or reduced-motion setting cancels the timer. | W6 |
+| D17 | 2026-11-15 | On some screens the drawer could not be scrolled on its own: its lower items were reachable only by scrolling the whole page (reported by the owner). | The drawer was sticky with no height limit or scroll of its own, and grew taller than the screen as sections were added. | The drawer is capped at the screen's height and scrolls on its own, without moving the page. | W8 |
+| D18 | 2026-11-15 | Campaign kit and Media centre artwork could not be viewed, printed or saved (reported by the owner). | The artwork opened as a separate file in a new tab, which the host page blocks. | An in-page viewer with Print (only the artwork prints), Save and a copy on GitHub, with Escape to close. | W8 |
+| D19 | 2026-11-15 | Pledge wall, Issue domains and the launch plan scrolled sideways on a 320px phone. | Labels that could not wrap and two-column rows with a fixed minimum width. | Below 420px, labels wrap and those rows stack. | W2 (now also at 320px and 768px) |
+
+## Open, and who must act
+
+| Id | What | Who |
+|---|---|---|
+| O1 | No research with young people or disabled users has tested this portal. | Owner, with NYA or a youth panel |
+| O2 | Search-sourced (S) and knowledge (K) links are leads until the weekly link check confirms them. | Automated weekly health check; owner reviews the issue |
+| O3 | Pre-existing accessibility findings in the original design are tracked as a baseline and must not grow. | Maintainer |
+| O4 | Housing, transport, climate and justice sources are not yet vetted. | Maintainer |
+| O5 | Easy Read and BSL versions need specialist production. | Owner |
+| O6 | Publishing beyond a private artifact (for example GitHub Pages) is the owner's decision. | Owner |
+| O7 | Framework entries labelled K (background knowledge) are to be checked against each primary text. | Maintainer, on the next scheduled run with page access |
+| O8 | Revise the Toolkit's social media assets for under 16s before the ban applies in spring 2027. | Maintainer, with UKYP input |
+| O9 | A line-by-line audit of every figure in the original design's screens against its source; screens are classified, but individual figures not yet re-verified are the design's own. | Maintainer, one screen per weekly run |
+| O10 | BSL and ISL versions of key screens, and Welsh, Gaelic and Irish versions of the portal, need deaf-led and native-speaker production. | Owner, with deaf-led organisations and language bodies |
+| O11 | Before public launch, the owner confirms that publishing a personal, non-partisan youth participation tool under his own name raises no propriety issue with his employer. | Owner |
+| O12 | Before the ambassador programme opens, the owner confirms he can run it safely: time to respond, a safeguarding lead, named adult contacts for under-18s, and how recognition and references work. | Owner |
+| O13 | File the starter good first issues in docs/good-first-issues.md and create the 'good first issue' label, so new contributors have somewhere to start. | Owner |
+| O14 | Before any research session runs, the owner sets up a private sign-up form that keeps contact details off GitHub, confirms a budget to thank participants at the same rate, and names a safeguarding lead for research with under 18s. | Owner |
+| O15 | Decide how and when the portal is shared publicly (the artifact is private until shared, or move it to a public host), and the address posters and QR codes should point to. | Owner |
+| O16 | Decide whether to compile the page at build time, removing the in-browser compiler so it loads much faster on low-end phones; W7 measures it every run. | Owner |

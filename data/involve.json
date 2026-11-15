@@ -1,0 +1,717 @@
+{
+ "title": "Get involved, ambassadors, campaign kit, training and STEM",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "repo": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify",
+ "involve": {
+  "intro": "Amplify is open source: its code, content and checks are public on GitHub, and anyone can help build, check and look after it. You do not need to code. Pick what fits your time.",
+  "ways": [
+   {
+    "time": "5 minutes",
+    "icon": "bug",
+    "items": [
+     {
+      "t": "Report a broken link or a mistake",
+      "how": "Use the Bug form on Have your say. Say which screen and what is wrong.",
+      "screen": "feedback"
+     },
+     {
+      "t": "Suggest an idea",
+      "how": "Use the Idea form. Say who it would help.",
+      "screen": "feedback"
+     },
+     {
+      "t": "Share the portal",
+      "how": "Use the sharing buttons on the Media centre or the Campaign kit.",
+      "screen": "campaign"
+     }
+    ]
+   },
+   {
+    "time": "30 minutes",
+    "icon": "book-open-check",
+    "items": [
+     {
+      "t": "Take part in research or a design crit",
+      "how": "Try a task while thinking aloud, sort cards, or give feedback on a design. Under 16s take part with a parent's or carer's consent.",
+      "screen": "research"
+     },
+     {
+      "t": "Check a source is still right",
+      "how": "Open a source whose review is due on Portal health, compare it with the organisation's own site, and report what changed.",
+      "screen": "health"
+     },
+     {
+      "t": "Test it the way you use the web",
+      "how": "Try a screen with a keyboard only, a screen reader, zoom at 400% or a phone. Report anything that gets in the way.",
+      "screen": "trust"
+     },
+     {
+      "t": "Check a translation or sign-language need",
+      "how": "Tell us which screens matter most in Welsh, Gaelic, Irish, Ulster-Scots, BSL or ISL.",
+      "screen": "feedback"
+     }
+    ]
+   },
+   {
+    "time": "A few hours",
+    "icon": "code-xml",
+    "items": [
+     {
+      "t": "Fix a good first issue",
+      "how": "Pick an issue labelled good first issue on GitHub, follow CONTRIBUTING.md and open a pull request. The checks tell you if anything broke.",
+      "screen": "learn"
+     },
+     {
+      "t": "Write a tutorial or a session plan",
+      "how": "Draft it in an Idea issue; it can become part of Help & tutorials or Training.",
+      "screen": "help"
+     },
+     {
+      "t": "Design a poster or illustration",
+      "how": "Follow Brand & style: six shapes, four hues, no photographs of young people without consent.",
+      "screen": "brand"
+     }
+    ]
+   },
+   {
+    "time": "Ongoing",
+    "icon": "award",
+    "items": [
+     {
+      "t": "Become a champion or ambassador",
+      "how": "Help others find and use the portal, and feed back what they need.",
+      "screen": "ambassadors"
+     },
+     {
+      "t": "Review changes",
+      "how": "Experienced contributors can review pull requests for accuracy, accessibility and safeguarding.",
+      "screen": "involve"
+     },
+     {
+      "t": "Look after a theme",
+      "how": "Keep one theme's sources fresh, such as STEM or safety, and flag what needs changing.",
+      "screen": "sources"
+     }
+    ]
+   }
+  ],
+  "roles": [
+   {
+    "r": "Content checker",
+    "d": "Checks facts, dates and links against the original source."
+   },
+   {
+    "r": "Accessibility tester",
+    "d": "Uses assistive technology and reports barriers. Lived experience matters most here."
+   },
+   {
+    "r": "Language and sign-language reviewer",
+    "d": "Says what should be translated or signed first, and checks it."
+   },
+   {
+    "r": "Designer",
+    "d": "Illustrations, posters and screens within the brand rules."
+   },
+   {
+    "r": "Developer",
+    "d": "Python build tools, the page template and its checks."
+   },
+   {
+    "r": "DevOps and quality",
+    "d": "The automated checks, GitHub Actions workflows and the weekly health report."
+   },
+   {
+    "r": "Youth voice adviser",
+    "d": "Young people who tell us what is useful, confusing or missing."
+   }
+  ],
+  "rules": [
+   "Everything on GitHub is public. Never post your name, school, address, phone, email or photo, or anyone else's.",
+   "GitHub accounts are for people aged 13 and over. If you are 13 to 17, agree it with a parent or carer first. Under 13s can take part through a trusted adult.",
+   "Be kind and constructive. Disagree with ideas, not people.",
+   "If you are worried about yourself or someone else, do not post on GitHub. Go to Safeguarding & support.",
+   "A person reviews every change before it goes live, and the automated checks must pass. Nothing is published automatically."
+  ],
+  "how": [
+   {
+    "s": "Read",
+    "d": "README.md explains the project, and CONTRIBUTING.md explains how to help."
+   },
+   {
+    "s": "Pick",
+    "d": "Choose an issue, or open one describing what you want to do."
+   },
+   {
+    "s": "Change",
+    "d": "Edit data files in data/ for content, or the tools/ scripts for features. Never edit site/ by hand: it is built."
+   },
+   {
+    "s": "Check",
+    "d": "Run the checks. Each one also proves it still catches a deliberate mistake."
+   },
+   {
+    "s": "Propose",
+    "d": "Open a pull request. The owner reviews and decides what is merged and published."
+   }
+  ]
+ },
+ "ambassadors": {
+  "status": "Pilot: the programme opens when the portal owner confirms it can be run safely (open item O12). Until then you can register interest.",
+  "intro": "Ambassadors and champions help young people, families and professionals find Amplify, use it well and tell us what they need. There are three levels; start wherever suits you.",
+  "tiers": [
+   {
+    "tier": "Supporter",
+    "who": "Anyone, any age (under 13s with a trusted adult).",
+    "does": [
+     "Shares the portal with friends, family, a class or a group",
+     "Tells us what is useful or missing",
+     "Takes part in UK Parliament Week"
+    ],
+    "time": "Whenever you like"
+   },
+   {
+    "tier": "Champion",
+    "who": "Young people 13 and over, parents, teachers, youth workers and club leaders.",
+    "does": [
+     "Runs at least one session from Training each term",
+     "Collects feedback from the group (no personal details)",
+     "Checks one theme's sources each quarter"
+    ],
+    "time": "About an hour a month"
+   },
+   {
+    "tier": "Ambassador",
+    "who": "16 and over; 13 to 15 with a named adult who agrees to support them.",
+    "does": [
+     "Represents Amplify at events such as UK Parliament Week",
+     "Mentors new contributors and champions",
+     "Helps plan what the portal does next"
+    ],
+    "time": "A few hours a month"
+   }
+  ],
+  "promise": [
+   "Your safety comes first. Ambassadors under 18 always have a named adult contact, and are never asked to meet anyone alone.",
+   "No one is asked for personal details on GitHub. Registration asks only for your role, nation, age band and what you would like to do.",
+   "Recognition: a digital badge, a credit in the release log (first name or a nickname only, if you want one), and a reference for your volunteering on request.",
+   "You can stop at any time, without giving a reason."
+  ],
+  "conduct": [
+   "Describe Amplify accurately: it is independent and unofficial, not a UK Youth Parliament, National Youth Agency or UK Parliament service.",
+   "Never share a young person's name, image or story without their agreement and, if they are under 18, a parent's or carer's consent.",
+   "Follow your school's, club's or employer's safeguarding policy whenever you run a session.",
+   "Point people to the helplines on Safeguarding & support, never to your own contact details."
+  ],
+  "register": "ambassador.yml"
+ },
+ "campaign": {
+  "intro": "Everything you need to spread the word, especially during UK Parliament Week. Posters and cards are drawn in code and free to print. The text is a template: adapt it and check it before you use it.",
+  "assets": [
+   {
+    "name": "Poster: Get involved (A4 portrait)",
+    "file": "art/poster-involve.svg",
+    "alt": "Poster inviting people to help build Amplify"
+   },
+   {
+    "name": "Poster: Girls in code, engineering and DevOps (A4 portrait)",
+    "file": "art/poster-stem.svg",
+    "alt": "Poster celebrating girls and young women in STEM"
+   },
+   {
+    "name": "Social card (square)",
+    "file": "art/social-card.svg",
+    "alt": "Square card announcing Amplify"
+   },
+   {
+    "name": "Ambassador badge",
+    "file": "art/badge-ambassador.svg",
+    "alt": "Amplify ambassador badge"
+   }
+  ],
+  "posts": [
+   {
+    "channel": "LinkedIn or a newsletter (adults)",
+    "text": "Amplify is a new, independent and open-source portal that helps young people across the UK be heard: trusted sources, safeguarding, campaign tools and a route into youth voice for every age. It launches in UK Parliament Week, 23 to 29 November 2026. Anyone can help build it, no coding needed."
+   },
+   {
+    "channel": "School or club bulletin",
+    "text": "Want to know how to make your voice heard? Amplify brings together trusted sources, guides and safe ways to take part in youth voice across England, Scotland, Wales and Northern Ireland. Ask your teacher or youth worker for the link during UK Parliament Week."
+   },
+   {
+    "channel": "Message to parents and carers",
+    "text": "During UK Parliament Week we will be using Amplify, a free portal about youth voice and democracy. It does not ask young people to sign in or share personal details. A Parents and carers tour explains how you can support your child to take part safely."
+   },
+   {
+    "channel": "Coding or STEM club",
+    "text": "Our club is helping build a real open-source portal for young people. We will learn how professional teams check, test and release software, and every change we make is reviewed before it goes live. Girls and young women especially welcome: you belong in tech."
+   }
+  ],
+  "social_note": "Social media and messaging apps have their own minimum ages (usually 13), and the government plans further restrictions for under 16s. Posts are for adults and allies to share; young people can share with a parent's or carer's agreement where the platform allows.",
+  "hashtags": [
+   "#UKParliamentWeek",
+   "#YouthVoice",
+   "#AmplifyYouthVoice"
+  ],
+  "hashtag_note": "#UKParliamentWeek is the event's own hashtag (a lead to confirm with UK Parliament Education before use). #AmplifyYouthVoice is this portal's own.",
+  "assembly": {
+   "title": "A five-minute assembly: Your voice, carried further",
+   "steps": [
+    "Ask: hands up who has an opinion about something in school, in your area or in the news. (Everyone.)",
+    "Say: in a democracy, opinions only change things when they reach the people who decide. That is what youth voice is.",
+    "Show three real routes: the Make Your Mark ballot, your Member of Youth Parliament, and your local youth council.",
+    "Explain UK Parliament Week: events across the UK about how Parliament works and how to be heard.",
+    "Invite: find Amplify, try Your route in, and tell a teacher one issue you would raise."
+   ]
+  },
+  "moments": [
+   {
+    "when": "23 to 29 November 2026",
+    "what": "UK Parliament Week: Amplify's launch",
+    "prov": "S"
+   },
+   {
+    "when": "February 2027",
+    "what": "National Apprenticeship Week: public sector apprenticeships",
+    "prov": "K"
+   },
+   {
+    "when": "5 to 14 March 2027",
+    "what": "British Science Week, themed Creativity",
+    "prov": "S"
+   },
+   {
+    "when": "February each year",
+    "what": "Safer Internet Day: talk about safe campaigning online",
+    "prov": "K"
+   },
+   {
+    "when": "11 February",
+    "what": "International Day of Women and Girls in Science",
+    "prov": "K"
+   },
+   {
+    "when": "23 June",
+    "what": "International Women in Engineering Day",
+    "prov": "K"
+   },
+   {
+    "when": "Second Tuesday in October",
+    "what": "Ada Lovelace Day: celebrate women in STEM",
+    "prov": "K"
+   }
+  ],
+  "moments_note": "S dates come from the organiser; K dates are leads to confirm on the organiser's own site before you plan around them."
+ },
+ "learn": {
+  "intro": "Ready-to-run sessions for schools, youth groups, clubs and families. Each lists who it is for, how long it takes, what people will be able to do afterwards, and the screens to use. Written for this portal; adapt them to your group.",
+  "modules": [
+   {
+    "id": "L1",
+    "t": "Democracy in 20 minutes",
+    "who": "Young people 11+, teachers",
+    "mins": 20,
+    "out": [
+     "Name the four UK parliaments and assemblies",
+     "Explain one way a young person can be heard"
+    ],
+    "steps": [
+     "Open Anatomy of the state and walk through who decides what",
+     "Each person picks one issue from Issue domains",
+     "Match the issue to who decides it"
+    ],
+    "screens": [
+     "state",
+     "issues"
+    ]
+   },
+   {
+    "id": "L2",
+    "t": "Running a youth voice session",
+    "who": "Youth workers, group leaders",
+    "mins": 45,
+    "out": [
+     "Plan a session where every young person can contribute",
+     "Know when and how to act on a safeguarding concern"
+    ],
+    "steps": [
+     "Use Your route in to show the stages and ages, and the local map to find the group's own area",
+     "Agree ground rules together",
+     "Close by pointing to Safeguarding & support"
+    ],
+    "screens": [
+     "route",
+     "incl",
+     "care"
+    ]
+   },
+   {
+    "id": "L3",
+    "t": "Speaking up safely online",
+    "who": "Young people, parents and carers, youth workers",
+    "mins": 30,
+    "out": [
+     "Understand age limits and the plans for under 16s",
+     "Know how an adult can act on a young person's behalf"
+    ],
+    "steps": [
+     "Read Age and access on Safeguards & audiences together",
+     "Discuss: what would you share, and who should share it?",
+     "Write a post an adult could share for you"
+    ],
+    "screens": [
+     "trust",
+     "care"
+    ]
+   },
+   {
+    "id": "L4",
+    "t": "Accessibility testing for everyone",
+    "who": "Young people 13+, coding clubs, anyone",
+    "mins": 40,
+    "out": [
+     "Test a page with a keyboard and a screen reader",
+     "Write a clear, kind bug report"
+    ],
+    "steps": [
+     "Tab through a screen without a mouse: can you reach everything?",
+     "Turn on a screen reader (VoiceOver, NVDA or TalkBack) and listen to one screen",
+     "Report one barrier with the Bug form"
+    ],
+    "screens": [
+     "trust",
+     "feedback"
+    ]
+   },
+   {
+    "id": "L5",
+    "t": "Your first open-source contribution",
+    "who": "Young people 13+ with a parent's or carer's agreement, coding clubs",
+    "mins": 60,
+    "out": [
+     "Open a GitHub issue safely",
+     "Change a data file and see the checks run"
+    ],
+    "steps": [
+     "Read CONTRIBUTING.md together",
+     "Pick a good first issue or check a source",
+     "Open a pull request and read what the checks say"
+    ],
+    "screens": [
+     "involve",
+     "sources"
+    ]
+   },
+   {
+    "id": "L6",
+    "t": "DevOps in an afternoon: how this portal checks itself",
+    "who": "Young people 15+, coding clubs, computing classes",
+    "mins": 90,
+    "out": [
+     "Explain build, test, release and run",
+     "Read a GitHub Actions workflow",
+     "Explain why each check is tested against a deliberate break"
+    ],
+    "steps": [
+     "Look at Portal health: what does it watch?",
+     "Read .github/workflows/checks.yml and find each step",
+     "Run the checks, break something on purpose, and watch it get caught",
+     "Discuss: why does a person still decide what is published?"
+    ],
+    "screens": [
+     "health",
+     "stem"
+    ]
+   },
+   {
+    "id": "L7",
+    "t": "Being an ambassador",
+    "who": "Champions and ambassadors",
+    "mins": 30,
+    "out": [
+     "Describe Amplify accurately",
+     "Follow the code of conduct and safeguarding promise"
+    ],
+    "steps": [
+     "Read the Ambassadors screen together",
+     "Practise the short description from the Media centre",
+     "Plan one thing to do in UK Parliament Week"
+    ],
+    "screens": [
+     "ambassadors",
+     "media",
+     "launch"
+    ]
+   },
+   {
+    "id": "L8",
+    "t": "Role-model hour: girls and young women in STEM",
+    "who": "Teachers, club leaders, parents",
+    "mins": 60,
+    "out": [
+     "Meet someone working in STEM",
+     "Find one free club or competition to try"
+    ],
+    "steps": [
+     "Invite a STEM Ambassador (book through STEM Learning)",
+     "Explore STEM & tech together, including careers in government",
+     "Each person picks one opportunity to try"
+    ],
+    "screens": [
+     "stem"
+    ]
+   }
+  ]
+ },
+ "stem": {
+  "intro": "A special shout-out to young people in science, technology, engineering and maths, and especially to girls and young women who code, build, design, engineer and architect systems, or who might. Tech decides a lot about young people's lives; it should be built by people like them.",
+  "facts": [
+   {
+    "f": "Women were 27.2% of the UK's core STEM workforce in September 2025, and over 1.4 million women work in core STEM roles.",
+    "src": "WISE workforce data, September 2025",
+    "url": "https://wise.theiet.org/resources-and-impact/research-and-statistics/workforce-data-september-2025/"
+   },
+   {
+    "f": "Women are 16.9% of the UK's engineering and technology workforce.",
+    "src": "EngineeringUK, May 2025",
+    "url": "https://www.engineeringuk.com/latest-news/press-releases/engineeringuk-releases-updated-workforce-data/"
+   },
+   {
+    "f": "Girls' A-level computing entries rose by 149% between 2019 and 2025.",
+    "src": "WISE, STEM after COVID-19 (2026)",
+    "url": "https://wise.theiet.org/resources-and-impact/research-and-statistics/stem-after-covid-19/"
+   },
+   {
+    "f": "Over 96,000 girls have taken part in the CyberFirst Girls Competition since it began; from 1 September 2026 CyberFirst became part of TechFirst.",
+    "src": "NCSC CyberFirst annual report 2025-26 and NCSC",
+    "url": "https://www.ncsc.gov.uk/cyberfirst/overview"
+   },
+   {
+    "f": "There are over 2,000 free Code Clubs meeting in UK schools and libraries.",
+    "src": "Raspberry Pi Foundation, 2025",
+    "url": "https://codeclub.org/en/"
+   }
+  ],
+  "paths": [
+   {
+    "p": "Science and research",
+    "icon": "flask-conical",
+    "ids": [
+     "crest",
+     "bsweek",
+     "bigbang",
+     "stemamb"
+    ],
+    "first": "Turn a project into a CREST Award, or enter The Big Bang Competition."
+   },
+   {
+    "p": "Innovation and enterprise",
+    "icon": "rocket",
+    "ids": [
+     "younginnovators",
+     "appsforgood",
+     "technovation"
+    ],
+    "first": "Got an idea that solves a problem? Build it with Apps for Good or Technovation, then aim for a Young Innovators award at 18."
+   },
+   {
+    "p": "Data and artificial intelligence",
+    "icon": "chart-column",
+    "ids": [
+     "experienceai",
+     "ddatframework",
+     "nhsapprentice"
+    ],
+    "first": "Start with Experience AI to learn how AI works and where it goes wrong."
+   },
+   {
+    "p": "Digital and coding",
+    "icon": "code-xml",
+    "ids": [
+     "codeclub",
+     "coderdojo",
+     "techtrack",
+     "techfirst"
+    ],
+    "first": "Join a free Code Club or CoderDojo. You do not need to know anything to start."
+   },
+   {
+    "p": "Cyber security",
+    "icon": "shield-check",
+    "ids": [
+     "techfirst",
+     "ncsccyber",
+     "gchqearly",
+     "govsecurity"
+    ],
+    "first": "Ask your school about TechYouth activities and the TechFirst Girls Competition."
+   },
+   {
+    "p": "Engineering and technology",
+    "icon": "cpu",
+    "ids": [
+     "bigbang",
+     "engineeringuk",
+     "wise",
+     "stemamb"
+    ],
+    "first": "Invite a STEM Ambassador who works in engineering into your club or class."
+   },
+   {
+    "p": "Enterprise architecture",
+    "icon": "drafting-compass",
+    "ids": [
+     "ddatframework",
+     "techtrack"
+    ],
+    "first": "Read the architecture roles in the government's digital and data framework: business architect has a trainee level."
+   },
+   {
+    "p": "For girls, young women and non-binary young people",
+    "icon": "star",
+    "ids": [
+     "stemettes",
+     "technovation",
+     "wise",
+     "girlguiding"
+    ],
+    "first": "Go to a free Stemettes event, or start a Technovation Girls team with friends."
+   }
+  ],
+  "devops": {
+   "intro": "DevOps means building, testing, releasing and running software as one team, with automation doing the repetitive checking. This portal is a small but real example, so you can learn on it.",
+   "steps": [
+    {
+     "s": "Version control",
+     "d": "Every change is a commit on GitHub, so nothing is lost and everything can be undone.",
+     "where": "The repository's history"
+    },
+    {
+     "s": "Build from source",
+     "d": "The published page is generated from data files by a build script, never edited by hand.",
+     "where": "tools/build_site.py"
+    },
+    {
+     "s": "Automated checks",
+     "d": "Dozens of checks look for broken links, missing safeguards, stale helplines and accessibility problems.",
+     "where": "tools/check_*.py"
+    },
+    {
+     "s": "Vaccinated tests",
+     "d": "Each check is run against a deliberately broken copy to prove it would catch the problem.",
+     "where": "The 'caught' lines in every check's output"
+    },
+    {
+     "s": "Continuous integration",
+     "d": "GitHub Actions runs every check, in a real browser too, on every proposed change.",
+     "where": ".github/workflows/checks.yml"
+    },
+    {
+     "s": "Monitoring",
+     "d": "A weekly health run re-checks everything and reports to one issue.",
+     "where": ".github/workflows/health.yml"
+    },
+    {
+     "s": "People decide",
+     "d": "Automation never publishes. A person reviews, merges and releases.",
+     "where": "Pull requests"
+    }
+   ]
+  },
+  "note": "Listing an organisation is not an endorsement. Check each one's age rules and safeguarding before you sign up, and ask a parent or carer if you are under 16.",
+  "ea": {
+   "intro": "In technology, architecture means designing how an organisation's people, processes, information and systems fit together. Enterprise architecture looks at the whole picture in layers, and government has a named role for each.",
+   "layers": [
+    {
+     "layer": "Business architecture",
+     "what": "What the organisation does: its capabilities, services, processes and how they change.",
+     "role": "Business architect"
+    },
+    {
+     "layer": "Data and information architecture",
+     "what": "What information exists, where it lives, who owns it and how it flows and is kept safe.",
+     "role": "Data architect"
+    },
+    {
+     "layer": "Application and solution architecture",
+     "what": "Which applications and services meet a need, and how a particular solution is put together.",
+     "role": "Solution architect"
+    },
+    {
+     "layer": "Technology and infrastructure architecture",
+     "what": "The platforms, hosting, networks and integration that everything runs on.",
+     "role": "Technical architect and network architect"
+    },
+    {
+     "layer": "Security architecture",
+     "what": "How every layer is protected, by design rather than as an afterthought.",
+     "role": "Security architect"
+    },
+    {
+     "layer": "Enterprise architecture",
+     "what": "Joining all the layers into one direction of travel that serves the organisation's strategy.",
+     "role": "Enterprise architect"
+    }
+   ],
+   "source": "Roles from the Government Digital and Data Profession Capability Framework (search-sourced, 15 November 2026)."
+  },
+  "careers": {
+   "intro": "Government and the wider public sector employ young people in every profession, and many routes need no degree. Each listing below is search-sourced and dated; check the scheme's own page for open dates and eligibility.",
+   "groups": [
+    {
+     "g": "Apprenticeships",
+     "ids": [
+      "techtrack",
+      "csapprentice",
+      "nhsapprentice",
+      "nicsapprentice",
+      "sdsapprentice",
+      "gchqearly"
+     ]
+    },
+    {
+     "g": "Internships and graduate schemes",
+     "ids": [
+      "csinternship",
+      "faststream",
+      "impactlg"
+     ]
+    },
+    {
+     "g": "Support into work",
+     "ids": [
+      "jgwplus"
+     ]
+    },
+    {
+     "g": "Professions to aim for",
+     "ids": [
+      "ddatframework",
+      "govsecurity"
+     ]
+    }
+   ]
+  },
+  "tech_voice": {
+   "intro": "Technology shapes young people's lives, and young people have a right to shape technology: online safety, AI, misinformation, data about them and access to digital services are all youth voice issues.",
+   "links": [
+    {
+     "t": "Online safety, AI and misinformation as a campaign issue",
+     "screen": "issues"
+    },
+    {
+     "t": "The rules on age and online access, and acting on a young person's behalf",
+     "screen": "trust"
+    },
+    {
+     "t": "Copilot and connectors: what AI tools could and could not do for a campaign",
+     "screen": "ai"
+    },
+    {
+     "t": "Learn DevOps and user-centred design on this portal",
+     "screen": "service"
+    }
+   ]
+  }
+ }
+}

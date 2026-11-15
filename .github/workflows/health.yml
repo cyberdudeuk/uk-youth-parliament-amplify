@@ -1,0 +1,50 @@
+name: health
+# Self-updating and self-reporting: every Monday (and on demand) re-run every check, test every link from GitHub's
+# open network, check staleness against today's date, and report to one place: a single "Portal health" issue.
+# It reads, measures and reports; it never edits, merges or publishes (people decide the irreversible).
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r tools/requirements.txt
+      - id: run
+        shell: bash
+        run: |
+          set +e
+          { echo "## Portal health, $(date -u +%F)"; echo; echo '```'
+            python3 -I tools/check_repo.py; r1=$?
+            python3 -I tools/check_site.py; r2=$?
+            python3 -I tools/check_sources.py --online --report links.json; r3=$?
+            echo '```'; } > report.md 2>&1
+          python3 - <<'PY' >> report.md
+          import json
+          try:
+              rows = json.load(open("links.json"))["links"]
+              soft = [r for r in rows if r["soft"]]; bad = [r for r in rows if not r["ok"] and not r["soft"]]
+              print(f"\nLinks: {len(rows)} checked, {len(bad)} failing, {len(soft)} refusing automated checks (confirm by hand).")
+              for r in bad + soft: print(f"- {r['status']} {r['url']}")
+          except Exception as e:
+              print(f"\nLink report unavailable: {e}")
+          PY
+          echo "failed=$(( r1 || r2 || r3 ))" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Report to the health issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh label create health --color 0e8a16 --description "Weekly portal health report" 2>/dev/null || true
+          n=$(gh issue list --label health --state open --json number --jq '.[0].number')
+          if [ "${{ steps.run.outputs.failed }}" = "1" ]; then title="Portal health: needs attention"; else title="Portal health: healthy"; fi
+          if [ -n "$n" ]; then gh issue edit "$n" --title "$title" --body-file report.md; else gh issue create --title "$title" --label health --body-file report.md; fi

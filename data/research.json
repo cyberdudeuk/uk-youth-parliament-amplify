@@ -1,0 +1,193 @@
+{
+ "title": "Shape Amplify: user research and design",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "status": "No research sessions have run yet. The panel opens with this release and the first round is planned below. Until then, findings are hypotheses from published guidance and from feedback, and are labelled that way.",
+ "intro": "Amplify should be shaped by the young people, families and professionals who use it, not by guesses. Take part in research, or help design screens, graphics and words. Every finding is published as themes, linked to what changed, and you never have to give your name in public.",
+ "why": "Research tells us what to build next (the coming months) and where Amplify should go (the next few years). Design work with users makes it clearer, fairer and more accessible. Both are done in the open and are open to challenge.",
+ "questions": [
+  {"id": "RQ-01", "horizon": "Next few months", "text": "Can a young person find a route into youth voice that fits their age and nation within two minutes?", "methods": ["usability", "tree"], "status": "Planned"},
+  {"id": "RQ-02", "horizon": "Next few months", "text": "Do the drawer groups and labels match how young people, parents and professionals think about the subject?", "methods": ["card", "tree"], "status": "Planned"},
+  {"id": "RQ-03", "horizon": "Next few months", "text": "Do the tooltips and explainers help each kind of reader, or get in the way?", "methods": ["usability", "content"], "status": "Planned"},
+  {"id": "RQ-04", "horizon": "Next few months", "text": "Does Amplify work for d/Deaf and disabled young people using their own set-up, including screen readers, magnification, switch access and BSL or ISL?", "methods": ["access", "codesign"], "status": "Planned"},
+  {"id": "RQ-05", "horizon": "Next few months", "text": "Is the plain English clear at a reading age of 11 to 13, and which screens matter most in Welsh, Gaelic, Irish and Ulster-Scots?", "methods": ["content", "survey"], "status": "Planned"},
+  {"id": "RQ-06", "horizon": "Next few years", "text": "How should Amplify work for under 16s as the online safety rules change, and for adults acting on a young person's behalf?", "methods": ["interview", "codesign"], "status": "Planned"},
+  {"id": "RQ-07", "horizon": "Next few years", "text": "What would make young people, youth workers and teachers keep contributing, and what stops them?", "methods": ["interview", "diary"], "status": "Planned"},
+  {"id": "RQ-08", "horizon": "Next few years", "text": "Who is left out today (by nation, age, disability, language, care experience, caring role, rurality or confidence online), and what would include them?", "methods": ["interview", "access", "survey"], "status": "Planned"}
+ ],
+ "methods": [
+  {"id": "interview", "name": "Interviews", "time": "30 to 45 minutes, online, by phone or in person", "what": "A conversation about how you speak up, what helps and what gets in the way.", "young": "Shorter for younger people, always with a trusted adult nearby."},
+  {"id": "usability", "name": "Usability testing", "time": "30 to 45 minutes", "what": "You try real tasks while thinking aloud. We test the portal, not you.", "young": "There are no wrong answers. You can stop at any time."},
+  {"id": "access", "name": "Accessibility testing with your own set-up", "time": "45 to 60 minutes", "what": "You use Amplify with your own assistive technology, settings or language.", "young": "Interpreters and support are booked before the session is offered."},
+  {"id": "tree", "name": "Tree testing", "time": "10 minutes, in your own time", "what": "You say where you would look for things in a text-only menu.", "young": "Works on a phone. No sign-in."},
+  {"id": "card", "name": "Card sorting", "time": "15 minutes, in your own time", "what": "You group topics in the way that makes sense to you.", "young": "Can be done on paper in a class or youth group."},
+  {"id": "content", "name": "Content testing", "time": "15 to 20 minutes", "what": "You mark words and sentences that help or confuse.", "young": "Great for a class or youth council session."},
+  {"id": "survey", "name": "Surveys", "time": "5 minutes", "what": "Short questions you answer when it suits you.", "young": "Anonymous, with no free-text field that asks who you are."},
+  {"id": "diary", "name": "Diary study", "time": "5 minutes a week for a month", "what": "You note when you used Amplify and what happened.", "young": "16 and over, or younger with a parent's or carer's agreement."},
+  {"id": "codesign", "name": "Co-design workshops", "time": "60 to 90 minutes with breaks", "what": "You design a feature with other users and the team.", "young": "Run through schools, youth councils and youth groups, never one-to-one with an under 18."},
+  {"id": "crit", "name": "Design crits", "time": "30 to 45 minutes, or in your own time", "what": "You give feedback on screens, posters, illustrations or words, or bring your own designs.", "young": "Feedback is on the work, never the person."},
+  {"id": "benchmark", "name": "Benchmark questions", "time": "2 minutes", "what": "Ten standard questions (the System Usability Scale) so we can tell if Amplify gets easier to use.", "young": "For 16 and over. Try it below: the score is worked out on your device and nothing is sent."}
+ ],
+ "design": [
+  {"id": "ui", "name": "UI and interaction design", "icon": "pencil-ruler", "how": "Sketch a better screen on paper or in any tool, critique the tooltips and explainer, or test how controls behave with a keyboard or touch.", "share": "Post a photo or file of your sketch in an Idea issue, with no faces, names or school logos."},
+  {"id": "ux", "name": "UX and service design", "icon": "route", "how": "Map how you would really use Amplify, from hearing about it to taking part, and mark where it breaks.", "share": "Use the journey template in docs/research/session-guides.md, or describe it in an Idea issue."},
+  {"id": "graphic", "name": "Graphic design and illustration", "icon": "pen-tool", "how": "Design a poster, sticker, badge or illustration using the six shapes and four hues in Brand & style.", "share": "Attach it to an Idea issue under an open licence (CC BY 4.0) so it can be used and credited."},
+  {"id": "content", "name": "Content design", "icon": "clipboard-list", "how": "Rewrite a confusing paragraph in plain English, check a reading age, or suggest what to translate or sign first.", "share": "Open an Idea issue with the screen name, the old words and your version."}
+ ],
+ "rounds": [
+  {"id": "R1", "name": "Round 1: first impressions and finding things", "when": "January to February 2027", "methods": ["usability", "tree", "content"], "questions": ["RQ-01", "RQ-02", "RQ-03"], "who": "12 to 15 young people across the quotas, plus 4 parents or carers and 4 youth workers or teachers", "status": "Planned"},
+  {"id": "R2", "name": "Round 2: accessibility, languages and sign languages", "when": "March to April 2027", "methods": ["access", "content", "codesign", "benchmark"], "questions": ["RQ-04", "RQ-05", "RQ-08"], "who": "8 to 10 people, at least 4 d/Deaf or disabled and at least 2 Welsh, Gaelic or Irish speakers", "status": "Planned"},
+  {"id": "R3", "name": "Round 3: direction of travel", "when": "May to July 2027", "methods": ["interview", "codesign", "diary", "survey"], "questions": ["RQ-06", "RQ-07", "RQ-08"], "who": "15 to 20 people, including youth councils and MYPs through their organisations", "status": "Planned"}
+ ],
+ "sign_up": {
+  "form_url": "",
+  "status_when_empty": "The private sign-up form is being set up (open item O14). Until it opens, register interest with the contact form and choose research: say only your role, age band and nation, never your name or contact details, because contact issues are public. Under 16? Ask a parent or carer to register for you. We reply in the issue when the panel opens.",
+  "group_route": "Schools, youth councils and youth groups can take part as a group: one adult registers and tells us roughly how many and what ages. We then send the participant information to that adult, and sessions run in your setting under your safeguarding policy."
+ },
+ "promise": [
+  "Taking part is voluntary. You can stop at any time, skip any question and withdraw what you said within 30 days, without giving a reason.",
+  "Under 16s take part only with a parent's or carer's consent as well as their own. For 16 and 17 year olds we ask a parent or carer to be told, unless that would put the young person at risk.",
+  "No one under 18 is ever in a session alone with a researcher. A parent, carer, teacher or youth worker is present or close by, and every facilitator has a background check (DBS, PVG or AccessNI).",
+  "We recruit young people through trusted organisations and parents, never by messaging them directly online.",
+  "Nothing is run through anyone who makes decisions about you: your answers are never shared with your school, employer or service.",
+  "Contact details stay in the private form service and are deleted when you leave the panel or after 12 months without contact. They are never put on GitHub, on the portal or in any report.",
+  "Everyone is thanked at the same rate, with a voucher that does not affect benefits, and travel and support costs are paid up front.",
+  "Interpreters (BSL, ISL, Welsh, Gaelic) and other support are booked before a session is offered. You can answer by speaking, typing, drawing, signing or with a supporter.",
+  "You see what we concluded, in a format that works for you, before anyone else does.",
+  "If you tell us something that makes us worried about your safety, we will follow safeguarding procedures and tell you what we are doing."
+ ],
+ "consent": {
+  "young": [
+   "I know what this research is about and what I will be asked to do.",
+   "I know I can stop at any time, skip questions, and change my mind within 30 days.",
+   "I know my name will not be used in anything published.",
+   "I agree to take part.",
+   "I agree to being recorded (optional: you can take part without this)."
+  ],
+  "parent": [
+   "I have read (or had read to me) the information about this research.",
+   "I understand my child can stop at any time, and that they can withdraw within 30 days.",
+   "I understand a trusted adult will be present or close by throughout, and facilitators are background-checked.",
+   "I consent to my child taking part.",
+   "I consent to the session being recorded (optional)."
+  ],
+  "keep": "We take notes using a session code, never a name. Recordings are made only with consent and deleted within 30 days; notes are deleted after 6 months. Findings are published as themes and totals only."
+ },
+ "screener": [
+  {"q": "Which best describes you?", "a": "A young person; a parent or carer; a teacher or tutor; a youth worker or group leader; a coding or STEM club leader; other"},
+  {"q": "Age band (young people only)", "a": "11 to 13; 14 to 15; 16 to 17; 18 to 25"},
+  {"q": "Nation", "a": "England; Scotland; Wales; Northern Ireland; prefer not to say"},
+  {"q": "Which activities would you like to try?", "a": "Interviews; testing; accessibility testing; short tasks in your own time; surveys; diary; co-design; design crits"},
+  {"q": "Do you use assistive technology or a sign language? (optional)", "a": "No; screen reader; magnification or large text; voice or switch; BSL; ISL; other; prefer not to say"},
+  {"q": "What would make taking part easier? (optional)", "a": "A time of day; captions; an interpreter; Welsh, Gaelic or Irish; breaks; questions in advance; phone or in person; a supporter"},
+  {"q": "How should we contact you, or the adult registering for you?", "a": "Asked only in the private form, never on GitHub"}
+ ],
+ "quotas": [
+  {"group": "Young people in each of the four nations", "min": "2 per nation"},
+  {"group": "Each age band: 11 to 13, 14 to 15, 16 to 17, 18 to 25", "min": "2 per band"},
+  {"group": "d/Deaf and disabled young people", "min": "3"},
+  {"group": "Care-experienced young people and young carers", "min": "2"},
+  {"group": "Young people in rural areas or with poor connectivity", "min": "2"},
+  {"group": "Welsh, Gaelic or Irish speakers", "min": "2"},
+  {"group": "Young people from minority ethnic communities", "min": "3"},
+  {"group": "Young people not in education, employment or training", "min": "2"},
+  {"group": "Parents, carers or guardians", "min": "4"},
+  {"group": "Youth workers, teachers and club leaders", "min": "4"}
+ ],
+ "quotas_note": "Minimums, not targets. Protected characteristics are recorded only as totals, never against a person.",
+ "sessions": [
+  {"id": "usability", "title": "Usability session for young people (40 minutes)", "steps": [
+   {"min": 5, "part": "Welcome", "detail": "Introductions, check the trusted adult is present or nearby, consent (young person and, for under 16s, parent), access needs, permission to record."},
+   {"min": 5, "part": "Warm-up", "detail": "Something you'd change about your area or school, and who you'd tell."},
+   {"min": 25, "part": "Tasks (pick 3 or 4)", "detail": "1. Find a way to take part that fits your age and nation. 2. Find who to talk to if you're worried about something. 3. Use a tooltip to find out what an MYP is. 4. Find a free coding club. 5. Change the explainer to suit you. 6. Find how to suggest an idea."},
+   {"min": 5, "part": "Wrap-up", "detail": "Easiest and hardest thing; one thing to change. Thank you, and how you'll hear what changed."}
+  ], "note": "Record: completed (yes, with help, no), the words people used and where they hesitated. Don't help unless asked or stuck for 2 minutes."},
+  {"id": "access", "title": "Accessibility session (45 to 60 minutes)", "steps": [
+   {"min": 10, "part": "Welcome and set-up", "detail": "Consent; the person shows their set-up; agree how they'll share what they hear or see; interpreter introductions."},
+   {"min": 35, "part": "Tasks", "detail": "Three tasks from the usability session, using their own technology or language. Note every barrier and workaround."},
+   {"min": 10, "part": "Reflection", "detail": "What would make the biggest difference? Anything that would stop you using it?"}
+  ], "note": "Severity: blocks (cannot complete), slows (completes with effort), annoys. Blockers become must-fix items straight away."},
+  {"id": "codesign", "title": "Co-design workshop in a school or youth group (75 minutes)", "steps": [
+   {"min": 10, "part": "Welcome", "detail": "Ground rules agreed together; consent; how ideas will be used and credited (first names or nicknames only, if wanted)."},
+   {"min": 15, "part": "The problem", "detail": "Share what we've learned so far; agree the need in one sentence in the group's own words."},
+   {"min": 25, "part": "Ideas", "detail": "Sketch, write, draw or act out ideas; share and group them. Any way of contributing counts."},
+   {"min": 15, "part": "Shape and vote", "detail": "Dot-vote the top ideas on how much they help, who they include and how hard they are."},
+   {"min": 10, "part": "Next steps", "detail": "What goes into the backlog, and when and how the group will hear back."}
+  ], "note": "Run by the group's own staff with a facilitator; breaks every 25 minutes; materials sent three working days before."},
+  {"id": "crit", "title": "Design crit (30 to 45 minutes)", "steps": [
+   {"min": 5, "part": "Set the scene", "detail": "What the design is for, who it's for, and what kind of feedback is wanted."},
+   {"min": 20, "part": "Look and respond", "detail": "What works, what's confusing, what's missing. Feedback is on the work, never the person."},
+   {"min": 10, "part": "Decide", "detail": "Agree the top three changes and who will make them; credit everyone who contributed."}
+  ], "note": "Designs by under 18s are shared without names, faces or school logos."}
+ ],
+ "findings": [
+  {"id": "F-01", "source": "Secondary", "theme": "Many young people cannot use GitHub: accounts are for 13 and over.", "evidence": "GitHub's terms; owner's review, November 2026", "change": "An assisted route through a trusted adult, and age guidance on every contribution route", "screen": "involve"},
+  {"id": "F-02", "source": "Feedback", "theme": "Different readers need different explanations of the same screen.", "evidence": "Owner's request, 15 November 2026", "change": "Tooltips everywhere and an explainer bar tailored to eight personas", "screen": "home"},
+  {"id": "F-03", "source": "Secondary", "theme": "Girls and young women remain under-represented in STEM, especially engineering and technology.", "evidence": "WISE (2025) and EngineeringUK (2025) workforce data", "change": "A STEM spotlight with free opportunities and a DevOps path", "screen": "stem"},
+  {"id": "F-04", "source": "Secondary", "theme": "Under 16s will face more restrictions on social media.", "evidence": "Government plans, noted on What's new", "change": "Sharing routes labelled for adults and allies acting on a young person's behalf", "screen": "campaign"}
+ ],
+ "synthesis": [
+  "Write up within two weeks of the last session in a round.",
+  "Group notes into themes; count sessions per theme; rate severity (blocks, slows, annoys).",
+  "Fix anything that excludes a group first.",
+  "Turn each theme into a backlog item or a change, with the finding's id.",
+  "Show participants what we concluded, in their format, before publishing.",
+  "Publish the summary here, update You said, we did, and close the loop with the groups who took part."
+ ],
+ "groups": [
+  {"name": "Youth design panel", "purpose": "Young people who review designs, words and new features before they ship.", "status": "Forming"},
+  {"name": "Accessibility and inclusion", "purpose": "Assistive technology, plain English, easy read, rural and low-bandwidth access.", "status": "Forming"},
+  {"name": "Languages and sign languages", "purpose": "What to translate or sign first, and checking it with native speakers and signers.", "status": "Forming"},
+  {"name": "Research", "purpose": "Plan rounds, recruit across the quotas through trusted organisations, synthesise and publish findings.", "status": "Forming"},
+  {"name": "Safeguarding review", "purpose": "Youth workers and safeguarding leads who check every route that involves young people.", "status": "Forming"}
+ ],
+ "group_terms": [
+  "Open to anyone who agrees to the code of conduct; under 18s join through a school, youth group or with a parent or carer.",
+  "About an hour a month: one online meeting at a time that suits young people (after school), and work in your own time.",
+  "Decisions are recorded on a GitHub issue, never only in a call. Nothing that identifies a member is published.",
+  "A convenor keeps notes and actions; the role rotates every 6 months."
+ ],
+ "badges": [
+  {"name": "Supporter", "how": "You have shared Amplify with your class, group or network.", "confirm": "Self-declared"},
+  {"name": "Contributor", "how": "A contribution of yours (content, code, a fix) has been accepted.", "confirm": "Owner"},
+  {"name": "Reviewer", "how": "You have checked content against its sources or reviewed a contribution.", "confirm": "Owner"},
+  {"name": "Research participant", "how": "You have taken part in a research session, test or co-design workshop.", "confirm": "Owner"},
+  {"name": "Designer", "how": "A design, illustration or rewrite of yours has been used.", "confirm": "Owner"},
+  {"name": "Champion or ambassador", "how": "You hold a champion or ambassador role.", "confirm": "Owner"}
+ ],
+ "badge_note": "Badges recognise contribution; they are not a qualification or an endorsement by any official body. Credit is by GitHub name, first name or nickname only, and only if you want it.",
+ "benchmark": {
+  "name": "System Usability Scale",
+  "credit": "System Usability Scale by John Brooke (1986), free to use with attribution.",
+  "scale": ["Strongly disagree", "Disagree", "Neither", "Agree", "Strongly agree"],
+  "items": [
+   "I think that I would like to use Amplify often.",
+   "I found Amplify unnecessarily complex.",
+   "I thought Amplify was easy to use.",
+   "I think that I would need the support of someone technical to be able to use Amplify.",
+   "I found the various parts of Amplify were well joined up.",
+   "I thought there was too much inconsistency in Amplify.",
+   "I would imagine that most people would learn to use Amplify very quickly.",
+   "I found Amplify very awkward to use.",
+   "I felt very confident using Amplify.",
+   "I needed to learn a lot of things before I could get going with Amplify."
+  ],
+  "scoring": "Odd statements score the answer minus 1; even statements score 5 minus the answer (answers 1 to 5). Add the ten and multiply by 2.5 for a score from 0 to 100.",
+  "reading": "Scores are compared between rounds, not against a pass mark. Published research puts the average across many products at about 68."
+ },
+ "ported": [
+  {"what": "Research panel, questions, methods, rounds, screener, consent, quotas and session guides held as data", "from": "DQ Commons", "moscow": "Must", "done": true, "note": "Adapted for young people: parental consent, trusted-adult presence, background checks, recruitment through organisations."},
+  {"what": "You said, we did: each finding linked to what changed", "from": "DQ Commons", "moscow": "Must", "done": true, "note": ""},
+  {"what": "Equity rules: pay everyone the same, interpreters booked first, any modality, nothing run through people with power over participants, findings back to participants first", "from": "govukOS Studio research bundle", "moscow": "Must", "done": true, "note": ""},
+  {"what": "Research bundle files generated from one source, never hand-kept", "from": "GitHub repos asset catalogue", "moscow": "Must", "done": true, "note": "docs/research/ is written by tools/make_docs.py and checked by S11."},
+  {"what": "System Usability Scale worked out in the browser, nothing sent", "from": "DQ Commons", "moscow": "Should", "done": true, "note": "Offered to 16 and over."},
+  {"what": "Working groups with open terms and rotating convenors", "from": "DQ Commons", "moscow": "Should", "done": true, "note": "Five groups, all forming."},
+  {"what": "Recognition badges, confirmed by the owner", "from": "DQ Commons", "moscow": "Should", "done": true, "note": "Listed; only the ambassador badge is drawn so far."},
+  {"what": "Community roles and lifecycle (lead, secretariat, champions, ambassadors, members; launch to retire)", "from": "govukOS Community operating guide", "moscow": "Should", "done": true, "note": "Mapped onto the ambassador levels and working groups."},
+  {"what": "A private sign-up form for the research panel", "from": "DQ Commons", "moscow": "Must", "done": false, "note": "Needs the owner to set up a form service that keeps contact details private (O14)."},
+  {"what": "Co-design sessions in rotating time slots", "from": "DQ Commons", "moscow": "Could", "done": false, "note": "For young people, after-school slots matter more than time zones."},
+  {"what": "All-contributors recognition on a contributors page", "from": "DQ Commons", "moscow": "Could", "done": false, "note": "Credit by GitHub name only, with agreement."},
+  {"what": "A zipped bundle of Word files for emailing", "from": "GitHub repos asset catalogue", "moscow": "Could", "done": false, "note": ""},
+  {"what": "Paid incentives without a budget holder", "from": "govukOS Studio research bundle", "moscow": "Won't", "done": false, "note": "Not this time: the promise to thank everyone at the same rate holds once the owner confirms a budget; until then no session runs."}
+ ]
+}

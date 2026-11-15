@@ -1,0 +1,94 @@
+{
+ "title": "Media centre",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "spotlight": [
+  {
+   "kind": "Launch",
+   "title": "Launching at UK Parliament Week",
+   "body": "Amplify plans to launch on 23 November 2026, the first day of UK Parliament Week, with activities for schools and youth groups.",
+   "screen": "launch",
+   "cta": "See the launch plan",
+   "art": "empowerment.svg"
+  },
+  {
+   "kind": "Spotlight",
+   "title": "Votes at 16 is in the Lords",
+   "body": "The Representation of the People Bill cleared the Commons on 2 September 2026. Learn how Parliament works before your first vote.",
+   "screen": "latest",
+   "cta": "What's new",
+   "art": "hero.svg"
+  },
+  {
+   "kind": "Spotlight",
+   "title": "Deaf young people, heard",
+   "body": "In February 2025 an MYP became the first young person to give a speech in British Sign Language in the Commons. See the d/Deaf participation checklist.",
+   "screen": "trust",
+   "cta": "Safeguards & audiences",
+   "art": "equality.svg"
+  },
+  {
+   "kind": "Safety",
+   "title": "A youth helpline has closed",
+   "body": "HOPELINE247 closed in September 2026. Samaritans (116 123) and Shout (text SHOUT to 85258) are free, any time.",
+   "screen": "care",
+   "cta": "All helplines",
+   "art": "education.svg"
+  },
+  {
+   "kind": "Spotlight",
+   "title": "Find your community",
+   "body": "Youth parliaments, youth councils, clubs and networks in every UK nation, in one hub.",
+   "screen": "communities",
+   "cta": "Communities hub",
+   "art": "participation.svg"
+  }
+ ],
+ "blurbs": [
+  {
+   "len": "30 words",
+   "text": "Amplify is an independent, unofficial portal that helps young people across the UK turn their issues into change through Parliament, with trusted sources, safeguarding and campaign planning."
+  },
+  {
+   "len": "80 words",
+   "text": "Amplify is an independent, unofficial portal for young people aged 11 to 18 across England, Scotland, Wales and Northern Ireland, and for the parents, carers and adults who back them. It brings campaign planning, trusted official and charity sources, safeguarding, help and guided tours together in one place, with no sign-up and nothing collected about its users. It checks its own sources and reports its health publicly, and plans to launch during UK Parliament Week, 23 to 29 November 2026."
+  }
+ ],
+ "facts": [
+  {
+   "f": "Petition 754954 closed on 11 August 2026 with 1,192 signatures.",
+   "src": "UK Parliament petitions (snapshot 1 October 2026)"
+  },
+  {
+   "f": "UK Parliament Week 2026 runs from 23 to 29 November.",
+   "src": "UK Parliament Education"
+  },
+  {
+   "f": "The Representation of the People Bill would extend the vote to 16 and 17 year olds in all UK elections.",
+   "src": "GOV.UK policy summary"
+  }
+ ],
+ "assets": [
+  {
+   "name": "Hero illustration",
+   "file": "art/hero.svg"
+  },
+  {
+   "name": "Cornerstone illustrations",
+   "file": "art/participation.svg"
+  },
+  {
+   "name": "Icon",
+   "file": "art/favicon.svg"
+  },
+  {
+   "name": "QR code to the source",
+   "file": "art/qr.svg"
+  }
+ ],
+ "rules": [
+  "Do not use photographs of under 16s without their agreement and a parent's or carer's consent.",
+  "Describe Amplify as independent and unofficial; it is not a UK Youth Parliament, NYA or UK Parliament service.",
+  "Quote figures with their source and date, as they appear in the portal."
+ ]
+}

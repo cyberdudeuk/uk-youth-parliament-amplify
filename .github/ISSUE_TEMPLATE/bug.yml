@@ -1,0 +1,24 @@
+name: Bug or problem
+description: Something is broken, confusing, inaccessible or slow. Public; no personal details.
+title: "Bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is public. Do not include personal details. Screenshots are welcome if they show nothing
+        personal. A wrong helpline or safety detail is treated as urgent.
+  - type: textarea
+    id: what
+    attributes:
+      label: What went wrong?
+    validations: {required: true}
+  - type: input
+    id: where
+    attributes:
+      label: Which screen, and what device or browser?
+  - type: dropdown
+    id: access
+    attributes:
+      label: Is it an accessibility problem?
+      options: ["No", "Yes: screen reader", "Yes: keyboard", "Yes: contrast or text size", "Yes: something else"]

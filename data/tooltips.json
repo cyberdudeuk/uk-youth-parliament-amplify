@@ -1,0 +1,327 @@
+{
+ "title": "Tooltips and explainers",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "note": "Written for this portal in plain English. Each screen has a short explainer and, where it helps, a line for the person reading it. Choose who you are in the explainer bar; nothing is sent anywhere and the choice stays on this device.",
+ "personas": [
+  {
+   "id": "everyone",
+   "label": "Everyone",
+   "lens": "Hover over or focus on any drawer item or underlined term to see what it means."
+  },
+  {
+   "id": "young11",
+   "label": "Young person, 11 to 15",
+   "lens": "You can use most of Amplify on your own. Ask a parent, carer or teacher before joining an outside group or sharing anything with your name on it."
+  },
+  {
+   "id": "young16",
+   "label": "Young person, 16 to 25",
+   "lens": "You can take part directly: campaign, volunteer, contribute to this portal and become an ambassador."
+  },
+  {
+   "id": "parent",
+   "label": "Parent, guardian or carer",
+   "lens": "You can support a young person to take part, act on their behalf where a service is age-limited, and keep them safe while they speak up."
+  },
+  {
+   "id": "worker",
+   "label": "Youth worker or group leader",
+   "lens": "Use these screens to plan sessions, run campaigns with your group, and follow safeguarding rules for any outside activity."
+  },
+  {
+   "id": "teacher",
+   "label": "Teacher, tutor or school staff",
+   "lens": "Most screens map to citizenship, PSHE, computing and careers lessons, and to UK Parliament Week activities."
+  },
+  {
+   "id": "club",
+   "label": "Coding or STEM club leader or mentor",
+   "lens": "The Get involved and STEM screens turn this portal into a real open-source project your club can learn from and contribute to."
+  },
+  {
+   "id": "access",
+   "label": "d/Deaf or disabled young person",
+   "lens": "Every tooltip also works with a keyboard and screen reader, the explainer bar says the same thing in plain text, and Access settings change text size, contrast, motion and type."
+  },
+  {
+   "id": "ally",
+   "label": "Councillor, policy maker, researcher or journalist",
+   "lens": "Every fact links to its source and date; the Media centre has approved descriptions and the rules for using them."
+  }
+ ],
+ "screens": {
+  "home": {
+   "tip": "Start here: what Amplify is, who it is for, and quick routes in.",
+   "for": {
+    "young11": "Try the New here tour first.",
+    "parent": "Try the Parents and carers tour."
+   }
+  },
+  "corner": {
+   "tip": "The values behind youth voice: participation, equality, education and empowerment."
+  },
+  "route": {
+   "tip": "The stages of youth representation, from a school council to Parliament: who runs each one, the age you need to be, and a map to find your own area.",
+   "for": {
+    "young11": "Check the age for each stage, then open the map to find your area."
+   }
+  },
+  "state": {
+   "tip": "How the UK is governed: Parliament, the devolved governments, councils, and where young people can be heard.",
+   "for": {
+    "teacher": "Works as a citizenship lesson starter."
+   }
+  },
+  "issues": {
+   "tip": "The issues young people raise most, from votes at 16 to transport and mental health."
+  },
+  "guide": {
+   "tip": "Guided tours and how to use each part of the portal."
+  },
+  "hub": {
+   "tip": "Campaign hub: the petition story, real figures and what happened next."
+  },
+  "momentum": {
+   "tip": "A planning model for how fast a relaunched campaign would need to grow. It is a calculation, not a forecast."
+  },
+  "plan": {
+   "tip": "Pick a launch window around exams and holidays and check you are ready."
+  },
+  "coal": {
+   "tip": "Who could back a campaign: organisations, networks and allies."
+  },
+  "kit": {
+   "tip": "Templates and messages to adapt for your campaign. Check generated text before you use it."
+  },
+  "pledge": {
+   "tip": "Shows how a pledge wall would work. The pledges are sample text, not real people."
+  },
+  "radar": {
+   "tip": "News and moments worth acting on, with dates."
+  },
+  "policy": {
+   "tip": "The policies and strategies that affect young people across the UK nations.",
+   "for": {
+    "ally": "Each entry links to the official document."
+   }
+  },
+  "map": {
+   "tip": "Find constituencies and local routes on a map."
+  },
+  "acad": {
+   "tip": "Short lessons on democracy, campaigning and speaking up.",
+   "for": {
+    "teacher": "Each lesson can be run in about 20 minutes."
+   }
+  },
+  "ysc": {
+   "tip": "The Youth Select Committee: how it works and what it has looked at."
+  },
+  "post": {
+   "tip": "What past campaigns learned, so the next one goes further."
+  },
+  "track": {
+   "tip": "What has actually changed because young people spoke up."
+  },
+  "prof": {
+   "tip": "Members of Youth Parliament and the regions and nations they represent."
+  },
+  "incl": {
+   "tip": "Reaching every young person, including those least often heard."
+  },
+  "res": {
+   "tip": "Resources sorted by setting: school, youth club, home, online."
+  },
+  "ai": {
+   "tip": "How AI tools and app connectors could help, and their limits. Concept only."
+  },
+  "brand": {
+   "tip": "The portal's shapes, colours and type, and how to use them."
+  },
+  "care": {
+   "tip": "Safeguarding and support: who to contact if you are worried, now or later.",
+   "for": {
+    "young11": "If you are in danger now, call 999.",
+    "parent": "Helplines here are checked every 30 days."
+   }
+  },
+  "graph": {
+   "tip": "A glossary of terms and how the ideas in this portal connect."
+  },
+  "sources": {
+   "tip": "Trusted sources for young people, filterable by theme, nation and audience, each with its check date."
+  },
+  "latest": {
+   "tip": "What's new for young people in the UK, dated and sourced."
+  },
+  "changes": {
+   "tip": "The release log: what changed in the portal and when."
+  },
+  "trust": {
+   "tip": "Safeguards by audience, age and access rules, sign languages and every voice.",
+   "for": {
+    "access": "d/Deaf and sign-language guidance, and the accessibility statement, are here."
+   }
+  },
+  "health": {
+   "tip": "The portal's own health checks, freshness and open issues, in public."
+  },
+  "about": {
+   "tip": "Who is behind Amplify, why it exists and what it aims to achieve."
+  },
+  "launch": {
+   "tip": "The UK Parliament Week launch plan, with calendar and sharing links."
+  },
+  "communities": {
+   "tip": "Youth parliaments, councils, clubs and networks where young people already meet."
+  },
+  "media": {
+   "tip": "Approved descriptions, key facts with sources, and illustrations you can use."
+  },
+  "help": {
+   "tip": "The user manual, adoption guide, tutorials and answers to common questions."
+  },
+  "feedback": {
+   "tip": "Suggest an idea, report a bug or get in touch, all through forms."
+  },
+  "involve": {
+   "tip": "Ways to help build, check and look after this portal, matched to your time and skills.",
+   "for": {
+    "young11": "Under 13s can help through a trusted adult; 13 and over can use GitHub with a parent's or carer's agreement.",
+    "club": "A ready-made open-source project for your club, with real checks and real reviews."
+   }
+  },
+  "ambassadors": {
+   "tip": "Become a supporter, champion or ambassador: what each role does and how to start.",
+   "for": {
+    "worker": "Ambassadors under 18 need a named adult contact."
+   }
+  },
+  "campaign": {
+   "tip": "Posters, social posts, an assembly script and a calendar of moments to spread the word.",
+   "for": {
+    "young11": "Social media posts are for adults or allies to share on a young person's behalf."
+   }
+  },
+  "learn": {
+   "tip": "Training sessions you can run: plans, timings, outcomes and materials.",
+   "for": {
+    "teacher": "Sessions map to citizenship, PSHE, computing and careers."
+   }
+  },
+  "stem": {
+   "tip": "Science, innovation, data and AI, digital, cyber, engineering and enterprise architecture: free opportunities, careers in government and the public sector, and a shout-out for girls and young women in tech.",
+   "for": {
+    "young11": "Coding clubs are free and you do not need to know anything to start.",
+    "club": "Includes a DevOps learning path built on this portal's own pipeline.",
+    "young16": "Apprenticeships and schemes in government and the public sector, many with no degree needed."
+   }
+  },
+  "research": {
+   "tip": "Take part in user research, or help with UI, UX, graphic and content design, safely and without giving your name in public.",
+   "for": {
+    "young11": "Under 16s take part with a parent's or carer's consent, and never alone with a researcher.",
+    "worker": "Your group can take part together, in your setting and under your safeguarding policy.",
+    "teacher": "Content testing and card sorting work well as a lesson activity."
+   }
+  },
+  "service": {
+   "tip": "Who Amplify is for: personas, their user stories, journeys, and the service blueprints and workflows behind every screen.",
+   "for": {
+    "ally": "Each story names the automated checks that prove it.",
+    "club": "A worked example of user-centred design you can learn from."
+   }
+  },
+  "golive": {
+   "tip": "What must be true before Amplify goes public, what has been tested, what is still open and who must act, and the routines that keep it right.",
+   "for": {
+    "ally": "Check the gates and the open items before you rely on or share the portal."
+   }
+  }
+ },
+ "terms": {
+  "myp": {
+   "term": "MYP",
+   "tip": "Member of Youth Parliament: a young person aged 11 to 18, elected to represent their area in the UK Youth Parliament."
+  },
+  "makeyourmark": {
+   "term": "Make Your Mark",
+   "tip": "The UK's largest youth ballot, which chooses the issues the UK Youth Parliament debates."
+  },
+  "votes16": {
+   "term": "Votes at 16",
+   "tip": "Lowering the voting age to 16 for UK general elections. 16 and 17 year olds can already vote in Scottish and Welsh parliament and council elections."
+  },
+  "selectcommittee": {
+   "term": "Select committee",
+   "tip": "A group of MPs or peers who look into a subject and report. The Youth Select Committee is the young people's version."
+  },
+  "safeguarding": {
+   "term": "Safeguarding",
+   "tip": "Protecting children and young people from harm, and acting when you are worried about someone."
+  },
+  "dbs": {
+   "term": "Background check",
+   "tip": "A criminal record check for adults working with young people: DBS in England and Wales, PVG in Scotland and AccessNI in Northern Ireland."
+  },
+  "agecheck": {
+   "term": "Age assurance",
+   "tip": "Ways online services check a user's age, required for some content under the Online Safety Act."
+  },
+  "provenance": {
+   "term": "Provenance",
+   "tip": "Where a fact came from. V means verified against the source, S means found by search, and K means a lead still to confirm."
+  },
+  "moscow": {
+   "term": "MoSCoW",
+   "tip": "A way to prioritise: Must have, Should have, Could have, Won't have this time."
+  },
+  "opensource": {
+   "term": "Open source",
+   "tip": "Code anyone can read, learn from and suggest changes to. This portal's code is open on GitHub."
+  },
+  "issue": {
+   "term": "Issue",
+   "tip": "A note on GitHub describing an idea, a bug or a question. Anyone 13 or over with an account can open one."
+  },
+  "pullrequest": {
+   "term": "Pull request",
+   "tip": "A proposed change to the code or content. A person reviews it, and automated checks must pass, before it is accepted."
+  },
+  "ci": {
+   "term": "Continuous integration",
+   "tip": "Automated checks that run on every proposed change, so mistakes are caught before they reach the portal."
+  },
+  "devops": {
+   "term": "DevOps",
+   "tip": "Building, testing, releasing and running software together, with automation, so changes are small, safe and frequent."
+  },
+  "wcag": {
+   "term": "WCAG 2.2 AA",
+   "tip": "The international accessibility standard this portal aims to meet, so disabled people can use it."
+  },
+  "bsl": {
+   "term": "BSL and ISL",
+   "tip": "British Sign Language and Irish Sign Language, both recognised in law in the UK."
+  },
+  "ukpw": {
+   "term": "UK Parliament Week",
+   "tip": "An annual week of events about democracy for young people across the UK. Amplify launches during it in November 2026."
+  },
+  "rc": {
+   "term": "Release candidate",
+   "tip": "A version that is ready to test but not yet launched."
+  }
+ },
+ "ui": {
+  "portal": "Show the portal: the full set of screens with the drawer on the left.",
+  "both": "Show the portal and the app concept side by side.",
+  "app": "Show the app view, a design concept for a future phone app. It is not a real app yet.",
+  "replay": "Replay the opening splash screen.",
+  "access": "Access and language settings: text size, contrast, motion, dyslexia-friendly type and languages.",
+  "persona": "Choose who you are to tailor the explainers. The choice stays on this device and is never sent anywhere.",
+  "signal": "Signal: the petition's story in numbers, with every constituency as a dot.",
+  "manifesto": "Manifesto: one line about why political education matters, typed out, with the petition's figures."
+ }
+}

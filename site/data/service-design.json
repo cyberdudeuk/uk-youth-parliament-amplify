@@ -1,0 +1,1093 @@
+{
+ "title": "Service design: personas, stories, journeys, blueprints and workflows",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "status": "Proto-personas and assumed journeys, written from the owner's requests, published guidance and the portal's own safeguards. They have not been tested with users yet: research Round 1 (January to February 2027) tests them, and they will change.",
+ "intro": "Amplify is designed around the people who use it. Each persona below has needs and pain points, user stories with tests that prove them, journeys through the portal, and the service blueprints, processes and workflows that sit behind every screen.",
+ "personas": [
+  {
+   "id": "young11",
+   "role": "Young person, 11 to 15",
+   "context": "At secondary school; uses a phone more than a laptop; may be a young carer, care-experienced, d/Deaf or disabled, or speak Welsh, Gaelic or Irish at home.",
+   "goal": "Find out how to make my voice heard on something I care about, safely.",
+   "needs": [
+    "Plain words at a reading age of 11 to 13",
+    "Routes that fit my age and nation",
+    "To know who to talk to if I'm worried"
+   ],
+   "pains": [
+    "Jargon about Parliament",
+    "Not knowing what is safe to share",
+    "Many services are not for under 16s"
+   ],
+   "safety": "No sign-in, no personal data, helplines first; contributions through a trusted adult under 13.",
+   "starts": "home",
+   "uses": [
+    "home",
+    "route",
+    "state",
+    "issues",
+    "care",
+    "stem"
+   ]
+  },
+  {
+   "id": "young16",
+   "role": "Young person, 16 to 25",
+   "context": "At college, university, work or looking for work; may vote in Scottish or Welsh elections already; may be NEET.",
+   "goal": "Take part directly: campaign, contribute and build skills I can show employers.",
+   "needs": [
+    "Real actions, not just information",
+    "Recognition for what I do",
+    "Ways in that fit around work or study"
+   ],
+   "pains": [
+    "Tokenistic consultation",
+    "Not hearing what changed",
+    "Unpaid time"
+   ],
+   "safety": "Clear rules on what GitHub makes public; ambassador and research promises.",
+   "starts": "home",
+   "uses": [
+    "route",
+    "hub",
+    "kit",
+    "involve",
+    "research",
+    "ambassadors",
+    "stem"
+   ]
+  },
+  {
+   "id": "parent",
+   "role": "Parent, guardian or carer",
+   "context": "Has parental responsibility; may be helping a child under 13 or under 16 use services that are age-limited.",
+   "goal": "Support my child to speak up and keep them safe while they do.",
+   "needs": [
+    "To know what the portal asks of my child",
+    "How to act on their behalf",
+    "Safeguarding and helplines"
+   ],
+   "pains": [
+    "Not understanding the online safety rules",
+    "Worry about personal data",
+    "Time"
+   ],
+   "safety": "Age and access rules, acting on behalf, and consent for under 16s in research.",
+   "starts": "home",
+   "uses": [
+    "home",
+    "trust",
+    "care",
+    "research",
+    "launch"
+   ]
+  },
+  {
+   "id": "worker",
+   "role": "Youth worker or group leader",
+   "context": "Runs a youth club, uniformed group or youth council; works to a safeguarding policy.",
+   "goal": "Plan sessions that help my group be heard, and run them safely.",
+   "needs": [
+    "Ready-to-run sessions",
+    "Inclusion for every young person",
+    "Safe outside activities"
+   ],
+   "pains": [
+    "No time to prepare",
+    "Resources that assume one nation",
+    "Unclear safeguarding for online activity"
+   ],
+   "safety": "Sessions run in the group's setting under its policy; background checks for visitors.",
+   "starts": "learn",
+   "uses": [
+    "learn",
+    "route",
+    "incl",
+    "communities",
+    "care",
+    "campaign"
+   ]
+  },
+  {
+   "id": "teacher",
+   "role": "Teacher, tutor or school staff",
+   "context": "Teaches citizenship, PSHE, computing or careers; plans for UK Parliament Week.",
+   "goal": "Use trusted, curriculum-linked material with my class in under 20 minutes' preparation.",
+   "needs": [
+    "Lessons that fit a period",
+    "Sourced facts",
+    "Something for every ability"
+   ],
+   "pains": [
+    "Out-of-date resources",
+    "Content that is not neutral",
+    "Accessibility in class"
+   ],
+   "safety": "Neutral, sourced content; no pupil data; posts for adults to share.",
+   "starts": "learn",
+   "uses": [
+    "learn",
+    "acad",
+    "state",
+    "launch",
+    "stem",
+    "campaign"
+   ]
+  },
+  {
+   "id": "club",
+   "role": "Coding or STEM club leader or mentor",
+   "context": "Runs a Code Club, CoderDojo or school club; wants real projects, especially for girls and young women.",
+   "goal": "Give my club a real open-source project with professional practice to learn from.",
+   "needs": [
+    "Good first issues",
+    "Clear rules for under 18s on GitHub",
+    "A DevOps path"
+   ],
+   "pains": [
+    "Toy projects",
+    "Safety on public platforms",
+    "Few role models"
+   ],
+   "safety": "No personal data on GitHub; 13+ with parental agreement; reviews before anything goes live.",
+   "starts": "stem",
+   "uses": [
+    "stem",
+    "involve",
+    "learn",
+    "health",
+    "research"
+   ]
+  },
+  {
+   "id": "ally",
+   "role": "Councillor, policy maker, researcher or journalist",
+   "context": "Works with or reports on young people's participation; needs to cite sources.",
+   "goal": "Understand youth voice across the UK and represent it accurately.",
+   "needs": [
+    "Sources and dates for every fact",
+    "Approved descriptions",
+    "Pan-UK picture"
+   ],
+   "pains": [
+    "Unsourced claims",
+    "England-only material",
+    "Confusing official and unofficial"
+   ],
+   "safety": "Unofficial status stated everywhere; never identify a young person.",
+   "starts": "sources",
+   "uses": [
+    "sources",
+    "latest",
+    "policy",
+    "media",
+    "track",
+    "about"
+   ]
+  },
+  {
+   "id": "access",
+   "role": "d/Deaf or disabled young person (any age)",
+   "context": "Uses BSL or ISL, a screen reader, magnification, switch access or simpler language; may have a supporter.",
+   "goal": "Use every part of the portal and take part on equal terms.",
+   "needs": [
+    "Keyboard and screen reader access",
+    "Sign-language and captioned routes",
+    "Explainers that do not rely on hover"
+   ],
+   "pains": [
+    "Tooltips that only work with a mouse",
+    "Interpreters as an afterthought",
+    "Forms that assume writing"
+   ],
+   "safety": "Interpreters booked first; any modality; supporters welcome.",
+   "starts": "home",
+   "uses": [
+    "trust",
+    "help",
+    "research",
+    "care",
+    "feedback"
+   ]
+  }
+ ],
+ "stories": [
+  {
+   "id": "ST01",
+   "persona": "young11",
+   "want": "see the ages and the organisations at each stage of youth representation, and find my own area",
+   "so": "I can get involved without being told I'm too young",
+   "screen": "route",
+   "accept": [
+    "Each stage shows who runs it and the age you need to be",
+    "The local routes map finds my council or region"
+   ],
+   "proved": [
+    "W1",
+    "W4"
+   ]
+  },
+  {
+   "id": "ST02",
+   "persona": "young11",
+   "want": "know who to contact if I'm worried, wherever I am in the portal",
+   "so": "I can get help quickly",
+   "screen": "care",
+   "accept": [
+    "Helplines are current and checked every 30 days",
+    "Safeguarding is linked from every Get involved screen"
+   ],
+   "proved": [
+    "C3",
+    "C4",
+    "C5"
+   ]
+  },
+  {
+   "id": "ST03",
+   "persona": "young11",
+   "want": "understand words like MYP or select committee where I meet them",
+   "so": "I don't give up on a screen",
+   "screen": "graph",
+   "accept": [
+    "Marked terms explain themselves on hover and focus",
+    "No tooltip is ever empty"
+   ],
+   "proved": [
+    "S12",
+    "W5"
+   ]
+  },
+  {
+   "id": "ST04",
+   "persona": "young16",
+   "want": "contribute to the portal and have it recognised",
+   "so": "I can show what I've done",
+   "screen": "involve",
+   "accept": [
+    "Ways to help by time and skill",
+    "Recognition and badges described"
+   ],
+   "proved": [
+    "W1"
+   ]
+  },
+  {
+   "id": "ST05",
+   "persona": "young16",
+   "want": "see what changed because people like me took part",
+   "so": "I know it's worth my time",
+   "screen": "research",
+   "accept": [
+    "You said, we did links each finding to a change",
+    "Status says honestly that no research has run yet"
+   ],
+   "proved": [
+    "C9"
+   ]
+  },
+  {
+   "id": "ST06",
+   "persona": "parent",
+   "want": "act on my child's behalf where a service is age-limited",
+   "so": "they are not shut out",
+   "screen": "trust",
+   "accept": [
+    "Age and access table by service",
+    "On-behalf guidance in plain English"
+   ],
+   "proved": [
+    "W4"
+   ]
+  },
+  {
+   "id": "ST07",
+   "persona": "parent",
+   "want": "know exactly what research would ask of my child",
+   "so": "I can give informed consent",
+   "screen": "research",
+   "accept": [
+    "Promise, consent and data rules published",
+    "Under 16s need a parent's consent"
+   ],
+   "proved": [
+    "S11"
+   ]
+  },
+  {
+   "id": "ST08",
+   "persona": "worker",
+   "want": "a session plan I can run tonight",
+   "so": "my group can take part without extra preparation",
+   "screen": "learn",
+   "accept": [
+    "Each session has audience, timing, outcomes and steps",
+    "Sessions link to the screens they use"
+   ],
+   "proved": [
+    "W1"
+   ]
+  },
+  {
+   "id": "ST09",
+   "persona": "worker",
+   "want": "find local and national groups for young people least often heard",
+   "so": "I can refer and connect them",
+   "screen": "communities",
+   "accept": [
+    "Groups by kind with nations and provenance",
+    "Listing is not endorsement, said on screen"
+   ],
+   "proved": [
+    "C1",
+    "C2"
+   ]
+  },
+  {
+   "id": "ST10",
+   "persona": "teacher",
+   "want": "sourced, neutral facts for a UK Parliament Week lesson",
+   "so": "I can teach with confidence",
+   "screen": "launch",
+   "accept": [
+    "Launch dates sourced",
+    "Calendar and Classroom sharing on click only"
+   ],
+   "proved": [
+    "S9",
+    "C1"
+   ]
+  },
+  {
+   "id": "ST11",
+   "persona": "teacher",
+   "want": "show girls in my class that STEM is for them",
+   "so": "more of them choose computing and engineering",
+   "screen": "stem",
+   "accept": [
+    "Facts with linked sources",
+    "Free opportunities by path, for every nation where available"
+   ],
+   "proved": [
+    "C1",
+    "C6"
+   ]
+  },
+  {
+   "id": "ST12",
+   "persona": "club",
+   "want": "a real pipeline my club can learn DevOps on",
+   "so": "they practise how professionals work",
+   "screen": "stem",
+   "accept": [
+    "DevOps steps point to real files",
+    "Every check proves it catches a deliberate break"
+   ],
+   "proved": [
+    "S1",
+    "W5"
+   ]
+  },
+  {
+   "id": "ST13",
+   "persona": "club",
+   "want": "clear rules for under 18s contributing on GitHub",
+   "so": "my club stays safe in public",
+   "screen": "involve",
+   "accept": [
+    "Age rules and no personal data stated",
+    "Ambassador and research forms ask no names"
+   ],
+   "proved": [
+    "R1",
+    "S4"
+   ]
+  },
+  {
+   "id": "ST14",
+   "persona": "ally",
+   "want": "cite every fact with its source and date",
+   "so": "my reporting or policy is accurate",
+   "screen": "sources",
+   "accept": [
+    "Every source has a provenance and check date",
+    "Overdue sources are flagged"
+   ],
+   "proved": [
+    "C1",
+    "C2",
+    "C7"
+   ]
+  },
+  {
+   "id": "ST15",
+   "persona": "ally",
+   "want": "describe Amplify accurately",
+   "so": "I don't present it as an official service",
+   "screen": "media",
+   "accept": [
+    "Approved descriptions to copy",
+    "Unofficial status in three places"
+   ],
+   "proved": [
+    "S5"
+   ]
+  },
+  {
+   "id": "ST16",
+   "persona": "access",
+   "want": "use every screen with a keyboard and screen reader",
+   "so": "I am not excluded",
+   "screen": "trust",
+   "accept": [
+    "No serious or critical axe issues beyond the baseline",
+    "Tooltips work on focus and close with Escape"
+   ],
+   "proved": [
+    "W3",
+    "W5"
+   ]
+  },
+  {
+   "id": "ST17",
+   "persona": "access",
+   "want": "use the portal on a small phone at large text",
+   "so": "I can read it the way I need",
+   "screen": "home",
+   "accept": [
+    "No sideways scrolling at 360px",
+    "Explainer bar wraps"
+   ],
+   "proved": [
+    "W2"
+   ]
+  },
+  {
+   "id": "ST18",
+   "persona": "access",
+   "want": "take part in research in BSL or ISL",
+   "so": "my experience counts",
+   "screen": "research",
+   "accept": [
+    "Interpreters booked before sessions are offered",
+    "Any modality accepted"
+   ],
+   "proved": [
+    "S11"
+   ]
+  }
+ ],
+ "journeys": [
+  {
+   "id": "J1",
+   "persona": "young11",
+   "title": "From an assembly to a first action",
+   "stages": [
+    {
+     "stage": "Hear",
+     "doing": "Sees the poster or hears the UK Parliament Week assembly",
+     "feeling": "Curious but unsure it's for me",
+     "screen": "campaign",
+     "opportunity": "Poster says it's for every age and needs no sign-in"
+    },
+    {
+     "stage": "Arrive",
+     "doing": "Opens Amplify on a phone",
+     "feeling": "Overwhelmed by choice",
+     "screen": "home",
+     "opportunity": "The New here tour and explainer bar"
+    },
+    {
+     "stage": "Find",
+     "doing": "Checks the ages on Your route in and finds their area on the map",
+     "feeling": "Relieved there's something for me",
+     "screen": "route",
+     "opportunity": "Routes run by trusted organisations"
+    },
+    {
+     "stage": "Understand",
+     "doing": "Hovers or taps on a term it doesn't know",
+     "feeling": "Less lost",
+     "screen": "graph",
+     "opportunity": "Tooltips and the glossary"
+    },
+    {
+     "stage": "Act",
+     "doing": "Talks to a teacher about Make Your Mark or a youth council",
+     "feeling": "Proud",
+     "screen": "communities",
+     "opportunity": "A trusted adult helps with the next step"
+    },
+    {
+     "stage": "Stay safe",
+     "doing": "Knows where to go if something worries them",
+     "feeling": "Safe",
+     "screen": "care",
+     "opportunity": "Helplines checked every 30 days"
+    }
+   ]
+  },
+  {
+   "id": "J2",
+   "persona": "parent",
+   "title": "Supporting a child under 16",
+   "stages": [
+    {
+     "stage": "Hear",
+     "doing": "Gets the school's message about UK Parliament Week",
+     "feeling": "Wants to know it's safe",
+     "screen": "campaign",
+     "opportunity": "Parents' message says no sign-in or personal data"
+    },
+    {
+     "stage": "Check",
+     "doing": "Takes the Parents and carers tour",
+     "feeling": "Reassured",
+     "screen": "guide",
+     "opportunity": "Safeguards and age rules in one place"
+    },
+    {
+     "stage": "Decide",
+     "doing": "Reads age and access rules for the services involved",
+     "feeling": "Clear what child can do alone",
+     "screen": "trust",
+     "opportunity": "On-behalf guidance"
+    },
+    {
+     "stage": "Support",
+     "doing": "Helps the child share an idea or join research",
+     "feeling": "Involved",
+     "screen": "research",
+     "opportunity": "Parent consent and trusted-adult promise"
+    }
+   ]
+  },
+  {
+   "id": "J3",
+   "persona": "worker",
+   "title": "Running a session with a youth group",
+   "stages": [
+    {
+     "stage": "Plan",
+     "doing": "Picks a session from Training",
+     "feeling": "Short of time",
+     "screen": "learn",
+     "opportunity": "Timings and outcomes ready"
+    },
+    {
+     "stage": "Include",
+     "doing": "Checks inclusion and languages for the group",
+     "feeling": "Wants nobody left out",
+     "screen": "incl",
+     "opportunity": "Every voice and sign-language guidance"
+    },
+    {
+     "stage": "Run",
+     "doing": "Runs the activity with Your route in, the local map and Issue domains",
+     "feeling": "Engaged group",
+     "screen": "route",
+     "opportunity": "Works on a projector or phones"
+    },
+    {
+     "stage": "Close",
+     "doing": "Points the group to Safeguarding & support and to groups nearby",
+     "feeling": "Confident",
+     "screen": "care",
+     "opportunity": "Safeguarding built in"
+    },
+    {
+     "stage": "Feed back",
+     "doing": "Shares what worked through the Idea form",
+     "feeling": "Heard",
+     "screen": "feedback",
+     "opportunity": "Feeds the next release"
+    }
+   ]
+  },
+  {
+   "id": "J4",
+   "persona": "club",
+   "title": "A coding club's first contribution",
+   "stages": [
+    {
+     "stage": "Discover",
+     "doing": "Finds the STEM spotlight and DevOps path",
+     "feeling": "Interested",
+     "screen": "stem",
+     "opportunity": "Real files, real checks"
+    },
+    {
+     "stage": "Prepare",
+     "doing": "Reads the contribution rules and age guidance",
+     "feeling": "Cautious about public platforms",
+     "screen": "involve",
+     "opportunity": "No personal data; parent agreement for 13 to 17"
+    },
+    {
+     "stage": "Change",
+     "doing": "Picks a good first issue and edits a data file",
+     "feeling": "Excited",
+     "screen": "involve",
+     "opportunity": "Data in data/, never site/"
+    },
+    {
+     "stage": "Check",
+     "doing": "Runs the checks and sees them catch a deliberate break",
+     "feeling": "Gets it",
+     "screen": "health",
+     "opportunity": "Vaccinated tests"
+    },
+    {
+     "stage": "Release",
+     "doing": "Opens a pull request; the owner reviews and merges",
+     "feeling": "Proud it is live",
+     "screen": "changes",
+     "opportunity": "Credited in the release log if wanted"
+    }
+   ]
+  },
+  {
+   "id": "J5",
+   "persona": "access",
+   "title": "Using Amplify with a screen reader and BSL",
+   "stages": [
+    {
+     "stage": "Arrive",
+     "doing": "Uses the skip link and headings",
+     "feeling": "Checking if it will work",
+     "screen": "home",
+     "opportunity": "Skip link first, landmarks, focus visible"
+    },
+    {
+     "stage": "Explore",
+     "doing": "Tabs through the drawer; each item reads its explainer",
+     "feeling": "Oriented",
+     "screen": "home",
+     "opportunity": "Tooltips on focus, linked by aria-describedby"
+    },
+    {
+     "stage": "Learn",
+     "doing": "Finds d/Deaf and sign-language guidance",
+     "feeling": "Represented",
+     "screen": "trust",
+     "opportunity": "BSL and ISL recognised; interpreter rules"
+    },
+    {
+     "stage": "Shape",
+     "doing": "Registers interest in accessibility research",
+     "feeling": "Valued",
+     "screen": "research",
+     "opportunity": "Interpreters booked first, any modality"
+    }
+   ]
+  },
+  {
+   "id": "J6",
+   "persona": "ally",
+   "title": "Citing Amplify in a briefing",
+   "stages": [
+    {
+     "stage": "Search",
+     "doing": "Filters Trusted sources by theme and nation",
+     "feeling": "Needs speed",
+     "screen": "sources",
+     "opportunity": "Provenance and check dates on every card"
+    },
+    {
+     "stage": "Update",
+     "doing": "Reads What's new for recent changes",
+     "feeling": "Wants to be current",
+     "screen": "latest",
+     "opportunity": "Dated and sourced"
+    },
+    {
+     "stage": "Describe",
+     "doing": "Copies an approved description",
+     "feeling": "Careful about accuracy",
+     "screen": "media",
+     "opportunity": "Unofficial status clear"
+    },
+    {
+     "stage": "Check",
+     "doing": "Looks at Portal health before relying on it",
+     "feeling": "Trusts it",
+     "screen": "health",
+     "opportunity": "Checks and open items in public"
+    }
+   ]
+  }
+ ],
+ "blueprints": [
+  {
+   "id": "B1",
+   "title": "A young person finds a route in and takes part safely",
+   "phases": [
+    "Hear",
+    "Arrive",
+    "Find",
+    "Act",
+    "Stay safe"
+   ],
+   "layers": [
+    {
+     "layer": "User actions",
+     "cells": [
+      "Sees a poster or assembly",
+      "Opens on a phone",
+      "Checks ages and finds their area",
+      "Talks to a trusted adult",
+      "Knows who to call"
+     ]
+    },
+    {
+     "layer": "Front stage (the page)",
+     "cells": [
+      "Campaign kit posters",
+      "Home, tour, explainer bar",
+      "Your route in, tooltips",
+      "Communities hub",
+      "Safeguarding & support"
+     ]
+    },
+    {
+     "layer": "Back stage (in the page)",
+     "cells": [
+      "Drawn in code from brand rules",
+      "Data loaded from data/*.json",
+      "Stages, ages and the local map",
+      "Sources with provenance",
+      "Helplines with review dates"
+     ]
+    },
+    {
+     "layer": "Support processes",
+     "cells": [
+      "Ambassadors and teachers share",
+      "Weekly upkeep run",
+      "Source re-verification",
+      "Group listings checked",
+      "Helplines re-verified first, every 30 days"
+     ]
+    },
+    {
+     "layer": "Evidence and checks",
+     "cells": [
+      "S6",
+      "W1, W2",
+      "W4",
+      "C1, C2",
+      "C3, C4, C5"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B2",
+   "title": "A parent acts on behalf of a child under 16",
+   "phases": [
+    "Learn",
+    "Decide",
+    "Act",
+    "Consent"
+   ],
+   "layers": [
+    {
+     "layer": "User actions",
+     "cells": [
+      "Takes the parents' tour",
+      "Reads age rules",
+      "Shares or acts for the child",
+      "Consents to research"
+     ]
+    },
+    {
+     "layer": "Front stage (the page)",
+     "cells": [
+      "Guide & tours",
+      "Safeguards & audiences",
+      "Campaign posts for adults",
+      "Research promise and consent"
+     ]
+    },
+    {
+     "layer": "Back stage (in the page)",
+     "cells": [
+      "Tour steps in data",
+      "Age and access table",
+      "Share links open only on click",
+      "Consent text generated from data"
+     ]
+    },
+    {
+     "layer": "Support processes",
+     "cells": [
+      "Owner reviews tours",
+      "Online safety rules tracked on What's new",
+      "No tracking or cookies",
+      "Private form and safeguarding lead (O14)"
+     ]
+    },
+    {
+     "layer": "Evidence and checks",
+     "cells": [
+      "W1",
+      "C9",
+      "S9",
+      "S11"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B3",
+   "title": "A contribution goes from idea to release",
+   "phases": [
+    "Suggest",
+    "Triage",
+    "Change",
+    "Check",
+    "Release"
+   ],
+   "layers": [
+    {
+     "layer": "Contributor actions",
+     "cells": [
+      "Opens an Idea or Bug form",
+      "Reads the decision",
+      "Edits data or tools",
+      "Runs the checks",
+      "Sees it in the release log"
+     ]
+    },
+    {
+     "layer": "Front stage",
+     "cells": [
+      "Have your say, Contribute",
+      "GitHub issue thread",
+      "Pull request",
+      "CI results",
+      "Release log, drawer flags"
+     ]
+    },
+    {
+     "layer": "Back stage",
+     "cells": [
+      "Issue forms ask no personal data",
+      "Weekly run triages and labels",
+      "Build from data, never site/",
+      "Checks with negative tests",
+      "Changelog drives NEW and UPD flags"
+     ]
+    },
+    {
+     "layer": "Support processes",
+     "cells": [
+      "Personal data flagged to owner",
+      "Owner decides",
+      "Review by the owner",
+      "GitHub Actions",
+      "Owner merges and republishes"
+     ]
+    },
+    {
+     "layer": "Evidence and checks",
+     "cells": [
+      "R1, S4",
+      "C9",
+      "S1, S8",
+      "W1 to W5",
+      "S11"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B4",
+   "title": "A helpline changes number or closes",
+   "phases": [
+    "Detect",
+    "Verify",
+    "Fix",
+    "Tell"
+   ],
+   "layers": [
+    {
+     "layer": "Maintainer actions",
+     "cells": [
+      "Weekly run checks helplines first",
+      "Compares with the service's own site",
+      "Updates the source and retires the old number",
+      "Adds a What's new entry"
+     ]
+    },
+    {
+     "layer": "Front stage",
+     "cells": [
+      "Portal health flags review due",
+      "Source card shows check date",
+      "Safeguarding & support updates",
+      "Ribbon shows UPD"
+     ]
+    },
+    {
+     "layer": "Back stage",
+     "cells": [
+      "30-day review cycle",
+      "Provenance set to V with date",
+      "Retired numbers listed",
+      "Release log entry"
+     ]
+    },
+    {
+     "layer": "Support processes",
+     "cells": [
+      "Scheduled weekly task",
+      "Primary source only",
+      "Pull request marked safety-critical",
+      "Owner merges first"
+     ]
+    },
+    {
+     "layer": "Evidence and checks",
+     "cells": [
+      "C5",
+      "C2",
+      "C3, C4",
+      "S11"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "B5",
+   "title": "A research round with young people",
+   "phases": [
+    "Recruit",
+    "Prepare",
+    "Run",
+    "Synthesise",
+    "Play back"
+   ],
+   "layers": [
+    {
+     "layer": "Participant actions",
+     "cells": [
+      "Registers through a school, group or parent",
+      "Reads information, gives consent",
+      "Takes part with a trusted adult nearby",
+      "Can withdraw within 30 days",
+      "Sees findings first"
+     ]
+    },
+    {
+     "layer": "Front stage",
+     "cells": [
+      "Research & design screen",
+      "Participant information, consent forms",
+      "Session guides",
+      "Synthesis template",
+      "You said, we did"
+     ]
+    },
+    {
+     "layer": "Back stage",
+     "cells": [
+      "Screener with quotas",
+      "Interpreters booked first",
+      "Notes by session code",
+      "Themes and totals only",
+      "Findings linked to changes"
+     ]
+    },
+    {
+     "layer": "Support processes",
+     "cells": [
+      "Private sign-up form (O14)",
+      "Background-checked facilitators",
+      "Safeguarding lead",
+      "Notes deleted after 6 months",
+      "Release log and backlog"
+     ]
+    },
+    {
+     "layer": "Evidence and checks",
+     "cells": [
+      "S11",
+      "S11",
+      "C9",
+      "S11",
+      "C9"
+     ]
+    }
+   ]
+  }
+ ],
+ "workflows": [
+  {
+   "id": "W-BUILD",
+   "title": "Build, check and release",
+   "steps": [
+    "Edit data/*.json or tools/",
+    "Run tools/build_site.py: page, art and docs are generated",
+    "Run check_repo, check_site, check_sources and check_browser",
+    "Every check also proves it catches a deliberate break"
+   ],
+   "decision": "Any check failing?",
+   "yes": "Find the root cause, fix it, add a check and a negative test, log the defect, and rerun",
+   "no": "Push, open a pull request; the owner merges and republishes"
+  },
+  {
+   "id": "W-UPKEEP",
+   "title": "Weekly upkeep",
+   "steps": [
+    "Pull and run every check",
+    "Re-verify helplines first, then sources past review",
+    "Look for dated, sourced developments",
+    "Triage issues; flag any personal data to the owner"
+   ],
+   "decision": "Anything safety-critical?",
+   "yes": "Fix it first and mark the pull request safety-critical",
+   "no": "Open the weekly pull request with a plain report"
+  },
+  {
+   "id": "W-SAFE",
+   "title": "A safeguarding concern",
+   "steps": [
+    "Someone posts or says something that suggests risk",
+    "Do not reply in public or repeat the details",
+    "Point to helplines on Safeguarding & support",
+    "Tell the owner straight away"
+   ],
+   "decision": "Is someone in immediate danger?",
+   "yes": "Call 999, then follow the setting's safeguarding procedure",
+   "no": "The owner follows the safeguarding procedure and records what was done"
+  },
+  {
+   "id": "W-CONTRIB",
+   "title": "Contribution triage",
+   "steps": [
+    "An Idea, Bug, ambassador or contact issue arrives",
+    "Check it contains no personal data",
+    "Decide: accept, adapt, defer or decline, with a reason",
+    "Small, safe fixes are made in the weekly run"
+   ],
+   "decision": "Does it need the owner's decision?",
+   "yes": "List it as an open item with the owner as who must act",
+   "no": "Implement, check, and record it in the release log"
+  },
+  {
+   "id": "W-RESEARCH",
+   "title": "Research round",
+   "steps": [
+    "Recruit through trusted organisations across the quotas",
+    "Book interpreters and support before offering sessions",
+    "Run sessions with a trusted adult present or nearby",
+    "Synthesise into themes within two weeks"
+   ],
+   "decision": "Does a theme exclude a group?",
+   "yes": "Fix that first, before anything else in the backlog",
+   "no": "Play findings back to participants, then publish You said, we did"
+  }
+ ]
+}

@@ -1,0 +1,249 @@
+{
+ "title": "Content integrity",
+ "checked": "2026-11-15",
+ "review_days": 30,
+ "classes": {
+  "Sourced": "Facts taken from named official or voluntary-sector sources, each linked and dated.",
+  "Model": "A planning calculation from stated assumptions or your own inputs. It shows what would be needed, not what happened.",
+  "Sample": "Invented content that shows how a feature works. It is not real and is labelled where it appears.",
+  "Generated": "Template or AI-written text for you to adapt. Check it before you use it.",
+  "Editorial": "Judgements or guidance written for this portal, based on the sources cited."
+ },
+ "screens": [
+  {
+   "screen": "home",
+   "class": "Editorial",
+   "why": "An introduction written for this portal; every route it points to carries its own content class."
+  },
+  {
+   "screen": "hub",
+   "class": "Sourced",
+   "why": "Petition 754954 figures are the final counts from UK Parliament's published data (snapshot of 1 October 2026)."
+  },
+  {
+   "screen": "momentum",
+   "class": "Model",
+   "why": "The relaunch planner projects the daily rate a relaunch would need; the closed petition's own figures are real.",
+   "check": "Change the assumptions and the projection changes: it is not a forecast."
+  },
+  {
+   "screen": "plan",
+   "class": "Model",
+   "why": "The readiness score is calculated from the checklist you tick; the exam and holiday windows are general guidance."
+  },
+  {
+   "screen": "coal",
+   "class": "Sourced",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "kit",
+   "class": "Generated",
+   "why": "Toolkit copy is template text for each audience, written to adapt; it does not quote real people."
+  },
+  {
+   "screen": "pledge",
+   "class": "Sample",
+   "why": "The five pledges on the wall at first are invented, to show how the wall works. Any you add stay in your browser and are never sent."
+  },
+  {
+   "screen": "radar",
+   "class": "Editorial",
+   "why": "Event dates come from their organisers; the fit scores are this portal's judgement of how well a campaign can attach to each event."
+  },
+  {
+   "screen": "policy",
+   "class": "Sourced",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "map",
+   "class": "Sourced",
+   "why": "Signatures by constituency, nation and region are from the petition snapshot; the routes map uses public local information."
+  },
+  {
+   "screen": "acad",
+   "class": "Editorial",
+   "why": "Lessons and quiz questions are written for this portal from the sources cited in each lesson."
+  },
+  {
+   "screen": "ysc",
+   "class": "Sourced",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "post",
+   "class": "Sourced",
+   "why": "The post-mortem analyses the published petition record; its conclusions are editorial."
+  },
+  {
+   "screen": "track",
+   "class": "Sourced",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "prof",
+   "class": "Sample",
+   "why": "The profile card marked Sample profile shows the layout of an MYP profile. It is not a real person; real MYPs are found through UK Youth Parliament."
+  },
+  {
+   "screen": "incl",
+   "class": "Editorial",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "res",
+   "class": "Sourced",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "ai",
+   "class": "Generated",
+   "why": "Copilot answers are written live by an AI model, grounded in the portal's sourced record, and can be wrong. They appear only where a live model connection exists."
+  },
+  {
+   "screen": "brand",
+   "class": "Editorial",
+   "why": "Design rules for this portal."
+  },
+  {
+   "screen": "care",
+   "class": "Sourced",
+   "why": "Helplines re-checked on 15 November 2026 against each service's own site."
+  },
+  {
+   "screen": "graph",
+   "class": "Editorial",
+   "why": "Plain-English definitions written for this portal, linked to sources."
+  },
+  {
+   "screen": "corner",
+   "class": "Sourced",
+   "why": "The four cornerstones and the Code of Ethics are UK Youth Parliament's own; the illustrations are decorative."
+  },
+  {
+   "screen": "route",
+   "class": "Sourced",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "state",
+   "class": "Editorial",
+   "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "issues",
+   "class": "Sourced",
+   "why": "UKYP positions are quoted from UKYP's manifesto and campaigns."
+  },
+  {
+   "screen": "guide",
+   "class": "Editorial",
+   "why": "Tours and steps written for this portal."
+  },
+  {
+   "screen": "sources",
+   "class": "Sourced",
+   "why": "Every card is labelled Verified, Search-sourced or Lead, with the date it was checked."
+  },
+  {
+   "screen": "latest",
+   "class": "Sourced",
+   "why": "Every update links its source and says whether it is verified or search-sourced."
+  },
+  {
+   "screen": "changes",
+   "class": "Editorial",
+   "why": "The portal's own release history."
+  },
+  {
+   "screen": "trust",
+   "class": "Sourced",
+   "why": "Frameworks link to their owners; entries marked Lead are still to be checked against the primary text."
+  },
+  {
+   "screen": "health",
+   "class": "Sourced",
+   "why": "Calculated live from the portal's own data and build record."
+  },
+  {
+   "screen": "help",
+   "class": "Editorial",
+   "why": "Guidance written for this portal."
+  },
+  {
+   "screen": "feedback",
+   "class": "Editorial",
+   "why": "How to reach us, and how ideas are handled."
+  },
+  {
+   "screen": "launch",
+   "class": "Sourced",
+   "why": "UK Parliament Week dates from UK Parliament Education; the plan and activities are this portal's."
+  },
+  {
+   "screen": "about",
+   "class": "Editorial",
+   "why": "The portal's own statement of who is behind it and why; facts in it link to sources elsewhere in the portal."
+  },
+  {
+   "screen": "media",
+   "class": "Editorial",
+   "why": "Descriptions of Amplify written for reuse; facts in it carry their sources."
+  },
+  {
+   "screen": "communities",
+   "class": "Sourced",
+   "why": "Groups and networks from the Trusted sources list, each labelled for how sure it is."
+  },
+  {
+   "screen": "involve",
+   "class": "Editorial",
+   "why": "Ways to contribute written for this portal; the repository, issues and checks it describes are real and linked."
+  },
+  {
+   "screen": "ambassadors",
+   "class": "Editorial",
+   "why": "A proposed programme written for this portal. It is a pilot: nobody is an ambassador yet, and it opens only when the owner confirms it can run safely."
+  },
+  {
+   "screen": "campaign",
+   "class": "Generated",
+   "why": "Posters, cards and posts are templates written and drawn for this portal. Adapt and check them before use; key dates show whether they are sourced or still to confirm.",
+   "check": "Dates marked 'Lead, to confirm' must be checked on the organiser's site."
+  },
+  {
+   "screen": "learn",
+   "class": "Editorial",
+   "why": "Session plans written for this portal, based on its own screens. Adapt them to your group and your setting's safeguarding policy."
+  },
+  {
+   "screen": "stem",
+   "class": "Sourced",
+   "why": "Facts, opportunities and careers come from named sources (WISE, EngineeringUK, NCSC, DSIT, GDS, the Civil Service, NHS, devolved governments and others), each linked and dated. The enterprise architecture layers are a plain-English explanation, with roles from the government's digital and data framework."
+  },
+  {
+   "screen": "research",
+   "class": "Editorial",
+   "why": "A research plan and design routes written for this portal, ported from the owner's other portals. No research has run yet; findings so far come from published evidence and feedback and are labelled that way."
+  },
+  {
+   "screen": "service",
+   "class": "Model",
+   "why": "Proto-personas and assumed journeys: a design model written from the owner's requests and published guidance, not yet tested with users. Research Round 1 tests them.",
+   "check": "Treat personas and journeys as hypotheses until research findings replace them."
+  },
+  {
+   "screen": "golive",
+   "class": "Editorial",
+   "why": "A readiness assessment written for this portal; each passed gate names the automated checks that prove it, and the live counts come from the data and the latest build."
+  }
+ ],
+ "views": [
+  {
+   "view": "App",
+   "class": "Sample",
+   "why": "The App view is a design concept showing how Amplify could look as a phone app. Its feed shows how the app would work, not live activity."
+  }
+ ]
+}

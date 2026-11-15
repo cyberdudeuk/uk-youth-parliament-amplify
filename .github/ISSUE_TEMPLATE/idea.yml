@@ -1,0 +1,27 @@
+name: Idea or feature
+description: Suggest a feature, a new screen, or a better way to do something. Public; no personal details.
+title: "Idea: "
+labels: [idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form is public. Do not include your name, school, contact details, or anything that identifies
+        you or anyone else. If you are under 18, ask a trusted adult before posting. If you are worried about
+        your safety, do not post here: use the helplines on the portal's Safeguarding & support screen.
+  - type: dropdown
+    id: who
+    attributes:
+      label: Who are you suggesting this as?
+      options: [A young person, A parent or carer, A teacher or youth worker, Someone else]
+    validations: {required: false}
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What should Amplify do, and who would it help?
+    validations: {required: true}
+  - type: input
+    id: screen
+    attributes:
+      label: Which screen is it about? (optional)

@@ -1,0 +1,137 @@
+{
+ "title": "What's new",
+ "checked": "2026-11-15",
+ "review_days": 30,
+ "categories": {
+  "law": "Law & Parliament",
+  "pay": "Work & pay",
+  "safety": "Safety",
+  "data": "Data",
+  "voice": "Youth voice",
+  "strategy": "Strategy"
+ },
+ "items": [
+  {
+   "date": "2026-11-23",
+   "cat": "voice",
+   "title": "UK Parliament Week, 23 to 29 November 2026",
+   "body": "Parliament's annual week of democracy activity, with free kits for schools, youth groups and adults. Amplify plans to launch on its first day.",
+   "url": "https://learning.parliament.uk/en/uk-parliament-week/",
+   "source": "UK Parliament Education",
+   "provenance": "S",
+   "status": "Coming up"
+  },
+  {
+   "date": "2026-10-28",
+   "cat": "pay",
+   "title": "April 2027 minimum wage rates announced",
+   "body": "The Government accepted the Low Pay Commission's advice in full: £13.21 for 21 and over and £11.27 for 18 to 20, from 1 April 2027. Until then the April 2026 rates apply.",
+   "url": "https://www.gov.uk/government/publications/minimum-wage-rates-for-2027",
+   "source": "GOV.UK, Low Pay Commission",
+   "provenance": "S"
+  },
+  {
+   "date": "2026-09-07",
+   "cat": "safety",
+   "title": "HOPELINE247 has closed",
+   "body": "PAPYRUS Prevention of Young Suicide entered administration on 7 September 2026 and its HOPELINE247 helpline is no longer operating. The administrators point people to Samaritans (116 123), Shout (text SHOUT to 85258), NHS 111, or 999 in an emergency. This portal has removed HOPELINE247 from its helplines.",
+   "url": "https://opusllp.com/restructuring-insolvency/case-papyrus-in-administration/",
+   "source": "Joint Administrators, Opus Restructuring",
+   "provenance": "V",
+   "status": "Service closed"
+  },
+  {
+   "date": "2026-09-02",
+   "cat": "law",
+   "title": "Votes at 16 Bill clears the Commons",
+   "body": "The Representation of the People Bill completed its Commons third reading on 2 September 2026 and moved to the House of Lords. It is not yet law.",
+   "url": "https://bills.parliament.uk/bills/4080",
+   "source": "Reported by MPs and bill trackers; confirm each stage on Parliament's bill page",
+   "provenance": "S",
+   "status": "In the Lords"
+  },
+  {
+   "date": "2026-06-15",
+   "cat": "safety",
+   "title": "Social media ban for under 16s announced",
+   "body": "The Government announced that major social media platforms will be barred from serving under 16s, with livestreaming banned for under 16s and stranger contact blocked by default for under 17s. Regulations are due before Christmas 2026, to apply from spring 2027. Campaigners under 16 should plan to work through MYPs, school councils and adult allies rather than personal accounts.",
+   "url": "https://www.gov.uk/",
+   "source": "UK Government announcement, widely reported (Reuters, BBC)",
+   "provenance": "S",
+   "status": "Announced, from spring 2027"
+  },
+  {
+   "date": "2026-08-27",
+   "cat": "data",
+   "title": "981,000 young people not earning or learning",
+   "body": "Official estimates show around 981,000 16 to 24 year olds were NEET in April to June 2026, down from 1,012,000 in January to March, the highest since 2013.",
+   "url": "https://youthfuturesfoundation.org/",
+   "source": "Office for National Statistics, via Youth Futures Foundation",
+   "provenance": "S"
+  },
+  {
+   "date": "2026-04-01",
+   "cat": "pay",
+   "title": "New minimum wage rates in force",
+   "body": "£12.71 for 21 and over, £10.85 for 18 to 20, and £8 for under 18s and apprentices, from 1 April 2026. The 18 to 20 rate rose 8.5%.",
+   "url": "https://www.gov.uk/national-minimum-wage-rates",
+   "source": "GOV.UK",
+   "provenance": "S"
+  },
+  {
+   "date": "2026-03-25",
+   "cat": "voice",
+   "title": "Youth Select Committee reports on PSHE",
+   "body": "The Youth Select Committee called on the UK Government to end the postcode lottery in PSHE teaching.",
+   "url": "https://nya.org.uk/?p=43843",
+   "source": "National Youth Agency",
+   "provenance": "S"
+  },
+  {
+   "date": "2026-02-12",
+   "cat": "law",
+   "title": "Representation of the People Bill introduced",
+   "body": "The Government introduced the Bill that would extend the vote to 16 and 17 year olds in all UK elections.",
+   "url": "https://www.gov.uk/government/publications/representation-of-the-people-bill-policy-summaries/votes-at-16",
+   "source": "GOV.UK",
+   "provenance": "S"
+  },
+  {
+   "date": "2025-12-10",
+   "cat": "strategy",
+   "title": "National Youth Strategy published",
+   "body": "Youth Matters, a ten-year strategy for 10 to 21 year olds in England (up to 25 with SEND), backed by over £500 million and shaped by over 14,000 young people.",
+   "url": "https://www.gov.uk/government/publications/youth-matters-your-national-youth-strategy",
+   "source": "Department for Culture, Media and Sport",
+   "provenance": "S"
+  },
+  {
+   "date": "2025-11-01",
+   "cat": "voice",
+   "title": "UK Youth Parliament sits in the Commons",
+   "body": "Members of Youth Parliament debated the 2025 manifesto priorities in the House of Commons Chamber in November 2025, chaired by the Speaker.",
+   "url": "https://nya.org.uk/ukyp/",
+   "source": "Scottish Youth Parliament and local councils' reports",
+   "provenance": "S"
+  },
+  {
+   "date": "2025-07-11",
+   "cat": "strategy",
+   "title": "National Citizen Service closed",
+   "body": "NCS programme delivery ended on 31 March 2025 and the NCS Trust closed on 11 July 2025.",
+   "url": "https://www.gov.uk/government/organisations/national-citizen-service",
+   "source": "GOV.UK",
+   "provenance": "S",
+   "status": "Programme closed"
+  },
+  {
+   "date": "2026-07-09",
+   "cat": "law",
+   "title": "Sign Language Act (Northern Ireland) becomes law",
+   "body": "Northern Ireland's Sign Language Act received Royal Assent on 9 July 2026, recognising both British Sign Language and Irish Sign Language and placing duties on public bodies to make information and services accessible.",
+   "url": "https://www.communities-ni.gov.uk/news/sign-language-act-receives-royal-assent",
+   "source": "Department for Communities (Northern Ireland)",
+   "provenance": "S"
+  }
+ ]
+}

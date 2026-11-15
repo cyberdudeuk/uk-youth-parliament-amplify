@@ -1,0 +1,53 @@
+{
+ "title": "About Amplify",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "who": "Amplify is built and maintained by Emanuel Silva, independently and in a personal capacity: not on behalf of any employer, government department, the UK Youth Parliament, the National Youth Agency or UK Parliament. It was designed in Claude Design and built with Claude, Anthropic's AI model, with every change reviewed through public checks.",
+ "profile": "https://github.com/cyberdudeuk",
+ "impartial": "Amplify is non-partisan. It explains how young people can use Parliament and their rights; it never tells anyone what to think or how to vote.",
+ "mission": "Help young people in every part of the UK turn the issues they care about into change through Parliament and public life, safely, and with facts they can trust.",
+ "rationale": [
+  "Most petitions never reach a Government response, and youth campaigns stall for fixable reasons: timing, day-one volume, adult allies and a news hook. Petition 754954, on funded political education, closed with 1,192 signatures.",
+  "Votes at 16 is moving through Parliament, so many young people may soon vote for the first time and need to know how power works.",
+  "The National Youth Strategy commits to youth voice in decisions, and the under-16 social media ban will change how young people campaign from spring 2027.",
+  "Good information is scattered across dozens of official and charity sites, in four nations, and some of it goes out of date without warning, like a youth helpline that closed in September 2026."
+ ],
+ "aims": [
+  "Participation: more young people taking part in decisions that affect them.",
+  "Equality: every young person, whatever their background, language or place, able to take part.",
+  "Education: political literacy and rights knowledge, with trusted sources.",
+  "Empowerment: campaigns designed to succeed, with adults backing young people safely."
+ ],
+ "goals": [
+  "Launch at UK Parliament Week, 23 to 29 November 2026.",
+  "Keep every helpline re-checked at least monthly and every source inside its review window.",
+  "Cover all four nations with nation-specific sources in every theme.",
+  "Test the portal with young people, parents and carers, and disabled and d/Deaf users before version 1.1."
+ ],
+ "objectives": [
+  "A campaign engine that plans timing, allies, toolkits and follow-up.",
+  "A directory of trusted sources for young people, parents and carers, and adult allies.",
+  "Safeguards for every audience, including age-related access and acting on a young person's behalf.",
+  "Help, tutorials and guided tours, and an idea and bug box that feeds the release log.",
+  "Public self-checks that report the portal's own health."
+ ],
+ "outcomes": [
+  {
+   "outcome": "More youth campaigns reach a Government response (10,000 signatures)",
+   "measure": "Public petition data for campaigns that say they used Amplify"
+  },
+  {
+   "outcome": "Young people know how Parliament works and what their rights are",
+   "measure": "Research with young people; Academy quiz results kept on their own devices"
+  },
+  {
+   "outcome": "Parents, carers and allies support young campaigners safely",
+   "measure": "Feedback through Have your say; research with parents and carers"
+  },
+  {
+   "outcome": "No young person is harmed by campaigning through Amplify",
+   "measure": "Safeguarding reports and corrections, handled first"
+  }
+ ],
+ "evidence_note": "Amplify collects no analytics, so it cannot claim any of these outcomes yet. Each will be judged by public data and research with users, and reported on Portal health; until then they are aims, not results."
+}
