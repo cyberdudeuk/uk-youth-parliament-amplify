@@ -1,10 +1,10 @@
 {
   "what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
-  "build_id": "AMP-20261115-04a47f29",
+  "build_id": "AMP-20261115-77c637c9",
   "built": "2026-11-15",
   "built_long": "15 November 2026",
   "petition_date_long": "1 October 2026",
-  "inputs_sha256": "04a47f29d8489e2ea1e1d24be98f829868b3050fab8ee0c0e304606c59c3e1eb",
+  "inputs_sha256": "77c637c9226b46eb8d8798fcba6b39a6b54778bc75a0eca898688a90e3f5bea6",
   "review": "2026-12-15",
   "n_sources": 83,
   "n_latest": 13,
@@ -44,6 +44,10 @@
     {
       "id": "R8",
       "what": "the public entry page (index.html at the root, served by GitHub Pages) opens the built portal in site/, never the unbuilt design in app/, and never names itself as a UK Youth Parliament service (D22; vaccinated against a redirect to app/ and a UKYP title)"
+    },
+    {
+      "id": "R9",
+      "what": "the checks lint the Python (Ruff) and JavaScript (ESLint) and fail on any finding (D24; vaccinated against a checks workflow without the lint step)"
     },
     {
       "id": "R7",
@@ -910,7 +914,7 @@
   "files": {
     "Local Routes Map.html": "30941ecd81d9acf11db66678b24e7cdf5a0b43bf09c3cccbcd5f035941807c78",
     "art/badge-ambassador.svg": "8aad9c8ef9ef13a125bc27cb4a048cf7f132e431f36cf10dcc4cc7581a47e137",
-    "art/barcode.svg": "c0d783e9381a7d712b26e1cef4ded2b884bcab66a7eeb2505b16a1a18868763d",
+    "art/barcode.svg": "493d9be8c45c30ea5800df32bad25835a918c4c782f80b8e4f5d5018907eee5f",
     "art/education.svg": "1e654b11eeb077f1cd08a84048bdb3f6aff365a6caa19eb9905fd540cf0e9cee",
     "art/empowerment.svg": "6a1f93604c95d5be736278c8a86c1862ded148dd1c59d81b5a72930d53ed6d86",
     "art/equality.svg": "2a516ba220b00b6d2ca210659da6c92bc08a0911a97cc71bcbc4a0ea0535a67a",
@@ -935,15 +939,15 @@
     "data/moscow.json": "9cc44b2176f2d899c137244567fc45d59b707bfbede87bb1493f21a5c5b99f00",
     "data/product.json": "e64709a36be9a3d23df02fe279708d1a6033c09f2fa53feccc94be8a60192bdd",
     "data/readiness.json": "dadb12374acf5a52b9302031ac61912d568705b74275ae2bdfc77638f8220620",
-    "data/registers.json": "38f4025c8ed08e1d3b7638976ff34d9c6acf4e7661220a29dbef92751f7dca28",
+    "data/registers.json": "2bc6eee6828979acc9f5f411abd8bcd0a579ab35c910eaad41273a31f30fb522",
     "data/research.json": "df2d165e1c7badf5cabb2ee90a18ac3c404a7d16499b7c18831a854ba7e0b2ef",
     "data/safeguards.json": "542f65ea588cf327078046e6bac0e6664ee3f4256faba08d5ec24eb4b5e7ff81",
     "data/service-design.json": "8c6061b058740b66db719fce745181d94053635d5b964a291fb8df8b56e3505b",
     "data/tooltips.json": "1397524f6888ab0f64e05b17bd346da7f5ef455d49f9d43be3b0ff737467da3b",
     "data/youth-sources.json": "203f0c362e7b7ad2a3ea0c676c387a62f81c2ea7ff4a57bad4781ad8ca3d24db",
     "feed.xml": "24cf9d537288256000d2cb2a952841bbb8d05f56e005c7ba6d0c9afd1bbd2cf5",
-    "glossary-skos.json": "406f96f89fdaee5bb378668e1448bceedb39bcdcc0a294118cc7a9651bebda72",
-    "index.html": "5da49143d2fba5e98024c3ec8dceeb92c79169819df32ccc0001fb5dec9c86cb",
+    "glossary-skos.json": "7a5d31500a5908451f13c7c950be5550579d6616661ccef285bd9a27a45200f1",
+    "index.html": "ce92b80665dbae5c1adea1d0fc65c3c70cf0f3e8c4eaceddc7b16e7f11dbafbc",
     "petition-754954.json": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a",
     "support.js": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe",
     "vendor/fonts/LICENSE-atkinson-hyperlegible.txt": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",

@@ -78,27 +78,27 @@ def share_block(list_name, title):
             </section>'''
 
 
-CAROUSEL = f'''
-          <section aria-roledescription="carousel" aria-label="Spotlights" onMouseEnter="{{{{ carHoldOn }}}}" onMouseLeave="{{{{ carHoldOff }}}}" onFocus="{{{{ carHoldOn }}}}" onBlur="{{{{ carHoldOff }}}}">
-            <sc-if value="{{{{ carHas }}}}" hint-placeholder-val="{{{{ true }}}}">
-            <div aria-roledescription="slide" aria-label="{{{{ carPos }}}}" aria-live="polite" class="amp-slide" style="{{{{ carBg }}}}">
+CAROUSEL = '''
+          <section aria-roledescription="carousel" aria-label="Spotlights" onMouseEnter="{{ carHoldOn }}" onMouseLeave="{{ carHoldOff }}" onFocus="{{ carHoldOn }}" onBlur="{{ carHoldOff }}">
+            <sc-if value="{{ carHas }}" hint-placeholder-val="{{ true }}">
+            <div aria-roledescription="slide" aria-label="{{ carPos }}" aria-live="polite" class="amp-slide" style="{{ carBg }}">
               <div style="display: flex; flex-direction: column; gap: 12px;">
-                <span style="{{{{ carPill }}}}">{{{{ carKind }}}}</span>
-                <h2 style="margin: 0; font-size: clamp(26px, 3.6vw, 40px); font-weight: 900; line-height: 1.06; letter-spacing: -0.035em; text-wrap: balance;">{{{{ carTitle }}}}</h2>
-                <p style="margin: 0; font-size: 15.5px; line-height: 1.6; max-width: 60ch;">{{{{ carBody }}}}</p>
+                <span style="{{ carPill }}">{{ carKind }}</span>
+                <h2 style="margin: 0; font-size: clamp(26px, 3.6vw, 40px); font-weight: 900; line-height: 1.06; letter-spacing: -0.035em; text-wrap: balance;">{{ carTitle }}</h2>
+                <p style="margin: 0; font-size: 15.5px; line-height: 1.6; max-width: 60ch;">{{ carBody }}</p>
                 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
-                  <button type="button" onClick="{{{{ carGo }}}}" style="min-height: 44px; border-radius: 999px; padding: 10px 20px; border: 0; background: oklch(var(--t2) 0.16 145); color: var(--on-accent); font-size: 14px; font-weight: 800; cursor: pointer;">{{{{ carCta }}}}</button>
+                  <button type="button" onClick="{{ carGo }}" style="min-height: 44px; border-radius: 999px; padding: 10px 20px; border: 0; background: oklch(var(--t2) 0.16 145); color: var(--on-accent); font-size: 14px; font-weight: 800; cursor: pointer;">{{ carCta }}</button>
                 </div>
               </div>
-              <img src="{{{{ carArt }}}}" alt="" style="width: 100%; height: auto; max-height: 200px; object-fit: cover; border-radius: 20px;" />
+              <img src="{{ carArt }}" alt="" style="width: 100%; height: auto; max-height: 200px; object-fit: cover; border-radius: 20px;" />
             </div>
             </sc-if>
             <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px;">
-              <div role="group" aria-label="Choose a slide" style="display: flex; align-items: center; gap: 7px;"><sc-for list="{{{{ carDots }}}}" as="d" hint-placeholder-count="5"><button type="button" onClick="{{{{ d.go }}}}" aria-label="{{{{ d.label }}}}" aria-current="{{{{ d.current }}}}" style="{{{{ d.style }}}}"></button></sc-for></div>
+              <div role="group" aria-label="Choose a slide" style="display: flex; align-items: center; gap: 7px;"><sc-for list="{{ carDots }}" as="d" hint-placeholder-count="5"><button type="button" onClick="{{ d.go }}" aria-label="{{ d.label }}" aria-current="{{ d.current }}" style="{{ d.style }}"></button></sc-for></div>
               <div style="display: flex; gap: 8px;">
-                <button type="button" onClick="{{{{ carPrev }}}}" aria-label="Previous slide" style="min-width: 40px; min-height: 40px; border-radius: 999px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 16px; cursor: pointer;">&lsaquo;</button>
-                <button type="button" onClick="{{{{ carToggle }}}}" aria-pressed="{{{{ carPressed }}}}" style="min-height: 40px; border-radius: 999px; padding: 0 14px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{{{ carToggleLabel }}}}</button>
-                <button type="button" onClick="{{{{ carNext }}}}" aria-label="Next slide" style="min-width: 40px; min-height: 40px; border-radius: 999px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 16px; cursor: pointer;">&rsaquo;</button>
+                <button type="button" onClick="{{ carPrev }}" aria-label="Previous slide" style="min-width: 40px; min-height: 40px; border-radius: 999px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 16px; cursor: pointer;">&lsaquo;</button>
+                <button type="button" onClick="{{ carToggle }}" aria-pressed="{{ carPressed }}" style="min-height: 40px; border-radius: 999px; padding: 0 14px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{ carToggleLabel }}</button>
+                <button type="button" onClick="{{ carNext }}" aria-label="Next slide" style="min-width: 40px; min-height: 40px; border-radius: 999px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 16px; cursor: pointer;">&rsaquo;</button>
               </div>
             </div>
           </section>

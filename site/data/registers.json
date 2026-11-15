@@ -185,6 +185,14 @@
    "root_cause": "D10 made S9 case- and space-insensitive but S7's own script pattern was left case-sensitive and strict about spacing.",
    "fix": "The S7 script pattern now ignores case, allows spaces and unquoted values, and catches protocol-relative addresses.",
    "check": "S7 negative tests with an upper-case, spaced and an unquoted protocol-relative script"
+  },
+  {
+   "id": "D24",
+   "found": "2026-11-15, applying the secure development standard",
+   "what": "No linter ran in CI. Ruff found seven findings in the tools: two browser-check listeners captured the loop's error and request lists instead of binding them, so a late event could land on the next screen's list; a build error hid the JSON error that caused it; an unused import, an unused loop variable and two f-strings without placeholders.",
+   "root_cause": "Lint was never part of the checks.",
+   "fix": "Ruff and ESLint run in Checks and fail on any finding; all seven fixed. The design runtime (support.js) and the copied image-slot.js starter are third-party code the design tool overwrites, so they are not linted.",
+   "check": "R9 in tools/check_repo.py, vaccinated against a checks workflow without the lint step."
   }
  ],
  "open": [

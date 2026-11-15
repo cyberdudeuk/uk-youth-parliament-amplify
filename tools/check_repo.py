@@ -17,6 +17,8 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
   R8  the public entry page (index.html at the root, served by GitHub Pages) opens the built portal in site/, never
       the unbuilt design in app/, and never names itself as a UK Youth Parliament service (D22; vaccinated against
       a redirect to app/ and a UKYP title)
+  R9  the checks lint the Python (Ruff) and JavaScript (ESLint) and fail on any finding (D24; vaccinated against a
+      checks workflow without the lint step)
   R7  people decide the irreversible: no GitHub workflow merges, pushes, force-pushes, deletes a branch, repository or
       release, publishes a release or a site, or asks for write access to contents (vaccinated against a workflow
       that runs gh pr merge)
@@ -103,8 +105,15 @@ def r8(read):
     if not t or re.search(r"\bUK Youth Parliament\b", t.group(1), re.I) or "unofficial" not in t.group(1).lower(): bad.append("R8 the entry page title must say Amplify is unofficial and must not name it as a UK Youth Parliament service (D22, D13)")
     return bad
 
+def r9(read):
+    wf = (read(".github/workflows/checks.yml") or b"").decode("utf-8", "replace"); bad = []
+    if "ruff check ." not in wf or "npx eslint ." not in wf: bad.append("R9 .github/workflows/checks.yml does not run both linters (ruff check . and npx eslint .) (D24)")
+    for f in ("ruff.toml", "eslint.config.mjs"):
+        if read(f) is None: bad.append(f"R9 {f} is missing (D24)")
+    return bad
+
 def run(tracked, texts, src, read):
-    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read)
+    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -142,4 +151,6 @@ expect("R7", r7({".github/workflows/x.yml": "permissions:\n  contents: write"}))
 ent = (read("index.html") or b"").decode()
 expect("R8", r8(lambda p: ent.replace("url=site/index.html", "url=app/Amplify%20Portal.dc.html").encode() if p == "index.html" else read(p)))   # redirect to the design (D22)
 expect("R8", r8(lambda p: ent.replace("<title>Amplify: youth voice, carried further (independent, unofficial)</title>", "<title>UK Youth Parliament: Amplify portal</title>").encode() if p == "index.html" else read(p)))  # a UKYP title
+_ck = (read(".github/workflows/checks.yml") or b"").decode()
+expect("R9", r9(lambda p: _ck.replace("npx eslint .", "echo").encode() if p == ".github/workflows/checks.yml" else read(p)))   # a checks workflow without the lint step (D24)
 sys.exit(1 if fails else 0)

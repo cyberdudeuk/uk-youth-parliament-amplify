@@ -7,7 +7,7 @@
 Text comes from data/research.json; the research bundle in docs/research/ is generated from the same file.
 """
 from extend import PANEL, LABEL, SMALL
-from extend4 import head, ext, term, H2, CARD, GOBTN, NOTE, OL
+from extend4 import head, ext, term, H2, CARD, GOBTN, NOTE
 
 LOGIC5 = r'''
   ampVals5(s) {

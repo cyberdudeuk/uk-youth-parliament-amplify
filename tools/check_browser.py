@@ -210,8 +210,8 @@ async def run(update):
             ctx = await b.new_context(viewport={"width": width, "height": 900})
             for sc in SCREENS:
                 pg = await ctx.new_page(); errs, ext = [], []
-                pg.on("pageerror", lambda e: errs.append(str(e)[:200]))
-                pg.on("request", lambda r: ext.append(r.url) if not r.url.startswith(("http://127.0.0.1", "data:", "blob:")) else None)
+                pg.on("pageerror", lambda e, errs=errs: errs.append(str(e)[:200]))
+                pg.on("request", lambda r, ext=ext: ext.append(r.url) if not r.url.startswith(("http://127.0.0.1", "data:", "blob:")) else None)
                 await pg.goto(url + "#" + sc, wait_until="networkidle"); await pg.wait_for_timeout(700)
                 if errs: bad.append(f"W1 #{sc} at {width}px: script error {errs[0]}")
                 if ext: bad.append(f"W1 #{sc} at {width}px: request to another host {ext[0][:80]}")
