@@ -17,10 +17,11 @@
   "notes": "Prototype or personal project, not an official GOV.UK service or endorsed standard unless its README says otherwise. Status at release: Prototype.",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify",
+      "identifier": "https://github.com/cyberdudeuk/",
       "relation": "isSupplementTo",
       "scheme": "url"
     }
   ],
+  "version": "1.0.0-rc.1",
   "license": "mit"
 }
