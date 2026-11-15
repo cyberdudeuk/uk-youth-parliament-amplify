@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: If you use UK Youth Parliament, please cite it as below.
+type: software
+title: "UK Youth Parliament: Amplify portal"
+authors:
+  - given-names: Emanuel
+    family-names: Silva
+    orcid: "https://orcid.org/0009-0000-5880-7219"
+license: MIT
+repository-code: https://github.com/cyberdudeuk/uk-youth-parliament-amplify
+url: https://cyberdudeuk.github.io/uk-youth-parliament-amplify/
+abstract: "A youth voice portal: young people's issues, a local routes map, and a dated snapshot of a UK Parliament petition."
+keywords:
+  - youth-voice
+  - uk-parliament
+  - civic-tech
+  - accessibility

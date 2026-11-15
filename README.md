@@ -74,7 +74,10 @@ deliberately broken copy to prove each rule bites (its negative tests).
 
 ## Run it
 
-Open `app/Amplify Portal.dc.html` from a local web server, because the page
+**Live site:** https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ (GitHub Pages, served from `main`;
+`index.html` opens the portal).
+
+To run it yourself, open `app/Amplify Portal.dc.html` from a local web server, because the page
 loads its runtime and data with relative paths:
 
 ```sh
