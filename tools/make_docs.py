@@ -186,7 +186,7 @@ def golive():
     d = json.load(open(os.path.join(R, "data", "readiness.json"), encoding="utf-8"))
     out = ["# Go-live readiness", "", "Generated from `data/readiness.json` by `tools/make_docs.py`; edit that, not this file. The portal shows the same content on its Go-live readiness screen.", "", d["intro"], ""]
     must = [g for g in d["gates"] if g["moscow"] == "Must" and g["status"] != "Pass"]
-    out += [f"**Verdict:** {'ready to go live' if not must else 'not ready to go public yet: ' + str(len(must)) + ' Must gates open (' + ', '.join(g['id'] for g in must) + ')'}.", "",
+    out += [f"**Verdict:** {'ready to go live' if not must else 'not ready to go public yet: ' + str(len(must)) + (' Must gate open (' if len(must) == 1 else ' Must gates open (') + ', '.join(g['id'] for g in must) + ')'}.", "",
             "## Gates", "", "| Id | Area | Gate | MoSCoW | Status | Proved by | Who must act |", "|---|---|---|---|---|---|---|"]
     out += [f"| {g['id']} | {g['area']} | {g['item']} | {g['moscow']} | {g['status']} | {', '.join(g['evidence'])} | {g['who']} |" for g in d["gates"]]
     out += ["", "## Self-routines", "", "| MoSCoW | Routine | Kind | What | Cadence | Where | Status |", "|---|---|---|---|---|---|---|"]

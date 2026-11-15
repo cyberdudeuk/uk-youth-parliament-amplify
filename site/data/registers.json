@@ -225,6 +225,14 @@
    "root_cause": "Nothing compared the readiness record with the repository's history after a merge.",
    "fix": "G19 is closed with the merge as evidence, and a new Must gate G24 (owner sign-off by 22 November) records what is still needed.",
    "check": "R11 in tools/check_repo.py (a gate still waiting on a pull request that git history shows merged) and S15 (a passed gate citing a pull request must record the merge), each vaccinated."
+  },
+  {
+   "id": "D29",
+   "found": "2026-11-15",
+   "what": "The generated go-live verdict said \"Must gates\" in the plural when only one Must gate was open (G06).",
+   "root_cause": "tools/make_docs.py always wrote \"gates\", whatever the count.",
+   "fix": "make_docs.py writes \"gate\" for one and \"gates\" otherwise.",
+   "check": "R12"
   }
  ],
  "open": [
