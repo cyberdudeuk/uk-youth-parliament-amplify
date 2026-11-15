@@ -4,7 +4,7 @@ Generated from `data/readiness.json` by `tools/make_docs.py`; edit that, not thi
 
 What must be true before Amplify goes public at UK Parliament Week, what has been tested and how, what is still open and who must act, and the self-routines that keep it right once it is live. Must items block the public launch; Should and Could items do not, but are tracked.
 
-**Verdict:** not ready to go public yet: 2 Must gates open (G06, G24).
+**Verdict:** not ready to go public yet: 1 Must gate open (G06).
 
 ## Gates
 
@@ -29,7 +29,7 @@ What must be true before Amplify goes public at UK Parliament Week, what has bee
 | G17 | Operations | Rollback: the previous version is kept and can be restored | Must | Pass | S1 |  |
 | G18 | Operations | Posters and cards print on their own; other screens are not yet print-tested | Could | Partial | W8 | Weekly upkeep |
 | G19 | Governance | The release candidate is reviewed and merged | Must | Pass | PR #5 |  |
-| G24 | Governance | Owner sign-off by 22 November | Must | Open |  | Owner |
+| G24 | Governance | Owner sign-off by 22 November | Must | Pass | Owner decision | Owner |
 | G20 | Governance | Propriety: publishing under the owner's own name raises no issue with his employer | Must | Pass | Owner decision |  |
 | G21 | Governance | Decide how the portal is shared (the artifact is private until shared) and the address posters should point to | Must | Pass | R8 |  |
 | G22 | Research and UCD | Personas, journeys and stories tested with real users | Should | Open |  | Owner (O1, research Round 1) |

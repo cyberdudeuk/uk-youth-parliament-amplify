@@ -1,10 +1,10 @@
 {
   "what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
-  "build_id": "AMP-20261115-fff6979e",
+  "build_id": "AMP-20261115-435826bd",
   "built": "2026-11-15",
   "built_long": "15 November 2026",
   "petition_date_long": "1 October 2026",
-  "inputs_sha256": "fff6979ed962d9b6a04455eb87575f1668a1a0342f2056c07b182e5e981f7f1e",
+  "inputs_sha256": "435826bd060ba14218865218f9f051459c77e9df872b2043a44bf034ec26682e",
   "review": "2026-12-15",
   "n_sources": 83,
   "n_latest": 13,
@@ -56,6 +56,10 @@
     {
       "id": "R11",
       "what": "no readiness gate still waits on a pull request that the repository's history shows merged (defect D28: G19 stayed Open after pull request 5 was merged); needs full history, and says so on a shallow clone"
+    },
+    {
+      "id": "R12",
+      "what": "generated documents agree in number: no \"1 Must gates\" or \"1 ... gates open\" (defect D29: the go-live verdict read \"1 Must gates open\" when one gate was left)"
     },
     {
       "id": "R7",
@@ -975,7 +979,7 @@
   "files": {
     "Local Routes Map.html": "30941ecd81d9acf11db66678b24e7cdf5a0b43bf09c3cccbcd5f035941807c78",
     "art/badge-ambassador.svg": "8aad9c8ef9ef13a125bc27cb4a048cf7f132e431f36cf10dcc4cc7581a47e137",
-    "art/barcode.svg": "38c3f9f9bf2676a9f8b4b1fa3f8640651e6c201507b9bf686816b95d356d4397",
+    "art/barcode.svg": "8cb9946e344d860606fcf53606127fb335177d802d74f1e23d2e66f24ac9822b",
     "art/education.svg": "1e654b11eeb077f1cd08a84048bdb3f6aff365a6caa19eb9905fd540cf0e9cee",
     "art/empowerment.svg": "6a1f93604c95d5be736278c8a86c1862ded148dd1c59d81b5a72930d53ed6d86",
     "art/equality.svg": "2a516ba220b00b6d2ca210659da6c92bc08a0911a97cc71bcbc4a0ea0535a67a",
@@ -999,16 +1003,16 @@
     "data/media.json": "dd6f558cf067c18a2c89632019d3787309430315aa1792d1810ff9b372779aa3",
     "data/moscow.json": "9cc44b2176f2d899c137244567fc45d59b707bfbede87bb1493f21a5c5b99f00",
     "data/product.json": "461d5f5b300bcc703c8c6a783ce2bf46b047e9ac00e373848a823dbbfa078f24",
-    "data/readiness.json": "228ba53936dd1b1487c25b211a0f9e1a7274130922b187287a827084dcfd8611",
-    "data/registers.json": "338522affa8b5ea2d67ba8f0c276dcc16ce0a94dde1854516a4033f0838f3dd7",
+    "data/readiness.json": "90eb418fb91dfcba71d1600840d0fd758b00d19717211fc7b1d1bcaf64de1d29",
+    "data/registers.json": "53247c96c7bf29b29152e3b9d99a4aba0f9938f6fe49ee0013701440b8075b9d",
     "data/research.json": "ba6a0213b267329848fbb134d1f4676993315dfade386cc03ca08795ae726f75",
     "data/safeguards.json": "0333464fc959408db3f06cb4fb23fe9433771820702130e3b893ba088533fd14",
     "data/service-design.json": "8c6061b058740b66db719fce745181d94053635d5b964a291fb8df8b56e3505b",
     "data/tooltips.json": "bb97e6e0930e3bff1a7db592e5188f67013b15dfcfa86f5990d5efd984ebaad3",
     "data/youth-sources.json": "203f0c362e7b7ad2a3ea0c676c387a62f81c2ea7ff4a57bad4781ad8ca3d24db",
     "feed.xml": "5dbf4b32767d54eabdfd17539d40d20145883f197704ea4f14bda016fa253d5c",
-    "glossary-skos.json": "8ea5db608f26bcf9c39ccc4168b899ac1ca4f03cb2a30a019b9505153ecb72e9",
-    "index.html": "701a2f4d26f67682463a70a47ab1182e8cd64ea04c27d813b665292af51b9166",
+    "glossary-skos.json": "f0be381d6475bf4e319f00c0d092a56420f9d290e6d2e68eba9462357c0fa42d",
+    "index.html": "d4c50c7aa279824977e5bbf50dfbce3c65c6dbfc5a6bfa37f8771f55e050baa3",
     "petition-754954.json": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a",
     "support.js": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe",
     "vendor/fonts/LICENSE-atkinson-hyperlegible.txt": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",

@@ -25,6 +25,8 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
       .github/ISSUE_TEMPLATE/, nothing links to one, and G06's note says what is paused (defect D25)
   R11 no readiness gate still waits on a pull request that the repository's history shows merged (defect D28:
       G19 stayed Open after pull request 5 was merged); needs full history, and says so on a shallow clone
+  R12 generated documents agree in number: no "1 Must gates" or "1 ... gates open" (defect D29: the go-live verdict
+      read "1 Must gates open" when one gate was left)
   R7  people decide the irreversible: no GitHub workflow merges, pushes, force-pushes, deletes a branch, repository or
       release, publishes a release or a site, or asks for write access to contents (vaccinated against a workflow
       that runs gh pr merge)
@@ -151,13 +153,18 @@ def r11(read, subjects):
             if n in merged: bad.append(f"R11 gate {g['id']} is {g['status']} and waits on pull request {n}, which history shows merged: close it with the merge as evidence (D28)")
     return bad
 
+ONE_PLURAL = re.compile(r"\b1 (?:Must |Should |Could )?gates\b")
+
+def r12(texts):
+    return [f"R12 {f} says '{m.group(0)}': one gate, singular (D29)" for f, t in texts.items() if f.endswith(".md") for m in ONE_PLURAL.finditer(t)]
+
 def history():
     sh = subprocess.run(["git", "rev-parse", "--is-shallow-repository"], cwd=R, capture_output=True, text=True).stdout.strip()
     if sh != "false": return None
     return subprocess.run(["git", "log", "--format=%s"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 
 def run(tracked, texts, src, read):
-    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS)
+    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS) + r12(texts)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -167,7 +174,7 @@ texts = {f: (read(f) or b"").decode("utf-8", "replace") for f in tracked if f.en
 
 SUBJECTS = history()
 bad = run(tracked, texts, SRC, read)
-print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R11 problems: {len(bad)}")
+print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R12 problems: {len(bad)}")
 if bad:
     print("\n".join(bad[:40])); sys.exit(1)
 
@@ -207,4 +214,5 @@ _rd = json.loads(read("data/readiness.json"))
 def _gate(gid, **kw): return lambda p: json.dumps({**_rd, "gates": [{**g, **kw} if g["id"] == gid else g for g in _rd["gates"]]}).encode() if p == "data/readiness.json" else read(p)
 expect("R10", r10(texts, _gate("G06", note="Blocks those programmes.")))   # G06 no longer says what is paused (D25)
 expect("R11", r11(_gate("G19", status="Open", evidence=[], who="Owner (pull request 5)"), SUBJECTS or ["Merge pull request #5 from cyberdudeuk/portal-v2"]))   # G19 left open after PR 5 merged (D28)
+expect("R12", r12({**texts, "docs/go-live.md": "**Verdict:** not ready to go public yet: 1 Must gates open (G06)."}))   # the plural with one gate (D29)
 sys.exit(1 if fails else 0)
