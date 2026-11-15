@@ -192,7 +192,8 @@ def golive():
 
 
 def product():
-    d = json.load(open(os.path.join(R, "data", "product.json"), encoding="utf-8"))
+    with open(os.path.join(R, "data", "product.json"), encoding="utf-8") as f:
+        d = json.load(f)
     out = ["# Product: vision, strategy, roadmap and backlog", "", "Generated from `data/product.json` by `tools/make_docs.py`; edit that, not this file. The portal shows the same content on its Product & roadmap screen.", "",
            f"Last checked {d['checked']}, reviewed every {d['review_days']} days.", "", "## Vision", "", d["vision"], "", f"**Mission:** {d['mission']}", "", "## Strategy", ""]
     out += [f"- **{p['pillar']}:** {p['what']}" for p in d["strategy"]]
@@ -210,7 +211,8 @@ def product():
 
 
 def glossary():
-    d = json.load(open(os.path.join(R, "data", "glossary.json"), encoding="utf-8"))
+    with open(os.path.join(R, "data", "glossary.json"), encoding="utf-8") as f:
+        d = json.load(f)
     out = ["# Glossary and thesaurus", "", "Generated from `data/glossary.json` by `tools/make_docs.py`; edit that, not this file. The same terms appear in the portal's Glossary & graph screen and its tooltips, and as a SKOS vocabulary in `site/glossary-skos.json`.", "",
            f"**Rule:** {d['rule']}", "", "| Term | Definition | Also called (thesaurus) | Related | Added in |", "|---|---|---|---|---|"]
     names = {t["id"]: t["term"] for t in d["terms"]}

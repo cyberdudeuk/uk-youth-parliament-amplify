@@ -360,8 +360,9 @@ def build(date, out=SITE):
     barcode.get("code128", meta["build_id"], writer=SVGWriter()).write(buf, {"module_height": 12, "font_size": 6, "text_distance": 3, "quiet_zone": 2})
     open(os.path.join(out, "art", "barcode.svg"), "wb").write(buf.getvalue())
 
-    open(os.path.join(out, "feed.xml"), "w", encoding="utf-8").write(extend9.feed(meta))           # Atom feed for readers
-    open(os.path.join(out, "glossary-skos.json"), "w", encoding="utf-8").write(extend9.skos(meta))   # SKOS vocabulary
+    for name, text in (("feed.xml", extend9.feed(meta)), ("glossary-skos.json", extend9.skos(meta))):  # Atom feed; SKOS vocabulary
+        with open(os.path.join(out, name), "w", encoding="utf-8") as f:
+            f.write(text)
 
     files = {}
     for root, _, names in os.walk(out):

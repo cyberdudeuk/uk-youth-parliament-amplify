@@ -10,7 +10,8 @@ R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def load(n):
-    return json.load(open(os.path.join(R, "data", n), encoding="utf-8"))
+    with open(os.path.join(R, "data", n), encoding="utf-8") as f:
+        return json.load(f)
 
 
 def report(today):

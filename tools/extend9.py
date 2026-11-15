@@ -18,15 +18,20 @@
 import json, os
 
 from extend import PANEL, LABEL, SMALL
-from extend4 import H2, CARD, NOTE
+from extend4 import H2, CARD
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"
 GLOSS_DOC = REPO + "/blob/main/docs/glossary.md"
 
 
+def _data(name):
+    with open(os.path.join(R, "data", name), encoding="utf-8") as f:
+        return json.load(f)
+
+
 def _gl():
-    return json.load(open(os.path.join(R, "data", "glossary.json"), encoding="utf-8"))
+    return _data("glossary.json")
 
 
 def graph_entries():
@@ -62,8 +67,7 @@ def skos(meta):
 def feed(meta):
     """An Atom feed of What's new and the release log, for feed readers: following updates without giving anything."""
     from xml.sax.saxutils import escape as e
-    lat = json.load(open(os.path.join(R, "data", "latest.json"), encoding="utf-8"))
-    ch = json.load(open(os.path.join(R, "data", "changelog.json"), encoding="utf-8"))
+    lat, ch = _data("latest.json"), _data("changelog.json")
     rows = [(i["date"], i["title"], i["body"] + " Source: " + i["source"] + ".", i["url"], "news-" + i["date"] + "-" + i["cat"]) for i in lat["items"]]
     rows += [(r["date"], "Amplify " + r["version"] + ": " + r["title"], r["summary"], REPO + "/blob/main/CHANGELOG.md", "release-" + r["version"]) for r in ch["releases"]]
     rows.sort(key=lambda x: x[0], reverse=True)
@@ -251,7 +255,7 @@ def _opts(vals):
 
 
 def screens():
-    pd = json.load(open(os.path.join(R, "data", "product.json"), encoding="utf-8"))
+    pd = _data("product.json")
     ms = ["All"] + [m for m in ("Must", "Should", "Could", "Won't") if any(b["moscow"] == m for b in pd["backlog"])]
     st = ["All"] + [x for x in ("Done", "In progress", "Planned", "Waiting on owner") if any(b["status"] == x for b in pd["backlog"])]
     product = '''
