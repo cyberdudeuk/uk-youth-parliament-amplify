@@ -16,7 +16,8 @@
   "work": "Work & pay",
   "evidence": "Data & evidence",
   "policy": "Policy & strategy",
-  "inclusion": "Every voice"
+  "inclusion": "Every voice",
+  "community": "Communities & networks"
  },
  "sources": [
   {
@@ -987,6 +988,109 @@
    "url": "https://www.ndcs.org.uk/",
    "what": "The national charity for deaf children and young people and their families, with youth participation opportunities.",
    "use": "Find deaf-led youth voices and support for families.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "ukyouth",
+   "name": "UK Youth",
+   "theme": "community",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.ukyouth.org/",
+   "what": "A national charity supporting a network of youth organisations and clubs across the UK.",
+   "use": "Find youth clubs and organisations in your area.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "youthlink",
+   "name": "YouthLink Scotland",
+   "theme": "community",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Charity",
+   "url": "https://www.youthlink.scot/",
+   "what": "The national agency for youth work in Scotland.",
+   "use": "Connect with youth work in Scotland.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "scouts",
+   "name": "Scouts",
+   "theme": "community",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.scouts.org.uk/",
+   "what": "Uniformed youth groups for 4 to 25 year olds across the UK, including democracy and citizenship badges.",
+   "use": "Find a local group and its democracy activities.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "girlguiding",
+   "name": "Girlguiding",
+   "theme": "community",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.girlguiding.org.uk/",
+   "what": "Uniformed groups for girls and young women across the UK.",
+   "use": "Find a local unit and its youth voice work.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "iwill",
+   "name": "#iwill movement",
+   "theme": "community",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Movement",
+   "url": "https://www.iwill.org.uk/",
+   "what": "A movement for youth social action; the National Youth Strategy funds #iwill ambassadors.",
+   "use": "Find social action opportunities and ambassadors.",
    "provenance": "K",
    "checked": "2026-11-15",
    "review_days": 90,

@@ -9,6 +9,10 @@
 <script src="./vendor/leaflet-1.9.4/leaflet.js"></script>
 <link href="./vendor/fonts/fonts.css" rel="stylesheet">
 <style>
+  .leaflet-tooltip.amp-nationlabel { background: rgb(4 12 11 / 0.55); border: 0; border-radius: 6px; padding: 3px 7px; box-shadow: none; color: rgb(var(--ink-rgb) / 0.75); font: 700 13px/1 'Space Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; text-shadow: 0 1px 3px rgb(0 0 0 / 0.6); }
+  .leaflet-tooltip.amp-nationlabel::before { display: none; }
+  .leaflet-tooltip.amp-pinlabel { display: none; font: 600 12px/1.2 Chivo, sans-serif; padding: 2px 6px; }
+  #map.amp-labels-on .leaflet-tooltip.amp-pinlabel { display: block; }
   :root {
     --ink-rgb: 234 243 241; --film-rgb: 234 243 241; --sheen-rgb: 255 255 255;
     --bg: #070f0e; --t1: 0.86; --t2: 0.9; --t3: 0.9; --t4: 0.94; --on-accent: #041110;
@@ -279,9 +283,14 @@
   AREAS.forEach(function (a, i) {
     var m = L.marker([a[1], a[2]], { icon: pin(a[3], a[4]), title: a[0], alt: a[0], keyboard: true }).addTo(map);
     m.on("click", function () { select(i, true); });
-    m.bindTooltip(a[0], { direction: "top" });
+    m.bindTooltip(a[0], { direction: "top", permanent: true, className: "amp-pinlabel", offset: [0, -12] });
     markers[i] = m;
   });
+  [["England", 52.75, 0.05], ["Scotland", 57.35, -5.3], ["Wales", 52.65, -4.75], ["Northern Ireland", 53.95, -7.55]].forEach(function (n) {
+    L.tooltip({ permanent: true, direction: "center", className: "amp-nationlabel", interactive: false }).setLatLng([n[1], n[2]]).setContent(n[0]).addTo(map);
+  });
+  function ampLabels() { document.getElementById("map").classList.toggle("amp-labels-on", map.getZoom() >= 7); }
+  map.on("zoomend", ampLabels); ampLabels();
 
   var listEl = document.getElementById("list");
   var countEl = document.getElementById("count");

@@ -66,6 +66,7 @@ def s3(texts):
     s = texts.get("index.html", ""); m = re.search(r"<footer\b.*?</footer>", s, re.S)
     if not m: return ["S3 site/index.html has no footer"]
     f = m.group(0); bad = []
+    if re.search(r"Google Fonts|unpkg", f): bad.append("S3 the footer still says fonts or scripts come from Google or unpkg; they are served by the portal itself (defect D7)")
     for need in ("Disclaimers", "Disclosures", "Transparency", "Contact", "issues/new?template=contact.yml", "./art/qr.svg", "./art/barcode.svg", "Colophon"):
         if need not in f: bad.append(f"S3 the footer lacks {need}")
     return bad
@@ -94,7 +95,7 @@ def s6(texts, have):
     for f, s in texts.items():
         if not f.endswith(".html"): continue
         for v in re.findall(r"""(?:src|href)\s*=\s*["']([^"'#?]+)""", s):
-            if re.match(r"^(?:[a-z]+:|//|\{\{|data:|#)", v, re.I) or not v.strip(): continue
+            if re.match(r"^(?:[a-z]+:|//|\{\{|data:|#)", v, re.I) or not v.strip() or v.startswith(" ") or "+" in v: continue
             q = os.path.normpath(os.path.join(os.path.dirname(f), urllib.parse.unquote(v))).replace(os.sep, "/")
             if q not in have: bad.append(f"S6 site/{f} loads {v}, which is not in site/")
     return bad
@@ -188,6 +189,7 @@ if __name__ == "__main__":
     expect("S2", s2(texts_of(broken(idx, lambda s: s + '<script src="./image-slot.js"></script>'))))
     expect("S3", s3(texts_of(broken(idx, lambda s: re.sub(r"<footer\b.*?</footer>", "", s, flags=re.S)))))  # footer dropped
     expect("S3", s3(texts_of(broken(idx, lambda s: s.replace("./art/qr.svg", "./art/none.svg")))))       # colophon lost its QR
+    expect("S3", s3(texts_of(broken(idx, lambda s: s.replace("Disclosures</h2>", "Disclosures</h2><p>Fonts load from Google Fonts.</p>")))))
     expect("S4", s4(texts_of(broken(idx, lambda s: s + "write to team" + "@" + "example.gov.uk"))))
     expect("S4", s4(texts_of(broken(idx, lambda s: s + '<a href="mail' + 'to:x">x</a>'))))
     expect("S5", s5(texts_of(broken(idx, lambda s: s.replace("Unofficial prototype</span>\n    </div>", "</span>\n    </div>").replace('title="Not a service of the UK Youth Parliament, the National Youth Agency or UK Parliament"', "").replace(">Unofficial prototype</span>", "></span>")))))

@@ -1,0 +1,59 @@
+{
+ "title": "Home",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "what": "Amplify helps young people across the UK turn the issues they care about into change through Parliament and public life. It brings together campaign planning, trusted official sources, safeguarding and help in one place, with no sign-up and nothing collected about you.",
+ "for": "It is for young people aged 11 to 18 (and up to 25 with SEND), Members of Youth Parliament, and the parents, carers, teachers and youth workers who back them.",
+ "steps": [
+  {
+   "t": "Pick your way in",
+   "d": "Take a guided tour for your role, or open the campaign hub."
+  },
+  {
+   "t": "Check the facts",
+   "d": "Every claim links to a trusted source, dated and labelled for how sure it is."
+  },
+  {
+   "t": "Plan safely",
+   "d": "Use the campaign engine, and keep Safeguarding & support to hand."
+  },
+  {
+   "t": "Have your say",
+   "d": "Tell us what is missing; ideas shape the next release."
+  }
+ ],
+ "tiles": [
+  {
+   "id": "hub",
+   "d": "Why youth petitions stall, and the plan to beat it."
+  },
+  {
+   "id": "sources",
+   "d": "Official and charity sources for every UK nation."
+  },
+  {
+   "id": "care",
+   "d": "Free, confidential helplines, checked monthly."
+  },
+  {
+   "id": "help",
+   "d": "The manual, tutorials and guided tours."
+  },
+  {
+   "id": "trust",
+   "d": "Safeguards, age and access, and every voice."
+  },
+  {
+   "id": "feedback",
+   "d": "Ideas, features and bugs."
+  },
+  {
+   "id": "latest",
+   "d": "What has changed for young people."
+  },
+  {
+   "id": "about",
+   "d": "Who is behind Amplify, and why."
+  }
+ ]
+}

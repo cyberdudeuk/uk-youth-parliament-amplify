@@ -68,6 +68,7 @@ def r6(texts, tracked):
         d = os.path.dirname(f)
         for v in re.findall(r"""(?:src|href)\s*=\s*["']([^"'#?]+)""", s):
             if re.match(r"^(?:[a-z]+:|//|\{\{|data:|#)", v, re.I) or not v.strip(): continue
+            if v.startswith(" ") or "+" in v: continue  # a JavaScript string being built, not a link (D8)
             q = os.path.normpath(os.path.join(d, urllib.parse.unquote(v)))
             if q not in have: bad.append(f"R6 {f} loads {v}, which is not in the repository")
     return bad

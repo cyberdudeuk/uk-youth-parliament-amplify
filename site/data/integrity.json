@@ -11,6 +11,11 @@
  },
  "screens": [
   {
+   "screen": "home",
+   "class": "Editorial",
+   "why": "An introduction written for this portal; every route it points to carries its own content class."
+  },
+  {
    "screen": "hub",
    "class": "Sourced",
    "why": "Petition 754954 figures are the final counts from UK Parliament's published data (snapshot of 1 October 2026)."
@@ -180,6 +185,16 @@
    "screen": "about",
    "class": "Editorial",
    "why": "The portal's own statement of who is behind it and why; facts in it link to sources elsewhere in the portal."
+  },
+  {
+   "screen": "media",
+   "class": "Editorial",
+   "why": "Descriptions of Amplify written for reuse; facts in it carry their sources."
+  },
+  {
+   "screen": "communities",
+   "class": "Sourced",
+   "why": "Groups and networks from the Trusted sources list, each labelled for how sure it is."
   }
  ],
  "views": [

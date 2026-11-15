@@ -49,6 +49,22 @@
    "root_cause": "Text patches normalise whitespace; vendored files must be byte-exact.",
    "fix": "Restored from the package; .gitattributes marks vendor/, site/ and app/ as binary.",
    "check": "B2"
+  },
+  {
+   "id": "D7",
+   "found": "2026-11-15",
+   "what": "After fonts and scripts were self-hosted, the footer still said they loaded from Google Fonts and unpkg.",
+   "root_cause": "The disclosure was hand-written copy with no check tying it to how the page actually loads.",
+   "fix": "Disclosure rewritten.",
+   "check": "S3"
+  },
+  {
+   "id": "D8",
+   "found": "2026-11-15",
+   "what": "R6 and S6 read a share link being built in JavaScript (href=\" + u + \") as a missing file.",
+   "root_cause": "The link pattern matched inside script strings.",
+   "fix": "Both checks skip values that are string concatenations; their negative tests still catch a real missing file.",
+   "check": "R6, S6"
   }
  ],
  "open": [

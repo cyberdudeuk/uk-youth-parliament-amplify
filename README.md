@@ -34,7 +34,7 @@ they were built in. Each copy is checked against that artifact's SHA-256 (see
 Campaign planning around petition 754954, plus: a directory of trusted official and voluntary-sector sources for
 young people, parents and carers and adult allies across all four UK nations; dated updates; safeguards, frameworks
 and audiences (including d/Deaf young people and every UK official and sign language); help, tutorials and guided
-tours; an idea and bug box; a release log; a self-checking Portal health screen; and the plan to launch at
+tours; a home page with a rolling spotlight carousel; a media centre; a communities, networks and youth groups hub; calendar and sharing links into Google, Microsoft and messaging tools; an idea and bug box; a release log; a self-checking Portal health screen; and the plan to launch at
 UK Parliament Week, 23 to 29 November 2026. Where content is a sample, a planning model or generated text, the screen
 says so and why.
 

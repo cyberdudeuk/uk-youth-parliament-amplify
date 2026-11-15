@@ -27,7 +27,7 @@ R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 D = os.path.join(R, "data")
 EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}")
 RETIRED = ["HOPELINE247", "HopeLine247", "0800 068 4141", "0808 808 4994"]
-RETIRED_OK = {"data/latest.json", "data/registers.json", "data/changelog.json", "site/data/changelog.json", "site/data/latest.json", "site/data/registers.json", "site/build.json"}  # where the closures are explained
+RETIRED_OK = {"data/media.json", "site/data/media.json", "data/latest.json", "data/registers.json", "data/changelog.json", "site/data/changelog.json", "site/data/latest.json", "site/data/registers.json", "site/build.json"}  # where the closures are explained
 STATUSES = {"Met", "Met by design", "Met for a signposting tool", "Partly met", "Guidance added", "Signposting", "Aligned",
             "Out of scope by design", "Not triggered", "Open"}
 NATIONS = {"UK", "England", "Scotland", "Wales", "Northern Ireland"}

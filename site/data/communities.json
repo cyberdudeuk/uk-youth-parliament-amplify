@@ -1,0 +1,51 @@
+{
+ "title": "Communities, networks and youth groups",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "intro": "Where young people already meet, organise and speak up: youth parliaments and assemblies, local youth councils, clubs and uniformed groups, and networks for young people whose voices are least often heard.",
+ "kinds": [
+  {
+   "k": "Youth parliaments and assemblies",
+   "ids": [
+    "ukyp",
+    "syp",
+    "wyp",
+    "niya",
+    "ysc"
+   ]
+  },
+  {
+   "k": "Local youth voice",
+   "ids": [
+    "eayouth",
+    "youngscot",
+    "meic"
+   ],
+   "note": "Most councils run a youth council or forum: ask your council or your MYP."
+  },
+  {
+   "k": "Clubs, uniformed groups and youth work",
+   "ids": [
+    "ukyouth",
+    "youthlink",
+    "scouts",
+    "girlguiding",
+    "iwill"
+   ]
+  },
+  {
+   "k": "Networks for every voice",
+   "ids": [
+    "become",
+    "carerstrust",
+    "refugeecouncil",
+    "fft",
+    "cdc",
+    "justlikeus",
+    "ndcs",
+    "rnid"
+   ]
+  }
+ ],
+ "safety": "Meeting people from an online group? Meet in public, tell a trusted adult, and use groups run by organisations with safeguarding policies."
+}

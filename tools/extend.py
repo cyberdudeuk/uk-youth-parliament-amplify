@@ -16,8 +16,8 @@ safeguards, priorities and registers; nothing on them is hand-typed into the pag
 LOGIC = r'''
   async loadAmplifyData() {
     const get = async (f) => { try { const r = await fetch(new URL(f, document.baseURI).href, { cache: "no-store" }); return r.ok ? await r.json() : null; } catch (e) { return null; } };
-    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json"].map(get));
-    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, loaded: true, failed: !(src && lat && sg) } });
+    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json"].map(get));
+    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, loaded: true, failed: !(src && lat && sg) } });
   }
   ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
   ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }

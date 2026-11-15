@@ -12,6 +12,8 @@ Generated from `data/registers.json` by `tools/make_docs.py`; shown live on the 
 | D4 | 2026-11-15 | Safeguarding gave The Mix's phone number; its phone helpline has closed. | As D3. | Replaced with its 24/7 text route (THEMIX to 85258). | S9, C3 |
 | D5 | 2026-11-15 | The page loaded React, Babel and fonts from unpkg and Google, exposing every visitor's IP address. | The design runtime defaults to CDNs. | Vendored, SRI-verified files served by the portal itself. | S10, B2 |
 | D6 | 2026-11-15 | Moving the first build between clones as a patch changed the vendored Leaflet stylesheet's bytes. | Text patches normalise whitespace; vendored files must be byte-exact. | Restored from the package; .gitattributes marks vendor/, site/ and app/ as binary. | B2 |
+| D7 | 2026-11-15 | After fonts and scripts were self-hosted, the footer still said they loaded from Google Fonts and unpkg. | The disclosure was hand-written copy with no check tying it to how the page actually loads. | Disclosure rewritten. | S3 |
+| D8 | 2026-11-15 | R6 and S6 read a share link being built in JavaScript (href=" + u + ") as a missing file. | The link pattern matched inside script strings. | Both checks skip values that are string concatenations; their negative tests still catch a real missing file. | R6, S6 |
 
 ## Open, and who must act
 

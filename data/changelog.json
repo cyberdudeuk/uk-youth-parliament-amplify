@@ -20,6 +20,11 @@
    "summary": "Everything below is new or changed since the first published build earlier today.",
    "entries": [
     {
+     "screen": "home",
+     "kind": "NEW",
+     "what": "Home: a landing page after the splash that explains what Amplify is, who it is for and how to use it, with tours and quick routes. A rolling hero carousel with spotlights, which pauses on hover, focus or the pause button and stops under reduced motion."
+    },
+    {
      "screen": "sources",
      "kind": "NEW",
      "what": "Trusted sources: official and voluntary-sector sources, filterable by theme, nation and audience, each checked and dated, with a pan-UK coverage grid."
@@ -57,7 +62,7 @@
     {
      "screen": "launch",
      "kind": "NEW",
-     "what": "UK Parliament Week launch: the plan and activities for launching Amplify during UKPW 2026."
+     "what": "UK Parliament Week launch: the plan and activities for launching Amplify during UKPW 2026. Add UK Parliament Week to Google or Outlook calendars, and share it to Teams, Google Classroom or WhatsApp, for adults and allies."
     },
     {
      "screen": "about",
@@ -88,6 +93,16 @@
      "screen": "corner",
      "kind": "UPD",
      "what": "Cornerstone illustrations drawn from the brand's six shapes."
+    },
+    {
+     "screen": "media",
+     "kind": "NEW",
+     "what": "Media centre: approved descriptions with copy buttons, key facts with sources, illustrations and the rules for using them."
+    },
+    {
+     "screen": "communities",
+     "kind": "NEW",
+     "what": "Communities, networks and youth groups hub, by kind of group, for every UK nation."
     }
    ]
   },

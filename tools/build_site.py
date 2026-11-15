@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.join(R, "tools"))
 import art  # noqa: E402
 import extend  # noqa: E402
 import extend2  # noqa: E402
+import extend3  # noqa: E402
 import make_docs  # noqa: E402
 
 APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
@@ -55,7 +56,7 @@ def footer(meta):
       <p style="{p}">Links to other organisations are for information, not endorsement. Worried about your safety? Go to <a href="#care">Safeguarding &amp; support</a>.</p>''')
     disclosures = block("Disclosures", f'''
       <p style="{p}">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
-      <p style="{p}">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Fonts load from Google Fonts and the page runtime from unpkg.com, which see your IP address.</p>
+      <p style="{p}">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="{p}">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p>''')
     transparency = block("Transparency", f'''
       <p style="{p}">Build <span style="font-family: 'Space Mono', monospace;">{h(meta["build_id"])}</span>, built {h(meta["built_long"])} from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
@@ -188,6 +189,7 @@ def transforms(meta):
          '"Any age, any problem. Free from any phone and never shows on the bill. Welsh Language Line: 0808 164 0123."', 1),
         *extend.transforms(meta["n_sources"], meta["n_latest"]),
         *extend2.transforms(),
+        *extend3.transforms(),
         ("footer", "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
          "    </sc-if>\n\n  </div>\n</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;",
          "    </sc-if>\n\n  </div>\n" + footer(meta) + "</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;", 1),
@@ -206,6 +208,15 @@ def map_transforms():
         ("map-fonts", "map fonts served by the portal itself",
          '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">',
          '<link href="./vendor/fonts/fonts.css" rel="stylesheet">', 1),
+        ("map-labels", "labels on the map: nation names always, area names from zoom level 7 so the UK view stays readable",
+         '    m.bindTooltip(a[0], { direction: "top" });\n    markers[i] = m;\n  });\n',
+         '    m.bindTooltip(a[0], { direction: "top", permanent: true, className: "amp-pinlabel", offset: [0, -12] });\n    markers[i] = m;\n  });\n'
+         '  [["England", 52.75, 0.05], ["Scotland", 57.35, -5.3], ["Wales", 52.65, -4.75], ["Northern Ireland", 53.95, -7.55]].forEach(function (n) {\n'
+         '    L.tooltip({ permanent: true, direction: "center", className: "amp-nationlabel", interactive: false }).setLatLng([n[1], n[2]]).setContent(n[0]).addTo(map);\n  });\n'
+         '  function ampLabels() { document.getElementById("map").classList.toggle("amp-labels-on", map.getZoom() >= 7); }\n'
+         '  map.on("zoomend", ampLabels); ampLabels();\n', 1),
+        ("map-label-css", "label styles: readable on both themes, hidden area labels until zoomed in",
+         "<style>\n", "<style>\n  .leaflet-tooltip.amp-nationlabel { background: rgb(4 12 11 / 0.55); border: 0; border-radius: 6px; padding: 3px 7px; box-shadow: none; color: rgb(var(--ink-rgb) / 0.75); font: 700 13px/1 'Space Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; text-shadow: 0 1px 3px rgb(0 0 0 / 0.6); }\n  .leaflet-tooltip.amp-nationlabel::before { display: none; }\n  .leaflet-tooltip.amp-pinlabel { display: none; font: 600 12px/1.2 Chivo, sans-serif; padding: 2px 6px; }\n  #map.amp-labels-on .leaflet-tooltip.amp-pinlabel { display: block; }\n", 1),
         ("map-icon", "favicon", "<title>Local routes in — Amplify</title>",
          '<title>Local routes in — Amplify</title>\n<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">', 1),
         ("map-outline", "street tiles are remote images, which a published artifact blocks; draw a local land outline under the markers so the map always shows where an area is",
@@ -260,7 +271,7 @@ def build(date, out=SITE):
     h = hashlib.sha256()
     for f in sorted(src["files"]):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
-    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
+    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
     digest = h.hexdigest()
     d = datetime.date.fromisoformat(date)

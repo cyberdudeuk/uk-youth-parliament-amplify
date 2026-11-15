@@ -16,7 +16,7 @@ SITE = os.path.join(R, "site")
 BASE = os.path.join(R, "tools", "a11y-baseline.json")
 AXE = os.path.join(R, "vendor", "test", "axe.min.js")
 SCREENS = ("hub momentum plan coal kit pledge radar policy map acad ysc post track prof incl res ai brand care graph corner "
-           "route state issues guide sources latest trust health changes help feedback launch").split()
+           "route state issues guide sources latest trust health changes help feedback launch about home media communities").split()
 
 
 def serve():

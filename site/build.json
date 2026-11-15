@@ -1,12 +1,12 @@
 {
   "what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
-  "build_id": "AMP-20261115-bf500020",
+  "build_id": "AMP-20261115-8e81acd6",
   "built": "2026-11-15",
   "built_long": "15 November 2026",
   "petition_date_long": "1 October 2026",
-  "inputs_sha256": "bf500020593a3d70c09fee300fa40e55f59e952026b47969268a3eeeabb6b714",
+  "inputs_sha256": "8e81acd60fed22e5a122b86d901993cb7a6e316510a37876bf2b997f8742d356",
   "review": "2026-12-15",
-  "n_sources": 50,
+  "n_sources": 55,
   "n_latest": 13,
   "review_long": "15 December 2026",
   "design_artifact": {
@@ -304,6 +304,16 @@
       "matches": 1
     },
     {
+      "name": "ext2-home-group",
+      "why": "Home leads the drawer",
+      "matches": 1
+    },
+    {
+      "name": "ext2-home-default",
+      "why": "after the splash, the portal opens on Home",
+      "matches": 1
+    },
+    {
       "name": "ext2-tours",
       "why": "three new guided tours, alongside the design's own",
       "matches": 1
@@ -339,6 +349,51 @@
       "matches": 1
     },
     {
+      "name": "ext3-group",
+      "why": "the communities hub and media centre join Help & get involved",
+      "matches": 1
+    },
+    {
+      "name": "ext3-hash",
+      "why": "the new screens can be linked to",
+      "matches": 1
+    },
+    {
+      "name": "ext3-logic",
+      "why": "carousel, media, communities and share logic",
+      "matches": 1
+    },
+    {
+      "name": "ext3-vals",
+      "why": "their values join renderVals",
+      "matches": 1
+    },
+    {
+      "name": "ext3-start",
+      "why": "start the carousel clock once the data has loaded",
+      "matches": 1
+    },
+    {
+      "name": "ext3-unmount",
+      "why": "stop the carousel clock if the page unmounts, inside the design's own unmount",
+      "matches": 1
+    },
+    {
+      "name": "ext3-carousel",
+      "why": "the rolling hero carousel replaces Home's static hero",
+      "matches": 1
+    },
+    {
+      "name": "ext3-launch-share",
+      "why": "calendar and sharing links for the launch",
+      "matches": 1
+    },
+    {
+      "name": "ext3-screens",
+      "why": "the media centre and communities hub",
+      "matches": 1
+    },
+    {
       "name": "footer",
       "why": "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
       "matches": 1
@@ -361,6 +416,16 @@
     {
       "name": "map-fonts",
       "why": "map fonts served by the portal itself",
+      "matches": 1
+    },
+    {
+      "name": "map-labels",
+      "why": "labels on the map: nation names always, area names from zoom level 7 so the UK view stays readable",
+      "matches": 1
+    },
+    {
+      "name": "map-label-css",
+      "why": "label styles: readable on both themes, hidden area labels until zoomed in",
       "matches": 1
     },
     {
@@ -395,21 +460,24 @@
     }
   ],
   "files": {
-    "Local Routes Map.html": "c538516b4262356bcca43f0c32bbe5bc5bec8a086543950bc38bca2461b4bffa",
-    "index.html": "471bf11435ed749905dcf1a3ace0e1d917a91c2b33858b5ec8e559c6a1efb773",
+    "Local Routes Map.html": "30941ecd81d9acf11db66678b24e7cdf5a0b43bf09c3cccbcd5f035941807c78",
+    "index.html": "38a0ac27ee3796a73781cc6861198154945a37ff740a8515a124bc31940328c3",
     "petition-754954.json": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a",
     "support.js": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe",
     "data/about.json": "99a5eca5e00594284bf19694674f37ca519780a14563657b50dddd3b6a736633",
-    "data/changelog.json": "d71ece39bbd0bcad3791156072f6d8c8367f4cbda625c1315f91de076fad4e78",
+    "data/changelog.json": "ef5ad65afb82bb8a8a0c22fc9fafbcd809584e8f1f19a6ac30716b2f540d2e8c",
+    "data/communities.json": "1398865a0f63a268fa17424fdcb62f8e52bf535adc61e3acfdce9fa7f2ded4e5",
     "data/help.json": "86315b45d1ae8b53352e6be9daba535a62831640a538e32b15a66a01ade47584",
-    "data/integrity.json": "32a419f63bdd7b199be87acff3d69a97481544e821ddb8d5db1f1dbe69b7f947",
+    "data/home.json": "040a44465a3654cf136c2bafa0582aa8e03bf235e2d3e839378aec9d2af0fd99",
+    "data/integrity.json": "c6f27e7b1f094621d1eb281bc4c758b41f407613bb3be3460bf11af15d93a901",
     "data/latest.json": "5eb9e4fc30de410532cf0af2253e63527cb95d333c5182003f32dd4fe331eb2c",
     "data/launch.json": "2f69c38ca8aae84e7f7f329b261e48e2eb17e3e4c21da029eec0f6a87d0d7472",
+    "data/media.json": "dd6f558cf067c18a2c89632019d3787309430315aa1792d1810ff9b372779aa3",
     "data/moscow.json": "9cc44b2176f2d899c137244567fc45d59b707bfbede87bb1493f21a5c5b99f00",
-    "data/registers.json": "a106fcb56338938cd2b9947972b45e9a47d7f7e39c583c667a607e85b7f2b171",
+    "data/registers.json": "2f20549eab44e52f36507b014e2b8ba241beecac3fe2b80c2ec5dcb9007129e9",
     "data/safeguards.json": "542f65ea588cf327078046e6bac0e6664ee3f4256faba08d5ec24eb4b5e7ff81",
-    "data/youth-sources.json": "1aaea24ae7e71c6dd7deb11cde943e932008bc39150f6609cc54d75f9f1a8ba4",
-    "art/barcode.svg": "5720099131fa1e6aa30944a965bd0e586aa8471ce4b41125d5b2a4aeef8e3aa6",
+    "data/youth-sources.json": "794bd27e449c128e2d3ee83732bd769cc2258e117cb17d6964be86599cd2f1a9",
+    "art/barcode.svg": "637e2b5c7c69e16c58b9b0db7b786439d24ecf1246d7b40baadbbd1b60a17878",
     "art/education.svg": "1e654b11eeb077f1cd08a84048bdb3f6aff365a6caa19eb9905fd540cf0e9cee",
     "art/empowerment.svg": "6a1f93604c95d5be736278c8a86c1862ded148dd1c59d81b5a72930d53ed6d86",
     "art/equality.svg": "2a516ba220b00b6d2ca210659da6c92bc08a0911a97cc71bcbc4a0ea0535a67a",

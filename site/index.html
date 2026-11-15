@@ -7,11 +7,11 @@
 <meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">
 <link rel="icon" href="./art/favicon.svg" type="image/svg+xml">
 <meta name="artefact:id" content="amplify-portal">
-<meta name="artefact:version" content="AMP-20261115-bf500020">
+<meta name="artefact:version" content="AMP-20261115-8e81acd6">
 <meta name="artefact:class" content="portal">
 <meta name="artefact:as-of" content="2026-11-15">
 <meta name="artefact:review-date" content="2026-12-15">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-bf500020", "version": "AMP-20261115-bf500020", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-8e81acd6", "version": "AMP-20261115-8e81acd6", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
 <script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/babel.min.js"};</script>
 <script src="./support.js"></script>
 </head>
@@ -2346,6 +2346,63 @@
         </sc-if>
 
 
+        <sc-if value="{{ sHome }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+
+          <section aria-roledescription="carousel" aria-label="Spotlights" onMouseEnter="{{ carHoldOn }}" onMouseLeave="{{ carHoldOff }}" onFocus="{{ carHoldOn }}" onBlur="{{ carHoldOff }}">
+            <sc-if value="{{ carHas }}" hint-placeholder-val="{{ true }}">
+            <div aria-roledescription="slide" aria-label="{{ carPos }}" aria-live="polite" class="amp-slide" style="{{ carBg }}">
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <span style="{{ carPill }}">{{ carKind }}</span>
+                <h2 style="margin: 0; font-size: clamp(26px, 3.6vw, 40px); font-weight: 900; line-height: 1.06; letter-spacing: -0.035em; text-wrap: balance;">{{ carTitle }}</h2>
+                <p style="margin: 0; font-size: 15.5px; line-height: 1.6; max-width: 60ch;">{{ carBody }}</p>
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+                  <button type="button" onClick="{{ carGo }}" style="min-height: 44px; border-radius: 999px; padding: 10px 20px; border: 0; background: oklch(var(--t2) 0.16 145); color: var(--on-accent); font-size: 14px; font-weight: 800; cursor: pointer;">{{ carCta }}</button>
+                </div>
+              </div>
+              <img src="{{ carArt }}" alt="" style="width: 100%; height: auto; max-height: 200px; object-fit: cover; border-radius: 20px;" />
+            </div>
+            </sc-if>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px;">
+              <div role="group" aria-label="Choose a slide" style="display: flex; align-items: center; gap: 7px;"><sc-for list="{{ carDots }}" as="d" hint-placeholder-count="5"><button type="button" onClick="{{ d.go }}" aria-label="{{ d.label }}" aria-current="{{ d.current }}" style="{{ d.style }}"></button></sc-for></div>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" onClick="{{ carPrev }}" aria-label="Previous slide" style="min-width: 40px; min-height: 40px; border-radius: 999px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 16px; cursor: pointer;">&lsaquo;</button>
+                <button type="button" onClick="{{ carToggle }}" aria-pressed="{{ carPressed }}" style="min-height: 40px; border-radius: 999px; padding: 0 14px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{ carToggleLabel }}</button>
+                <button type="button" onClick="{{ carNext }}" aria-label="Next slide" style="min-width: 40px; min-height: 40px; border-radius: 999px; border: 1px solid rgb(var(--film-rgb) / 0.2); background: transparent; color: rgb(var(--ink-rgb)); font-size: 16px; cursor: pointer;">&rsaquo;</button>
+              </div>
+            </div>
+          </section>
+          <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px; align-items: center; border-radius: 28px; padding: clamp(20px, 3vw, 34px); border: 1px solid oklch(var(--t1) 0.16 175 / 0.35); background: linear-gradient(140deg, oklch(var(--t1) 0.16 175 / 0.16), oklch(var(--t1) 0.16 300 / 0.08));">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 175);"><span aria-hidden="true" style="{{ icHome }}"></span>Home</div>
+              <h1 style="margin: 0; font-size: clamp(30px, 4vw, 44px); font-weight: 900; line-height: 1.05; letter-spacing: -0.04em; text-wrap: balance;">Youth voice, carried further</h1>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; max-width: 62ch;">{{ hmWhat }}</p>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.55; max-width: 62ch; color: rgb(var(--ink-rgb) / 0.82);">{{ hmFor }}</p>
+            </div>
+            <img src="./art/hero.svg" alt="" style="width: 100%; height: auto; max-height: 220px; object-fit: cover; border-radius: 20px;" />
+          </section>
+          <section aria-labelledby="amp-howto">
+            <h2 id="amp-howto" style="margin: 0 0 12px; font-size: 19px; font-weight: 900; letter-spacing: -0.025em;">How to use Amplify</h2>
+            <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px;">
+              <sc-for list="{{ hmSteps }}" as="x" hint-placeholder-count="4"><li class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 20px; background: rgb(var(--film-rgb) / 0.04); padding: 16px 18px;"><div style="display: flex; align-items: center; gap: 10px;"><span aria-hidden="true" class="amp-count" style="font-size: 28px; font-weight: 900; color: oklch(var(--t4) 0.16 175);">{{ x.n }}</span><span style="font-size: 15px; font-weight: 800;">{{ x.t }}</span></div><p style="margin: 6px 0 0; font-size: 13.5px; line-height: 1.5;">{{ x.d }}</p></li></sc-for>
+            </ol>
+          </section>
+          <section aria-labelledby="amp-tourin" style="border: 1px solid oklch(var(--t1) 0.16 300 / 0.4); border-radius: 22px; background: oklch(var(--t1) 0.16 300 / 0.1); padding: 18px 20px;">
+            <h2 id="amp-tourin" style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Start with a guided tour for you</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <sc-for list="{{ hpTours }}" as="t" hint-placeholder-count="5"><button type="button" onClick="{{ t.go }}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 42px; border-radius: 999px; padding: 8px 16px; border: 1px solid oklch(var(--t2) 0.16 300 / 0.6); background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); font-size: 13.5px; font-weight: 700; cursor: pointer;"><span aria-hidden="true" style="{{ icTour }}"></span>{{ t.label }}</button></sc-for>
+            </div>
+          </section>
+          <section aria-labelledby="amp-routes">
+            <h2 id="amp-routes" style="margin: 0 0 12px; font-size: 19px; font-weight: 900; letter-spacing: -0.025em;">Go straight to</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px;">
+              <sc-for list="{{ hmTiles }}" as="x" hint-placeholder-count="8"><button type="button" onClick="{{ x.go }}" class="amp-card" style="text-align: left; display: flex; flex-direction: column; gap: 8px; border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 20px; background: rgb(var(--film-rgb) / 0.04); color: rgb(var(--ink-rgb)); padding: 16px 18px; cursor: pointer;"><span aria-hidden="true" style="{{ x.icon }}"></span><span style="font-size: 15px; font-weight: 800;">{{ x.label }}</span><span style="font-size: 13px; line-height: 1.5; color: rgb(var(--ink-rgb) / 0.82);">{{ x.d }}</span></button></sc-for>
+            </div>
+          </section>
+          <div role="note" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; border-radius: 18px; padding: 12px 16px; border: 1px solid oklch(var(--t1) 0.16 25 / 0.5); background: oklch(var(--t1) 0.16 25 / 0.1);"><span aria-hidden="true" style="{{ icLife }}"></span><span style="flex: 1 1 260px; font-size: 14px; line-height: 1.5;">Need to talk to someone now? Childline is free on <span style="font-weight: 800;">0800 1111</span>, any time. In an emergency, call <span style="font-weight: 800;">999</span>.</span><button type="button" onClick="{{ goCare }}" style="min-height: 40px; border-radius: 999px; padding: 8px 16px; border: 1px solid oklch(var(--t2) 0.16 25 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-weight: 700; cursor: pointer;">All helplines</button></div>
+        </div>
+        </sc-if>
+
         <sc-if value="{{ sAbout }}" hint-placeholder-val="{{ false }}">
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
           <div>
@@ -2528,7 +2585,65 @@
               </sc-for>
             </div>
           </section>
+<section aria-label="Put UK Parliament Week in your calendar or share it" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <h2 style="margin: 0 0 6px; font-size: 16px; font-weight: 800;">Put UK Parliament Week in your calendar or share it</h2>
+              <p style="margin: 0 0 12px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">These open another service only when you choose one. Each has its own terms, privacy rules and minimum age; social media and messaging apps are for adults and allies sharing on a young person's behalf, especially under 16s from spring 2027.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ shareLaunch }}" as="x" hint-placeholder-count="5"><a href="{{ x.href }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; min-height: 40px; border-radius: 999px; padding: 8px 14px; border: 1px solid rgb(var(--film-rgb) / 0.2); font-size: 13px; font-weight: 700;">{{ x.label }}<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></sc-for>
+                <button type="button" onClick="{{ copyLink }}" style="min-height: 40px; border-radius: 999px; padding: 8px 14px; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{ copyLinkLabel }}</button>
+              </div>
+            </section>
           <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ lnNote }}</p>
+        </div>
+        </sc-if>
+
+
+        <sc-if value="{{ sMedia }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 300);"><span aria-hidden="true" style="{{ icMedia }}"></span>Help &amp; get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Media centre</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Approved descriptions, key facts with their sources, illustrations you can use, and the rules for using them. For anything else, use the contact form.</p>
+          </div>
+          <div role="note" style="border: 1px solid oklch(var(--t1) 0.16 70 / 0.5); border-radius: 16px; background: oklch(var(--t1) 0.16 70 / 0.1); padding: 12px 16px; font-size: 13.5px; line-height: 1.55;">Amplify is independent and unofficial. Please do not describe it as a UK Youth Parliament, National Youth Agency or UK Parliament service, and do not identify any young person without their agreement and a parent's or carer's consent.</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <sc-for list="{{ mdBlurbs }}" as="b" hint-placeholder-count="2">
+              <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">About Amplify in {{ b.len }}</div><p style="margin: 0; font-size: 14px; line-height: 1.6;">{{ b.text }}</p><button type="button" onClick="{{ b.copy }}" style="align-self: flex-start; min-height: 38px; border-radius: 999px; padding: 6px 14px; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{ b.copied }}</button></div>
+            </sc-for>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 16px; font-weight: 800;">Key facts, with sources</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ mdFacts }}" as="f" hint-placeholder-count="3"><li style="font-size: 13.5px; line-height: 1.5;">{{ f.f }} <span style="color: rgb(var(--ink-rgb) / 0.72);">Source: {{ f.src }}.</span></li></sc-for></ul></section>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 16px; font-weight: 800;">Illustrations and marks</h2><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ mdAssets }}" as="a" hint-placeholder-count="4"><li style="font-size: 13.5px;"><a href="{{ a.href }}" target="_blank" rel="noopener" style="font-weight: 700;">{{ a.name }}</a> <span style="color: rgb(var(--ink-rgb) / 0.7);">&middot; {{ a.file }}</span></li></sc-for></ul><p style="margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Illustrations are drawn in code from the portal's own shapes and may be reused with credit to Amplify.</p></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 16px; font-weight: 800;">Rules for using them</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ mdRules }}" as="r" hint-placeholder-count="3"><li style="font-size: 13.5px; line-height: 1.5;">{{ r.t }}</li></sc-for></ul></section>
+          </div>
+          <section aria-label="Share Amplify into your tools" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <h2 style="margin: 0 0 6px; font-size: 16px; font-weight: 800;">Share Amplify into your tools</h2>
+              <p style="margin: 0 0 12px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">These open another service only when you choose one. Each has its own terms, privacy rules and minimum age; social media and messaging apps are for adults and allies sharing on a young person's behalf, especially under 16s from spring 2027.</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <sc-for list="{{ sharePortal }}" as="x" hint-placeholder-count="5"><a href="{{ x.href }}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; min-height: 40px; border-radius: 999px; padding: 8px 14px; border: 1px solid rgb(var(--film-rgb) / 0.2); font-size: 13px; font-weight: 700;">{{ x.label }}<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></sc-for>
+                <button type="button" onClick="{{ copyLink }}" style="min-height: 40px; border-radius: 999px; padding: 8px 14px; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{ copyLinkLabel }}</button>
+              </div>
+            </section>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sCommunities }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 175);"><span aria-hidden="true" style="{{ icComm }}"></span>Help &amp; get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Communities, networks and youth groups</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ cmIntro }}</p>
+          </div>
+          <div role="note" style="border: 1px solid oklch(var(--t1) 0.16 25 / 0.45); border-radius: 16px; background: oklch(var(--t1) 0.16 25 / 0.1); padding: 12px 16px; font-size: 13.5px; line-height: 1.55;">Listing a group is not an endorsement, and each group runs its own safeguarding and privacy policies. {{ cmSafety }} Worried about anything? Go to <a href="#care">Safeguarding &amp; support</a>.</div>
+          <sc-for list="{{ cmKinds }}" as="k" hint-placeholder-count="4">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <h2 style="margin: 0 0 6px; font-size: 18px; font-weight: 800;">{{ k.k }}</h2>
+              <sc-if value="{{ k.hasNote }}" hint-placeholder-val="{{ false }}"><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ k.note }}</p></sc-if>
+              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px; margin-top: 8px;">
+                <sc-for list="{{ k.items }}" as="x" hint-placeholder-count="4"><div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 800;">{{ x.name }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ x.what }}</div><div style="font-size: 12px;">{{ x.nations }} &middot; <span style="font-style: italic;">{{ x.prov }}</span></div><a href="{{ x.url }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; font-size: 12.5px;">Visit<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div></sc-for>
+              </div>
+            </section>
+          </sc-for>
         </div>
         </sc-if>
 
@@ -2734,9 +2849,9 @@
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Petition 754954 figures come from a snapshot of UK Parliament&rsquo;s published data taken on 1 October 2026. The petition closed on 11 August 2026, so the counts are final. Screens marked prototype, sample or model show planning figures, not records.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Links to other organisations are for information, not endorsement. Worried about your safety? Go to <a href="#care">Safeguarding &amp; support</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Disclosures</h2>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Fonts load from Google Fonts and the page runtime from unpkg.com, which see your IP address.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Transparency</h2>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-bf500020</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-8e81acd6</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Next review due 15 December 2026. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Source, checks and history: <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Contact</h2>
@@ -2747,8 +2862,8 @@
     </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
-        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-bf500020" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
-        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-bf500020</p>
+        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-8e81acd6" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
+        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-8e81acd6</p>
       </div>
   </footer>
 </div>
@@ -2806,7 +2921,7 @@ class Component extends DCLogic {
   state = {
     splash: !this.screenFromHash(), splashVar: (this.props || {}).splashTreatment === "Manifesto" ? "b" : "a", typed: "", count: 1192,
     view: ((this.props || {}).defaultView || "Portal").toLowerCase().replace("side by side", "both"),
-    screen: this.screenFromHash() || { "Momentum dashboard": "momentum", "Ethics & values": "corner", "Constituencies": "map" }[(this.props || {}).entryScreen] || "hub",
+    screen: this.screenFromHash() || { "Momentum dashboard": "momentum", "Ethics & values": "corner", "Constituencies": "map" }[(this.props || {}).entryScreen] || "home",
     momo: /^(Race|Relaunch model)$/.test((this.props || {}).momentumTreatment || "") ? "race" : "gauge",
     appTab: "feed",
     a11yOpen: false, motion: (this.props || {}).motion !== false, dys: false, lang: "en", lowData: false,
@@ -2873,7 +2988,7 @@ class Component extends DCLogic {
 
   screenFromHash() {
     const id = (location.hash || "").replace(/^#\/?/, "");
-    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about)$/.test(id) ? id : null;
+    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities)$/.test(id) ? id : null;
   }
   screenLabel(id) {
     for (const [, items] of this.GROUPS) for (const it of items) if (it[0] === id) return it[1];
@@ -2893,8 +3008,8 @@ class Component extends DCLogic {
 
   async loadAmplifyData() {
     const get = async (f) => { try { const r = await fetch(new URL(f, document.baseURI).href, { cache: "no-store" }); return r.ok ? await r.json() : null; } catch (e) { return null; } };
-    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json"].map(get));
-    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, loaded: true, failed: !(src && lat && sg) } });
+    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json"].map(get));
+    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
   }
   ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
   ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
@@ -3029,6 +3144,7 @@ class Component extends DCLogic {
     return e ? e.kind : "";
   }
   ampVals2(s) {
+    const hm = (s.amp || {}).hm || {};
     const ab = (s.amp || {}).ab || { rationale: [], aims: [], goals: [], objectives: [], outcomes: [] };
     const A = s.amp || {}, ch = A.ch || { releases: [], current: "" }, hp = A.hp || { quickstart: [], manual: [], adoption: [], tutorials: [] }, ln = A.ln || { event: {}, plan: [], activities: [] };
     const KH = { NEW: 145, UPD: 70 };
@@ -3048,6 +3164,10 @@ class Component extends DCLogic {
     const daysTo = isNaN(start) ? null : Math.ceil((start - now) / 864e5);
     const lnState = isNaN(start) ? "" : now < start ? (daysTo === 1 ? "1 day to go" : daysTo + " days to go") : now <= end ? "Happening this week" : "Launched";
     return {
+      sHome: s.screen === "home", hmWhat: hm.what || "", hmFor: hm.for || "", hmSteps: (hm.steps || []).map((x, i) => ({ t: x.t, d: x.d, n: String(i + 1) })),
+      hmTiles: (hm.tiles || []).map((x) => ({ label: label(x.id), d: x.d, go: () => this.setState({ screen: x.id }), icon: this.ampIcon(({ hub: "megaphone", sources: "book-open-check", care: "heart-handshake", help: "compass", trust: "shield-check", feedback: "messages-square", latest: "newspaper", about: "info" })[x.id] || "layers", "oklch(var(--t3) 0.16 175)", 24) })),
+      icHome: this.ampIcon("compass", "oklch(var(--t3) 0.16 175)", 16), icLife: this.ampIcon("life-buoy", "oklch(var(--t3) 0.16 25)", 22),
+      goCare: () => this.setState({ screen: "care" }),
       sAbout: s.screen === "about", abWho: ab.who || "", abProfile: ab.profile || "#", abImpartial: ab.impartial || "", abMission: ab.mission || "", abNote: ab.evidence_note || "",
       abRationale: ab.rationale.map((t) => ({ t })), abAims: ab.aims.map((t) => ({ t })), abGoals: ab.goals.map((t) => ({ t })), abObjectives: ab.objectives.map((t) => ({ t })), abOutcomes: ab.outcomes,
       icAbout: this.ampIcon("info", "oklch(var(--t3) 0.16 175)", 16), icGit: this.ampIcon("git-branch", "currentColor", 15),
@@ -3083,6 +3203,61 @@ class Component extends DCLogic {
       icIdea: this.ampIcon("sparkles", "oklch(var(--t3) 0.16 300)", 26), icBugBig: this.ampIcon("bug", "oklch(var(--t3) 0.16 25)", 26),
       icAsk: this.ampIcon("info", "oklch(var(--t3) 0.16 215)", 26), icList: this.ampIcon("list-checks", "oklch(var(--t3) 0.16 145)", 26),
       icTour: this.ampIcon("route", "currentColor", 16), icFlag: this.ampIcon("flag-triangle-right", "currentColor", 15)
+    };
+  }
+
+
+  ampCarousel() {
+    if (this._carT) return;
+    this._carT = setInterval(() => {
+      const st = this.state, n = ((st.amp || {}).md || {}).spotlight ? st.amp.md.spotlight.length : 0;
+      let reduce = false; try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { /* no media queries */ }
+      if (n > 1 && st.screen === "home" && st.motion && !reduce && !st.carPaused && !st.carHold && !st.splash) this.setState({ carIdx: ((st.carIdx || 0) + 1) % n });
+    }, 7000);
+  }
+  ampShare(title, url, start, end) {
+    const e = encodeURIComponent, t = e(title), u = e(url);
+    const d = (x) => x.replace(/-/g, "");
+    const add1 = (x) => new Date(Date.parse(x + "T00:00:00Z") + 864e5).toISOString().slice(0, 10);
+    const out = [];
+    if (start) {
+      out.push({ label: "Google Calendar", href: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + t + "&dates=" + d(start) + "/" + d(add1(end || start)) + "&details=" + u });
+      out.push({ label: "Outlook calendar", href: "https://outlook.live.com/calendar/0/deeplink/compose?subject=" + t + "&startdt=" + start + "&enddt=" + add1(end || start) + "&allday=true&body=" + u });
+    }
+    out.push({ label: "Microsoft Teams", href: "https://teams.microsoft.com/share?href=" + u + "&msgText=" + t });
+    out.push({ label: "Google Classroom", href: "https://classroom.google.com/share?url=" + u + "&title=" + t });
+    out.push({ label: "WhatsApp", href: "https://wa.me/?text=" + t + "%20" + u });
+    return out;
+  }
+  ampVals3(s) {
+    const A = s.amp || {}, md = A.md || { spotlight: [], blurbs: [], facts: [], assets: [], rules: [] }, cm = A.cm || { kinds: [] }, src = (A.src || { sources: [] }).sources;
+    const label = (id) => { try { return this.screenLabel(id) || id; } catch (e) { return id; } };
+    const n = md.spotlight.length, i = n ? (s.carIdx || 0) % n : 0, sl = md.spotlight[i] || {};
+    const KH = { Launch: 70, Spotlight: 175, Safety: 25 };
+    const byId = {}; src.forEach((x) => { byId[x.id] = x; });
+    const PV = { V: "Verified", S: "Search-sourced", K: "Lead, to confirm" };
+    const ln = (A.ln || {}).event || {};
+    const here = (location.href || "").split("#")[0];
+    return {
+      sMedia: s.screen === "media", sCommunities: s.screen === "communities",
+      carHas: n > 0, carKind: sl.kind || "", carTitle: sl.title || "", carBody: sl.body || "", carCta: sl.cta || "", carArt: "./art/" + (sl.art || "hero.svg"),
+      carGo: () => sl.screen && this.setState({ screen: sl.screen }), carPos: n ? "Slide " + (i + 1) + " of " + n : "",
+      carPrev: () => this.setState({ carIdx: (i - 1 + n) % n, carPaused: true }), carNext: () => this.setState({ carIdx: (i + 1) % n, carPaused: true }),
+      carToggle: () => this.setState({ carPaused: !s.carPaused }), carToggleLabel: s.carPaused ? "Play" : "Pause", carPressed: s.carPaused ? "true" : "false",
+      carHoldOn: () => this.setState({ carHold: true }), carHoldOff: () => this.setState({ carHold: false }),
+      carDots: md.spotlight.map((x, k) => ({ label: "Show slide " + (k + 1) + ": " + x.title, current: k === i ? "true" : "false", go: () => this.setState({ carIdx: k, carPaused: true }),
+        style: "width:" + (k === i ? 26 : 10) + "px;height:10px;border-radius:999px;border:0;padding:0;cursor:pointer;transition:width .25s ease;background:" + (k === i ? "oklch(var(--t2) 0.17 " + (KH[x.kind] || 175) + ")" : "rgb(var(--ink-rgb) / 0.3)") + ";" })),
+      carPill: "align-self:flex-start;border-radius:999px;padding:3px 11px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:oklch(var(--t2) 0.17 " + (KH[sl.kind] || 175) + ");color:var(--on-accent);",
+      carBg: "position:relative;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px;align-items:center;border-radius:28px;padding:clamp(20px,3vw,32px);border:1px solid oklch(var(--t1) 0.16 " + (KH[sl.kind] || 175) + " / 0.45);background:linear-gradient(135deg,oklch(var(--t1) 0.16 " + (KH[sl.kind] || 175) + " / 0.22),oklch(var(--t1) 0.16 300 / 0.08));",
+      mdBlurbs: md.blurbs.map((b, k) => ({ len: b.len, text: b.text, copy: () => this.copy(b.text, "blurb" + k), copied: s.copied === "blurb" + k ? "Copied" : "Copy" })),
+      mdFacts: md.facts, mdAssets: md.assets.map((a) => ({ name: a.name, href: "./" + a.file, file: a.file })), mdRules: md.rules.map((t) => ({ t })),
+      cmIntro: cm.intro || "", cmSafety: cm.safety || "",
+      cmKinds: cm.kinds.map((k) => ({ k: k.k, note: k.note || "", hasNote: !!k.note, items: k.ids.map((id) => byId[id]).filter(Boolean).map((x) => ({ name: x.name, what: x.what, url: x.url, nations: x.nations.join(" · "), prov: PV[x.provenance] || x.provenance })) })),
+      shareLaunch: this.ampShare(ln.name || "UK Parliament Week", ln.url || here, ln.start, ln.end),
+      sharePortal: this.ampShare("Amplify: youth voice, carried further", here),
+      copyLink: () => this.copy(here, "link"), copyLinkLabel: s.copied === "link" ? "Link copied" : "Copy link",
+      icMedia: this.ampIcon("newspaper", "oklch(var(--t3) 0.16 300)", 16), icComm: this.ampIcon("users", "oklch(var(--t3) 0.16 175)", 16),
+      icPrev: this.ampIcon("chart-line", "currentColor", 14), icShare: this.ampIcon("external-link", "currentColor", 13)
     };
   }
 
@@ -3662,6 +3837,7 @@ class Component extends DCLogic {
 
   GROUPS = [
     ["Foundations", [
+      ["home", "Home", "dot", 175, 4, "NEW", "home start welcome what is amplify who is it for how to use"],
       ["corner", "Ethics & values", "dia", 175, 6, "NEW", "cornerstones code of ethics values participation equality education empowerment curriculum UNCRC process practice"],
       ["route", "Your route in", "tri", 215, 8, "UPD", "become MYP election journey roadmap devolution Scottish Welsh Northern Ireland youth assembly steering group map local authority council constituency area postcode services find checklist prerequisites step by step guide stand campaign seat at the table resources how to"],
       ["state", "Anatomy of the state", "sq", 145, 6, "NEW", "parliament government departments devolved local authority arms length civil society layers levers"],
@@ -3693,7 +3869,7 @@ class Component extends DCLogic {
       ["graph", "Glossary & graph", "ring", 145, 4, "NEW", "knowledge graph glossary thesaurus definitions terms jargon synonyms"]
     ]],
     ["Sources & updates", [
-      ["sources", "Trusted sources", "sq", 215, 50, "NEW", "trusted sources directory official government parliament regulator charity helpline commissioner parents carers allies nation Scotland Wales Northern Ireland England filter verified"],
+      ["sources", "Trusted sources", "sq", 215, 55, "NEW", "trusted sources directory official government parliament regulator charity helpline commissioner parents carers allies nation Scotland Wales Northern Ireland England filter verified"],
       ["latest", "What's new", "bar", 70, 13, "NEW", "latest news updates changes votes at 16 bill minimum wage NEET social media ban strategy helpline closed"],
       ["changes", "Release log", "bar", 145, 3, "NEW", "release log changelog changes new updated version history what changed"],
       ["trust", "Safeguards & audiences", "dia", 25, 5, "NEW", "safeguards frameworks Children's code ICO Online Safety Act Ofcom parents carers guardians parental responsibility audiences DEI inclusion every voice UCD Lundy"],
@@ -3702,6 +3878,8 @@ class Component extends DCLogic {
     ["Help & get involved", [
       ["about", "About Amplify", "dot", 175, 5, "NEW", "about who mission purpose aims goals objectives outcomes rationale why owner GitHub profile"],
       ["launch", "UK Parliament Week launch", "sq", 70, 4, "NEW", "launch UK Parliament Week UKPW 23 November 2026 countdown activities schools youth groups"],
+      ["communities", "Communities & groups", "dot", 175, 4, "NEW", "communities networks youth groups youth councils clubs scouts guides youth parliament assembly local"],
+      ["media", "Media centre", "sq", 300, 4, "NEW", "media centre press blurb description facts illustrations logo brand assets rules share"],
       ["help", "Help & tutorials", "ring", 300, 5, "NEW", "help user manual adoption guide tutorials guided tours how to get started parents schools youth groups"],
       ["feedback", "Have your say", "dot", 175, 3, "NEW", "feedback idea suggestion feature request bug issue problem report correction"]
     ]]
@@ -3879,6 +4057,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
     if (keys.some((k) => prevState[k] !== s[k])) this.savePrefs(keys);
   }
   componentWillUnmount() {
+    if (this._carT) clearInterval(this._carT);
     clearInterval(this.type); clearTimeout(this.auto);
     window.removeEventListener("hashchange", this.onHash); window.removeEventListener("popstate", this.onHash); window.removeEventListener("keydown", this.onKey);
     if (this.mq) { if (this.mq.removeEventListener) this.mq.removeEventListener("change", this.onMq); else this.mq.removeListener(this.onMq); }
@@ -4192,7 +4371,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
         br: "oklch(var(--t1) 0.16 " + hue + " / 0.3)", bg: "oklch(var(--t1) 0.16 " + hue + " / 0.08)",
         dot: "oklch(var(--t2) 0.19 " + hue + ")", fg: "oklch(var(--t3) 0.19 " + hue + ")"
       })),
-      ...this.ampVals(s), ...this.ampVals2(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
+      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
       issueTabs: Object.keys(this.ISSUES).map((k) => {
         const it = this.ISSUES[k];
         return {
