@@ -211,7 +211,7 @@ def product():
 
 def glossary():
     d = json.load(open(os.path.join(R, "data", "glossary.json"), encoding="utf-8"))
-    out = ["# Glossary and thesaurus", "", "Generated from `data/glossary.json` by `tools/make_docs.py`; edit that, not this file. The same terms appear in the portal's Glossary & graph screen and its tooltips, and as a SKOS vocabulary in `site/glossary.jsonld`.", "",
+    out = ["# Glossary and thesaurus", "", "Generated from `data/glossary.json` by `tools/make_docs.py`; edit that, not this file. The same terms appear in the portal's Glossary & graph screen and its tooltips, and as a SKOS vocabulary in `site/glossary-skos.json`.", "",
            f"**Rule:** {d['rule']}", "", "| Term | Definition | Also called (thesaurus) | Related | Added in |", "|---|---|---|---|---|"]
     names = {t["id"]: t["term"] for t in d["terms"]}
     for t in sorted(d["terms"], key=lambda t: t["term"].lower()):

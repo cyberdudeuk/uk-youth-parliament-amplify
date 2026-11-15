@@ -1,6 +1,6 @@
 # Glossary and thesaurus
 
-Generated from `data/glossary.json` by `tools/make_docs.py`; edit that, not this file. The same terms appear in the portal's Glossary & graph screen and its tooltips, and as a SKOS vocabulary in `site/glossary.jsonld`.
+Generated from `data/glossary.json` by `tools/make_docs.py`; edit that, not this file. The same terms appear in the portal's Glossary & graph screen and its tooltips, and as a SKOS vocabulary in `site/glossary-skos.json`.
 
 **Rule:** Every new concept, term or piece of vocabulary a release introduces is added here in the same release, with a plain definition, its other names (the thesaurus), where it comes from, and its links in the knowledge graph. Tooltips for terms read from this file, so the glossary, the graph and the tooltips always agree. check_site S16 enforces it.
 

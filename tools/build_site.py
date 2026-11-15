@@ -361,7 +361,7 @@ def build(date, out=SITE):
     open(os.path.join(out, "art", "barcode.svg"), "wb").write(buf.getvalue())
 
     open(os.path.join(out, "feed.xml"), "w", encoding="utf-8").write(extend9.feed(meta))           # Atom feed for readers
-    open(os.path.join(out, "glossary.jsonld"), "w", encoding="utf-8").write(extend9.skos(meta))   # SKOS vocabulary
+    open(os.path.join(out, "glossary-skos.json"), "w", encoding="utf-8").write(extend9.skos(meta))   # SKOS vocabulary
 
     files = {}
     for root, _, names in os.walk(out):

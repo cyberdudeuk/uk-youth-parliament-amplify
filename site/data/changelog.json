@@ -182,7 +182,7 @@
     {
      "screen": "graph",
      "kind": "UPD",
-     "what": "Glossary & graph: the new terms from this release (safeguarding, Online Safety Act, open source, CI, DevOps, user-centred design, enterprise architecture, apprenticeships, AI literacy, roadmap and more), each with other names, links in the graph and a matching tooltip. Also published as a SKOS vocabulary (glossary.jsonld)."
+     "what": "Glossary & graph: the new terms from this release (safeguarding, Online Safety Act, open source, CI, DevOps, user-centred design, enterprise architecture, apprenticeships, AI literacy, roadmap and more), each with other names, links in the graph and a matching tooltip. Also published as a SKOS vocabulary (glossary-skos.json)."
     },
     {
      "screen": "home",
