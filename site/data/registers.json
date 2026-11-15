@@ -65,6 +65,14 @@
    "root_cause": "The link pattern matched inside script strings.",
    "fix": "Both checks skip values that are string concatenations; their negative tests still catch a real missing file.",
    "check": "R6, S6"
+  },
+  {
+   "id": "D9",
+   "found": "2026-11-15",
+   "what": "CI rebuilt site/build.json with its file list in a different order, so S1 failed on GitHub but passed locally.",
+   "root_cause": "The file list followed the filesystem's directory order, which differs between machines.",
+   "fix": "The file list is sorted.",
+   "check": "S1 (caught it in CI)"
   }
  ],
  "open": [

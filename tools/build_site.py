@@ -353,7 +353,7 @@ def build(date, out=SITE):
             files[rel] = hashlib.sha256(open(p, "rb").read()).hexdigest()
     manifest = {"what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
                 **meta, "design_artifact": src["artifact"], "repository": REPO_URL, "checks": rule_ids(),
-                "transforms": log, "files": files}
+                "transforms": log, "files": dict(sorted(files.items()))}  # sorted: directory order differs by filesystem (D9)
     open(os.path.join(out, "build.json"), "w", encoding="utf-8").write(json.dumps(manifest, indent=2) + "\n")
     return manifest
 
