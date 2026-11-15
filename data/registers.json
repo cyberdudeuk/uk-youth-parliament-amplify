@@ -193,6 +193,38 @@
    "root_cause": "Lint was never part of the checks.",
    "fix": "Ruff and ESLint run in Checks and fail on any finding; all seven fixed. The design runtime (support.js) and the copied image-slot.js starter are third-party code the design tool overwrites, so they are not linted.",
    "check": "R9 in tools/check_repo.py, vaccinated against a checks workflow without the lint step."
+  },
+  {
+   "id": "D25",
+   "found": "2026-11-15, launch-blocker review",
+   "what": "While readiness gate G06 (a named safeguarding lead and procedure) was open, the portal and its forms still invited young people to sign up: the contact form offered 'Take part in user research' and 'Join a design crit or working group', the ambassador form took registrations with an 'Under 13' option, and the Research & design and Ambassadors & champions screens linked to both.",
+   "root_cause": "The gate was recorded as blocking the programmes, but nothing tied the sign-up routes to the gate, so they stayed open.",
+   "fix": "Both recruitment options are removed from the contact form (withdrawal stays); the ambassador form is moved to docs/paused-forms/ and config.yml says why; the two screens and the data say in plain words that sign-up is paused and why; G06 stays Open and names what is paused.",
+   "check": "R10 in tools/check_repo.py and S19 in tools/check_site.py, each vaccinated against the option, the form and the links coming back while G06 is open."
+  },
+  {
+   "id": "D26",
+   "found": "2026-11-15, launch-blocker review",
+   "what": "The phone view's pledge text claimed features the portal does not have: in 14 to 18 mode 'Public sharing is on, your first name and initial can appear on the pledge wall, and direct messaging to adults outside your school is off by default'; in 11 to 13 mode 'Pledging means you get one message on the day it comes back'; and an unsourced 'A relaunch is being planned for the autumn term'.",
+   "root_cause": "Design copy describing a future service was published as if it were true of the prototype.",
+   "fix": "A build transform (tools/extend10.py) replaces the three claims with what is true: pledges stay on this device and nothing is sent or collected; the relaunch sentence is removed.",
+   "check": "S14 in tools/check_site.py, vaccinated against each of the four claims coming back."
+  },
+  {
+   "id": "D27",
+   "found": "2026-11-15, launch-blocker review",
+   "what": "The safeguards screen told parents Amplify 'asks for no account, no name', but the pledge form asked for 'Name or initials' and kept it in this browser's storage, which matters on a shared school computer, with no way to remove it.",
+   "root_cause": "The privacy claim was written for the information screens and never checked against the pledge form's behaviour.",
+   "fix": "The name field is marked optional and says it is saved only on this device; a 'Clear my pledges from this device' button removes them from the screen and from storage (in try/catch, so a blocked store cannot break the page); the safeguards wording now says exactly that.",
+   "check": "S18 in tools/check_site.py, vaccinated against the old claim, a required-looking name field, a lost clear control and storage access outside try/catch."
+  },
+  {
+   "id": "D28",
+   "found": "2026-11-15, launch-blocker review",
+   "what": "Readiness gate G19 (release candidate reviewed and merged, pull request 5) was still Open and blocking launch after pull request 5 had been merged at 09:26 UTC.",
+   "root_cause": "Nothing compared the readiness record with the repository's history after a merge.",
+   "fix": "G19 is closed with the merge as evidence, and a new Must gate G24 (owner sign-off by 22 November) records what is still needed.",
+   "check": "R11 in tools/check_repo.py (a gate still waiting on a pull request that git history shows merged) and S15 (a passed gate citing a pull request must record the merge), each vaccinated."
   }
  ],
  "open": [
@@ -242,11 +274,6 @@
    "who": "Owner, with deaf-led organisations and language bodies"
   },
   {
-   "id": "O11",
-   "what": "Before public launch, the owner confirms that publishing a personal, non-partisan youth participation tool under his own name raises no propriety issue with his employer.",
-   "who": "Owner"
-  },
-  {
    "id": "O12",
    "what": "Before the ambassador programme opens, the owner confirms he can run it safely: time to respond, a safeguarding lead, named adult contacts for under-18s, and how recognition and references work.",
    "who": "Owner"
@@ -283,6 +310,13 @@
    "who": "Owner",
    "closed": "2026-11-15",
    "how": "Filed as GitHub issues 10 to 19, labelled good first issue, each with the safety note; docs/good-first-issues.md links to them."
+  },
+  {
+   "id": "O11",
+   "what": "Before public launch, the owner confirms that publishing a personal, non-partisan youth participation tool under his own name raises no propriety issue with his employer.",
+   "who": "Owner",
+   "closed": "2026-11-15",
+   "how": "Closed 15 Nov 2026: owner confirmed Amplify is a personal project; employer agreement does not apply (readiness gate G20)."
   }
  ]
 }

@@ -33,7 +33,7 @@
     "items": [
      {
       "t": "Take part in research or a design crit",
-      "how": "Try a task while thinking aloud, sort cards, or give feedback on a design. Under 16s take part with a parent's or carer's consent.",
+      "how": "Paused until a safeguarding lead is in place. You can still share a design or a rewrite in the open, without your name.",
       "screen": "research"
      },
      {
@@ -80,7 +80,7 @@
     "items": [
      {
       "t": "Become a champion or ambassador",
-      "how": "Help others find and use the portal, and feed back what they need.",
+      "how": "Paused until a safeguarding lead is in place. Read what the roles involve; sign-ups open once safeguarding is ready.",
       "screen": "ambassadors"
      },
      {
@@ -157,7 +157,7 @@
   ]
  },
  "ambassadors": {
-  "status": "Pilot: the programme opens when the portal owner confirms it can be run safely (open item O12). Until then you can register interest.",
+  "status": "Paused: signing up to be a champion or ambassador is paused until Amplify has a named safeguarding lead (the adult responsible for keeping you safe) and a written safeguarding procedure (readiness gate G06, open item O12). Until then we are not taking any sign-ups, from any age. Being a supporter needs no sign-up: you can share the portal and tell us what is missing through the contact form.",
   "intro": "Ambassadors and champions help young people, families and professionals find Amplify, use it well and tell us what they need. There are three levels; start wherever suits you.",
   "tiers": [
    {
@@ -203,7 +203,8 @@
    "Follow your school's, club's or employer's safeguarding policy whenever you run a session.",
    "Point people to the helplines on Safeguarding & support, never to your own contact details."
   ],
-  "register": "ambassador.yml"
+  "register": "ambassador.yml",
+  "paused": "Sign-ups open once safeguarding is in place."
  },
  "campaign": {
   "intro": "Everything you need to spread the word, especially during UK Parliament Week. Posters and cards are drawn in code and free to print. The text is a template: adapt it and check it before you use it.",

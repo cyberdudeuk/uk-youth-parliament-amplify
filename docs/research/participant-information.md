@@ -39,6 +39,6 @@ We take notes using a session code, never a name. Recordings are made only with 
 
 ## Taking part as a group
 
-Schools, youth councils and youth groups can take part as a group: one adult registers and tells us roughly how many and what ages. We then send the participant information to that adult, and sessions run in your setting under your safeguarding policy.
+Group sessions are paused too, for the same reason. Once a safeguarding lead is in place, schools, youth councils and youth groups will be able to take part as a group: one adult registers and tells us roughly how many and what ages. We then send the participant information to that adult, and sessions run in your setting under your safeguarding policy.
 
 Contact is by form only: no email address is published. Everything posted on GitHub is public, so never post names, schools or contact details.

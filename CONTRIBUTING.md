@@ -11,8 +11,9 @@ the ambassador programme, a campaign kit, training sessions and a STEM spotlight
 - **Ask, report or suggest:** the [contact form](https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=contact.yml),
   or the [idea](https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=idea.yml) and
   [bug](https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=bug.yml) forms.
-- **Ambassadors and champions:** [register interest](https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=ambassador.yml)
-  (a pilot until the owner confirms it, open item O12).
+- **Ambassadors and champions:** sign-ups are paused until Amplify has a named safeguarding lead and procedure
+  (readiness gate G06, open item O12). User research sign-ups are paused for the same reason; withdrawing a
+  research contribution through the contact form stays available.
 - **A first contribution:** start with an issue labelled `good first issue`; [docs/good-first-issues.md](docs/good-first-issues.md)
   lists the starters.
 - **Security problems:** report them privately, as [SECURITY.md](SECURITY.md) explains. Do not open a public issue.

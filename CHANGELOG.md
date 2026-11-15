@@ -6,6 +6,16 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.2 · 2026-11-15 · Release candidate
+
+**Safeguarding and honesty fixes before launch.** Four launch blockers fixed (defects D25 to D28), and the readiness record brought up to date.
+
+- **UPD** `research`: Research & design: signing up to take part is paused until Amplify has a named safeguarding lead and procedure (gate G06), and the screen says why in plain words. Withdrawing a research contribution stays available through the contact form (D25).
+- **UPD** `ambassadors`: Ambassadors & champions: sign-ups are paused, and the sign-up form is taken down, until safeguarding is in place; the screen says why (D25).
+- **UPD** `pledge`: Pledge: the name box is optional and says it is saved only on this device; a new 'Clear my pledges from this device' button removes them; the phone view no longer claims public sharing, a pledge wall, messaging or a message on the day, and the unsourced relaunch sentence is gone (D26, D27).
+- **UPD** `trust`: Safeguards & audiences: the privacy promise to parents now matches what the pledge form does (D27).
+- **UPD** `golive`: Go-live readiness: G19 closed (pull request 5 merged 15 Nov 2026, 09:26 UTC); G20 closed (owner confirmed 15 Nov 2026 that Amplify is a personal project, so employer agreement does not apply); new Must gate G24, owner sign-off by 22 November; G06 stays open and lists what is paused (D28).
+
 ## 1.0.0-rc.1 · 2026-11-15 · Release candidate
 
 **Sources, safeguards, self-checks and help.** Everything below is new or changed since the first published build earlier today.

@@ -104,7 +104,7 @@
      ]
     },
     {
-     "t": "Owner decisions before going public: merge, propriety, sharing",
+     "t": "Owner decisions before going public: safeguarding lead and sign-off (merge, propriety and sharing decided)",
      "reqs": [
       "REQ-25"
      ]
@@ -506,7 +506,7 @@
   },
   {
    "id": "REQ-25",
-   "title": "Owner decisions before the public launch (publishing decided 15 Nov 2026; propriety and safeguarding lead still open)",
+   "title": "Owner decisions before the public launch (publishing, merge and propriety decided 15 Nov 2026; safeguarding lead and owner sign-off still open)",
    "moscow": "Must",
    "status": "Waiting on owner",
    "from": "Readiness review, 15 Nov 2026",

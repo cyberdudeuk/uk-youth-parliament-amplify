@@ -19,12 +19,11 @@ LOGIC5 = r'''
     const done = bm.items.length > 0 && bm.items.every((x, k) => ans[k]);
     const score = done ? ans.reduce((t, a, k) => t + (k % 2 === 0 ? a - 1 : 5 - a), 0) * 2.5 : null;
     const MO = { Must: 25, Should: 70, Could: 175, "Won't": 300 };
-    const formUrl = (rs.sign_up || {}).form_url || "";
     return {
       sResearch: s.screen === "research",
       rsStatus: rs.status || "", rsIntro: rs.intro || "", rsWhy: rs.why || "",
-      rsHasForm: !!formUrl, rsNoFormShow: !formUrl, rsForm: formUrl, rsNoForm: (rs.sign_up || {}).status_when_empty || "", rsGroup: (rs.sign_up || {}).group_route || "",
-      rsInterest: repo + "/issues/new?template=contact.yml",
+      rsNoForm: (rs.sign_up || {}).status_when_empty || "", rsGroup: (rs.sign_up || {}).group_route || "",  // D25: no sign-up route while readiness gate G06 is open
+      rsWithdraw: repo + "/issues/new?template=contact.yml",
       rsPromise: (rs.promise || []).map((t) => ({ t })),
       rsDesign: (rs.design || []).map((d) => ({ name: d.name, how: d.how, share: d.share, icon: this.ampIcon(d.icon, "oklch(var(--t3) 0.16 300)", 18) })),
       rsIdea: repo + "/issues/new?template=idea.yml",
@@ -56,9 +55,9 @@ SCREEN5 = f'''
           {head("icResearch", 300, "Shape Amplify: user research and design", "{{ rsIntro }}")}
           <div role="note" style="{NOTE} border: 1px dashed oklch(var(--t2) 0.16 70 / 0.8); background: oklch(var(--t1) 0.16 70 / 0.12);"><span style="font-weight: 800;">Status.</span> {{{{ rsStatus }}}}</div>
           <section style="{PANEL} display: flex; flex-direction: column; gap: 10px;">
-            <h2 style="margin: 0; font-size: 17px; font-weight: 800;">Join the research panel</h2>
-            <sc-if value="{{{{ rsHasForm }}}}" hint-placeholder-val="{{{{ false }}}}">{ext("rsForm", "Open the private sign-up form")}</sc-if>
-            <sc-if value="{{{{ rsNoFormShow }}}}" hint-placeholder-val="{{{{ true }}}}"><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{{{ rsNoForm }}}}</p><div>{ext("rsInterest", "Register interest with the contact form")}</div></sc-if>
+            <h2 style="margin: 0; font-size: 17px; font-weight: 800;">Joining the research panel is paused</h2>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{{{ rsNoForm }}}}</p>
+            <div>{ext("rsWithdraw", "Withdraw what you said, with the contact form")}</div>
             <p style="margin: 0; {SMALL}"><span style="font-weight: 800;">As a group:</span> {{{{ rsGroup }}}}</p>
           </section>
           <section style="{PANEL}"><h2 style="{H2}">Our promise to young people and families</h2><ul style="{UL}"><sc-for list="{{{{ rsPromise }}}}" as="p" hint-placeholder-count="6"><li>{{{{ p.t }}}}</li></sc-for></ul><p style="margin: 10px 0 0; {SMALL}">Every session follows {term("safeguarding", "safeguarding")} rules, and facilitators have a {term("dbs", "background check")}.</p></section>
