@@ -76,7 +76,7 @@
    "moscow": "Must",
    "evidence": [],
    "who": "Owner (O12, O14)",
-   "note": "Blocks those programmes, which stay as pilots; it does not block the information portal."
+   "note": "Paused while this is open: the research sign-up and design crit or working group options on the contact form, the ambassador sign-up form (including its Under 13 option), and the sign-up links on the Research & design and Ambassadors & champions screens, which say why in plain words. Withdrawing a research contribution stays available. Blocks those programmes; it does not block the information portal."
   },
   {
    "id": "G07",
@@ -233,21 +233,35 @@
    "id": "G19",
    "area": "Governance",
    "item": "The release candidate is reviewed and merged",
+   "status": "Pass",
+   "moscow": "Must",
+   "evidence": [
+    "PR #5"
+   ],
+   "who": "",
+   "note": "Closed 15 Nov 2026: pull request 5 (Amplify 1.0.0-rc.1) was merged into main on 15 Nov 2026 at 09:26 UTC (merge commit 3d10b42), checked through the GitHub API."
+  },
+  {
+   "id": "G24",
+   "area": "Governance",
+   "item": "Owner sign-off by 22 November",
    "status": "Open",
    "moscow": "Must",
    "evidence": [],
-   "who": "Owner (pull request 5)",
-   "note": ""
+   "who": "Owner",
+   "note": "Added 15 Nov 2026 when G19 closed: the merged release candidate still needs the owner's sign-off before the public launch at UK Parliament Week."
   },
   {
    "id": "G20",
    "area": "Governance",
    "item": "Propriety: publishing under the owner's own name raises no issue with his employer",
-   "status": "Open",
+   "status": "Pass",
    "moscow": "Must",
-   "evidence": [],
-   "who": "Owner (O11)",
-   "note": ""
+   "evidence": [
+    "Owner decision"
+   ],
+   "who": "",
+   "note": "Closed 15 Nov 2026: owner confirmed Amplify is a personal project; employer agreement does not apply."
   },
   {
    "id": "G21",

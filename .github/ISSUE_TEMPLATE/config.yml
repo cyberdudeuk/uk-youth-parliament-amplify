@@ -3,3 +3,6 @@ contact_links:
   - name: Report a security problem (private)
     url: https://github.com/cyberdudeuk/uk-youth-parliament-amplify/security/advisories/new
     about: Report security problems privately. Do not open a public issue.
+  - name: Ambassador and champion sign-ups (paused)
+    url: https://cyberdudeuk.github.io/uk-youth-parliament-amplify/site/index.html#ambassadors
+    about: Paused until Amplify has a named safeguarding lead and procedure. The portal explains why. Please do not open an issue to sign up.

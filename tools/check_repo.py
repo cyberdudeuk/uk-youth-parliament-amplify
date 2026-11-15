@@ -19,6 +19,12 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
       a redirect to app/ and a UKYP title)
   R9  the checks lint the Python (Ruff) and JavaScript (ESLint) and fail on any finding (D24; vaccinated against a
       checks workflow without the lint step)
+  R10 while readiness gate G06 (a named safeguarding lead and procedure) is not passed, no issue form recruits young
+      people for research or as ambassadors: the contact form offers no research, design crit or working group
+      sign-up but keeps "Withdraw my research contribution", no ambassador form (or its Under 13 option) is in
+      .github/ISSUE_TEMPLATE/, nothing links to one, and G06's note says what is paused (defect D25)
+  R11 no readiness gate still waits on a pull request that the repository's history shows merged (defect D28:
+      G19 stayed Open after pull request 5 was merged); needs full history, and says so on a shallow clone
   R7  people decide the irreversible: no GitHub workflow merges, pushes, force-pushes, deletes a branch, repository or
       release, publishes a release or a site, or asks for write access to contents (vaccinated against a workflow
       that runs gh pr merge)
@@ -112,8 +118,46 @@ def r9(read):
         if read(f) is None: bad.append(f"R9 {f} is missing (D24)")
     return bad
 
+RECRUIT = re.compile(r"(?im)^\s*-\s*(?:take part in (?:user )?research|join a design crit|join a working group|.*\bworking group\b|.*\bsign up\b.*research)")
+
+def r10(texts, read):
+    try: rd = json.loads(read("data/readiness.json") or b"")
+    except ValueError: return ["R10 data/readiness.json is missing or not JSON"]
+    g06 = next((g for g in rd.get("gates", []) if g["id"] == "G06"), None)
+    if g06 is None: return ["R10 readiness gate G06 (safeguarding lead and procedure) has gone from data/readiness.json"]
+    if g06["status"] == "Pass": return []
+    bad, contact = [], texts.get(".github/ISSUE_TEMPLATE/contact.yml", "")
+    if RECRUIT.search(contact): bad.append("R10 G06 is open but the contact form offers a research, design crit or working group sign-up (D25)")
+    if "Withdraw my research contribution" not in contact: bad.append("R10 the contact form has lost 'Withdraw my research contribution': withdrawal must always stay (D25)")
+    for f, t in texts.items():
+        if f.startswith(".github/ISSUE_TEMPLATE/") and not f.endswith("config.yml"):
+            if re.search(r"(?im)^name:.*ambassador|^labels:.*ambassador|under 13", t): bad.append(f"R10 G06 is open but {f} is an ambassador sign-up form (D25)")
+        if "template=ambassador.yml" in t and not f.startswith(("site/", "tools/")): bad.append(f"R10 {f} links to the ambassador sign-up form while G06 is open (D25)")
+    if "aused" not in g06.get("note", ""): bad.append("R10 gate G06's note does not say what is paused (D25)")
+    return bad
+
+def r11(read, subjects):
+    if subjects is None: print("note: R11 could not read the merge history (shallow clone): fetch full history to check gates against merged pull requests"); return []
+    try: rd = json.loads(read("data/readiness.json") or b"")
+    except ValueError: return ["R11 data/readiness.json is missing or not JSON"]
+    merged = set()
+    for s in subjects:
+        m = re.match(r"Merge pull request #(\d+) ", s) or re.search(r"\(#(\d+)\)$", s)
+        if m: merged.add(m.group(1))
+    bad = []
+    for g in rd.get("gates", []):
+        if g["status"] == "Pass": continue
+        for n in re.findall(r"(?i)\b(?:pull request|PR)\s*#?(\d+)\b", g["item"] + " " + g["who"] + " " + g["note"]):
+            if n in merged: bad.append(f"R11 gate {g['id']} is {g['status']} and waits on pull request {n}, which history shows merged: close it with the merge as evidence (D28)")
+    return bad
+
+def history():
+    sh = subprocess.run(["git", "rev-parse", "--is-shallow-repository"], cwd=R, capture_output=True, text=True).stdout.strip()
+    if sh != "false": return None
+    return subprocess.run(["git", "log", "--format=%s"], cwd=R, capture_output=True, text=True).stdout.splitlines()
+
 def run(tracked, texts, src, read):
-    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read)
+    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -121,8 +165,9 @@ def read(path):
     except FileNotFoundError: return None
 texts = {f: (read(f) or b"").decode("utf-8", "replace") for f in tracked if f.endswith(TEXT)}
 
+SUBJECTS = history()
 bad = run(tracked, texts, SRC, read)
-print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R8 problems: {len(bad)}")
+print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R11 problems: {len(bad)}")
 if bad:
     print("\n".join(bad[:40])); sys.exit(1)
 
@@ -153,4 +198,13 @@ expect("R8", r8(lambda p: ent.replace("url=site/index.html", "url=app/Amplify%20
 expect("R8", r8(lambda p: ent.replace("<title>Amplify: youth voice, carried further (independent, unofficial)</title>", "<title>UK Youth Parliament: Amplify portal</title>").encode() if p == "index.html" else read(p)))  # a UKYP title
 _ck = (read(".github/workflows/checks.yml") or b"").decode()
 expect("R9", r9(lambda p: _ck.replace("npx eslint .", "echo").encode() if p == ".github/workflows/checks.yml" else read(p)))   # a checks workflow without the lint step (D24)
+_ct = texts[".github/ISSUE_TEMPLATE/contact.yml"]
+expect("R10", r10({**texts, ".github/ISSUE_TEMPLATE/contact.yml": _ct.replace("        - Accessibility\n", "        - Accessibility\n        - Take part in user research (say only your role, age band and nation)\n")}, read))   # research sign-up back (D25)
+expect("R10", r10({**texts, ".github/ISSUE_TEMPLATE/contact.yml": _ct.replace("        - Withdraw my research contribution (give only your session code)\n", "")}, read))   # withdrawal lost (D25)
+expect("R10", r10({**texts, ".github/ISSUE_TEMPLATE/ambassador.yml": (read("docs/paused-forms/ambassador.yml") or b"").decode()}, read))   # the ambassador form back, with its Under 13 option (D25)
+expect("R10", r10({**texts, "CONTRIBUTING.md": "[register interest](../../issues/new?template=ambassador.yml)"}, read))   # a link to it back (D25)
+_rd = json.loads(read("data/readiness.json"))
+def _gate(gid, **kw): return lambda p: json.dumps({**_rd, "gates": [{**g, **kw} if g["id"] == gid else g for g in _rd["gates"]]}).encode() if p == "data/readiness.json" else read(p)
+expect("R10", r10(texts, _gate("G06", note="Blocks those programmes.")))   # G06 no longer says what is paused (D25)
+expect("R11", r11(_gate("G19", status="Open", evidence=[], who="Owner (pull request 5)"), SUBJECTS or ["Merge pull request #5 from cyberdudeuk/portal-v2"]))   # G19 left open after PR 5 merged (D28)
 sys.exit(1 if fails else 0)

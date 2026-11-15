@@ -65,7 +65,7 @@ Constraints:
 ### Now
 
 - Launch at UK Parliament Week (23 to 29 November 2026) (REQ-01, REQ-13)
-- Owner decisions before going public: merge, propriety, sharing (REQ-25)
+- Owner decisions before going public: safeguarding lead and sign-off (merge, propriety and sharing decided) (REQ-25)
 
 ### Next
 
@@ -107,7 +107,7 @@ Constraints:
 | REQ-22 | Transparent vision, strategy, roadmap and backlog, traced on GitHub with follow-up workflows; alerts; news ticker | Must | Done | Owner, 15 Nov 2026 | product, latest | S17, W9 |
 | REQ-23 | Faster loading on low-end phones | Should | Planned | Readiness review, 15 Nov 2026 | golive | W7 |
 | REQ-24 | Availability monitoring and vendored-library watch | Could | Planned | Readiness review, 15 Nov 2026 | golive | S15 |
-| REQ-25 | Owner decisions before the public launch (publishing decided 15 Nov 2026; propriety and safeguarding lead still open) | Must | Waiting on owner | Readiness review, 15 Nov 2026 | golive | S15 |
+| REQ-25 | Owner decisions before the public launch (publishing, merge and propriety decided 15 Nov 2026; safeguarding lead and owner sign-off still open) | Must | Waiting on owner | Readiness review, 15 Nov 2026 | golive | S15 |
 | REQ-26 | The public address opens the built portal, labelled independent and unofficial | Must | Done | Gap review, 15 Nov 2026 | home, about | R8 |
 
 ## How it is traced, tracked and managed on GitHub

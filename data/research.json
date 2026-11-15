@@ -2,7 +2,7 @@
  "title": "Shape Amplify: user research and design",
  "checked": "2026-11-15",
  "review_days": 90,
- "status": "No research sessions have run yet. The panel opens with this release and the first round is planned below. Until then, findings are hypotheses from published guidance and from feedback, and are labelled that way.",
+ "status": "No research sessions have run yet. Signing up to take part is paused until Amplify has a named safeguarding lead and a written safeguarding procedure (readiness gate G06). The rounds below are plans, not dates you can book. Until then, findings are hypotheses from published guidance and from feedback, and are labelled that way.",
  "intro": "Amplify should be shaped by the young people, families and professionals who use it, not by guesses. Take part in research, or help design screens, graphics and words. Every finding is published as themes, linked to what changed, and you never have to give your name in public.",
  "why": "Research tells us what to build next (the coming months) and where Amplify should go (the next few years). Design work with users makes it clearer, fairer and more accessible. Both are done in the open and are open to challenge.",
  "questions": [
@@ -41,8 +41,8 @@
  ],
  "sign_up": {
   "form_url": "",
-  "status_when_empty": "The private sign-up form is being set up (open item O14). Until it opens, register interest with the contact form and choose research: say only your role, age band and nation, never your name or contact details, because contact issues are public. Under 16? Ask a parent or carer to register for you. We reply in the issue when the panel opens.",
-  "group_route": "Schools, youth councils and youth groups can take part as a group: one adult registers and tells us roughly how many and what ages. We then send the participant information to that adult, and sessions run in your setting under your safeguarding policy."
+  "status_when_empty": "Signing up for research is paused. Before anyone your age takes part, Amplify needs a named safeguarding lead (the adult responsible for keeping you safe) and a written plan for what happens if something worries us (readiness gate G06, open items O12 and O14). Until both are in place we are not asking anyone to sign up, so please do not post that you want to take part. If you already took part, you can still withdraw what you said at any time with the contact form: give only your session code.",
+  "group_route": "Group sessions are paused too, for the same reason. Once a safeguarding lead is in place, schools, youth councils and youth groups will be able to take part as a group: one adult registers and tells us roughly how many and what ages. We then send the participant information to that adult, and sessions run in your setting under your safeguarding policy."
  },
  "promise": [
   "Taking part is voluntary. You can stop at any time, skip any question and withdraw what you said within 30 days, without giving a reason.",

@@ -35,6 +35,12 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       release, written into the built graph and list, links only to real nodes, and every tooltip term has an entry
   S17 the product backlog and roadmap trace to real screens and real checks, and the alerts strip, Share button and a
       pausable, reduced-motion-safe news ticker are on the page
+  S18 the privacy promise matches what the pledge form does: no "no name" claim while it asks for one, the name box
+      says it is optional and saved only on this device, a "Clear my pledges from this device" control removes the
+      pledges from storage, and every browser-storage access sits inside try/catch (defect D27)
+  S19 while readiness gate G06 (a named safeguarding lead and procedure) is not passed, nothing on the portal invites
+      a young person to sign up for research or as an ambassador: no sign-up link, the pause and its reason are on
+      both screens and in the data, and the route to withdraw a research contribution stays (defect D25)
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -195,6 +201,10 @@ def s13(texts):
 ACCURACY = [  # (pattern that must not appear, why) - each from a defect found in review
     (r"</a>\s*Parliament", "S14 a link ends just before 'Parliament', so another organisation reads as part of the UK Youth Parliament's name (D13)"),
     (r"(?i)(?:get|gets|getting|have|has) the vote at(?:&nbsp;|\s)+16", "S14 the page states votes at 16 as law; the Bill is still before Parliament (D14)"),
+    (r"(?i)public sharing is on|can appear on the pledge wall|direct messaging to adults", "S14 the page claims public sharing, a pledge wall or messaging; the portal has none: pledges stay on this device (D26)"),
+    (r"(?i)one message on the day it comes back", "S14 the page promises a message on the day the petition comes back; nothing is collected, so no one can be sent one (D26)"),
+    (r"(?i)relaunch is being planned", "S14 the page says a relaunch is planned; no source says so (D26)"),
+    (r"(?i)a named adult confirms", "S14 the page says a named adult confirms a pledge; nothing in the portal does that (D26)"),
 ]
 
 
@@ -208,6 +218,8 @@ def s14(texts):
 
 
 NAMED_EVIDENCE = {"CodeQL", "health.yml", "upkeep task"}
+PR_EVIDENCE = re.compile(r"^PR #(\d+)$")  # a merged pull request: the gate's note must record the merge and its UTC time (D28)
+OWNER_DECISION = "Owner decision"          # an owner's stated decision: the note must say when it was closed and what was decided
 
 
 def s15(texts):
@@ -221,7 +233,12 @@ def s15(texts):
     for g in rd.get("gates", []):
         if g["status"] in ("Pass", "Partial") and not g["evidence"]: bad.append(f"S15 gate {g['id']} is {g['status']} with no evidence")
         for e in g["evidence"]:
-            if e not in checks: bad.append(f"S15 gate {g['id']} cites {e}, which is not a check")
+            m = PR_EVIDENCE.match(e)
+            if m:
+                if not re.search(r"pull request " + m.group(1) + r"\b.*\bmerged\b.*\bUTC\b", g["note"]): bad.append(f"S15 gate {g['id']} cites {e} but its note does not record the merge and its UTC time (D28)")
+            elif e == OWNER_DECISION:
+                if not re.match(r"Closed \d{1,2} \w{3} \d{4}: owner ", g["note"]): bad.append(f"S15 gate {g['id']} cites an owner decision but its note does not say when it was closed and what the owner decided")
+            elif e not in checks: bad.append(f"S15 gate {g['id']} cites {e}, which is not a check")
         if g["status"] != "Pass" and not g["who"]: bad.append(f"S15 gate {g['id']} is {g['status']} but names nobody who must act")
         for o in re.findall(r"\bO\d+\b", g["who"] + " " + g["note"]):
             if o not in opens: bad.append(f"S15 gate {g['id']} cites open item {o}, which is not in the registers")
@@ -304,6 +321,52 @@ def s17(texts):
     return bad
 
 
+STORAGE = re.compile(r"\b(?:localStorage|sessionStorage)\.(?:getItem|setItem|removeItem|clear)\(")
+
+
+def s18(texts):
+    """S18 the privacy promise matches what the pledge form does (D27)."""
+    page, bad = texts.get("index.html", ""), []
+    try: sg = json.loads(texts.get("data/safeguards.json", ""))
+    except ValueError: return ["S18 data/safeguards.json is missing or not JSON"]
+    asks_name = "Name or initials" in page
+    for t in sg.get("parents", []) + [a.get("how", "") for a in sg.get("audiences", [])]:
+        if asks_name and re.search(r"(?i)\bno name\b|asks for no[^.]*\bname\b", t): bad.append("S18 the safeguards say Amplify asks for no name, but the pledge form asks for a name or initials (D27)")
+    if asks_name and "Name or initials (optional)" not in page: bad.append("S18 the pledge form's name box does not say it is optional (D27)")
+    if asks_name and "Saved only on this device" not in page: bad.append("S18 the pledge form does not say the name is saved only on this device (D27)")
+    if not re.search(r'onClick="\{\{ clearPledges \}\}"[^>]*>Clear my pledges from this device</button>', page): bad.append("S18 the pledge screen has lost its 'Clear my pledges from this device' button (D27)")
+    m = re.search(r"\n  ampClearPledges\(\) \{(.*?)\n  \}", page, re.S)
+    if not m or "delete p.userPledges" not in m.group(1) or "userPledges: []" not in m.group(1): bad.append("S18 clearing pledges no longer removes them from the screen and from browser storage (D27)")
+    for x in STORAGE.finditer(page):
+        before = page[max(0, x.start() - 400):x.start()]
+        t = before.rfind("try {"); c = before.rfind("} catch")
+        if t < 0 or c > t: bad.append(f"S18 browser storage is used outside try/catch, so a blocked store would break the page: …{page[x.start():x.start() + 50]}… (D27)")
+    return bad
+
+
+def s19(texts):
+    """S19 while G06 is open, nothing invites a young person to sign up for research or as an ambassador (D25)."""
+    try:
+        rd, rs, iv = (json.loads(texts.get(k, "")) for k in ("data/readiness.json", "data/research.json", "data/involve.json"))
+    except ValueError:
+        return ["S19 readiness, research or involve data is missing or not JSON"]
+    g06 = next((g for g in rd.get("gates", []) if g["id"] == "G06"), None)
+    if g06 is None: return ["S19 readiness gate G06 (safeguarding lead and procedure) has gone from data/readiness.json"]
+    if g06["status"] == "Pass": return []
+    page, bad = texts.get("index.html", ""), []
+    for hole, what in (("{{ amRegister }}", "the ambassador sign-up form"), ("{{ rsInterest }}", "registering interest in research"), ("{{ rsForm }}", "the research sign-up form"), ("template=ambassador.yml", "the ambassador sign-up form")):
+        if hole in page: bad.append(f"S19 G06 is {g06['status']} but the portal links to {what} (D25)")
+    for need, where in (("Signing up is paused", "Ambassadors & champions"), ("Joining the research panel is paused", "Research & design")):
+        if need not in page: bad.append(f"S19 the {where} screen does not say signing up is paused (D25)")
+    if "{{ rsWithdraw }}" not in page: bad.append("S19 the Research & design screen has lost the route to withdraw a research contribution, which must always stay (D25)")
+    su = rs.get("sign_up", {})
+    if su.get("form_url"): bad.append("S19 data/research.json has a sign-up form while G06 is open (D25)")
+    if "paused" not in su.get("status_when_empty", "") or "safeguarding lead" not in su.get("status_when_empty", ""): bad.append("S19 data/research.json does not say sign-up is paused until a safeguarding lead is in place (D25)")
+    if "aused" not in iv.get("ambassadors", {}).get("status", ""): bad.append("S19 data/involve.json does not say ambassador sign-ups are paused (D25)")
+    if "aused" not in g06.get("note", ""): bad.append("S19 gate G06's note does not say what is paused (D25)")
+    return bad
+
+
 def s11(read):
     import make_docs
     bad = []
@@ -331,7 +394,7 @@ def texts_of(files):
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t)
 
 
 if __name__ == "__main__":
@@ -343,7 +406,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S17 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S19 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -380,6 +443,13 @@ if __name__ == "__main__":
     expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**json.loads(s)["gates"][0], "evidence": ["Z9"]}]})))))       # evidence is not a check
     expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**json.loads(s)["gates"][5], "who": ""}]})))))           # open gate, nobody to act
     expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**json.loads(s)["gates"][5], "who": "Owner (O99)"}]})))))  # cites a missing open item
+    gate = lambda gid: next(g for g in json.loads(files[rdj].decode())["gates"] if g["id"] == gid)
+    expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**gate("G19"), "note": "Closed."}]})))))      # PR evidence, merge not recorded (D28)
+    expect("S15", s15(texts_of(broken(rdj, lambda s: json.dumps({**json.loads(s), "gates": [{**gate("G20"), "note": "Fine."}]})))))       # owner decision, undated (D28)
+    expect("S14", s14(texts_of(broken(idx, lambda s: s.replace("this prototype has no public pledge wall and no messaging", "Public sharing is on, your first name and initial can appear on the pledge wall")))))  # D26
+    expect("S14", s14(texts_of(broken(idx, lambda s: s.replace("A pledge here stays on this device: nothing is collected or sent.", "Pledging means you get one message on the day it comes back.")))))  # D26
+    expect("S14", s14(texts_of(broken(idx, lambda s: s.replace("A pledge is a promise to sign any new petition", "A relaunch is being planned for the autumn term; a pledge is a promise to sign")))))  # D26
+    expect("S14", s14(texts_of(broken(idx, lambda s: s.replace("Ask a trusted adult before you pledge.", "A named adult confirms on your behalf.")))))  # D26
     sdj = "data/service-design.json"
     def edit(fn):  # change the parsed data, not the text, so the break survives any reformatting
         def go(s):
@@ -408,4 +478,16 @@ if __name__ == "__main__":
     expect("S17", s17(texts_of(broken(pdj, edit(lambda d: d["backlog"][0].update(checks=["Z9"]))))))                      # proved by no check
     expect("S17", s17(texts_of(broken(pdj, edit(lambda d: d["roadmap"][0]["items"][0]["reqs"].append("REQ-99"))))))      # roadmap cites a missing requirement
     expect("S17", s17(texts_of(broken(idx, lambda s: s.replace('aria-pressed="{{ tkPaused }}"', "")))))                   # ticker cannot be paused
+    sgj = "data/safeguards.json"
+    expect("S18", s18(texts_of(broken(sgj, edit(lambda d: d["parents"].__setitem__(0, "Amplify asks for no account, no name and no contact details."))))))  # the old claim (D27)
+    expect("S18", s18(texts_of(broken(idx, lambda s: s.replace("Name or initials (optional)", "Name or initials")))))                 # name not marked optional
+    expect("S18", s18(texts_of(broken(idx, lambda s: s.replace(">Clear my pledges from this device</button>", ">Clear</button>")))))  # clear control lost
+    expect("S18", s18(texts_of(broken(idx, lambda s: s.replace("delete p.userPledges;", "")))))                                     # clears the screen, not storage
+    expect("S18", s18(texts_of(broken(idx, lambda s: s + "<script>localStorage.setItem('userPledges', '[]');</script>"))))           # storage outside try/catch
+    ivj, rsj = "data/involve.json", "data/research.json"
+    expect("S19", s19(texts_of(broken(idx, lambda s: s.replace("{{ amPaused }}", "{{ amPaused }} <a href=\"{{ amRegister }}\">Open the form</a>")))))  # sign-up link back (D25)
+    expect("S19", s19(texts_of(broken(idx, lambda s: s.replace("Joining the research panel is paused", "Join the research panel")))))          # pause notice lost
+    expect("S19", s19(texts_of(broken(idx, lambda s: s.replace("{{ rsWithdraw }}", "#")))))                                                   # withdrawal lost
+    expect("S19", s19(texts_of(broken(rsj, edit(lambda d: d["sign_up"].update(form_url="https://forms.example/x"))))))                      # a form while G06 is open
+    expect("S19", s19(texts_of(broken(ivj, edit(lambda d: d["ambassadors"].update(status="Pilot. Until then you can register interest."))))))  # pause gone from data
     sys.exit(1 if fails else 0)

@@ -4,7 +4,7 @@ Generated from `data/research.json` by `tools/make_docs.py`; edit that, not this
 
 Amplify should be shaped by the young people, families and professionals who use it, not by guesses. Take part in research, or help design screens, graphics and words. Every finding is published as themes, linked to what changed, and you never have to give your name in public.
 
-**Status:** No research sessions have run yet. The panel opens with this release and the first round is planned below. Until then, findings are hypotheses from published guidance and from feedback, and are labelled that way.
+**Status:** No research sessions have run yet. Signing up to take part is paused until Amplify has a named safeguarding lead and a written safeguarding procedure (readiness gate G06). The rounds below are plans, not dates you can book. Until then, findings are hypotheses from published guidance and from feedback, and are labelled that way.
 
 | File | For | What it is |
 |---|---|---|

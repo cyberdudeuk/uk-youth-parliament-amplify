@@ -2,7 +2,7 @@
  "title": "Release log",
  "checked": "2026-11-15",
  "review_days": 30,
- "current": "1.0.0-rc.1",
+ "current": "1.0.0-rc.2",
  "releases": [
   {
    "version": "1.0.0",
@@ -11,6 +11,40 @@
    "title": "Launch at UK Parliament Week 2026",
    "summary": "Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.",
    "entries": []
+  },
+  {
+   "version": "1.0.0-rc.2",
+   "date": "2026-11-15",
+   "status": "Release candidate",
+   "title": "Safeguarding and honesty fixes before launch",
+   "summary": "Four launch blockers fixed (defects D25 to D28), and the readiness record brought up to date.",
+   "entries": [
+    {
+     "screen": "research",
+     "kind": "UPD",
+     "what": "Research & design: signing up to take part is paused until Amplify has a named safeguarding lead and procedure (gate G06), and the screen says why in plain words. Withdrawing a research contribution stays available through the contact form (D25)."
+    },
+    {
+     "screen": "ambassadors",
+     "kind": "UPD",
+     "what": "Ambassadors & champions: sign-ups are paused, and the sign-up form is taken down, until safeguarding is in place; the screen says why (D25)."
+    },
+    {
+     "screen": "pledge",
+     "kind": "UPD",
+     "what": "Pledge: the name box is optional and says it is saved only on this device; a new 'Clear my pledges from this device' button removes them; the phone view no longer claims public sharing, a pledge wall, messaging or a message on the day, and the unsourced relaunch sentence is gone (D26, D27)."
+    },
+    {
+     "screen": "trust",
+     "kind": "UPD",
+     "what": "Safeguards & audiences: the privacy promise to parents now matches what the pledge form does (D27)."
+    },
+    {
+     "screen": "golive",
+     "kind": "UPD",
+     "what": "Go-live readiness: G19 closed (pull request 5 merged 15 Nov 2026, 09:26 UTC); G20 closed (owner confirmed 15 Nov 2026 that Amplify is a personal project, so employer agreement does not apply); new Must gate G24, owner sign-off by 22 November; G06 stays open and lists what is paused (D28)."
+    }
+   ]
   },
   {
    "version": "1.0.0-rc.1",

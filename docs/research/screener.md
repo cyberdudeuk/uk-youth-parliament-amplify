@@ -33,6 +33,6 @@ Minimums, not targets. Protected characteristics are recorded only as totals, ne
 
 ## Signing up
 
-The private sign-up form is being set up (open item O14). Until it opens, register interest with the contact form and choose research: say only your role, age band and nation, never your name or contact details, because contact issues are public. Under 16? Ask a parent or carer to register for you. We reply in the issue when the panel opens.
+Signing up for research is paused. Before anyone your age takes part, Amplify needs a named safeguarding lead (the adult responsible for keeping you safe) and a written plan for what happens if something worries us (readiness gate G06, open items O12 and O14). Until both are in place we are not asking anyone to sign up, so please do not post that you want to take part. If you already took part, you can still withdraw what you said at any time with the contact form: give only your session code.
 
 Contact is by form only: no email address is published. Everything posted on GitHub is public, so never post names, schools or contact details.

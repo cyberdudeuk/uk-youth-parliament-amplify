@@ -21,6 +21,13 @@
     <summary>Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.</summary>
   </entry>
   <entry>
+    <title>Amplify 1.0.0-rc.2: Safeguarding and honesty fixes before launch</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.2</id>
+    <updated>2026-11-15T00:00:00Z</updated>
+    <summary>Four launch blockers fixed (defects D25 to D28), and the readiness record brought up to date.</summary>
+  </entry>
+  <entry>
     <title>Amplify 1.0.0-rc.1: Sources, safeguards, self-checks and help</title>
     <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
     <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.1</id>

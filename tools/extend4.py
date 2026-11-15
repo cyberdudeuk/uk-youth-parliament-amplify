@@ -6,7 +6,7 @@
   explainer    A bar on every screen saying what the screen is for, tailored to the persona the reader picks. The pick
                stays on the device (browser storage inside try/catch, with an in-memory fallback) and is never sent.
   involve      Ways to help build, check and look after the portal, by time and skill, with the contribution rules
-  ambassadors  Supporter, champion and ambassador levels; a pilot until the owner confirms it can run safely (O12)
+  ambassadors  Supporter, champion and ambassador levels; sign-ups paused until a safeguarding lead is in place (G06, O12, D25)
   campaign     Posters, a social card and badge drawn in code, template posts, an assembly script and key dates
   learn        Ready-to-run training sessions with audiences, timings, outcomes and the screens to use
   stem         STEM and tech: sourced facts, free opportunities in eight lanes (science, innovation, data and AI, digital,
@@ -128,7 +128,7 @@ LOGIC4 = r'''
       ivRoles: inv.roles, ivRules: inv.rules.map((t) => ({ t })), ivHow: inv.how.map((h, k) => ({ n: String(k + 1), s: h.s, d: h.d })),
       amStatus: amb.status || "", amIntro: amb.intro || "", amTiers: amb.tiers.map((t) => ({ tier: t.tier, who: t.who, time: t.time, does: t.does.map((d) => ({ d })) })),
       amPromise: amb.promise.map((t) => ({ t })), amConduct: amb.conduct.map((t) => ({ t })),
-      amRegister: repo + "/issues/new?template=" + (amb.register || "ambassador.yml"),
+      amPaused: amb.paused || "Sign-ups open once safeguarding is in place.",  // D25: no sign-up link while readiness gate G06 is open
       cpIntro: cp.intro || "", cpAssets: cp.assets.map((a) => ({ name: a.name, src: "./" + a.file, alt: a.alt, view: () => this.ampArt(a.name, "./" + a.file, a.alt, a.file) })),
       cpPosts: cp.posts.map((x, k) => ({ channel: x.channel, text: x.text, copy: () => this.copy(x.text, "post" + k), copied: s.copied === "post" + k ? "Copied" : "Copy" })),
       cpSocial: cp.social_note || "", cpTags: (cp.hashtags || []).join("  "), cpTagNote: cp.hashtag_note || "",
@@ -242,7 +242,7 @@ SCREENS4 = f'''
         <sc-if value="{{{{ sAmbassadors }}}}" hint-placeholder-val="{{{{ false }}}}">
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
           {head("icAmb", 70, "Ambassadors and champions", "{{ amIntro }}")}
-          <div role="note" style="{NOTE} border: 1px dashed oklch(var(--t2) 0.16 70 / 0.8); background: oklch(var(--t1) 0.16 70 / 0.12);"><span style="font-weight: 800;">Pilot.</span> {{{{ amStatus }}}}</div>
+          <div role="note" style="{NOTE} border: 1px dashed oklch(var(--t2) 0.16 70 / 0.8); background: oklch(var(--t1) 0.16 70 / 0.12);"><span style="font-weight: 800;">Sign-ups paused.</span> {{{{ amStatus }}}}</div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px;">
             <sc-for list="{{{{ amTiers }}}}" as="t" hint-placeholder-count="3">
               <section class="amp-card" style="{PANEL} display: flex; flex-direction: column; gap: 8px;">
@@ -257,7 +257,7 @@ SCREENS4 = f'''
             <section style="{PANEL}"><h2 style="{H2}">Our promise to you</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{{{ amPromise }}}}" as="x" hint-placeholder-count="4"><li>{{{{ x.t }}}}</li></sc-for></ul></section>
             <section style="{PANEL}"><h2 style="{H2}">Code of conduct</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{{{ amConduct }}}}" as="x" hint-placeholder-count="4"><li>{{{{ x.t }}}}</li></sc-for></ul><p style="margin: 10px 0 0; {SMALL}">Anyone working with young people for the programme follows {term("safeguarding", "safeguarding")} rules and, where needed, has a {term("dbs", "background check")}.</p></section>
           </div>
-          <section style="{PANEL} display: flex; flex-wrap: wrap; align-items: center; gap: 14px;"><div style="flex: 1 1 280px; min-width: 0;"><h2 style="margin: 0 0 4px; font-size: 17px; font-weight: 800;">Register your interest</h2><p style="margin: 0; {SMALL}">A short public form on GitHub that asks only for your role, nation, age band and what you would like to do. No names or contact details.</p></div>{ext("amRegister", "Open the form")}</section>
+          <section aria-labelledby="amp-amb-paused" style="{PANEL} display: flex; flex-direction: column; gap: 6px;"><h2 id="amp-amb-paused" style="margin: 0; font-size: 17px; font-weight: 800;">Signing up is paused</h2><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">We are not taking sign-ups from anyone, of any age, until Amplify has a named adult responsible for keeping you safe (a safeguarding lead) and a written plan for what happens if something worries us. {{{{ amPaused }}}}</p><p style="margin: 0; {SMALL}">Please do not post on GitHub to sign up. Worried about your safety? Use the helplines on Safeguarding &amp; support.</p></section>
         </div>
         </sc-if>
 

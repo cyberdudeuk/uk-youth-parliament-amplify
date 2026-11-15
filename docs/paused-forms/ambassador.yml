@@ -1,3 +1,7 @@
+# PAUSED (15 Nov 2026, defect D25): this issue form is out of .github/ISSUE_TEMPLATE/ so GitHub does not offer it.
+# Ambassador sign-ups, including the 'Under 13' option, stay paused while readiness gate G06 (a named safeguarding
+# lead and procedure) is open. check_repo.py R10 fails if it returns before G06 is Pass. To reopen: pass G06, then
+# move this file back and restore the sign-up link on the Ambassadors & champions screen.
 name: Ambassador or champion (register interest)
 description: Register interest in being a supporter, champion or ambassador. Public; no names or contact details.
 title: "Ambassador interest: "

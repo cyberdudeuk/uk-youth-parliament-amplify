@@ -9,6 +9,10 @@ body:
         This form is public. Please do not include personal details such as your
         home address, phone number, school, or anything that identifies you or
         anyone else. If you are under 18, ask a trusted adult before posting.
+
+        Signing up for user research, design crits and working groups is paused
+        until Amplify has a named safeguarding lead and procedure. You can still
+        withdraw a research contribution at any time.
   - type: dropdown
     id: kind
     attributes:
@@ -18,8 +22,6 @@ body:
         - Something is wrong or out of date
         - An idea or feedback
         - Accessibility
-        - Take part in user research (say only your role, age band and nation)
-        - Join a design crit or working group
         - Withdraw my research contribution (give only your session code)
     validations:
       required: true
