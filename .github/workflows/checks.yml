@@ -13,3 +13,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 -I tools/check_repo.py
+      - run: pip install -r tools/requirements.txt
+      - run: python3 -I tools/check_site.py

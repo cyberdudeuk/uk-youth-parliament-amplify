@@ -11,11 +11,14 @@ may reuse govukOS's shared page runtime, but it is not a govukOS app.
 
 | Path | What it is |
 |---|---|
-| `app/Amplify Portal.dc.html` | The portal |
+| `app/Amplify Portal.dc.html` | The portal, as designed (the design source, byte for byte) |
 | `app/Local Routes Map.html` | The local routes map |
 | `app/support.js`, `app/image-slot.js` | The page runtime the portal loads |
 | `app/petition-754954.json` | A snapshot of UK Parliament petition 754954, with the date it was taken (see below) |
-| `tools/check_repo.py` | The repository's checks (run by CI on every push) |
+| `site/` | The published portal, built from `app/` by `tools/build_site.py`. Never edit it by hand |
+| `vendor/` | Leaflet 1.9.4 (the bytes the design pinned by SRI) and the land outline the map draws |
+| `tools/build_site.py`, `tools/art.py` | The build: each design-to-page transform is named, with its reason, in `site/build.json` |
+| `tools/check_repo.py`, `tools/check_site.py` | The repository's and the built site's checks (run by CI on every push) |
 | `SECURITY.md` | How to report a security problem privately, and the automated security checks |
 | `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` | How to take part, and the conduct expected |
 | `.github/workflows/` | CI: the repository checks, CodeQL, dependency review and OpenSSF Scorecard |
@@ -24,6 +27,25 @@ may reuse govukOS's shared page runtime, but it is not a govukOS app.
 The portal files are copied byte for byte from the private Claude artifact
 they were built in. Each copy is checked against that artifact's SHA-256 (see
 `tools/sources.json`).
+
+## Build and publish
+
+```sh
+pip install -r tools/requirements.txt
+python3 -I tools/build_site.py      # app/ -> site/
+python3 -I tools/check_site.py      # S1-S8, each proved by a negative test
+python3 -m http.server --directory site 8000
+```
+
+The build turns the design canvas into a page that can be sent: it opens on
+the portal rather than the side-by-side review view, replaces the six image
+drop-zones with illustrations drawn from the brand's six primitives, says on
+the splash, the masthead and the footer that this is an unofficial prototype,
+labels the five seed pledges as invented samples, adds the footer (disclaimers,
+disclosures, transparency, contact form, barcode and QR colophon), connects the
+copilot to the published host's model capability, and gives the map a local
+land outline (the design's CARTO street tiles now return "API key required"
+images). `site/` is published as a private Claude artifact.
 
 ## Not here, by rule
 

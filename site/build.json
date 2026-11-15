@@ -1,0 +1,175 @@
+{
+  "what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
+  "build_id": "AMP-20261115-eca6502c",
+  "built": "2026-11-15",
+  "built_long": "15 November 2026",
+  "petition_date_long": "1 October 2026",
+  "inputs_sha256": "eca6502ca4de8adc82fe8f61fc0b656f60d4644d51ea9b9d8c4a075cbfd8fbbd",
+  "design_artifact": {
+    "title": "UK Youth Parliament: Amplify portal",
+    "slug": "88bd84a2-2d34-4e82-b68b-34b38228782c",
+    "version": "1793963623-c2de",
+    "folder": "project/"
+  },
+  "repository": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify",
+  "transforms": [
+    {
+      "name": "lang",
+      "why": "screen readers need the page language",
+      "matches": 1
+    },
+    {
+      "name": "head",
+      "why": "a published page needs a title, a description and an icon",
+      "matches": 1
+    },
+    {
+      "name": "no-image-slot-runtime",
+      "why": "the drop-zone runtime is design-time only, and asks for a state file that does not exist",
+      "matches": 1
+    },
+    {
+      "name": "default-view",
+      "why": "the side-by-side review view is for design review; a published portal opens on the portal",
+      "matches": 1
+    },
+    {
+      "name": "default-view-fallback",
+      "why": "the same default where props are absent",
+      "matches": 1
+    },
+    {
+      "name": "slot-splash-logo",
+      "why": "no partner logo is licensed; the Amplify mark beside it already identifies the page",
+      "matches": 1
+    },
+    {
+      "name": "slot-hero",
+      "why": "a drop-zone cannot ship; the annual sitting is drawn instead",
+      "matches": 1
+    },
+    {
+      "name": "slot-participation",
+      "why": "a drop-zone cannot ship; the brand's primitives replace the photo",
+      "matches": 1
+    },
+    {
+      "name": "slot-equality",
+      "why": "a drop-zone cannot ship; the brand's primitives replace the photo",
+      "matches": 1
+    },
+    {
+      "name": "slot-education",
+      "why": "a drop-zone cannot ship; the brand's primitives replace the photo",
+      "matches": 1
+    },
+    {
+      "name": "slot-empowerment",
+      "why": "a drop-zone cannot ship; the brand's primitives replace the photo",
+      "matches": 1
+    },
+    {
+      "name": "masthead-unofficial",
+      "why": "the masthead names UKYP; it must also say this is not UKYP's own service",
+      "matches": 1
+    },
+    {
+      "name": "splash-unofficial",
+      "why": "the splash is the first screen; the disclaimer belongs on it too",
+      "matches": 1
+    },
+    {
+      "name": "pledge-samples",
+      "why": "the five seed pledges read as real people; they are invented and must say so",
+      "matches": 1
+    },
+    {
+      "name": "pledge-local",
+      "why": "say where a pledge goes: nowhere, it stays on this device",
+      "matches": 1
+    },
+    {
+      "name": "copilot-ready",
+      "why": "the copilot only knew the design host's window.claude.complete; on the published page the model is reached through the artifact's sample capability",
+      "matches": 2
+    },
+    {
+      "name": "copilot-call",
+      "why": "route both copilot calls through one helper that picks whichever model connection the host offers",
+      "matches": 2
+    },
+    {
+      "name": "copilot-helpers",
+      "why": "the helper itself: design host first, then the published artifact's sample capability, else none (the existing fallback text then shows)",
+      "matches": 1
+    },
+    {
+      "name": "footer",
+      "why": "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
+      "matches": 1
+    },
+    {
+      "name": "map-back-link",
+      "why": "the portal is index.html in the built site",
+      "matches": 1
+    },
+    {
+      "name": "map-leaflet-css",
+      "why": "a published artifact blocks stylesheets from unpkg; ship the same bytes (SRI-verified at build)",
+      "matches": 1
+    },
+    {
+      "name": "map-leaflet-js",
+      "why": "serve Leaflet from the site too, so the map has no third-party script dependency",
+      "matches": 1
+    },
+    {
+      "name": "map-icon",
+      "why": "favicon",
+      "matches": 1
+    },
+    {
+      "name": "map-outline",
+      "why": "street tiles are remote images, which a published artifact blocks; draw a local land outline under the markers so the map always shows where an area is",
+      "matches": 1
+    },
+    {
+      "name": "map-outline-theme",
+      "why": "the outline follows the theme toggle, as the tiles do",
+      "matches": 1
+    },
+    {
+      "name": "map-no-street-tiles",
+      "why": "the design's CARTO tiles now answer every request with an 'API key required' image (a 200, so the page's own tileerror fallback never fires), and a published artifact blocks remote images anyway: the local outline is the basemap",
+      "matches": 1
+    },
+    {
+      "name": "map-attribution",
+      "why": "credit what the map now draws",
+      "matches": 1
+    },
+    {
+      "name": "map-outline-attribution",
+      "why": "the map's own attribution control names the outline source",
+      "matches": 1
+    }
+  ],
+  "files": {
+    "Local Routes Map.html": "7756a891ca5cf31ef2e745fe1769b83ad498f0ee3aa2c47840db0d5b747c08c8",
+    "index.html": "a3fed3618ef9a01a3822ca2ab2a6e3a347d932a56ff83490345c7678e41818a6",
+    "petition-754954.json": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a",
+    "support.js": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe",
+    "art/barcode.svg": "3b34556a7e3a0005283a1bb7cf07aaf25ff44d242a323fdac5043252257e385c",
+    "art/education.svg": "1e654b11eeb077f1cd08a84048bdb3f6aff365a6caa19eb9905fd540cf0e9cee",
+    "art/empowerment.svg": "6a1f93604c95d5be736278c8a86c1862ded148dd1c59d81b5a72930d53ed6d86",
+    "art/equality.svg": "2a516ba220b00b6d2ca210659da6c92bc08a0911a97cc71bcbc4a0ea0535a67a",
+    "art/favicon.svg": "4bc404bcd672e0797c4548dc113ea64756e2b7e95ae94df522aa607666e03b21",
+    "art/hero.svg": "b7937db570cd2a1a9e6721f7b11175dfb18b7bdf58ce6d29af5201ff9886512b",
+    "art/participation.svg": "4c6a91a5905f0f492efcb5c195d101f5e7182c0cdbb0eaf127283354ffc42e3d",
+    "art/qr.svg": "f8859fb08c558177c84808a963028e81410458f2de09ccebae362ffac92e90c8",
+    "vendor/outline.json": "3b340557f4098a50165a8ec8f25cb77469bc86067455a853ea5710d8ebd3784b",
+    "vendor/leaflet-1.9.4/LICENSE.txt": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
+    "vendor/leaflet-1.9.4/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
+    "vendor/leaflet-1.9.4/leaflet.js": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+  }
+}
