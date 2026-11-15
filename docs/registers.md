@@ -15,6 +15,7 @@ Generated from `data/registers.json` by `tools/make_docs.py`; shown live on the 
 | D7 | 2026-11-15 | After fonts and scripts were self-hosted, the footer still said they loaded from Google Fonts and unpkg. | The disclosure was hand-written copy with no check tying it to how the page actually loads. | Disclosure rewritten. | S3 |
 | D8 | 2026-11-15 | R6 and S6 read a share link being built in JavaScript (href=" + u + ") as a missing file. | The link pattern matched inside script strings. | Both checks skip values that are string concatenations; their negative tests still catch a real missing file. | R6, S6 |
 | D9 | 2026-11-15 | CI rebuilt site/build.json with its file list in a different order, so S1 failed on GitHub but passed locally. | The file list followed the filesystem's directory order, which differs between machines. | The file list is sorted. | S1 (caught it in CI) |
+| D10 | 2026-11-15 | The outbound-host checks S7 and S9 missed upper-case or spaced tags such as <SCRIPT SRC=...>, so a remote script could have slipped past. Found by GitHub's code scanning. | The patterns were case-sensitive and expected src= with no spaces. | S7 and S9 ignore case and spacing, and S9 also covers img and iframe tags. | S7 and S9, with three new negative tests |
 
 ## Open, and who must act
 

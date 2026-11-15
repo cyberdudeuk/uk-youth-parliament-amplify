@@ -107,9 +107,9 @@ def s7(texts):
         if not f.endswith((".html", ".js")): continue
         for u in re.findall(r"""<script[^>]+src=["'](https?://[^"']+)""", s):
             if not u.startswith(SCRIPT_HOSTS): bad.append(f"S7 site/{f} loads a script from a blocked host: {u[:60]}")
-        for u in re.findall(r"""<link[^>]+rel=["']stylesheet["'][^>]*href=["'](https?://[^"']+)""", s):
+        for u in re.findall(r"""<link[^>]+rel\s*=\s*["']stylesheet["'][^>]*href\s*=\s*["'](https?://[^"']+)""", s, re.I):
             if not u.startswith(STYLE_HOSTS): bad.append(f"S7 site/{f} loads a stylesheet from a blocked host: {u[:60]}")
-        for u in re.findall(r"""<img[^>]+src=["'](https?://[^"']+)""", s):
+        for u in re.findall(r"""<img[^>]+src\s*=\s*["'](https?://[^"']+)""", s, re.I):
             bad.append(f"S7 site/{f} loads a remote image, which a published artifact blocks: {u[:60]}")
         for u in re.findall(r"""tileLayer\(\s*["']([^"']+)""", s):
             bad.append(f"S7 site/{f} loads remote map tiles: {u[:60]}")
@@ -120,8 +120,8 @@ def s9(texts):
     bad = []
     for f, s in texts.items():
         if not f.endswith(".html"): continue
-        for tag in re.findall(r"<(?:script|link)\b[^>]*>", s):
-            m = re.search(r"""(?:src|href)=["'](https?:)?//""", tag)
+        for tag in re.findall(r"<(?:script|link|img|iframe)\b[^>]*>", s, re.I):  # any case, any spacing (D10)
+            m = re.search(r"""(?:src|href)\s*=\s*["']?(https?:)?//""", tag, re.I)
             if m: bad.append(f"S9 site/{f} reaches another host on load: {tag[:80]}")
     return bad
 
@@ -199,5 +199,8 @@ if __name__ == "__main__":
     expect("S8", s8(broken("art/qr.svg", lambda s: s + " ")))
     expect("S11", s11(lambda p: "edited by hand" if p == "CHANGELOG.md" else rd(p)))
     expect("S9", s9(texts_of(broken(idx, lambda s: s + '<link rel="preconnect" href="https://fonts.gstatic.com">'))))
+    expect("S9", s9(texts_of(broken(idx, lambda s: s + '<SCRIPT SRC="https://cdn.example/x.js"></SCRIPT>'))))   # upper case (D10)
+    expect("S9", s9(texts_of(broken(idx, lambda s: s + '<script src = //cdn.example/x.js></script>'))))          # spaced, unquoted (D10)
+    expect("S7", s7(texts_of(broken(idx, lambda s: s + '<IMG SRC="https://cdn.example/a.png">'))))                # upper case (D10)
     expect("S10", s10(texts_of(broken(idx, lambda s: s.replace("window.__resources", "window.__unused")))))
     sys.exit(1 if fails else 0)

@@ -9,7 +9,7 @@ Needs Playwright with Chromium (pip install -r tools/requirements-browser.txt; p
 
 The axe check is vaccinated against a page with a deliberately unlabelled image, which it must flag.
 """
-import argparse, asyncio, json, os, subprocess, sys, threading, http.server, functools, socketserver
+import argparse, asyncio, json, os, sys, threading, http.server, functools, socketserver
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(R, "site")

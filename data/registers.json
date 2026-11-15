@@ -73,6 +73,14 @@
    "root_cause": "The file list followed the filesystem's directory order, which differs between machines.",
    "fix": "The file list is sorted.",
    "check": "S1 (caught it in CI)"
+  },
+  {
+   "id": "D10",
+   "found": "2026-11-15",
+   "what": "The outbound-host checks S7 and S9 missed upper-case or spaced tags such as <SCRIPT SRC=...>, so a remote script could have slipped past. Found by GitHub's code scanning.",
+   "root_cause": "The patterns were case-sensitive and expected src= with no spaces.",
+   "fix": "S7 and S9 ignore case and spacing, and S9 also covers img and iframe tags.",
+   "check": "S7 and S9, with three new negative tests"
   }
  ],
  "open": [
