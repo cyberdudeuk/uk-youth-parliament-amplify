@@ -1,0 +1,84 @@
+{
+ "title": "Coverage by priority (MoSCoW)",
+ "checked": "2026-11-15",
+ "rows": [
+  {
+   "p": "Must",
+   "theme": "Youth voice & participation",
+   "where": "Your route in, MYPs & regions, Campaign hub, Trusted sources",
+   "status": "Covered"
+  },
+  {
+   "p": "Must",
+   "theme": "Democracy & votes at 16",
+   "where": "Issue domains, Policy landscape, What's new, Trusted sources",
+   "status": "Covered"
+  },
+  {
+   "p": "Must",
+   "theme": "Safety & safeguarding",
+   "where": "Safeguarding & support, Trusted sources",
+   "status": "Covered, helplines re-checked 15 Nov 2026"
+  },
+  {
+   "p": "Must",
+   "theme": "Wellbeing & mental health",
+   "where": "Safeguarding & support, Trusted sources",
+   "status": "Covered"
+  },
+  {
+   "p": "Must",
+   "theme": "Children's rights (UNCRC)",
+   "where": "Ethics & values, Safeguarding & support, Trusted sources",
+   "status": "Covered"
+  },
+  {
+   "p": "Must",
+   "theme": "Pan-UK coverage: England, Scotland, Wales and Northern Ireland",
+   "where": "Trusted sources (nation filter and coverage grid), Your route in, Constituencies",
+   "status": "Covered; the grid shows any nation and theme without a nation-specific source"
+  },
+  {
+   "p": "Should",
+   "theme": "Work, pay & NEET",
+   "where": "Issue domains, What's new, Trusted sources",
+   "status": "Covered"
+  },
+  {
+   "p": "Should",
+   "theme": "Policy & strategy",
+   "where": "Policy landscape, Trusted sources",
+   "status": "Covered"
+  },
+  {
+   "p": "Should",
+   "theme": "Data & evidence",
+   "where": "Constituencies, Track record, Trusted sources",
+   "status": "Covered"
+  },
+  {
+   "p": "Could",
+   "theme": "Housing, transport, climate, justice",
+   "where": "Issue domains (themes only)",
+   "status": "Open: no vetted sources yet"
+  },
+  {
+   "p": "Could",
+   "theme": "Easy Read and BSL versions",
+   "where": "Inclusion & reach",
+   "status": "Open: needs specialist production"
+  },
+  {
+   "p": "Won't (this release)",
+   "theme": "Accounts, sign-in or any personal data",
+   "where": "—",
+   "status": "Excluded by design: the portal collects nothing"
+  },
+  {
+   "p": "Won't (this release)",
+   "theme": "Live petition or Parliament data in the page",
+   "where": "—",
+   "status": "Excluded: the published host blocks outside calls; data is snapshotted and dated"
+  }
+ ]
+}

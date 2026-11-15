@@ -6,14 +6,19 @@
 <title>Amplify: youth voice, carried further</title>
 <meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">
 <link rel="icon" href="./art/favicon.svg" type="image/svg+xml">
+<meta name="artefact:id" content="amplify-portal">
+<meta name="artefact:version" content="AMP-20261115-bf500020">
+<meta name="artefact:class" content="portal">
+<meta name="artefact:as-of" content="2026-11-15">
+<meta name="artefact:review-date" content="2026-12-15">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261115-bf500020", "version": "AMP-20261115-bf500020", "dateModified": "2026-11-15", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
+<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/babel.min.js"};</script>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-<link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Space+Mono:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />
+<link href="./vendor/fonts/fonts.css" rel="stylesheet" />
 <style>
   html, body { margin: 0; padding: 0; }
   body {
@@ -45,6 +50,22 @@
   a:hover { color: oklch(var(--t4) 0.16 300); border-bottom-color: oklch(var(--t4) 0.16 300 / 0.8); }
   button { font: inherit; cursor: pointer; }
   :focus-visible { outline: 3px solid oklch(var(--t2) 0.16 70); outline-offset: 3px; border-radius: 4px; }
+
+  /* Motion added by the build: one purposeful entrance per screen, staggered cards, a live pulse. All of it stops
+     under the in-app motion switch and under prefers-reduced-motion (the two rules below this block). */
+  @keyframes amp-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes amp-pulse { 0%, 100% { box-shadow: 0 0 0 0 oklch(0.75 0.17 145 / 0.55); } 70% { box-shadow: 0 0 0 8px oklch(0.75 0.17 145 / 0); } }
+  main > div { animation: amp-rise .42s cubic-bezier(.2,.7,.2,1) both; }
+  .amp-card { animation: amp-rise .5s cubic-bezier(.2,.7,.2,1) both; transition: transform .18s ease, border-color .18s ease; }
+  .amp-card:nth-child(2) { animation-delay: .04s; } .amp-card:nth-child(3) { animation-delay: .08s; } .amp-card:nth-child(4) { animation-delay: .12s; }
+  .amp-card:nth-child(5) { animation-delay: .16s; } .amp-card:nth-child(n+6) { animation-delay: .2s; }
+  .amp-card:hover { transform: translateY(-2px); }
+  .amp-pulse { animation: amp-pulse 2.2s ease-out infinite; }
+  main [role="region"], .amp-card, main [role="table"] { position: relative; }
+  .amp-sr { position: absolute !important; left: 0; top: 0; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  @media (max-width: 420px) { main div[style*="grid-template-columns"]:not([role="row"]) { grid-template-columns: minmax(0, 1fr) !important; } main a { overflow-wrap: anywhere; max-width: 100%; white-space: normal !important; flex-shrink: 1 !important; box-sizing: border-box; } main a span { min-width: 0; overflow-wrap: anywhere; } }
+  @media (max-width: 640px) { .amp-row4 { grid-template-columns: minmax(0, 1fr) !important; gap: 2px !important; } .amp-agehead { display: none !important; } .amp-agelabel { display: inline !important; } }
+  main button:focus-visible, main a:focus-visible, main input:focus-visible, footer a:focus-visible { outline: 3px solid oklch(0.8 0.17 70); outline-offset: 2px; }
   body[data-motion="off"] *, body[data-motion="off"] *::before, body[data-motion="off"] *::after { animation: none !important; transition: none !important; }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
   body[data-dys="on"] { font-family: "Atkinson Hyperlegible", sans-serif !important; }
@@ -300,6 +321,34 @@
       </button>
 
       <main id="amp-main" tabindex="-1" style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; outline: none;">
+        <sc-if value="{{ tbShow }}" hint-placeholder-val="{{ false }}">
+        <div role="region" aria-label="Guided tour" class="amp-tourbar" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; border-radius: 18px; padding: 12px 16px; border: 1px solid oklch(var(--t2) 0.16 300 / 0.6); background: linear-gradient(120deg, oklch(var(--t1) 0.16 300 / 0.22), oklch(var(--t1) 0.16 175 / 0.12));">
+          <span aria-hidden="true" style="{{ icTour }}"></span>
+          <div style="flex: 1 1 260px; min-width: 0;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Tour &middot; {{ tbTitle }}</div><div style="font-size: 14.5px; font-weight: 800; margin-top: 2px;">{{ tbStep }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8); margin-top: 2px;">{{ tbBody }}</div></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-if value="{{ tbHasNext }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ tbNext }}" style="display: inline-flex; align-items: center; gap: 7px; min-height: 40px; border-radius: 999px; padding: 8px 16px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: oklch(var(--t2) 0.16 145); color: var(--on-accent);">{{ tbNextLabel }}</button></sc-if>
+            <button type="button" onClick="{{ tbBack }}" style="display: inline-flex; align-items: center; gap: 7px; min-height: 40px; border-radius: 999px; padding: 8px 16px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb) / 0.9);">All tour steps</button>
+            <button type="button" onClick="{{ tbEnd }}" style="display: inline-flex; align-items: center; gap: 7px; min-height: 40px; border-radius: 999px; padding: 8px 16px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb) / 0.9);">End tour</button>
+          </div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ rbShow }}" hint-placeholder-val="{{ false }}">
+        <div role="note" style="{{ rbStyle }}"><span style="{{ rbPill }}">{{ rbKind }}</span><span style="flex: 1 1 240px; min-width: 0;">{{ rbWhat }}</span><button type="button" onClick="{{ goChanges }}" style="border: 0; background: transparent; color: inherit; text-decoration: underline; font-size: 13px; cursor: pointer; padding: 6px;">Release log</button></div>
+        </sc-if>
+        <sc-if value="{{ igShow }}" hint-placeholder-val="{{ false }}">
+        <div role="note" aria-label="About the content on this screen" style="{{ igStyle }}"><span style="{{ igPill }}">{{ igClass }}</span><span style="flex: 1 1 260px; min-width: 0;">{{ igWhy }}</span></div>
+        </sc-if>
+        <sc-if value="{{ igAppShow }}" hint-placeholder-val="{{ false }}">
+        <div role="note" style="border-radius: 14px; padding: 8px 14px; font-size: 13px; border: 1px dashed oklch(var(--t2) 0.17 25 / 0.8); background: oklch(var(--t1) 0.16 25 / 0.1);"><span style="font-weight: 800;">App view is a design concept.</span> {{ igAppWhy }}</div>
+        </sc-if>
+        <sc-if value="{{ lnHubShow }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-card" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; border-radius: 18px; padding: 12px 16px; border: 1px solid oklch(var(--t2) 0.16 70 / 0.55); background: linear-gradient(120deg, oklch(var(--t1) 0.16 70 / 0.2), oklch(var(--t1) 0.16 25 / 0.08));">
+          <span aria-hidden="true" style="{{ icLaunch }}"></span>
+          <div style="flex: 1 1 240px; min-width: 0;"><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Launching at {{ lnName }}</div><div style="font-size: 14.5px; font-weight: 800;">{{ lnDates }} &middot; <span class="amp-count">{{ lnState }}</span></div></div>
+          <button type="button" onClick="{{ goLaunch }}" style="display: inline-flex; align-items: center; gap: 7px; min-height: 40px; border-radius: 999px; padding: 8px 16px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: oklch(var(--t2) 0.16 145); color: var(--on-accent);">See the launch plan</button>
+        </div>
+        </sc-if>
+
 
         <sc-if value="{{ sHub }}" hint-placeholder-val="{{ true }}">
         <div style="display: flex; flex-direction: column; gap: 14px;">
@@ -2028,6 +2077,461 @@
         </div>
         </sc-if>
 
+
+        <sc-if value="{{ sSources }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 215);"><span aria-hidden="true" style="{{ icSources }}"></span>Sources &amp; updates</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Trusted sources, checked and dated</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Official bodies, parliaments, regulators and the voluntary sector, for young people, parents and carers, and adult allies. Every card says when it was checked and how sure we are.</p>
+          </div>
+          <sc-if value="{{ ampFailed }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; margin: 0;">The source list could not load. Nothing is shown rather than a guess. Try again, or use the helplines on Safeguarding &amp; support.</p>
+          </sc-if>
+          <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 12px;">
+            <label for="amp-src-q" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Search sources</label>
+            <div style="display: flex; align-items: center; gap: 8px; border: 1px solid rgb(var(--film-rgb) / 0.18); border-radius: 12px; background: rgb(var(--film-rgb) / 0.06); padding: 0 12px;">
+              <span aria-hidden="true" style="{{ icSearch }}"></span>
+              <input id="amp-src-q" type="search" value="{{ srcQ }}" onChange="{{ setSrcQ }}" placeholder="voting, helpline, NEET, Wales&hellip;" style="flex: 1 1 auto; min-width: 0; border: 0; background: transparent; color: rgb(var(--ink-rgb)); padding: 11px 0; font-size: 16px;" />
+            </div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Theme</div>
+            <div role="group" aria-label="Filter by theme" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ themeChips }}" as="c" hint-placeholder-count="5">
+                <button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">{{ c.label }}</button>
+              </sc-for>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+              <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 8px;">Nation</div><div role="group" aria-label="Filter by nation" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ nationChips }}" as="c" hint-placeholder-count="5">
+                <button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">{{ c.label }}</button>
+              </sc-for>
+            </div></div>
+              <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 8px;">Who it is for</div><div role="group" aria-label="Filter by audience" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ audChips }}" as="c" hint-placeholder-count="5">
+                <button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">{{ c.label }}</button>
+              </sc-for>
+            </div></div>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+              <p aria-live="polite" style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ srcCount }}</p>
+              <button type="button" onClick="{{ clearSrc }}" style="min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.18); border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb) / 0.86); padding: 6px 14px; font-size: 13px; cursor: pointer;">Clear filters</button>
+            </div>
+          </div>
+          <sc-if value="{{ srcNone }}" hint-placeholder-val="{{ false }}">
+            <p style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; margin: 0;">No source matches those filters. Clear them to see all sources.</p>
+          </sc-if>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 14px;">
+            <sc-for list="{{ srcCards }}" as="x" hint-placeholder-count="6">
+              <article class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; {{ x.bar }} display: flex; flex-direction: column; gap: 9px;">
+                <div style="display: flex; align-items: center; gap: 10px;"><span aria-hidden="true" style="{{ x.icon }}"></span><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ x.tag }} &middot; {{ x.kind }}</span></div>
+                <h2 style="margin: 0; font-size: 16.5px; font-weight: 800; line-height: 1.3; letter-spacing: -0.015em;">{{ x.name }}</h2>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{ x.what }}</p>
+                <sc-if value="{{ x.hasContact }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'Space Mono', monospace; font-size: 12.5px; font-weight: 700; color: oklch(var(--t4) 0.16 25);">{{ x.contact }}</p></sc-if>
+                <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 700;">Use it to:</span> {{ x.use }}</p>
+                <sc-if value="{{ x.hasNote }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8); font-style: italic;">{{ x.note }}</p></sc-if>
+                <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">For: {{ x.aud }} &middot; {{ x.nations }}</p>
+                <div style="margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-top: 8px; border-top: 1px solid rgb(var(--film-rgb) / 0.1);">
+                  <span style="font-size: 12px;"><span style="{{ x.provStyle }} font-weight: 700;">{{ x.prov }}</span> &middot; {{ x.checked }}</span>
+                  <a href="{{ x.url }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Open site<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+          <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 4px;">Coverage across the UK</div>
+            <p style="margin: 0 0 12px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Sources specific to each nation, plus those that cover the whole UK. Amber means only UK-wide sources so far: an honest gap, not a hidden one.</p>
+            <div role="region" aria-label="Coverage across the UK" tabindex="0" style="overflow-x: auto;">
+              <div role="table" aria-label="Number of sources by nation and theme: nation-specific plus UK-wide" style="display: flex; flex-direction: column; gap: 3px; min-width: 760px; font-size: 13px;">
+                <div role="row" style="{{ panCols }}"><span role="columnheader" style="padding: 8px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Nation</span><sc-for list="{{ panHead }}" as="h" hint-placeholder-count="9"><span role="columnheader" style="padding: 8px 4px; text-align: center; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); letter-spacing: 0.04em;">{{ h.label }}</span></sc-for></div>
+                <sc-for list="{{ panRows }}" as="r" hint-placeholder-count="4"><div role="row" style="{{ panCols }}"><span role="rowheader" style="padding: 8px; font-weight: 700;">{{ r.nation }}</span><sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="9"><span role="cell" style="{{ c.style }}"><span aria-hidden="true">{{ c.v }}</span><span class="amp-sr">{{ c.sr }}</span></span></sc-for></div></sc-for>
+              </div>
+            </div>
+          </div>
+          <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 4px;">Coverage by priority (MoSCoW)</div>
+            <p style="margin: 0 0 12px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">What the portal must, should and could cover, where each lives, and what is still open.</p>
+            <div role="table" aria-label="Coverage by priority: theme, where it is covered, and status" style="display: flex; flex-direction: column; font-size: 13px;">
+              <div role="row" class="amp-row4" style="display: grid; grid-template-columns: 120px minmax(0, 1.2fr) minmax(0, 1.6fr) minmax(0, 1.4fr); gap: 10px; padding: 8px 4px;"><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Priority</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Theme</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Where</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Status</span></div>
+              <sc-for list="{{ moscow }}" as="m" hint-placeholder-count="6">
+                <div role="row" class="amp-row4" style="display: grid; grid-template-columns: 120px minmax(0, 1.2fr) minmax(0, 1.6fr) minmax(0, 1.4fr); gap: 10px; padding: 9px 4px; border-top: 1px solid rgb(var(--film-rgb) / 0.1);"><span role="cell" style="{{ m.pStyle }}">{{ m.p }}</span><span role="cell" style="font-weight: 700;">{{ m.theme }}</span><span role="cell">{{ m.where }}</span><span role="cell">{{ m.status }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sLatest }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 70);"><span aria-hidden="true" style="{{ icLatest }}"></span>Sources &amp; updates &middot; {{ latAsOf }}</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">What has changed for young people</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Dated changes in law, pay, safety, data and youth voice, newest first, each with its source and how sure we are. Things announced are marked as announced, not done.</p>
+          </div>
+          <div role="group" aria-label="Filter updates by category" style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ latChips }}" as="c" hint-placeholder-count="5">
+                <button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">{{ c.label }}</button>
+              </sc-for>
+            </div>
+          <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+            <sc-for list="{{ latItems }}" as="x" hint-placeholder-count="5">
+              <li class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; gap: 16px;">
+                <span aria-hidden="true" style="{{ x.dot }}"></span>
+                <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 7px;">
+                  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px;"><span aria-hidden="true" style="{{ x.icon }}"></span><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);"><time>{{ x.date }}</time> &middot; {{ x.cat }}</span>
+                    <sc-if value="{{ x.hasStatus }}" hint-placeholder-val="{{ false }}"><span style="border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 999px; padding: 2px 9px; font-size: 12px; font-weight: 700;">{{ x.status }}</span></sc-if></div>
+                  <h2 style="margin: 0; font-size: 17px; font-weight: 800; letter-spacing: -0.015em;">{{ x.title }}</h2>
+                  <p style="margin: 0; font-size: 14px; line-height: 1.6; max-width: 72ch;">{{ x.body }}</p>
+                  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 12.5px;">
+                    <span><span style="{{ x.provStyle }} font-weight: 700;">{{ x.prov }}</span> &middot; {{ x.source }}</span>
+                    <a href="{{ x.url }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">Source<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a>
+                  </div>
+                </div>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sTrust }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 25);"><span aria-hidden="true" style="{{ icTrust }}"></span>Sources &amp; updates</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Safe for every young person, and for the adults behind them</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Who Amplify is for, the rules it follows, how it reaches every voice, and what parents, carers and anyone with parental responsibility need to know.</p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px;">
+            <sc-for list="{{ audiences }}" as="a" hint-placeholder-count="5">
+              <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 8px;">
+                <span aria-hidden="true" style="{{ a.icon }}"></span>
+                <h2 style="margin: 0; font-size: 15.5px; font-weight: 800; line-height: 1.3;">{{ a.name }}</h2>
+                <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 700;">Needs:</span> {{ a.need }}</p>
+                <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 700;">Here:</span> {{ a.how }}</p>
+              </div>
+            </sc-for>
+          </div>
+          <section aria-labelledby="amp-parents" style="border: 1px solid oklch(var(--t1) 0.16 340 / 0.4); border-radius: 24px; background: linear-gradient(150deg, oklch(var(--t1) 0.16 340 / 0.14), rgb(var(--film-rgb) / 0.03)); padding: 22px 24px;">
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 340); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icParent }}"></span>For parents, carers and guardians</div>
+            <h2 id="amp-parents" style="margin: 0 0 14px; font-size: 20px; font-weight: 900; letter-spacing: -0.03em;">Backing a young campaigner, safely</h2>
+            <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px;">
+              <sc-for list="{{ parentsTips }}" as="t" hint-placeholder-count="6">
+                <li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: oklch(var(--t2) 0.16 340); color: var(--on-accent); font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;">{{ t.n }}</span><span style="font-size: 13.5px; line-height: 1.55;">{{ t.t }}</span></li>
+              </sc-for>
+            </ol>
+            <p style="margin: 14px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">More for adults: open Trusted sources and choose <span style="font-weight: 700;">Parents &amp; carers</span>.</p>
+          </section>
+          <section aria-labelledby="amp-age" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 70); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icAge }}"></span>Age and access</div>
+            <h2 id="amp-age" style="margin: 0 0 8px; font-size: 19px; font-weight: 800; letter-spacing: -0.025em;">What you can do yourself at each age, and when an adult acts for you</h2>
+            <p style="margin: 0 0 14px; font-size: 13.5px; line-height: 1.55; max-width: 76ch;">{{ ageIntro }}</p>
+            <div role="table" aria-label="Routes by age band: yourself, with an adult, or an adult on your behalf" style="display: flex; flex-direction: column; gap: 6px;">
+              <div role="row" class="amp-row4 amp-agehead" style="display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(4, minmax(0, 1fr)); gap: 6px;"><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); padding: 6px;">Route</span><sc-for list="{{ ageBands }}" as="b" hint-placeholder-count="4"><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); padding: 6px;">{{ b.b }}</span></sc-for></div>
+              <sc-for list="{{ ageRows }}" as="r" hint-placeholder-count="6">
+                <div role="row" class="amp-row4" style="display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(4, minmax(0, 1fr)); gap: 6px; padding-top: 6px; border-top: 1px solid rgb(var(--film-rgb) / 0.1);">
+                  <span role="rowheader" style="padding: 6px; font-size: 13.5px; font-weight: 800; line-height: 1.35;">{{ r.what }}<span style="display: block; font-weight: 400; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8); margin-top: 3px;">{{ r.why }} <span style="font-style: italic;">({{ r.prov }})</span></span></span>
+                  <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="4"><span role="cell" style="{{ c.style }}"><span class="amp-agelabel" style="display: none; font-weight: 700;">{{ c.band }}: </span>{{ c.c }}</span></sc-for>
+                </div>
+              </sc-for>
+            </div>
+            <h3 style="margin: 18px 0 8px; font-size: 15.5px; font-weight: 800;">Acting on a young person's behalf: for parents, carers and adult allies</h3>
+            <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ onBehalf }}" as="o" hint-placeholder-count="6"><li style="font-size: 13.5px; line-height: 1.5;">{{ o.t }}</li></sc-for></ul>
+          </section>
+          <section aria-labelledby="amp-voices" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 120); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icGlobe }}"></span>Every voice</div>
+            <h2 id="amp-voices" style="margin: 0 0 14px; font-size: 19px; font-weight: 800; letter-spacing: -0.025em;">Reaching young people of every background, language and place</h2>
+            <dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px 18px;">
+              <sc-for list="{{ everyVoice }}" as="v" hint-placeholder-count="6">
+                <div style="border-left: 3px solid oklch(var(--t2) 0.16 120); padding-left: 12px;"><dt style="font-size: 14px; font-weight: 700; line-height: 1.35;">{{ v.who }}</dt><dd style="margin: 4px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ v.how }}</dd></div>
+              </sc-for>
+            </dl>
+          </section>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px;">
+            <section aria-labelledby="amp-deaf" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 215); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icDeaf }}"></span>d/Deaf participation</div>
+              <h2 id="amp-deaf" style="margin: 0 0 12px; font-size: 18px; font-weight: 800; letter-spacing: -0.02em;">A checklist for campaigns that include d/Deaf young people</h2>
+              <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+                <sc-for list="{{ deafTips }}" as="t" hint-placeholder-count="6"><li style="display: flex; gap: 10px; font-size: 13.5px; line-height: 1.5;"><span aria-hidden="true" style="flex: 0 0 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: oklch(var(--t2) 0.16 215); color: var(--on-accent); font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;">{{ t.n }}</span><span>{{ t.t }}</span></li></sc-for>
+              </ol>
+            </section>
+            <section aria-labelledby="amp-langs" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 120); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icLang }}"></span>Languages of the UK</div>
+              <h2 id="amp-langs" style="margin: 0 0 12px; font-size: 18px; font-weight: 800; letter-spacing: -0.02em;">Official, regional and sign languages, and what Amplify supports</h2>
+              <dl style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                <sc-for list="{{ langs }}" as="l" hint-placeholder-count="7"><div style="border-left: 3px solid oklch(var(--t2) 0.16 120); padding-left: 12px;"><dt style="font-size: 14px; font-weight: 800;">{{ l.lang }} <span style="font-weight: 400; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">&middot; {{ l.where }}</span></dt><dd style="margin: 3px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ l.status }}</dd></div></sc-for>
+              </dl>
+            </section>
+          </div>
+          <section aria-labelledby="amp-frameworks" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 25); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icCheck }}"></span>Rules we follow</div>
+            <h2 id="amp-frameworks" style="margin: 0 0 14px; font-size: 19px; font-weight: 800; letter-spacing: -0.025em;">Law, codes, standards and strategies, and how Amplify meets each</h2>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <sc-for list="{{ frameworks }}" as="f" hint-placeholder-count="6">
+                <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 14px 16px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 14px; align-items: start;">
+                  <div style="min-width: 0;"><div style="font-size: 14.5px; font-weight: 800; line-height: 1.35;">{{ f.name }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ f.kind }} &middot; {{ f.owner }}</div></div>
+                  <span style="{{ f.pill }}">{{ f.status }}</span>
+                  <p style="grid-column: 1 / -1; margin: 0; font-size: 13.5px; line-height: 1.55;">{{ f.how }}</p>
+                  <div style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px;"><span style="{{ f.provStyle }} font-weight: 700;">{{ f.prov }}</span><a href="{{ f.url }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; font-size: 12px;">Read it<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+          <section aria-labelledby="amp-ucd" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 215); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icUcd }}"></span>Designed with its users</div>
+            <h2 id="amp-ucd" style="margin: 0 0 12px; font-size: 19px; font-weight: 800; letter-spacing: -0.025em;">How Amplify stays user-centred, and where it has not been tested yet</h2>
+            <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
+              <sc-for list="{{ ucd }}" as="u" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.55;">{{ u.t }}</li></sc-for>
+            </ul>
+          </section>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sHealth }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 145);"><span aria-hidden="true" style="{{ icHealth }}"></span>Sources &amp; updates &middot; build {{ hBuild }}</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Portal health</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">This page checks itself every time it opens: how fresh each data set is, how sure each source is, which checks guard the build, and what is still open. It reports; it never hides a problem.</p>
+          </div>
+          <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px;">
+            <span aria-hidden="true" style="{{ hIcon }}"></span>
+            <div style="flex: 1 1 260px;"><div role="status" style="{{ hStatusStyle }}">{{ hStatus }}</div><div style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Built {{ hBuilt }} &middot; {{ hTotal }} sources &middot; {{ hHelplines }} helplines &middot; {{ hOverdue }} past their review date</div></div>
+            <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+              <div><div class="amp-count" style="font-size: 26px; font-weight: 900;">{{ hV }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Verified</div></div>
+              <div><div class="amp-count" style="font-size: 26px; font-weight: 900;">{{ hS }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Search-sourced</div></div>
+              <div><div class="amp-count" style="font-size: 26px; font-weight: 900;">{{ hK }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Leads</div></div>
+            </div>
+          </div>
+          <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 10px;">Freshness</div>
+            <div role="table" aria-label="Each data set, when it was last checked, when it is next due, and its state" style="display: flex; flex-direction: column; font-size: 13.5px;">
+              <div role="row" style="display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); gap: 8px; padding: 8px 4px;"><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Data set</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Checked</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Next review</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">State</span></div>
+              <sc-for list="{{ hSets }}" as="d" hint-placeholder-count="5">
+                <div role="row" style="display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); gap: 8px; padding: 9px 4px; border-top: 1px solid rgb(var(--film-rgb) / 0.1);"><span role="cell" style="font-weight: 700;">{{ d.label }}</span><span role="cell">{{ d.checked }}</span><span role="cell">{{ d.next }}</span><span role="cell" style="display: inline-flex; align-items: center; gap: 8px;"><span aria-hidden="true" class="{{ d.pulse }}" style="{{ d.dot }}"></span>{{ d.state }}</span></div>
+              </sc-for>
+            </div>
+            <sc-if value="{{ hAllFresh }}" hint-placeholder-val="{{ true }}"><p style="margin: 12px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Every source is inside its review window.</p></sc-if>
+            <ul style="margin: 12px 0 0; padding-left: 18px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><sc-for list="{{ hOverdueList }}" as="o" hint-placeholder-count="0"><li>{{ o.name }}: last checked {{ o.checked }}</li></sc-for></ul>
+          </div>
+          <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 6px;">Content integrity: what kind of content each screen holds</div>
+            <dl style="margin: 0 0 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px 16px;"><sc-for list="{{ igClasses }}" as="c" hint-placeholder-count="5"><div><dt style="{{ c.style }}">{{ c.k }}</dt><dd style="margin: 2px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ c.v }}</dd></div></sc-for></dl>
+            <div role="table" aria-label="Each screen, its content class and why" style="display: flex; flex-direction: column; font-size: 13px;">
+              <div role="row" class="amp-row4" style="display: grid; grid-template-columns: minmax(0, 1fr) 110px minmax(0, 3fr); gap: 10px; padding: 8px 4px;"><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Screen</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Class</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Why</span></div>
+              <sc-for list="{{ igRows }}" as="r" hint-placeholder-count="8"><div role="row" class="amp-row4" style="display: grid; grid-template-columns: minmax(0, 1fr) 110px minmax(0, 3fr); gap: 10px; padding: 8px 4px; border-top: 1px solid rgb(var(--film-rgb) / 0.1);"><span role="cell" style="font-weight: 700;">{{ r.screen }}</span><span role="cell" style="{{ r.style }}">{{ r.cls }}</span><span role="cell">{{ r.why }}</span></div></sc-for>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 145); margin-bottom: 10px;"><span aria-hidden="true" style="{{ icCheck }}"></span>Checks guarding every build</div>
+              <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px;">
+                <sc-for list="{{ hChecks }}" as="c" hint-placeholder-count="8"><li style="display: flex; gap: 10px; font-size: 13px; line-height: 1.45;"><span style="flex: 0 0 34px; font-family: 'Space Mono', monospace; font-weight: 700; color: oklch(var(--t4) 0.14 145);">{{ c.id }}</span><span>{{ c.what }}</span></li></sc-for>
+              </ul>
+              <p style="margin: 12px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Each check is proved by a deliberate break before it is trusted. A passing check is evidence, not proof.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+                <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 25); margin-bottom: 10px;"><span aria-hidden="true" style="{{ icBug }}"></span>Defects found and fixed</div>
+                <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+                  <sc-for list="{{ hDefects }}" as="d" hint-placeholder-count="4"><li style="font-size: 13px; line-height: 1.5;"><span style="font-family: 'Space Mono', monospace; font-weight: 700;">{{ d.id }}</span> {{ d.what }} <span style="color: rgb(var(--ink-rgb) / 0.72);">Fix: {{ d.fix }} Check: {{ d.check }}.</span></li></sc-for>
+                </ul>
+              </div>
+              <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+                <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 70); margin-bottom: 10px;"><span aria-hidden="true" style="{{ icTodo }}"></span>Still open, and who must act</div>
+                <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+                  <sc-for list="{{ hOpen }}" as="o" hint-placeholder-count="4"><li style="font-size: 13px; line-height: 1.5;"><span style="font-family: 'Space Mono', monospace; font-weight: 700;">{{ o.id }}</span> {{ o.what }} <span style="color: rgb(var(--ink-rgb) / 0.72);">Who: {{ o.who }}.</span></li></sc-for>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+
+        <sc-if value="{{ sAbout }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 175);"><span aria-hidden="true" style="{{ icAbout }}"></span>Help &amp; get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">About Amplify</h1>
+            <p style="margin: 0; font-size: 17px; line-height: 1.5; font-weight: 700; max-width: 66ch;">{{ abMission }}</p>
+          </div>
+          <section style="border: 1px solid oklch(var(--t1) 0.16 175 / 0.4); border-radius: 24px; background: linear-gradient(150deg, oklch(var(--t1) 0.16 175 / 0.14), rgb(var(--film-rgb) / 0.03)); padding: 22px 24px; display: flex; flex-direction: column; gap: 10px;">
+            <h2 style="margin: 0; font-size: 18px; font-weight: 900;">Who is behind it</h2>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; max-width: 76ch;">{{ abWho }}</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; max-width: 76ch;">{{ abImpartial }}</p>
+            <a href="{{ abProfile }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 800;"><span aria-hidden="true" style="{{ icGit }}"></span>github.com/cyberdudeuk<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens GitHub in a new tab)</span></a>
+          </section>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Why it exists</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px;"><sc-for list="{{ abRationale }}" as="x" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.55;">{{ x.t }}</li></sc-for></ul></section>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Aims, on the four cornerstones</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px;"><sc-for list="{{ abAims }}" as="x" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.55;">{{ x.t }}</li></sc-for></ul></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Goals</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px;"><sc-for list="{{ abGoals }}" as="x" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.55;">{{ x.t }}</li></sc-for></ul></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Objectives: what it delivers</h2><ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px;"><sc-for list="{{ abObjectives }}" as="x" hint-placeholder-count="4"><li style="font-size: 13.5px; line-height: 1.55;">{{ x.t }}</li></sc-for></ul></section>
+          </div>
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Outcomes it is working towards, and how each will be judged</h2>
+            <div role="table" aria-label="Outcomes and how each will be measured" style="display: flex; flex-direction: column; font-size: 13.5px;">
+              <div role="row" class="amp-row4" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; padding: 6px 4px;"><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;">Outcome</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;">How it will be judged</span></div>
+              <sc-for list="{{ abOutcomes }}" as="o" hint-placeholder-count="4"><div role="row" class="amp-row4" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; padding: 8px 4px; border-top: 1px solid rgb(var(--film-rgb) / 0.1);"><span role="cell" style="font-weight: 700;">{{ o.outcome }}</span><span role="cell">{{ o.measure }}</span></div></sc-for>
+            </div>
+            <p style="margin: 12px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ abNote }}</p>
+          </section>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sChanges }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 145);"><span aria-hidden="true" style="{{ icChanges }}"></span>Sources &amp; updates</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Release log</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Every release, newest first, and exactly what is new or changed on which screen. The same flags appear in the drawer and as a note at the top of each screen.</p>
+          </div>
+          <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
+            <sc-for list="{{ releases }}" as="r" hint-placeholder-count="3">
+              <li class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; gap: 16px;">
+                <span aria-hidden="true" style="{{ r.dot }}"></span>
+                <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+                  <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Version {{ r.version }} &middot; <time>{{ r.date }}</time> &middot; {{ r.status }}</div>
+                  <h2 style="margin: 0; font-size: 18px; font-weight: 800; letter-spacing: -0.015em;">{{ r.title }}</h2>
+                  <p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{ r.summary }}</p>
+                  <sc-if value="{{ r.hasEntries }}" hint-placeholder-val="{{ false }}">
+                    <ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+                      <sc-for list="{{ r.entries }}" as="x" hint-placeholder-count="5">
+                        <li style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; font-size: 13.5px; line-height: 1.5;"><span style="{{ x.pill }}">{{ x.kind }}</span>
+                          <button type="button" onClick="{{ x.go }}" style="border: 0; background: transparent; color: inherit; font-weight: 800; text-decoration: underline; cursor: pointer; padding: 0; font-size: 13.5px;">{{ x.screen }}</button><span style="flex: 1 1 260px; min-width: 0;">{{ x.what }}</span></li>
+                      </sc-for>
+                    </ul>
+                  </sc-if>
+                </div>
+              </li>
+            </sc-for>
+          </ol>
+          <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">The same log is kept in the repository as CHANGELOG.md, generated from the same data.</p>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sHelp }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 300);"><span aria-hidden="true" style="{{ icHelp }}"></span>Help &amp; get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Help, tutorials and guided tours</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">A user manual, an adoption guide for each kind of user, step-by-step tutorials, and tours that walk you from screen to screen with a step bar at the top.</p>
+          </div>
+          <section aria-labelledby="amp-tours" style="border: 1px solid oklch(var(--t1) 0.16 300 / 0.4); border-radius: 24px; background: linear-gradient(150deg, oklch(var(--t1) 0.16 300 / 0.14), rgb(var(--film-rgb) / 0.03)); padding: 22px 24px;">
+            <h2 id="amp-tours" style="margin: 0 0 12px; font-size: 19px; font-weight: 900; letter-spacing: -0.025em;">Take a guided tour</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <sc-for list="{{ hpTours }}" as="t" hint-placeholder-count="5">
+                <button type="button" onClick="{{ t.go }}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 42px; border-radius: 999px; padding: 8px 16px; border: 1px solid oklch(var(--t2) 0.16 300 / 0.6); background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); font-size: 13.5px; font-weight: 700; cursor: pointer;"><span aria-hidden="true" style="{{ icTour }}"></span>{{ t.label }} <span style="font-weight: 400; color: rgb(var(--ink-rgb) / 0.7);">&middot; {{ t.meta }}</span></button>
+              </sc-for>
+            </div>
+          </section>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px;">
+            <section aria-labelledby="amp-quick" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <h2 id="amp-quick" style="margin: 0 0 12px; font-size: 17px; font-weight: 800;">Quick start</h2>
+              <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                <sc-for list="{{ hpQuick }}" as="q" hint-placeholder-count="5"><li style="display: flex; gap: 12px;"><span aria-hidden="true" style="flex: 0 0 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; background: oklch(var(--t2) 0.16 300); color: var(--on-accent); font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;">{{ q.n }}</span><span style="font-size: 13.5px; line-height: 1.55;">{{ q.t }}</span></li></sc-for>
+              </ol>
+            </section>
+            <section aria-labelledby="amp-manual" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+              <h2 id="amp-manual" style="margin: 0 0 12px; font-size: 17px; font-weight: 800;">User manual</h2>
+              <dl style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                <sc-for list="{{ hpManual }}" as="m" hint-placeholder-count="6"><div><dt style="font-size: 14px; font-weight: 800;">{{ m.group }}</dt><dd style="margin: 2px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ m.what }}</dd></div></sc-for>
+              </dl>
+            </section>
+          </div>
+          <section aria-labelledby="amp-adopt" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <h2 id="amp-adopt" style="margin: 0 0 12px; font-size: 17px; font-weight: 800;">Adoption guide: getting started where you are</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px;">
+              <sc-for list="{{ hpAdopt }}" as="a" hint-placeholder-count="4">
+                <div style="border-left: 3px solid oklch(var(--t2) 0.16 300); padding-left: 12px;"><div style="font-size: 14.5px; font-weight: 800; margin-bottom: 6px;">{{ a.who }}</div>
+                  <ol style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 5px;"><sc-for list="{{ a.steps }}" as="x" hint-placeholder-count="4"><li style="font-size: 13px; line-height: 1.5;">{{ x.t }}</li></sc-for></ol></div>
+              </sc-for>
+            </div>
+          </section>
+          <section aria-labelledby="amp-tut">
+            <h2 id="amp-tut" style="margin: 0 0 12px; font-size: 17px; font-weight: 800;">Tutorials</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px;">
+              <sc-for list="{{ hpTut }}" as="t" hint-placeholder-count="3">
+                <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+                  <h3 style="margin: 0; font-size: 15.5px; font-weight: 800;">{{ t.title }}</h3>
+                  <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px;"><sc-for list="{{ t.steps }}" as="x" hint-placeholder-count="4"><li style="display: flex; gap: 10px; font-size: 13px; line-height: 1.5;"><span style="font-family: 'Space Mono', monospace; font-weight: 700; color: oklch(var(--t4) 0.14 300);">{{ x.n }}</span><span>{{ x.t }}</span></li></sc-for></ol>
+                  <div style="margin-top: auto;"><button type="button" onClick="{{ t.go }}" style="display: inline-flex; align-items: center; gap: 7px; min-height: 40px; border-radius: 999px; padding: 8px 16px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb) / 0.9);">{{ t.cta }}</button></div>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sFeedback }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 175);"><span aria-hidden="true" style="{{ icFeedback }}"></span>Help &amp; get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Have your say: ideas, features, bugs</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">Amplify is built with the people who use it. Suggest a feature, share an idea, or tell us something is broken or wrong. Every form is public on GitHub, so never include your name, school, contact details or anything that identifies you or someone else.</p>
+          </div>
+          <div role="note" style="border: 1px solid oklch(var(--t1) 0.16 25 / 0.45); border-radius: 18px; background: oklch(var(--t1) 0.16 25 / 0.1); padding: 14px 16px; font-size: 13.5px; line-height: 1.55;">If you are under 18, ask a trusted adult before posting. If something has upset you or you are worried about your safety, do not post it here: go to <a href="#care">Safeguarding &amp; support</a>. Under 13? GitHub accounts start at 13, so ask a parent, carer or youth worker to post for you. Cannot use the forms? Ask your MYP, a youth worker or a trusted adult to raise it for you.</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 14px;">
+            <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+                <span aria-hidden="true" style="{{ icIdea }}"></span>
+                <h2 style="margin: 0; font-size: 17px; font-weight: 800;">Idea or feature</h2>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.55;">Something Amplify should do, a screen it should have, or a better way to do something it already does.</p>
+                <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=idea.yml" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; margin-top: auto;">Suggest an idea<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens GitHub in a new tab)</span></a>
+              </div>
+            <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+                <span aria-hidden="true" style="{{ icBugBig }}"></span>
+                <h2 style="margin: 0; font-size: 17px; font-weight: 800;">Bug or problem</h2>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.55;">Something broken, confusing, inaccessible or slow, on any device.</p>
+                <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=bug.yml" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; margin-top: auto;">Report a bug<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens GitHub in a new tab)</span></a>
+              </div>
+            <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+                <span aria-hidden="true" style="{{ icAsk }}"></span>
+                <h2 style="margin: 0; font-size: 17px; font-weight: 800;">Wrong or out of date</h2>
+                <p style="margin: 0; font-size: 13.5px; line-height: 1.55;">A fact, figure, link or helpline that is wrong or has changed.</p>
+                <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=contact.yml" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; margin-top: auto;">Tell us what changed<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens GitHub in a new tab)</span></a>
+              </div>
+          </div>
+          <section aria-labelledby="amp-handled" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 145); margin-bottom: 6px;"><span aria-hidden="true" style="{{ icCheck }}"></span>What happens next</div>
+            <h2 id="amp-handled" style="margin: 0 0 12px; font-size: 18px; font-weight: 800;">From your idea to the release log</h2>
+            <ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; line-height: 1.55;">
+              <li>Every new idea, bug or correction is read at the weekly upkeep run and labelled.</li>
+              <li>A safety-critical correction, such as a helpline that has changed, is fixed first.</li>
+              <li>Accepted changes are built, checked and listed in the release log with the screen they affect.</li>
+              <li>If an idea is not taken forward, the reason is written on the issue, so you can see the decision.</li>
+            </ol>
+            <p style="margin: 12px 0 0;"><a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700;">See every open idea and bug<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens GitHub in a new tab)</span></a></p>
+          </section>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ sLaunch }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 70);"><span aria-hidden="true" style="{{ icLaunch }}"></span>Help &amp; get involved</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Launching at {{ lnName }}</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ lnWhy }}</p>
+          </div>
+          <div class="amp-card" style="display: flex; flex-wrap: wrap; align-items: center; gap: 22px; border-radius: 24px; padding: 22px 24px; border: 1px solid oklch(var(--t2) 0.16 70 / 0.55); background: linear-gradient(130deg, oklch(var(--t1) 0.16 70 / 0.24), oklch(var(--t1) 0.16 25 / 0.1));">
+            <sc-if value="{{ lnShowDays }}" hint-placeholder-val="{{ true }}"><div style="text-align: center;"><div class="amp-count" style="font-size: clamp(44px, 8vw, 64px); font-weight: 900; line-height: 1; letter-spacing: -0.04em; color: oklch(var(--t4) 0.16 70);">{{ lnDays }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">days to go</div></div></sc-if>
+            <div style="flex: 1 1 260px; min-width: 0;"><div style="font-size: 20px; font-weight: 900;">{{ lnDates }}</div><div style="font-size: 14px; margin-top: 4px;" role="status">{{ lnState }}</div>
+              <a href="{{ lnUrl }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; margin-top: 8px;">About UK Parliament Week and its free kits<span aria-hidden="true" style="{{ icExt }}"></span><span class="amp-sr"> (opens in a new tab)</span></a></div>
+          </div>
+          <section aria-labelledby="amp-plan" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
+            <h2 id="amp-plan" style="margin: 0 0 12px; font-size: 18px; font-weight: 800;">The launch plan</h2>
+            <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+              <sc-for list="{{ lnPlan }}" as="p" hint-placeholder-count="4"><li style="display: grid; grid-template-columns: minmax(120px, 170px) minmax(0, 1fr); gap: 12px; font-size: 13.5px; line-height: 1.5;"><span style="font-weight: 800; color: oklch(var(--t4) 0.14 70);">{{ p.when }}</span><span>{{ p.what }}</span></li></sc-for>
+            </ol>
+          </section>
+          <section aria-labelledby="amp-acts">
+            <h2 id="amp-acts" style="margin: 0 0 12px; font-size: 18px; font-weight: 800;">Activities for schools and youth groups during the week</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px;">
+              <sc-for list="{{ lnActs }}" as="a" hint-placeholder-count="4">
+                <div class="amp-card" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;"><h3 style="margin: 0; font-size: 15.5px; font-weight: 800;">{{ a.title }}</h3><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{ a.what }}</p><div style="margin-top: auto;"><button type="button" onClick="{{ a.go }}" style="display: inline-flex; align-items: center; gap: 7px; min-height: 40px; border-radius: 999px; padding: 8px 16px; font-size: 13.5px; font-weight: 700; cursor: pointer; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb) / 0.9);">{{ a.cta }}</button></div></div>
+              </sc-for>
+            </div>
+          </section>
+          <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ lnNote }}</p>
+        </div>
+        </sc-if>
+
         <div data-slot="portal-end" style="display: none;"></div>
       </main>
     </div>
@@ -2232,16 +2736,19 @@
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Fonts load from Google Fonts and the page runtime from unpkg.com, which see your IP address.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Transparency</h2>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-eca6502c</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261115-bf500020</span>, built 15 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Next review due 15 December 2026. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Source, checks and history: <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Contact</h2>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Questions, corrections and suggestions go through the <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/issues/new?template=contact.yml" target="_blank" rel="noopener">contact form</a>.</p>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The form is public. Do not include your name, contact details or anything that identifies a young person.</p></section>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The form is public. Do not include your name, contact details or anything that identifies a young person.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Who is behind it: <a href="#about">About Amplify</a> &middot; <a href="https://github.com/cyberdudeuk" target="_blank" rel="noopener">github.com/cyberdudeuk</a>. Ideas and bugs: <a href="#feedback">Have your say</a>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Cannot use the form? Ask your MYP, a youth worker or a trusted adult to raise it for you.</p></section>
     </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
-        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-eca6502c" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
-        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-eca6502c</p>
+        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261115-bf500020" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
+        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261115-bf500020</p>
       </div>
   </footer>
 </div>
@@ -2305,7 +2812,7 @@ class Component extends DCLogic {
     a11yOpen: false, motion: (this.props || {}).motion !== false, dys: false, lang: "en", lowData: false,
     theme: (this.props || {}).theme === "Light" ? "light" : "dark", contrast: "normal", size: "md",
     age: (this.props || {}).ageMode === "11\u201313" ? "1113" : "1418",
-    kitAudience: "teacher", copied: "", setting: "club", aiPrompt: "", aiOut: "", aiBusy: false, aiErr: "",
+    kitAudience: "teacher", copied: "", srcTheme: "all", srcNation: "all", srcAud: "all", srcQ: "", latestCat: "all", amp: null, setting: "club", aiPrompt: "", aiOut: "", aiBusy: false, aiErr: "",
     drawer: true, query: "", groups: {}, chatOpen: false, chat: [], chatDraft: "", chatBusy: false,
     tour: "myp", node: "pet", play: "stand", ticked: [], issue: "polit",
     pledges: [
@@ -2366,7 +2873,7 @@ class Component extends DCLogic {
 
   screenFromHash() {
     const id = (location.hash || "").replace(/^#\/?/, "");
-    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide)$/.test(id) ? id : null;
+    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about)$/.test(id) ? id : null;
   }
   screenLabel(id) {
     for (const [, items] of this.GROUPS) for (const it of items) if (it[0] === id) return it[1];
@@ -2383,6 +2890,202 @@ class Component extends DCLogic {
   savePrefs(keys) {
     try { const out = {}; for (const k of keys) out[k] = this.state[k]; localStorage.setItem("amplify.portal.prefs", JSON.stringify(out)); } catch (e) { /* storage unavailable */ }
   }
+
+  async loadAmplifyData() {
+    const get = async (f) => { try { const r = await fetch(new URL(f, document.baseURI).href, { cache: "no-store" }); return r.ok ? await r.json() : null; } catch (e) { return null; } };
+    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json"].map(get));
+    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, loaded: true, failed: !(src && lat && sg) } });
+  }
+  ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
+  ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
+  ampAdd(d, n) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : new Date(t + n * 864e5).toISOString().slice(0, 10); }
+  ampIcon(name, color, size) {
+    const z = size || 18, u = "url(./vendor/icons/" + name + ".svg)";
+    return "display:inline-block;flex:0 0 " + z + "px;width:" + z + "px;height:" + z + "px;-webkit-mask:" + u + " center/contain no-repeat;mask:" + u + " center/contain no-repeat;background:" + color + ";";
+  }
+  ampFresh(checked, days) {
+    const age = this.ampDays(checked);
+    if (age === null) return { label: "Undated", hue: 25, age: "?" };
+    if (age <= days) return { label: "Fresh", hue: 145, age };
+    if (age <= Math.round(days * 1.5)) return { label: "Review due", hue: 70, age };
+    return { label: "Overdue", hue: 25, age };
+  }
+  ampChip(on, hue) {
+    return "display:inline-flex;align-items:center;gap:7px;min-height:36px;border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid " +
+      (on ? "oklch(var(--t2) 0.16 " + hue + " / 0.85)" : "rgb(var(--film-rgb) / 0.18)") + ";background:" + (on ? "oklch(var(--t1) 0.16 " + hue + " / 0.24)" : "rgb(var(--film-rgb) / 0.04)") +
+      ";color:" + (on ? "oklch(var(--t4) 0.14 " + hue + ")" : "rgb(var(--ink-rgb) / 0.86)") + ";";
+  }
+  ampVals(s) {
+    const A = s.amp || {}, src = A.src || { sources: [], themes: {}, audiences: {} }, lat = A.lat || { items: [], categories: {} };
+    const sg = A.sg || { audiences: [], parents: [], frameworks: [], every_voice: [], ucd: [] }, mo = A.mo || { rows: [] }, reg = A.reg || { defects: [], open: [] }, bld = A.bld || {};
+    const TI = { voice: "megaphone", democracy: "vote", rights: "scale", safety: "shield-check", wellbeing: "heart-pulse", work: "coins", evidence: "chart-column", policy: "scroll-text", inclusion: "users" };
+    const TH = { voice: 175, democracy: 215, rights: 300, safety: 25, wellbeing: 340, work: 70, evidence: 145, policy: 260, inclusion: 120 };
+    const PV = { V: "Verified", S: "Search-sourced", K: "Lead, to confirm" };
+    const PH = { V: 145, S: 215, K: 70 };
+    const NATIONS = ["UK", "England", "Scotland", "Wales", "Northern Ireland"];
+    const q = (s.srcQ || "").trim().toLowerCase();
+    const inNation = (x) => s.srcNation === "all" || x.nations.indexOf(s.srcNation) >= 0 || (s.srcNation !== "UK" && x.nations.indexOf("UK") >= 0);
+    const inAud = (x) => s.srcAud === "all" || (x.audiences || []).indexOf(s.srcAud) >= 0;
+    const inQ = (x) => !q || (x.name + " " + x.what + " " + x.use + " " + x.kind).toLowerCase().indexOf(q) >= 0;
+    const base = src.sources.filter((x) => inNation(x) && inAud(x) && inQ(x));
+    const shown = base.filter((x) => s.srcTheme === "all" || x.theme === s.srcTheme);
+    const themeChips = [["all", "All themes", 175, "layers"]].concat(Object.keys(src.themes).map((k) => [k, src.themes[k], TH[k] || 175, TI[k] || "layers"])).map(([k, label, hue, ic]) => {
+      const n = k === "all" ? base.length : base.filter((x) => x.theme === k).length;
+      return { label, count: String(n), pressed: s.srcTheme === k ? "true" : "false", style: this.ampChip(s.srcTheme === k, hue), icon: this.ampIcon(ic, "currentColor", 15), pick: () => this.setState({ srcTheme: k }) };
+    });
+    const nationChips = [["all", "Anywhere"]].concat(NATIONS.map((n) => [n, n])).map(([k, label]) => ({ label, pressed: s.srcNation === k ? "true" : "false", style: this.ampChip(s.srcNation === k, 215), pick: () => this.setState({ srcNation: k }) }));
+    const audChips = [["all", "Everyone"]].concat(Object.keys(src.audiences || {}).map((k) => [k, src.audiences[k]])).map(([k, label]) => ({ label, pressed: s.srcAud === k ? "true" : "false", style: this.ampChip(s.srcAud === k, 300), pick: () => this.setState({ srcAud: k }) }));
+    const cards = shown.map((x) => {
+      const hue = TH[x.theme] || 175, f = this.ampFresh(x.checked, x.review_days || 90);
+      return {
+        name: x.name, kind: x.kind, nations: x.nations.join(" · "), what: x.what, use: x.use, url: x.url,
+        contact: x.contact || "", hasContact: !!x.contact, note: x.note || "", hasNote: !!x.note,
+        aud: (x.audiences || []).map((a) => (src.audiences || {})[a] || a).join(", "),
+        prov: PV[x.provenance] || x.provenance, provStyle: "color:oklch(var(--t4) 0.14 " + (PH[x.provenance] || 25) + ");",
+        checked: "Checked " + this.ampDate(x.checked) + " · " + f.label,
+        icon: this.ampIcon(TI[x.theme] || "layers", "oklch(var(--t3) 0.16 " + hue + ")", 20),
+        bar: "border-top:3px solid oklch(var(--t2) 0.16 " + hue + ");",
+        tag: (src.themes || {})[x.theme] || x.theme
+      };
+    });
+    const themesK = Object.keys(src.themes || {});
+    const panHead = themesK.map((k) => ({ label: src.themes[k] }));
+    const panRows = ["England", "Scotland", "Wales", "Northern Ireland"].map((n) => ({ nation: n, cells: themesK.map((k) => {
+      const own = src.sources.filter((x) => x.theme === k && x.nations.indexOf(n) >= 0).length, uk = src.sources.filter((x) => x.theme === k && x.nations.indexOf("UK") >= 0).length;
+      return { v: own + " + " + uk, sr: own + " specific to " + n + ", " + uk + " UK-wide", style: "padding:8px;text-align:center;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums;background:oklch(var(--t1) 0.15 " + (own ? 145 : uk ? 70 : 25) + " / " + (own ? 0.2 : 0.12) + ");" };
+    }) }));
+    const CI = { law: "landmark", pay: "coins", safety: "life-buoy", data: "chart-line", voice: "megaphone", strategy: "compass" };
+    const CH = { law: 215, pay: 70, safety: 25, data: 145, voice: 175, strategy: 300 };
+    const latItems = lat.items.slice().sort((a, b) => (a.date < b.date ? 1 : -1)).filter((x) => s.latestCat === "all" || x.cat === s.latestCat).map((x) => ({
+      date: this.ampDate(x.date), cat: (lat.categories || {})[x.cat] || x.cat, title: x.title, body: x.body, url: x.url, source: x.source,
+      prov: PV[x.provenance] || x.provenance, provStyle: "color:oklch(var(--t4) 0.14 " + (PH[x.provenance] || 25) + ");",
+      status: x.status || "", hasStatus: !!x.status,
+      icon: this.ampIcon(CI[x.cat] || "newspaper", "oklch(var(--t3) 0.16 " + (CH[x.cat] || 175) + ")", 20),
+      dot: "flex:0 0 12px;width:12px;height:12px;border-radius:50%;margin-top:6px;background:oklch(var(--t2) 0.18 " + (CH[x.cat] || 175) + ");box-shadow:0 0 0 5px oklch(var(--t2) 0.18 " + (CH[x.cat] || 175) + " / 0.18);"
+    }));
+    const latChips = [["all", "Everything"]].concat(Object.keys(lat.categories || {}).map((k) => [k, lat.categories[k]])).map(([k, label]) => ({ label, pressed: s.latestCat === k ? "true" : "false", style: this.ampChip(s.latestCat === k, CH[k] || 175), pick: () => this.setState({ latestCat: k }) }));
+    const SH = (t) => /^Met|Aligned/.test(t) ? 145 : /^Partly|Guidance/.test(t) ? 70 : /Open/.test(t) ? 25 : 215;
+    const frameworks = sg.frameworks.map((x) => ({ name: x.name, owner: x.owner + " · " + x.nations.join(", "), kind: x.kind, how: x.how, url: x.url, status: x.status,
+      pill: "display:inline-block;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;background:oklch(var(--t1) 0.16 " + SH(x.status) + " / 0.22);color:oklch(var(--t4) 0.14 " + SH(x.status) + ");",
+      prov: PV[x.provenance] || x.provenance, provStyle: "color:oklch(var(--t4) 0.14 " + (PH[x.provenance] || 25) + ");" }));
+    const AI = { "1113": "sparkles", "1417": "megaphone", "1825": "briefcase", parents: "heart-handshake", allies: "handshake" };
+    const audiences = sg.audiences.map((x) => ({ name: x.name, need: x.need, how: x.how, icon: this.ampIcon(AI[x.id] || "users", "oklch(var(--t3) 0.16 300)", 22) }));
+    // Health: freshness of every data set and every source, provenance mix, checks, registers.
+    const sets = [["Trusted sources", src], ["What's new", lat], ["Safeguards & frameworks", sg], ["Coverage priorities", mo], ["Registers", reg], ["Release log", A.ch || {}], ["Help & adoption", A.hp || {}], ["Launch plan", A.ln || {}], ["Content integrity", A.ig || {}]].map(([label, d]) => {
+      const f = this.ampFresh(d.checked, d.review_days || 30);
+      return { label, checked: d.checked ? this.ampDate(d.checked) : "Not loaded", next: d.checked ? this.ampDate(this.ampAdd(d.checked, d.review_days || 30)) : "—", state: A.loaded ? f.label : "Loading",
+        dot: "flex:0 0 10px;width:10px;height:10px;border-radius:50%;background:oklch(var(--t2) 0.18 " + (A.loaded ? f.hue : 215) + ");", pulse: f.label === "Fresh" ? "amp-pulse" : "" };
+    });
+    const overdue = src.sources.filter((x) => this.ampFresh(x.checked, x.review_days || 90).label !== "Fresh");
+    const helplines = src.sources.filter((x) => x.contact);
+    const count = (p) => String(src.sources.filter((x) => x.provenance === p).length);
+    const healthy = A.loaded && !A.failed && overdue.length === 0 && sets.every((x) => x.state === "Fresh");
+    return {
+      sSources: s.screen === "sources", sLatest: s.screen === "latest", sTrust: s.screen === "trust", sHealth: s.screen === "health",
+      ampFailed: !!A.failed, ampOk: !A.failed,
+      srcQ: s.srcQ, setSrcQ: (e) => this.setState({ srcQ: e.target.value }), clearSrc: () => this.setState({ srcQ: "", srcTheme: "all", srcNation: "all", srcAud: "all" }),
+      themeChips, nationChips, audChips, srcCards: cards, srcCount: cards.length + " of " + src.sources.length + " sources", srcNone: A.loaded && cards.length === 0,
+      moscow: mo.rows.map((r) => ({ p: r.p, theme: r.theme, where: r.where, status: r.status,
+        pStyle: "font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.06em;color:oklch(var(--t4) 0.15 " + ({ Must: 25, Should: 70, Could: 215 }[r.p] || 300) + ");" })),
+      panHead, panRows, panCols: "display:grid;grid-template-columns:140px repeat(" + Math.max(1, themesK.length) + ", minmax(0, 1fr));gap:3px;",
+      latChips, latItems, latAsOf: lat.checked ? "Checked " + this.ampDate(lat.checked) : "Loading",
+      audiences, parentsTips: sg.parents.map((t, i) => ({ t, n: String(i + 1) })), frameworks, everyVoice: sg.every_voice || [], langs: sg.languages || [], ageIntro: (sg.age_access || {}).intro || "", ageBands: ((sg.age_access || {}).bands || []).map((b) => ({ b })), ageRows: ((sg.age_access || {}).rows || []).map((r) => ({ what: r.what, cells: [r.u13, r.a1315, r.a1617, r.a18].map((c, i) => ({ c, band: ((sg.age_access || {}).bands || [])[i] || "", style: "padding:8px;border-radius:8px;font-size:12.5px;line-height:1.4;background:oklch(var(--t1) 0.15 " + (/^Yourself/.test(c) ? 145 : /^No$/.test(c) ? 25 : 70) + " / 0.14);" })), why: r.why, prov: { V: "Verified", S: "Search-sourced", K: "Lead, to confirm" }[r.provenance] || r.provenance })), onBehalf: ((sg.age_access || {}).on_behalf || []).map((t) => ({ t })), icAge: this.ampIcon("users", "oklch(var(--t3) 0.16 70)", 18), deafTips: (sg.deaf || []).map((t, i) => ({ t, n: String(i + 1) })), icDeaf: this.ampIcon("accessibility", "oklch(var(--t3) 0.16 215)", 18), icLang: this.ampIcon("messages-square", "oklch(var(--t3) 0.16 120)", 18), ucd: (sg.ucd || []).map((t) => ({ t })),
+      hBuild: bld.build_id || "Unknown build", hBuilt: bld.built ? this.ampDate(bld.built) : "—", hSets: sets,
+      hStatus: !A.loaded ? "Checking…" : healthy ? "Healthy" : A.failed ? "Data could not load" : "Needs attention",
+      hStatusStyle: "font-size:30px;font-weight:900;letter-spacing:-0.03em;color:oklch(var(--t4) 0.16 " + (!A.loaded ? 215 : healthy ? 145 : 25) + ");",
+      hIcon: this.ampIcon(healthy ? "circle-check" : "triangle-alert", "oklch(var(--t3) 0.18 " + (healthy ? 145 : 25) + ")", 34),
+      hOverdue: String(overdue.length), hHelplines: String(helplines.length), hV: count("V"), hS: count("S"), hK: count("K"), hTotal: String(src.sources.length),
+      hOverdueList: overdue.map((x) => ({ name: x.name, checked: this.ampDate(x.checked) })), hAllFresh: overdue.length === 0,
+      hChecks: (bld.checks || []).map((c) => ({ id: c.id, what: c.what })), hDefects: reg.defects || [], hOpen: reg.open || [],
+      icSources: this.ampIcon("book-open-check", "oklch(var(--t3) 0.16 215)", 16), icLatest: this.ampIcon("newspaper", "oklch(var(--t3) 0.16 70)", 16),
+      icTrust: this.ampIcon("shield-check", "oklch(var(--t3) 0.16 25)", 16), icHealth: this.ampIcon("activity", "oklch(var(--t3) 0.16 145)", 16),
+      icExt: this.ampIcon("external-link", "currentColor", 13), icSearch: this.ampIcon("search", "rgb(var(--ink-rgb) / 0.7)", 16),
+      icBug: this.ampIcon("bug", "oklch(var(--t3) 0.16 25)", 16), icTodo: this.ampIcon("list-todo", "oklch(var(--t3) 0.16 70)", 16),
+      icParent: this.ampIcon("heart-handshake", "oklch(var(--t3) 0.16 340)", 18), icGlobe: this.ampIcon("globe", "oklch(var(--t3) 0.16 120)", 18),
+      icUcd: this.ampIcon("users", "oklch(var(--t3) 0.16 215)", 18), icCheck: this.ampIcon("list-checks", "oklch(var(--t3) 0.16 145)", 16)
+    };
+  }
+  navIcon(id, shape) {
+    const N = { corner: "scale", route: "route", state: "landmark", issues: "layers", guide: "compass", hub: "megaphone", momentum: "trending-up", plan: "calendar-range",
+      coal: "handshake", kit: "package", pledge: "hand-heart", radar: "radar", policy: "scroll-text", map: "map", acad: "graduation-cap", ysc: "messages-square",
+      post: "file-search", track: "list-checks", prof: "users", incl: "accessibility", res: "library", ai: "sparkles", brand: "palette", care: "heart-handshake",
+      graph: "network", sources: "book-open-check", latest: "newspaper", trust: "shield-check", health: "activity" };
+    const n = N[id];
+    if (!n) return this.ICONS[shape];
+    const u = "url(./vendor/icons/" + n + ".svg)";
+    return "flex:0 0 16px;width:16px;height:16px;-webkit-mask:" + u + " center/contain no-repeat;mask:" + u + " center/contain no-repeat;background:";
+  }
+
+
+  ampEntry(id) {
+    const ch = (this.state.amp || {}).ch;
+    if (!ch) return null;
+    const rel = ch.releases.find((r) => r.version === ch.current);
+    return rel ? (rel.entries.find((e) => e.screen === id) || null) : null;
+  }
+  ampFlag(id, designFlag) {
+    if (!(this.state.amp || {}).ch) return designFlag;
+    const e = this.ampEntry(id);
+    return e ? e.kind : "";
+  }
+  ampVals2(s) {
+    const ab = (s.amp || {}).ab || { rationale: [], aims: [], goals: [], objectives: [], outcomes: [] };
+    const A = s.amp || {}, ch = A.ch || { releases: [], current: "" }, hp = A.hp || { quickstart: [], manual: [], adoption: [], tutorials: [] }, ln = A.ln || { event: {}, plan: [], activities: [] };
+    const KH = { NEW: 145, UPD: 70 };
+    const kindLabel = (k) => (k === "NEW" ? "New" : "Updated");
+    const label = (id) => { try { return this.screenLabel(id) || id; } catch (e) { return id; } };
+    const e = this.ampEntry(s.screen);
+    const ig = A.ig || { screens: [], classes: {}, views: [] };
+    const igE = ig.screens.find((x) => x.screen === s.screen) || null;
+    const IH = { Sourced: 145, Model: 215, Sample: 25, Generated: 300, Editorial: 70 };
+    const igFlag = !!igE && igE.class !== "Sourced" && igE.class !== "Editorial";
+    // tour step bar
+    const T = this.TOURS[s.tour] || null, at = s.tourAt;
+    const onTour = !!(T && typeof at === "number" && T.steps[at] && T.steps[at][0] === s.screen);
+    const nextStep = onTour && T.steps[at + 1] ? T.steps[at + 1] : null;
+    // launch countdown
+    const start = ln.event.start ? Date.parse(ln.event.start + "T00:00:00Z") : NaN, end = ln.event.end ? Date.parse(ln.event.end + "T23:59:59Z") : NaN, now = Date.now();
+    const daysTo = isNaN(start) ? null : Math.ceil((start - now) / 864e5);
+    const lnState = isNaN(start) ? "" : now < start ? (daysTo === 1 ? "1 day to go" : daysTo + " days to go") : now <= end ? "Happening this week" : "Launched";
+    return {
+      sAbout: s.screen === "about", abWho: ab.who || "", abProfile: ab.profile || "#", abImpartial: ab.impartial || "", abMission: ab.mission || "", abNote: ab.evidence_note || "",
+      abRationale: ab.rationale.map((t) => ({ t })), abAims: ab.aims.map((t) => ({ t })), abGoals: ab.goals.map((t) => ({ t })), abObjectives: ab.objectives.map((t) => ({ t })), abOutcomes: ab.outcomes,
+      icAbout: this.ampIcon("info", "oklch(var(--t3) 0.16 175)", 16), icGit: this.ampIcon("git-branch", "currentColor", 15),
+      sChanges: s.screen === "changes", sHelp: s.screen === "help", sFeedback: s.screen === "feedback", sLaunch: s.screen === "launch",
+      rbShow: !onTour && !!e, rbKind: e ? kindLabel(e.kind) + " in " + ch.current : "", rbWhat: e ? e.what : "",
+      rbStyle: "display:flex;flex-wrap:wrap;align-items:center;gap:10px;border-radius:16px;padding:10px 14px;font-size:13.5px;line-height:1.45;border:1px solid oklch(var(--t2) 0.16 " + (e ? KH[e.kind] || 175 : 175) + " / 0.5);background:oklch(var(--t1) 0.16 " + (e ? KH[e.kind] || 175 : 175) + " / 0.14);",
+      rbPill: "border-radius:999px;padding:2px 10px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:oklch(var(--t2) 0.16 " + (e ? KH[e.kind] || 175 : 175) + ");color:var(--on-accent);",
+      goChanges: () => this.setState({ screen: "changes" }),
+      igShow: igFlag, igClass: igE ? (igE.class === "Sample" ? "Sample data" : igE.class === "Model" ? "Planning model" : igE.class === "Generated" ? "Generated text" : igE.class) : "",
+      igWhy: igE ? igE.why + (igE.check ? " " + igE.check : "") : "",
+      igStyle: "display:flex;flex-wrap:wrap;align-items:center;gap:10px;border-radius:16px;padding:10px 14px;font-size:13.5px;line-height:1.45;border:1px dashed oklch(var(--t2) 0.17 " + (igE ? IH[igE.class] || 25 : 25) + " / 0.8);background:oklch(var(--t1) 0.16 " + (igE ? IH[igE.class] || 25 : 25) + " / 0.12);",
+      igPill: "border-radius:6px;padding:2px 9px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:1.5px solid oklch(var(--t3) 0.17 " + (igE ? IH[igE.class] || 25 : 25) + ");color:oklch(var(--t4) 0.15 " + (igE ? IH[igE.class] || 25 : 25) + ");",
+      igAppShow: s.view === "app" || s.view === "both", igAppWhy: (ig.views[0] || {}).why || "",
+      igRows: ig.screens.map((x) => ({ screen: label(x.screen), cls: x.class, why: x.why, style: "font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:oklch(var(--t4) 0.15 " + (IH[x.class] || 25) + ");" })),
+      igClasses: Object.keys(ig.classes).map((k) => ({ k, v: ig.classes[k], style: "font-weight:800;color:oklch(var(--t4) 0.15 " + (IH[k] || 25) + ");" })),
+      tbShow: onTour, tbTitle: onTour ? T.label : "", tbStep: onTour ? "Step " + (at + 1) + " of " + T.steps.length + ": " + T.steps[at][1] : "", tbBody: onTour ? T.steps[at][2] : "",
+      tbHasNext: !!nextStep, tbNextLabel: nextStep ? "Next: " + nextStep[1] : "", tbNext: () => nextStep && this.setState({ screen: nextStep[0], tourAt: at + 1 }),
+      tbBack: () => this.setState({ screen: "guide", tourAt: null }), tbEnd: () => this.setState({ tourAt: null }),
+      releases: ch.releases.map((r) => ({ version: r.version, date: this.ampDate(r.date), status: r.status, title: r.title, summary: r.summary,
+        current: r.version === ch.current, hasEntries: r.entries.length > 0,
+        entries: r.entries.map((x) => ({ kind: kindLabel(x.kind), screen: label(x.screen), what: x.what, go: () => this.setState({ screen: x.screen }),
+          pill: "flex:0 0 auto;border-radius:999px;padding:2px 9px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:oklch(var(--t1) 0.16 " + (KH[x.kind] || 175) + " / 0.28);color:oklch(var(--t4) 0.14 " + (KH[x.kind] || 175) + ");" })),
+        dot: "flex:0 0 14px;width:14px;height:14px;border-radius:50%;margin-top:4px;background:oklch(var(--t2) 0.17 " + (r.version === ch.current ? 145 : r.status === "Planned launch" ? 70 : 215) + ");" })),
+      hpQuick: hp.quickstart.map((t, i) => ({ t, n: String(i + 1) })), hpManual: hp.manual, hpAdopt: hp.adoption.map((a) => ({ who: a.who, steps: a.steps.map((t) => ({ t })) })),
+      hpTut: hp.tutorials.map((t) => ({ title: t.title, steps: t.steps.map((x, i) => ({ t: x, n: String(i + 1) })), go: () => this.setState({ screen: t.screen }), cta: "Start on " + label(t.screen) })),
+      hpTours: Object.keys(this.TOURS).map((k) => ({ label: this.TOURS[k].label, meta: this.TOURS[k].steps.length + " steps", go: () => this.setState({ tour: k, screen: this.TOURS[k].steps[0][0], tourAt: 0 }) })),
+      lnName: ln.event.name || "UK Parliament Week", lnDates: ln.event.start ? this.ampDate(ln.event.start) + " to " + this.ampDate(ln.event.end) : "", lnState, lnUrl: ln.event.url || "#",
+      lnWhy: ln.why || "", lnNote: ln.note || "", lnPlan: ln.plan, lnActs: ln.activities.map((a) => ({ title: a.title, what: a.what, go: () => this.setState({ screen: a.screen }), cta: "Open " + label(a.screen) })),
+      lnDays: daysTo !== null && daysTo > 0 ? String(daysTo) : "0", lnShowDays: daysTo !== null && daysTo > 0,
+      lnHubShow: s.screen === "hub" && !!ln.event.start && now <= end, goLaunch: () => this.setState({ screen: "launch" }),
+      icChanges: this.ampIcon("git-branch", "oklch(var(--t3) 0.16 145)", 16), icHelp: this.ampIcon("compass", "oklch(var(--t3) 0.16 300)", 16),
+      icFeedback: this.ampIcon("messages-square", "oklch(var(--t3) 0.16 175)", 16), icLaunch: this.ampIcon("landmark", "oklch(var(--t3) 0.16 70)", 16),
+      icIdea: this.ampIcon("sparkles", "oklch(var(--t3) 0.16 300)", 26), icBugBig: this.ampIcon("bug", "oklch(var(--t3) 0.16 25)", 26),
+      icAsk: this.ampIcon("info", "oklch(var(--t3) 0.16 215)", 26), icList: this.ampIcon("list-checks", "oklch(var(--t3) 0.16 145)", 26),
+      icTour: this.ampIcon("route", "currentColor", 16), icFlag: this.ampIcon("flag-triangle-right", "currentColor", 15)
+    };
+  }
+
   async loadPetition() {
     try {
       const r = await fetch(new URL("./petition-754954.json", document.baseURI).href);
@@ -2682,6 +3385,41 @@ class Component extends DCLogic {
   };
 
   TOURS = {
+    newhere: {
+      label: "New here", kind: "quick tour", shape: "ring", hue: 145,
+      title: "Five minutes to find your way around",
+      intro: "Five stops: what Amplify is for, how to stay safe, where the facts come from, what has changed, and how to tell us what you think.",
+      steps: [
+        ["hub", "Start at the campaign hub", "The headline: why most youth petitions stall, and what Amplify does about it."],
+        ["care", "Know where help is", "Free, confidential helplines, checked and dated. In an emergency, call 999."],
+        ["sources", "Back every claim", "Filter by theme, nation and who it is for. Cards say how sure we are."],
+        ["changes", "See what is new", "Every release, screen by screen. The drawer flags match."],
+        ["feedback", "Have your say", "Ideas, features, bugs: all through public forms, with no personal details."]
+      ]
+    },
+    parent: {
+      label: "Parents & carers", kind: "role tour", shape: "dia", hue: 340,
+      title: "Backing a young campaigner, safely",
+      intro: "For parents, carers, guardians and anyone with parental responsibility: what your child is using, how it keeps them safe, and how you can help.",
+      steps: [
+        ["trust", "Read the parents' section", "What Amplify asks for (nothing), the under-13 rule, and the under-16 social media ban."],
+        ["care", "Keep the helplines to hand", "Childline for them, the NSPCC Helpline for you."],
+        ["kit", "See the parent pack", "The toolkit writes a version for parents: what the campaign is and how to support it."],
+        ["sources", "Choose Parents & carers", "Sources picked for adults, from the Children's Commissioners to the ICO's Children's code."],
+        ["feedback", "Tell us what would help", "Parents' ideas shape the next release."]
+      ]
+    },
+    ukpw: {
+      label: "UK Parliament Week", kind: "event tour", shape: "sq", hue: 70,
+      title: "Use Amplify in UK Parliament Week, 23 to 29 November 2026",
+      intro: "Four activities for schools and youth groups during the week, each using a screen of the portal.",
+      steps: [
+        ["launch", "Open the launch plan", "Dates, the plan and the activities, with a countdown."],
+        ["issues", "Run your own ballot", "Vote on which issue your group should campaign on."],
+        ["post", "Learn from a stalled petition", "Why 754954 fell short, and what to do differently."],
+        ["map", "Write to your MP", "Find your MP and draft a letter together."]
+      ]
+    },
     myp: {
       label: "I'm an MYP", kind: "role tour", shape: "dot", hue: 175,
       title: "You have been elected. Now make something happen.",
@@ -2801,10 +3539,10 @@ class Component extends DCLogic {
 
   HELPLINES = [
         ["Childline", "0800 1111 \u00b7 24 hours", "Free, confidential, for anyone under 19. Online chat as well as phone.", "https://www.childline.org.uk/"],
-        ["Samaritans", "116 123 \u00b7 24 hours", "Any age, any problem. Free from any phone and never shows on the bill.", "https://www.samaritans.org/"],
+        ["Samaritans", "116 123 \u00b7 24 hours", "Any age, any problem. Free from any phone and never shows on the bill. Welsh Language Line: 0808 164 0123.", "https://www.samaritans.org/"],
         ["Shout", "Text SHOUT to 85258", "Free 24/7 text support if you would rather not speak to anyone.", "https://giveusashout.org/"],
-        ["The Mix", "0808 808 4994", "Support for under-25s across mental health, money, work and relationships.", "https://www.themix.org.uk/"],
-        ["Papyrus HOPELINE247", "0800 068 4141", "For anyone under 35 having thoughts of suicide, and for people worried about them.", "https://www.papyrus-uk.org/"],
+        ["The Mix", "Text THEMIX to 85258", "Support for under-25s across mental health, money, work and relationships, with 24/7 crisis text support.", "https://www.themix.org.uk/"],
+        ["NHS 111", "111 \u00b7 urgent help", "Urgent mental health support when it is not an emergency. In an emergency call 999.", "https://111.nhs.uk/"],
         ["YoungMinds", "Parents' line 0808 802 5544", "Youth mental health information, plus a line for the adult supporting you.", "https://www.youngminds.org.uk/"],
         ["Youth Access", "Find local services", "Directory of local youth advice, information and counselling services.", "https://www.youthaccess.org.uk/"],
         ["CEOP Safety Centre", "Report online abuse", "Where to report an adult behaving inappropriately towards a child online.", "https://www.ceop.police.uk/safety-centre/"]
@@ -2953,6 +3691,19 @@ class Component extends DCLogic {
       ["brand", "Brand & style", "dia", 340, 5, "NEW", "design system colour type motion iconography tone of voice logo"],
       ["care", "Safeguarding & support", "dia", 25, 4, "NEW", "safeguarding support help helpline childline samaritans shout wellbeing abuse online harm rights UNCRC duty of care safety consent"],
       ["graph", "Glossary & graph", "ring", 145, 4, "NEW", "knowledge graph glossary thesaurus definitions terms jargon synonyms"]
+    ]],
+    ["Sources & updates", [
+      ["sources", "Trusted sources", "sq", 215, 50, "NEW", "trusted sources directory official government parliament regulator charity helpline commissioner parents carers allies nation Scotland Wales Northern Ireland England filter verified"],
+      ["latest", "What's new", "bar", 70, 13, "NEW", "latest news updates changes votes at 16 bill minimum wage NEET social media ban strategy helpline closed"],
+      ["changes", "Release log", "bar", 145, 3, "NEW", "release log changelog changes new updated version history what changed"],
+      ["trust", "Safeguards & audiences", "dia", 25, 5, "NEW", "safeguards frameworks Children's code ICO Online Safety Act Ofcom parents carers guardians parental responsibility audiences DEI inclusion every voice UCD Lundy"],
+      ["health", "Portal health", "ring", 145, 4, "NEW", "health self check freshness staleness provenance checks defects open register status"]
+    ]],
+    ["Help & get involved", [
+      ["about", "About Amplify", "dot", 175, 5, "NEW", "about who mission purpose aims goals objectives outcomes rationale why owner GitHub profile"],
+      ["launch", "UK Parliament Week launch", "sq", 70, 4, "NEW", "launch UK Parliament Week UKPW 23 November 2026 countdown activities schools youth groups"],
+      ["help", "Help & tutorials", "ring", 300, 5, "NEW", "help user manual adoption guide tutorials guided tours how to get started parents schools youth groups"],
+      ["feedback", "Have your say", "dot", 175, 3, "NEW", "feedback idea suggestion feature request bug issue problem report correction"]
     ]]
   ];
 
@@ -3083,6 +3834,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
     this.syncBody();
     this._prev = Object.assign({}, this.state);
     this.loadPetition();
+    this.loadAmplifyData();
     this.onHash = () => { const id = this.screenFromHash(); if (id && id !== this.state.screen) this.setState({ screen: id, splash: false, copied: "" }); };
     window.addEventListener("hashchange", this.onHash);
     window.addEventListener("popstate", this.onHash);
@@ -3275,7 +4027,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
       tourMeta: this.TOURS[s.tour].steps.length + " steps \u00b7 " + this.TOURS[s.tour].kind,
       tourSteps: this.TOURS[s.tour].steps.map(([id, title, body], i) => ({
         n: i + 1, title, body, dot: "oklch(var(--t2) 0.19 " + this.TOURS[s.tour].hue + ")",
-        go: () => this.setState({ screen: id })
+        go: () => this.setState({ screen: id, tourAt: i })
       })),
       tourKit: (this.TOURS[s.tour].kit || [
         ["Youth Work Code of Ethics", "https://nya.org.uk/youth-work-code-of-ethics/"],
@@ -3331,9 +4083,9 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
           label, count: items.length + " pages", open, expanded: open ? "true" : "false",
           caret: "flex:0 0 0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left-width:6px;border-left-style:solid;border-left-color:oklch(var(--t2) 0.16 70);transition:transform .18s ease;transform:rotate(" + (open ? "90deg" : "0deg") + ");",
           toggle: () => this.setState({ groups: Object.assign({}, s.groups, { [label]: !open }) }),
-          items: items.map(([id, lbl, shape, hue, sub, flag]) => ({
+          items: items.map(([id, lbl, shape, hue, sub, flag0]) => { const flag = this.ampFlag(id, flag0); return {
             label: lbl, sub: sub, flag: flag, cur: s.screen === id ? "page" : "false",
-            icon: this.ICONS[shape] + "oklch(var(--t2) 0.16 " + hue + ");",
+            icon: this.navIcon(id, shape) + "oklch(var(--t2) 0.16 " + hue + ");",
             fg: s.screen === id ? "oklch(var(--t4) 0.16 " + hue + ")" : "rgb(var(--ink-rgb) / 0.86)",
             bg: s.screen === id ? "oklch(var(--t1) 0.16 " + hue + " / 0.18)" : "transparent",
             flagDot: flag
@@ -3341,7 +4093,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
               : "flex:0 0 7px;height:7px;background:transparent;",
             flagSr: flag === "NEW" ? "New section" : (flag === "UPD" ? "Updated section" : "\u00a0"),
             go: () => this.setState({ screen: id })
-          }))
+          }; })
         };
       }),
       trackStats: [
@@ -3440,7 +4192,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
         br: "oklch(var(--t1) 0.16 " + hue + " / 0.3)", bg: "oklch(var(--t1) 0.16 " + hue + " / 0.08)",
         dot: "oklch(var(--t2) 0.19 " + hue + ")", fg: "oklch(var(--t3) 0.19 " + hue + ")"
       })),
-      sIssues: s.screen === "issues", sCare: s.screen === "care",
+      ...this.ampVals(s), ...this.ampVals2(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
       issueTabs: Object.keys(this.ISSUES).map((k) => {
         const it = this.ISSUES[k];
         return {

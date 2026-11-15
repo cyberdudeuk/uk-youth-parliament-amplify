@@ -16,8 +16,11 @@ import argparse, datetime, hashlib, html, io, json, os, re, shutil, sys
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(R, "tools"))
 import art  # noqa: E402
+import extend  # noqa: E402
+import extend2  # noqa: E402
+import make_docs  # noqa: E402
 
-APP, SITE, VENDOR = (os.path.join(R, d) for d in ("app", "site", "vendor"))
+APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
 REPO_URL = "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"
 CONTACT_URL = REPO_URL + "/issues/new?template=contact.yml"
 PORTAL_SRC, MAP_SRC = "Amplify Portal.dc.html", "Local Routes Map.html"
@@ -56,11 +59,14 @@ def footer(meta):
       <p style="{p}">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p>''')
     transparency = block("Transparency", f'''
       <p style="{p}">Build <span style="font-family: 'Space Mono', monospace;">{h(meta["build_id"])}</span>, built {h(meta["built_long"])} from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="{p}">Next review due {h(meta["review_long"])}. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="{p}">Source, checks and history: <a href="{REPO_URL}" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="{p}">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p>''')
     contact = block("Contact", f'''
       <p style="{p}">Questions, corrections and suggestions go through the <a href="{CONTACT_URL}" target="_blank" rel="noopener">contact form</a>.</p>
-      <p style="{p}">The form is public. Do not include your name, contact details or anything that identifies a young person.</p>''')
+      <p style="{p}">The form is public. Do not include your name, contact details or anything that identifies a young person.</p>
+      <p style="{p}">Who is behind it: <a href="#about">About Amplify</a> &middot; <a href="https://github.com/cyberdudeuk" target="_blank" rel="noopener">github.com/cyberdudeuk</a>. Ideas and bugs: <a href="#feedback">Have your say</a>.</p>
+      <p style="{p}">Cannot use the form? Ask your MYP, a youth worker or a trusted adult to raise it for you.</p>''')
     colophon = f'''
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
@@ -77,6 +83,20 @@ def footer(meta):
     </div>{colophon}
   </footer>
 '''
+
+
+GF_P = '''<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Space+Mono:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet" />'''
+
+
+def meta_tags(meta):
+    ld = {"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": meta["build_id"], "version": meta["build_id"],
+          "dateModified": meta["built"], "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}],
+          "isAccessibleForFree": True, "license": REPO_URL + "/blob/main/LICENSE", "url": REPO_URL}
+    return (f'<meta name="artefact:id" content="amplify-portal">\n<meta name="artefact:version" content="{meta["build_id"]}">\n'
+            f'<meta name="artefact:class" content="portal">\n<meta name="artefact:as-of" content="{meta["built"]}">\n'
+            f'<meta name="artefact:review-date" content="{meta["review"]}">\n<script type="application/ld+json">{json.dumps(ld)}</script>\n')
 
 
 def transforms(meta):
@@ -149,6 +169,25 @@ def transforms(meta):
   }
 
   async runChat() {""", 1),
+        ("self-hosted-fonts", "fonts served by the portal itself: no visitor's IP address goes to Google",
+         GF_P, '<link href="./vendor/fonts/fonts.css" rel="stylesheet" />', 1),
+        ("self-hosted-runtime", "React, ReactDOM and Babel served by the portal itself; support.js reads window.__resources before any CDN",
+         '<script src="./support.js"></script>\n',
+         '<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/babel.min.js"};</script>\n<script src="./support.js"></script>\n', 1),
+        ("self-describing", "machine-readable identity, version, as-of and review dates (build standard: self-describing)",
+         '<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">\n',
+         '<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">\n' + meta_tags(meta), 1),
+        ("helplines-papyrus", "HOPELINE247 closed on 7 September 2026 (defect D3); NHS 111 is where the administrators point people",
+         '["Papyrus HOPELINE247", "0800 068 4141", "For anyone under 35 having thoughts of suicide, and for people worried about them.", "https://www.papyrus-uk.org/"],',
+         '["NHS 111", "111 \\u00b7 urgent help", "Urgent mental health support when it is not an emergency. In an emergency call 999.", "https://111.nhs.uk/"],', 1),
+        ("helplines-mix", "The Mix's phone helpline has closed; its 24/7 text route is what its own site gives (defect D4)",
+         '["The Mix", "0808 808 4994", "Support for under-25s across mental health, money, work and relationships.", "https://www.themix.org.uk/"],',
+         '["The Mix", "Text THEMIX to 85258", "Support for under-25s across mental health, money, work and relationships, with 24/7 crisis text support.", "https://www.themix.org.uk/"],', 1),
+        ("helplines-samaritans-welsh", "Samaritans' free Welsh Language Line, verified 15 November 2026",
+         '"Any age, any problem. Free from any phone and never shows on the bill."',
+         '"Any age, any problem. Free from any phone and never shows on the bill. Welsh Language Line: 0808 164 0123."', 1),
+        *extend.transforms(meta["n_sources"], meta["n_latest"]),
+        *extend2.transforms(),
         ("footer", "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
          "    </sc-if>\n\n  </div>\n</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;",
          "    </sc-if>\n\n  </div>\n" + footer(meta) + "</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;", 1),
@@ -164,6 +203,9 @@ def map_transforms():
         ("map-leaflet-js", "serve Leaflet from the site too, so the map has no third-party script dependency",
          '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>',
          '<script src="./vendor/leaflet-1.9.4/leaflet.js"></script>', 1),
+        ("map-fonts", "map fonts served by the portal itself",
+         '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">',
+         '<link href="./vendor/fonts/fonts.css" rel="stylesheet">', 1),
         ("map-icon", "favicon", "<title>Local routes in — Amplify</title>",
          '<title>Local routes in — Amplify</title>\n<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">', 1),
         ("map-outline", "street tiles are remote images, which a published artifact blocks; draw a local land outline under the markers so the map always shows where an area is",
@@ -195,6 +237,18 @@ def map_transforms():
     ]
 
 
+def rule_ids():
+    """The checks that guard the build, read from the check scripts' own docstrings (one master, no copy)."""
+    out = []
+    for f in ("check_repo.py", "check_site.py", "check_sources.py"):
+        p = os.path.join(R, "tools", f)
+        if not os.path.exists(p): continue
+        doc = open(p, encoding="utf-8").read().split('"""')[1]
+        for m in re.finditer(r"^\s{2}([RSC]\d+)\s{1,3}(.+(?:\n\s{5,}\S.*)*)", doc, re.M):
+            out.append({"id": m.group(1), "what": re.sub(r"\s+", " ", m.group(2)).strip()})
+    return out
+
+
 def sri(path):
     import base64
     return "sha384-" + base64.b64encode(hashlib.sha384(open(path, "rb").read()).digest()).decode()
@@ -206,13 +260,31 @@ def build(date, out=SITE):
     h = hashlib.sha256()
     for f in sorted(src["files"]):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
-    for f in ("tools/build_site.py", "tools/art.py"):
-        h.update(open(os.path.join(R, f), "rb").read())
+    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
+        h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
     digest = h.hexdigest()
     d = datetime.date.fromisoformat(date)
     pd = datetime.date.fromisoformat(pet["fetched"])
     meta = {"build_id": f"AMP-{d:%Y%m%d}-{digest[:8]}", "built": date, "built_long": f"{d.day} {d:%B %Y}",
-            "petition_date_long": f"{pd.day} {pd:%B %Y}", "inputs_sha256": digest}
+            "petition_date_long": f"{pd.day} {pd:%B %Y}", "inputs_sha256": digest,
+            "review": (d + datetime.timedelta(days=30)).isoformat(),
+            "n_sources": len(json.load(open(os.path.join(DATA, "youth-sources.json"), encoding="utf-8"))["sources"]),
+            "n_latest": len(json.load(open(os.path.join(DATA, "latest.json"), encoding="utf-8"))["items"])}
+    rv = datetime.date.fromisoformat(meta["review"]); meta["review_long"] = f"{rv.day} {rv:%B %Y}"
+    for f in sorted(os.listdir(DATA)):  # B3: every data file parses
+        try: json.load(open(os.path.join(DATA, f), encoding="utf-8"))
+        except Exception as e: raise BuildError(f"B3 data/{f} is not valid JSON: {e}")
+
+    # Every vendored file is the file VENDOR.json recorded, and the runtime is the bytes the design pinned (B2).
+    ven = json.load(open(os.path.join(VENDOR, "VENDOR.json"), encoding="utf-8"))["files"]
+    for f, rec in ven.items():
+        got = sri(os.path.join(VENDOR, f))
+        if got != rec["sha384"]:
+            raise BuildError(f"B2 vendor/{f} changed since it was vendored: {got} where VENDOR.json records {rec['sha384']}")
+    support = open(os.path.join(APP, "support.js"), encoding="utf-8").read()
+    for f in ("runtime/react.production.min.js", "runtime/react-dom.production.min.js", "runtime/babel.min.js"):
+        if ven[f]["sha384"] not in support:
+            raise BuildError(f"B2 vendor/{f} is not the file the design's runtime pins by SRI")
 
     # Leaflet: the vendored bytes must be the bytes the design pinned by SRI (B2).
     pinned = {"leaflet.css": "sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H",
@@ -241,6 +313,14 @@ def build(date, out=SITE):
     for f, to in (("leaflet.css", "leaflet.css"), ("leaflet.js", "leaflet.js"), ("LICENSE", "LICENSE.txt")):  # .txt: hosts serve files by extension
         shutil.copyfile(os.path.join(VENDOR, "leaflet-1.9.4", f), os.path.join(out, "vendor", "leaflet-1.9.4", to))
     shutil.copyfile(os.path.join(VENDOR, "outline.json"), os.path.join(out, "vendor", "outline.json"))
+    for f in ven:  # runtime, fonts and icons; the test-only axe file stays out of the site
+        if f.startswith("test/"): continue
+        os.makedirs(os.path.join(out, "vendor", os.path.dirname(f)), exist_ok=True)
+        shutil.copyfile(os.path.join(VENDOR, f), os.path.join(out, "vendor", f))
+    shutil.copyfile(os.path.join(VENDOR, "fonts", "fonts.css"), os.path.join(out, "vendor", "fonts", "fonts.css"))
+    os.makedirs(os.path.join(out, "data"))
+    for f in sorted(os.listdir(DATA)):
+        shutil.copyfile(os.path.join(DATA, f), os.path.join(out, "data", f))
 
     arts = {"hero.svg": art.hero(), "favicon.svg": art.favicon()}
     for n in art.HUE:
@@ -261,7 +341,7 @@ def build(date, out=SITE):
             p = os.path.join(root, n); rel = os.path.relpath(p, out).replace(os.sep, "/")
             files[rel] = hashlib.sha256(open(p, "rb").read()).hexdigest()
     manifest = {"what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
-                **meta, "design_artifact": src["artifact"], "repository": REPO_URL,
+                **meta, "design_artifact": src["artifact"], "repository": REPO_URL, "checks": rule_ids(),
                 "transforms": log, "files": files}
     open(os.path.join(out, "build.json"), "w", encoding="utf-8").write(json.dumps(manifest, indent=2) + "\n")
     return manifest
@@ -273,6 +353,7 @@ if __name__ == "__main__":
     a = ap.parse_args()
     try:
         m = build(a.date)
+        make_docs.write()
     except BuildError as e:
         sys.exit(str(e))
     print(f"built {m['build_id']}: {len(m['transforms'])} transforms, {len(m['files'])} files in site/")

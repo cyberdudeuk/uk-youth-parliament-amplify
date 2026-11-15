@@ -1,10 +1,14 @@
 {
   "what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
-  "build_id": "AMP-20261115-eca6502c",
+  "build_id": "AMP-20261115-bf500020",
   "built": "2026-11-15",
   "built_long": "15 November 2026",
   "petition_date_long": "1 October 2026",
-  "inputs_sha256": "eca6502ca4de8adc82fe8f61fc0b656f60d4644d51ea9b9d8c4a075cbfd8fbbd",
+  "inputs_sha256": "bf500020593a3d70c09fee300fa40e55f59e952026b47969268a3eeeabb6b714",
+  "review": "2026-12-15",
+  "n_sources": 50,
+  "n_latest": 13,
+  "review_long": "15 December 2026",
   "design_artifact": {
     "title": "UK Youth Parliament: Amplify portal",
     "slug": "88bd84a2-2d34-4e82-b68b-34b38228782c",
@@ -12,6 +16,112 @@
     "folder": "project/"
   },
   "repository": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify",
+  "checks": [
+    {
+      "id": "R1",
+      "what": "no email address in any tracked text file: contact is by the issue form only (owner's rule, 3 November 2026)"
+    },
+    {
+      "id": "R2",
+      "what": "no deck or film in the repository unless the owner says so for that piece (owner's rule); this portal has none"
+    },
+    {
+      "id": "R3",
+      "what": "no blueprint or input file (uploads/, scraps/, scratch/, bp/, extract/, office documents, PDFs): they are not kept once their features are built (owner's rule, 8 November 2026)"
+    },
+    {
+      "id": "R4",
+      "what": "every portal file is the source artifact's bytes: present, and its SHA-256 matches tools/sources.json (copies are made on the server, never retyped; a retyped copy is how a page silently drifts)"
+    },
+    {
+      "id": "R5",
+      "what": "the petition snapshot is dated: tools/sources.json records the summary's own fetched date, and they agree; the file must also name its source (a summary made from Parliament's record; R5 was first written against an assumed raw-record shape, data.attributes.updated_at, before the file was seen: 9 November 2026) (the estate review's open action for this portal: \"Date the petition snapshot on the page\")"
+    },
+    {
+      "id": "R6",
+      "what": "every relative src/href in the pages resolves to a tracked file (a page that loads a missing file is broken)"
+    },
+    {
+      "id": "S1",
+      "what": "site/ is exactly what tools/build_site.py makes from app/ today: rebuilt into a temporary folder with the same build date, every file's SHA-256 matches (a hand edit to site/ is how a page drifts from its design)"
+    },
+    {
+      "id": "S2",
+      "what": "no design-time drop-zone ships: no <image-slot> element, no \"Drop the \u2026\" placeholder, no image-slot runtime (the design's six drop-zones would have shown \"Drop the UKYP or partner logo\" to the public)"
+    },
+    {
+      "id": "S3",
+      "what": "the usual footer is on the portal: Disclaimers, Disclosures, Transparency, Contact, the contact form link, and the barcode and QR colophon (owner's rule: the usual footer on published artefacts)"
+    },
+    {
+      "id": "S4",
+      "what": "no email address and no mailto: anywhere in site/: contact is by the contact form only (owner's rule, 3 Nov 2026)"
+    },
+    {
+      "id": "S5",
+      "what": "the page says it is unofficial in all three places a reader can land: the splash, the masthead and the footer (the design names UKYP throughout; without this it reads as UKYP's own service)"
+    },
+    {
+      "id": "S6",
+      "what": "every relative src/href in a site page resolves to a file in site/"
+    },
+    {
+      "id": "S7",
+      "what": "nothing loads from a host a published artifact blocks: scripts only from the allowed CDNs, stylesheets only from Google Fonts, no remote image or tile (the design's map loaded a stylesheet from unpkg and street tiles from CARTO, and the CARTO tiles now return \"API key required\" images: found 15 November 2026)"
+    },
+    {
+      "id": "S8",
+      "what": "site/build.json lists every file in site/ with the SHA-256 it has"
+    },
+    {
+      "id": "S9",
+      "what": "nothing in a site page reaches another host before the visitor clicks: no external script, stylesheet, preconnect or font (defect D5: the design told unpkg and Google every visitor's IP address)"
+    },
+    {
+      "id": "S11",
+      "what": "CHANGELOG.md and docs/registers.md are exactly what tools/make_docs.py writes from data/ (no hand-kept copy)"
+    },
+    {
+      "id": "S10",
+      "what": "every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources"
+    },
+    {
+      "id": "C1",
+      "what": "every source is well formed: unique id, a known theme, nations and audiences, a V/S/K provenance, an https link, a checked date and a review cadence (a card with no date cannot say how sure it is)"
+    },
+    {
+      "id": "C2",
+      "what": "every update is dated, categorised, sourced with an https link and has a provenance"
+    },
+    {
+      "id": "C3",
+      "what": "nothing is past its review date: each data set and each source is checked within its cadence; past 1.5 times the cadence it fails (defect D3: a closed helpline stayed listed because nothing asked for a re-check)"
+    },
+    {
+      "id": "C4",
+      "what": "no retired service is offered anywhere in site/ or the data, except where an update explains it closed (defects D3 and D4: HOPELINE247 and The Mix's old phone line)"
+    },
+    {
+      "id": "C5",
+      "what": "helplines are re-checked at least every 30 days, and every helpline names how to contact it"
+    },
+    {
+      "id": "C6",
+      "what": "every framework has a known status; every K (background knowledge) entry is covered by an open-register item"
+    },
+    {
+      "id": "C7",
+      "what": "every nation of the UK has at least one nation-specific source, so coverage is pan-UK, not England by default"
+    },
+    {
+      "id": "C9",
+      "what": "every screen in the drawer has a content-integrity class, Sample, Model and Generated screens say why, and the known sample content (the seed pledges, the sample profile) is classified as Sample (owner's rule, 15 Nov 2026: flag dummy and synthetic content explicitly)"
+    },
+    {
+      "id": "C8",
+      "what": "(online only) every link answers: 2xx or 3xx, or a 401/403/405/429 from a host that refuses robots, which is reported, not failed"
+    }
+  ],
   "transforms": [
     {
       "name": "lang",
@@ -104,6 +214,131 @@
       "matches": 1
     },
     {
+      "name": "self-hosted-fonts",
+      "why": "fonts served by the portal itself: no visitor's IP address goes to Google",
+      "matches": 1
+    },
+    {
+      "name": "self-hosted-runtime",
+      "why": "React, ReactDOM and Babel served by the portal itself; support.js reads window.__resources before any CDN",
+      "matches": 1
+    },
+    {
+      "name": "self-describing",
+      "why": "machine-readable identity, version, as-of and review dates (build standard: self-describing)",
+      "matches": 1
+    },
+    {
+      "name": "helplines-papyrus",
+      "why": "HOPELINE247 closed on 7 September 2026 (defect D3); NHS 111 is where the administrators point people",
+      "matches": 1
+    },
+    {
+      "name": "helplines-mix",
+      "why": "The Mix's phone helpline has closed; its 24/7 text route is what its own site gives (defect D4)",
+      "matches": 1
+    },
+    {
+      "name": "helplines-samaritans-welsh",
+      "why": "Samaritans' free Welsh Language Line, verified 15 November 2026",
+      "matches": 1
+    },
+    {
+      "name": "ext-motion-css",
+      "why": "purposeful motion and focus styles, switched off by the existing motion rules that follow",
+      "matches": 1
+    },
+    {
+      "name": "ext-hash",
+      "why": "the four new screens can be linked to and opened from the address",
+      "matches": 1
+    },
+    {
+      "name": "ext-state",
+      "why": "filters for the new screens start open",
+      "matches": 1
+    },
+    {
+      "name": "ext-load",
+      "why": "load the data the new screens read, alongside the petition snapshot",
+      "matches": 1
+    },
+    {
+      "name": "ext-logic",
+      "why": "the new screens' logic: data loading, freshness, filters, icons",
+      "matches": 1
+    },
+    {
+      "name": "ext-group",
+      "why": "the new screens join the drawer as their own group, after Capability",
+      "matches": 1
+    },
+    {
+      "name": "ext-vals",
+      "why": "the new screens' values join renderVals",
+      "matches": 1
+    },
+    {
+      "name": "ext-nav-icons",
+      "why": "professional, contextual icons in the drawer, coloured by each section's hue",
+      "matches": 1
+    },
+    {
+      "name": "ext-screens",
+      "why": "the four new screens",
+      "matches": 1
+    },
+    {
+      "name": "ext2-sources-group-changes",
+      "why": "the release log sits with the other sources and updates",
+      "matches": 1
+    },
+    {
+      "name": "ext2-group",
+      "why": "help, feedback and the launch get their own drawer group",
+      "matches": 1
+    },
+    {
+      "name": "ext2-hash",
+      "why": "the new screens can be linked to",
+      "matches": 1
+    },
+    {
+      "name": "ext2-tours",
+      "why": "three new guided tours, alongside the design's own",
+      "matches": 1
+    },
+    {
+      "name": "ext2-tour-step",
+      "why": "a tour step remembers where it is, so the step bar can follow you",
+      "matches": 1
+    },
+    {
+      "name": "ext2-flags-a",
+      "why": "drawer flags come from the release log, so drawer and page agree",
+      "matches": 1
+    },
+    {
+      "name": "ext2-flags-b",
+      "why": "close the item function opened by ext2-flags-a",
+      "matches": 1
+    },
+    {
+      "name": "ext2-logic",
+      "why": "logic for flags, the release log, help, feedback, the launch and the tour bar",
+      "matches": 1
+    },
+    {
+      "name": "ext2-ribbon",
+      "why": "the tour bar, the new/updated note and the launch strip, at the top of every screen",
+      "matches": 1
+    },
+    {
+      "name": "ext2-screens",
+      "why": "the five new screens",
+      "matches": 1
+    },
+    {
       "name": "footer",
       "why": "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
       "matches": 1
@@ -121,6 +356,11 @@
     {
       "name": "map-leaflet-js",
       "why": "serve Leaflet from the site too, so the map has no third-party script dependency",
+      "matches": 1
+    },
+    {
+      "name": "map-fonts",
+      "why": "map fonts served by the portal itself",
       "matches": 1
     },
     {
@@ -155,11 +395,21 @@
     }
   ],
   "files": {
-    "Local Routes Map.html": "7756a891ca5cf31ef2e745fe1769b83ad498f0ee3aa2c47840db0d5b747c08c8",
-    "index.html": "a3fed3618ef9a01a3822ca2ab2a6e3a347d932a56ff83490345c7678e41818a6",
+    "Local Routes Map.html": "c538516b4262356bcca43f0c32bbe5bc5bec8a086543950bc38bca2461b4bffa",
+    "index.html": "471bf11435ed749905dcf1a3ace0e1d917a91c2b33858b5ec8e559c6a1efb773",
     "petition-754954.json": "509e513d31b4837abef7e0adef2c38b323d409361e9f8d33a80a4fe1832ad25a",
     "support.js": "8fe7df74405f3c55f49b7249c74ea1397e65d07dea2b1bd3b4a489bec2e28cbe",
-    "art/barcode.svg": "3b34556a7e3a0005283a1bb7cf07aaf25ff44d242a323fdac5043252257e385c",
+    "data/about.json": "99a5eca5e00594284bf19694674f37ca519780a14563657b50dddd3b6a736633",
+    "data/changelog.json": "d71ece39bbd0bcad3791156072f6d8c8367f4cbda625c1315f91de076fad4e78",
+    "data/help.json": "86315b45d1ae8b53352e6be9daba535a62831640a538e32b15a66a01ade47584",
+    "data/integrity.json": "32a419f63bdd7b199be87acff3d69a97481544e821ddb8d5db1f1dbe69b7f947",
+    "data/latest.json": "5eb9e4fc30de410532cf0af2253e63527cb95d333c5182003f32dd4fe331eb2c",
+    "data/launch.json": "2f69c38ca8aae84e7f7f329b261e48e2eb17e3e4c21da029eec0f6a87d0d7472",
+    "data/moscow.json": "9cc44b2176f2d899c137244567fc45d59b707bfbede87bb1493f21a5c5b99f00",
+    "data/registers.json": "a106fcb56338938cd2b9947972b45e9a47d7f7e39c583c667a607e85b7f2b171",
+    "data/safeguards.json": "542f65ea588cf327078046e6bac0e6664ee3f4256faba08d5ec24eb4b5e7ff81",
+    "data/youth-sources.json": "1aaea24ae7e71c6dd7deb11cde943e932008bc39150f6609cc54d75f9f1a8ba4",
+    "art/barcode.svg": "5720099131fa1e6aa30944a965bd0e586aa8471ce4b41125d5b2a4aeef8e3aa6",
     "art/education.svg": "1e654b11eeb077f1cd08a84048bdb3f6aff365a6caa19eb9905fd540cf0e9cee",
     "art/empowerment.svg": "6a1f93604c95d5be736278c8a86c1862ded148dd1c59d81b5a72930d53ed6d86",
     "art/equality.svg": "2a516ba220b00b6d2ca210659da6c92bc08a0911a97cc71bcbc4a0ea0535a67a",
@@ -168,7 +418,78 @@
     "art/participation.svg": "4c6a91a5905f0f492efcb5c195d101f5e7182c0cdbb0eaf127283354ffc42e3d",
     "art/qr.svg": "f8859fb08c558177c84808a963028e81410458f2de09ccebae362ffac92e90c8",
     "vendor/outline.json": "3b340557f4098a50165a8ec8f25cb77469bc86067455a853ea5710d8ebd3784b",
-    "vendor/leaflet-1.9.4/LICENSE.txt": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb",
+    "vendor/runtime/LICENSE-babel.txt": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76",
+    "vendor/runtime/LICENSE-react-dom.txt": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+    "vendor/runtime/LICENSE-react.txt": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+    "vendor/runtime/babel.min.js": "2623a9e22809915ce789b4461154e277ddce520d5a4320c14d44332a5d0dcea0",
+    "vendor/runtime/react-dom.production.min.js": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d",
+    "vendor/runtime/react.production.min.js": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd",
+    "vendor/icons/LICENSE.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "vendor/icons/accessibility.svg": "43f7615a4f3cd176ded0f0219259ca7690a7fe8714b4b6634f2a2a6264611fa0",
+    "vendor/icons/activity.svg": "655ae1c9f68ccd6be5648ee997cb5a5647488e72fc22fb9f3f30a3bac6e3bcae",
+    "vendor/icons/book-open-check.svg": "71f2d4c1b9785bbb1c57c784210c7e91ea014e62e3dc8037eebf5a9590ee6232",
+    "vendor/icons/briefcase.svg": "31834303e2bf8122f590420d04e14d97fc2d50870729bba2035c53c25c7cee13",
+    "vendor/icons/bug.svg": "215a446389b0e8f551336c18bd5c4769d20bb6fa2987373d84f674af62e63f11",
+    "vendor/icons/calendar-range.svg": "1a8ef5a76ccf80ed13c5bcf6d7c00b619ed59ce5bef87599574d062ba57de278",
+    "vendor/icons/chart-column.svg": "bb77e0467b6181cf9c1cc5d9ffbf4ba6c86c13a2458c8c00bd9cb6fa45fd3cae",
+    "vendor/icons/chart-line.svg": "2a2143f5a0d3276a93b92c1e25816ca5126c3d78d94827490063bb8f5efc44f8",
+    "vendor/icons/circle-alert.svg": "0d9e1ce02e17b59fa0a469109af33bef465f2e9520fc2c2a14b5f46bc008ec8f",
+    "vendor/icons/circle-check.svg": "8060d78fab415a2a84470a845ee29d59f02b8f5361e2a238f8d1cdbf99d2955c",
+    "vendor/icons/clock.svg": "b90eaf98b9e9a0fe3afafaf4be9645a93f16ebe57473c84fd02de89389655191",
+    "vendor/icons/coins.svg": "8ecd31ec5c7951e4f1367d5ebdd7061335d5c95ab30032158a5d907a6cd312c1",
+    "vendor/icons/compass.svg": "e57132e420efc910f689665a2767f1cb1960ae7c7d9d329ef8712638ecbc0dc9",
+    "vendor/icons/external-link.svg": "11534bf842a070702d1d97b61e7b6e239e981831141606ef376333f8eaeba623",
+    "vendor/icons/file-search.svg": "13a59bd6f4c6aa02a613d2efbf0d69a26b0826d38a6262aff1f9c038ba02deb2",
+    "vendor/icons/filter.svg": "1291ee2930b8e230d8138bc8cc9290bd21a65fae236d1f4af3b30b53fe71a8f8",
+    "vendor/icons/flag-triangle-right.svg": "238eefe6544c29409e6e119a772f26ba7a3dababfc61755631eafd6de4d3d30d",
+    "vendor/icons/git-branch.svg": "9109e7222531e6f688d19d6bd2c017b2de8c387aec8bdaf3277a46951790aa64",
+    "vendor/icons/globe.svg": "a2917fe24ca4aefed772c875dd95bbe07dbd146c2ef6501f5dd3032e0c4cb001",
+    "vendor/icons/graduation-cap.svg": "8fe183714eedc32f6fc80631083bb76c315dd788bdb72c2db43181a29132ee8d",
+    "vendor/icons/hand-heart.svg": "1611bbd2880d094d4d3ed2ca88b2c007587b584f976565e44e70ee651745aceb",
+    "vendor/icons/handshake.svg": "72fec530f691bdbf42c36795e33bfd22f525a2c9a7101754169787ff1a7da58e",
+    "vendor/icons/heart-handshake.svg": "084c159000395499ce2229cc2229c7f13aba321ed33759c3fcff1078e1cbae2f",
+    "vendor/icons/heart-pulse.svg": "c58ce0d1e277768e64ef49adb070e1ed1e928aeaa3b66c36eb518255a23c36dc",
+    "vendor/icons/info.svg": "3374d0b5169cf1a6b2454907cbd51448e7e5fde4db68ecf03461fc908bb3b008",
+    "vendor/icons/landmark.svg": "f67083894223276e39e567b4017310b58d581cdf23aff784afd7b1a8284a43bf",
+    "vendor/icons/layers.svg": "b6693d9e1f7f0858e95f7eb3c01150819a7a80e92e973d6b3b79bfde7fec96d5",
+    "vendor/icons/library.svg": "b52062879095af1eddd2e6847929b8bea02c32e05039fb41ff6f3cf789a1c2ae",
+    "vendor/icons/life-buoy.svg": "9480143e952df031a2a804cc7831252da80249af3172a167d69f4ddc90abd3ef",
+    "vendor/icons/list-checks.svg": "4baeebe19593af834339fdb75ef49dd156742ca8e0d45f095713a3b5cf0a53e4",
+    "vendor/icons/list-todo.svg": "9a131e8c57b76137b49fce982e1826cf8fc1214121bc482f7d1256916c6a1bcc",
+    "vendor/icons/map.svg": "cf4df1f2ad25b8f2d0b74f03ce308310d773df886b41f6c9e1941b97f8c37457",
+    "vendor/icons/megaphone.svg": "7a305aef1c73e12ffe3d114cf73e5629b91f4a83506191510987143ca53bdb84",
+    "vendor/icons/messages-square.svg": "c3098bb5ff11ed2ca9a4e46d08e02cb097a17f3f369a8696cb4dcb523418cde2",
+    "vendor/icons/network.svg": "a50c3d7043f4d6034823c183420d791cadf520362d050d3b988cab033d799830",
+    "vendor/icons/newspaper.svg": "b3fdcb78d2cfc24da1dfb38bc3423e4321aa459875ca1c74ea02efebb9f556bf",
+    "vendor/icons/package.svg": "74ca507badc7abc5fcb33bf57b014516266dd1c5295a48df715d67f0af787671",
+    "vendor/icons/palette.svg": "fae62350370df7a045ed664621cc58e7eb3043a88bdaf42bac0ca2f3040def30",
+    "vendor/icons/radar.svg": "383f83bb1cb09d951e71ecd9a3247e78f1461ebd91c0d4e8303f0972e8afe823",
+    "vendor/icons/refresh-cw.svg": "aca5b435761bf7556421dbf5f1950f1b8486184290501e05480af6395f36dcd1",
+    "vendor/icons/route.svg": "e174ec31f8a974fcd2fd775d7e498d44cde705d2d802695b9ef5abb0f640d09f",
+    "vendor/icons/scale.svg": "280e24e8ab9d2286d4d7cbf75ee246361575ea0b0c350c1d9f36d7d406de1070",
+    "vendor/icons/scroll-text.svg": "c10a849bdf7b54c63400b3afedccc17c7cfa89b73f6066b3f0c0870121e3dd8b",
+    "vendor/icons/search.svg": "aad1fb44a964c5841a107239b45bfbe6ab08ac62bf3a13377b5412002e8068db",
+    "vendor/icons/shield-check.svg": "618ad09c689bbaa4eed347793083255fee2c0547d8531db4767e4264577fd65a",
+    "vendor/icons/sparkles.svg": "4dd096584e2b7b9349ec94b104918eddc5a8e687e22ff272c6f2a6ba31813933",
+    "vendor/icons/trending-up.svg": "6d91b60bc5941db33993fc13c839fcf4407a96910c5eec93ea54eb55bafd30ce",
+    "vendor/icons/triangle-alert.svg": "456054288ade09e5d0b77d80b75cfb5733bbf32e3eb09a78522e6a6a09def275",
+    "vendor/icons/users.svg": "4465a8282a15897fcf70ee4ac7a752db10664051335d2c0967c9a7a903f13904",
+    "vendor/icons/vote.svg": "e27e0f817ad272494b1bedec7043e64577abbe14993c500045fd87b24ba63c90",
+    "vendor/fonts/LICENSE-atkinson-hyperlegible.txt": "e137caeef2ff7c04fbf87078ad09cf3dcba8a3a58a4aa4e2f399d42c50bc4b18",
+    "vendor/fonts/LICENSE-chivo.txt": "b558b20689aeea67c691024a28875a796757a444e392461a049c3cffa68f702d",
+    "vendor/fonts/LICENSE-space-mono.txt": "761663b7fb7667764f42243f9b1b2bcfccf41b158a7ab508bed4961dcf377eab",
+    "vendor/fonts/atkinson-hyperlegible-latin-400-normal.woff2": "d64ba838ef5472bba248620ec4fd8b5aa7cf0db2908e0bb230600caf279ba7bc",
+    "vendor/fonts/atkinson-hyperlegible-latin-700-normal.woff2": "140e2bd25a7315c8a062508391426b0d8c3297400c947b8d847be28f73a199f0",
+    "vendor/fonts/chivo-latin-300-normal.woff2": "3c13e8519171aa1619edb2ac72f07e0a8be2d1d67439b66412cc7b832919d57e",
+    "vendor/fonts/chivo-latin-400-italic.woff2": "20a84a7a4bc351d3cdd2ba98b037163c6ffc951471609f3c12223765d860a829",
+    "vendor/fonts/chivo-latin-400-normal.woff2": "e0d2fe7ce671a90326e0bc1a17c9fd8450cd9c7a56baaccf693abe3fb1e7cbae",
+    "vendor/fonts/chivo-latin-600-normal.woff2": "94ad3cc906c2c49d3bfc778195a9b65118b904d56ef3bd660f903f409fd2a937",
+    "vendor/fonts/chivo-latin-700-normal.woff2": "f02d0229588e8d5fe6670bb34215b75b19e2cd6ff1779fa2dabe7970fe3292a1",
+    "vendor/fonts/chivo-latin-900-normal.woff2": "d648bc146847c08e581cc50372dfdd3c47918ce19570b7ae08f8db0230274ba5",
+    "vendor/fonts/fonts.css": "fb5e921f3643afdf4c11af27260693684c81abaf9c017221f040556f7a85d0d8",
+    "vendor/fonts/space-mono-latin-400-normal.woff2": "fb4a81a2d0a893e5c38c394a7e716a1cef0b24610a0af49c96f6d529bd66bf2b",
+    "vendor/fonts/space-mono-latin-700-normal.woff2": "2d46bd159b53f55c41167a4f1540a074649464194fd1e416f5b4694a6c0f282c",
+    "vendor/leaflet-1.9.4/LICENSE.txt": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b",
     "vendor/leaflet-1.9.4/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
     "vendor/leaflet-1.9.4/leaflet.js": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
   }

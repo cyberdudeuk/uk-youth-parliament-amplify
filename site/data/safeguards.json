@@ -1,0 +1,453 @@
+{
+ "title": "Safeguards, frameworks and audiences",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "audiences": [
+  {
+   "id": "1113",
+   "name": "Young people aged 11 to 13",
+   "need": "Plain words, the 11 to 13 reading mode, and a named adult for any pledge.",
+   "how": "Age mode switch in the accessibility panel; pledges for under 13s ask for an adult."
+  },
+  {
+   "id": "1417",
+   "name": "Young people aged 14 to 17",
+   "need": "Campaign skills without exposing themselves; the under-16 social media ban from spring 2027.",
+   "how": "Toolkit, Academy and Safeguarding screens; the parents' guidance and What's new on the under-16 social media ban."
+  },
+  {
+   "id": "1825",
+   "name": "Young adults 18 to 21, and up to 25 with SEND",
+   "need": "Work, pay, voting and the National Youth Strategy's age range.",
+   "how": "Trusted sources on pay, NEET and policy; What's new."
+  },
+  {
+   "id": "parents",
+   "name": "Parents, carers and anyone with parental responsibility",
+   "need": "To know what their child is signing up to, how to keep them safe, and how to back them.",
+   "how": "This screen's parents section, the parent filter in Trusted sources, and the toolkit's parent audience."
+  },
+  {
+   "id": "allies",
+   "name": "Adult allies: teachers, youth workers, councillors",
+   "need": "Their safeguarding duties and the evidence to act on.",
+   "how": "Resources by setting, Safeguarding & support, and the policy sources."
+  }
+ ],
+ "parents": [
+  "Amplify asks for no account, no name and no contact details. Settings and any pledge stay in the browser on the device used.",
+  "If your child is under 13, any pledge they make should name you, or another adult they trust, as the person backing it.",
+  "Talk through who will see a campaign post before it goes out. Public campaigning can attract abuse; the Safeguarding screen has the steps to take.",
+  "From spring 2027 under 16s are due to be barred from major social media. Help them campaign through their MYP, school council and adults like you instead.",
+  "If you are worried about a child, the NSPCC Helpline (0808 800 5000) advises adults; for an online sexual approach, report to CEOP.",
+  "To back them: help them register to vote when they are old enough, sign petitions yourself, and write to your MP alongside them."
+ ],
+ "frameworks": [
+  {
+   "id": "uncrc",
+   "name": "UN Convention on the Rights of the Child: articles 12, 13, 15, 16 and 17",
+   "owner": "United Nations",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Treaty",
+   "url": "https://www.unicef.org.uk/what-we-do/un-convention-child-rights/",
+   "provenance": "S",
+   "how": "Views heard (12), free expression (13), association (15), privacy (16) and reliable information (17) are the portal's design brief.",
+   "status": "Met by design"
+  },
+  {
+   "id": "ico",
+   "name": "ICO Children's code: 15 standards of age appropriate design",
+   "owner": "Information Commissioner's Office",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Statutory code",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/",
+   "provenance": "S",
+   "how": "No personal data, no profiling, no geolocation, no nudges to share, high privacy by default; nothing is processed, so a data protection impact assessment has no processing to assess. That screening is recorded here.",
+   "status": "Met by design"
+  },
+  {
+   "id": "osa",
+   "name": "Online Safety Act 2023 and Ofcom's Protection of Children Codes (in force 25 July 2025)",
+   "owner": "Ofcom",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Law and codes",
+   "url": "https://www.ofcom.org.uk/online-safety/protecting-children/",
+   "provenance": "S",
+   "how": "Amplify lets no user post anything another user can see, so it is not a user-to-user service. The pledge wall is local to each browser.",
+   "status": "Out of scope by design"
+  },
+  {
+   "id": "u16",
+   "name": "Under-16 social media ban (announced June 2026, due spring 2027)",
+   "owner": "UK Government",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Policy",
+   "url": "https://www.gov.uk/",
+   "provenance": "S",
+   "how": "Amplify is not in scope: the Government has described the ban as covering user-to-user platforms whose purpose is social interaction, with posting and algorithms, and Amplify has none of these. For campaigning, the age table on this screen says when an adult, an MYP or a school should post on a young person's behalf. The Toolkit's social assets are still to be revised (open item O8).",
+   "status": "Partly met"
+  },
+  {
+   "id": "gdpr8",
+   "name": "UK GDPR article 8: age of digital consent (13 in the UK)",
+   "owner": "ICO",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Law",
+   "url": "https://ico.org.uk/",
+   "provenance": "K",
+   "how": "No consent is asked for because no data is collected.",
+   "status": "Not triggered"
+  },
+  {
+   "id": "access",
+   "name": "Equality Act 2010 and the public sector accessibility regulations (WCAG 2.2 AA)",
+   "owner": "UK Government",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Law",
+   "url": "https://www.gov.uk/guidance/accessibility-requirements-for-public-sector-websites-and-apps",
+   "provenance": "K",
+   "how": "Automated accessibility checks run in CI and must not regress; an accessibility statement is published; disabled users have not yet tested it.",
+   "status": "Partly met"
+  },
+  {
+   "id": "wt",
+   "name": "Working Together to Safeguard Children (England) and Keeping Children Safe in Education",
+   "owner": "Department for Education",
+   "nations": [
+    "England"
+   ],
+   "kind": "Statutory guidance",
+   "url": "https://www.gov.uk/government/publications/working-together-to-safeguard-children--2",
+   "provenance": "K",
+   "how": "Amplify is not a service that works directly with children; it signposts to statutory routes, never collects disclosures, and tells adults to follow local safeguarding procedures.",
+   "status": "Signposting"
+  },
+  {
+   "id": "nya",
+   "name": "NYA Safeguarding Standards and Digital Youth Work Standards",
+   "owner": "National Youth Agency",
+   "nations": [
+    "England"
+   ],
+   "kind": "Sector standard",
+   "url": "https://nya.org.uk/safeguarding-hub/",
+   "provenance": "S",
+   "how": "Abuse response steps, a never-do list and links to the standards for adults running campaigns.",
+   "status": "Met for a signposting tool"
+  },
+  {
+   "id": "lundy",
+   "name": "The Lundy model of participation: space, voice, audience, influence",
+   "owner": "Queen's University Belfast; used by the EU and governments",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Participation model",
+   "url": "https://eu-for-children.europa.eu/about/lundy-model",
+   "provenance": "S",
+   "how": "Space: a safe, account-free portal. Voice: toolkits and Academy. Audience: MPs, committees and petitions. Influence: Track record follows what happened next.",
+   "status": "Met by design"
+  },
+  {
+   "id": "nys",
+   "name": "Youth Matters: youth voice outcome (Youth Policy Network, youth councils, co-design)",
+   "owner": "Department for Culture, Media and Sport",
+   "nations": [
+    "England"
+   ],
+   "kind": "Strategy",
+   "url": "https://www.gov.uk/government/publications/youth-matters-your-national-youth-strategy",
+   "provenance": "S",
+   "how": "Amplify maps the routes young people can use to hold the strategy to account, including the Commons inquiry.",
+   "status": "Aligned"
+  },
+  {
+   "id": "sco",
+   "name": "UNCRC (Incorporation) (Scotland) Act 2024 and GIRFEC",
+   "owner": "Scottish Government",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Law and framework",
+   "url": "https://www.gov.scot/",
+   "provenance": "K",
+   "how": "Scottish rights are legally enforceable; the sources screen points to the Scottish Commissioner.",
+   "status": "Signposting"
+  },
+  {
+   "id": "wal",
+   "name": "Rights of Children and Young People (Wales) Measure 2011 and the National Participation Standards",
+   "owner": "Welsh Government",
+   "nations": [
+    "Wales"
+   ],
+   "kind": "Law and standard",
+   "url": "https://www.gov.wales/",
+   "provenance": "K",
+   "how": "Welsh campaigns are pointed to the Welsh Youth Parliament and the Children's Commissioner for Wales.",
+   "status": "Signposting"
+  },
+  {
+   "id": "pr",
+   "name": "Parental responsibility (Children Act 1989)",
+   "owner": "UK law",
+   "nations": [
+    "England",
+    "Wales"
+   ],
+   "kind": "Law",
+   "url": "https://www.gov.uk/parental-rights-responsibilities",
+   "provenance": "K",
+   "how": "Parents and carers are a named audience with their own guidance and source filter.",
+   "status": "Met"
+  },
+  {
+   "id": "bsl22",
+   "name": "British Sign Language Act 2022: BSL recognised as a language of England, Scotland and Wales",
+   "owner": "UK Government",
+   "nations": [
+    "England",
+    "Scotland",
+    "Wales"
+   ],
+   "kind": "Law",
+   "url": "https://www.legislation.gov.uk/ukpga/2022/34/contents/enacted",
+   "provenance": "S",
+   "how": "Deaf young people are a named audience; BSL signposting (Childline SignVideo) is listed; a BSL version of the portal is an open item.",
+   "status": "Partly met"
+  },
+  {
+   "id": "bslsco",
+   "name": "British Sign Language (Scotland) Act 2015",
+   "owner": "Scottish Parliament",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Law",
+   "url": "https://www.legislation.gov.uk/asp/2015/11/contents",
+   "provenance": "S",
+   "how": "As above, for Scotland.",
+   "status": "Partly met"
+  },
+  {
+   "id": "signni",
+   "name": "Sign Language Act (Northern Ireland) 2026: BSL and Irish Sign Language recognised",
+   "owner": "Northern Ireland Assembly; Department for Communities",
+   "nations": [
+    "Northern Ireland"
+   ],
+   "kind": "Law",
+   "url": "https://www.communities-ni.gov.uk/news/sign-language-act-receives-royal-assent",
+   "provenance": "S",
+   "how": "Both BSL and ISL are named on this screen; ISL and BSL versions of key screens are open items.",
+   "status": "Partly met"
+  },
+  {
+   "id": "langs",
+   "name": "Welsh Language (Wales) Measure 2011, Gaelic Language (Scotland) Act 2005, Identity and Language (Northern Ireland) Act 2022",
+   "owner": "Senedd; Scottish Parliament; UK Parliament",
+   "nations": [
+    "Wales",
+    "Scotland",
+    "Northern Ireland"
+   ],
+   "kind": "Law",
+   "url": "https://www.legislation.gov.uk/",
+   "provenance": "K",
+   "how": "Welsh passages are marked up as Cymraeg; full Welsh, Gaelic and Irish versions, and Ulster Scots material, are open items.",
+   "status": "Partly met"
+  }
+ ],
+ "every_voice": [
+  {
+   "who": "Every UK nation, plus the Crown Dependencies and Overseas Territories",
+   "how": "Nation filters on Trusted sources; youth parliaments for all four nations; UKYP sittings include the Territories and Dependencies."
+  },
+  {
+   "who": "Welsh, Gaelic, Irish and other language speakers, and young people learning English",
+   "how": "Welsh-language passages marked up as Cymraeg, Samaritans' Welsh Language Line, plain English throughout. Full Welsh, Gaelic and Irish versions are open."
+  },
+  {
+   "who": "d/Deaf young people, BSL and ISL users",
+   "how": "Childline's SignVideo and deaf-led organisations listed; a d/Deaf participation checklist on this screen; BSL and ISL versions of key screens are open (need specialist, deaf-led production)."
+  },
+  {
+   "who": "Disabled young people and those with SEND",
+   "how": "Dyslexia-friendly type, text size, high contrast, reduced motion and an 11 to 13 reading mode; automated accessibility checks in every build; the National Youth Strategy's age range up to 25 with SEND."
+  },
+  {
+   "who": "Young people on low incomes or limited data",
+   "how": "Low-data mode, no sign-up, no downloads required, and every file served by the portal itself so it works on slow connections."
+  },
+  {
+   "who": "Care-experienced young people and young carers",
+   "how": "Every voice sources; campaign timing advice that fits around care and caring."
+  },
+  {
+   "who": "Refugees, people seeking asylum, Gypsy, Roma and Traveller young people",
+   "how": "Every voice sources; the never-collect rule means nobody's status is ever recorded."
+  },
+  {
+   "who": "LGBT+ young people and young people of every faith and ethnicity",
+   "how": "Every voice sources; the abuse-response steps on the Safeguarding screen."
+  },
+  {
+   "who": "Rural, coastal and island young people",
+   "how": "The local routes map and constituency breakdowns show where voices are missing, not just where they are loud."
+  }
+ ],
+ "ucd": [
+  "Start from what young people said: the National Youth Strategy's 14,000 voices and UKYP's Make Your Mark ballots shape the issue list.",
+  "Test with real users before calling anything done: research with young people, parents and disabled users is an open item, not a claim.",
+  "Anyone can tell us what is wrong through the contact form; if you cannot use it, ask your MYP, youth worker or a trusted adult to raise it for you.",
+  "Plain English, sentence case, one idea per sentence, and no jargon without a glossary entry."
+ ],
+ "languages": [
+  {
+   "lang": "English",
+   "where": "UK-wide",
+   "status": "Whole portal, in plain English"
+  },
+  {
+   "lang": "Welsh (Cymraeg)",
+   "where": "Wales, official",
+   "status": "Welsh passages marked up as Cymraeg; Samaritans' Welsh Language Line and Meic listed; full version open"
+  },
+  {
+   "lang": "British Sign Language (BSL)",
+   "where": "England, Scotland, Wales and Northern Ireland; recognised in law",
+   "status": "Childline SignVideo listed; BSL videos of key screens open"
+  },
+  {
+   "lang": "Irish Sign Language (ISL)",
+   "where": "Northern Ireland; recognised in law in 2026",
+   "status": "Named here; ISL videos of key screens open"
+  },
+  {
+   "lang": "Scottish Gaelic (Gàidhlig)",
+   "where": "Scotland, official",
+   "status": "Open"
+  },
+  {
+   "lang": "Irish (Gaeilge)",
+   "where": "Northern Ireland, official",
+   "status": "Open"
+  },
+  {
+   "lang": "Ulster Scots, Scots and Cornish",
+   "where": "Regional and minority languages",
+   "status": "Open"
+  }
+ ],
+ "deaf": [
+  "Deaf-led first: ask deaf young people and deaf-led groups to shape a campaign, not just to receive it.",
+  "Book a qualified BSL (or, in Northern Ireland, ISL) interpreter for any meeting, sitting or event, and say so in the invitation.",
+  "Caption every video, and add a BSL or ISL version for anything central to the campaign.",
+  "Never make the phone the only way to take part: offer text, chat and forms, as Amplify does.",
+  "Plan for deaf young people who use spoken English with hearing technology too: good sound, captions and lip-reading space.",
+  "Remember the UKYP has signed in the Commons: on 28 February 2025 a Member of Youth Parliament became the first young person to give a speech in British Sign Language in the House of Commons."
+ ],
+ "age_access": {
+  "intro": "Amplify itself has no accounts, no posting between users and no feed, so it is open to every age and is not a social media service as the Government has described the ban. But some routes it points to have their own age rules. Where a young person cannot use a route themselves, an adult can act on their behalf, with their agreement.",
+  "bands": [
+   "Under 13",
+   "13 to 15",
+   "16 to 17",
+   "18 and over"
+  ],
+  "rows": [
+   {
+    "what": "Use Amplify, its tours and its sources",
+    "u13": "Yourself",
+    "a1315": "Yourself",
+    "a1617": "Yourself",
+    "a18": "Yourself",
+    "why": "No account and no personal data; the 11 to 13 reading mode helps younger users.",
+    "provenance": "V"
+   },
+   {
+    "what": "Make a pledge on the pledge wall",
+    "u13": "With an adult named",
+    "a1315": "Yourself",
+    "a1617": "Yourself",
+    "a18": "Yourself",
+    "why": "Pledges stay in your browser; under 13s name the adult backing them.",
+    "provenance": "V"
+   },
+   {
+    "what": "Send an idea or bug (GitHub forms)",
+    "u13": "An adult posts for you",
+    "a1315": "Yourself, with your own account",
+    "a1617": "Yourself",
+    "a18": "Yourself",
+    "why": "GitHub's terms require account holders to be at least 13; the forms are public, so never include personal details.",
+    "provenance": "K"
+   },
+   {
+    "what": "Campaign on major social media",
+    "u13": "An adult or your MYP posts for you",
+    "a1315": "From spring 2027: an adult, your MYP or your school posts for you",
+    "a1617": "Yourself",
+    "a18": "Yourself",
+    "why": "The announced under-16 ban is due to apply from spring 2027; platforms already set their own minimum ages, usually 13.",
+    "provenance": "S"
+   },
+   {
+    "what": "Sign a UK Parliament petition",
+    "u13": "Ask an adult first",
+    "a1315": "Yourself, with permission at home",
+    "a1617": "Yourself",
+    "a18": "Yourself",
+    "why": "Petitions need a name and an email address and are open to UK residents and British citizens; signatures are published as counts, not names.",
+    "provenance": "K"
+   },
+   {
+    "what": "Register to vote",
+    "u13": "No",
+    "a1315": "From 14 in Scotland and Wales",
+    "a1617": "Yourself (from 16 in England and Northern Ireland)",
+    "a18": "Yourself",
+    "why": "Registration ages differ by nation and are changing with the Representation of the People Bill.",
+    "provenance": "S"
+   },
+   {
+    "what": "Childline and Report Remove",
+    "u13": "Yourself",
+    "a1315": "Yourself",
+    "a1617": "Yourself",
+    "a18": "Childline is for under 19s; adults use the NSPCC Helpline",
+    "why": "Both are designed to be used by young people themselves, confidentially.",
+    "provenance": "S"
+   },
+   {
+    "what": "CEOP report",
+    "u13": "Yourself, or a parent or carer",
+    "a1315": "Yourself, or a parent or carer",
+    "a1617": "Yourself, or a parent or carer",
+    "a18": "For someone under 18",
+    "why": "CEOP takes reports about under 18s from them or their parent or carer; professionals follow local procedures.",
+    "provenance": "V"
+   }
+  ],
+  "on_behalf": [
+   "Ask first, and act only with the young person's agreement: it is their idea and their voice.",
+   "Use your own account and your own name; never set up an account in a child's name to get round an age limit.",
+   "Keep their name, age, school, photo and location out of anything you post, unless they and you have both agreed it is safe.",
+   "Quote them in their own words and say it is their view; do not rewrite it into yours.",
+   "Show them what you posted and any replies, and stop if they want you to.",
+   "If anything worries you about their safety, follow Safeguarding & support, not the campaign."
+  ]
+ }
+}

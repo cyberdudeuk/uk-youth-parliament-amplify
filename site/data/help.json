@@ -1,0 +1,108 @@
+{
+ "title": "Help & adoption",
+ "checked": "2026-11-15",
+ "review_days": 90,
+ "quickstart": [
+  "Pick your role on Guide & tours, or take the five-minute tour.",
+  "Read Ethics & values before you plan anything: it decides how you run a campaign.",
+  "Check Safeguarding & support, and keep the helplines to hand.",
+  "Use Trusted sources to back every claim with an official source.",
+  "Tell us what is missing on Have your say."
+ ],
+ "manual": [
+  {
+   "group": "Foundations",
+   "what": "Ethics & values, your route in, how the state works, issue domains, and the guided tours. Start here if you are new."
+  },
+  {
+   "group": "Campaign engine",
+   "what": "Plan a campaign from hub to launch window, coalition, toolkit, pledges, news hooks, policy and constituencies."
+  },
+  {
+   "group": "Capability",
+   "what": "Learn and improve: Academy, Select Committee, post-mortems, track record, MYPs and regions, inclusion, resources by setting, copilot, brand, safeguarding and the glossary."
+  },
+  {
+   "group": "Sources & updates",
+   "what": "Trusted sources, what's new, the release log, safeguards and audiences, and portal health."
+  },
+  {
+   "group": "Help & get involved",
+   "what": "This manual, the UK Parliament Week launch, and Have your say."
+  },
+  {
+   "group": "Settings",
+   "what": "The Access button sets theme, contrast, text size, dyslexia-friendly type, reduced motion, low-data mode and the 11 to 13 reading mode. Settings stay in your browser."
+  }
+ ],
+ "adoption": [
+  {
+   "who": "Young people and MYPs",
+   "steps": [
+    "Take the MYP or new-here tour.",
+    "Choose one issue from Issue domains and check it in Trusted sources.",
+    "Score your launch window before you set a date.",
+    "Line up an adult ally before you go public."
+   ]
+  },
+  {
+   "who": "Parents, carers and guardians",
+   "steps": [
+    "Take the parents and carers tour.",
+    "Read Backing a young campaigner on Safeguards & audiences.",
+    "Keep the NSPCC Helpline and Childline details to hand.",
+    "Help them register to vote when they are old enough."
+   ]
+  },
+  {
+   "who": "Schools and teachers",
+   "steps": [
+    "Use the Academy for citizenship or PSHE lessons.",
+    "Run a UK Parliament Week activity from the launch page.",
+    "Follow your school's safeguarding procedures; Amplify signposts, it does not replace them.",
+    "Share the portal link; nobody needs an account."
+   ]
+  },
+  {
+   "who": "Youth groups, councils and partners",
+   "steps": [
+    "Map local routes on Your route in and the local routes map.",
+    "Use Resources by setting for your setting.",
+    "Bring young people's ideas to Have your say.",
+    "Check Portal health before relying on a figure."
+   ]
+  }
+ ],
+ "tutorials": [
+  {
+   "title": "Plan a campaign in 20 minutes",
+   "screen": "plan",
+   "steps": [
+    "Open Launch window and pick a date outside exam season.",
+    "Open Coalition and list three adult allies.",
+    "Open Toolkit and make the pack for your first audience.",
+    "Open Momentum and note the daily rate you need."
+   ]
+  },
+  {
+   "title": "Find trusted help, fast",
+   "screen": "care",
+   "steps": [
+    "Open Safeguarding & support for helplines that are free and confidential.",
+    "In an emergency, call 999.",
+    "For an online sexual approach, report to CEOP.",
+    "For more, filter Trusted sources by Safety or Wellbeing."
+   ]
+  },
+  {
+   "title": "Check a fact before you use it",
+   "screen": "sources",
+   "steps": [
+    "Search Trusted sources for the topic.",
+    "Prefer cards marked Verified; treat Leads as things to confirm.",
+    "Open the source and find the sentence you need.",
+    "Note the date you checked it."
+   ]
+  }
+ ]
+}

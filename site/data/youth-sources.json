@@ -1,0 +1,1006 @@
+{
+ "title": "Trusted youth sources",
+ "checked": "2026-11-15",
+ "review_days": 30,
+ "provenance_key": {
+  "V": "verified against the primary source on the date shown",
+  "S": "search-sourced: the link came from a search result and is confirmed by the weekly link check",
+  "K": "background knowledge: a lead, confirmed only by the weekly link check"
+ },
+ "themes": {
+  "voice": "Youth voice",
+  "democracy": "Democracy & votes",
+  "rights": "Rights",
+  "safety": "Safety",
+  "wellbeing": "Wellbeing",
+  "work": "Work & pay",
+  "evidence": "Data & evidence",
+  "policy": "Policy & strategy",
+  "inclusion": "Every voice"
+ },
+ "sources": [
+  {
+   "id": "ukyp",
+   "name": "UK Youth Parliament",
+   "theme": "voice",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Programme",
+   "url": "https://nya.org.uk/ukyp/",
+   "what": "The elected voice of 11 to 18 year olds across the UK, run by the National Youth Agency.",
+   "use": "Find your MYP, the manifesto and the annual Make Your Mark ballot.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "syp",
+   "name": "Scottish Youth Parliament",
+   "theme": "voice",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Parliament",
+   "url": "https://syp.org.uk/",
+   "what": "The democratically elected voice of Scotland's young people, with a 2026 to 2031 manifesto.",
+   "use": "Check elections and the Scottish manifesto before campaigning in Scotland.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young"
+   ]
+  },
+  {
+   "id": "wyp",
+   "name": "Welsh Youth Parliament",
+   "theme": "voice",
+   "nations": [
+    "Wales"
+   ],
+   "kind": "Parliament",
+   "url": "https://youthparliament.senedd.wales/",
+   "what": "Sixty members aged 11 to 17, elected by constituency and partner organisations, meeting at the Senedd.",
+   "use": "See priorities the Welsh Government has agreed to consider routinely.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young"
+   ]
+  },
+  {
+   "id": "niya",
+   "name": "Northern Ireland Youth Assembly",
+   "theme": "voice",
+   "nations": [
+    "Northern Ireland"
+   ],
+   "kind": "Parliament",
+   "url": "https://www.niassembly.gov.uk/",
+   "what": "Ninety members selected at random so every constituency and community is represented, chaired by the Assembly Speaker.",
+   "use": "Search the Assembly site for the Youth Assembly and its committees.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young"
+   ]
+  },
+  {
+   "id": "ysc",
+   "name": "Youth Select Committee",
+   "theme": "voice",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Programme",
+   "url": "https://nya.org.uk/?p=43843",
+   "what": "Twelve MYPs who run a televised inquiry each year; the 2025 to 2026 inquiry reported on PSHE in March 2026.",
+   "use": "Read the PSHE report and the Government's response before lobbying on curriculum.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "petitions",
+   "name": "UK Parliament petitions",
+   "theme": "democracy",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Parliament",
+   "url": "https://petition.parliament.uk/",
+   "what": "Petitions to the UK Government and Parliament: 10,000 signatures for a response, 100,000 to be considered for debate.",
+   "use": "Check thresholds and the status of any petition you are backing.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "register",
+   "name": "Register to vote",
+   "theme": "democracy",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Government",
+   "url": "https://www.gov.uk/register-to-vote",
+   "what": "The official route to register: from 14 in Scotland and Wales, and from 16 in England and Northern Ireland.",
+   "use": "Register before an election deadline; it takes about five minutes online.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "note": "Age rules differ by nation and are changing with the Representation of the People Bill.",
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "rotp",
+   "name": "Representation of the People Bill",
+   "theme": "democracy",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Parliament",
+   "url": "https://bills.parliament.uk/bills/4080",
+   "what": "The Bill that would extend the vote to 16 and 17 year olds in all UK elections.",
+   "use": "Track each stage of the Bill on Parliament's own record.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "v16",
+   "name": "Votes at 16 policy summary",
+   "theme": "democracy",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Government",
+   "url": "https://www.gov.uk/government/publications/representation-of-the-people-bill-policy-summaries/votes-at-16",
+   "what": "The Government's explanation of extending the vote to 16 and 17 year olds, updated May 2026.",
+   "use": "Quote what the Government itself says the Bill does.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "ec-yp",
+   "name": "Electoral Commission: young people's views on politics and voting",
+   "theme": "democracy",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Regulator",
+   "url": "https://www.electoralcommission.org.uk/research-reports-and-data/young-peoples-views-politics-and-voting-2026",
+   "what": "2026 research on how young people see politics and voting.",
+   "use": "Ground arguments about youth turnout in the regulator's evidence.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "allies"
+   ]
+  },
+  {
+   "id": "cc-eng",
+   "name": "Children's Commissioner for England",
+   "theme": "rights",
+   "nations": [
+    "England"
+   ],
+   "kind": "Statutory body",
+   "url": "https://www.childrenscommissioner.gov.uk/",
+   "what": "Promotes and protects children's rights in England; publishes the School and College Census and mental health reports.",
+   "use": "Cite her reports when making the case to ministers in England.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "cc-sco",
+   "name": "Children and Young People's Commissioner Scotland",
+   "theme": "rights",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Statutory body",
+   "url": "https://www.cypcs.org.uk/",
+   "what": "Protects children's rights in Scotland, where the UNCRC is incorporated into law.",
+   "use": "Check what is legally enforceable in Scotland before you campaign there.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "cc-wal",
+   "name": "Children's Commissioner for Wales",
+   "theme": "rights",
+   "nations": [
+    "Wales"
+   ],
+   "kind": "Statutory body",
+   "url": "https://www.childcomwales.org.uk/",
+   "what": "Promotes and protects children's rights in Wales; three-year strategy for 2026 to 2029.",
+   "use": "Use the strategy and election resources for Welsh campaigns.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "niccy",
+   "name": "NI Commissioner for Children and Young People",
+   "theme": "rights",
+   "nations": [
+    "Northern Ireland"
+   ],
+   "kind": "Statutory body",
+   "url": "https://www.niccy.org/",
+   "what": "Safeguards and promotes children's rights in Northern Ireland, including mental health service reviews.",
+   "use": "Cite NICCY's reviews when campaigning in Northern Ireland.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "unicef",
+   "name": "UNICEF UK: the UN Convention on the Rights of the Child",
+   "theme": "rights",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.unicef.org.uk/what-we-do/un-convention-child-rights/",
+   "what": "The full UNCRC, article by article, in plain language.",
+   "use": "Name the article your campaign rests on.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "childline",
+   "name": "Childline",
+   "theme": "safety",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Helpline",
+   "url": "https://www.childline.org.uk/",
+   "what": "Free, confidential support for anyone under 19, by phone, 1-2-1 chat and email, run by the NSPCC. British Sign Language users can reach a counsellor through SignVideo.",
+   "use": "Call, chat or email about anything, at any time.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "contact": "0800 1111 · 24 hours",
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "reportremove",
+   "name": "Report Remove",
+   "theme": "safety",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Tool",
+   "url": "https://www.childline.org.uk/remove/",
+   "what": "Childline and the Internet Watch Foundation's tool for under 18s to get a nude image or video of themselves removed.",
+   "use": "Use it if an image of you has been shared, or you are worried it will be.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "ceop",
+   "name": "CEOP Safety Centre",
+   "theme": "safety",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Police",
+   "url": "https://www.ceop.police.uk/safety-centre/",
+   "what": "The National Crime Agency's route for children and parents to report online sexual abuse or grooming.",
+   "use": "Report an adult behaving inappropriately towards a child online. Not for bullying.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "nspcc",
+   "name": "NSPCC Helpline",
+   "theme": "safety",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Helpline",
+   "url": "https://www.nspcc.org.uk/",
+   "what": "Advice for adults worried about a child.",
+   "use": "For the adult ally who is worried about a young person.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "contact": "0808 800 5000 · Mon to Fri, 10am to 4pm",
+   "audiences": [
+    "parents"
+   ]
+  },
+  {
+   "id": "samaritans",
+   "name": "Samaritans",
+   "theme": "wellbeing",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Helpline",
+   "url": "https://www.samaritans.org/",
+   "what": "Any age, any problem, free from any phone, open 24 hours. Welsh Language Line 0808 164 0123.",
+   "use": "Call any time, day or night.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "contact": "116 123 · 24 hours",
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "shout",
+   "name": "Shout",
+   "theme": "wellbeing",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Helpline",
+   "url": "https://giveusashout.org/",
+   "what": "Free 24/7 text support for anyone in the UK.",
+   "use": "Text if you would rather not speak to anyone.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "contact": "Text SHOUT to 85258",
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "themix",
+   "name": "The Mix",
+   "theme": "wellbeing",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.themix.org.uk/",
+   "what": "Support for under 25s on mental health, money, work and relationships, with 24/7 crisis text support.",
+   "use": "Text for urgent support; its old phone helpline has closed.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "contact": "Text THEMIX to 85258",
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "youngminds",
+   "name": "YoungMinds",
+   "theme": "wellbeing",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.youngminds.org.uk/",
+   "what": "Youth mental health information, plus a helpline for the adult supporting you. Not a crisis service.",
+   "use": "Point a parent or carer to the Parents Helpline; hours vary week to week.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "contact": "Parents Helpline 0808 802 5544",
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "youthaccess",
+   "name": "Youth Access",
+   "theme": "wellbeing",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Directory",
+   "url": "https://www.youthaccess.org.uk/",
+   "what": "A network of free local youth advice and counselling services, with a find-help directory.",
+   "use": "Find free advice or counselling near you.",
+   "provenance": "V",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "nhs111",
+   "name": "NHS 111",
+   "theme": "wellbeing",
+   "nations": [
+    "UK"
+   ],
+   "kind": "NHS",
+   "url": "https://111.nhs.uk/",
+   "what": "Urgent help when it is not an emergency, including urgent mental health support. In an emergency call 999.",
+   "use": "Use it for urgent mental health support when you cannot wait.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "contact": "111",
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "nmw",
+   "name": "Minimum wage rates",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Government",
+   "url": "https://www.gov.uk/national-minimum-wage-rates",
+   "what": "Rates in force from 1 April 2026: £12.71 (21 and over), £10.85 (18 to 20), £8 (under 18 and apprentices).",
+   "use": "Check you are paid at least the legal minimum for your age.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "nmw27",
+   "name": "Minimum wage rates for April 2027",
+   "theme": "work",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Government",
+   "url": "https://www.gov.uk/government/publications/minimum-wage-rates-for-2027",
+   "what": "Announced 28 October 2026: £13.21 (21 and over) and £11.27 (18 to 20) from 1 April 2027.",
+   "use": "Plan for the next rise; it is not in force until April 2027.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ]
+  },
+  {
+   "id": "yff",
+   "name": "Youth Futures Foundation",
+   "theme": "evidence",
+   "nations": [
+    "England"
+   ],
+   "kind": "What Works centre",
+   "url": "https://youthfuturesfoundation.org/",
+   "what": "The What Works centre for youth employment; publishes quarterly NEET analysis and a data dashboard.",
+   "use": "Use its NEET trends when arguing about jobs and training.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "allies"
+   ]
+  },
+  {
+   "id": "ons-neet",
+   "name": "ONS: young people not in education, employment or training",
+   "theme": "evidence",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Official statistics",
+   "url": "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/bulletins/youngpeoplenotineducationemploymentortrainingneet/latest",
+   "what": "The official quarterly NEET estimate for 16 to 24 year olds.",
+   "use": "Quote the latest official figure, with its quarter.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "note": "Link built from the bulletin's known address; the weekly link check confirms it.",
+   "audiences": [
+    "allies"
+   ]
+  },
+  {
+   "id": "nys",
+   "name": "Youth Matters: Your National Youth Strategy",
+   "theme": "policy",
+   "nations": [
+    "England"
+   ],
+   "kind": "Government",
+   "url": "https://www.gov.uk/government/publications/youth-matters-your-national-youth-strategy",
+   "what": "England's first national youth strategy in over two decades, published 10 December 2025 and shaped by over 14,000 young people.",
+   "use": "Hold the Government to its own commitments, chapter by chapter.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "nya-nys",
+   "name": "NYA: National Youth Strategy hub",
+   "theme": "policy",
+   "nations": [
+    "England"
+   ],
+   "kind": "Charity",
+   "url": "https://nya.org.uk/national-youth-strategy/",
+   "what": "The youth work sector's guide to what the strategy commits and what is next.",
+   "use": "See how the strategy reaches youth services in your area.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "allies"
+   ]
+  },
+  {
+   "id": "cms-nys",
+   "name": "CMS Committee: National Youth Strategy one year on",
+   "theme": "policy",
+   "nations": [
+    "England"
+   ],
+   "kind": "Parliament",
+   "url": "https://committees.parliament.uk/work/10008/",
+   "what": "A Commons inquiry into progress on the strategy: services, workforce, funding and accountability.",
+   "use": "Submit evidence while the inquiry is open.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "allies"
+   ]
+  },
+  {
+   "id": "wpc-yet",
+   "name": "Work and Pensions Committee: youth employment, education and training",
+   "theme": "policy",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Parliament",
+   "url": "https://committees.parliament.uk/committee/164/",
+   "what": "A Commons inquiry opened 8 January 2026 into young people not earning or learning.",
+   "use": "Read the evidence sessions before campaigning on jobs.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "allies"
+   ]
+  },
+  {
+   "id": "ico-cc",
+   "name": "ICO Children's code (Age appropriate design)",
+   "theme": "safety",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Regulator",
+   "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/",
+   "what": "The statutory code of 15 standards for online services likely to be used by under 18s.",
+   "use": "Check any app or site a campaign asks young people to use.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "ofcom-poc",
+   "name": "Ofcom: protecting children online",
+   "theme": "safety",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Regulator",
+   "url": "https://www.ofcom.org.uk/online-safety/protecting-children/",
+   "what": "The Online Safety Act regulator; its Protection of Children Codes have applied since 25 July 2025.",
+   "use": "Understand what platforms must now do to protect under 18s.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "become",
+   "name": "Become",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://becomecharity.org.uk/",
+   "what": "The national charity for children in care and young care leavers.",
+   "use": "Make sure care-experienced young people's views reach a campaign.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "carerstrust",
+   "name": "Carers Trust: young carers",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://carers.org/",
+   "what": "Support and services for young carers and young adult carers.",
+   "use": "Plan campaign activity young carers can actually fit around caring.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "refugeecouncil",
+   "name": "Refugee Council",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.refugeecouncil.org.uk/",
+   "what": "Support for refugees and people seeking asylum, including children and young people.",
+   "use": "Hear from young refugees, safely and without exposing their status.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "fft",
+   "name": "Friends, Families and Travellers",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.gypsy-traveller.org/",
+   "what": "A national charity working with Gypsy, Roma and Traveller communities.",
+   "use": "Reach Gypsy, Roma and Traveller young people on their own terms.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "cdc",
+   "name": "Council for Disabled Children",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://councilfordisabledchildren.org.uk/",
+   "what": "The umbrella body for the disabled children's sector in England, with a young people's participation network.",
+   "use": "Involve disabled young people and those with SEND from the start.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "justlikeus",
+   "name": "Just Like Us",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.justlikeus.org/",
+   "what": "A charity for LGBT+ young people in schools.",
+   "use": "Make campaign spaces safe for LGBT+ young people.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "ncs-eng",
+   "name": "National Careers Service",
+   "theme": "work",
+   "nations": [
+    "England"
+   ],
+   "kind": "Government",
+   "url": "https://nationalcareers.service.gov.uk/",
+   "what": "Free careers information, advice and guidance in England.",
+   "use": "Explore jobs, courses and apprenticeships, and talk to an adviser.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "mwow",
+   "name": "My World of Work",
+   "theme": "work",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Government agency",
+   "url": "https://www.myworldofwork.co.uk/",
+   "what": "Skills Development Scotland's careers service for young people in Scotland.",
+   "use": "Plan your next step after school in Scotland.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "youngscot",
+   "name": "Young Scot",
+   "theme": "voice",
+   "nations": [
+    "Scotland"
+   ],
+   "kind": "Charity",
+   "url": "https://young.scot/",
+   "what": "Scotland's national youth information and citizenship charity.",
+   "use": "Find opportunities, rewards and ways to have your say in Scotland.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "careerswales",
+   "name": "Careers Wales",
+   "theme": "work",
+   "nations": [
+    "Wales"
+   ],
+   "kind": "Government",
+   "url": "https://careerswales.gov.wales/",
+   "what": "The all-age careers service for Wales, in Welsh and English.",
+   "use": "Get careers guidance in Welsh or English.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "meic",
+   "name": "Meic",
+   "theme": "wellbeing",
+   "nations": [
+    "Wales"
+   ],
+   "kind": "Advice service",
+   "url": "https://www.meiccymru.org/",
+   "what": "The information, advice and advocacy helpline for children and young people in Wales, in Welsh and English.",
+   "use": "Talk to someone in Welsh or English about anything.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 30,
+   "audiences": [
+    "young",
+    "parents"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "nidirect-careers",
+   "name": "nidirect Careers",
+   "theme": "work",
+   "nations": [
+    "Northern Ireland"
+   ],
+   "kind": "Government",
+   "url": "https://www.nidirect.gov.uk/campaigns/careers",
+   "what": "The Department for the Economy's careers service for Northern Ireland.",
+   "use": "Get careers advice in Northern Ireland.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "eayouth",
+   "name": "Education Authority Youth Service",
+   "theme": "voice",
+   "nations": [
+    "Northern Ireland"
+   ],
+   "kind": "Statutory body",
+   "url": "https://www.eani.org.uk/",
+   "what": "Northern Ireland's statutory youth service, including youth participation programmes.",
+   "use": "Find youth services and participation routes in Northern Ireland.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  },
+  {
+   "id": "rnid",
+   "name": "RNID",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://rnid.org.uk/",
+   "what": "The national charity for deaf people and people with hearing loss; campaigned for the BSL Act 2022 and the Northern Ireland Sign Language Act.",
+   "use": "Check accessibility advice for deaf participants.",
+   "provenance": "S",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ]
+  },
+  {
+   "id": "ndcs",
+   "name": "National Deaf Children's Society",
+   "theme": "inclusion",
+   "nations": [
+    "UK"
+   ],
+   "kind": "Charity",
+   "url": "https://www.ndcs.org.uk/",
+   "what": "The national charity for deaf children and young people and their families, with youth participation opportunities.",
+   "use": "Find deaf-led youth voices and support for families.",
+   "provenance": "K",
+   "checked": "2026-11-15",
+   "review_days": 90,
+   "audiences": [
+    "young",
+    "parents",
+    "allies"
+   ],
+   "note": "A lead from background knowledge until the weekly link check confirms it."
+  }
+ ],
+ "audiences": {
+  "young": "Young people",
+  "parents": "Parents & carers",
+  "allies": "Adult allies"
+ }
+}

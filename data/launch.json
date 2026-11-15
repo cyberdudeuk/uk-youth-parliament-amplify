@@ -1,0 +1,55 @@
+{
+ "title": "UK Parliament Week launch",
+ "checked": "2026-11-15",
+ "review_days": 30,
+ "event": {
+  "name": "UK Parliament Week 2026",
+  "start": "2026-11-23",
+  "end": "2026-11-29",
+  "url": "https://learning.parliament.uk/en/uk-parliament-week/",
+  "provenance": "S",
+  "source": "UK Parliament Education"
+ },
+ "why": "UK Parliament Week is Parliament's annual campaign to spread the word about what Parliament does and how people can get involved, with free kits for schools, youth groups and adults. It is the moment schools and youth groups are already planning democracy activity, so it is the right week for young people to meet a tool built for campaigning.",
+ "plan": [
+  {
+   "when": "Now to 22 November",
+   "what": "Release candidate: checks green, sources re-checked, owner review and sign-off."
+  },
+  {
+   "when": "23 November",
+   "what": "Launch day: the owner decides whether to share the portal; the release log moves to 1.0.0."
+  },
+  {
+   "when": "23 to 29 November",
+   "what": "UKPW activities using Amplify (below); ideas and bugs collected on Have your say."
+  },
+  {
+   "when": "From 30 November",
+   "what": "Weekly upkeep: suggestions triaged, sources re-checked, a 1.0.1 release with the fixes."
+  }
+ ],
+ "activities": [
+  {
+   "title": "Run your own ballot",
+   "what": "Use the UKPW kit's pop-up ballot box to vote on which issue from Issue domains your group should campaign on.",
+   "screen": "issues"
+  },
+  {
+   "title": "Petition pursuit, for real",
+   "what": "Walk through why petition 754954 stalled, then use Launch window to plan one that would not.",
+   "screen": "post"
+  },
+  {
+   "title": "Write to your MP together",
+   "what": "Find your MP on Constituencies and draft a letter with the Toolkit's parent and peer versions.",
+   "screen": "map"
+  },
+  {
+   "title": "Check the claims",
+   "what": "Give each group a claim about young people and have them verify it in Trusted sources.",
+   "screen": "sources"
+  }
+ ],
+ "note": "Amplify is an independent, unofficial prototype and is not part of UK Parliament Week or endorsed by UK Parliament. Launching during the week means timing, not partnership."
+}

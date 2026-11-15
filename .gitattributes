@@ -1,0 +1,4 @@
+# Third-party and built files are kept byte for byte: no line-ending or whitespace changes (defect D6)
+vendor/** binary
+site/** binary
+app/** binary

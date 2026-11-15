@@ -1,0 +1,111 @@
+{
+ "title": "Registers",
+ "checked": "2026-11-15",
+ "defects": [
+  {
+   "id": "D1",
+   "found": "2026-11-15",
+   "what": "Six design-time image drop-zones would have shipped ('Drop the UKYP or partner logo').",
+   "root_cause": "The design canvas was published as-is.",
+   "fix": "Build replaces them with illustrations.",
+   "check": "S2"
+  },
+  {
+   "id": "D2",
+   "found": "2026-11-15",
+   "what": "The map's CARTO tiles return 'API key required' images, so its own failure note never showed.",
+   "root_cause": "The tile host now needs a key and answers with a 200 image.",
+   "fix": "Local land outline is the basemap.",
+   "check": "S7"
+  },
+  {
+   "id": "D3",
+   "found": "2026-11-15",
+   "what": "Safeguarding listed HOPELINE247, which closed on 7 September 2026.",
+   "root_cause": "Helplines were fixed in the design with no re-verification cadence.",
+   "fix": "Removed; helplines now carry a checked date and a 30-day review.",
+   "check": "S9, C3"
+  },
+  {
+   "id": "D4",
+   "found": "2026-11-15",
+   "what": "Safeguarding gave The Mix's phone number; its phone helpline has closed.",
+   "root_cause": "As D3.",
+   "fix": "Replaced with its 24/7 text route (THEMIX to 85258).",
+   "check": "S9, C3"
+  },
+  {
+   "id": "D5",
+   "found": "2026-11-15",
+   "what": "The page loaded React, Babel and fonts from unpkg and Google, exposing every visitor's IP address.",
+   "root_cause": "The design runtime defaults to CDNs.",
+   "fix": "Vendored, SRI-verified files served by the portal itself.",
+   "check": "S10, B2"
+  },
+  {
+   "id": "D6",
+   "found": "2026-11-15",
+   "what": "Moving the first build between clones as a patch changed the vendored Leaflet stylesheet's bytes.",
+   "root_cause": "Text patches normalise whitespace; vendored files must be byte-exact.",
+   "fix": "Restored from the package; .gitattributes marks vendor/, site/ and app/ as binary.",
+   "check": "B2"
+  }
+ ],
+ "open": [
+  {
+   "id": "O1",
+   "what": "No research with young people or disabled users has tested this portal.",
+   "who": "Owner, with NYA or a youth panel"
+  },
+  {
+   "id": "O2",
+   "what": "Search-sourced (S) and knowledge (K) links are leads until the weekly link check confirms them.",
+   "who": "Automated weekly health check; owner reviews the issue"
+  },
+  {
+   "id": "O3",
+   "what": "Pre-existing accessibility findings in the original design are tracked as a baseline and must not grow.",
+   "who": "Maintainer"
+  },
+  {
+   "id": "O4",
+   "what": "Housing, transport, climate and justice sources are not yet vetted.",
+   "who": "Maintainer"
+  },
+  {
+   "id": "O5",
+   "what": "Easy Read and BSL versions need specialist production.",
+   "who": "Owner"
+  },
+  {
+   "id": "O6",
+   "what": "Publishing beyond a private artifact (for example GitHub Pages) is the owner's decision.",
+   "who": "Owner"
+  },
+  {
+   "id": "O7",
+   "what": "Framework entries labelled K (background knowledge) are to be checked against each primary text.",
+   "who": "Maintainer, on the next scheduled run with page access"
+  },
+  {
+   "id": "O8",
+   "what": "Revise the Toolkit's social media assets for under 16s before the ban applies in spring 2027.",
+   "who": "Maintainer, with UKYP input"
+  },
+  {
+   "id": "O9",
+   "what": "A line-by-line audit of every figure in the original design's screens against its source; screens are classified, but individual figures not yet re-verified are the design's own.",
+   "who": "Maintainer, one screen per weekly run"
+  },
+  {
+   "id": "O10",
+   "what": "BSL and ISL versions of key screens, and Welsh, Gaelic and Irish versions of the portal, need deaf-led and native-speaker production.",
+   "who": "Owner, with deaf-led organisations and language bodies"
+  },
+  {
+   "id": "O11",
+   "what": "Before public launch, the owner confirms that publishing a personal, non-partisan youth participation tool under his own name raises no propriety issue with his employer.",
+   "who": "Owner"
+  }
+ ]
+}

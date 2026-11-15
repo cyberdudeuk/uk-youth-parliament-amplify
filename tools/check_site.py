@@ -17,6 +17,10 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       from Google Fonts, no remote image or tile (the design's map loaded a stylesheet from unpkg and street tiles
       from CARTO, and the CARTO tiles now return "API key required" images: found 15 November 2026)
   S8  site/build.json lists every file in site/ with the SHA-256 it has
+  S9  nothing in a site page reaches another host before the visitor clicks: no external script, stylesheet,
+      preconnect or font (defect D5: the design told unpkg and Google every visitor's IP address)
+  S11 CHANGELOG.md and docs/registers.md are exactly what tools/make_docs.py writes from data/ (no hand-kept copy)
+  S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
 
@@ -70,7 +74,7 @@ def s3(texts):
 def s4(texts):
     bad = []
     for f, s in texts.items():
-        if "mailto:" in s: bad.append(f"S4 site/{f} has a mailto: link: contact is by the contact form only")
+        if re.search(r"mailto:\S", s): bad.append(f"S4 site/{f} has a mailto: link: contact is by the contact form only")
         for m in EMAIL.finditer(s):
             if not NOT_AN_ADDRESS.match(m.group(0)): bad.append(f"S4 site/{f} carries an email address ({m.group(0)[:3]}…)")
     return bad
@@ -111,6 +115,31 @@ def s7(texts):
     return bad
 
 
+def s9(texts):
+    bad = []
+    for f, s in texts.items():
+        if not f.endswith(".html"): continue
+        for tag in re.findall(r"<(?:script|link)\b[^>]*>", s):
+            m = re.search(r"""(?:src|href)=["'](https?:)?//""", tag)
+            if m: bad.append(f"S9 site/{f} reaches another host on load: {tag[:80]}")
+    return bad
+
+
+def s10(texts):
+    page, sup = texts.get("index.html", ""), texts.get("support.js", "")
+    m = re.search(r"window\.__resources\s*=\s*(\{.*?\});", page)
+    mapped = json.loads(m.group(1)) if m else {}
+    return [f"S10 the runtime would fetch {u} from the CDN: map it in window.__resources" for u in sorted(set(re.findall(r"https://unpkg\.com/[^\"'\s]+", sup))) if u not in mapped]
+
+
+def s11(read):
+    import make_docs
+    bad = []
+    for path, want in (("CHANGELOG.md", make_docs.changelog()), ("docs/registers.md", make_docs.registers())):
+        if read(path) != want: bad.append(f"S11 {path} differs from data/: run tools/build_site.py")
+    return bad
+
+
 def s8(files):
     try: man = json.loads(files["build.json"])
     except Exception: return ["S8 site/build.json is missing or not JSON"]
@@ -129,7 +158,7 @@ def texts_of(files):
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t)
 
 
 if __name__ == "__main__":
@@ -139,8 +168,9 @@ if __name__ == "__main__":
     date = json.loads(files["build.json"])["built"]
     with tempfile.TemporaryDirectory() as tmp:
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
-    bad = run(files, rebuilt)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S8 problems: {len(bad)}")
+    rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
+    bad = run(files, rebuilt) + s11(rd)
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S11 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -165,4 +195,7 @@ if __name__ == "__main__":
     expect("S7", s7(texts_of(broken("Local Routes Map.html", lambda s: s + '<link rel="stylesheet" href="https://unpkg.com/x.css">'))))
     expect("S7", s7(texts_of(broken("Local Routes Map.html", lambda s: s + 'L.tileLayer("https://{s}.basemaps.cartocdn.com/{z}/{x}/{y}.png")'))))
     expect("S8", s8(broken("art/qr.svg", lambda s: s + " ")))
+    expect("S11", s11(lambda p: "edited by hand" if p == "CHANGELOG.md" else rd(p)))
+    expect("S9", s9(texts_of(broken(idx, lambda s: s + '<link rel="preconnect" href="https://fonts.gstatic.com">'))))
+    expect("S10", s10(texts_of(broken(idx, lambda s: s.replace("window.__resources", "window.__unused")))))
     sys.exit(1 if fails else 0)
