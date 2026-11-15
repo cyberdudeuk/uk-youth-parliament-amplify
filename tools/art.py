@@ -46,7 +46,7 @@ def hero():
     out = [_ground(w, h, 175)]
     out.append(f'<rect x="0" y="{h / 2 - 9}" width="{w}" height="18" fill="{_c(0.7, 0.05, 175, 0.10)}"/>')  # the aisle
     k = 0
-    for side, sign in (("gov", -1), ("opp", 1)):
+    for _side, sign in (("gov", -1), ("opp", 1)):
         for row in range(3):
             y = h / 2 + sign * (26 + row * 20)
             for i in range(26):

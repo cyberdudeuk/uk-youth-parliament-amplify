@@ -59,7 +59,7 @@ CSS7 = '''
   @media (max-width: 640px) { .amp-dots { grid-template-columns: repeat(26, 1fr) !important; gap: 3px !important; } }
 '''
 
-LAUNCH = f'<p style="margin: 12px 0 0; font-family: \'Space Mono\', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(var(--t1) 0.16 70);">Launching in UK Parliament Week &middot; 23 to 29 November 2026 &middot; no sign-in needed</p>'
+LAUNCH = '<p style="margin: 12px 0 0; font-family: \'Space Mono\', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: oklch(var(--t1) 0.16 70);">Launching in UK Parliament Week &middot; 23 to 29 November 2026 &middot; no sign-in needed</p>'
 CREDIT = f'<p style="margin: 14px 0 0; max-width: 62ch; {SMALL}">The line above is Amplify\'s own, on the petition\'s ask: it is not a quotation. The UK Youth Parliament\'s manifesto, <i>Shaping Our Future, Today Not Tomorrow</i> (2024 to 2026), is linked from Issue domains.</p>\n    '
 
 

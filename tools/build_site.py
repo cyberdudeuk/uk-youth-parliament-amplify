@@ -297,7 +297,7 @@ def build(date, out=SITE):
     rv = datetime.date.fromisoformat(meta["review"]); meta["review_long"] = f"{rv.day} {rv:%B %Y}"
     for f in sorted(os.listdir(DATA)):  # B3: every data file parses
         try: json.load(open(os.path.join(DATA, f), encoding="utf-8"))
-        except Exception as e: raise BuildError(f"B3 data/{f} is not valid JSON: {e}")
+        except Exception as e: raise BuildError(f"B3 data/{f} is not valid JSON: {e}") from e
 
     # Every vendored file is the file VENDOR.json recorded, and the runtime is the bytes the design pinned (B2).
     ven = json.load(open(os.path.join(VENDOR, "VENDOR.json"), encoding="utf-8"))["files"]
