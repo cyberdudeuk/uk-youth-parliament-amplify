@@ -10,7 +10,7 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Campaign kit redesign for UK Parliament Week.** The campaign collateral redesigned from a scan of award-winning youth campaigns, inside the Brand & style rules, with a downloadable graphics pack (defects D30 to D32).
 
-- **UPD** `campaign`: Campaign kit: new-look posters, social card and ambassador badge, drawn from what worked in Give an X, Bite Back, This Girl Can, #LikeAGirl and She Can STEM, using only Amplify's shapes and hues. Three new pieces: a Government Digital and Data careers poster, a poster to fill in for UK Parliament Week groups, and a sticker sheet. Fonts are now embedded so posters print as designed (D30, D31). New graphics pack: one zip with every graphic, images sized for Teams, Viva Engage, email, LinkedIn, Instagram, Stories and TikTok, and a six-slide carousel (D32).
+- **UPD** `campaign`: Campaign kit: new-look posters, social card and ambassador badge, drawn from what worked in Give an X, Bite Back, This Girl Can, #LikeAGirl and She Can STEM, using only Amplify's shapes and hues. Three new pieces: a Government Digital and Data careers poster, a poster to fill in for UK Parliament Week groups, and a sticker sheet. Fonts are now embedded so posters print as designed (D30, D31). New graphics pack: one zip with every graphic, images sized for Teams, Viva Engage, email, LinkedIn, Instagram, Stories and TikTok, and a six-slide carousel (D32). New films: a 35-second film and three 15-second vertical shorts for TikTok, Reels, Shorts and Stories, silent with on-screen captions and a transcript each, never playing by themselves.
 
 ## 1.0.0-rc.2 · 2026-11-15 · Release candidate
 

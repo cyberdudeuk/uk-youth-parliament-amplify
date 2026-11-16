@@ -44,7 +44,8 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
   S20 campaign art follows Brand & style: every Campaign kit asset exists, never uses the Caution hue (25), embeds
       the portal's own fonts (an SVG shown as an image cannot load web fonts), and the kit's posts carry no emoji or
       exclamation marks (defects D30 and D31, 16 November 2026; the guide's voice rule); and the kit offers one graphics
-      pack holding every asset plus the platform sizes, linked from the screen (D32: the kit had no pack)
+      pack holding every asset plus the platform sizes, linked from the screen (D32: the kit had no pack); every film
+      listed exists with its poster frame and a transcript, and none plays by itself
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -410,6 +411,11 @@ def s20(t, files=None):
                 full = "amplify-graphics-pack/" + ("print/" + n if not n.startswith("../") else n[3:])
                 if full not in names: bad.append(f"S20 the graphics pack lacks {full} (D32)")
         if 'href="./art/amplify-graphics-pack.zip"' not in t.get("index.html", ""): bad.append("S20 the Campaign kit does not link the graphics pack (D32)")
+        for v in json.loads(t.get("data/involve.json", "{}")).get("campaign", {}).get("videos", []):
+            for k in ("file", "poster"):
+                if v.get(k) not in files: bad.append(f"S20 campaign video {k} {v.get(k)} is missing")
+            if len(v.get("transcript", "")) < 40: bad.append(f"S20 campaign video {v.get('file')} has no transcript (accessibility)")
+        if re.search(r"<video[^>]*\bautoplay", t.get("index.html", ""), re.I): bad.append("S20 a campaign video plays by itself (motion must never be required)")
     try: kit = json.loads(t.get("data/involve.json", "{}"))["campaign"]
     except Exception: return ["S20 data/involve.json has no campaign kit"]
     for a in kit.get("assets", []):
@@ -529,6 +535,10 @@ if __name__ == "__main__":
     expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["assets"].append({"name": "x", "file": "art/none.svg", "alt": "x"}))))))  # asset missing
     expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["posts"][0].update(text="Launching soon \U0001F389"))))))  # emoji in a post
     nopack = copy.copy(files); nopack.pop("art/amplify-graphics-pack.zip")
-    expect("S20", s20(texts_of(nopack), nopack))                                                                     # pack missing (D32)
+    expect("S20", s20(texts_of(nopack), nopack))
+    novid = copy.copy(files); novid.pop("media/campaign/short-girls-ship.mp4")
+    expect("S20", s20(texts_of(novid), novid))                                                                       # a film missing
+    expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["videos"][0].update(transcript="")))), files))  # transcript lost
+    expect("S20", s20(texts_of(broken(idx, lambda s: s.replace("<video controls", "<video autoplay controls", 1))), files))  # autoplay added                                                                     # pack missing (D32)
     expect("S20", s20(texts_of(broken(idx, lambda s: s.replace('href="./art/amplify-graphics-pack.zip"', 'href="#"'))), files))  # link lost (D32)
     sys.exit(1 if fails else 0)

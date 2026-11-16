@@ -380,6 +380,12 @@ def build(date, out=SITE):
         os.makedirs(os.path.join(out, "vendor", os.path.dirname(f)), exist_ok=True)
         shutil.copyfile(os.path.join(VENDOR, f), os.path.join(out, "vendor", f))
     shutil.copyfile(os.path.join(VENDOR, "fonts", "fonts.css"), os.path.join(out, "vendor", "fonts", "fonts.css"))
+    media = os.path.join(R, "media")  # campaign films and their poster frames (owner asked for them on the portal, 16 Nov 2026)
+    for d, _, names in os.walk(media):
+        for n in sorted(names):
+            rel = os.path.relpath(os.path.join(d, n), media)
+            os.makedirs(os.path.join(out, "media", os.path.dirname(rel)), exist_ok=True)
+            shutil.copyfile(os.path.join(d, n), os.path.join(out, "media", rel))
     os.makedirs(os.path.join(out, "data"))
     for f in sorted(os.listdir(DATA)):
         shutil.copyfile(os.path.join(DATA, f), os.path.join(out, "data", f))
