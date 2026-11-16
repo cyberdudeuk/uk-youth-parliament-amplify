@@ -320,8 +320,8 @@
    "url": "https://www.childline.org.uk/",
    "what": "Free, confidential support for anyone under 19, by phone, 1-2-1 chat and email, run by the NSPCC. British Sign Language users can reach a counsellor through SignVideo.",
    "use": "Call, chat or email about anything, at any time.",
-   "provenance": "S",
-   "checked": "2026-11-15",
+   "provenance": "V",
+   "checked": "2026-11-16",
    "review_days": 30,
    "contact": "0800 1111 · 24 hours",
    "audiences": [
@@ -395,10 +395,10 @@
    ],
    "kind": "Helpline",
    "url": "https://www.samaritans.org/",
-   "what": "Any age, any problem, free from any phone, open 24 hours. Welsh Language Line 0808 164 0123.",
+   "what": "Any age, any problem, free from any phone, open 24 hours. Welsh Language Line 0808 164 0123, every day 7pm to 11pm.",
    "use": "Call any time, day or night.",
    "provenance": "V",
-   "checked": "2026-11-15",
+   "checked": "2026-11-16",
    "review_days": 30,
    "contact": "116 123 · 24 hours",
    "audiences": [
@@ -418,7 +418,7 @@
    "what": "Free 24/7 text support for anyone in the UK.",
    "use": "Text if you would rather not speak to anyone.",
    "provenance": "V",
-   "checked": "2026-11-15",
+   "checked": "2026-11-16",
    "review_days": 30,
    "contact": "Text SHOUT to 85258",
    "audiences": [
@@ -438,7 +438,7 @@
    "what": "Support for under 25s on mental health, money, work and relationships, with 24/7 crisis text support.",
    "use": "Text for urgent support; its old phone helpline has closed.",
    "provenance": "V",
-   "checked": "2026-11-15",
+   "checked": "2026-11-16",
    "review_days": 30,
    "contact": "Text THEMIX to 85258",
    "audiences": [
@@ -458,7 +458,7 @@
    "what": "Youth mental health information, plus a helpline for the adult supporting you. Not a crisis service.",
    "use": "Point a parent or carer to the Parents Helpline; hours vary week to week.",
    "provenance": "V",
-   "checked": "2026-11-15",
+   "checked": "2026-11-16",
    "review_days": 30,
    "contact": "Parents Helpline 0808 802 5544",
    "audiences": [

@@ -6,6 +6,14 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.3 · 2026-11-16 · Release candidate
+
+**Weekly upkeep: helplines re-checked, two new updates.** Helplines re-verified against each service's own website on 16 November 2026; no closures or number changes. Two dated, sourced updates added to What's new, and two new glossary terms.
+
+- **UPD** `care`: Safeguarding & support: Childline, Samaritans, Shout, The Mix and YoungMinds re-verified on their own websites (16 Nov 2026), no number changes; Childline is now marked verified; the Samaritans Welsh Language Line shows its hours, every day 7pm to 11pm.
+- **NEW** `latest`: What's new: the Votes at 16 Bill reached Lords committee stage on 2 November 2026; MPs debated the review of young people and work on 3 November 2026.
+- **NEW** `graph`: Glossary and knowledge graph: NEET and Committee stage added.
+
 ## 1.0.0-rc.2 · 2026-11-15 · Release candidate
 
 **Safeguarding and honesty fixes before launch.** Four launch blockers fixed (defects D25 to D28), and the readiness record brought up to date.
