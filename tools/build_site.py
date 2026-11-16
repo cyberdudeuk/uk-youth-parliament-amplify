@@ -127,7 +127,7 @@ def transforms(meta):
          '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
          '<title>Amplify: youth voice, carried further</title>\n'
          '<meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">\n'
-         '<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">\n', 1),
+         '<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">\n' + SHARE_TAGS, 1),
         ("no-image-slot-runtime", "the drop-zone runtime is design-time only, and asks for a state file that does not exist",
          '<script src="./image-slot.js"></script>\n', "", 1),
         ("default-view", "the side-by-side review view is for design review; a published portal opens on the portal",
@@ -280,6 +280,47 @@ def sri(path):
     return "sha384-" + base64.b64encode(hashlib.sha384(open(path, "rb").read()).digest()).decode()
 
 
+PACK_README = """Amplify graphics pack: UK Parliament Week 2026
+
+Free to use and remix with credit to Amplify (CC BY 4.0). Everything is drawn in code from the portal's six shapes
+and four hues, with no photographs. Open any .svg in a web browser to view it, print it (A4, no margins) or save it
+as PDF. Fonts are built in.
+
+print/     A4 posters, the sticker sheet, the social card and the ambassador badge
+platform/  hero-16x9 (email, Viva Engage, Slack, Bluesky, X), header-3x1 (Teams announcement),
+           linkedin-1200x627, portrait-1080x1350 (Instagram, LinkedIn), story-1080x1920 (Stories, TikTok, Reels),
+           carousel-1 to carousel-6 (Instagram or LinkedIn carousel, 4:5)
+
+Every QR code opens the live portal. Amplify is independent and unofficial: not a service of the
+UK Youth Parliament, NYA or UK Parliament. Contact: use the contact form on the portal.
+"""
+
+
+def graphics_pack(arts, path):
+    """The Campaign kit's downloadable pack: a deterministic zip (fixed dates, sorted names) so S1 can rebuild it
+    byte for byte. Added 16 Nov 2026: the kit offered each graphic one at a time and no pack (owner's request)."""
+    import zipfile
+    import campaign_art
+    files = {f"print/{n}": s for n, s in arts.items() if n in CAMPAIGN_FILES}
+    files.update({f"platform/{n}": s for n, s in campaign_art.pack().items()})
+    files["README.txt"] = PACK_README
+    # Stored, not deflated: deflate output depends on the zlib version, so CI rebuilt different bytes (D33)
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_STORED) as z:
+        for n in sorted(files):
+            info = zipfile.ZipInfo("amplify-graphics-pack/" + n, date_time=(2026, 11, 16, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_STORED
+            info.external_attr = 0o644 << 16
+            z.writestr(info, files[n])
+
+
+CAMPAIGN_FILES = ("poster-involve.svg", "poster-stem.svg", "poster-careers.svg", "poster-remix.svg", "sticker-sheet.svg",
+                  "social-card.svg", "badge-ambassador.svg")
+
+
+# Link previews: without these, every share on LinkedIn, Teams, Viva Engage or Slack showed no image (D34, 16 Nov 2026)
+SHARE_TAGS = '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Amplify">\n<meta property="og:title" content="Amplify: youth voice, carried further">\n<meta property="og:description" content="A free, independent and unofficial portal that helps young people across the UK be heard: trusted sources, safe ways to take part and campaign tools. Launches in UK Parliament Week, 23 to 29 November 2026.">\n<meta property="og:url" content="https://cyberdudeuk.github.io/uk-youth-parliament-amplify/site/index.html">\n<meta property="og:image" content="https://cyberdudeuk.github.io/uk-youth-parliament-amplify/site/media/campaign/share-card.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="Amplify. Youth voice, carried further. Launches Monday 23 November 2026, UK Parliament Week. Special mentions: STEM, girls and young women in tech, Government Digital and Data careers. Independent and unofficial.">\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:image:alt" content="Amplify. Youth voice, carried further. Launches Monday 23 November 2026, UK Parliament Week. Special mentions: STEM, girls and young women in tech, Government Digital and Data careers. Independent and unofficial.">\n'
+
+
 def build(date, out=SITE):
     src = json.load(open(os.path.join(R, "tools", "sources.json"), encoding="utf-8"))
     pet = json.load(open(os.path.join(APP, "petition-754954.json"), encoding="utf-8"))
@@ -344,6 +385,12 @@ def build(date, out=SITE):
         os.makedirs(os.path.join(out, "vendor", os.path.dirname(f)), exist_ok=True)
         shutil.copyfile(os.path.join(VENDOR, f), os.path.join(out, "vendor", f))
     shutil.copyfile(os.path.join(VENDOR, "fonts", "fonts.css"), os.path.join(out, "vendor", "fonts", "fonts.css"))
+    media = os.path.join(R, "media")  # campaign films and their poster frames (owner asked for them on the portal, 16 Nov 2026)
+    for d, _, names in os.walk(media):
+        for n in sorted(names):
+            rel = os.path.relpath(os.path.join(d, n), media)
+            os.makedirs(os.path.join(out, "media", os.path.dirname(rel)), exist_ok=True)
+            shutil.copyfile(os.path.join(d, n), os.path.join(out, "media", rel))
     os.makedirs(os.path.join(out, "data"))
     for f in sorted(os.listdir(DATA)):
         shutil.copyfile(os.path.join(DATA, f), os.path.join(out, "data", f))
@@ -355,9 +402,11 @@ def build(date, out=SITE):
     from barcode.writer import SVGWriter
     qr_inline = segno.make(LIVE_URL, error="m").svg_inline(scale=3, border=0, dark="#06100f", light="#ffffff")  # posters send people to the live portal
     arts.update({"poster-involve.svg": art.poster_involve(qr_inline), "poster-stem.svg": art.poster_stem(qr_inline),
-                 "social-card.svg": art.social_card(), "badge-ambassador.svg": art.badge_ambassador()})
+                 "poster-careers.svg": art.poster_careers(qr_inline), "poster-remix.svg": art.poster_remix(qr_inline),
+                 "social-card.svg": art.social_card(), "badge-ambassador.svg": art.badge_ambassador(), "sticker-sheet.svg": art.sticker_sheet()})
     for f, s in arts.items():
         open(os.path.join(out, "art", f), "w", encoding="utf-8").write(s)
+    graphics_pack(arts, os.path.join(out, "art", "amplify-graphics-pack.zip"))
     segno.make(REPO_URL, error="m").save(os.path.join(out, "art", "qr.svg"), scale=4, border=2, dark="#06100f", light="#ffffff")
     buf = io.BytesIO()
     barcode.get("code128", meta["build_id"], writer=SVGWriter()).write(buf, {"module_height": 12, "font_size": 6, "text_distance": 3, "quiet_zone": 2})

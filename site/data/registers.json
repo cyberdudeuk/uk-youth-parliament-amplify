@@ -1,6 +1,6 @@
 {
  "title": "Registers",
- "checked": "2026-11-15",
+ "checked": "2026-11-16",
  "defects": [
   {
    "id": "D1",
@@ -233,6 +233,46 @@
    "root_cause": "tools/make_docs.py always wrote \"gates\", whatever the count.",
    "fix": "make_docs.py writes \"gate\" for one and \"gates\" otherwise.",
    "check": "R12"
+  },
+  {
+   "id": "D30",
+   "found": "2026-11-16",
+   "what": "The posters and social card printed the UK Parliament Week dates in the Caution hue (25), which the Brand & style guide reserves for failure states and never decoration.",
+   "root_cause": "tools/art.py picked a red for emphasis without checking the guide's hue meanings.",
+   "fix": "Campaign art uses only the four cornerstone hues, chosen by meaning: launch 175, STEM 300, girls and young women 145, careers 70.",
+   "check": "S20"
+  },
+  {
+   "id": "D31",
+   "found": "2026-11-16",
+   "what": "Posters shown on the portal or printed from it fell back to Arial: an SVG shown as an image cannot load the portal's web fonts.",
+   "root_cause": "tools/art.py named the font stack but did not embed the fonts.",
+   "fix": "Each campaign SVG embeds the portal's own vendored Chivo 900, Space Mono 700 and Atkinson Hyperlegible 700 (OFL) as data URLs.",
+   "check": "S20"
+  },
+  {
+   "id": "D32",
+   "found": "2026-11-16",
+   "what": "The Campaign kit offered each graphic one at a time, with no graphics pack and no images sized for the channels people share on, and its screen was tinted in the Caution hue (25).",
+   "root_cause": "The kit was built as a gallery of the posters, not as a pack people can cascade; the screen hue was picked for emphasis, not meaning.",
+   "fix": "tools/build_site.py writes a deterministic art/amplify-graphics-pack.zip (every asset plus platform sizes and a carousel from tools/campaign_art.py), linked from the kit, which is now tinted Participation (175).",
+   "check": "S20"
+  },
+  {
+   "id": "D33",
+   "found": "2026-11-16",
+   "what": "The graphics pack built on GitHub's runner did not match the committed one, so check S1 failed in CI on pull request 24.",
+   "root_cause": "The zip was deflated, and deflate output depends on the zlib version, which differs between environments.",
+   "fix": "The pack stores files uncompressed, which is byte-identical everywhere; S20 fails a compressed pack.",
+   "check": "S20"
+  },
+  {
+   "id": "D34",
+   "found": "2026-11-16",
+   "what": "A link to Amplify shared on LinkedIn, Teams, Viva Engage or Slack showed no image, because neither page had link-preview tags.",
+   "root_cause": "The pages had a title and description but no Open Graph or Twitter card tags.",
+   "fix": "Both the root page and the portal carry Open Graph and Twitter card tags with a 1200 by 630 campaign card and its alt text.",
+   "check": "S20"
   }
  ],
  "open": [

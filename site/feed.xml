@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">
   <title>Amplify: what's new</title>
   <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#feed</id>
-  <updated>2026-11-15T00:00:00Z</updated>
+  <updated>2026-11-16T00:00:00Z</updated>
   <link rel="alternate" href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify"/>
   <author><name>Amplify (independent, unofficial)</name></author>
   <subtitle>Youth voice news and Amplify releases. Generated from data/latest.json and data/changelog.json.</subtitle>
@@ -19,6 +19,13 @@
     <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0</id>
     <updated>2026-11-23T00:00:00Z</updated>
     <summary>Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.</summary>
+  </entry>
+  <entry>
+    <title>Amplify 1.0.0-rc.3: Campaign kit redesign for UK Parliament Week</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.3</id>
+    <updated>2026-11-16T00:00:00Z</updated>
+    <summary>The campaign collateral redesigned from a scan of award-winning youth campaigns, inside the Brand &amp; style rules, with a downloadable graphics pack (defects D30 to D34).</summary>
   </entry>
   <entry>
     <title>Amplify 1.0.0-rc.2: Safeguarding and honesty fixes before launch</title>
