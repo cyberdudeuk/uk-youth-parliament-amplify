@@ -127,7 +127,7 @@ def transforms(meta):
          '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
          '<title>Amplify: youth voice, carried further</title>\n'
          '<meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">\n'
-         '<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">\n', 1),
+         '<link rel="icon" href="./art/favicon.svg" type="image/svg+xml">\n' + SHARE_TAGS, 1),
         ("no-image-slot-runtime", "the drop-zone runtime is design-time only, and asks for a state file that does not exist",
          '<script src="./image-slot.js"></script>\n', "", 1),
         ("default-view", "the side-by-side review view is for design review; a published portal opens on the portal",
@@ -315,6 +315,10 @@ def graphics_pack(arts, path):
 
 CAMPAIGN_FILES = ("poster-involve.svg", "poster-stem.svg", "poster-careers.svg", "poster-remix.svg", "sticker-sheet.svg",
                   "social-card.svg", "badge-ambassador.svg")
+
+
+# Link previews: without these, every share on LinkedIn, Teams, Viva Engage or Slack showed no image (D34, 16 Nov 2026)
+SHARE_TAGS = '<meta property="og:type" content="website">\n<meta property="og:site_name" content="Amplify">\n<meta property="og:title" content="Amplify: youth voice, carried further">\n<meta property="og:description" content="A free, independent and unofficial portal that helps young people across the UK be heard: trusted sources, safe ways to take part and campaign tools. Launches in UK Parliament Week, 23 to 29 November 2026.">\n<meta property="og:url" content="https://cyberdudeuk.github.io/uk-youth-parliament-amplify/site/index.html">\n<meta property="og:image" content="https://cyberdudeuk.github.io/uk-youth-parliament-amplify/site/media/campaign/share-card.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="Amplify. Youth voice, carried further. Launches Monday 23 November 2026, UK Parliament Week. Special mentions: STEM, girls and young women in tech, Government Digital and Data careers. Independent and unofficial.">\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:image:alt" content="Amplify. Youth voice, carried further. Launches Monday 23 November 2026, UK Parliament Week. Special mentions: STEM, girls and young women in tech, Government Digital and Data careers. Independent and unofficial.">\n'
 
 
 def build(date, out=SITE):

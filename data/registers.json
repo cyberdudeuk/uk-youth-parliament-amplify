@@ -265,6 +265,14 @@
    "root_cause": "The zip was deflated, and deflate output depends on the zlib version, which differs between environments.",
    "fix": "The pack stores files uncompressed, which is byte-identical everywhere; S20 fails a compressed pack.",
    "check": "S20"
+  },
+  {
+   "id": "D34",
+   "found": "2026-11-16",
+   "what": "A link to Amplify shared on LinkedIn, Teams, Viva Engage or Slack showed no image, because neither page had link-preview tags.",
+   "root_cause": "The pages had a title and description but no Open Graph or Twitter card tags.",
+   "fix": "Both the root page and the portal carry Open Graph and Twitter card tags with a 1200 by 630 campaign card and its alt text.",
+   "check": "S20"
   }
  ],
  "open": [

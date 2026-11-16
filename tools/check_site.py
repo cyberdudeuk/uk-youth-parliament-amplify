@@ -418,6 +418,10 @@ def s20(t, files=None):
                 if v.get(k) not in files: bad.append(f"S20 campaign video {k} {v.get(k)} is missing")
             if len(v.get("transcript", "")) < 40: bad.append(f"S20 campaign video {v.get('file')} has no transcript (accessibility)")
         if re.search(r"<video[^>]*\bautoplay", t.get("index.html", ""), re.I): bad.append("S20 a campaign video plays by itself (motion must never be required)")
+        page = t.get("index.html", "")
+        for need in ('property="og:image" content="https://cyberdudeuk.github.io/uk-youth-parliament-amplify/site/media/campaign/share-card.jpg"', 'name="twitter:card" content="summary_large_image"', 'property="og:image:alt"'):
+            if need not in page: bad.append(f"S20 the portal page lacks its link preview: {need.split(' content')[0]} (D34)")
+        if "media/campaign/share-card.jpg" not in files: bad.append("S20 the link preview image media/campaign/share-card.jpg is missing (D34)")
     try: kit = json.loads(t.get("data/involve.json", "{}"))["campaign"]
     except Exception: return ["S20 data/involve.json has no campaign kit"]
     for a in kit.get("assets", []):
@@ -544,6 +548,9 @@ if __name__ == "__main__":
         for i in _zf.ZipFile(_io.BytesIO(files["art/amplify-graphics-pack.zip"])).infolist(): z.writestr(i.filename, b"x", _zf.ZIP_DEFLATED)
     deflated = copy.copy(files); deflated["art/amplify-graphics-pack.zip"] = buf.getvalue()
     expect("S20", s20(texts_of(deflated), deflated))                                                                 # compressed pack (D33)
+    expect("S20", s20(texts_of(broken(idx, lambda s: s.replace('property="og:image"', 'property="og:img"'))), files))  # preview image tag lost (D34)
+    nocard = copy.copy(files); nocard.pop("media/campaign/share-card.jpg")
+    expect("S20", s20(texts_of(nocard), nocard))                                                                     # preview image missing (D34)
     novid = copy.copy(files); novid.pop("media/campaign/short-girls-ship.mp4")
     expect("S20", s20(texts_of(novid), novid))                                                                       # a film missing
     expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["videos"][0].update(transcript="")))), files))  # transcript lost
