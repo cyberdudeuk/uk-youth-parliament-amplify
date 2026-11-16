@@ -280,6 +280,42 @@ def sri(path):
     return "sha384-" + base64.b64encode(hashlib.sha384(open(path, "rb").read()).digest()).decode()
 
 
+PACK_README = """Amplify graphics pack: UK Parliament Week 2026
+
+Free to use and remix with credit to Amplify (CC BY 4.0). Everything is drawn in code from the portal's six shapes
+and four hues, with no photographs. Open any .svg in a web browser to view it, print it (A4, no margins) or save it
+as PDF. Fonts are built in.
+
+print/     A4 posters, the sticker sheet, the social card and the ambassador badge
+platform/  hero-16x9 (email, Viva Engage, Slack, Bluesky, X), header-3x1 (Teams announcement),
+           linkedin-1200x627, portrait-1080x1350 (Instagram, LinkedIn), story-1080x1920 (Stories, TikTok, Reels),
+           carousel-1 to carousel-6 (Instagram or LinkedIn carousel, 4:5)
+
+Every QR code opens the live portal. Amplify is independent and unofficial: not a service of the
+UK Youth Parliament, NYA or UK Parliament. Contact: use the contact form on the portal.
+"""
+
+
+def graphics_pack(arts, path):
+    """The Campaign kit's downloadable pack: a deterministic zip (fixed dates, sorted names) so S1 can rebuild it
+    byte for byte. Added 16 Nov 2026: the kit offered each graphic one at a time and no pack (owner's request)."""
+    import zipfile
+    import campaign_art
+    files = {f"print/{n}": s for n, s in arts.items() if n in CAMPAIGN_FILES}
+    files.update({f"platform/{n}": s for n, s in campaign_art.pack().items()})
+    files["README.txt"] = PACK_README
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+        for n in sorted(files):
+            info = zipfile.ZipInfo("amplify-graphics-pack/" + n, date_time=(2026, 11, 16, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            z.writestr(info, files[n])
+
+
+CAMPAIGN_FILES = ("poster-involve.svg", "poster-stem.svg", "poster-careers.svg", "poster-remix.svg", "sticker-sheet.svg",
+                  "social-card.svg", "badge-ambassador.svg")
+
+
 def build(date, out=SITE):
     src = json.load(open(os.path.join(R, "tools", "sources.json"), encoding="utf-8"))
     pet = json.load(open(os.path.join(APP, "petition-754954.json"), encoding="utf-8"))
@@ -355,9 +391,11 @@ def build(date, out=SITE):
     from barcode.writer import SVGWriter
     qr_inline = segno.make(LIVE_URL, error="m").svg_inline(scale=3, border=0, dark="#06100f", light="#ffffff")  # posters send people to the live portal
     arts.update({"poster-involve.svg": art.poster_involve(qr_inline), "poster-stem.svg": art.poster_stem(qr_inline),
-                 "social-card.svg": art.social_card(), "badge-ambassador.svg": art.badge_ambassador()})
+                 "poster-careers.svg": art.poster_careers(qr_inline), "poster-remix.svg": art.poster_remix(qr_inline),
+                 "social-card.svg": art.social_card(), "badge-ambassador.svg": art.badge_ambassador(), "sticker-sheet.svg": art.sticker_sheet()})
     for f, s in arts.items():
         open(os.path.join(out, "art", f), "w", encoding="utf-8").write(s)
+    graphics_pack(arts, os.path.join(out, "art", "amplify-graphics-pack.zip"))
     segno.make(REPO_URL, error="m").save(os.path.join(out, "art", "qr.svg"), scale=4, border=2, dark="#06100f", light="#ffffff")
     buf = io.BytesIO()
     barcode.get("code128", meta["build_id"], writer=SVGWriter()).write(buf, {"module_height": 12, "font_size": 6, "text_distance": 3, "quiet_zone": 2})

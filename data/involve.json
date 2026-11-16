@@ -1,6 +1,6 @@
 {
  "title": "Get involved, ambassadors, campaign kit, training and STEM",
- "checked": "2026-11-15",
+ "checked": "2026-11-16",
  "review_days": 90,
  "repo": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify",
  "involve": {
@@ -207,22 +207,37 @@
   "paused": "Sign-ups open once safeguarding is in place."
  },
  "campaign": {
-  "intro": "Everything you need to spread the word, especially during UK Parliament Week. Posters and cards are drawn in code and free to print. The text is a template: adapt it and check it before you use it.",
+  "intro": "Everything you need to spread the word, especially during UK Parliament Week. Redesigned on 16 November 2026 from what worked in award-winning youth campaigns, using only Amplify's six shapes and four hues: stickers you can point at, a ring round the word that matters, mantras, and the number then what it means. Posters and cards are drawn in code and free to print. The text is a template: adapt it and check it before you use it.",
   "assets": [
    {
-    "name": "Poster: Get involved (A4 portrait)",
+    "name": "Poster: Help build it (A4 portrait)",
     "file": "art/poster-involve.svg",
-    "alt": "Poster inviting people to help build Amplify"
+    "alt": "Poster: Help build it. No coding needed: check a fact, test with a screen reader, suggest an idea, design a poster or write code."
    },
    {
-    "name": "Poster: Girls in code, engineering and DevOps (A4 portrait)",
+    "name": "Poster: Girls code. Girls engineer. Girls ship. (A4 portrait)",
     "file": "art/poster-stem.svg",
-    "alt": "Poster celebrating girls and young women in STEM"
+    "alt": "Poster celebrating girls and young women in STEM, with the share of women in the UK's core STEM workforce and its source"
+   },
+   {
+    "name": "Poster: Data architect. Security architect. You. (A4 portrait)",
+    "file": "art/poster-careers.svg",
+    "alt": "Poster naming the seven architecture roles in Government Digital and Data, and routes in"
+   },
+   {
+    "name": "Poster to fill in: If I could change one thing (A4 portrait)",
+    "file": "art/poster-remix.svg",
+    "alt": "Poster with space to write the one thing you would change, for UK Parliament Week groups. No names or ages."
+   },
+   {
+    "name": "Sticker sheet (A4)",
+    "file": "art/sticker-sheet.svg",
+    "alt": "Twelve stickers built from Amplify's six shapes"
    },
    {
     "name": "Social card (square)",
     "file": "art/social-card.svg",
-    "alt": "Square card announcing Amplify"
+    "alt": "Square card: Youth voice, carried further. UK Parliament Week, 23 to 29 November 2026."
    },
    {
     "name": "Ambassador badge",

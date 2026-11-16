@@ -41,6 +41,10 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
   S19 while readiness gate G06 (a named safeguarding lead and procedure) is not passed, nothing on the portal invites
       a young person to sign up for research or as an ambassador: no sign-up link, the pause and its reason are on
       both screens and in the data, and the route to withdraw a research contribution stays (defect D25)
+  S20 campaign art follows Brand & style: every Campaign kit asset exists, never uses the Caution hue (25), embeds
+      the portal's own fonts (an SVG shown as an image cannot load web fonts), and the kit's posts carry no emoji or
+      exclamation marks (defects D30 and D31, 16 November 2026; the guide's voice rule); and the kit offers one graphics
+      pack holding every asset plus the platform sizes, linked from the screen (D32: the kit had no pack)
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -388,13 +392,43 @@ def s8(files):
     return bad
 
 
+CAUTION = re.compile(r"oklch\([^)]*\s25(?:\.0)?\s*(?:/|\))")
+EMOJI = re.compile("[\U0001F300-\U0001FAFF\u2600-\u27BF\u2B50\u2B55]")
+
+
+def s20(t, files=None):
+    bad = []
+    pack = (files or {}).get("art/amplify-graphics-pack.zip")
+    if files is not None:
+        if pack is None: bad.append("S20 the graphics pack art/amplify-graphics-pack.zip is missing (D32)")
+        else:
+            import io, zipfile
+            names = set(zipfile.ZipFile(io.BytesIO(pack)).namelist())
+            try: need = [a["file"].split("/")[-1] for a in json.loads(t.get("data/involve.json", "{}"))["campaign"]["assets"]]
+            except Exception: need = []
+            for n in need + ["../README.txt", "../platform/hero-16x9.svg", "../platform/story-1080x1920.svg", "../platform/carousel-6.svg"]:
+                full = "amplify-graphics-pack/" + ("print/" + n if not n.startswith("../") else n[3:])
+                if full not in names: bad.append(f"S20 the graphics pack lacks {full} (D32)")
+        if 'href="./art/amplify-graphics-pack.zip"' not in t.get("index.html", ""): bad.append("S20 the Campaign kit does not link the graphics pack (D32)")
+    try: kit = json.loads(t.get("data/involve.json", "{}"))["campaign"]
+    except Exception: return ["S20 data/involve.json has no campaign kit"]
+    for a in kit.get("assets", []):
+        svg = t.get(a["file"])
+        if svg is None: bad.append(f"S20 campaign asset {a['file']} is missing"); continue
+        if CAUTION.search(svg): bad.append(f"S20 {a['file']} uses the Caution hue (25), reserved for failure states (D30)")
+        if "@font-face" not in svg or "data:font/woff2;base64," not in svg: bad.append(f"S20 {a['file']} does not embed its fonts (D31)")
+    for post in kit.get("posts", []):
+        if EMOJI.search(post["text"]) or "!" in post["text"]: bad.append(f"S20 the {post['channel']} post has an emoji or exclamation mark (voice rule)")
+    return bad
+
+
 def texts_of(files):
     return {f: b.decode("utf-8", "replace") for f, b in files.items() if f.endswith(TEXT)}
 
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files)
 
 
 if __name__ == "__main__":
@@ -406,7 +440,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S19 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S20 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -490,4 +524,11 @@ if __name__ == "__main__":
     expect("S19", s19(texts_of(broken(idx, lambda s: s.replace("{{ rsWithdraw }}", "#")))))                                                   # withdrawal lost
     expect("S19", s19(texts_of(broken(rsj, edit(lambda d: d["sign_up"].update(form_url="https://forms.example/x"))))))                      # a form while G06 is open
     expect("S19", s19(texts_of(broken(ivj, edit(lambda d: d["ambassadors"].update(status="Pilot. Until then you can register interest."))))))  # pause gone from data
+    expect("S20", s20(texts_of(broken("art/poster-stem.svg", lambda s: s.replace("oklch(0.85 0.15 145 / 1.0)", "oklch(0.45 0.14 25 / 1.0)", 1)))))  # caution hue as decoration (D30)
+    expect("S20", s20(texts_of(broken("art/social-card.svg", lambda s: s.replace("@font-face", "@font-gone")))))                    # fonts not embedded (D31)
+    expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["assets"].append({"name": "x", "file": "art/none.svg", "alt": "x"}))))))  # asset missing
+    expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["posts"][0].update(text="Launching soon \U0001F389"))))))  # emoji in a post
+    nopack = copy.copy(files); nopack.pop("art/amplify-graphics-pack.zip")
+    expect("S20", s20(texts_of(nopack), nopack))                                                                     # pack missing (D32)
+    expect("S20", s20(texts_of(broken(idx, lambda s: s.replace('href="./art/amplify-graphics-pack.zip"', 'href="#"'))), files))  # link lost (D32)
     sys.exit(1 if fails else 0)

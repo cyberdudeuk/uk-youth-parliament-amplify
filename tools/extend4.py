@@ -263,10 +263,11 @@ SCREENS4 = f'''
 
         <sc-if value="{{{{ sCampaign }}}}" hint-placeholder-val="{{{{ false }}}}">
         <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
-          {head("icCamp", 25, "Campaign and awareness kit", "{{ cpIntro }}")}
+          {head("icCamp", 175, "Campaign and awareness kit", "{{ cpIntro }}")}
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px;">
             <sc-for list="{{{{ cpAssets }}}}" as="a" hint-placeholder-count="4"><figure class="amp-card" style="margin: 0; {CARD}"><button type="button" onClick="{{{{ a.view }}}}" aria-label="View {{{{ a.name }}}}" style="border: 0; padding: 0; background: rgb(var(--film-rgb) / 0.04); border-radius: 10px; cursor: zoom-in;"><img src="{{{{ a.src }}}}" alt="{{{{ a.alt }}}}" style="display: block; width: 100%; height: 200px; object-fit: contain; border-radius: 10px;" /></button><figcaption style="font-size: 13.5px; font-weight: 800;">{{{{ a.name }}}}</figcaption><button type="button" onClick="{{{{ a.view }}}}" style="{GOBTN}">View, print or save</button></figure></sc-for>
           </div>
+          <section aria-labelledby="amp-pack" style="{PANEL} display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;"><div><h2 id="amp-pack" style="{H2}">Graphics pack</h2><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">Every poster, the sticker sheet and badge, plus ready-sized images for Teams, Viva Engage, email, LinkedIn, Instagram, Stories and TikTok, and a six-slide carousel. One zip, free to use and remix with credit.</p></div><a href="./art/amplify-graphics-pack.zip" download style="{GOBTN}">Download the graphics pack (.zip)</a></section>
           <section style="{PANEL}"><h2 style="{H2}">Posts and messages to adapt</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px;"><sc-for list="{{{{ cpPosts }}}}" as="x" hint-placeholder-count="4"><div style="{CARD}"><div style="{LABEL}">{{{{ x.channel }}}}</div><p style="margin: 0; font-size: 13.5px; line-height: 1.55;">{{{{ x.text }}}}</p><button type="button" onClick="{{{{ x.copy }}}}" style="align-self: flex-start; min-height: 36px; border-radius: 999px; padding: 6px 14px; border: 1px solid oklch(var(--t2) 0.16 145 / 0.7); background: transparent; color: rgb(var(--ink-rgb)); font-size: 13px; font-weight: 700; cursor: pointer;">{{{{ x.copied }}}}</button></div></sc-for></div>
             <p style="margin: 12px 0 0; {SMALL}">{{{{ cpSocial }}}}</p>
@@ -328,7 +329,7 @@ SCREENS4 = f'''
 GROUP4 = '''    ["Get involved", [
       ["involve", "Contribute", "dot", 175, 4, "NEW", "contribute help build open source github issue pull request volunteer check source accessibility test translate code devops"],
       ["ambassadors", "Ambassadors & champions", "dia", 70, 4, "NEW", "ambassador champion supporter volunteer represent mentor badge programme"],
-      ["campaign", "Campaign kit", "tri", 25, 4, "NEW", "campaign marketing advertising poster flyer social post assembly hashtag awareness collateral"],
+      ["campaign", "Campaign kit", "tri", 175, 4, "NEW", "campaign marketing advertising poster flyer social post assembly hashtag awareness collateral"],
       ["learn", "Training & sessions", "sq", 300, 4, "NEW", "training education lesson session plan teacher youth worker workshop module course"],
       ["stem", "STEM & tech", "ring", 200, 4, "NEW", "stem science innovation data ai digital cyber technology engineering maths coding code club girls women enterprise architecture devops apprenticeships careers government fast stream"]
     ]],

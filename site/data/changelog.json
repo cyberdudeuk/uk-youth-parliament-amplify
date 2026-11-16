@@ -1,8 +1,8 @@
 {
  "title": "Release log",
- "checked": "2026-11-15",
+ "checked": "2026-11-16",
  "review_days": 30,
- "current": "1.0.0-rc.2",
+ "current": "1.0.0-rc.3",
  "releases": [
   {
    "version": "1.0.0",
@@ -11,6 +11,20 @@
    "title": "Launch at UK Parliament Week 2026",
    "summary": "Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.",
    "entries": []
+  },
+  {
+   "version": "1.0.0-rc.3",
+   "date": "2026-11-16",
+   "status": "Release candidate",
+   "title": "Campaign kit redesign for UK Parliament Week",
+   "summary": "The campaign collateral redesigned from a scan of award-winning youth campaigns, inside the Brand & style rules, with a downloadable graphics pack (defects D30 to D32).",
+   "entries": [
+    {
+     "screen": "campaign",
+     "kind": "UPD",
+     "what": "Campaign kit: new-look posters, social card and ambassador badge, drawn from what worked in Give an X, Bite Back, This Girl Can, #LikeAGirl and She Can STEM, using only Amplify's shapes and hues. Three new pieces: a Government Digital and Data careers poster, a poster to fill in for UK Parliament Week groups, and a sticker sheet. Fonts are now embedded so posters print as designed (D30, D31). New graphics pack: one zip with every graphic, images sized for Teams, Viva Engage, email, LinkedIn, Instagram, Stories and TikTok, and a six-slide carousel (D32)."
+    }
+   ]
   },
   {
    "version": "1.0.0-rc.2",
