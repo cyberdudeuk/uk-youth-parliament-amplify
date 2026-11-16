@@ -138,7 +138,8 @@ CAMPAIGN_HUES = {"launch": 175, "stem": 300, "girls": 145, "careers": 70}
 def _fontface():
     out = []
     for fam, wt, f in _FONT_FILES:
-        b64 = base64.b64encode(open(os.path.join(_FONT_DIR, f), "rb").read()).decode()
+        with open(os.path.join(_FONT_DIR, f), "rb") as fh:  # closed after reading (CodeQL alert 319)
+            b64 = base64.b64encode(fh.read()).decode()
         out.append(f"@font-face{{font-family:'{fam}';font-weight:{wt};src:url(data:font/woff2;base64,{b64}) format('woff2')}}")
     return "<style>" + "".join(out) + "</style>"
 
