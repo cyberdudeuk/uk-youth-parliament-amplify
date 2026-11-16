@@ -257,6 +257,14 @@
    "root_cause": "The kit was built as a gallery of the posters, not as a pack people can cascade; the screen hue was picked for emphasis, not meaning.",
    "fix": "tools/build_site.py writes a deterministic art/amplify-graphics-pack.zip (every asset plus platform sizes and a carousel from tools/campaign_art.py), linked from the kit, which is now tinted Participation (175).",
    "check": "S20"
+  },
+  {
+   "id": "D33",
+   "found": "2026-11-16",
+   "what": "The graphics pack built on GitHub's runner did not match the committed one, so check S1 failed in CI on pull request 24.",
+   "root_cause": "The zip was deflated, and deflate output depends on the zlib version, which differs between environments.",
+   "fix": "The pack stores files uncompressed, which is byte-identical everywhere; S20 fails a compressed pack.",
+   "check": "S20"
   }
  ],
  "open": [

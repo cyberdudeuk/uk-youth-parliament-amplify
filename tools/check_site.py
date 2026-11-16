@@ -404,7 +404,9 @@ def s20(t, files=None):
         if pack is None: bad.append("S20 the graphics pack art/amplify-graphics-pack.zip is missing (D32)")
         else:
             import io, zipfile
-            names = set(zipfile.ZipFile(io.BytesIO(pack)).namelist())
+            zf = zipfile.ZipFile(io.BytesIO(pack)); names = set(zf.namelist())
+            if any(i.compress_type != zipfile.ZIP_STORED for i in zf.infolist()):
+                bad.append("S20 the graphics pack is compressed, so it cannot rebuild byte for byte on another zlib (D33)")
             try: need = [a["file"].split("/")[-1] for a in json.loads(t.get("data/involve.json", "{}"))["campaign"]["assets"]]
             except Exception: need = []
             for n in need + ["../README.txt", "../platform/hero-16x9.svg", "../platform/story-1080x1920.svg", "../platform/carousel-6.svg"]:
@@ -536,6 +538,12 @@ if __name__ == "__main__":
     expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["posts"][0].update(text="Launching soon \U0001F389"))))))  # emoji in a post
     nopack = copy.copy(files); nopack.pop("art/amplify-graphics-pack.zip")
     expect("S20", s20(texts_of(nopack), nopack))
+    import io as _io, zipfile as _zf
+    buf = _io.BytesIO()
+    with _zf.ZipFile(buf, "w", _zf.ZIP_DEFLATED) as z:
+        for i in _zf.ZipFile(_io.BytesIO(files["art/amplify-graphics-pack.zip"])).infolist(): z.writestr(i.filename, b"x", _zf.ZIP_DEFLATED)
+    deflated = copy.copy(files); deflated["art/amplify-graphics-pack.zip"] = buf.getvalue()
+    expect("S20", s20(texts_of(deflated), deflated))                                                                 # compressed pack (D33)
     novid = copy.copy(files); novid.pop("media/campaign/short-girls-ship.mp4")
     expect("S20", s20(texts_of(novid), novid))                                                                       # a film missing
     expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["videos"][0].update(transcript="")))), files))  # transcript lost

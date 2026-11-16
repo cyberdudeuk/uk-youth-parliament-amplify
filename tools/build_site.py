@@ -304,10 +304,11 @@ def graphics_pack(arts, path):
     files = {f"print/{n}": s for n, s in arts.items() if n in CAMPAIGN_FILES}
     files.update({f"platform/{n}": s for n, s in campaign_art.pack().items()})
     files["README.txt"] = PACK_README
-    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+    # Stored, not deflated: deflate output depends on the zlib version, so CI rebuilt different bytes (D33)
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_STORED) as z:
         for n in sorted(files):
             info = zipfile.ZipInfo("amplify-graphics-pack/" + n, date_time=(2026, 11, 16, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.compress_type = zipfile.ZIP_STORED
             info.external_attr = 0o644 << 16
             z.writestr(info, files[n])
 
