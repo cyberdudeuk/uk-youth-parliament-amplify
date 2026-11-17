@@ -1,6 +1,6 @@
 {
  "title": "Product: vision, strategy, specification, roadmap and backlog",
- "checked": "2026-11-15",
+ "checked": "2026-11-17",
  "review_days": 30,
  "vision": "Every young person in the UK knows how to make their voice heard, and is heard, safely.",
  "mission": "Carry youth voice further: bring together trusted sources, safe routes into participation and campaign tools for young people, and for the adults who support them, across all four nations.",
@@ -131,6 +131,12 @@
      "t": "Faster pages on low-end phones by compiling at build time",
      "reqs": [
       "REQ-23"
+     ]
+    },
+    {
+     "t": "Inside Parliament, part two: the related themes listed on the screen",
+     "reqs": [
+      "REQ-28"
      ]
     }
    ]
@@ -529,6 +535,34 @@
    ],
    "checks": [
     "R8"
+   ]
+  },
+  {
+   "id": "REQ-27",
+   "title": "Inside Parliament: how Parliament's time works, a day in the life of an MYP, an MP and a peer, who does what, the building and who changes the rules, every fact sourced",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner request, 17 Nov 2026",
+   "screens": [
+    "parliament"
+   ],
+   "checks": [
+    "S21",
+    "S16",
+    "S12"
+   ]
+  },
+  {
+   "id": "REQ-28",
+   "title": "Related themes to build next: the four nations' youth parliaments and legislatures, local democracy, registering to vote and elections, how a Bill becomes law, lobbying skills, careers in Parliament, heritage",
+   "moscow": "Could",
+   "status": "Planned",
+   "from": "Owner request, 17 Nov 2026",
+   "screens": [
+    "parliament"
+   ],
+   "checks": [
+    "S21"
    ]
   }
  ],

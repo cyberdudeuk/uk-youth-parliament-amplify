@@ -1,6 +1,6 @@
 {
  "title": "Content integrity",
- "checked": "2026-11-15",
+ "checked": "2026-11-17",
  "review_days": 30,
  "classes": {
   "Sourced": "Facts taken from named official or voluntary-sector sources, each linked and dated.",
@@ -130,6 +130,11 @@
    "screen": "state",
    "class": "Editorial",
    "why": "Facts carry their source and date; open the linked source before relying on a figure."
+  },
+  {
+   "screen": "parliament",
+   "class": "Sourced",
+   "why": "Every fact names an official or secondary source in data/parliament.json, each dated; a few campaign tips are marked as Amplify's note. Roles are described, not named, and link to the official page that says who holds them now."
   },
   {
    "screen": "issues",

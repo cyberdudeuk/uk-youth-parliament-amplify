@@ -476,6 +476,34 @@
    "proved": [
     "S11"
    ]
+  },
+  {
+   "id": "ST19",
+   "persona": "young11",
+   "want": "see what an MP and a Member of Youth Parliament actually do all day",
+   "so": "I can picture myself doing it",
+   "screen": "parliament",
+   "accept": [
+    "The MYP, MP and peer are shown side by side",
+    "Every fact links to its source"
+   ],
+   "proved": [
+    "S21"
+   ]
+  },
+  {
+   "id": "ST20",
+   "persona": "teacher",
+   "want": "a sourced explainer of Parliament's week and the Order Paper",
+   "so": "I can run a UK Parliament Week lesson",
+   "screen": "parliament",
+   "accept": [
+    "Sitting hours of both Houses on one chart",
+    "Each part of the Order Paper explained"
+   ],
+   "proved": [
+    "S21"
+   ]
   }
  ],
  "journeys": [

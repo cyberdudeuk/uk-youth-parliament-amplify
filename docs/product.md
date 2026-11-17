@@ -2,7 +2,7 @@
 
 Generated from `data/product.json` by `tools/make_docs.py`; edit that, not this file. The portal shows the same content on its Product & roadmap screen.
 
-Last checked 2026-11-15, reviewed every 30 days.
+Last checked 2026-11-17, reviewed every 30 days.
 
 ## Vision
 
@@ -72,6 +72,7 @@ Constraints:
 - Research round 1 with young people, parents and youth workers (January to February 2027) (REQ-16, REQ-17)
 - Ambassador programme pilot, once safeguarding is confirmed (REQ-14)
 - Faster pages on low-end phones by compiling at build time (REQ-23)
+- Inside Parliament, part two: the related themes listed on the screen (REQ-28)
 
 ### Later
 
@@ -109,6 +110,8 @@ Constraints:
 | REQ-24 | Availability monitoring and vendored-library watch | Could | Planned | Readiness review, 15 Nov 2026 | golive | S15 |
 | REQ-25 | Owner decisions before the public launch (publishing, merge and propriety decided 15 Nov 2026; safeguarding lead and owner sign-off still open) | Must | Waiting on owner | Readiness review, 15 Nov 2026 | golive | S15 |
 | REQ-26 | The public address opens the built portal, labelled independent and unofficial | Must | Done | Gap review, 15 Nov 2026 | home, about | R8 |
+| REQ-27 | Inside Parliament: how Parliament's time works, a day in the life of an MYP, an MP and a peer, who does what, the building and who changes the rules, every fact sourced | Should | Done | Owner request, 17 Nov 2026 | parliament | S21, S16, S12 |
+| REQ-28 | Related themes to build next: the four nations' youth parliaments and legislatures, local democracy, registering to vote and elections, how a Bill becomes law, lobbying skills, careers in Parliament, heritage | Could | Planned | Owner request, 17 Nov 2026 | parliament | S21 |
 
 ## How it is traced, tracked and managed on GitHub
 

@@ -8,8 +8,8 @@
    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#",
    "@type": "skos:ConceptScheme",
    "dcterms:title": "Amplify glossary and thesaurus",
-   "dcterms:modified": "2026-11-16",
-   "dcterms:identifier": "AMP-20261117-e3932331"
+   "dcterms:modified": "2026-11-17",
+   "dcterms:identifier": "AMP-20261117-918eda90"
   },
   {
    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#myp",
@@ -1236,6 +1236,314 @@
     }
    ],
    "dcterms:created": "1.0.0-rc.4"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#orderpaper",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Order Paper",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Order of Business",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "business papers",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "agenda",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The agenda for the day in the House of Commons, published every sitting day: the day's business in the Chamber and Westminster Hall, announcements and future business. Short-notice items such as urgent questions are not on it in advance.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#businessstatement"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#stateopening",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "State Opening",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "King's Speech",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "Speech from the Throne",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "opening of Parliament",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The formal start of the parliamentary year, when the King gives a speech in the House of Lords, written by the Government, setting out the laws it plans for the new session.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#businessstatement",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Business statement",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Business Questions",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "Thursday statement",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "forthcoming business",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The Leader of the House of Commons' statement every sitting Thursday announcing next week's business. MPs then question the Leader on it (Business Questions), often asking for debates.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#orderpaper"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#whip",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Whip",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "whips",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "Chief Whip",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "whipping",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "three-line whip",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "An MP or peer appointed by a party to make sure colleagues vote with the party, organise business and share information. Also the weekly notice telling members how to vote.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#crossbench"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#crossbench",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Crossbench peer",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Crossbencher",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "cross-bench",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "independent peer",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "Convenor",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "An independent member of the House of Lords who belongs to no party and has no whip. Crossbenchers elect a Convenor to keep them informed.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#whip"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#proccommittee",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Procedure Committee",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Standing Orders",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "rules of the House",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "procedure",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A select committee of MPs that considers how the House of Commons conducts its business and recommends changes to its rules (Standing Orders). The Lords has its own.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#orderpaper"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#westminsterhall",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Westminster Hall debate",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Westminster Hall",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "parallel chamber",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "petition debate",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A debate held in a second debating room off Westminster Hall, alongside the Commons Chamber. E-petitions recommended by the Petitions Committee are debated here.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#pet"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#thresh"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#adjournment",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Adjournment debate",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "end-of-day debate",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "adjournment",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A half-hour debate at the end of each Commons sitting day, where one backbench MP raises an issue and the relevant minister replies.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#orderpaper"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.5"
   }
  ]
 }

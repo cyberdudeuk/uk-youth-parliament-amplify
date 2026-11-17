@@ -1,6 +1,6 @@
 {
  "title": "Tooltips and explainers",
- "checked": "2026-11-15",
+ "checked": "2026-11-17",
  "review_days": 90,
  "note": "Written for this portal in plain English. Each screen has a short explainer and, where it helps, a line for the person reading it. Choose who you are in the explainer bar; nothing is sent anywhere and the choice stays on this device.",
  "personas": [
@@ -253,6 +253,14 @@
     "parent": "No email or account is needed to follow updates, and nothing about your child is collected.",
     "young11": "You can turn off the news strip and the alerts here. Safety notices still show."
    }
+  },
+  "parliament": {
+   "tip": "How Parliament runs: its year, week and day, a day in the life of an MYP, an MP and a peer, who does what, the building, and who changes the rules.",
+   "for": {
+    "young11": "Start with A day in the life.",
+    "teacher": "The side-by-side roles and the Order Paper guide work as a citizenship lesson.",
+    "young16": "Use it and go further shows how to time a campaign around Parliament."
+   }
   }
  },
  "terms": {
@@ -327,6 +335,10 @@
   "rc": {
    "term": "Release candidate",
    "tip": "A version that is ready to test but not yet launched."
+  },
+  "orderpaper": {
+   "term": "Order Paper",
+   "tip": "The House of Commons' agenda for the day, published every sitting day."
   }
  },
  "ui": {

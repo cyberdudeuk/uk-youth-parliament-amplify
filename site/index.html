@@ -7,11 +7,11 @@
 <meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">
 <link rel="icon" href="./art/favicon.svg" type="image/svg+xml">
 <meta name="artefact:id" content="amplify-portal">
-<meta name="artefact:version" content="AMP-20261117-e3932331">
+<meta name="artefact:version" content="AMP-20261117-918eda90">
 <meta name="artefact:class" content="portal">
 <meta name="artefact:as-of" content="2026-11-17">
 <meta name="artefact:review-date" content="2026-12-17">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261117-e3932331", "version": "AMP-20261117-e3932331", "dateModified": "2026-11-17", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://cyberdudeuk.github.io/uk-youth-parliament-amplify/", "codeRepository": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261117-918eda90", "version": "AMP-20261117-918eda90", "dateModified": "2026-11-17", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://cyberdudeuk.github.io/uk-youth-parliament-amplify/", "codeRepository": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amplify">
 <meta property="og:title" content="Amplify: youth voice, carried further">
@@ -97,6 +97,12 @@
   @media (prefers-reduced-motion: reduce) { .amp-tk-track { animation: none; } .amp-tk-dup { display: none !important; } .amp-tk-view { overflow-x: auto; } }
   @media (max-width: 560px) { .amp-tk-btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
   @media print { .amp-tk { display: none !important; } }
+
+
+  .amp-pa-panel { animation: none; }
+  @media (prefers-reduced-motion: no-preference) { .amp-pa-panel { animation: ampPaIn 0.28s ease-out; } @keyframes ampPaIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } } }
+  .amp-pa-tl { position: relative; padding-left: 22px; }
+  .amp-pa-tl::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; border-radius: 2px; background: oklch(var(--t2) 0.12 145 / 0.5); }
 
   .amp-sr { position: absolute !important; left: 0; top: 0; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   @media (max-width: 420px) { main div[style*="grid-template-columns"]:not([role="row"]) { grid-template-columns: minmax(0, 1fr) !important; } main a { overflow-wrap: anywhere; max-width: 100%; white-space: normal !important; flex-shrink: 1 !important; box-sizing: border-box; } main a span { min-width: 0; overflow-wrap: anywhere; } }
@@ -3040,6 +3046,106 @@
         </div>
         </sc-if>
 
+
+        <sc-if value="{{ sParliament }}" hint-placeholder-val="{{ false }}">
+        <div class="amp-screen" style="display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 9px; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: oklch(var(--t3) 0.16 145);"><span aria-hidden="true" style="{{ icParliament }}"></span>Foundations</div>
+            <h1 style="margin: 4px 0 6px; font-size: 27px; font-weight: 900; letter-spacing: -0.035em; text-wrap: balance;">Inside Parliament</h1>
+            <p style="margin: 0; font-size: 15px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.82); max-width: 68ch;">{{ paLede }}</p>
+            <p style="margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Every fact names its source: <span style="font-weight: 800;">Official</span> means checked on the official page itself, <span style="font-weight: 800;">Secondary</span> a reputable secondary source. Last checked {{ paChecked }}.</p>
+          </div>
+          <div role="tablist" aria-label="Inside Parliament" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ paTabs }}" as="t" hint-placeholder-count="6"><button type="button" role="tab" id="{{ t.tid }}" aria-controls="{{ t.pid }}" aria-selected="{{ t.sel }}" onClick="{{ t.go }}" onKeyDown="{{ t.key }}" style="{{ t.style }}"><span aria-hidden="true" style="{{ t.icon }}"></span>{{ t.label }}</button></sc-for>
+          </div>
+
+          <sc-if value="{{ paTime }}" hint-placeholder-val="{{ true }}">
+          <div role="tabpanel" id="pa-panel-time" aria-labelledby="pa-tab-time" class="amp-pa-panel" style="display: flex; flex-direction: column; gap: 16px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">The parliamentary year</h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px;"><sc-for list="{{ paYear }}" as="x" hint-placeholder-count="5"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 900;">{{ x.t }}</div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.d }}</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></div></sc-for></div></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">The sitting week at a glance</h2>
+              <p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ paChartNote }}</p>
+              <figure style="margin: 0;" aria-label="Normal sitting hours of the House of Commons and the House of Lords, Monday to Friday">
+                <div style="position: relative; height: 18px; margin: 0 0 4px 62px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);" aria-hidden="true"><sc-for list="{{ paChartTicks }}" as="k" hint-placeholder-count="5"><span style="{{ k.style }}">{{ k.t }}</span></sc-for></div>
+                <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ paChart }}" as="d" hint-placeholder-count="5"><li style="display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 8px; align-items: center;">
+                  <span style="font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;">{{ d.day }}</span>
+                  <div style="display: flex; flex-direction: column; gap: 3px;">
+                    <div style="position: relative; height: 14px; border-radius: 6px; background: rgb(var(--film-rgb) / 0.06);"><sc-if value="{{ d.c.has }}" hint-placeholder-val="{{ true }}"><span style="{{ d.c.style }}"></span></sc-if><span class="amp-sr">Commons {{ d.c.label }}</span></div>
+                    <div style="position: relative; height: 14px; border-radius: 6px; background: rgb(var(--film-rgb) / 0.06);"><sc-if value="{{ d.l.has }}" hint-placeholder-val="{{ true }}"><span style="{{ d.l.style }}"></span></sc-if><span class="amp-sr">Lords {{ d.l.label }}</span></div>
+                  </div></li></sc-for></ul>
+                <figcaption style="display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span><span aria-hidden="true" style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; background: oklch(var(--t2) 0.15 145 / 0.85);"></span> House of Commons (upper bar)</span><span><span aria-hidden="true" style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; background: oklch(var(--t2) 0.15 300 / 0.85);"></span> House of Lords (lower bar)</span></figcaption>
+              </figure>
+              <div style="margin-top: 8px;"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ paChartCites }}" as="c" hint-placeholder-count="1"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></sc-for></div></div>
+            </section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Sitting hours, in full</h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px;"><sc-for list="{{ paWeek }}" as="g" hint-placeholder-count="3"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><span style="{{ g.hStyle }} align-self: flex-start;">{{ g.house }}</span>
+                <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3"><div style="display: flex; flex-direction: column; gap: 2px; padding-top: 6px; border-top: 1px solid rgb(var(--film-rgb) / 0.08);"><span style="font-size: 13.5px; font-weight: 800;">{{ r.day }}</span><span style="font-size: 13.5px;">{{ r.hours }}</span></div></sc-for></div></sc-for></div>
+              <p style="margin: 10px 0 6px; font-size: 13.5px; line-height: 1.55;">{{ paWeekNote }}</p><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ paWeekNoteCites }}" as="c" hint-placeholder-count="1"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></sc-for></div>
+            </section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">A Commons sitting day, in order</h2>
+              <ol class="amp-pa-tl" style="margin: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;"><sc-for list="{{ paDay }}" as="x" hint-placeholder-count="6"><li style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;"><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ x.when }}</span><span style="font-size: 14.5px; font-weight: 900;">{{ x.what }}</span></div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.d }}</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></li></sc-for></ol></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">How to read the <span data-tip="term:orderpaper" tabindex="0" style="text-decoration: underline dotted; text-underline-offset: 3px;">Order Paper</span></h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px;"><sc-for list="{{ paOP }}" as="x" hint-placeholder-count="5"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 900;">{{ x.part }}</div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.d }}</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></div></sc-for></div></section>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ paLife }}" hint-placeholder-val="{{ false }}">
+          <div role="tabpanel" id="pa-panel-life" aria-labelledby="pa-tab-life" class="amp-pa-panel" style="display: flex; flex-direction: column; gap: 16px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">A Member of Youth Parliament, an MP and a peer, side by side</h2><p style="margin: 0 0 12px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ paLifeIntro }}</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 10px;"><sc-for list="{{ paLifeCards }}" as="x" hint-placeholder-count="3"><article style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; {{ x.top }}">
+                <h3 style="margin: 0; font-size: 16px; font-weight: 900;">{{ x.role }}</h3>
+                <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Who</div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.who }}</div></div>
+                <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Time</div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.time }}</div></div>
+                <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Where</div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.where }}</div></div>
+                <div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">What fills the days</div><ul style="margin: 2px 0 0; padding-left: 18px; font-size: 13.5px; line-height: 1.5;"><sc-for list="{{ x.rhythm }}" as="r" hint-placeholder-count="3"><li>{{ r.t }}</li></sc-for></ul></div>
+                <a href="{{ x.ownUrl }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-size: 13.5px;">{{ x.own }}</a><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></article></sc-for></div></section>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ paRoles }}" hint-placeholder-val="{{ false }}">
+          <div role="tabpanel" id="pa-panel-roles" aria-labelledby="pa-tab-roles" class="amp-pa-panel" style="display: flex; flex-direction: column; gap: 16px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Who keeps Parliament working</h2>
+              <p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">Roles, not names: who holds each role changes, so each card links to the official page that says who holds it now. Showing {{ paRoleShown }} of {{ paRoleTotal }}.</p>
+              <label style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12.5px; margin-bottom: 10px;">House <select value="{{ paHouse }}" onChange="{{ setPaHouse }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><option value="All">All</option><option value="Commons">Commons</option><option value="Lords">Lords</option></select></label>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px;"><sc-for list="{{ paRoleCards }}" as="x" hint-placeholder-count="8"><article style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;"><h3 style="margin: 0; font-size: 15px; font-weight: 900;">{{ x.role }}</h3><span style="{{ x.hStyle }}">{{ x.house }}</span></div>
+                <div style="font-size: 13.5px; line-height: 1.55;">{{ x.d }}</div>
+                <div style="font-size: 13px; line-height: 1.5;"><span style="font-weight: 800;">Why it matters to you:</span> {{ x.youth }}</div>
+                <a href="{{ x.who }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-size: 13px;">Who holds this role now</a><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></article></sc-for></div></section>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ paBuilding }}" hint-placeholder-val="{{ false }}">
+          <div role="tabpanel" id="pa-panel-building" aria-labelledby="pa-tab-building" class="amp-pa-panel" style="display: flex; flex-direction: column; gap: 16px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">From the fire of 1834 to Restoration and Renewal</h2>
+              <ol class="amp-pa-tl" style="margin: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;"><sc-for list="{{ paBuild }}" as="x" hint-placeholder-count="8"><li style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ x.date }}</span><div style="font-size: 13.5px; line-height: 1.55;">{{ x.what }}</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></li></sc-for></ol>
+              <p style="margin: 12px 0 6px; font-size: 13.5px; line-height: 1.55;">{{ paBuildNote }}</p><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ paBuildNoteCites }}" as="c" hint-placeholder-count="1"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></sc-for></div></section>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ paRulesTab }}" hint-placeholder-val="{{ false }}">
+          <div role="tabpanel" id="pa-panel-rules" aria-labelledby="pa-tab-rules" class="amp-pa-panel" style="display: flex; flex-direction: column; gap: 16px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Who changes the rules</h2><p style="margin: 0 0 12px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ paRulesIntro }}</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px;"><sc-for list="{{ paRules }}" as="x" hint-placeholder-count="5"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 900;">{{ x.t }}</div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.d }}</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></div></sc-for></div></section>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ paGo }}" hint-placeholder-val="{{ false }}">
+          <div role="tabpanel" id="pa-panel-go" aria-labelledby="pa-tab-go" class="amp-pa-panel" style="display: flex; flex-direction: column; gap: 16px;">
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Use it in your campaign</h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px;"><sc-for list="{{ paUse }}" as="x" hint-placeholder-count="7"><div style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;"><div style="font-size: 14.5px; font-weight: 900;">{{ x.t }}</div><div style="font-size: 13.5px; line-height: 1.55;">{{ x.d }}</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px;"><sc-if value="{{ x.hasScreen }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ x.go }}" style="min-height: 32px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb)); padding: 4px 12px; font-size: 12.5px; font-weight: 800; cursor: pointer;">Open {{ x.screenLabel }}</button></sc-if><sc-if value="{{ x.hasUrl }}" hint-placeholder-val="{{ false }}"><a href="{{ x.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px;">Go to the official page</a></sc-if></div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Source</span><sc-for list="{{ x.cites }}" as="c" hint-placeholder-count="1"><span style="display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;"><a href="{{ c.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ c.label }}</a><span style="{{ c.pStyle }}">{{ c.prov }}</span></span></sc-for><sc-if value="{{ x.editorial }}" hint-placeholder-val="{{ false }}"><span style="{{ x.edStyle }}">Amplify&rsquo;s note</span></sc-if></div></div></sc-for></div></section>
+            <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Related campaigns, themes and topics</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ paRelIntro }} Showing {{ paRelShown }} of {{ paRelTotal }}.</p>
+              <label style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12.5px; margin-bottom: 10px;">Where it lives <select value="{{ paRel }}" onChange="{{ setPaRel }}" style="min-width: 0; max-width: 100%; min-height: 36px; border: 1px solid rgb(var(--film-rgb) / 0.2); border-radius: 10px; background: rgb(var(--film-rgb) / 0.05); color: rgb(var(--ink-rgb)); padding: 6px 10px; font-size: 13px;"><sc-for list="{{ paRelOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o.v }}">{{ o.label }}</option></sc-for></select></label>
+              <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px;"><sc-for list="{{ paRelItems }}" as="x" hint-placeholder-count="6"><li style="border: 1px solid rgb(var(--film-rgb) / 0.1); border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 10px;"><span style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">{{ x.kind }}</span><span style="flex: 1 1 260px; min-width: 0; font-size: 13.5px; font-weight: 700;">{{ x.t }}</span><span style="{{ x.sStyle }}">{{ x.status }}</span><sc-if value="{{ x.hasScreen }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ x.go }}" style="min-height: 32px; border: 1px solid rgb(var(--film-rgb) / 0.25); border-radius: 999px; background: transparent; color: rgb(var(--ink-rgb)); padding: 4px 12px; font-size: 12.5px; font-weight: 800; cursor: pointer;">{{ x.screenLabel }}</button></sc-if></li></sc-for></ul></section>
+          </div>
+          </sc-if>
+
+          <section style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;"><h2 style="margin: 0 0 10px; font-size: 17px; font-weight: 800;">Sources for this screen</h2><p style="margin: 0 0 10px; font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">{{ paSrcN }} sources, {{ paSrcV }} of them official pages. {{ paRule }}</p>
+            <ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.5;"><sc-for list="{{ paSources }}" as="x" hint-placeholder-count="6"><li><a href="{{ x.url }}" target="_blank" rel="noopener" style="color: rgb(var(--ink-rgb)); font-weight: 700; text-underline-offset: 3px; font-weight: 600;">{{ x.label }}</a> <span style="{{ x.pStyle }}">{{ x.prov }}</span> <span style="font-size: 12.5px; line-height: 1.55; color: rgb(var(--ink-rgb) / 0.8);">checked {{ x.checked }}</span></li></sc-for></ul></section>
+        </div>
+        </sc-if>
+
         <div data-slot="portal-end" style="display: none;"></div>
       </main>
     </div>
@@ -3244,7 +3350,7 @@
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Transparency</h2>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261117-e3932331</span>, built 17 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261117-918eda90</span>, built 17 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Next review due 17 December 2026. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Source, checks and history: <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Contact</h2>
@@ -3255,8 +3361,8 @@
     </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
-        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261117-e3932331" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
-        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261117-e3932331</p>
+        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261117-918eda90" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
+        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261117-918eda90</p>
       </div>
   </footer>
 </div>
@@ -3381,7 +3487,7 @@ class Component extends DCLogic {
 
   screenFromHash() {
     const id = (location.hash || "").replace(/^#\/?/, "");
-    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities|involve|ambassadors|campaign|learn|stem|research|service|golive|product|notify)$/.test(id) ? id : null;
+    return /^(hub|momentum|plan|coal|kit|pledge|radar|policy|map|acad|ysc|post|track|prof|incl|res|ai|brand|care|graph|corner|route|state|issues|guide|sources|latest|trust|health|changes|help|feedback|launch|about|home|media|communities|involve|ambassadors|campaign|learn|stem|research|service|golive|product|notify|parliament)$/.test(id) ? id : null;
   }
   screenLabel(id) {
     for (const [, items] of this.GROUPS) for (const it of items) if (it[0] === id) return it[1];
@@ -3409,8 +3515,8 @@ class Component extends DCLogic {
 
   async loadAmplifyData() {
     const get = async (f) => { try { const r = await fetch(new URL(f, document.baseURI).href, { cache: "no-store" }); return r.ok ? await r.json() : null; } catch (e) { return null; } };
-    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, gl, pd] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json", "./data/tooltips.json", "./data/involve.json", "./data/research.json", "./data/service-design.json", "./data/readiness.json", "./data/glossary.json", "./data/product.json"].map(get));
-    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, gl, pd, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
+    const [src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, gl, pd, pa] = await Promise.all(["./data/youth-sources.json", "./data/latest.json", "./data/safeguards.json", "./data/moscow.json", "./data/registers.json", "./build.json", "./data/changelog.json", "./data/help.json", "./data/launch.json", "./data/integrity.json", "./data/about.json", "./data/home.json", "./data/media.json", "./data/communities.json", "./data/tooltips.json", "./data/involve.json", "./data/research.json", "./data/service-design.json", "./data/readiness.json", "./data/glossary.json", "./data/product.json", "./data/parliament.json"].map(get));
+    this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, gl, pd, pa, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
   }
   ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
   ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
@@ -3526,7 +3632,7 @@ class Component extends DCLogic {
       coal: "handshake", kit: "package", pledge: "hand-heart", radar: "radar", policy: "scroll-text", map: "map", acad: "graduation-cap", ysc: "messages-square",
       post: "file-search", track: "list-checks", prof: "users", incl: "accessibility", res: "library", ai: "sparkles", brand: "palette", care: "heart-handshake",
       graph: "network", sources: "book-open-check", latest: "newspaper", trust: "shield-check", health: "activity",
-      involve: "git-pull-request", ambassadors: "award", campaign: "rocket", learn: "presentation", stem: "cpu", research: "pencil-ruler" };
+      involve: "git-pull-request", ambassadors: "award", campaign: "rocket", learn: "presentation", stem: "cpu", research: "pencil-ruler", parliament: "vote" };
     const n = N[id];
     if (!n) return this.ICONS[shape];
     const u = "url(./vendor/icons/" + n + ".svg)";
@@ -4033,6 +4139,71 @@ class Component extends DCLogic {
     };
   }
 
+
+  ampVals11(s) {
+    const A = s.amp || {}, pa = A.pa || {};
+    const arr = (x) => (Array.isArray(x) ? x : []);
+    const tabs = arr(pa.tabs), ids = tabs.map((t) => t.id), tab = ids.indexOf(s.paTab) >= 0 ? s.paTab : (ids[0] || "time");
+    const SRC = {}; arr(pa.sources).forEach((x) => { SRC[x.id] = x; });
+    const pill = (h) => "display:inline-block;border-radius:999px;padding:1px 8px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;background:oklch(var(--t1) 0.16 " + h + " / 0.28);color:oklch(var(--t4) 0.15 " + h + ");";
+    const cite = (list) => arr(list).map((id) => { const x = SRC[id] || {}; const off = x.provenance === "V";
+      return { label: x.label || id, url: x.url || "#", prov: off ? "Official" : "Secondary", pStyle: pill(off ? 145 : 70) }; });
+    const ed = (x) => ({ editorial: !!x.editorial, edStyle: pill(300) });
+    const L = {}; this.GROUPS.forEach(([g, items]) => items.forEach(([id, lbl]) => { L[id] = lbl; }));
+    const go = (id) => () => this.setState({ screen: id }, () => { try { window.scrollTo(0, 0); } catch (e) { /* no window */ } });
+    const H = { Commons: 145, Lords: 300, Both: 70, "Westminster Hall": 215 };
+    const house = s.paHouse || "All", rel = s.paRel || "All";
+    const weekBy = {}; arr(pa.week).forEach((w) => { (weekBy[w.house] = weekBy[w.house] || []).push(w); });
+    const pct = (h) => Math.max(0, Math.min(100, ((h - 8) / 16) * 100)).toFixed(2) + "%";
+    const bar = (span, hue) => (span ? { has: true, style: "position:absolute;top:0;bottom:0;left:" + pct(span[0]) + ";width:calc(" + pct(span[1]) + " - " + pct(span[0]) + ");border-radius:6px;background:oklch(var(--t2) 0.15 " + hue + " / 0.85);",
+      label: ((x) => { const f = (v) => { const hh = Math.floor(v), mm = Math.round((v - hh) * 60), ap = hh >= 12 ? "pm" : "am", h12 = ((hh + 11) % 12) + 1; return h12 + (mm ? "." + String(mm).padStart(2, "0") : "") + ap; }; return f(x[0]) + " to " + f(x[1]); })(span) } : { has: false, style: "", label: "not normally sitting" });
+    const ch = pa.chart || { days: [], src: [] };
+    const relItems = arr((pa.related || {}).items);
+    const relSt = ["All"].concat(Array.from(new Set(relItems.map((x) => x.status))));
+    const SH = { "On Amplify": 145, "Linked to its owner": 215, Candidate: 70 };
+    const paKey = (e) => { const cur = ((e.currentTarget && e.currentTarget.id) || "").replace("pa-tab-", ""); let i = ids.indexOf(cur) >= 0 ? ids.indexOf(cur) : ids.indexOf(tab); if (i < 0) return;
+      if (e.key === "ArrowRight") i = (i + 1) % ids.length; else if (e.key === "ArrowLeft") i = (i - 1 + ids.length) % ids.length;
+      else if (e.key === "Home") i = 0; else if (e.key === "End") i = ids.length - 1; else return;
+      e.preventDefault(); this.setState({ paTab: ids[i] }, () => { const b = document.getElementById("pa-tab-" + ids[i]); if (b) b.focus(); }); };
+    const roles = arr(pa.roles).filter((r) => house === "All" || r.house === house || r.house === "Both");
+    return {
+      sParliament: s.screen === "parliament",
+      icParliament: this.ampIcon("vote", "oklch(var(--t3) 0.16 145)", 16),
+      paLede: pa.lede || "", paChecked: pa.checked || "", paRule: pa.rule || "",
+      paTabs: tabs.map((t) => ({ label: t.label, tid: "pa-tab-" + t.id, pid: "pa-panel-" + t.id, sel: tab === t.id ? "true" : "false",
+        icon: this.ampIcon(t.icon, tab === t.id ? "oklch(var(--t4) 0.15 145)" : "rgb(var(--ink-rgb) / 0.75)", 15),
+        style: "display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:8px 14px;border-radius:999px;cursor:pointer;font-size:13.5px;font-weight:800;border:1px solid " + (tab === t.id ? "oklch(var(--t2) 0.15 145 / 0.9);background:oklch(var(--t1) 0.16 145 / 0.3);color:rgb(var(--ink-rgb));" : "rgb(var(--film-rgb) / 0.2);background:transparent;color:rgb(var(--ink-rgb) / 0.86);"),
+        go: () => this.setState({ paTab: t.id }), key: (e) => paKey(e) })),
+      paTime: tab === "time", paLife: tab === "life", paRoles: tab === "roles", paBuilding: tab === "building", paRulesTab: tab === "rules", paGo: tab === "go",
+      paYear: arr(pa.year).map((x) => ({ t: x.t, d: x.d, cites: cite(x.src), ...ed(x) })),
+      paWeek: Object.keys(weekBy).map((h) => ({ house: h, hStyle: pill(H[h] || 175), rows: weekBy[h].map((w) => ({ day: w.day, hours: w.hours, cites: cite(w.src) })) })),
+      paWeekNote: pa.week_note || "", paWeekNoteCites: cite(pa.week_note_src),
+      paChart: arr(ch.days).map((d) => ({ day: d.day, c: bar(d.commons, 145), l: bar(d.lords, 300) })),
+      paChartNote: ch.note || "", paChartCites: cite(ch.src),
+      paChartTicks: [8, 12, 16, 20, 24].map((h) => ({ t: (h === 24 ? "12am" : h === 12 ? "12pm" : (h > 12 ? h - 12 + "pm" : h + "am")), style: "position:absolute;top:0;left:" + pct(h) + ";transform:translateX(-50%);" })),
+      paDay: arr(pa.day).map((x) => ({ when: x.when, what: x.what, d: x.d, cites: cite(x.src) })),
+      paOP: arr(pa.orderpaper).map((x) => ({ part: x.part, d: x.d, cites: cite(x.src) })),
+      paLifeIntro: pa.life_intro || "",
+      paLifeCards: arr(pa.life).map((x) => ({ role: x.role, who: x.who, time: x.time, where: x.where, rhythm: arr(x.rhythm).map((t) => ({ t })),
+        own: x.own, ownUrl: (SRC[x.own_src] || {}).url || "#", cites: cite(x.src), top: "border-top: 4px solid oklch(var(--t2) 0.15 " + (x.hue || 175) + ");" })),
+      paHouse: house, setPaHouse: (e) => this.setState({ paHouse: e.target.value }),
+      paRoleShown: String(roles.length), paRoleTotal: String(arr(pa.roles).length),
+      paRoleCards: roles.map((r) => ({ role: r.role, house: r.house, hStyle: pill(H[r.house] || 175), d: r.d, youth: r.youth, who: r.who_url, cites: cite(r.src) })),
+      paBuild: arr(pa.building).map((x) => ({ date: x.date, what: x.what, cites: cite(x.src) })),
+      paBuildNote: pa.building_note || "", paBuildNoteCites: cite(pa.building_note_src),
+      paRulesIntro: pa.rules_intro || "",
+      paRules: arr(pa.rules).map((x) => ({ t: x.t, d: x.d, cites: cite(x.src), ...ed(x) })),
+      paUse: arr(pa.use).map((x) => ({ t: x.t, d: x.d, hasScreen: !!(x.screen && L[x.screen]), screenLabel: L[x.screen] || "", go: go(x.screen), hasUrl: !!x.url, url: x.url || "#", cites: cite(x.src) })),
+      paRelIntro: (pa.related || {}).intro || "", paRel: rel, setPaRel: (e) => this.setState({ paRel: e.target.value }),
+      paRelOpts: relSt.map((v) => ({ v, label: v === "All" ? "All" : v })),
+      paRelItems: relItems.filter((x) => rel === "All" || x.status === rel).map((x) => ({ t: x.t, kind: x.kind, status: x.status, sStyle: pill(SH[x.status] || 175),
+        hasScreen: !!(x.screen && L[x.screen]), screenLabel: L[x.screen] || "", go: go(x.screen) })),
+      paRelShown: String(relItems.filter((x) => rel === "All" || x.status === rel).length), paRelTotal: String(relItems.length),
+      paSources: arr(pa.sources).map((x) => ({ label: x.label, url: x.url, prov: x.provenance === "V" ? "Official" : "Secondary", pStyle: pill(x.provenance === "V" ? 145 : 70), checked: x.checked })),
+      paSrcN: String(arr(pa.sources).length), paSrcV: String(arr(pa.sources).filter((x) => x.provenance === "V").length)
+    };
+  }
+
   async loadPetition() {
     try {
       const r = await fetch(new URL("./petition-754954.json", document.baseURI).href);
@@ -4496,6 +4667,14 @@ class Component extends DCLogic {
     roadmap: { name: "Roadmap", shape: "bar", hue: 70, url: "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md", urlLabel: "Amplify glossary", def: "What is being worked on now, next and later, and why, updated as priorities change.", also: "now, next, later; product roadmap", edges: ["backlog", "rc"] },
     neet: { name: "NEET", shape: "bar", hue: 70, url: "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/bulletins/youngpeoplenotineducationemploymentortrainingneet/latest", urlLabel: "ONS NEET statistics", def: "Not in education, employment or training: the official term for 16 to 24 year olds who are not studying, working or training.", also: "not in education, employment or training; NEET rate; young people out of work and learning", edges: ["apprenticeship", "local"] },
     committeestage: { name: "Committee stage", shape: "tri", hue: 25, url: "https://bills.parliament.uk/bills/4080", urlLabel: "The Bill's stages", def: "The stage where a bill is examined line by line and changes (amendments) are debated. In the House of Lords it is often a Committee of the Whole House, held in the Chamber so every peer can take part.", also: "Committee of the Whole House; line-by-line scrutiny; amendments", edges: ["commons", "votes16"] },
+    orderpaper: { name: "Order Paper", shape: "sq", hue: 145, url: "https://guidetoprocedure.parliament.uk/collections/Z2ohs868", urlLabel: "Guide to Procedure: the Order Paper", def: "The agenda for the day in the House of Commons, published every sitting day: the day's business in the Chamber and Westminster Hall, announcements and future business. Short-notice items such as urgent questions are not on it in advance.", also: "Order of Business; business papers; agenda", edges: ["commons", "businessstatement"] },
+    stateopening: { name: "State Opening", shape: "dia", hue: 70, url: "https://www.parliament.uk/about/how/occasions/stateopening/", urlLabel: "UK Parliament: State Opening", def: "The formal start of the parliamentary year, when the King gives a speech in the House of Lords, written by the Government, setting out the laws it plans for the new session.", also: "King's Speech; Speech from the Throne; opening of Parliament", edges: ["commons"] },
+    businessstatement: { name: "Business statement", shape: "bar", hue: 70, url: "https://www.parliament.uk/about/mps-and-lords/principal/leader-commons/", urlLabel: "UK Parliament: Leader of the House of Commons", def: "The Leader of the House of Commons' statement every sitting Thursday announcing next week's business. MPs then question the Leader on it (Business Questions), often asking for debates.", also: "Business Questions; Thursday statement; forthcoming business", edges: ["commons", "orderpaper"] },
+    whip: { name: "Whip", shape: "tri", hue: 25, url: "https://www.instituteforgovernment.org.uk/explainers/whips", urlLabel: "Institute for Government: whips", def: "An MP or peer appointed by a party to make sure colleagues vote with the party, organise business and share information. Also the weekly notice telling members how to vote.", also: "whips; Chief Whip; whipping; three-line whip", edges: ["commons", "crossbench"] },
+    crossbench: { name: "Crossbench peer", shape: "ring", hue: 300, url: "https://lordslibrary.parliament.uk/?p=25433", urlLabel: "Lords Library: Crossbench appointments", def: "An independent member of the House of Lords who belongs to no party and has no whip. Crossbenchers elect a Convenor to keep them informed.", also: "Crossbencher; cross-bench; independent peer; Convenor", edges: ["commons", "whip"] },
+    proccommittee: { name: "Procedure Committee", shape: "sq", hue: 215, url: "https://api.parliament.uk/standing-orders/orders/252", urlLabel: "Standing Order 147", def: "A select committee of MPs that considers how the House of Commons conducts its business and recommends changes to its rules (Standing Orders). The Lords has its own.", also: "Standing Orders; rules of the House; procedure", edges: ["commons", "orderpaper"] },
+    westminsterhall: { name: "Westminster Hall debate", shape: "dot", hue: 145, url: "https://www.parliament.uk/about/mps-and-lords/members/raising/", urlLabel: "UK Parliament: how MPs raise issues", def: "A debate held in a second debating room off Westminster Hall, alongside the Commons Chamber. E-petitions recommended by the Petitions Committee are debated here.", also: "Westminster Hall; parallel chamber; petition debate", edges: ["commons", "pet", "thresh"] },
+    adjournment: { name: "Adjournment debate", shape: "bar", hue: 145, url: "https://www.parliament.uk/about/how/business/debates/adjournment/", urlLabel: "UK Parliament: adjournment debates", def: "A half-hour debate at the end of each Commons sitting day, where one backbench MP raises an issue and the relevant minister replies.", also: "end-of-day debate; adjournment", edges: ["commons", "orderpaper"] },
   };
 
   ALLIES = [
@@ -4571,6 +4750,14 @@ class Component extends DCLogic {
         ["Roadmap", "What is being worked on now, next and later, and why, updated as priorities change.", 70, "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md"],
         ["NEET", "Not in education, employment or training: the official term for 16 to 24 year olds who are not studying, working or training.", 70, "https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/bulletins/youngpeoplenotineducationemploymentortrainingneet/latest"],
         ["Committee stage", "The stage where a bill is examined line by line and changes (amendments) are debated. In the House of Lords it is often a Committee of the Whole House, held in the Chamber so every peer can take part.", 25, "https://bills.parliament.uk/bills/4080"],
+        ["Order Paper", "The agenda for the day in the House of Commons, published every sitting day: the day's business in the Chamber and Westminster Hall, announcements and future business. Short-notice items such as urgent questions are not on it in advance.", 145, "https://guidetoprocedure.parliament.uk/collections/Z2ohs868"],
+        ["State Opening", "The formal start of the parliamentary year, when the King gives a speech in the House of Lords, written by the Government, setting out the laws it plans for the new session.", 70, "https://www.parliament.uk/about/how/occasions/stateopening/"],
+        ["Business statement", "The Leader of the House of Commons' statement every sitting Thursday announcing next week's business. MPs then question the Leader on it (Business Questions), often asking for debates.", 70, "https://www.parliament.uk/about/mps-and-lords/principal/leader-commons/"],
+        ["Whip", "An MP or peer appointed by a party to make sure colleagues vote with the party, organise business and share information. Also the weekly notice telling members how to vote.", 25, "https://www.instituteforgovernment.org.uk/explainers/whips"],
+        ["Crossbench peer", "An independent member of the House of Lords who belongs to no party and has no whip. Crossbenchers elect a Convenor to keep them informed.", 300, "https://lordslibrary.parliament.uk/?p=25433"],
+        ["Procedure Committee", "A select committee of MPs that considers how the House of Commons conducts its business and recommends changes to its rules (Standing Orders). The Lords has its own.", 215, "https://api.parliament.uk/standing-orders/orders/252"],
+        ["Westminster Hall debate", "A debate held in a second debating room off Westminster Hall, alongside the Commons Chamber. E-petitions recommended by the Petitions Committee are debated here.", 145, "https://www.parliament.uk/about/mps-and-lords/members/raising/"],
+        ["Adjournment debate", "A half-hour debate at the end of each Commons sitting day, where one backbench MP raises an issue and the relevant minister replies.", 145, "https://www.parliament.uk/about/how/business/debates/adjournment/"],
       ];
 
   STANDARDS = [
@@ -4676,6 +4863,7 @@ class Component extends DCLogic {
       ["corner", "Ethics & values", "dia", 175, 6, "NEW", "cornerstones code of ethics values participation equality education empowerment curriculum UNCRC process practice"],
       ["route", "Your route in", "tri", 215, 8, "UPD", "become MYP election journey roadmap devolution Scottish Welsh Northern Ireland youth assembly steering group map local authority council constituency area postcode services find checklist prerequisites step by step guide stand campaign seat at the table resources how to"],
       ["state", "Anatomy of the state", "sq", 145, 6, "NEW", "parliament government departments devolved local authority arms length civil society layers levers"],
+      ["parliament", "Inside Parliament", "sq", 145, 6, "NEW", "inside parliament day in the life MP MYP peer lords commons speaker whips order paper sitting hours parliamentary year week day building palace westminster 1834 fire procedure committee rules"],
       ["issues", "Issue domains", "dot", 175, 16, "NEW", "issues topics themes domains democracy votes education pshe transport wages work period dignity mental health youth services online safety AI violence care experienced equality climate housing sport youth voice policy areas manifesto"],
       ["guide", "Guide & tours", "ring", 300, 5, "NEW", "user guide tutorial walkthrough onboarding role based tour help how to"]
     ]],
@@ -5223,7 +5411,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
         br: "oklch(var(--t1) 0.16 " + hue + " / 0.3)", bg: "oklch(var(--t1) 0.16 " + hue + " / 0.08)",
         dot: "oklch(var(--t2) 0.19 " + hue + ")", fg: "oklch(var(--t3) 0.19 " + hue + ")"
       })),
-      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), ...this.ampVals6(s), ...this.ampVals7(s), ...this.ampVals8(s), ...this.ampVals9(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
+      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), ...this.ampVals6(s), ...this.ampVals7(s), ...this.ampVals8(s), ...this.ampVals9(s), ...this.ampVals11(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
       issueTabs: Object.keys(this.ISSUES).map((k) => {
         const it = this.ISSUES[k];
         return {
