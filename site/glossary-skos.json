@@ -9,7 +9,7 @@
    "@type": "skos:ConceptScheme",
    "dcterms:title": "Amplify glossary and thesaurus",
    "dcterms:modified": "2026-11-17",
-   "dcterms:identifier": "AMP-20261117-918eda90"
+   "dcterms:identifier": "AMP-20261117-7a9a35a2"
   },
   {
    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#myp",
@@ -1544,6 +1544,288 @@
     }
    ],
    "dcterms:created": "1.0.0-rc.5"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#attainer",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Attainer",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "attainers",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "registered before voting age",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Someone old enough to register to vote but not yet old enough to vote: 14 to 15 in Scotland and Wales, 16 to 17 in England and Northern Ireland.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#votes16"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#civicage"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#voterauthority",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Voter Authority Certificate",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "voter ID",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "free voter ID",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "VAC",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A free photo ID document for voting, for registered voters who have no other accepted photo ID. A young person's bus pass is not accepted ID.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#attainer"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#civicage",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Age of participation",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "age milestones",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "civic ages",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "ages of majority",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The ages at which civic and political rights open up, which differ by nation: registering to vote, voting, standing for election, trusteeship, governorship and jury service.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#attainer"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#votes16"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#myp"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#royalassent",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Royal Assent",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Act of Parliament",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "becoming law",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The monarch's approval of a Bill once both Houses have agreed its text. The Bill then becomes an Act of Parliament.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#committeestage"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#citizensassembly",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Citizens' assembly",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "civic lottery",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "sortition",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "deliberative democracy",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A group of people chosen by civic lottery to reflect the population, who hear evidence and make recommendations. Climate Assembly UK was commissioned by six Commons select committees.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#pbudget"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#pbudget",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Participatory budgeting",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "PB",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "youth budgets",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "community choices",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "People voting directly on how part of a public budget is spent. In Scotland young people can vote in youth rounds with their Young Scot card.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#local"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#citizensassembly"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#appropriateadult",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Appropriate adult",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "responsible adult at a police station",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "An adult who must support anyone under 18, or anyone vulnerable, while they are at a police station.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#safeguarding"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#charitytrustee",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Charity trustee",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "trustee",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "board member",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "CIO trustee",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A person on a charity's governing board. In England and Wales the minimum age is 16 for a charitable company or CIO and 18 for other charities.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#civicage"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.6"
   }
  ]
 }

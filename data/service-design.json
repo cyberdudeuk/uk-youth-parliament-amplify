@@ -504,6 +504,34 @@
    "proved": [
     "S21"
    ]
+  },
+  {
+   "id": "ST21",
+   "persona": "young16",
+   "want": "know what I can do at my age where I live, from registering to vote to being a trustee",
+   "so": "I do not miss a route that is already open to me",
+   "screen": "civic",
+   "accept": [
+    "Every age rule says which nation it applies to",
+    "Filter by nation"
+   ],
+   "proved": [
+    "S21"
+   ]
+  },
+  {
+   "id": "ST22",
+   "persona": "worker",
+   "want": "a sourced guide to protest rights and safety for under 18s in each nation",
+   "so": "I can support a group safely",
+   "screen": "civic",
+   "accept": [
+    "Rights and police powers stated with sources",
+    "Links to safeguarding"
+   ],
+   "proved": [
+    "S21"
+   ]
   }
  ],
  "journeys": [

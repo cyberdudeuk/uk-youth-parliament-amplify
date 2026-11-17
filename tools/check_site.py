@@ -49,7 +49,9 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
   S21 Inside Parliament stays sourced and timeless: every fact in data/parliament.json names at least one source
       (editorial notes excepted), every source it names exists, every source is used, every source has an https link,
       a V or S provenance and a checked date, no role card names a person, every tab has its panel, and the tabs keep
-      their tablist, tab and tabpanel semantics (defect D36, 17 November 2026)
+      their tablist, tab and tabpanel semantics (defect D36, 17 November 2026); the same rules cover data/civic.json,
+      where every section must also belong to a real tab and have a known type, and every age-ladder item must say
+      which nation it applies to (defect D37: an age rule shown without its nation is wrong for three nations of four)
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -481,9 +483,53 @@ def s21(texts):
     return bad
 
 
+S21_TYPES = ("ladder", "table", "steps", "cards", "gaps")
+
+
+def s21_civic(texts):
+    """S21 for data/civic.json, the generic sourced-screen engine (D37)."""
+    raw, page = texts.get("data/civic.json", ""), texts.get("index.html", "")
+    try: cv = json.loads(raw)
+    except ValueError: return ["S21 site/data/civic.json is missing or not JSON"]
+    bad, srcs, used = [], {x.get("id"): x for x in cv.get("sources", [])}, set()
+    tabs, nations = {t.get("id") for t in cv.get("tabs", [])}, set(cv.get("nations", []))
+    for x in cv.get("sources", []):
+        if not str(x.get("url", "")).startswith("https://"): bad.append(f"S21 civic source {x.get('id')} has no https link")
+        if x.get("provenance") not in ("V", "S"): bad.append(f"S21 civic source {x.get('id')} has no V or S provenance")
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(x.get("checked", ""))): bad.append(f"S21 civic source {x.get('id')} has no checked date")
+    def take(where, ids, editorial=False):
+        if not ids and not editorial: bad.append(f"S21 civic {where} states a fact with no source")
+        for i in ids or []:
+            used.add(i)
+            if i not in srcs: bad.append(f"S21 civic {where} names source {i}, which is not in data/civic.json")
+    for n, sec in enumerate(cv.get("sections", [])):
+        w = f"section {n} ({sec.get('h', '')[:30]})"
+        if sec.get("tab") not in tabs: bad.append(f"S21 civic {w} belongs to no tab")
+        if sec.get("type") not in S21_TYPES: bad.append(f"S21 civic {w} has unknown type {sec.get('type')}")
+        if sec.get("type") == "table": take(w, sec.get("src"))
+        elif sec.get("src"): take(w, sec.get("src"))
+        if sec.get("type") == "gaps":
+            for it in sec.get("items", []):
+                if it.get("status") not in ("Built in this release", "Partly", "Next", "On Amplify"): bad.append(f"S21 civic gap {it.get('t', '')[:30]} has an unknown status")
+            continue
+        for k, it in enumerate(sec.get("items", [])):
+            take(f"{w} item {k}", it.get("src"), it.get("editorial", False))
+            if sec.get("type") == "ladder":
+                wh = it.get("where") or []
+                if not wh: bad.append(f"S21 civic {w} item {k} gives an age rule with no nation (D37)")
+                for x in wh:
+                    if x not in nations: bad.append(f"S21 civic {w} item {k} names an unknown nation {x}")
+    for t in sorted(tabs):
+        if not any(sec.get("tab") == t for sec in cv.get("sections", [])): bad.append(f"S21 civic tab {t} has no sections")
+    for i in sorted(set(srcs) - used): bad.append(f"S21 civic source {i} is listed but nothing on the screen uses it")
+    if 'role="tablist" aria-label="Every way to take part"' not in page: bad.append("S21 the Every way to take part tabs are not a labelled tablist")
+    if 'role="tabpanel" id="cv-panel"' not in page: bad.append("S21 the Every way to take part tabs have no panel")
+    return bad
+
+
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t) + s21_civic(t)
 
 
 if __name__ == "__main__":
@@ -609,4 +655,10 @@ if __name__ == "__main__":
     expect("S21", s21(texts_of(broken(paj, edit(lambda d: d["roles"][4].update(d="Lord Forsyth presides."))))))   # a peer named in a role card
     expect("S21", s21(texts_of(broken(idx, lambda s: s.replace('role="tablist" aria-label="Inside Parliament"', 'aria-label="Inside Parliament"')))))  # tablist lost
     expect("S21", s21(texts_of(broken(idx, lambda s: s.replace('role="tabpanel" id="pa-panel-rules"', 'id="pa-panel-rules"')))))  # a panel lost
+    cvj = "data/civic.json"
+    expect("S21", s21_civic(texts_of(broken(cvj, edit(lambda d: d["sections"][1]["items"][0].update(src=[]) if d["sections"][1].get("items") else d["sections"][0]["items"][0].update(src=[]))))))  # a civic fact with no source
+    expect("S21", s21_civic(texts_of(broken(cvj, edit(lambda d: d["sections"][0].update(type="poster"))))))   # an unknown section type
+    expect("S21", s21_civic(texts_of(broken(cvj, edit(lambda d: d["sections"][0]["items"][1].update(where=[]))))))  # an age rule with no nation (D37)
+    expect("S21", s21_civic(texts_of(broken(cvj, edit(lambda d: d["sections"][0].update(tab="nowhere"))))))  # a section in no tab
+    expect("S21", s21_civic(texts_of(broken(idx, lambda s: s.replace('role="tablist" aria-label="Every way to take part"', 'aria-label="Every way to take part"')))))  # tablist lost
     sys.exit(1 if fails else 0)

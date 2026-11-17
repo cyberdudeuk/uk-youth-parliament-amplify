@@ -6,6 +6,15 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.6 · 2026-11-17 · Release candidate
+
+**Every way to take part.** A new Foundations screen on young people's political and civic participation, by age and nation, every fact sourced, with a register of participation gaps; eight new glossary terms.
+
+- **NEW** `civic`: Every way to take part: what opens up at each age, filterable by nation; registering and voting by nation, voter ID and why registration matters.
+- **NEW** `civic`: Stand and serve (candidacy, trustee, governor, jury), Influence (MPs, peers, committee evidence at Westminster, the Senedd and Stormont, consultations, citizens' assemblies, participatory budgeting) and How laws are made.
+- **NEW** `civic`: Civic life: volunteering ages, the DofE, protest rights by nation with safeguarding, and UNCRC Article 12; a Gaps register filterable by domain and status.
+- **NEW** `graph`: Glossary and knowledge graph: Attainer, Voter Authority Certificate, Age of participation, Royal Assent, Citizens' assembly, Participatory budgeting, Appropriate adult and Charity trustee added.
+
 ## 1.0.0-rc.5 · 2026-11-17 · Release candidate
 
 **Inside Parliament.** A new Foundations screen on how Parliament actually runs, in six tabs, with every fact sourced and dated, and eight new glossary terms.

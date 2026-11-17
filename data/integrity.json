@@ -132,6 +132,11 @@
    "why": "Facts carry their source and date; open the linked source before relying on a figure."
   },
   {
+   "screen": "civic",
+   "class": "Sourced",
+   "why": "Every fact names an official or secondary source in data/civic.json, each dated, and every age rule says which nation it applies to; a few tips are marked as Amplify's note. Not legal advice: each card links to the official page."
+  },
+  {
    "screen": "parliament",
    "class": "Sourced",
    "why": "Every fact names an official or secondary source in data/parliament.json, each dated; a few campaign tips are marked as Amplify's note. Roles are described, not named, and link to the official page that says who holds them now."

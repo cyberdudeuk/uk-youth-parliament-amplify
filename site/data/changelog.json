@@ -2,7 +2,7 @@
  "title": "Release log",
  "checked": "2026-11-17",
  "review_days": 30,
- "current": "1.0.0-rc.5",
+ "current": "1.0.0-rc.6",
  "releases": [
   {
    "version": "1.0.0",
@@ -11,6 +11,35 @@
    "title": "Launch at UK Parliament Week 2026",
    "summary": "Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.",
    "entries": []
+  },
+  {
+   "version": "1.0.0-rc.6",
+   "date": "2026-11-17",
+   "status": "Release candidate",
+   "title": "Every way to take part",
+   "summary": "A new Foundations screen on young people's political and civic participation, by age and nation, every fact sourced, with a register of participation gaps; eight new glossary terms.",
+   "entries": [
+    {
+     "screen": "civic",
+     "kind": "NEW",
+     "what": "Every way to take part: what opens up at each age, filterable by nation; registering and voting by nation, voter ID and why registration matters."
+    },
+    {
+     "screen": "civic",
+     "kind": "NEW",
+     "what": "Stand and serve (candidacy, trustee, governor, jury), Influence (MPs, peers, committee evidence at Westminster, the Senedd and Stormont, consultations, citizens' assemblies, participatory budgeting) and How laws are made."
+    },
+    {
+     "screen": "civic",
+     "kind": "NEW",
+     "what": "Civic life: volunteering ages, the DofE, protest rights by nation with safeguarding, and UNCRC Article 12; a Gaps register filterable by domain and status."
+    },
+    {
+     "screen": "graph",
+     "kind": "NEW",
+     "what": "Glossary and knowledge graph: Attainer, Voter Authority Certificate, Age of participation, Royal Assent, Citizens' assembly, Participatory budgeting, Appropriate adult and Charity trustee added."
+    }
+   ]
   },
   {
    "version": "1.0.0-rc.5",
