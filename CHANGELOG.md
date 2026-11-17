@@ -6,6 +6,16 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.5 · 2026-11-17 · Release candidate
+
+**Inside Parliament.** A new Foundations screen on how Parliament actually runs, in six tabs, with every fact sourced and dated, and eight new glossary terms.
+
+- **NEW** `parliament`: Inside Parliament: the parliamentary year, a chart of both Houses' sitting hours, a Commons sitting day in order and how to read the Order Paper.
+- **NEW** `parliament`: A day in the life: a Member of Youth Parliament, a backbench MP and a peer side by side, pointing to the UK Youth Parliament's own guides rather than repeating them.
+- **NEW** `parliament`: Who does what, filterable by House: Speaker, Leaders of both Houses, whips, Lord Speaker, Crossbench Convenor, Procedure Committee and clerks, each linking to who holds the role now.
+- **NEW** `parliament`: The building from the 1834 fire to Restoration and Renewal; who changes the rules; how to use it in a campaign; and related campaigns, themes and topics, filterable by where they live.
+- **NEW** `graph`: Glossary and knowledge graph: Order Paper, State Opening, Business statement, Whip, Crossbench peer, Procedure Committee, Westminster Hall debate and Adjournment debate added.
+
 ## 1.0.0-rc.4 · 2026-11-16 · Release candidate
 
 **Weekly upkeep: helplines re-checked, two new updates.** Helplines re-verified against each service's own website on 16 November 2026; no closures or number changes. Two dated, sourced updates added to What's new, and two new glossary terms.

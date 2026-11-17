@@ -281,6 +281,14 @@
    "root_cause": "Both pull requests added a release numbered 1.0.0-rc.3; resolving the merge conflict by hand dropped the lines between them. No check stopped two releases sharing a version.",
    "fix": "The weekly upkeep release becomes 1.0.0-rc.4 (its two glossary terms now say rc.4), the campaign kit keeps rc.3, and S16 fails any two releases that share a version.",
    "check": "S16"
+  },
+  {
+   "id": "D36",
+   "found": "2026-11-17",
+   "what": "The portal had no account of how Parliament runs day to day (its time, roles, building and rules), and no way to stop such content from naming people who later leave a role or stating facts with no source.",
+   "root_cause": "Content about institutions was written screen by screen with sources in prose; nothing tied each fact to a source record or kept named office-holders out.",
+   "fix": "Inside Parliament keeps every fact in data/parliament.json with a source id and provenance, describes roles without naming holders, and check_site S21 fails a missing, unknown or unused source, a role that names a person, a tab with no panel, and lost tab semantics; each rule has a negative test.",
+   "check": "S21"
   }
  ],
  "open": [

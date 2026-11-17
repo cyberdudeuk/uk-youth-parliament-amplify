@@ -46,6 +46,10 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       exclamation marks (defects D30 and D31, 16 November 2026; the guide's voice rule); and the kit offers one graphics
       pack holding every asset plus the platform sizes, linked from the screen (D32: the kit had no pack); every film
       listed exists with its poster frame and a transcript, and none plays by itself
+  S21 Inside Parliament stays sourced and timeless: every fact in data/parliament.json names at least one source
+      (editorial notes excepted), every source it names exists, every source is used, every source has an https link,
+      a V or S provenance and a checked date, no role card names a person, every tab has its panel, and the tabs keep
+      their tablist, tab and tabpanel semantics (defect D36, 17 November 2026)
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -439,9 +443,47 @@ def texts_of(files):
     return {f: b.decode("utf-8", "replace") for f, b in files.items() if f.endswith(TEXT)}
 
 
+S21_FACTS = ("year", "week", "day", "orderpaper", "life", "roles", "building", "rules", "use")
+S21_NAMES = re.compile(r"\b(?:Sir|Lady|Baroness|Earl|Dame|Rt Hon|Mr|Mrs|Ms|Dr) [A-Z][a-z]+|\bLord (?!Speaker\b|Chancellor\b|President\b|Chief\b)[A-Z][a-z]+|\b(?:Hoyle|Campbell|Forsyth|Kinnoull|Basildon|Kennedy)\b")
+
+
+def s21(texts):
+    """S21 Inside Parliament stays sourced and timeless (D36)."""
+    raw, page = texts.get("data/parliament.json", ""), texts.get("index.html", "")
+    try: pa = json.loads(raw)
+    except ValueError: return ["S21 site/data/parliament.json is missing or not JSON"]
+    bad, srcs = [], {x.get("id"): x for x in pa.get("sources", [])}
+    used = set()
+    for x in pa.get("sources", []):
+        if not str(x.get("url", "")).startswith("https://"): bad.append(f"S21 source {x.get('id')} has no https link")
+        if x.get("provenance") not in ("V", "S"): bad.append(f"S21 source {x.get('id')} has no V or S provenance")
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(x.get("checked", ""))): bad.append(f"S21 source {x.get('id')} has no checked date")
+    def take(where, ids, editorial=False):
+        if not ids and not editorial: bad.append(f"S21 {where} states a fact with no source")
+        for i in ids or []:
+            used.add(i)
+            if i not in srcs: bad.append(f"S21 {where} names source {i}, which is not in data/parliament.json")
+    for k in S21_FACTS:
+        for n, x in enumerate(pa.get(k, [])):
+            take(f"{k}[{n}]", x.get("src"), x.get("editorial", False))
+            if x.get("own_src"): take(f"{k}[{n}] own_src", [x["own_src"]])
+    for k in ("week_note_src", "building_note_src"): take(k, pa.get(k))
+    take("chart", (pa.get("chart") or {}).get("src"))
+    for i in sorted(set(srcs) - used): bad.append(f"S21 source {i} is listed but nothing on the screen uses it")
+    for r in pa.get("roles", []):
+        m = S21_NAMES.search(" ".join(str(r.get(k, "")) for k in ("role", "d", "youth")))
+        if m: bad.append(f"S21 role {r.get('id')} names a person ({m.group(0)}): describe the role and link to who holds it now")
+        if not str(r.get("who_url", "")).startswith("https://"): bad.append(f"S21 role {r.get('id')} has no link to who holds it now")
+    if 'role="tablist" aria-label="Inside Parliament"' not in page: bad.append("S21 the Inside Parliament tabs are not a labelled tablist")
+    if 'role="tab" id="{{ t.tid }}" aria-controls="{{ t.pid }}" aria-selected="{{ t.sel }}"' not in page: bad.append("S21 the Inside Parliament tabs lost their tab semantics")
+    for t in pa.get("tabs", []):
+        if f'role="tabpanel" id="pa-panel-{t.get("id")}" aria-labelledby="pa-tab-{t.get("id")}"' not in page: bad.append(f"S21 tab {t.get('id')} has no panel")
+    return bad
+
+
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t)
 
 
 if __name__ == "__main__":
@@ -453,7 +495,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S20 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S21 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -558,4 +600,13 @@ if __name__ == "__main__":
     expect("S20", s20(texts_of(broken(ivj, edit(lambda d: d["campaign"]["videos"][0].update(transcript="")))), files))  # transcript lost
     expect("S20", s20(texts_of(broken(idx, lambda s: s.replace("<video controls", "<video autoplay controls", 1))), files))  # autoplay added                                                                     # pack missing (D32)
     expect("S20", s20(texts_of(broken(idx, lambda s: s.replace('href="./art/amplify-graphics-pack.zip"', 'href="#"'))), files))  # link lost (D32)
+    paj = "data/parliament.json"
+    expect("S21", s21(texts_of(broken(paj, edit(lambda d: d["year"][0].update(src=[]))))))                        # a fact with no source (D36)
+    expect("S21", s21(texts_of(broken(paj, edit(lambda d: d["roles"][0].update(src=["nosuch"]))))))               # an unknown source
+    expect("S21", s21(texts_of(broken(paj, edit(lambda d: d["sources"].append({"id": "spare", "label": "x", "url": "https://x.example", "provenance": "V", "checked": "2026-11-17"}))))))  # a source nothing uses
+    expect("S21", s21(texts_of(broken(paj, edit(lambda d: d["sources"][0].update(provenance="K"))))))              # no V or S provenance
+    expect("S21", s21(texts_of(broken(paj, edit(lambda d: d["roles"][0].update(d="Currently Sir Lindsay Hoyle chairs debates."))))))  # a role names a person
+    expect("S21", s21(texts_of(broken(paj, edit(lambda d: d["roles"][4].update(d="Lord Forsyth presides."))))))   # a peer named in a role card
+    expect("S21", s21(texts_of(broken(idx, lambda s: s.replace('role="tablist" aria-label="Inside Parliament"', 'aria-label="Inside Parliament"')))))  # tablist lost
+    expect("S21", s21(texts_of(broken(idx, lambda s: s.replace('role="tabpanel" id="pa-panel-rules"', 'id="pa-panel-rules"')))))  # a panel lost
     sys.exit(1 if fails else 0)

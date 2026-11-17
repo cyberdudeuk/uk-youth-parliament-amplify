@@ -1,0 +1,1044 @@
+{
+ "title": "Inside Parliament",
+ "checked": "2026-11-17",
+ "review_days": 30,
+ "rule": "Every fact on the Inside Parliament screen names a source in this file. V means checked on the official page itself; S means taken from a reputable secondary source and labelled as such. Roles are described, not named: who holds each role changes, so every role links to the official page that says who holds it now. Nothing here comes from private or internal briefings.",
+ "lede": "How Parliament actually runs: its year, its week and its day, what a Member of Youth Parliament, an MP and a peer each do with their time, who keeps the place working, the building itself, and who changes the rules. Written for young people; it points to UK Youth Parliament and UK Parliament pages rather than repeating them.",
+ "sources": [
+  {
+   "id": "calendar",
+   "label": "UK Parliament: sessions and sittings (sitting hours of both Houses and Westminster Hall)",
+   "url": "https://www.parliament.uk/about/how/occasions/calendar/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "stateopening",
+   "label": "UK Parliament: State Opening of Parliament",
+   "url": "https://www.parliament.uk/about/how/occasions/stateopening/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "orderpaper",
+   "label": "Guide to Procedure (House of Commons): the Order Paper",
+   "url": "https://guidetoprocedure.parliament.uk/collections/Z2ohs868",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "commonsbusiness",
+   "label": "House of Commons business papers, published every sitting day",
+   "url": "https://commonsbusiness.parliament.uk/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "commonsguide",
+   "label": "House of Commons Chamber and Committees Team: Business of the House and its Committees (2017 guide for new MPs, hosted by w4mp)",
+   "url": "https://w4mp.org/wp-content/uploads/2017/07/2017-guide-to-house-and-its-cttees.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "lordshours",
+   "label": "Lords Library: House of Lords sitting times and the 2026 consultation",
+   "url": "https://lordslibrary.parliament.uk/?p=29253",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "leadercommons",
+   "label": "UK Parliament: Leader of the House of Commons",
+   "url": "https://www.parliament.uk/about/mps-and-lords/principal/leader-commons/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "leadergovuk",
+   "label": "GOV.UK: Leader of the House of Commons, ministerial role and current holder",
+   "url": "https://www.gov.uk/government/ministers/leader-of-the-house-of-commons",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "leaderglossary",
+   "label": "UK Parliament glossary: Leader of the House",
+   "url": "https://www.parliament.uk/site-information/glossary/leader-of-the-house/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "speaker",
+   "label": "UK Parliament: the Speaker and the Chamber",
+   "url": "https://www.parliament.uk/business/commons/the-speaker/speaker-and-the-chamber/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "procstanding",
+   "label": "House of Commons Standing Order 147: the Procedure Committee",
+   "url": "https://api.parliament.uk/standing-orders/orders/252",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "procglossary",
+   "label": "UK Parliament glossary: Procedure Committee (Commons and Lords)",
+   "url": "https://www.parliament.uk/site-information/glossary/procedure-committee/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "proccom",
+   "label": "House of Commons Procedure Committee: inquiries, reports and members",
+   "url": "https://committees.parliament.uk/committee/126/procedure-committee/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "whips",
+   "label": "Institute for Government explainer: whips",
+   "url": "https://www.instituteforgovernment.org.uk/explainers/whips",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "convenor2004",
+   "label": "Hansard, House of Lords, 7 September 2004: the Convenor of the Cross-Bench Peers sits on the House's main domestic committees",
+   "url": "https://api.parliament.uk/historic-hansard/lords/2004/sep/07/select-committees",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "crossbenchers",
+   "label": "politics.co.uk: Cross-Benchers are not whipped and elect a Convenor",
+   "url": "https://www.politics.co.uk/reference/cross-benchers/",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "holac",
+   "label": "Lords Library: the House of Lords Appointments Commission and Crossbench appointments",
+   "url": "https://lordslibrary.parliament.uk/?p=25433",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "crewe",
+   "label": "GOV.UK: MPs' outside interests, a typical day in the life of an MP (research by Professor Emma Crewe)",
+   "url": "https://www.gov.uk/government/publications/mps-outside-interests-typical-day-in-the-life-of-an-mp",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "mpforaweek",
+   "label": "UK Parliament Education: MP For A Week, an online game",
+   "url": "https://learning.parliament.uk/resources/mp-for-a-week/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "nyaguides",
+   "label": "National Youth Agency: UK Youth Parliament guidance documents (Your Guide to Being an MYP 2026 to 2027, roles and steering group guides)",
+   "url": "https://nya.org.uk/uk-youth-parliament-guidance-documents/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "nnmyp",
+   "label": "North Northamptonshire Council: the role of Members of Youth Parliament (term length and weekly time)",
+   "url": "https://www.northnorthants.gov.uk/local-democracy-and-civic-functions/uk-youth-parliament/role-members-youth-parliament",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "barrypugin",
+   "label": "Palace of Westminster Restoration and Renewal: Barry and Pugin",
+   "url": "https://www.restorationandrenewal.uk/palace/extraordinary-history/barry-and-pugin",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "designing",
+   "label": "UK Parliament Living Heritage: designing a new Palace of Westminster",
+   "url": "https://www.parliament.uk/about/living-heritage/building/palace/big-ben/building-clock-tower/designing-a-new-palace-of-westminster/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "nao2026",
+   "label": "National Audit Office: Restoration and Renewal of the Palace of Westminster, 2026 update (15 June 2026)",
+   "url": "https://www.nao.org.uk/reports/restoration-and-renewal-of-the-palace-of-westminster-2026-update/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "shenton",
+   "label": "Londonist: Caroline Shenton on the 97 entries to rebuild Parliament, from her book Mr Barry's War (2016)",
+   "url": "https://londonist.com/2016/09/unbuilt-schemes-for-a-new-houses-of-parliament",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ukpw",
+   "label": "UK Parliament Week",
+   "url": "https://www.ukparliamentweek.org/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "adjourn",
+   "label": "UK Parliament: adjournment debates",
+   "url": "https://www.parliament.uk/about/how/business/debates/adjournment/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "lordspeaker",
+   "label": "UK Parliament: the Lord Speaker's role",
+   "url": "https://www.parliament.uk/business/lords/lord-speaker/the-role-of-lord-speaker/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "lordsvisits",
+   "label": "UK Parliament: visiting the House of Lords (sitting times and oral questions)",
+   "url": "https://www.parliament.uk/mps-lords-and-offices/offices/lords/house-of-lords-external-communications/visits/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "lordswhips",
+   "label": "Electoral Reform Society: whips and Crossbench peers in the House of Lords",
+   "url": "https://electoral-reform.org.uk/are-there-whips-in-the-house-of-lords/",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "guidework",
+   "label": "GOV.UK: Guide to Parliamentary Work (sitting calendar announced by the Leader of the House)",
+   "url": "https://www.gov.uk/government/publications/guide-to-parliamentary-work/guide-to-parliamentary-work-html",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "burning",
+   "label": "Wikipedia: Burning of Parliament (16 October 1834; Westminster Hall survived)",
+   "url": "https://en.wikipedia.org/wiki/Burning_of_Parliament",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "specnao",
+   "label": "Specification Online: summary of the NAO's June 2026 report (options narrowed from four to two)",
+   "url": "https://www.specificationonline.co.uk/articles/2026-06-15/nao-assesses-progress-of-parliament-restoration-and-renewal-programme",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "yscclerks",
+   "label": "UK Parliament: Youth Select Committee (support from parliamentary clerks)",
+   "url": "https://www.parliament.uk/get-involved/education-programmes/youth-select-committee/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "suffolkmyp",
+   "label": "Suffolk UK Youth Parliament information pack (MYPs help run Make Your Mark)",
+   "url": "https://www.eastsuffolk.gov.uk/assets/Community/Youth-Voice/Suffolk-UK-Youth-Parliament-information-pack.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "proctopics",
+   "label": "Beyond the Vote: Procedure Committee page listing a 2026 evidence session on written parliamentary questions",
+   "url": "https://www.beyondthevote.co.uk/committee/procedure-committee",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "rochdale",
+   "label": "Rochdale Borough Council: UK Youth Parliament (MYPs are 11 to 18)",
+   "url": "https://rochdale.gov.uk/youth-service/uk-youth-parliament",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "petitionsraise",
+   "label": "UK Parliament: how MPs raise issues (e-petitions debated in Westminster Hall)",
+   "url": "https://www.parliament.uk/about/mps-and-lords/members/raising/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "bizq",
+   "label": "Westminster Brief: Business of the House, 19 March 2026 (125 contributions from 59 MPs after the business statement)",
+   "url": "https://beta.westminsterbrief.co.uk/archive/debate/19-march-2026/business-house-1c9b",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "lordsweek",
+   "label": "UK Parliament: What's on in the Lords, 9 to 13 September 2024 (questions, Bills and committee reports debated)",
+   "url": "https://www.parliament.uk/business/news/2024/september/whats-on-in-the-lords-9-13-september/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "billstages",
+   "label": "UK Parliament Bills: the Representation of the People Bill's stages in both Houses",
+   "url": "https://bills.parliament.uk/bills/4080",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  }
+ ],
+ "tabs": [
+  {
+   "id": "time",
+   "label": "Time",
+   "icon": "clock"
+  },
+  {
+   "id": "life",
+   "label": "A day in the life",
+   "icon": "users"
+  },
+  {
+   "id": "roles",
+   "label": "Who does what",
+   "icon": "landmark"
+  },
+  {
+   "id": "building",
+   "label": "The building",
+   "icon": "library"
+  },
+  {
+   "id": "rules",
+   "label": "Who changes the rules",
+   "icon": "scale"
+  },
+  {
+   "id": "go",
+   "label": "Use it and go further",
+   "icon": "compass"
+  }
+ ],
+ "year": [
+  {
+   "t": "State Opening",
+   "d": "Marks the formal start of the parliamentary year. The King gives a speech from the throne in the House of Lords; the Government writes it, and it sets out the laws it plans for the new session.",
+   "src": [
+    "stateopening"
+   ]
+  },
+  {
+   "t": "One meeting of all three parts",
+   "d": "State Opening is the only regular time the Sovereign, the House of Lords and the House of Commons all meet together. The Commons doors are shut in Black Rod's face, a sign of the Commons' independence that dates back to the Civil War.",
+   "src": [
+    "stateopening"
+   ]
+  },
+  {
+   "t": "Sessions",
+   "d": "A new session begins with State Opening, held on the first day of a new session or shortly after a general election.",
+   "src": [
+    "stateopening"
+   ]
+  },
+  {
+   "t": "Recesses",
+   "d": "Breaks when neither House sits, formally called periodic adjournments. The calendar of sitting days is announced by the Leader of the House of Commons as far ahead as practicable.",
+   "src": [
+    "calendar",
+    "guidework"
+   ]
+  },
+  {
+   "t": "Why it matters for a campaign",
+   "d": "Neither House sits in recess, so nothing is debated then. Time launches and asks for sitting weeks.",
+   "src": [
+    "calendar"
+   ],
+   "editorial": true
+  }
+ ],
+ "week": [
+  {
+   "house": "Commons",
+   "day": "Monday",
+   "hours": "2.30pm to 10.30pm",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Commons",
+   "day": "Tuesday and Wednesday",
+   "hours": "11.30am to 7.30pm",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Commons",
+   "day": "Thursday",
+   "hours": "9.30am to 5.30pm",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Commons",
+   "day": "Friday, if sitting",
+   "hours": "9.30am to 3pm",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Westminster Hall",
+   "day": "Monday, if sitting",
+   "hours": "4.30pm to 7.30pm",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Westminster Hall",
+   "day": "Tuesday and Wednesday",
+   "hours": "9.30am to 11.30am and 2.30pm to 5.30pm",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Westminster Hall",
+   "day": "Thursday",
+   "hours": "Afternoons; the start time has changed by resolution of the House, so check the Order Paper",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Westminster Hall",
+   "day": "Petitions",
+   "hours": "E-petitions can be recommended by the Petitions Committee for debate here",
+   "src": [
+    "petitionsraise"
+   ]
+  },
+  {
+   "house": "Lords",
+   "day": "Monday and Tuesday",
+   "hours": "From 2.30pm",
+   "src": [
+    "calendar",
+    "lordshours"
+   ]
+  },
+  {
+   "house": "Lords",
+   "day": "Wednesday",
+   "hours": "From 3pm",
+   "src": [
+    "calendar",
+    "lordshours"
+   ]
+  },
+  {
+   "house": "Lords",
+   "day": "Thursday",
+   "hours": "From 11am",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "house": "Lords",
+   "day": "Some Fridays",
+   "hours": "From 10am",
+   "src": [
+    "calendar"
+   ]
+  }
+ ],
+ "week_note": "Finishing times are approximate and none of these apply in recess. The House of Lords consulted in 2026 on starting earlier on Tuesdays and Wednesdays; its committee expects to report in January 2027, so these times may change.",
+ "week_note_src": [
+  "lordshours"
+ ],
+ "day": [
+  {
+   "when": "Start",
+   "what": "Prayers",
+   "d": "Every Commons sitting opens with prayers.",
+   "src": [
+    "commonsguide"
+   ]
+  },
+  {
+   "when": "Straight after",
+   "what": "Question Time",
+   "d": "MPs question the ministers of one department; the Order Paper names which. Prime Minister's Questions starts at noon on Wednesdays.",
+   "src": [
+    "commonsguide",
+    "commonsbusiness"
+   ]
+  },
+  {
+   "when": "After questions",
+   "what": "Urgent questions and statements",
+   "d": "Business that can happen at short notice, so it is not always on the Order Paper.",
+   "src": [
+    "orderpaper"
+   ]
+  },
+  {
+   "when": "Thursdays",
+   "what": "Business statement",
+   "d": "The Leader of the House announces next week's business and, usually, provisional business for the week after. MPs then question the Leader on it, often asking for debates or statements.",
+   "src": [
+    "leadercommons",
+    "bizq"
+   ]
+  },
+  {
+   "when": "Most of the day",
+   "what": "Main business",
+   "d": "Debates on Bills and motions. Which Bill, and which stage, is set out on that day's Order Paper.",
+   "src": [
+    "orderpaper"
+   ]
+  },
+  {
+   "when": "End of the day",
+   "what": "Adjournment debate",
+   "d": "A half-hour debate where one backbench MP raises an issue and the relevant minister replies.",
+   "src": [
+    "adjourn"
+   ]
+  }
+ ],
+ "orderpaper": [
+  {
+   "part": "Front page",
+   "d": "A summary of the day's business in the Chamber and in Westminster Hall.",
+   "src": [
+    "orderpaper"
+   ]
+  },
+  {
+   "part": "Business Today",
+   "d": "The Chamber's business in order, then Westminster Hall, written statements, committees meeting today and committee reports published.",
+   "src": [
+    "commonsbusiness",
+    "orderpaper"
+   ]
+  },
+  {
+   "part": "Announcements",
+   "d": "Deadlines for asking for debates, business chosen by the Backbench Business Committee and, near recesses, dates for tabling questions.",
+   "src": [
+    "orderpaper"
+   ]
+  },
+  {
+   "part": "Future Business",
+   "d": "The calendar of business already timetabled for later days.",
+   "src": [
+    "orderpaper"
+   ]
+  },
+  {
+   "part": "What is not on it",
+   "d": "Urgent questions, oral statements and emergency debates can happen at short notice and do not appear in advance.",
+   "src": [
+    "orderpaper"
+   ]
+  }
+ ],
+ "life_intro": "Three ways of representing people, side by side. The UK Youth Parliament's own guides explain the MYP role in full; this comparison is here so you can see how it sits next to the adult roles.",
+ "life": [
+  {
+   "role": "Member of Youth Parliament (MYP)",
+   "hue": 175,
+   "who": "A young person aged 11 to 18, elected by young people in their area.",
+   "time": "On average 1 to 5 hours a week on UK Youth Parliament activities. A term usually lasts two years.",
+   "where": "Their local area, regional meetings, and the UK Youth Parliament's annual sitting, which can be held at Westminster.",
+   "rhythm": [
+    "Represents young people in their area",
+    "Works with their local team and other MYPs",
+    "Takes part in consultations and shares young people's views",
+    "Helps run Make Your Mark, the UK's largest youth ballot"
+   ],
+   "own": "UK Youth Parliament guidance on the role",
+   "own_src": "nyaguides",
+   "src": [
+    "rochdale",
+    "nnmyp",
+    "nyaguides",
+    "suffolkmyp"
+   ]
+  },
+  {
+   "role": "Backbench MP",
+   "hue": 145,
+   "who": "One of 650 MPs, each elected by the voters of one constituency.",
+   "time": "Divided between Westminster and the constituency. Professor Emma Crewe's research follows one MP through a Tuesday at Westminster and another through a Friday in a constituency four hours' travel away.",
+   "where": "The Chamber, Westminster Hall, committee rooms, their office, and the constituency.",
+   "rhythm": [
+    "Westminster: the Chamber, Westminster Hall, committees, votes and meetings",
+    "Evenings: research and speech writing for the next day's debate",
+    "Constituency: local visits, casework and time with family who live there"
+   ],
+   "own": "A real Tuesday in Westminster and a Friday in the constituency, from Professor Emma Crewe's research",
+   "own_src": "crewe",
+   "src": [
+    "crewe"
+   ]
+  },
+  {
+   "role": "Peer (member of the House of Lords)",
+   "hue": 300,
+   "who": "Appointed, not elected. Most sit for a party; Crossbench peers sit as independents, some recommended by the House of Lords Appointments Commission from public applications.",
+   "time": "The House sits from 2.30pm on Monday and Tuesday, 3pm on Wednesday and 11am on Thursday. Crossbench peers often fit the House around careers outside.",
+   "where": "The Lords Chamber, Grand Committee and Lords committees.",
+   "rhythm": [
+    "Oral questions to the Government at the start of the sitting, for about 30 minutes",
+    "Line-by-line checking of Bills, at committee and report stages",
+    "Debates on committee reports"
+   ],
+   "own": "UK Parliament's own guide to the House of Lords' sitting times and questions",
+   "own_src": "lordsvisits",
+   "src": [
+    "lordsvisits",
+    "holac",
+    "lordswhips",
+    "billstages",
+    "lordsweek"
+   ]
+  }
+ ],
+ "roles": [
+  {
+   "id": "speaker",
+   "role": "Speaker of the House of Commons",
+   "house": "Commons",
+   "hue": 145,
+   "d": "Chairs debates in the Commons as a neutral referee, making sure the rules are followed and order kept. The Speaker must be politically impartial.",
+   "youth": "The Speaker decides which MPs get to speak and which urgent questions are granted.",
+   "who_url": "https://www.parliament.uk/business/commons/the-speaker/",
+   "src": [
+    "speaker"
+   ]
+  },
+  {
+   "id": "leadercommons",
+   "role": "Leader of the House of Commons",
+   "house": "Commons",
+   "hue": 70,
+   "d": "A Cabinet minister who organises the Government's business in the Commons, working closely with the Government Chief Whip, and makes the business statement every sitting Thursday.",
+   "youth": "After Thursday's statement MPs question the Leader, often asking for a debate on an issue: a route your MP can use for yours.",
+   "who_url": "https://www.gov.uk/government/ministers/leader-of-the-house-of-commons",
+   "src": [
+    "leadercommons",
+    "leadergovuk",
+    "bizq"
+   ]
+  },
+  {
+   "id": "whips",
+   "role": "Whips (both Houses)",
+   "house": "Both",
+   "hue": 25,
+   "d": "MPs and peers appointed by their party to make sure colleagues vote with the party, organise business, pass on information, and allocate their party's places on select committees. Party discipline is looser in the Lords.",
+   "youth": "Whips decide a lot about which Bills move and when; MPs' votes often follow the whip.",
+   "who_url": "https://members.parliament.uk/Government/Cabinet",
+   "src": [
+    "whips"
+   ]
+  },
+  {
+   "id": "leaderlords",
+   "role": "Leader of the House of Lords",
+   "house": "Lords",
+   "hue": 300,
+   "d": "The Government's leader in the Lords. Because the Lord Speaker cannot rule on procedure, the Leader advises the House on procedure and order.",
+   "youth": "In the Lords, peers largely police their own debates: there is no Speaker calling people to order.",
+   "who_url": "https://members.parliament.uk/parties/lords",
+   "src": [
+    "leaderglossary"
+   ]
+  },
+  {
+   "id": "lordspeaker",
+   "role": "Lord Speaker",
+   "house": "Lords",
+   "hue": 300,
+   "d": "Presides over business in the Lords Chamber from the Woolsack, chairs the House of Lords Commission and acts as an ambassador for the House. Unlike the Commons Speaker, the Lord Speaker has no power to rule on procedure; the House governs itself, advised by the Leader.",
+   "youth": "A useful contrast with the Commons Speaker for a citizenship lesson.",
+   "who_url": "https://www.parliament.uk/lordspeaker",
+   "src": [
+    "lordspeaker",
+    "leaderglossary"
+   ]
+  },
+  {
+   "id": "convenor",
+   "role": "Convenor of the Crossbench Peers",
+   "house": "Lords",
+   "hue": 175,
+   "d": "Crossbench peers are independents with no whip. They elect a Convenor from among themselves to keep them informed and speak for the group on key occasions; the Convenor sits on the House's main domestic committees.",
+   "youth": "Crossbenchers can swing close votes, so their views matter to any campaign at Lords stage.",
+   "who_url": "https://members.parliament.uk/parties/lords",
+   "src": [
+    "crossbenchers",
+    "convenor2004"
+   ]
+  },
+  {
+   "id": "proccom",
+   "role": "Procedure Committee and its chair",
+   "house": "Commons",
+   "hue": 215,
+   "d": "A select committee of MPs that considers how the Commons conducts its public business and recommends changes to its rules. The Lords has its own Procedure Committee, appointed each session.",
+   "youth": "If a rule of debate seems unfair, this is the committee that can recommend changing it.",
+   "who_url": "https://committees.parliament.uk/committee/126/procedure-committee/membership/",
+   "src": [
+    "procstanding",
+    "procglossary"
+   ]
+  },
+  {
+   "id": "clerks",
+   "role": "Clerks and the Table Office",
+   "house": "Both",
+   "hue": 250,
+   "d": "Non-party officials who advise members on procedure. In the Commons, members can ask the Table Office about anything in the Order Paper.",
+   "youth": "Clerks also support the Youth Select Committee, so young people work with them directly.",
+   "who_url": "https://guidetoprocedure.parliament.uk/collections/Z2ohs868",
+   "src": [
+    "orderpaper",
+    "yscclerks"
+   ]
+  }
+ ],
+ "building": [
+  {
+   "date": "16 October 1834",
+   "what": "Fire destroys most of the medieval Palace of Westminster. Westminster Hall survives.",
+   "src": [
+    "designing",
+    "burning"
+   ]
+  },
+  {
+   "date": "1836",
+   "what": "A public competition for a new Palace. Entries had to be Gothic or Elizabethan and anonymous; 97 were submitted. Charles Barry won, working with Augustus Welby Pugin, then 23.",
+   "src": [
+    "barrypugin",
+    "designing"
+   ]
+  },
+  {
+   "date": "The portcullis",
+   "what": "Each anonymous entry carried a small symbol. Barry chose the portcullis from the Henry VII chapel next door. It is now the symbol of UK Parliament.",
+   "src": [
+    "barrypugin"
+   ]
+  },
+  {
+   "date": "Inside",
+   "what": "Pugin designed most of the Palace's ornate interiors, carvings and furniture. The Palace is counted among the finest Gothic Revival buildings in the world.",
+   "src": [
+    "barrypugin"
+   ]
+  },
+  {
+   "date": "1852",
+   "what": "The rebuilt Palace opens; the State Opening ceremony used today dates from then.",
+   "src": [
+    "stateopening"
+   ]
+  },
+  {
+   "date": "2013 to 2019",
+   "what": "Both Houses set up the Restoration and Renewal Programme, Parliament agrees in 2018 that the work must be done, and a 2019 Act sets out how it will be delivered.",
+   "src": [
+    "nao2026"
+   ]
+  },
+  {
+   "date": "February 2026",
+   "what": "The Restoration and Renewal Client Board publishes costed proposals for the work.",
+   "src": [
+    "nao2026"
+   ]
+  },
+  {
+   "date": "15 June 2026",
+   "what": "The National Audit Office reports on the Programme as Parliament is asked to narrow four options to two, warning that inaction is itself a choice with serious consequences.",
+   "src": [
+    "nao2026",
+    "specnao"
+   ]
+  }
+ ],
+ "building_note": "Further reading: historian and former parliamentary archivist Dr Caroline Shenton's books tell the story of the fire and the rebuild.",
+ "building_note_src": [
+  "shenton"
+ ],
+ "rules_intro": "Parliament's rules (Standing Orders in the Commons) are not fixed. Committees of members review them and recommend changes, and the House decides.",
+ "rules": [
+  {
+   "t": "Who reviews the Commons rules",
+   "d": "The Procedure Committee, set up under Standing Order 147, considers the practice and procedure of the House in the conduct of public business and makes recommendations.",
+   "src": [
+    "procstanding"
+   ]
+  },
+  {
+   "t": "Who reviews the Lords rules",
+   "d": "The House of Lords has its own Procedure Committee with a similar job, appointed in each session.",
+   "src": [
+    "procglossary"
+   ]
+  },
+  {
+   "t": "Rules change: Lords sitting hours",
+   "d": "In 2026 the Lords consulted on sitting earlier on Tuesdays and Wednesdays. Its committee expects to report in January 2027, and the House will then decide.",
+   "src": [
+    "lordshours"
+   ]
+  },
+  {
+   "t": "Recent Commons topics",
+   "d": "The Procedure Committee's inquiries and reports are listed on its own pages; in 2026 it took evidence on written parliamentary questions.",
+   "src": [
+    "proccom",
+    "proctopics"
+   ]
+  },
+  {
+   "t": "Why a youth campaigner should care",
+   "d": "How long a debate lasts, who gets called and how questions are answered all shape whether an issue is heard. Rules that seem unfair can be changed, through the members who sit on these committees.",
+   "src": [],
+   "editorial": true
+  }
+ ],
+ "use": [
+  {
+   "t": "Read Thursday's business statement",
+   "d": "It tells you what Parliament will debate next week, so you can time a post, a letter or a petition push.",
+   "screen": "radar",
+   "src": [
+    "leadercommons"
+   ]
+  },
+  {
+   "t": "Read today's Order Paper",
+   "d": "Check whether your issue is on today's agenda, in the Chamber or Westminster Hall.",
+   "screen": "",
+   "url": "https://commonsbusiness.parliament.uk/",
+   "src": [
+    "commonsbusiness"
+   ]
+  },
+  {
+   "t": "Ask your MP to raise it at Business Questions",
+   "d": "After the Thursday business statement, MPs question the Leader of the House and often ask for debates. Find your MP and ask them to raise your issue.",
+   "screen": "map",
+   "src": [
+    "leadercommons",
+    "bizq"
+   ]
+  },
+  {
+   "t": "Plan around sitting weeks",
+   "d": "Nothing is debated in recess. Use Launch window to avoid both recess and exam season.",
+   "screen": "plan",
+   "src": [
+    "calendar"
+   ]
+  },
+  {
+   "t": "Play MP For A Week",
+   "d": "Parliament's own game for 11 to 14 year olds: a virtual taste of an MP's working life.",
+   "screen": "",
+   "url": "https://learning.parliament.uk/resources/mp-for-a-week/",
+   "src": [
+    "mpforaweek"
+   ]
+  },
+  {
+   "t": "Read the MYP guides at source",
+   "d": "The UK Youth Parliament's own guides cover the MYP role, elections and the steering group in full.",
+   "screen": "route",
+   "url": "https://nya.org.uk/uk-youth-parliament-guidance-documents/",
+   "src": [
+    "nyaguides"
+   ]
+  },
+  {
+   "t": "Join UK Parliament Week",
+   "d": "Free events and kits for schools, youth groups and adults, every November.",
+   "screen": "launch",
+   "url": "https://www.ukparliamentweek.org/",
+   "src": [
+    "ukpw"
+   ]
+  }
+ ],
+ "related": {
+  "intro": "Campaigns, themes and topics that sit naturally next to Inside Parliament, for young people and the adults who back them. Each is marked by where it lives today: already on Amplify, or a candidate for a future release.",
+  "items": [
+   {
+    "t": "Votes at 16 and the Representation of the People Bill",
+    "kind": "Campaign",
+    "status": "On Amplify",
+    "screen": "issues"
+   },
+   {
+    "t": "Political and citizenship education (petition 754954)",
+    "kind": "Campaign",
+    "status": "On Amplify",
+    "screen": "hub"
+   },
+   {
+    "t": "Youth Select Committee and its PSHE inquiry",
+    "kind": "Institution",
+    "status": "On Amplify",
+    "screen": "ysc"
+   },
+   {
+    "t": "Petitions and Westminster Hall debates",
+    "kind": "Process",
+    "status": "On Amplify",
+    "screen": "momentum"
+   },
+   {
+    "t": "Make Your Mark, the UK's largest youth ballot",
+    "kind": "Campaign",
+    "status": "Linked to its owner",
+    "screen": "route"
+   },
+   {
+    "t": "The four nations' parliaments: Scottish Youth Parliament, Senedd Ieuenctid, NI Youth Assembly and the devolved legislatures' own days",
+    "kind": "Theme",
+    "status": "Candidate",
+    "screen": "state"
+   },
+   {
+    "t": "Local democracy: young mayors, youth councils and council meetings",
+    "kind": "Theme",
+    "status": "Candidate",
+    "screen": "communities"
+   },
+   {
+    "t": "Registering to vote, elections and how a general election works",
+    "kind": "Topic",
+    "status": "Candidate",
+    "screen": ""
+   },
+   {
+    "t": "How a Bill becomes law, stage by stage, in both Houses",
+    "kind": "Topic",
+    "status": "Candidate",
+    "screen": "graph"
+   },
+   {
+    "t": "Lobbying your MP and peers: letters, surgeries and visits",
+    "kind": "Skill",
+    "status": "Candidate",
+    "screen": "kit"
+   },
+   {
+    "t": "Media literacy, misinformation and AI in politics",
+    "kind": "Theme",
+    "status": "On Amplify",
+    "screen": "issues"
+   },
+   {
+    "t": "Careers in Parliament: clerks, researchers, apprenticeships, doorkeepers",
+    "kind": "Subject",
+    "status": "Candidate",
+    "screen": "stem"
+   },
+   {
+    "t": "Parliament's history and heritage, including the Restoration and Renewal Programme",
+    "kind": "Subject",
+    "status": "Candidate",
+    "screen": ""
+   },
+   {
+    "t": "Rights of the child (UNCRC) and children's commissioners in each nation",
+    "kind": "Theme",
+    "status": "On Amplify",
+    "screen": "care"
+   }
+  ]
+ },
+ "chart": {
+  "note": "Bars show normal sitting hours, 8am to midnight. Commons Fridays sit only on set Fridays (mostly for Private Members' Bills); Lords finishing times are approximate.",
+  "src": [
+   "calendar",
+   "lordsvisits",
+   "commonsguide"
+  ],
+  "days": [
+   {
+    "day": "Mon",
+    "commons": [
+     14.5,
+     22.5
+    ],
+    "lords": [
+     14.5,
+     22
+    ]
+   },
+   {
+    "day": "Tue",
+    "commons": [
+     11.5,
+     19.5
+    ],
+    "lords": [
+     14.5,
+     22
+    ]
+   },
+   {
+    "day": "Wed",
+    "commons": [
+     11.5,
+     19.5
+    ],
+    "lords": [
+     15,
+     22
+    ]
+   },
+   {
+    "day": "Thu",
+    "commons": [
+     9.5,
+     17.5
+    ],
+    "lords": [
+     11,
+     19.5
+    ]
+   },
+   {
+    "day": "Fri",
+    "commons": [
+     9.5,
+     15
+    ],
+    "lords": null
+   }
+  ]
+ }
+}
