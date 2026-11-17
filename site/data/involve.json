@@ -352,7 +352,7 @@
   "pack_release": {
    "tag": "kit-2026-11-17",
    "sha256": "5f8ed6389a27f1bb7247054a0d66f32d0078cf27605dbfa043789c5b7e2e19f5",
-   "note": "The graphics pack is also published as a GitHub release file so its total downloads can be counted without any tracking on the portal. GitHub counts downloads in total only; Amplify never sees who downloaded it. When the pack changes, give it a new tag here and the release workflow publishes it (D38)."
+   "note": "The graphics pack is also published as a GitHub release file so its total downloads can be counted without any tracking on the portal. GitHub counts downloads in total only; Amplify never sees who downloaded it. When the pack changes, give it a new tag here and the owner publishes that release with the new pack (D38, O19)."
   }
  },
  "learn": {

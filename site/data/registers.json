@@ -303,7 +303,7 @@
    "found": "2026-11-17",
    "what": "The Campaign kit could not show whether anyone used it: the graphics pack was served only from GitHub Pages, which gives no statistics, and Amplify collects no analytics by design, so the owner had no way to judge the campaign's reach or what to continue, pause or stop.",
    "root_cause": "The no-analytics decision (go-live G11) was taken without listing the measures that need no tracking, so none were built.",
-   "fix": "The pack is also published as a GitHub release file whose total download count is public and needs nothing on the portal; the kit links it first and keeps the on-site copy; data/involve.json records the release tag and the pack's SHA-256, a release workflow publishes it, and check_site S22 fails if the pack changes without a new tag or the link and tag disagree. About says what is counted and that nothing tracks visitors.",
+   "fix": "The pack is also published as a GitHub release file whose total download count is public and needs nothing on the portal; the kit links it first and keeps the on-site copy; data/involve.json records the release tag and the pack's SHA-256, and check_site S22 fails if the pack changes without a new tag or the link and tag disagree. Publishing the release is a person's step, never a workflow's (R7): the owner creates the tag's release with the built pack (open item O19). About says what is counted and that nothing tracks visitors.",
    "check": "S22"
   },
   {
@@ -384,6 +384,11 @@
   {
    "id": "O18",
    "what": "After UK Parliament Week, decide whether to add a cookie-free counter that only counts totals (allowed for statistics only under the Data (Use and Access) Act 2025), only with a data protection impact assessment, figures published on Portal health, no identifiers stored and a review date; tracking with profiling stays ruled out (Children's code).",
+   "who": "Owner"
+  },
+  {
+   "id": "O19",
+   "what": "Publish the GitHub release named in data/involve.json (kit-2026-11-17) with site/art/amplify-graphics-pack.zip attached, before or as this change goes live, so the Campaign kit's first download link works; a new tag and release each time the pack changes.",
    "who": "Owner"
   }
  ],
