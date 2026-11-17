@@ -69,6 +69,7 @@ Constraints:
 
 ### Next
 
+- One clear front door, and every card that names something opens it (REQ-35, REQ-36)
 - Research round 1 with young people, parents and youth workers (January to February 2027) (REQ-16, REQ-17)
 - Ambassador programme pilot, once safeguarding is confirmed (REQ-14)
 - Faster pages on low-end phones by compiling at build time (REQ-23)
@@ -115,6 +116,12 @@ Constraints:
 | REQ-28 | Related themes to build next: the four nations' youth parliaments and legislatures, local democracy, registering to vote and elections, how a Bill becomes law, lobbying skills, careers in Parliament, heritage | Could | In progress | Owner request, 17 Nov 2026 | parliament, civic | S21 |
 | REQ-29 | Every way to take part: political and civic routes by age and nation (register, vote, stand, serve, influence, how laws are made, civic life), every fact sourced, with a register of participation gaps | Should | Done | Owner request, 17 Nov 2026 | civic | S21, S16, S12 |
 | REQ-30 | Participation gaps still open: election calendar by nation, parties explained neutrally, devolved law-making, local council routes, accessible voting guides, registration and turnout chart, community organising, youth media, civic tech | Could | Planned | Gap register on Every way to take part, 17 Nov 2026 | civic | S21 |
+| REQ-31 | Show how much each issue matters to young people: ballot votes, worries and actions, in several views, with domains mapped to ballot topics | Should | Done | Owner request, 17 Nov 2026 | issues | S23, S12 |
+| REQ-32 | Young people in numbers: demographic, ethnic and language, socio-economic, geographic, life-stage, challenges, hopes and opportunity data, every figure sourced and explained | Should | Done | Owner request, 17 Nov 2026 | numbers | S23, S12 |
+| REQ-33 | Academy lessons that are real, interactive and sourced, with honest progress kept on the device | Must | Done | Owner question, 17 Nov 2026 (D40) | acad | S23 |
+| REQ-34 | Easy Read summaries for every screen, switched on in Access and language settings | Should | Done | Owner request, 17 Nov 2026 (D41) | incl, home | S23, S12 |
+| REQ-35 | One clear front door: Home first, with a who-are-you chooser; the closed-petition splash, alerts, ticker and carousel moved below the page title; a compact This screen strip that holds Easy Read | Must | Planned | Owner question, 17 Nov 2026: on a phone the page title sits over 1,200px down | home, hub | W9 |
+| REQ-36 | Every card that names something opens it: the remaining static cards found by the drill-down audit, and an alternative view (chart or table) wherever a screen shows numbers | Should | Planned | Drill-down audit, 17 Nov 2026 (97 static cards on 29 screens) | policy, coal, track, post, radar, brand, trust, ai | S23 |
 
 ## How it is traced, tracked and managed on GitHub
 

@@ -28,6 +28,7 @@ import extend9  # noqa: E402
 import extend10  # noqa: E402
 import extend11  # noqa: E402
 import extend12  # noqa: E402
+import extend13  # noqa: E402
 import make_docs  # noqa: E402
 
 APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
@@ -209,6 +210,7 @@ def transforms(meta):
         *extend10.transforms(),
         *extend11.transforms(),
         *extend12.transforms(),
+        *extend13.transforms(),
         ("footer", "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
          "    </sc-if>\n\n  </div>\n</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;",
          "    </sc-if>\n\n  </div>\n" + footer(meta) + "</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;", 1),
@@ -331,7 +333,7 @@ def build(date, out=SITE):
     h = hashlib.sha256()
     for f in sorted(src["files"]):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
-    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/extend6.py", "tools/extend7.py", "tools/extend8.py", "tools/extend9.py", "tools/extend10.py", "tools/extend11.py", "tools/extend12.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
+    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/extend6.py", "tools/extend7.py", "tools/extend8.py", "tools/extend9.py", "tools/extend10.py", "tools/extend11.py", "tools/extend12.py", "tools/extend13.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
     digest = h.hexdigest()
     d = datetime.date.fromisoformat(date)

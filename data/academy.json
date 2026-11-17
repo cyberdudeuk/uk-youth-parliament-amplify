@@ -1,0 +1,53 @@
+{
+ "title": "Academy",
+ "checked": "2026-11-17",
+ "lede": "Four short lessons on how campaigning for young people actually works. Open one, read the steps and answer its question. Your progress is kept on this device only and nothing is sent anywhere.",
+ "rule": "Facts in a lesson carry their source. Steps marked Editorial are this portal's own advice, built on the screens they link to.",
+ "sources": [
+  {"id": "pethelp", "label": "UK Parliament Petitions: how petitions work", "url": "https://petition.parliament.uk/help", "provenance": "V", "checked": "2026-11-17"},
+  {"id": "p754954", "label": "UK Parliament Petitions: petition 754954", "url": "https://petition.parliament.uk/petitions/754954", "provenance": "V", "checked": "2026-11-17"},
+  {"id": "mpsraise", "label": "UK Parliament: how MPs raise issues", "url": "https://www.parliament.uk/about/mps-and-lords/members/raising/", "provenance": "V", "checked": "2026-11-17"},
+  {"id": "giveevidence", "label": "UK Parliament: give evidence to a select committee", "url": "https://www.parliament.uk/get-involved/committees/give-evidence-to-a-select-committee/", "provenance": "V", "checked": "2026-11-17"},
+  {"id": "niawitness", "label": "Northern Ireland Assembly: guide for witnesses appearing before Assembly committees", "url": "https://www.niassembly.gov.uk/assembly-business/committees/guide-for-witnesses-appearing-before-assembly-committees", "provenance": "V", "checked": "2026-11-17"},
+  {"id": "ysc", "label": "UK Parliament: Youth Select Committee", "url": "https://www.parliament.uk/get-involved/education-programmes/youth-select-committee/", "provenance": "V", "checked": "2026-11-17"}
+ ],
+ "modules": [
+  {"id": "petition", "n": "01", "hue": 175, "icon": "scroll-text", "t": "How a petition actually becomes a debate", "d": "Thresholds, the Petitions Committee, and what a government response is and is not.",
+   "steps": [
+    {"t": "It is open for six months", "d": "A UK Parliament petition collects signatures for six months, then closes. Petition 754954 ran from 11 February to 11 August 2026.", "src": ["pethelp", "p754954"]},
+    {"t": "10,000 signatures: a written answer", "d": "At 10,000 signatures the Government must reply in writing.", "src": ["pethelp"]},
+    {"t": "100,000 signatures: considered for a debate", "d": "At 100,000 the Petitions Committee considers it for a debate, which usually happens in Westminster Hall rather than the main Chamber.", "src": ["pethelp", "mpsraise"]},
+    {"t": "Most never get there", "d": "In 2015 to 2017 only 4.5% of accepted petitions reached 10,000 signatures and 0.6% reached 100,000. Petition 754954 closed on 1,192.", "src": ["pethelp", "p754954"]},
+    {"t": "A response is not a change", "d": "A written response states the Government's position. A debate means MPs discuss it. Neither changes the law on its own, so plan what you will do with the answer.", "editorial": true, "screen": "post"}
+   ],
+   "q": {"t": "What does a petition get when it reaches 100,000 signatures?", "opts": ["A change in the law", "Consideration for a debate", "An automatic vote by all MPs", "A meeting with the Prime Minister"], "a": 1,
+    "why": "At 100,000 signatures the Petitions Committee considers the petition for a debate. Nothing in the process changes the law automatically."}},
+  {"id": "wording", "n": "02", "hue": 300, "icon": "pen-tool", "t": "Writing wording that moves people", "d": "Naming who is affected, asking for one clear thing, and where emotive tips into extreme.",
+   "steps": [
+    {"t": "Ask for one clear action", "d": "Say exactly what you want the Government or Parliament to do. A petition has to ask for something they can act on, so check the standards before you write.", "src": ["pethelp"]},
+    {"t": "Name who is affected, with a real number", "d": "Say who the change is for and how many people that is, using a figure you can source. The Young people in numbers screen has official figures to start from.", "editorial": true, "screen": "numbers"},
+    {"t": "Make it about the reader too", "d": "People sign when they can see why it matters to someone they know. Give the reader a reason to care in one sentence.", "editorial": true, "screen": "post"},
+    {"t": "Emotive, never extreme", "d": "Strong feeling helps; exaggeration, blame and claims you cannot back up lose trust and may break the rules. The Toolkit has wording you can adapt.", "editorial": true, "screen": "kit"}
+   ],
+   "q": {"t": "Which opening line asks for one clear action?", "opts": ["Politics is broken and nobody cares about us", "Fund free, non-partisan citizenship lessons in every secondary school", "Young people deserve so much better", "Sign this right now!"], "a": 1,
+    "why": "It names one action, who would do it and who it is for. The others express a feeling but ask for nothing anyone can do."}},
+  {"id": "coalition", "n": "03", "hue": 70, "icon": "handshake", "t": "Building a coalition before you need one", "d": "Approaching unions and subject associations, what to ask for, and how to agree a send time.",
+   "steps": [
+    {"t": "Ask before you launch", "d": "Allies need time to agree anything. Approach them weeks before the petition opens, not on the day.", "editorial": true, "screen": "coal"},
+    {"t": "Ask for one concrete thing", "d": "For example: share the link with your members on the first morning. A small, clear ask gets a yes more often than general support.", "editorial": true, "screen": "coal"},
+    {"t": "Agree a send time and write it down", "d": "Shares that land together in the first hours make a petition look alive. Confirm the date and time in writing.", "editorial": true, "screen": "plan"},
+    {"t": "Report back", "d": "Tell allies what happened, including the numbers, whether it worked or not. They are more likely to help next time.", "editorial": true, "screen": "track"}
+   ],
+   "q": {"t": "When should an ally agree to share your petition?", "opts": ["After it reaches 10,000 signatures", "Before the petition opens", "Only if it starts trending", "On the last day"], "a": 1,
+    "why": "Most signatures come early. Agreeing before launch means the shares land together when they count most."}},
+  {"id": "evidence", "n": "04", "hue": 25, "icon": "messages-square", "t": "Giving evidence and being interviewed", "d": "How committees gather evidence, what written evidence is for, and how the Youth Select Committee does it.",
+   "steps": [
+    {"t": "What a select committee does", "d": "Select committees are groups of MPs or peers who examine an area of government or national policy. They can be Commons, Lords or joint committees.", "src": ["giveevidence"]},
+    {"t": "Start in writing", "d": "Most evidence is sent in writing first. Committees often choose who to hear in person from the written evidence, and nobody has a right to appear: at the Northern Ireland Assembly the guide says so in as many words.", "src": ["giveevidence", "niawitness"]},
+    {"t": "There is an Easy Read guide", "d": "UK Parliament publishes an Easy Read guide to giving evidence, as well as detailed guides for the Commons and the Lords.", "src": ["giveevidence"]},
+    {"t": "Young people do this too", "d": "The Youth Select Committee takes evidence in public, broadcast on Parliament TV and recorded in Hansard, and the Government responds to its report.", "src": ["ysc"], "screen": "ysc"}
+   ],
+   "q": {"t": "Can anyone insist on giving evidence in person to a committee?", "opts": ["Yes, if they sent written evidence", "No, the committee chooses its witnesses", "Only MPs may speak", "Only people over 18"], "a": 1,
+    "why": "The committee decides who to hear. Sending clear written evidence is the usual way to be noticed."}}
+ ]
+}

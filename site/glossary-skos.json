@@ -9,7 +9,7 @@
    "@type": "skos:ConceptScheme",
    "dcterms:title": "Amplify glossary and thesaurus",
    "dcterms:modified": "2026-11-17",
-   "dcterms:identifier": "AMP-20261117-a1c5cc4e"
+   "dcterms:identifier": "AMP-20261117-f404a67d"
   },
   {
    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#myp",
@@ -1826,6 +1826,258 @@
     }
    ],
    "dcterms:created": "1.0.0-rc.6"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#relativepoverty",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Relative poverty after housing costs",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "child poverty",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "relative low income",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "AHC",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "below the poverty line",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Living in a household whose income, once rent or mortgage is paid, is below 60% of the middle (median) UK household income. The UK's headline measure of child poverty.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#neet"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#fsm"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.8"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#fsm",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Free school meals",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "FSM",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "FSM eligibility",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "pupil premium (related)",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Free school lunches for pupils whose families get certain benefits. How many pupils are eligible is a common measure of disadvantage in schools.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#relativepoverty"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.8"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#ehcplan",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Education, health and care plan",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "EHC plan",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "EHCP",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "SEND",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "special educational needs",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A legal document in England for a child or young person up to 25 with special educational needs who needs more support than a school can usually give. It says what support they must get.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#fsm"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.8"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#eal",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "English as an additional language",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "EAL",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "home language",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "multilingual pupils",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A pupil who is exposed at home to a language other than English. It describes the language at home, not how well the pupil speaks English.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#fsm"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.8"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#lookedafter",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Looked-after child",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "child in care",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "care-experienced",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "corporate parenting",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A child in the care of a council, for example living with foster carers or in a children's home. Councils act as their corporate parent.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#youngcarer"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.8"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#youngcarer",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Young carer",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "young adult carer",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "unpaid carer",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A child or young person who gives unpaid care to a family member or friend who is ill, disabled, has a mental health condition or misuses drugs or alcohol.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#lookedafter"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.8"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#easyread",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Easy Read",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "easy read",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "accessible information",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "plain language (related)",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A way of writing that uses short sentences, one idea in each, everyday words and a picture beside each sentence, so more people can understand.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#wcag"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.8"
   }
  ]
 }

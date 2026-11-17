@@ -532,6 +532,48 @@
    "proved": [
     "S21"
    ]
+  },
+  {
+   "id": "ST23",
+   "persona": "young16",
+   "want": "to see which issues other young people care about and how many have acted",
+   "so": "I can pick a cause with others behind it",
+   "screen": "issues",
+   "accept": [
+    "Ballot votes and worry shown apart, on the same scale",
+    "Each domain says which ballot topic covers it"
+   ],
+   "proved": [
+    "S23"
+   ]
+  },
+  {
+   "id": "ST24",
+   "persona": "ally",
+   "want": "sourced figures on young people's lives, with the nation each covers",
+   "so": "I can brief decision makers without misquoting",
+   "screen": "numbers",
+   "accept": [
+    "Every figure names its source and coverage",
+    "Every chart can be read as a table"
+   ],
+   "proved": [
+    "S23"
+   ]
+  },
+  {
+   "id": "ST25",
+   "persona": "access",
+   "want": "a short Easy Read summary of each screen",
+   "so": "I can tell what a screen is for before I read it",
+   "screen": "incl",
+   "accept": [
+    "Two to four short sentences with pictures",
+    "Switched on once, remembered on this device"
+   ],
+   "proved": [
+    "S23"
+   ]
   }
  ],
  "journeys": [

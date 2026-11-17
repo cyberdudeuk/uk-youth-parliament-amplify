@@ -56,6 +56,17 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       because Pages gives no statistics and Amplify collects no analytics): data/involve.json names a kit-YYYY-MM-DD
       release tag and the pack's SHA-256, the built pack still has that SHA-256 (a changed pack needs a new tag, or the
       release would serve the old one), and the Campaign kit links that tag's file on GitHub while keeping the on-site copy
+  S23 the data screens, Academy and Easy Read stay honest (17 November 2026). Issue salience: every Make Your Mark
+      ballot's topic votes add up to its published total (a count that does not add up is a copying error), every
+      Amplify domain is mapped to a ballot topic or explained, and worry figures point at real topics. Young people in
+      numbers: every figure has a known chart type, a real tab, a nation or coverage label, a plain "what this shows",
+      a "read with care" (the strongest case against it, stated first) and known sources; percentages stay within
+      0 to 100 and every source is used. Academy (defect D40): no module claims a hard-coded "complete", "in progress"
+      or "locked" state, the lede does not claim to feed the readiness gate, every lesson step is sourced or marked
+      Editorial, and every question's answer is one of its options. Easy Read (D41): every drawer screen has two to
+      four Easy Read lines of at most 15 words, each with a vendored icon, and the switch keeps aria-pressed.
+      Relaunch claims with no source (D42, the D26 class) and hard-coded relative dates such as "three days ago"
+      (D43) do not come back.
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -531,6 +542,86 @@ def s21_civic(texts):
     return bad
 
 
+S23_TYPES = ("donut", "bars", "columns", "dumbbell", "slope", "waffle", "stack", "tiles", "kpi", "list")
+S23_NOT_AGAIN = (("Re-launch in the autumn term", "D42"), ("petition relaunching", "D42"), ("A relaunch is being planned", "D42"),
+                 ("three days ago", "D43"), ("two days ago", "D43"), ("Completion feeds the launch-readiness gate", "D40"))
+
+
+def s23(texts):
+    """S23 issue salience, Young people in numbers, Academy and Easy Read stay honest (D40-D43)."""
+    page, bad = texts.get("index.html", ""), []
+    def js(name):
+        try: return json.loads(texts.get(name, ""))
+        except ValueError: bad.append(f"S23 site/{name} is missing or not JSON"); return {}
+    sl, nm, ac, er = js("data/salience.json"), js("data/numbers.json"), js("data/academy.json"), js("data/easyread.json")
+    issues = set(re.findall(r'^    ([a-z]+): \["[^"]+", \d+, "(?:dot|ring|sq|dia|bar|tri)"', page, re.M))
+    if not issues: bad.append("S23 no issue domains found in the page")
+    for b in sl.get("ballots", []):
+        tot = sum(int(x.get("votes", 0)) for x in b.get("topics", []))
+        if tot != b.get("total"): bad.append(f"S23 Make Your Mark {b.get('year')} topics add up to {tot:,}, not the published {b.get('total'):,}")
+        if b.get("src") not in {x.get("id") for x in sl.get("sources", [])}: bad.append(f"S23 Make Your Mark {b.get('year')} names no known source")
+    cw, un = sl.get("crosswalk", {}), sl.get("unmatched", {})
+    topics = {x.get("id") for x in (sl.get("ballots") or [{}])[0].get("topics", [])}
+    for k in sorted(issues):
+        if k not in cw: bad.append(f"S23 issue domain {k} is not mapped to a ballot topic or explained")
+        elif cw[k] is None and not un.get(k): bad.append(f"S23 issue domain {k} has no ballot topic and no explanation")
+        elif cw[k] is not None and cw[k] not in topics: bad.append(f"S23 issue domain {k} maps to unknown topic {cw[k]}")
+    for w in (sl.get("worry") or {}).get("items", []):
+        if w.get("topic") not in topics: bad.append(f"S23 worry item {w.get('t')} points at unknown topic {w.get('topic')}")
+        if not 0 <= w.get("pct", -1) <= 100: bad.append(f"S23 worry item {w.get('t')} is not a percentage")
+    srcs, used, tabs = {x.get("id"): x for x in nm.get("sources", [])}, set(), {t.get("id") for t in nm.get("tabs", [])}
+    for x in nm.get("sources", []):
+        if not str(x.get("url", "")).startswith("https://") or x.get("provenance") not in ("V", "S") or not re.match(r"^\d{4}-\d{2}-\d{2}$", str(x.get("checked", ""))):
+            bad.append(f"S23 numbers source {x.get('id')} lacks an https link, V or S provenance or a checked date")
+    def take(w, ids):
+        if not ids: bad.append(f"S23 numbers {w} has no source")
+        for i in ids or []:
+            used.add(i)
+            if i not in srcs: bad.append(f"S23 numbers {w} names unknown source {i}")
+    for k in nm.get("kpis", []): take(f"headline {k.get('v')}", k.get("src"))
+    for n, f in enumerate(nm.get("figures", [])):
+        w = f"figure {n} ({f.get('h', '')[:30]})"
+        if f.get("type") not in S23_TYPES: bad.append(f"S23 numbers {w} has unknown chart type {f.get('type')}")
+        if f.get("tab") not in tabs: bad.append(f"S23 numbers {w} belongs to no tab")
+        for key, why in (("where", "a nation or coverage label"), ("says", "a plain 'what this shows'"), ("care", "a 'read with care'")):
+            if not str(f.get(key, "")).strip(): bad.append(f"S23 numbers {w} has no {why}")
+        take(w, list(f.get("src") or []) + list(f.get("src2") or []))
+        for it in f.get("items", []):
+            if it.get("src"): take(w, it.get("src"))
+        if str(f.get("unit", "")).startswith("%") or f.get("type") == "waffle":
+            vals = [f.get("v")] if f.get("type") == "waffle" else [x.get("v") for x in f.get("items", []) + f.get("segments", [])] + [x[k].get("v") for x in f.get("items", []) for k in ("a", "b") if isinstance(x.get(k), dict)]
+            for v in vals:
+                if isinstance(v, (int, float)) and not 0 <= v <= 100: bad.append(f"S23 numbers {w} has a percentage outside 0 to 100 ({v})")
+    for t in sorted(tabs):
+        if not any(f.get("tab") == t for f in nm.get("figures", [])): bad.append(f"S23 numbers tab {t} has no figures")
+    for i in sorted(set(srcs) - used): bad.append(f"S23 numbers source {i} is listed but nothing uses it")
+    asrc = {x.get("id") for x in ac.get("sources", [])}
+    if not ac.get("modules"): bad.append("S23 the Academy has no lessons (D40)")
+    for m in ac.get("modules", []):
+        if len(m.get("steps", [])) < 3: bad.append(f"S23 Academy lesson {m.get('id')} has fewer than three steps (D40)")
+        for k, st in enumerate(m.get("steps", [])):
+            if not st.get("src") and not st.get("editorial"): bad.append(f"S23 Academy lesson {m.get('id')} step {k + 1} is neither sourced nor marked Editorial (D40)")
+            for i in st.get("src") or []:
+                if i not in asrc: bad.append(f"S23 Academy lesson {m.get('id')} names unknown source {i}")
+        q = m.get("q") or {}
+        if not isinstance(q.get("a"), int) or not 0 <= q.get("a") < len(q.get("opts", [])): bad.append(f"S23 Academy lesson {m.get('id')} has a question whose answer is not one of its options")
+    if re.search(r"Module 0\d &middot; (complete|in progress|locked)", page): bad.append("S23 an Academy module shows a hard-coded progress state again (D40)")
+    if 'aria-expanded="{{ m.isOpen }}"' not in page: bad.append("S23 the Academy modules no longer open their lessons (D40)")
+    screens = set(re.findall(r'\["([a-z0-9]+)", "[^"]+", "(?:dot|ring|sq|dia|bar|tri)", \d+', page))
+    icons = {k[len("vendor/icons/"):-4] for k in texts if k.startswith("vendor/icons/") and k.endswith(".svg")}
+    for sid in sorted(screens):
+        lines = (er.get("screens") or {}).get(sid)
+        if not lines: bad.append(f"S23 drawer screen {sid} has no Easy Read summary (D41)"); continue
+        if not 2 <= len(lines) <= 4: bad.append(f"S23 the Easy Read summary for {sid} has {len(lines)} lines, not two to four (D41)")
+        for ic, t in lines:
+            if len(t.split()) > 15: bad.append(f"S23 an Easy Read line for {sid} has more than 15 words: {t[:40]} (D41)")
+            if icons and ic not in icons: bad.append(f"S23 an Easy Read line for {sid} uses icon {ic}, which is not vendored (D41)")
+    if 'aria-pressed="{{ erPressed }}"' not in page: bad.append("S23 the Easy Read switch has lost its aria-pressed state (D41)")
+    for phrase, d in S23_NOT_AGAIN:
+        if phrase in page: bad.append(f"S23 the page says '{phrase}' again ({d})")
+    return bad
+
+
 PACK_REL = "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/releases/download/{}/amplify-graphics-pack.zip"
 
 
@@ -552,7 +643,7 @@ def s22(t, files=None):
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t) + s21_civic(t) + s22(t, files)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t) + s21_civic(t) + s22(t, files) + s23(t)
 
 
 if __name__ == "__main__":
@@ -564,7 +655,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S22 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S23 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -690,4 +781,19 @@ if __name__ == "__main__":
     expect("S22", s22(texts_of(files), dict(files, **{"art/amplify-graphics-pack.zip": files["art/amplify-graphics-pack.zip"] + b"x"})))  # pack changed, tag not
     expect("S22", s22(texts_of(broken(idx, lambda s: s.replace("/releases/download/", "/releases/tag/"))), files))   # link no longer the file
     expect("S22", s22(texts_of(broken(idx, lambda s: s.replace('href="./art/amplify-graphics-pack.zip"', 'href="#"'))), files))  # on-site copy lost
+    slj, nmj, acj, erj = "data/salience.json", "data/numbers.json", "data/academy.json", "data/easyread.json"
+    expect("S23", s23(texts_of(broken(slj, edit(lambda d: d["ballots"][0]["topics"][0].update(votes=88675))))))      # a vote count mistyped
+    expect("S23", s23(texts_of(broken(slj, edit(lambda d: d["crosswalk"].pop("climate"))))))                         # a domain not mapped
+    expect("S23", s23(texts_of(broken(nmj, edit(lambda d: d["figures"][0].update(care=""))))))                        # no read-with-care
+    expect("S23", s23(texts_of(broken(nmj, edit(lambda d: d["figures"][0].update(src=["nosuch"]))))))                  # unknown source
+    expect("S23", s23(texts_of(broken(nmj, edit(lambda d: d["figures"][4].update(type="pie3d"))))))                    # unknown chart type
+    expect("S23", s23(texts_of(broken(nmj, edit(lambda d: [f for f in d["figures"] if f["type"] == "bars"][0]["items"][0].update(v=160))))))  # a % over 100
+    expect("S23", s23(texts_of(broken(acj, edit(lambda d: d["modules"][0]["steps"][0].pop("src"))))))                # an unsourced, unflagged step (D40)
+    expect("S23", s23(texts_of(broken(acj, edit(lambda d: d["modules"][1]["q"].update(a=7))))))                      # answer not an option
+    expect("S23", s23(texts_of(broken(idx, lambda s: s + "Module 03 &middot; in progress"))))                         # fake progress back (D40)
+    expect("S23", s23(texts_of(broken(erj, edit(lambda d: d["screens"].pop("civic"))))))                              # a screen with no Easy Read (D41)
+    expect("S23", s23(texts_of(broken(erj, edit(lambda d: d["screens"]["home"].append(["info", "This sentence is far too long to count as Easy Read because it keeps on going"]))))))  # a long line
+    expect("S23", s23(texts_of(broken(erj, edit(lambda d: d["screens"]["home"].__setitem__(0, ["unicorn", "Hello."]))))))  # an icon not vendored
+    expect("S23", s23(texts_of(broken(idx, lambda s: s + "DfE &middot; petition relaunching"))))                      # relaunch claim back (D42)
+    expect("S23", s23(texts_of(broken(idx, lambda s: s + "Report stage and third reading, three days ago."))))         # relative date back (D43)
     sys.exit(1 if fails else 0)

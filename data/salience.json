@@ -1,0 +1,321 @@
+{
+ "title": "How much each issue matters to young people",
+ "checked": "2026-11-17",
+ "review_days": 90,
+ "lede": "Two different signals, kept apart on purpose. The Make Your Mark ballot counts how many young people picked a topic as their top priority. Surveys measure how many say they worry about something. A topic can be widely worried about and still not be anyone's single top choice, so neither number is the whole picture.",
+ "rule": "Every count is copied from the published results tables; shares are worked out from those counts in the page. Where one ballot topic covers several of Amplify's domains, the domains share the topic's votes rather than each getting them.",
+ "sources": [
+  {
+   "id": "mym24",
+   "label": "National Youth Agency, Make Your Mark 2024 results report (copy published by Youth Focus North East)",
+   "url": "https://youthfocusne.org.uk/wp-content/uploads/2024/10/MYM-Results-2024-v1.0-NYA.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "mym22",
+   "label": "UK Youth Parliament, Make Your Mark 2022 results report (Bolton Council)",
+   "url": "https://www.bolton.gov.uk/downloads/file/4960/make-your-mark-findings-2022",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "mic25",
+   "label": "More in Common, polling of 16 and 17 year olds for the Sunday Times (August 2025)",
+   "url": "https://www.moreincommon.org.uk/wp-content/uploads/2025/08/Sunday-Times-16-17s.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "dofe24",
+   "label": "The Duke of Edinburgh's Award, Youth Voices 2024 (Thinks Insight & Strategy)",
+   "url": "https://www.dofe.org/wp-content/uploads/2024/07/Youth-Voices-Report-2024-2.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  }
+ ],
+ "ballots": [
+  {
+   "year": 2024,
+   "src": "mym24",
+   "total": 526573,
+   "population": 6152619,
+   "note": "Aged 11 to 18, one vote each from ten topics. Scotland returned 38 votes and Northern Ireland 92, so the 2024 result is in practice a result for England and Wales. Turnout is measured against the 2018 population estimate the report uses.",
+   "topics": [
+    {
+     "id": "health",
+     "label": "Health and wellbeing",
+     "votes": 88674
+    },
+    {
+     "id": "crime",
+     "label": "Crime and safety",
+     "votes": 81485
+    },
+    {
+     "id": "culture",
+     "label": "Culture, media and sport",
+     "votes": 71372
+    },
+    {
+     "id": "jobs",
+     "label": "Jobs, economy and benefits",
+     "votes": 70873
+    },
+    {
+     "id": "climate",
+     "label": "Climate and environment",
+     "votes": 50469
+    },
+    {
+     "id": "education",
+     "label": "Education and learning",
+     "votes": 49978
+    },
+    {
+     "id": "rights",
+     "label": "Rights, equalities and democracy",
+     "votes": 41399
+    },
+    {
+     "id": "transport",
+     "label": "Transport",
+     "votes": 30535
+    },
+    {
+     "id": "youthwork",
+     "label": "Youth work and young people's services",
+     "votes": 25241
+    },
+    {
+     "id": "international",
+     "label": "International relations",
+     "votes": 16547
+    }
+   ],
+   "turnout_pct": 8.55
+  },
+  {
+   "year": 2022,
+   "src": "mym22",
+   "total": 434492,
+   "note": "Seven topics, not ten, so each topic's share is naturally larger than in 2024.",
+   "topics": [
+    {
+     "id": "health",
+     "label": "Health and wellbeing",
+     "votes": 93023
+    },
+    {
+     "id": "jobs",
+     "label": "Jobs, money, homes and opportunities",
+     "votes": 81068,
+     "renamed": true
+    },
+    {
+     "id": "education",
+     "label": "Education and learning",
+     "votes": 77470
+    },
+    {
+     "id": "climate",
+     "label": "Environment",
+     "votes": 74500,
+     "renamed": true
+    },
+    {
+     "id": "poverty",
+     "label": "Poverty",
+     "votes": 53058
+    },
+    {
+     "id": "rights",
+     "label": "Our rights and democracy",
+     "votes": 28024,
+     "renamed": true
+    },
+    {
+     "id": "covid",
+     "label": "Covid recovery",
+     "votes": 27349
+    }
+   ],
+   "turnout_pct": 7.06
+  }
+ ],
+ "turnout": {
+  "src": "mym24",
+  "note": "2019 counts the UK topics ballot; 2020 the UK and devolved topics, run online only during the pandemic. There was no ballot in 2021 or 2023.",
+  "years": [
+   {
+    "year": "2015",
+    "votes": 969992,
+    "pct": 16.46
+   },
+   {
+    "year": "2016",
+    "votes": 978216,
+    "pct": 16.6
+   },
+   {
+    "year": "2017",
+    "votes": 954766,
+    "pct": 16.2
+   },
+   {
+    "year": "2018",
+    "votes": 1106788,
+    "pct": 18.8
+   },
+   {
+    "year": "2019",
+    "votes": 838288,
+    "pct": 13.93
+   },
+   {
+    "year": "2020",
+    "votes": 185677,
+    "pct": 3.13
+   },
+   {
+    "year": "2022",
+    "votes": 434492,
+    "pct": 7.06
+   },
+   {
+    "year": "2024",
+    "votes": 526573,
+    "pct": 8.55
+   }
+  ]
+ },
+ "worry": {
+  "src": "mic25",
+  "base": "16 and 17 year olds in Great Britain, August 2025. The published summary does not give the sample size.",
+  "items": [
+   {
+    "t": "Finding a good job",
+    "pct": 81,
+    "topic": "jobs"
+   },
+   {
+    "t": "Exams",
+    "pct": 80,
+    "topic": "education"
+   },
+   {
+    "t": "Money or financial issues",
+    "pct": 74,
+    "topic": "jobs"
+   },
+   {
+    "t": "Climate change",
+    "pct": 56,
+    "topic": "climate",
+    "note": "The same release also reports 69% worried about climate change from a different question, so treat 56% as the lower reading."
+   },
+   {
+    "t": "Gang violence and local unrest",
+    "pct": 56,
+    "topic": "crime"
+   }
+  ],
+  "top": [
+   {
+    "t": "The cost of living",
+    "pct": 53
+   },
+   {
+    "t": "Jobs and unemployment",
+    "pct": 27
+   },
+   {
+    "t": "The NHS",
+    "pct": 22
+   },
+   {
+    "t": "Levels of immigration",
+    "pct": 22
+   },
+   {
+    "t": "Education and childcare",
+    "pct": 16
+   }
+  ]
+ },
+ "action": {
+  "src": "dofe24",
+  "base": "3,644 people aged 14 to 24 across the UK, asked what they had done in the last three months (2024).",
+  "items": [
+   {
+    "t": "Signed an online petition about a political or social cause",
+    "pct": 41
+   },
+   {
+    "t": "Posted or shared something publicly about a cause",
+    "pct": 39
+   },
+   {
+    "t": "Donated money to a campaign for a cause",
+    "pct": 30
+   },
+   {
+    "t": "Changed a profile picture or banner to support a cause",
+    "pct": 26
+   },
+   {
+    "t": "Attended a protest or rally",
+    "pct": 19
+   },
+   {
+    "t": "Contacted a politician about an issue",
+    "pct": 17
+   }
+  ],
+  "levels": [
+   {
+    "t": "None of these",
+    "pct": 35
+   },
+   {
+    "t": "One to three",
+    "pct": 44
+   },
+   {
+    "t": "Four or more",
+    "pct": 21
+   }
+  ]
+ },
+ "crosswalk": {
+  "demo": "rights",
+  "polit": "education",
+  "pshe": "education",
+  "transport": "transport",
+  "work": "jobs",
+  "period": "health",
+  "mental": "health",
+  "services": "youthwork",
+  "safety": "crime",
+  "equity": "rights",
+  "climate": "climate",
+  "sport": "culture",
+  "voice": "rights",
+  "online": null,
+  "care": null,
+  "housing": null
+ },
+ "unmatched": {
+  "online": "No 2024 ballot topic covers online safety, AI or misinformation.",
+  "care": "No ballot topic is about care experience; it cuts across health, education and rights.",
+  "housing": "2024 had no housing topic. In 2022, homes sat inside Jobs, money, homes and opportunities (81,068 votes)."
+ },
+ "orphans": {
+  "international": "International relations drew 16,547 votes but has no Amplify domain yet. It is listed as a gap."
+ },
+ "against": [
+  "A Make Your Mark vote is one tick on a list, usually cast in school. It shows priority, not depth of feeling, and it is not activism.",
+  "The ballot changes its topics between years, so only a few topics can be compared over time, and a ballot with more options gives each one a smaller share.",
+  "The surveys are commissioned polls with their own wording and samples. They describe 14 to 24 year olds and 16 and 17 year olds, not all 11 to 18 year olds, so their numbers cannot be laid over the ballot's."
+ ]
+}

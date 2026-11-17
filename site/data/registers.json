@@ -313,6 +313,38 @@
    "root_cause": "The form was written for questions and corrections; readiness gate G06 paused recruitment but did not add a safety signpost to the route that stays open.",
    "fix": "The form opens with where to go instead: a trusted adult, Childline on 0800 1111 for under 19s, or 999 in an emergency, and the Safeguarding & support screen; check_repo R13 fails if that signpost is removed.",
    "check": "R13"
+  },
+  {
+   "id": "D40",
+   "found": "2026-11-17",
+   "what": "The Academy's four modules were static cards with hard-coded complete, in progress and locked states and no lessons behind them, and its lede said completion fed the launch-readiness gate, which it never did.",
+   "root_cause": "Design placeholders were carried into the build as if they were working features; no check compared what the screen claimed with what it did.",
+   "fix": "Each module opens a sourced lesson with a question; progress is real, starts empty and stays on the device; the lede says what is true.",
+   "check": "S23"
+  },
+  {
+   "id": "D41",
+   "found": "2026-11-17",
+   "what": "The portal promised Easy Read but offered none: a young person with a learning disability had no simpler way into any screen.",
+   "root_cause": "Easy Read was listed as committed on Inclusion & reach but never given a data source or a check.",
+   "fix": "An Easy Read switch shows two to four short sentences with pictures at the top of every screen, from data/easyread.json.",
+   "check": "S23"
+  },
+  {
+   "id": "D42",
+   "found": "2026-11-17",
+   "what": "Three more places said petition 754954 would be relaunched (Issue domains, Policy landscape, Track record), though no source says a relaunch is planned.",
+   "root_cause": "D26 removed the claim from the pledge screen only; the same sentence lived in other data with no check for it.",
+   "fix": "Each is reworded to what is true; the phrases are now banned by check, so the class cannot return anywhere on the page.",
+   "check": "S23"
+  },
+  {
+   "id": "D43",
+   "found": "2026-11-17",
+   "what": "Policy landscape said a Bill stage on 2 September 2026 happened \"three days ago\", which went stale the day after it was written.",
+   "root_cause": "Relative dates were written into static text.",
+   "fix": "The date stands on its own; hard-coded relative dates are banned by check.",
+   "check": "S23"
   }
  ],
  "open": [
