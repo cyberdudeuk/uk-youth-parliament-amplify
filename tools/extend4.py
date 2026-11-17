@@ -23,7 +23,8 @@ from extend import EYEBROW, H1, LEDE, PANEL, LABEL, SMALL, LINK
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # The pack's release file (D38): its total download count is the one measure of the kit's use that needs no tracking
-_PR = json.load(open(os.path.join(R, "data", "involve.json"), encoding="utf-8"))["campaign"]["pack_release"]
+with open(os.path.join(R, "data", "involve.json"), encoding="utf-8") as _f:  # closed after reading (CodeQL alert 340)
+    _PR = json.load(_f)["campaign"]["pack_release"]
 PACK_URL = f"https://github.com/cyberdudeuk/uk-youth-parliament-amplify/releases/download/{_PR['tag']}/amplify-graphics-pack.zip"
 
 LOGIC4 = r'''
