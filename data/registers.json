@@ -410,7 +410,7 @@
   },
   {
    "id": "O17",
-   "what": "Verify the portal in Google Search Console and Bing Webmaster Tools (a verification file, no script) so search appearances and clicks can be counted in total without tracking visitors.",
+   "what": "Verify the portal in Google Search Console (property added on the owner's personal account, 17 Nov 2026; verification file googleee27afbe896ee974.html at the repository root, no script, nothing that tracks visitors) and, optionally, Bing Webmaster Tools by importing from Search Console, so search appearances and clicks can be counted in total. Close once Search Console shows the property verified.",
    "who": "Owner"
   },
   {
