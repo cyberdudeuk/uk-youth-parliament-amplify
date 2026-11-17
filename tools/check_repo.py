@@ -25,6 +25,8 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
       .github/ISSUE_TEMPLATE/, nothing links to one, and G06's note says what is paused (defect D25)
   R11 no readiness gate still waits on a pull request that the repository's history shows merged (defect D28:
       G19 stayed Open after pull request 5 was merged); needs full history, and says so on a shallow clone
+  R13 the contact form, the one public route that stays open, first tells anyone worried about their safety where to go
+      instead: a trusted adult, Childline (0800 1111) and 999 (D39, 17 November 2026: the form signposted nothing)
   R12 generated documents agree in number: no "1 Must gates" or "1 ... gates open" (defect D29: the go-live verdict
       read "1 Must gates open" when one gate was left)
   R7  people decide the irreversible: no GitHub workflow merges, pushes, force-pushes, deletes a branch, repository or
@@ -164,7 +166,7 @@ def history():
     return subprocess.run(["git", "log", "--format=%s"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 
 def run(tracked, texts, src, read):
-    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS) + r12(texts)
+    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS) + r12(texts) + r13(read)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -173,8 +175,13 @@ def read(path):
 texts = {f: (read(f) or b"").decode("utf-8", "replace") for f in tracked if f.endswith(TEXT)}
 
 SUBJECTS = history()
+
+def r13(read):
+    form = (read(".github/ISSUE_TEMPLATE/contact.yml") or b"").decode("utf-8", "replace")
+    return [f"R13 the contact form does not signpost {w} for anyone worried about their safety (D39)" for w in ("trusted adult", "Childline", "0800 1111", "999") if w not in form]
+
 bad = run(tracked, texts, SRC, read)
-print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R12 problems: {len(bad)}")
+print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R13 problems: {len(bad)}")
 if bad:
     print("\n".join(bad[:40])); sys.exit(1)
 
@@ -197,7 +204,9 @@ pet = next(k for k in SRC["files"] if k.endswith(".json") and "petition" in k)
 def strip(key): return lambda p: json.dumps({k: v for k, v in json.loads(read(p)).items() if k != key}).encode() if p == pet else read(p)
 expect("R5", r5(SRC, strip("fetched")))                                                        # summary with no date
 expect("R5", r5(SRC, strip("source")))                                                         # summary with no source
-expect("R6", r6({page: '<script src="missing-runtime.js"></script>'}, tracked))                # a page loads a missing file
+expect("R6", r6({page: '<script src="missing-runtime.js"></script>'}, tracked))
+expect("R13", r13(lambda p: read(p).replace(b"Childline on 0800 1111", b"a helpline") if p.endswith("contact.yml") else read(p)))  # signpost weakened (D39)
+expect("R13", r13(lambda p: None if p.endswith("contact.yml") else read(p)))                                       # form lost                # a page loads a missing file
 expect("R7", r7({".github/workflows/x.yml": "run: gh pr merge 5 --squash"}))                 # a workflow that merges
 expect("R7", r7({".github/workflows/x.yml": "permissions:\n  contents: write"}))              # one that may write
 ent = (read("index.html") or b"").decode()

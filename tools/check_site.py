@@ -52,6 +52,10 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       their tablist, tab and tabpanel semantics (defect D36, 17 November 2026); the same rules cover data/civic.json,
       where every section must also belong to a real tab and have a known type, and every age-ladder item must say
       which nation it applies to (defect D37: an age rule shown without its nation is wrong for three nations of four)
+  S22 the graphics pack's release file stays true (D38, 17 November 2026: the kit could not show whether anyone used it,
+      because Pages gives no statistics and Amplify collects no analytics): data/involve.json names a kit-YYYY-MM-DD
+      release tag and the pack's SHA-256, the built pack still has that SHA-256 (a changed pack needs a new tag, or the
+      release would serve the old one), and the Campaign kit links that tag's file on GitHub while keeping the on-site copy
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -527,9 +531,28 @@ def s21_civic(texts):
     return bad
 
 
+PACK_REL = "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/releases/download/{}/amplify-graphics-pack.zip"
+
+
+def s22(t, files=None):
+    """S22 the graphics pack's release file stays true (D38)."""
+    try: pr = json.loads(t.get("data/involve.json", ""))["campaign"]["pack_release"]
+    except (ValueError, KeyError, TypeError): return ["S22 site/data/involve.json has no campaign.pack_release (D38)"]
+    bad, tag, sha = [], pr.get("tag", ""), pr.get("sha256", "")
+    if not re.fullmatch(r"kit-\d{4}-\d{2}-\d{2}", tag): bad.append(f"S22 the pack release tag '{tag}' is not kit-YYYY-MM-DD (D38)")
+    if not re.fullmatch(r"[0-9a-f]{64}", sha): bad.append("S22 the pack release has no SHA-256 (D38)")
+    pack = (files or {}).get("art/amplify-graphics-pack.zip")
+    if pack is not None and hashlib.sha256(pack).hexdigest() != sha:
+        bad.append("S22 the graphics pack changed but its release tag did not: give it a new kit- tag in data/involve.json (D38)")
+    page = t.get("index.html", "")
+    if f'href="{PACK_REL.format(tag)}"' not in page: bad.append("S22 the Campaign kit does not link the pack's release file for its tag (D38)")
+    if 'href="./art/amplify-graphics-pack.zip"' not in page: bad.append("S22 the Campaign kit lost the on-site copy of the pack (D38)")
+    return bad
+
+
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t) + s21_civic(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t) + s21_civic(t) + s22(t, files)
 
 
 if __name__ == "__main__":
@@ -541,7 +564,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S21 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S22 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -661,4 +684,10 @@ if __name__ == "__main__":
     expect("S21", s21_civic(texts_of(broken(cvj, edit(lambda d: d["sections"][0]["items"][1].update(where=[]))))))  # an age rule with no nation (D37)
     expect("S21", s21_civic(texts_of(broken(cvj, edit(lambda d: d["sections"][0].update(tab="nowhere"))))))  # a section in no tab
     expect("S21", s21_civic(texts_of(broken(idx, lambda s: s.replace('role="tablist" aria-label="Every way to take part"', 'aria-label="Every way to take part"')))))  # tablist lost
+    inv = "data/involve.json"
+    expect("S22", s22(texts_of(broken(inv, edit(lambda d: d["campaign"].pop("pack_release")))), files))               # no release recorded (D38)
+    expect("S22", s22(texts_of(broken(inv, edit(lambda d: d["campaign"]["pack_release"].update(tag="latest")))), files))  # a moving tag
+    expect("S22", s22(texts_of(files), dict(files, **{"art/amplify-graphics-pack.zip": files["art/amplify-graphics-pack.zip"] + b"x"})))  # pack changed, tag not
+    expect("S22", s22(texts_of(broken(idx, lambda s: s.replace("/releases/download/", "/releases/tag/"))), files))   # link no longer the file
+    expect("S22", s22(texts_of(broken(idx, lambda s: s.replace('href="./art/amplify-graphics-pack.zip"', 'href="#"'))), files))  # on-site copy lost
     sys.exit(1 if fails else 0)

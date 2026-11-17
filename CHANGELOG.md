@@ -6,6 +6,14 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.7 · 2026-11-17 · Release candidate
+
+**Measure without tracking.** The graphics pack is also published as a GitHub release file so its total downloads can be counted with no tracking on the portal, and the contact form now tells anyone worried about their safety where to go instead.
+
+- **CHANGED** `campaign`: Download the graphics pack from GitHub, where downloads are counted in total only, or from this site as before (D38).
+- **CHANGED** `about`: About now says what Amplify counts instead of analytics, and that nothing tracks visitors.
+- **FIXED** `care`: The contact form opens with where to go if you are worried about your safety: a trusted adult, Childline on 0800 1111, or 999 (D39).
+
 ## 1.0.0-rc.6 · 2026-11-17 · Release candidate
 
 **Every way to take part.** A new Foundations screen on young people's political and civic participation, by age and nation, every fact sourced, with a register of participation gaps; eight new glossary terms.

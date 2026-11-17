@@ -2,7 +2,7 @@
  "title": "Release log",
  "checked": "2026-11-17",
  "review_days": 30,
- "current": "1.0.0-rc.6",
+ "current": "1.0.0-rc.7",
  "releases": [
   {
    "version": "1.0.0",
@@ -11,6 +11,30 @@
    "title": "Launch at UK Parliament Week 2026",
    "summary": "Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.",
    "entries": []
+  },
+  {
+   "version": "1.0.0-rc.7",
+   "date": "2026-11-17",
+   "status": "Release candidate",
+   "title": "Measure without tracking",
+   "summary": "The graphics pack is also published as a GitHub release file so its total downloads can be counted with no tracking on the portal, and the contact form now tells anyone worried about their safety where to go instead.",
+   "entries": [
+    {
+     "screen": "campaign",
+     "kind": "CHANGED",
+     "what": "Download the graphics pack from GitHub, where downloads are counted in total only, or from this site as before (D38)."
+    },
+    {
+     "screen": "about",
+     "kind": "CHANGED",
+     "what": "About now says what Amplify counts instead of analytics, and that nothing tracks visitors."
+    },
+    {
+     "screen": "care",
+     "kind": "FIXED",
+     "what": "The contact form opens with where to go if you are worried about your safety: a trusted adult, Childline on 0800 1111, or 999 (D39)."
+    }
+   ]
   },
   {
    "version": "1.0.0-rc.6",
