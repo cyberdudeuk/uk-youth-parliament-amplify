@@ -32,7 +32,7 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
   S15 go-live readiness is honest: every passed or partial gate names evidence that is a real check (or a named
       workflow), every gate not passed names who must act, and every open item it cites exists in the registers
   S16 every new word is in the glossary, thesaurus, knowledge graph and tooltips at once: each glossary term is in a
-      release, written into the built graph and list, links only to real nodes, and every tooltip term has an entry
+      release (and no two releases share a version), written into the built graph and list, links only to real nodes, and every tooltip term has an entry
   S17 the product backlog and roadmap trace to real screens and real checks, and the alerts strip, Share button and a
       pausable, reduced-motion-safe news ticker are on the page
   S18 the privacy promise matches what the pledge form does: no "no name" claim while it asks for one, the name box
@@ -262,6 +262,7 @@ def s16(texts):
     m = re.search(r"\n  GRAPH = \{(.*?)\n  \};", page, re.S)
     nodes = set(re.findall(r"^    (\w+): \{ name:", m.group(1), re.M)) if m else set()
     versions = {r["version"] for r in ch.get("releases", [])}
+    if len(versions) != len(ch.get("releases", [])): bad.append("S16 two releases share a version: give each release its own version (D35)")
     for t in terms.values():
         for k in ("term", "def", "also", "added"):
             if not str(t.get(k, "")).strip(): bad.append(f"S16 glossary term {t.get('id')} has no {k}")
@@ -518,6 +519,7 @@ if __name__ == "__main__":
     expect("S16", s16(texts_of(broken(glj, edit(lambda d: d["terms"].pop([t["id"] for t in d["terms"]].index("ci")))))))   # a tooltip term with no glossary entry
     expect("S16", s16(texts_of(broken(glj, edit(lambda d: d["terms"][4]["edges"].append("nowhere"))))))                   # an edge to no node
     expect("S16", s16(texts_of(broken(glj, edit(lambda d: d["terms"][4].update(added="9.9.9"))))))                         # added in no release
+    expect("S16", s16(texts_of(broken("data/changelog.json", edit(lambda d: d["releases"].append(dict(d["releases"][1])))))))  # two releases share a version (D35)
     expect("S16", s16(texts_of(broken(idx, lambda s: s.replace("\n    safeguarding: { name:", "\n    safeguardingX: { name:")))))   # injection lost
     expect("S16", s16(texts_of(broken(idx, lambda s: s.replace(",  // the design's last entry has no trailing comma", "")))))  # the comma lost (D20)
     expect("S17", s17(texts_of(broken(pdj, edit(lambda d: d["backlog"][0].update(screens=["nowhere"]))))))                # traced to no screen
