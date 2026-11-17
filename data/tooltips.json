@@ -261,6 +261,15 @@
     "teacher": "The side-by-side roles and the Order Paper guide work as a citizenship lesson.",
     "young16": "Use it and go further shows how to time a campaign around Parliament."
    }
+  },
+  "civic": {
+   "tip": "Every political and civic route by age and nation: registering, voting, standing, influencing, how laws are made, civic life, and a register of the gaps.",
+   "for": {
+    "young11": "Start with By age and choose your nation.",
+    "young16": "Vote shows how to register now, before you can vote.",
+    "teacher": "How laws are made and By age work as citizenship lessons.",
+    "parent": "Civic life covers volunteering ages and protest safety."
+   }
   }
  },
  "terms": {
@@ -339,6 +348,14 @@
   "orderpaper": {
    "term": "Order Paper",
    "tip": "The House of Commons' agenda for the day, published every sitting day."
+  },
+  "attainer": {
+   "term": "Attainer",
+   "tip": "Old enough to register to vote but not yet to vote."
+  },
+  "voterauthority": {
+   "term": "Voter Authority Certificate",
+   "tip": "Free photo ID for voting if you have no other accepted ID."
   }
  },
  "ui": {

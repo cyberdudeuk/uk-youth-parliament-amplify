@@ -1,0 +1,1036 @@
+{
+ "title": "Every way to take part",
+ "checked": "2026-11-17",
+ "review_days": 30,
+ "rule": "Every fact on this screen names a source in this file. Official means checked on a government, Parliament, regulator or council page; Secondary means a reputable secondary source, labelled as such. Ages and rules differ between the four nations, so every age-related fact says where it applies. Amplify's notes are marked as such.",
+ "lede": "The political and civic routes open to young people, by age and by nation: registering and voting, standing and serving, getting your view to MPs, peers, committees and government, how laws are made, and taking part in civic life. Where another Amplify screen or the organisation that runs a route already explains it, this screen points there instead of repeating it.",
+ "sources": [
+  {
+   "id": "govreg",
+   "label": "GOV.UK: Register to vote (ages by nation; register up to 2 years before voting age)",
+   "url": "https://www.gov.uk/register-to-vote",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "saa",
+   "label": "Scottish Assessors: who can register (register at 14; vote at 16 in Scottish Parliament and council elections; 18 for UK Parliament)",
+   "url": "https://www.saa.gov.uk/dab-vjb/electoral-registration/qualification",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ecguide",
+   "label": "Electoral Commission guide to elections (registration ages in England, Scotland and Wales; voter ID; photo ID long required in Northern Ireland), hosted by South Kesteven District Council",
+   "url": "https://www.southkesteven.gov.uk/sites/default/files/2025-03/Guide%20to%20Elections%20Generic%20English%20-%20Plain%20Text.pdf",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ecreg",
+   "label": "Electoral Commission (archived February 2026): register to vote, including Wales registering from 14",
+   "url": "https://tnaqa.mirrorweb.com/ukgwa/20260206192530mp_/https://www.electoralcommission.org.uk/voting-and-elections/register-vote",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "voterid",
+   "label": "Electoral Commission: voter ID and the free Voter Authority Certificate",
+   "url": "https://www.electoralcommission.org.uk/i-am-a/voter/voter-id",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "sandwellid",
+   "label": "Sandwell Council: a young person's bus pass is not accepted photo ID for voting",
+   "url": "https://www.sandwell.gov.uk/VoterID",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "youngscotid",
+   "label": "Young Scot: what photo ID you need to vote (register first, then apply for a Voter Authority Certificate)",
+   "url": "https://young.scot/get-informed/what-id-you-need-to-vote",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ecletter",
+   "label": "Electoral Commission letter to the Levelling Up, Housing and Communities Committee, 15 September 2023: young people significantly less likely to be correctly registered",
+   "url": "https://committees.parliament.uk/publications/41978/documents/208813/default/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ersreg",
+   "label": "Electoral Reform Society briefing, February 2026, citing Electoral Commission 2022 data: 60% of 18 and 19 year olds and 16% of attainers registered",
+   "url": "https://electoral-reform.org.uk/wp-content/uploads/2026/02/Briefing-on-Modernising-Electoral-Registration.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "mpcand",
+   "label": "UK Parliament: who can stand as an MP (at least 18)",
+   "url": "https://www.parliament.uk/about/mps-and-lords/members/electing-mps/candidates/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "eaa2006",
+   "label": "Electoral Administration Act 2006, section 17: minimum age 18 to stand for the House of Commons",
+   "url": "https://www.legislation.gov.uk/ukpga/2006/22/section/17",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "councilcand",
+   "label": "Enfield Council: standing as a councillor (at least 18 on the day of nomination; independents can stand)",
+   "url": "https://www.enfield.gov.uk/services/councillors-and-democracy/standing-for-election",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "governor",
+   "label": "School Governance (Constitution) (England) Regulations 2012, Schedule 4: a governor must be 18 or over",
+   "url": "https://www.legislation.gov.uk/uksi/2012/1034/schedule/4/made",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "trustee",
+   "label": "GOV.UK (Charity Commission): charity trustee age limits, 18, or 16 for a charitable company or CIO",
+   "url": "https://www.gov.uk/charity-trustee-disqualification",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "jury",
+   "label": "GOV.UK: who can be on a jury (18 to 75, registered to vote)",
+   "url": "https://www.gov.uk/jury-service/who-can-be-on-jury",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "contactmp",
+   "label": "UK Parliament: contact your MP (MPs represent everyone in their area, whether they voted for them or not)",
+   "url": "https://www.parliament.uk/get-involved/contact-an-mp-or-lord/contact-your-mp/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "contactlord",
+   "label": "UK Parliament: contact a member of the House of Lords (by issue or a draft law; no bulk mailshots)",
+   "url": "https://www.parliament.uk/business/lords/whos-in-the-house-of-lords/get-in-touch-with-members/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "unicefmp",
+   "label": "Unicef UK: engaging political decision makers (surgeries, making it local, mentioning your age)",
+   "url": "https://downloads.unicef.org.uk/wp-content/uploads/2019/03/Engaging-political-decision-makers.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "giveevidence",
+   "label": "UK Parliament: give evidence to a select committee",
+   "url": "https://www.parliament.uk/get-involved/committees/give-evidence-to-a-select-committee/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "seneddevidence",
+   "label": "Senedd Cymru: providing evidence for committees (anyone can respond; written, video or audio)",
+   "url": "https://senedd.wales/en/bus-home/committees/Pages/Providing-evidence-for-committees.aspx",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "niaevidence",
+   "label": "Northern Ireland Assembly: guide to submitting evidence to committees (all individuals welcome)",
+   "url": "https://www.niassembly.gov.uk/assembly-business/committees/guide-to-submitting-evidence-to-assembly-committees-in-written-or-other-formats",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "govinvolved",
+   "label": "GOV.UK: get involved, respond to consultations",
+   "url": "https://www.gov.uk/government/get-involved",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "commonslibcons",
+   "label": "House of Commons Library: consultations are generally open to the public; UK Government consultations have traditionally run 12 weeks",
+   "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10190",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "climateassembly",
+   "label": "Climate Assembly UK: commissioned by six Commons select committees; 108 members chosen by civic lottery",
+   "url": "https://www.climateassembly.uk/detail/recruitment/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "carbonbrief",
+   "label": "Carbon Brief: Climate Assembly UK members were aged 16 to 79",
+   "url": "https://carbonbrief.org/qa-how-the-climate-assembly-says-the-uk-should-reach-net-zero",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "pbscot",
+   "label": "PB Scotland: what participatory budgeting is",
+   "url": "https://pbscotland.scot/what-is-pb",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "youngscotpb",
+   "label": "Young Scot: participatory budgeting voting with a Young Scot National Entitlement Card",
+   "url": "https://www.youngscot.net/participatory-budgeting-voting",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "lordslaws",
+   "label": "UK Parliament: making laws in the House of Lords (both Houses agree the text, then Royal Assent)",
+   "url": "https://www.parliament.uk/business/lords/work-of-the-house-of-lords/making-laws/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "govlegis",
+   "label": "GOV.UK: the legislative process, taking a bill through Parliament",
+   "url": "https://www.gov.uk/guidance/legislative-process-taking-a-bill-through-parliament",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ifglegis",
+   "label": "Institute for Government: the legislative process in Parliament",
+   "url": "https://www.instituteforgovernment.org.uk/explainer/legislative-process-parliament",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "pmbstages",
+   "label": "Guide to Procedure: stages for Private Members' Bills (the same stages as Government bills)",
+   "url": "https://guidetoprocedure.parliament.uk/articles/eUBW1Vdz",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "govvol",
+   "label": "GOV.UK (archived August 2026): volunteering age limits (under 14 cannot work for a profit-making organisation, even unpaid)",
+   "url": "https://tnaqa.mirrorweb.com/ukgwa/20260827205854mp_/https://www.gov.uk/volunteering/print",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ncvoyoung",
+   "label": "NCVO: engaging and supporting young people aged 13 to 17 to volunteer",
+   "url": "https://www.ncvo.org.uk/news-and-insights/news-index/engaging-and-supporting-young-people-to-volunteer",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "dofe",
+   "label": "The Duke of Edinburgh's Award: any 14 to 24 year old can do their DofE",
+   "url": "https://www.dofe.org/about/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "libertyprotest",
+   "label": "Liberty: protest rights (Articles 10 and 11 of the European Convention on Human Rights; an appropriate adult if under 18)",
+   "url": "https://www.libertyhumanrights.org.uk/issue/practical-protest-guide-student-edition/",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "advicenowprotest",
+   "label": "Advicenow: protest laws in England and Wales, a beginner's guide",
+   "url": "https://www.advicenow.org.uk/guides/new-protest-laws-beginners-guide",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "cypcsprotest",
+   "label": "Children and Young People's Commissioner Scotland: under 18? Your human rights at protests",
+   "url": "https://www.cypcs.org.uk/human_rights_protest/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "cajprotest",
+   "label": "Committee on the Administration of Justice: know your rights at protests in Northern Ireland",
+   "url": "https://caj.org.uk/wp-content/uploads/2024/12/Final-KYR-guide-digital-edition.pdf",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "unicefart12",
+   "label": "Unicef UK: Article 12, the views expressed must be given due weight (the Lundy model)",
+   "url": "https://www.unicef.org.uk/rights-respecting-schools/?p=13478",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "nyaguides",
+   "label": "National Youth Agency: UK Youth Parliament guidance documents (MYPs are 11 to 18)",
+   "url": "https://nya.org.uk/uk-youth-parliament-guidance-documents/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "billstages",
+   "label": "UK Parliament Bills: Representation of the People Bill, stages in both Houses",
+   "url": "https://bills.parliament.uk/bills/4080",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  }
+ ],
+ "tabs": [
+  {
+   "id": "age",
+   "label": "By age",
+   "icon": "calendar-range"
+  },
+  {
+   "id": "vote",
+   "label": "Vote",
+   "icon": "vote"
+  },
+  {
+   "id": "serve",
+   "label": "Stand and serve",
+   "icon": "award"
+  },
+  {
+   "id": "influence",
+   "label": "Influence",
+   "icon": "messages-square"
+  },
+  {
+   "id": "laws",
+   "label": "How laws are made",
+   "icon": "scroll-text"
+  },
+  {
+   "id": "civic",
+   "label": "Civic life",
+   "icon": "heart-handshake"
+  },
+  {
+   "id": "gaps",
+   "label": "Gaps",
+   "icon": "list-todo"
+  }
+ ],
+ "nations": [
+  "UK",
+  "England",
+  "Scotland",
+  "Wales",
+  "Northern Ireland",
+  "England and Wales"
+ ],
+ "sections": [
+  {
+   "tab": "age",
+   "type": "ladder",
+   "h": "What opens up at each age, and where",
+   "intro": "Choose your nation to see only what applies there. Rules for the whole UK show everywhere.",
+   "items": [
+    {
+     "age": "11 to 18",
+     "t": "Stand or vote for the UK Youth Parliament",
+     "where": [
+      "UK"
+     ],
+     "d": "Members of Youth Parliament are 11 to 18. Your route in shows every rung.",
+     "screen": "route",
+     "src": [
+      "nyaguides"
+     ]
+    },
+    {
+     "age": "14",
+     "t": "Register to vote",
+     "where": [
+      "Scotland",
+      "Wales"
+     ],
+     "d": "You can register from 14, two years before you can vote in Scottish Parliament, Senedd and council elections.",
+     "src": [
+      "govreg",
+      "saa",
+      "ecreg"
+     ]
+    },
+    {
+     "age": "14",
+     "t": "Start the Duke of Edinburgh's Award",
+     "where": [
+      "UK"
+     ],
+     "d": "Any 14 to 24 year old can do their DofE, which includes volunteering.",
+     "src": [
+      "dofe"
+     ]
+    },
+    {
+     "age": "14",
+     "t": "Volunteer for a business",
+     "where": [
+      "UK"
+     ],
+     "d": "Under 14 you cannot work for a profit-making organisation even unpaid; charities and community groups set their own age rules.",
+     "src": [
+      "govvol"
+     ]
+    },
+    {
+     "age": "16",
+     "t": "Register to vote",
+     "where": [
+      "England",
+      "Northern Ireland"
+     ],
+     "d": "You can register from 16, two years before you can vote.",
+     "src": [
+      "govreg"
+     ]
+    },
+    {
+     "age": "16",
+     "t": "Vote in Scottish Parliament, Senedd and council elections",
+     "where": [
+      "Scotland",
+      "Wales"
+     ],
+     "d": "16 and 17 year olds vote in these elections. The UK Parliament voting age is still 18.",
+     "src": [
+      "saa",
+      "ecguide"
+     ]
+    },
+    {
+     "age": "16",
+     "t": "Be a charity trustee of a charitable company or CIO",
+     "where": [
+      "England and Wales"
+     ],
+     "d": "The minimum is 16 for a charitable company or charitable incorporated organisation, and 18 for any other charity.",
+     "src": [
+      "trustee"
+     ]
+    },
+    {
+     "age": "18",
+     "t": "Vote in UK Parliament elections",
+     "where": [
+      "UK"
+     ],
+     "d": "In England and Northern Ireland, 18 is the voting age for every election. The Representation of the People Bill, now in the Lords, would lower the UK Parliament voting age to 16.",
+     "screen": "issues",
+     "src": [
+      "govreg",
+      "ecreg",
+      "saa",
+      "billstages"
+     ]
+    },
+    {
+     "age": "18",
+     "t": "Stand for election as an MP or councillor",
+     "where": [
+      "UK"
+     ],
+     "d": "The minimum age to stand for the House of Commons is 18; English council candidates must also be 18 on the day of nomination.",
+     "src": [
+      "eaa2006",
+      "mpcand",
+      "councilcand"
+     ]
+    },
+    {
+     "age": "18",
+     "t": "Become a school governor",
+     "where": [
+      "England"
+     ],
+     "d": "A governor must be 18 or over when elected or appointed, and cannot be a registered pupil at the school.",
+     "src": [
+      "governor"
+     ]
+    },
+    {
+     "age": "18",
+     "t": "Be called for jury service",
+     "where": [
+      "England and Wales"
+     ],
+     "d": "If you are 18 to 75 and registered to vote, you can be summoned.",
+     "src": [
+      "jury"
+     ]
+    },
+    {
+     "age": "Under 25",
+     "t": "Finish a DofE Award",
+     "where": [
+      "UK"
+     ],
+     "d": "Programmes are for 14 to 24 year olds.",
+     "src": [
+      "dofe"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "vote",
+   "type": "table",
+   "h": "Registering and voting, nation by nation",
+   "cols": [
+    "Nation",
+    "Register from",
+    "Vote in devolved and council elections",
+    "Vote in UK Parliament elections",
+    "Photo ID at the polling station"
+   ],
+   "rows": [
+    [
+     "England",
+     "16",
+     "18",
+     "18",
+     "Yes, for UK Parliament and local elections"
+    ],
+    [
+     "Scotland",
+     "14",
+     "16",
+     "18",
+     "For UK Parliament elections; check others with the Electoral Commission"
+    ],
+    [
+     "Wales",
+     "14",
+     "16",
+     "18",
+     "For UK Parliament elections; check others with the Electoral Commission"
+    ],
+    [
+     "Northern Ireland",
+     "16",
+     "18",
+     "18",
+     "Yes, a long-standing requirement"
+    ]
+   ],
+   "note": "The Representation of the People Bill, in the House of Lords at committee stage in November 2026, would lower the UK Parliament voting age to 16. Until it becomes law, the ages above stand.",
+   "src": [
+    "govreg",
+    "saa",
+    "ecguide",
+    "ecreg",
+    "voterid",
+    "billstages"
+   ]
+  },
+  {
+   "tab": "vote",
+   "type": "steps",
+   "h": "Register, then make sure you can vote",
+   "items": [
+    {
+     "t": "Register online on GOV.UK",
+     "d": "In England, Scotland and Wales it is online. In Northern Ireland, use the paper form from the Electoral Office for Northern Ireland. You register once, not for every election.",
+     "src": [
+      "govreg",
+      "ecreg"
+     ]
+    },
+    {
+     "t": "Check your ID",
+     "d": "A young person's bus pass is not accepted photo ID. If you have no accepted ID, apply for a free Voter Authority Certificate after you have registered.",
+     "src": [
+      "sandwellid",
+      "youngscotid",
+      "voterid"
+     ]
+    },
+    {
+     "t": "Register again if you move",
+     "d": "If you move house or change your name, register again: registration does not follow you.",
+     "src": [
+      "ecguide"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "vote",
+   "type": "cards",
+   "h": "Why it matters",
+   "items": [
+    {
+     "t": "Young people are the least likely to be registered",
+     "d": "The Electoral Commission found young people significantly less likely to be correctly registered. Its 2022 data showed 60% of 18 and 19 year olds registered, and 16% of attainers (those old enough to register but not yet to vote).",
+     "src": [
+      "ecletter",
+      "ersreg"
+     ]
+    },
+    {
+     "t": "Registering at 14 or 16 is the easiest moment",
+     "d": "You can register up to two years before you can vote, so the first election you can vote in finds you already on the register.",
+     "src": [
+      "govreg"
+     ],
+     "editorial": true
+    }
+   ]
+  },
+  {
+   "tab": "serve",
+   "type": "cards",
+   "h": "Standing for election",
+   "items": [
+    {
+     "t": "MP: 18 and over",
+     "d": "The minimum age to stand for the House of Commons is 18.",
+     "src": [
+      "eaa2006",
+      "mpcand"
+     ]
+    },
+    {
+     "t": "Councillor: 18 and over",
+     "d": "In England you must be 18 on the day of nomination and have a local connection. Most candidates belong to a party, but you can stand as an independent.",
+     "src": [
+      "councilcand"
+     ]
+    },
+    {
+     "t": "Before 18: the youth seats",
+     "d": "Member of Youth Parliament, youth councils, school councils and the Youth Select Committee are the elected roles open before 18.",
+     "screen": "route",
+     "src": [
+      "nyaguides"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "serve",
+   "type": "cards",
+   "h": "Serving on a board",
+   "items": [
+    {
+     "t": "Charity trustee from 16",
+     "d": "In England and Wales, 16 for a charitable company or CIO, 18 for any other charity.",
+     "src": [
+      "trustee"
+     ]
+    },
+    {
+     "t": "School governor from 18",
+     "d": "In England a governor must be 18 or over and cannot be a registered pupil at that school.",
+     "src": [
+      "governor"
+     ]
+    },
+    {
+     "t": "Funder and service youth boards",
+     "d": "Funders, regulators and services run youth advisory panels; Anatomy of the state lists them by layer.",
+     "screen": "state",
+     "src": [],
+     "editorial": true
+    }
+   ]
+  },
+  {
+   "tab": "serve",
+   "type": "cards",
+   "h": "Civic duty",
+   "items": [
+    {
+     "t": "Jury service from 18",
+     "d": "In England and Wales anyone 18 to 75 who is registered to vote and has lived in the UK for five years since turning 13 can be called.",
+     "src": [
+      "jury"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "influence",
+   "type": "cards",
+   "h": "Get your view to the people who decide",
+   "items": [
+    {
+     "t": "Write to your MP",
+     "d": "MPs represent everyone in their area, whether they voted for them or not, so you do not need to be old enough to vote. Write to your own MP only, say what you want them to do, and make it local.",
+     "url": "https://members.parliament.uk/FindYourMP",
+     "src": [
+      "contactmp",
+      "unicefmp"
+     ]
+    },
+    {
+     "t": "Go to an MP's surgery",
+     "d": "Many MPs hold drop-in surgeries. Mentioning that you are a young person can help.",
+     "src": [
+      "unicefmp"
+     ]
+    },
+    {
+     "t": "Write to a member of the House of Lords",
+     "d": "Peers have no constituencies. Contact one who works on your issue or on a draft law that affects you. Write your own message: bulk mailshots are not accepted.",
+     "src": [
+      "contactlord"
+     ]
+    },
+    {
+     "t": "Give evidence to a committee",
+     "d": "Committees publish calls for evidence. At Westminster you submit written evidence online; in the Senedd anyone can respond, including by video or audio; the Northern Ireland Assembly welcomes all individuals.",
+     "src": [
+      "giveevidence",
+      "seneddevidence",
+      "niaevidence"
+     ]
+    },
+    {
+     "t": "Answer a government consultation",
+     "d": "Consultations are generally open to the public and listed on GOV.UK. UK Government consultations have traditionally run for 12 weeks. The Scottish, Welsh and Northern Ireland governments run their own.",
+     "url": "https://www.gov.uk/government/get-involved",
+     "src": [
+      "govinvolved",
+      "commonslibcons"
+     ]
+    },
+    {
+     "t": "Start or sign a petition",
+     "d": "Momentum and Launch window cover petitions: the 10,000 and 100,000 thresholds and how to time one.",
+     "screen": "momentum",
+     "src": [],
+     "editorial": true
+    }
+   ]
+  },
+  {
+   "tab": "influence",
+   "type": "cards",
+   "h": "New ways of deciding together",
+   "items": [
+    {
+     "t": "Citizens' assemblies",
+     "d": "Climate Assembly UK was commissioned by six Commons select committees. Its 108 members were chosen by civic lottery to reflect the UK population, and were aged 16 to 79.",
+     "src": [
+      "climateassembly",
+      "carbonbrief"
+     ]
+    },
+    {
+     "t": "Participatory budgeting",
+     "d": "People vote directly on how part of a local budget is spent. In Scotland young people can vote in youth budgeting rounds with their Young Scot card.",
+     "src": [
+      "pbscot",
+      "youngscotpb"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "laws",
+   "type": "steps",
+   "h": "How a Bill becomes law at Westminster",
+   "items": [
+    {
+     "t": "First reading",
+     "d": "The Bill's title is read out. There is no debate.",
+     "src": [
+      "ifglegis",
+      "govlegis"
+     ]
+    },
+    {
+     "t": "Second reading",
+     "d": "The first debate, on the Bill's main principles, followed by a vote.",
+     "src": [
+      "ifglegis"
+     ]
+    },
+    {
+     "t": "Committee stage",
+     "d": "Line-by-line scrutiny, where changes (amendments) are debated. It is generally the longest stage.",
+     "src": [
+      "ifglegis"
+     ]
+    },
+    {
+     "t": "Report stage",
+     "d": "Also called consideration in the Commons: the whole House considers further amendments.",
+     "src": [
+      "govlegis"
+     ]
+    },
+    {
+     "t": "Third reading",
+     "d": "The final debate on the Bill as amended, usually straight after report stage.",
+     "src": [
+      "ifglegis"
+     ]
+    },
+    {
+     "t": "The other House",
+     "d": "The Bill goes through the same stages in the other House. The two Houses then settle any differences, sometimes going back and forth.",
+     "src": [
+      "lordslaws",
+      "ifglegis"
+     ]
+    },
+    {
+     "t": "Royal Assent",
+     "d": "When both Houses agree the text, the Bill is approved by the monarch and becomes an Act of Parliament.",
+     "src": [
+      "lordslaws",
+      "govlegis"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "laws",
+   "type": "cards",
+   "h": "Where you come in",
+   "items": [
+    {
+     "t": "Private Members' Bills follow the same path",
+     "d": "Bills from backbench MPs go through the same stages as Government Bills.",
+     "src": [
+      "pmbstages"
+     ]
+    },
+    {
+     "t": "Track a live Bill",
+     "d": "Issue domains follows the Representation of the People Bill. Inside Parliament explains the Order Paper and the Thursday business statement, which show when each stage is due.",
+     "screen": "parliament",
+     "src": [],
+     "editorial": true
+    }
+   ]
+  },
+  {
+   "tab": "civic",
+   "type": "cards",
+   "h": "Volunteering and social action",
+   "items": [
+    {
+     "t": "Volunteering under 18",
+     "d": "Under 14 you cannot work for a profit-making organisation, even unpaid, and some organisations' insurance does not cover under 16s. Many charities offer roles for 13 to 17 year olds.",
+     "src": [
+      "govvol",
+      "ncvoyoung"
+     ]
+    },
+    {
+     "t": "Duke of Edinburgh's Award",
+     "d": "For 14 to 24 year olds, with a volunteering section at every level.",
+     "src": [
+      "dofe"
+     ]
+    },
+    {
+     "t": "Groups and social action",
+     "d": "Communities & groups lists uniformed groups, youth work and the #iwill movement for youth social action.",
+     "screen": "communities",
+     "src": [],
+     "editorial": true
+    }
+   ]
+  },
+  {
+   "tab": "civic",
+   "type": "cards",
+   "h": "Protest and campaigning, safely",
+   "items": [
+    {
+     "t": "A right protected in law",
+     "d": "The right to peaceful protest is protected by Articles 10 and 11 of the European Convention on Human Rights, through the Human Rights Act. The police can still put conditions on how and when a protest happens.",
+     "src": [
+      "libertyprotest",
+      "advicenowprotest"
+     ]
+    },
+    {
+     "t": "If you are under 18",
+     "d": "Children who protest, in person or online, have human rights that must be respected. If you are taken to a police station, you should have an appropriate adult with you.",
+     "src": [
+      "cypcsprotest",
+      "libertyprotest"
+     ]
+    },
+    {
+     "t": "The law differs by nation",
+     "d": "Guides exist for England and Wales, for Scotland and for Northern Ireland. Plan with a trusted adult, and read Safeguarding & support first.",
+     "screen": "care",
+     "src": [
+      "advicenowprotest",
+      "cypcsprotest",
+      "cajprotest"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "civic",
+   "type": "cards",
+   "h": "The right to be heard",
+   "items": [
+    {
+     "t": "UNCRC Article 12",
+     "d": "Children have the right to express their views on matters affecting them, and those views must be given due weight, not just heard.",
+     "screen": "care",
+     "src": [
+      "unicefart12"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "gaps",
+   "type": "gaps",
+   "h": "Gaps in young people's political and civic participation, and where Amplify stands on each",
+   "intro": "A working register. Built in this release means this screen now covers it; Next means planned and logged in the backlog (REQ-29); Partly means another screen covers some of it.",
+   "items": [
+    {
+     "t": "Registering, voting and voter ID, by nation",
+     "domain": "Political",
+     "status": "Built in this release",
+     "screen": "civic"
+    },
+    {
+     "t": "How a Bill becomes law",
+     "domain": "Political",
+     "status": "Built in this release",
+     "screen": "civic"
+    },
+    {
+     "t": "Writing to MPs and peers, committee evidence and consultations",
+     "domain": "Political",
+     "status": "Built in this release",
+     "screen": "civic"
+    },
+    {
+     "t": "Standing for election, and serving as trustee, governor or juror",
+     "domain": "Political",
+     "status": "Built in this release",
+     "screen": "civic"
+    },
+    {
+     "t": "Citizens' assemblies and participatory budgeting",
+     "domain": "Political",
+     "status": "Built in this release",
+     "screen": "civic"
+    },
+    {
+     "t": "Election calendar by nation, with registration and ID deadlines",
+     "domain": "Political",
+     "status": "Next",
+     "screen": ""
+    },
+    {
+     "t": "What political parties and their youth sections are, explained neutrally",
+     "domain": "Political",
+     "status": "Next",
+     "screen": ""
+    },
+    {
+     "t": "How Holyrood, the Senedd and Stormont make laws and run committees",
+     "domain": "Political",
+     "status": "Partly",
+     "screen": "state"
+    },
+    {
+     "t": "Local councils: asking a question at a council meeting, council petitions, councillor surgeries",
+     "domain": "Political",
+     "status": "Next",
+     "screen": ""
+    },
+    {
+     "t": "Easy Read and BSL guides to voting",
+     "domain": "Political",
+     "status": "Partly",
+     "screen": "incl"
+    },
+    {
+     "t": "Young people's registration and turnout, as a chart by nation and age",
+     "domain": "Political",
+     "status": "Next",
+     "screen": ""
+    },
+    {
+     "t": "Volunteering and social action routes by age",
+     "domain": "Civic",
+     "status": "Built in this release",
+     "screen": "civic"
+    },
+    {
+     "t": "Protest and campaigning rights, by nation, with safeguarding",
+     "domain": "Civic",
+     "status": "Built in this release",
+     "screen": "civic"
+    },
+    {
+     "t": "The right to be heard (UNCRC Article 12) and children's commissioners",
+     "domain": "Civic",
+     "status": "Partly",
+     "screen": "care"
+    },
+    {
+     "t": "Youth seats on NHS, police and funder advisory boards",
+     "domain": "Civic",
+     "status": "Partly",
+     "screen": "state"
+    },
+    {
+     "t": "Students' unions and the student movement",
+     "domain": "Civic",
+     "status": "Partly",
+     "screen": "route"
+    },
+    {
+     "t": "Community organising, faith and cultural groups as routes to civic life",
+     "domain": "Civic",
+     "status": "Next",
+     "screen": ""
+    },
+    {
+     "t": "Youth journalism and student media",
+     "domain": "Civic",
+     "status": "Next",
+     "screen": ""
+    },
+    {
+     "t": "Civic tech: tools that let anyone follow and contact Parliament",
+     "domain": "Civic",
+     "status": "Next",
+     "screen": "stem"
+    },
+    {
+     "t": "Careers in Parliament and public service",
+     "domain": "Civic",
+     "status": "Partly",
+     "screen": "stem"
+    }
+   ]
+  }
+ ]
+}

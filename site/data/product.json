@@ -138,6 +138,12 @@
      "reqs": [
       "REQ-28"
      ]
+    },
+    {
+     "t": "Close the open participation gaps listed on Every way to take part",
+     "reqs": [
+      "REQ-30"
+     ]
     }
    ]
   },
@@ -556,10 +562,39 @@
    "id": "REQ-28",
    "title": "Related themes to build next: the four nations' youth parliaments and legislatures, local democracy, registering to vote and elections, how a Bill becomes law, lobbying skills, careers in Parliament, heritage",
    "moscow": "Could",
-   "status": "Planned",
+   "status": "In progress",
    "from": "Owner request, 17 Nov 2026",
    "screens": [
-    "parliament"
+    "parliament",
+    "civic"
+   ],
+   "checks": [
+    "S21"
+   ]
+  },
+  {
+   "id": "REQ-29",
+   "title": "Every way to take part: political and civic routes by age and nation (register, vote, stand, serve, influence, how laws are made, civic life), every fact sourced, with a register of participation gaps",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner request, 17 Nov 2026",
+   "screens": [
+    "civic"
+   ],
+   "checks": [
+    "S21",
+    "S16",
+    "S12"
+   ]
+  },
+  {
+   "id": "REQ-30",
+   "title": "Participation gaps still open: election calendar by nation, parties explained neutrally, devolved law-making, local council routes, accessible voting guides, registration and turnout chart, community organising, youth media, civic tech",
+   "moscow": "Could",
+   "status": "Planned",
+   "from": "Gap register on Every way to take part, 17 Nov 2026",
+   "screens": [
+    "civic"
    ],
    "checks": [
     "S21"

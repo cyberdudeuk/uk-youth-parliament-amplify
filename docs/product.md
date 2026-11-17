@@ -73,6 +73,7 @@ Constraints:
 - Ambassador programme pilot, once safeguarding is confirmed (REQ-14)
 - Faster pages on low-end phones by compiling at build time (REQ-23)
 - Inside Parliament, part two: the related themes listed on the screen (REQ-28)
+- Close the open participation gaps listed on Every way to take part (REQ-30)
 
 ### Later
 
@@ -111,7 +112,9 @@ Constraints:
 | REQ-25 | Owner decisions before the public launch (publishing, merge and propriety decided 15 Nov 2026; safeguarding lead and owner sign-off still open) | Must | Waiting on owner | Readiness review, 15 Nov 2026 | golive | S15 |
 | REQ-26 | The public address opens the built portal, labelled independent and unofficial | Must | Done | Gap review, 15 Nov 2026 | home, about | R8 |
 | REQ-27 | Inside Parliament: how Parliament's time works, a day in the life of an MYP, an MP and a peer, who does what, the building and who changes the rules, every fact sourced | Should | Done | Owner request, 17 Nov 2026 | parliament | S21, S16, S12 |
-| REQ-28 | Related themes to build next: the four nations' youth parliaments and legislatures, local democracy, registering to vote and elections, how a Bill becomes law, lobbying skills, careers in Parliament, heritage | Could | Planned | Owner request, 17 Nov 2026 | parliament | S21 |
+| REQ-28 | Related themes to build next: the four nations' youth parliaments and legislatures, local democracy, registering to vote and elections, how a Bill becomes law, lobbying skills, careers in Parliament, heritage | Could | In progress | Owner request, 17 Nov 2026 | parliament, civic | S21 |
+| REQ-29 | Every way to take part: political and civic routes by age and nation (register, vote, stand, serve, influence, how laws are made, civic life), every fact sourced, with a register of participation gaps | Should | Done | Owner request, 17 Nov 2026 | civic | S21, S16, S12 |
+| REQ-30 | Participation gaps still open: election calendar by nation, parties explained neutrally, devolved law-making, local council routes, accessible voting guides, registration and turnout chart, community organising, youth media, civic tech | Could | Planned | Gap register on Every way to take part, 17 Nov 2026 | civic | S21 |
 
 ## How it is traced, tracked and managed on GitHub
 
