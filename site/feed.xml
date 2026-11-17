@@ -21,6 +21,13 @@
     <summary>Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.</summary>
   </entry>
   <entry>
+    <title>Amplify 1.0.0-rc.7: Measure without tracking</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.7</id>
+    <updated>2026-11-17T00:00:00Z</updated>
+    <summary>The graphics pack is also published as a GitHub release file so its total downloads can be counted with no tracking on the portal, and the contact form now tells anyone worried about their safety where to go instead.</summary>
+  </entry>
+  <entry>
     <title>Amplify 1.0.0-rc.6: Every way to take part</title>
     <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
     <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.6</id>

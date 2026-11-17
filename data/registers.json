@@ -297,6 +297,22 @@
    "root_cause": "Screens were organised around the youth parliament ladder and campaigning; civic thresholds by age and nation had no home and no rule tying each age to the place it applies.",
    "fix": "Every way to take part, drawn from data/civic.json by a generic sourced-screen engine; check_site S21 now covers every sourced screen and fails a section with an unknown tab or type and an age-ladder item with no nation; negative tests prove both.",
    "check": "S21"
+  },
+  {
+   "id": "D38",
+   "found": "2026-11-17",
+   "what": "The Campaign kit could not show whether anyone used it: the graphics pack was served only from GitHub Pages, which gives no statistics, and Amplify collects no analytics by design, so the owner had no way to judge the campaign's reach or what to continue, pause or stop.",
+   "root_cause": "The no-analytics decision (go-live G11) was taken without listing the measures that need no tracking, so none were built.",
+   "fix": "The pack is also published as a GitHub release file whose total download count is public and needs nothing on the portal; the kit links it first and keeps the on-site copy; data/involve.json records the release tag and the pack's SHA-256, and check_site S22 fails if the pack changes without a new tag or the link and tag disagree. Publishing the release is a person's step, never a workflow's (R7): the owner creates the tag's release with the built pack (open item O19). About says what is counted and that nothing tracks visitors.",
+   "check": "S22"
+  },
+  {
+   "id": "D39",
+   "found": "2026-11-17",
+   "what": "The contact form, the portal's only contact route and a public one, did not tell someone who is worried about their safety, or someone else's, where to go instead.",
+   "root_cause": "The form was written for questions and corrections; readiness gate G06 paused recruitment but did not add a safety signpost to the route that stays open.",
+   "fix": "The form opens with where to go instead: a trusted adult, Childline on 0800 1111 for under 19s, or 999 in an emergency, and the Safeguarding & support screen; check_repo R13 fails if that signpost is removed.",
+   "check": "R13"
   }
  ],
  "open": [
@@ -358,6 +374,21 @@
   {
    "id": "O16",
    "what": "Decide whether to compile the page at build time, removing the in-browser compiler so it loads much faster on low-end phones; W7 measures it every run.",
+   "who": "Owner"
+  },
+  {
+   "id": "O17",
+   "what": "Verify the portal in Google Search Console and Bing Webmaster Tools (a verification file, no script) so search appearances and clicks can be counted in total without tracking visitors.",
+   "who": "Owner"
+  },
+  {
+   "id": "O18",
+   "what": "After UK Parliament Week, decide whether to add a cookie-free counter that only counts totals (allowed for statistics only under the Data (Use and Access) Act 2025), only with a data protection impact assessment, figures published on Portal health, no identifiers stored and a review date; tracking with profiling stays ruled out (Children's code).",
+   "who": "Owner"
+  },
+  {
+   "id": "O19",
+   "what": "Publish the GitHub release named in data/involve.json (kit-2026-11-17) with site/art/amplify-graphics-pack.zip attached, before or as this change goes live, so the Campaign kit's first download link works; a new tag and release each time the pack changes.",
    "who": "Owner"
   }
  ],
