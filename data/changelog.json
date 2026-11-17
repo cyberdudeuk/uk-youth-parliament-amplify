@@ -1,8 +1,8 @@
 {
  "title": "Release log",
- "checked": "2026-11-16",
+ "checked": "2026-11-17",
  "review_days": 30,
- "current": "1.0.0-rc.3",
+ "current": "1.0.0-rc.4",
  "releases": [
   {
    "version": "1.0.0",
@@ -13,7 +13,7 @@
    "entries": []
   },
   {
-   "version": "1.0.0-rc.3",
+   "version": "1.0.0-rc.4",
    "date": "2026-11-16",
    "status": "Release candidate",
    "title": "Weekly upkeep: helplines re-checked, two new updates",
@@ -33,6 +33,13 @@
      "screen": "graph",
      "kind": "NEW",
      "what": "Glossary and knowledge graph: NEET and Committee stage added."
+    }
+   ]
+  },
+  {
+   "version": "1.0.0-rc.3",
+   "date": "2026-11-16",
+   "status": "Release candidate",
    "title": "Campaign kit redesign for UK Parliament Week",
    "summary": "The campaign collateral redesigned from a scan of award-winning youth campaigns, inside the Brand & style rules, with a downloadable graphics pack (defects D30 to D34).",
    "entries": [

@@ -1,6 +1,6 @@
 {
  "title": "Registers",
- "checked": "2026-11-16",
+ "checked": "2026-11-17",
  "defects": [
   {
    "id": "D1",
@@ -273,6 +273,14 @@
    "root_cause": "The pages had a title and description but no Open Graph or Twitter card tags.",
    "fix": "Both the root page and the portal carry Open Graph and Twitter card tags with a 1200 by 630 campaign card and its alt text.",
    "check": "S20"
+  },
+  {
+   "id": "D35",
+   "found": "2026-11-17",
+   "what": "After pull requests 23 and 24 were both merged, data/changelog.json on main was not valid JSON, so the build and CI checks failed and the portal could not be rebuilt or republished.",
+   "root_cause": "Both pull requests added a release numbered 1.0.0-rc.3; resolving the merge conflict by hand dropped the lines between them. No check stopped two releases sharing a version.",
+   "fix": "The weekly upkeep release becomes 1.0.0-rc.4 (its two glossary terms now say rc.4), the campaign kit keeps rc.3, and S16 fails any two releases that share a version.",
+   "check": "S16"
   }
  ],
  "open": [

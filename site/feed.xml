@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">
   <title>Amplify: what's new</title>
   <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#feed</id>
-  <updated>2026-11-16T00:00:00Z</updated>
+  <updated>2026-11-17T00:00:00Z</updated>
   <link rel="alternate" href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify"/>
   <author><name>Amplify (independent, unofficial)</name></author>
   <subtitle>Youth voice news and Amplify releases. Generated from data/latest.json and data/changelog.json.</subtitle>
@@ -21,11 +21,13 @@
     <summary>Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.</summary>
   </entry>
   <entry>
-    <title>Amplify 1.0.0-rc.3: Weekly upkeep: helplines re-checked, two new updates</title>
+    <title>Amplify 1.0.0-rc.4: Weekly upkeep: helplines re-checked, two new updates</title>
     <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
-    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.3</id>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.4</id>
     <updated>2026-11-16T00:00:00Z</updated>
     <summary>Helplines re-verified against each service's own website on 16 November 2026; no closures or number changes. Two dated, sourced updates added to What's new, and two new glossary terms.</summary>
+  </entry>
+  <entry>
     <title>Amplify 1.0.0-rc.3: Campaign kit redesign for UK Parliament Week</title>
     <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
     <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.3</id>
