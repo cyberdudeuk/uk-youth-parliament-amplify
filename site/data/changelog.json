@@ -16,6 +16,23 @@
    "version": "1.0.0-rc.3",
    "date": "2026-11-16",
    "status": "Release candidate",
+   "title": "Weekly upkeep: helplines re-checked, two new updates",
+   "summary": "Helplines re-verified against each service's own website on 16 November 2026; no closures or number changes. Two dated, sourced updates added to What's new, and two new glossary terms.",
+   "entries": [
+    {
+     "screen": "care",
+     "kind": "UPD",
+     "what": "Safeguarding & support: Childline, Samaritans, Shout, The Mix and YoungMinds re-verified on their own websites (16 Nov 2026), no number changes; Childline is now marked verified; the Samaritans Welsh Language Line shows its hours, every day 7pm to 11pm."
+    },
+    {
+     "screen": "latest",
+     "kind": "NEW",
+     "what": "What's new: the Votes at 16 Bill reached Lords committee stage on 2 November 2026; MPs debated the review of young people and work on 3 November 2026."
+    },
+    {
+     "screen": "graph",
+     "kind": "NEW",
+     "what": "Glossary and knowledge graph: NEET and Committee stage added."
    "title": "Campaign kit redesign for UK Parliament Week",
    "summary": "The campaign collateral redesigned from a scan of award-winning youth campaigns, inside the Brand & style rules, with a downloadable graphics pack (defects D30 to D34).",
    "entries": [

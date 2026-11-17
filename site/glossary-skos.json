@@ -8,6 +8,8 @@
    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#",
    "@type": "skos:ConceptScheme",
    "dcterms:title": "Amplify glossary and thesaurus",
+   "dcterms:modified": "2026-11-16",
+   "dcterms:identifier": "AMP-20261116-ce5f1309"
    "dcterms:modified": "2026-11-15",
    "dcterms:identifier": "AMP-20261116-ed73a330"
   },
@@ -1160,6 +1162,82 @@
     }
    ],
    "dcterms:created": "1.0.0-rc.1"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#neet",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "NEET",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "not in education, employment or training",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "NEET rate",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "young people out of work and learning",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Not in education, employment or training: the official term for 16 to 24 year olds who are not studying, working or training.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#apprenticeship"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#local"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.3"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#committeestage",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Committee stage",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "Committee of the Whole House",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "line-by-line scrutiny",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "amendments",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The stage where a bill is examined line by line and changes (amendments) are debated. In the House of Lords it is often a Committee of the Whole House, held in the Chamber so every peer can take part.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#commons"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#votes16"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.3"
   }
  ]
 }

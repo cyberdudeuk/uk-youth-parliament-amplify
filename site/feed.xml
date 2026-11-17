@@ -21,6 +21,11 @@
     <summary>Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.</summary>
   </entry>
   <entry>
+    <title>Amplify 1.0.0-rc.3: Weekly upkeep: helplines re-checked, two new updates</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.3</id>
+    <updated>2026-11-16T00:00:00Z</updated>
+    <summary>Helplines re-verified against each service's own website on 16 November 2026; no closures or number changes. Two dated, sourced updates added to What's new, and two new glossary terms.</summary>
     <title>Amplify 1.0.0-rc.3: Campaign kit redesign for UK Parliament Week</title>
     <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
     <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.3</id>
@@ -47,6 +52,20 @@
     <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-0.1.0</id>
     <updated>2026-11-15T00:00:00Z</updated>
     <summary>The Claude Design project turned into a page that can be sent: portal view first, unofficial-prototype notices, the footer and colophon, and fonts and scripts served by the portal itself.</summary>
+  </entry>
+  <entry>
+    <title>MPs debate the review of young people and work</title>
+    <link href="https://assets.publishing.service.gov.uk/media/6a16f4f0c7335e2ca6daabf3/young-people-and-work-interim-report-large-print.pdf"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-11-03-data</id>
+    <updated>2026-11-03T00:00:00Z</updated>
+    <summary>A review of young people and work commissioned by the Work and Pensions Secretary (the Milburn review) published its interim report in May 2026: nearly one million 16 to 24 year olds in the UK are NEET, 957,000 at the end of 2025. MPs debated it in Westminster Hall on 3 November 2026. The final report is due later in 2026. Source: Young People and Work interim report (GOV.UK); Hansard.</summary>
+  </entry>
+  <entry>
+    <title>Votes at 16 Bill reaches Lords committee stage</title>
+    <link href="https://www.hansardsociety.org.uk/news/parliament-matters-bulletin-2-november-2026"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#news-2026-11-02-law</id>
+    <updated>2026-11-02T00:00:00Z</updated>
+    <summary>The House of Lords began its Committee of the Whole House on the Representation of the People Bill on 2 November 2026, with a second day on 4 November and six days provisionally allocated. Peers can now propose changes line by line. It is not yet law. Source: Hansard Society, Parliament Matters Bulletin; confirm each stage on Parliament's bill page.</summary>
   </entry>
   <entry>
     <title>April 2027 minimum wage rates announced</title>

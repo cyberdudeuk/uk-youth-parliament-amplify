@@ -1,6 +1,6 @@
 {
  "title": "What's new",
- "checked": "2026-11-15",
+ "checked": "2026-11-16",
  "review_days": 30,
  "categories": {
   "law": "Law & Parliament",
@@ -20,6 +20,24 @@
    "source": "UK Parliament Education",
    "provenance": "S",
    "status": "Coming up"
+  },
+  {
+   "date": "2026-11-02",
+   "cat": "law",
+   "title": "Votes at 16 Bill reaches Lords committee stage",
+   "body": "The House of Lords began its Committee of the Whole House on the Representation of the People Bill on 2 November 2026, with a second day on 4 November and six days provisionally allocated. Peers can now propose changes line by line. It is not yet law.",
+   "url": "https://www.hansardsociety.org.uk/news/parliament-matters-bulletin-2-november-2026",
+   "source": "Hansard Society, Parliament Matters Bulletin; confirm each stage on Parliament's bill page",
+   "provenance": "S"
+  },
+  {
+   "date": "2026-11-03",
+   "cat": "data",
+   "title": "MPs debate the review of young people and work",
+   "body": "A review of young people and work commissioned by the Work and Pensions Secretary (the Milburn review) published its interim report in May 2026: nearly one million 16 to 24 year olds in the UK are NEET, 957,000 at the end of 2025. MPs debated it in Westminster Hall on 3 November 2026. The final report is due later in 2026.",
+   "url": "https://assets.publishing.service.gov.uk/media/6a16f4f0c7335e2ca6daabf3/young-people-and-work-interim-report-large-print.pdf",
+   "source": "Young People and Work interim report (GOV.UK); Hansard",
+   "provenance": "S"
   },
   {
    "date": "2026-10-28",
