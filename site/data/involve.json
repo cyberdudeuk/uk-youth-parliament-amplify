@@ -1,6 +1,6 @@
 {
  "title": "Get involved, ambassadors, campaign kit, training and STEM",
- "checked": "2026-11-15",
+ "checked": "2026-11-16",
  "review_days": 90,
  "repo": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify",
  "involve": {
@@ -207,22 +207,37 @@
   "paused": "Sign-ups open once safeguarding is in place."
  },
  "campaign": {
-  "intro": "Everything you need to spread the word, especially during UK Parliament Week. Posters and cards are drawn in code and free to print. The text is a template: adapt it and check it before you use it.",
+  "intro": "Everything you need to spread the word, especially during UK Parliament Week. Redesigned on 16 November 2026 from what worked in award-winning youth campaigns, using only Amplify's six shapes and four hues: stickers you can point at, a ring round the word that matters, mantras, and the number then what it means. Posters and cards are drawn in code and free to print. The text is a template: adapt it and check it before you use it.",
   "assets": [
    {
-    "name": "Poster: Get involved (A4 portrait)",
+    "name": "Poster: Help build it (A4 portrait)",
     "file": "art/poster-involve.svg",
-    "alt": "Poster inviting people to help build Amplify"
+    "alt": "Poster: Help build it. No coding needed: check a fact, test with a screen reader, suggest an idea, design a poster or write code."
    },
    {
-    "name": "Poster: Girls in code, engineering and DevOps (A4 portrait)",
+    "name": "Poster: Girls code. Girls engineer. Girls ship. (A4 portrait)",
     "file": "art/poster-stem.svg",
-    "alt": "Poster celebrating girls and young women in STEM"
+    "alt": "Poster celebrating girls and young women in STEM, with the share of women in the UK's core STEM workforce and its source"
+   },
+   {
+    "name": "Poster: Data architect. Security architect. You. (A4 portrait)",
+    "file": "art/poster-careers.svg",
+    "alt": "Poster naming the seven architecture roles in Government Digital and Data, and routes in"
+   },
+   {
+    "name": "Poster to fill in: If I could change one thing (A4 portrait)",
+    "file": "art/poster-remix.svg",
+    "alt": "Poster with space to write the one thing you would change, for UK Parliament Week groups. No names or ages."
+   },
+   {
+    "name": "Sticker sheet (A4)",
+    "file": "art/sticker-sheet.svg",
+    "alt": "Twelve stickers built from Amplify's six shapes"
    },
    {
     "name": "Social card (square)",
     "file": "art/social-card.svg",
-    "alt": "Square card announcing Amplify"
+    "alt": "Square card: Youth voice, carried further. UK Parliament Week, 23 to 29 November 2026."
    },
    {
     "name": "Ambassador badge",
@@ -302,7 +317,38 @@
     "prov": "K"
    }
   ],
-  "moments_note": "S dates come from the organiser; K dates are leads to confirm on the organiser's own site before you plan around them."
+  "moments_note": "S dates come from the organiser; K dates are leads to confirm on the organiser's own site before you plan around them.",
+  "videos": [
+   {
+    "name": "Film: Youth voice, carried further (16:9, 35 seconds)",
+    "file": "media/campaign/film-youth-voice-16x9.mp4",
+    "poster": "media/campaign/film-youth-voice-16x9-poster.jpg",
+    "use": "Teams and Viva Engage posts, LinkedIn, YouTube, assemblies and screens",
+    "transcript": "Your voice. Carried further. Launches Monday 23 November. Trusted sources. Safe ways to take part. Campaign tools. For every age, across England, Scotland, Wales and Northern Ireland. Girls code. Girls engineer. Girls ship. 27.2% of the UK's core STEM workforce are women. Plus 149%: girls' A-level computing entries, 2019 to 2025 (sources: WISE). Data architect. Security architect. You. Help build it. No coding needed: check a fact, test with a screen reader, suggest an idea, design a poster. Youth voice, carried further. Free. Open source. No sign-in. A QR code opens Amplify."
+   },
+   {
+    "name": "Short: Your voice (9:16, 15 seconds)",
+    "file": "media/campaign/short-your-voice.mp4",
+    "poster": "media/campaign/short-your-voice-poster.jpg",
+    "use": "TikTok, Instagram Reels and Stories, YouTube Shorts, Snapchat",
+    "transcript": "UK Parliament Week, 23 to 29 November. Your voice. Carried further. Amplify launches Monday 23 November. Free. No sign-in. Ask your MP. Check the facts. My voice. Scan to start. A QR code opens Amplify. Free, open source, no sign-in."
+   },
+   {
+    "name": "Short: Girls ship (9:16, 15 seconds)",
+    "file": "media/campaign/short-girls-ship.mp4",
+    "poster": "media/campaign/short-girls-ship-poster.jpg",
+    "use": "TikTok, Reels, Shorts, and STEM and coding club channels",
+    "transcript": "STEM spotlight. Girls code. Girls engineer. Girls ship. 27.2% of the UK's core STEM workforce are women. You can move that number. Source: WISE workforce data, September 2025. You belong in tech. A QR code opens Amplify's STEM spotlight."
+   },
+   {
+    "name": "Short: You, architect (9:16, 15 seconds)",
+    "file": "media/campaign/short-you-architect.mp4",
+    "poster": "media/campaign/short-you-architect-poster.jpg",
+    "use": "TikTok, Reels, Shorts, LinkedIn and careers channels",
+    "transcript": "Careers, Government Digital and Data. Data architect. Security architect. You. Seven roles. Routes in. Many need no degree, such as the GDS TechTrack apprenticeship. Scan to find yours. A QR code opens Amplify."
+   }
+  ],
+  "video_note": "The films are silent: the words on screen are the captions, so they work with the sound off and for d/Deaf viewers. They never play by themselves, there is no flashing, and each has a transcript. Add a sound in the app if you post them on TikTok or Reels."
  },
  "learn": {
   "intro": "Ready-to-run sessions for schools, youth groups, clubs and families. Each lists who it is for, how long it takes, what people will be able to do afterwards, and the screens to use. Written for this portal; adapt them to your group.",
