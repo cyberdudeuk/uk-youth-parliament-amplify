@@ -291,6 +291,223 @@
    "url": "https://bills.parliament.uk/bills/4080",
    "provenance": "V",
    "checked": "2026-11-17"
+  },
+  {
+   "id": "darlington",
+   "label": "Darlington Borough Council: current and future elections",
+   "url": "https://new.darlington.gov.uk/elections/current-and-future-elections",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "haringey",
+   "label": "Haringey Council: future elections",
+   "url": "https://www.haringey.gov.uk/council-elections/elections-voting/upcoming-elections",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "slanark",
+   "label": "South Lanarkshire Council: elections and referenda",
+   "url": "https://www.southlanarkshire.gov.uk/info/200237/elections/1286/elections_and_referenda",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "wiki2027",
+   "label": "Wikipedia: 2027 United Kingdom local elections",
+   "url": "https://en.wikipedia.org/wiki/2027_United_Kingdom_local_elections",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "niae2027",
+   "label": "Wikipedia: next Northern Ireland Assembly election",
+   "url": "https://en.wikipedia.org/wiki/Next_Northern_Ireland_Assembly_election",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "rtvnext",
+   "label": "GOV.UK register to vote: what happens next",
+   "url": "https://www.registertovote.service.gov.uk/what-happens-next-british",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "edinvote",
+   "label": "City of Edinburgh Council: register to vote and application deadlines",
+   "url": "https://www.edinburgh.gov.uk/elections-voting/register-vote",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "southendvac",
+   "label": "Southend-on-Sea City Council: Voter Authority Certificate deadline",
+   "url": "https://www.southend.gov.uk/elections-registering-vote/changes-voting-%E2%80%93-voter-authority-certificate/6",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ropreg",
+   "label": "GOV.UK: Representation of the People Bill, registration changes",
+   "url": "https://www.gov.uk/government/publications/representation-of-the-people-bill-policy-summaries/registration-changes",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "ppera",
+   "label": "legislation.gov.uk: Political Parties, Elections and Referendums Act 2000, explanatory notes on registration",
+   "url": "https://www.legislation.gov.uk/ukpga/2000/41/notes/division/5/2",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "dcparties",
+   "label": "Democracy Club: opening the register of political parties",
+   "url": "https://democracyclub.org.uk/blog/2023/08/15/opening-the-register-of-political-parties",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "youthwing",
+   "label": "Wikipedia: youth wing",
+   "url": "https://en.wikipedia.org/wiki/Youth_wing",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "easyreadgov",
+   "label": "GOV.UK: voting and registering to vote, an easy read guide",
+   "url": "https://www.gov.uk/government/publications/voting-and-registering-to-vote-an-easy-read-guide",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "mencapvote",
+   "label": "Mencap: Easy Read guide to voting, made with the Electoral Commission",
+   "url": "https://www.mencap.org.uk/cy/node/1454",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "spstages",
+   "label": "Scottish Parliament: how a Bill becomes an Act",
+   "url": "https://parliament.scot/bills-and-laws/about-bills/how-a-bill-becomes-an-act",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "seneddleg",
+   "label": "Senedd: examining legislation",
+   "url": "https://senedd.wales/senedd-business/committees/about-senedd-committees/examining-legislation/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "niabill",
+   "label": "Northern Ireland Assembly: understanding a Bill, a guide for stakeholders",
+   "url": "https://www.niassembly.gov.uk/assembly-business/committees/understanding-a-bill-a-guide-for-stakeholders",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "greenwichq",
+   "label": "Royal Borough of Greenwich: your rights at council meetings",
+   "url": "https://www.royalgreenwich.gov.uk/council-and-elections/committees-and-meetings/your-rights-council-meetings/full-council-meetings",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "gloucq",
+   "label": "Gloucestershire County Council: asking a question at a council meeting",
+   "url": "https://gloucestershire.gov.uk/council-and-democracy/arrangements-for-engagement-with-full-council-meetings/how-can-i-ask-a-question-at-a-council-meeting",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "wokingq",
+   "label": "Woking Borough Council: ask a question at a council meeting",
+   "url": "https://www.woking.gov.uk/your-council/councillors-committees/committees-meetings/ask-question-council-meeting",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "cypcsuk",
+   "label": "Children and Young People's Commissioner Scotland: UN reporting by the UK's four commissioners",
+   "url": "https://www.cypcs.org.uk/?p=3343",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "shrcuncrc",
+   "label": "Scottish Human Rights Commission: the Convention on the Rights of the Child",
+   "url": "https://scottishhumanrights.com/projects-and-programmes/treaty-and-international-work/international-treaty-monitoring/the-convention-on-the-rights-of-the-child-crc",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "mysoc",
+   "label": "mySociety: improvements to WriteToThem",
+   "url": "https://www.mysociety.org/2026/07/29/improvements-to-writetothem/",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "mysoctwfy",
+   "label": "mySociety: TheyWorkForYou covers every UK law-making parliament",
+   "url": "https://www.mysociety.org/tag/parliamentary-monitoring/",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "bbcyr",
+   "label": "Participation Pool: BBC Young Reporter",
+   "url": "https://participationpool.eu/resource/bbc-young-reporter-resources",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "spa",
+   "label": "Wikipedia: Student Publication Association",
+   "url": "https://en.wikipedia.org/wiki/Student_Publication_Association",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "citizensuk",
+   "label": "Citizens UK: community organising in schools and colleges",
+   "url": "https://www.citizensuk.org/leadership-training/community-organising-in-schools/",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "nus",
+   "label": "Students' Union UCL: what is the National Union of Students?",
+   "url": "https://studentsunionucl.org/nus",
+   "provenance": "S",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "commonsapp",
+   "label": "UK Parliament: House of Commons apprenticeships",
+   "url": "https://www.parliament.uk/about/careers/commons/early-careers-apprenticeships/apprenticeships/",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "spapp",
+   "label": "Scottish Parliament: apprentices' stories",
+   "url": "https://parliament.scot/about/working-for-the-scottish-parliament/apprenticeships-and-work-experience/apprentice-stories",
+   "provenance": "V",
+   "checked": "2026-11-17"
+  },
+  {
+   "id": "fasttrackclosed",
+   "label": "GOV.UK: Civil Service Fast Track Apprenticeship eligibility (withdrawn; the programme is closed)",
+   "url": "https://www.gov.uk/guidance/civil-service-fast-track-apprenticeship-who-can-apply",
+   "provenance": "V",
+   "checked": "2026-11-17"
   }
  ],
  "tabs": [
@@ -323,6 +540,26 @@
    "id": "civic",
    "label": "Civic life",
    "icon": "heart-handshake"
+  },
+  {
+   "id": "elect",
+   "label": "Elections and parties",
+   "icon": "milestone"
+  },
+  {
+   "id": "nations",
+   "label": "Laws in each nation",
+   "icon": "landmark"
+  },
+  {
+   "id": "local",
+   "label": "Councils and rights",
+   "icon": "map"
+  },
+  {
+   "id": "organise",
+   "label": "Organise, report, build",
+   "icon": "megaphone"
   },
   {
    "id": "gaps",
@@ -905,63 +1142,414 @@
    ]
   },
   {
+   "tab": "elect",
+   "type": "cards",
+   "h": "Elections coming up",
+   "intro": "Dates as published by councils and the Electoral Commission's partners on 17 November 2026. By-elections can be called at any time. This list is rechecked on the monthly content run.",
+   "items": [
+    {
+     "t": "Council elections, Thursday 6 May 2027",
+     "d": "Councils in many parts of England, and every council in Scotland and Wales, are due to hold elections. In Scotland and Wales you can vote in council elections from 16.",
+     "src": [
+      "darlington",
+      "slanark",
+      "wiki2027"
+     ]
+    },
+    {
+     "t": "Northern Ireland Assembly and councils, May 2027",
+     "d": "The next Assembly election is due on or before 6 May 2027, with council elections expected the same month. In Northern Ireland the voting age is 18 for everything.",
+     "src": [
+      "niae2027",
+      "wiki2027"
+     ]
+    },
+    {
+     "t": "Police and crime commissioners, Thursday 4 May 2028",
+     "d": "Also the London Mayor and London Assembly on the same day.",
+     "src": [
+      "darlington",
+      "haringey"
+     ]
+    },
+    {
+     "t": "UK general election, no later than 15 August 2029",
+     "d": "The date is set when Parliament is dissolved. If the Representation of the People Bill becomes law, 16 and 17 year olds would vote in it.",
+     "src": [
+      "haringey",
+      "darlington"
+     ],
+     "screen": "policy"
+    }
+   ]
+  },
+  {
+   "tab": "elect",
+   "type": "steps",
+   "h": "Deadlines before any election",
+   "intro": "Counted in working days before polling day, so weekends and bank holidays do not count.",
+   "items": [
+    {
+     "t": "Register: by midnight, 12 working days before",
+     "d": "Miss it and you cannot vote in that election, though your registration still goes through for the next one. The Representation of the People Bill would move the deadline to 5pm on the same day.",
+     "src": [
+      "rtvnext",
+      "ropreg"
+     ]
+    },
+    {
+     "t": "Postal vote: 11 working days before",
+     "d": "New applications to vote by post, in England, Scotland and Wales.",
+     "src": [
+      "edinvote"
+     ]
+    },
+    {
+     "t": "Voter Authority Certificate: 5pm, 6 working days before",
+     "d": "The free photo ID for voting, if you have no accepted ID. You must be registered first.",
+     "src": [
+      "southendvac"
+     ],
+     "screen": "civic"
+    },
+    {
+     "t": "Proxy vote: 5pm, 6 working days before",
+     "d": "Someone you trust votes for you.",
+     "src": [
+      "edinvote"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "elect",
+   "type": "cards",
+   "h": "Political parties, explained neutrally",
+   "intro": "Amplify does not support or oppose any party. Members of Youth Parliament campaign without taking sides.",
+   "items": [
+    {
+     "t": "What a party is, in law",
+     "d": "To put a party name on a ballot paper, the party must be registered with the Electoral Commission, which keeps one register for Great Britain and one for Northern Ireland. Anyone can apply to register a party; the register is public.",
+     "src": [
+      "ppera",
+      "dcparties"
+     ]
+    },
+    {
+     "t": "Youth sections",
+     "d": "Many parties have a youth section with its own age range, often starting in the mid-teens. Each party sets its own rules, so check the party's own pages.",
+     "src": [
+      "youthwing"
+     ]
+    },
+    {
+     "t": "Comparing what they stand for",
+     "d": "Read each party's manifesto side by side on one issue you care about, rather than taking a summary on trust. The Issue domains screen shows who decides each issue.",
+     "editorial": true,
+     "screen": "issues"
+    }
+   ]
+  },
+  {
+   "tab": "elect",
+   "type": "cards",
+   "h": "Voting guides you can read easily",
+   "items": [
+    {
+     "t": "Easy Read guide to voting and registering",
+     "d": "Made by Mencap for people with a learning disability, their families and supporters, and published on GOV.UK.",
+     "src": [
+      "easyreadgov",
+      "mencapvote"
+     ]
+    },
+    {
+     "t": "Registration rates by age",
+     "d": "See how few young people are registered compared with older people, on Young people in numbers.",
+     "editorial": true,
+     "screen": "numbers"
+    }
+   ]
+  },
+  {
+   "tab": "nations",
+   "type": "steps",
+   "h": "How a Bill becomes an Act of the Scottish Parliament",
+   "items": [
+    {
+     "t": "Stage 1: general principles",
+     "d": "A committee usually takes evidence, then the Parliament debates and decides whether the Bill goes on or is rejected.",
+     "src": [
+      "spstages"
+     ]
+    },
+    {
+     "t": "Stage 2: amendments",
+     "d": "Any MSP can propose changes, called amendments.",
+     "src": [
+      "spstages"
+     ]
+    },
+    {
+     "t": "Stage 3: final amendments, debate and vote",
+     "d": "The whole Parliament considers further amendments and decides whether to pass the Bill.",
+     "src": [
+      "spstages"
+     ]
+    },
+    {
+     "t": "Royal Assent",
+     "d": "A passed Bill is normally sent for Royal Assent after about four weeks and becomes an Act of the Scottish Parliament.",
+     "src": [
+      "spstages"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "nations",
+   "type": "steps",
+   "h": "How a Bill becomes an Act of the Senedd",
+   "items": [
+    {
+     "t": "Stage 1: general principles",
+     "d": "A committee examines the Bill and the Senedd decides whether it should go further.",
+     "src": [
+      "seneddleg"
+     ]
+    },
+    {
+     "t": "Stage 2: committee amendments",
+     "d": "Every Member can table amendments, but only committee members vote on them at this stage.",
+     "src": [
+      "seneddleg"
+     ]
+    },
+    {
+     "t": "Stage 3: amendments in Plenary",
+     "d": "All Members consider amendments.",
+     "src": [
+      "seneddleg"
+     ]
+    },
+    {
+     "t": "Stage 4 and Royal Assent",
+     "d": "A final debate and vote on the text; with Royal Assent it becomes an Act of the Senedd.",
+     "src": [
+      "seneddleg"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "nations",
+   "type": "steps",
+   "h": "How a Bill becomes an Act of the Northern Ireland Assembly",
+   "items": [
+    {
+     "t": "First Stage",
+     "d": "The Bill is formally introduced and published, with no debate.",
+     "src": [
+      "niabill"
+     ]
+    },
+    {
+     "t": "Second Stage",
+     "d": "A debate on its general principles and a vote on whether it continues.",
+     "src": [
+      "niabill"
+     ]
+    },
+    {
+     "t": "Committee Stage",
+     "d": "The relevant committee considers it in detail. This is when you can send or give evidence.",
+     "src": [
+      "niabill"
+     ]
+    },
+    {
+     "t": "Consideration and Further Consideration Stages",
+     "d": "Members debate and vote on amendments on the Assembly floor, then have a final chance to amend.",
+     "src": [
+      "niabill"
+     ]
+    },
+    {
+     "t": "Final Stage and Royal Assent",
+     "d": "A final debate and vote on whether to pass the Bill; it then needs Royal Assent to become law.",
+     "src": [
+      "niabill"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "local",
+   "type": "cards",
+   "h": "Being heard by your council",
+   "intro": "Every council sets its own rules in its constitution, so the details below are examples: check your own council's website.",
+   "items": [
+    {
+     "t": "Talk to your ward councillor first",
+     "d": "Your local councillor is often the best first contact for a local issue, and can raise it for you.",
+     "src": [
+      "wokingq"
+     ]
+    },
+    {
+     "t": "Ask a question at a full council meeting",
+     "d": "Many councils set aside time, often up to 30 minutes, for written questions from people who live or work in the area, submitted days before the meeting.",
+     "src": [
+      "gloucq",
+      "greenwichq"
+     ]
+    },
+    {
+     "t": "Petition your council",
+     "d": "Councils have their own petition schemes. In some, any councillor can present your petition to a full council meeting for you.",
+     "src": [
+      "greenwichq"
+     ]
+    }
+   ]
+  },
+  {
+   "tab": "local",
+   "type": "cards",
+   "h": "Your rights, and who stands up for them",
+   "items": [
+    {
+     "t": "Four children's commissioners",
+     "d": "England, Scotland, Wales and Northern Ireland each have a commissioner for children and young people, and all four report to the UN on how the UK upholds children's rights.",
+     "src": [
+      "cypcsuk"
+     ]
+    },
+    {
+     "t": "Scotland made the UN Convention law",
+     "d": "The UNCRC (Incorporation) (Scotland) Act 2024 came into force on 16 July 2024, so public bodies in Scotland must respect children's rights in law.",
+     "src": [
+      "shrcuncrc"
+     ]
+    },
+    {
+     "t": "Get help if your rights are ignored",
+     "d": "The Safeguarding & support screen lists free, confidential helplines.",
+     "editorial": true,
+     "screen": "care"
+    }
+   ]
+  },
+  {
+   "tab": "organise",
+   "type": "cards",
+   "h": "Organise, report and build",
+   "items": [
+    {
+     "t": "Community organising",
+     "d": "Citizens UK trains school and college students to listen to their peers and act together on local issues with other community groups.",
+     "src": [
+      "citizensuk"
+     ]
+    },
+    {
+     "t": "Students' unions",
+     "d": "The National Union of Students brings together more than 600 students' unions representing over 7 million students.",
+     "src": [
+      "nus"
+     ]
+    },
+    {
+     "t": "Youth journalism",
+     "d": "BBC Young Reporter helps 11 to 18 year olds tell their own stories and understand the media; the Student Publication Association supports student newspapers and magazines.",
+     "src": [
+      "bbcyr",
+      "spa"
+     ]
+    },
+    {
+     "t": "Civic tech",
+     "d": "WriteToThem shows everyone who represents you, from councillors to Lords, from your postcode; TheyWorkForYou follows what they say and do in every UK law-making parliament.",
+     "src": [
+      "mysoc",
+      "mysoctwfy"
+     ]
+    },
+    {
+     "t": "Careers in Parliament",
+     "d": "The House of Commons offers apprenticeships in most of its teams, advertised at different times of year; most intermediate ones ask for GCSE English and maths at grade 4 or above. The Scottish Parliament runs apprenticeships too. The Civil Service Fast Track Apprenticeship has closed, so check current schemes before you plan around one.",
+     "src": [
+      "commonsapp",
+      "spapp",
+      "fasttrackclosed"
+     ]
+    },
+    {
+     "t": "Build your own",
+     "d": "The STEM & tech screen has free routes into coding and data, and Amplify itself is open for contributions.",
+     "editorial": true,
+     "screen": "stem"
+    }
+   ]
+  },
+  {
    "tab": "gaps",
    "type": "gaps",
    "h": "Gaps in young people's political and civic participation, and where Amplify stands on each",
-   "intro": "A working register. Built in this release means this screen now covers it; Next means planned and logged in the backlog (REQ-29); Partly means another screen covers some of it.",
+   "intro": "A working register. On Amplify means a screen here now covers it; Next means planned and logged in the backlog (REQ-29); Partly means another screen covers some of it.",
    "items": [
     {
      "t": "Registering, voting and voter ID, by nation",
      "domain": "Political",
-     "status": "Built in this release",
+     "status": "On Amplify",
      "screen": "civic"
     },
     {
      "t": "How a Bill becomes law",
      "domain": "Political",
-     "status": "Built in this release",
+     "status": "On Amplify",
      "screen": "civic"
     },
     {
      "t": "Writing to MPs and peers, committee evidence and consultations",
      "domain": "Political",
-     "status": "Built in this release",
+     "status": "On Amplify",
      "screen": "civic"
     },
     {
      "t": "Standing for election, and serving as trustee, governor or juror",
      "domain": "Political",
-     "status": "Built in this release",
+     "status": "On Amplify",
      "screen": "civic"
     },
     {
      "t": "Citizens' assemblies and participatory budgeting",
      "domain": "Political",
-     "status": "Built in this release",
+     "status": "On Amplify",
      "screen": "civic"
     },
     {
      "t": "Election calendar by nation, with registration and ID deadlines",
      "domain": "Political",
-     "status": "Next",
+     "status": "On Amplify",
      "screen": ""
     },
     {
      "t": "What political parties and their youth sections are, explained neutrally",
      "domain": "Political",
-     "status": "Next",
+     "status": "On Amplify",
      "screen": ""
     },
     {
      "t": "How Holyrood, the Senedd and Stormont make laws and run committees",
      "domain": "Political",
-     "status": "Partly",
+     "status": "On Amplify",
      "screen": "state"
     },
     {
      "t": "Local councils: asking a question at a council meeting, council petitions, councillor surgeries",
      "domain": "Political",
-     "status": "Next",
+     "status": "On Amplify",
      "screen": ""
     },
     {
@@ -973,25 +1561,25 @@
     {
      "t": "Young people's registration and turnout, as a chart by nation and age",
      "domain": "Political",
-     "status": "Next",
+     "status": "On Amplify",
      "screen": ""
     },
     {
      "t": "Volunteering and social action routes by age",
      "domain": "Civic",
-     "status": "Built in this release",
+     "status": "On Amplify",
      "screen": "civic"
     },
     {
      "t": "Protest and campaigning rights, by nation, with safeguarding",
      "domain": "Civic",
-     "status": "Built in this release",
+     "status": "On Amplify",
      "screen": "civic"
     },
     {
      "t": "The right to be heard (UNCRC Article 12) and children's commissioners",
      "domain": "Civic",
-     "status": "Partly",
+     "status": "On Amplify",
      "screen": "care"
     },
     {
@@ -1003,31 +1591,31 @@
     {
      "t": "Students' unions and the student movement",
      "domain": "Civic",
-     "status": "Partly",
+     "status": "On Amplify",
      "screen": "route"
     },
     {
      "t": "Community organising, faith and cultural groups as routes to civic life",
      "domain": "Civic",
-     "status": "Next",
+     "status": "On Amplify",
      "screen": ""
     },
     {
      "t": "Youth journalism and student media",
      "domain": "Civic",
-     "status": "Next",
+     "status": "On Amplify",
      "screen": ""
     },
     {
      "t": "Civic tech: tools that let anyone follow and contact Parliament",
      "domain": "Civic",
-     "status": "Next",
+     "status": "On Amplify",
      "screen": "stem"
     },
     {
      "t": "Careers in Parliament and public service",
      "domain": "Civic",
-     "status": "Partly",
+     "status": "On Amplify",
      "screen": "stem"
     }
    ]

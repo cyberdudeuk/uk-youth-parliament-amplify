@@ -2,7 +2,7 @@
  "title": "Release log",
  "checked": "2026-11-17",
  "review_days": 30,
- "current": "1.0.0-rc.8",
+ "current": "1.0.0-rc.9",
  "releases": [
   {
    "version": "1.0.0",
@@ -11,6 +11,55 @@
    "title": "Launch at UK Parliament Week 2026",
    "summary": "Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.",
    "entries": []
+  },
+  {
+   "version": "1.0.0-rc.9",
+   "date": "2026-11-17",
+   "status": "Release candidate",
+   "title": "One front door, and the participation gaps filled",
+   "summary": "Home now leads with its title and a Who are you? chooser instead of a closed petition's splash and a stack of banners. Every way to take part gains elections and parties, laws in each nation, councils and rights, and organising, reporting and building.",
+   "entries": [
+    {
+     "screen": "home",
+     "kind": "CHANGED",
+     "what": "Who are you? opens three places to start and a tour for each of eight audiences. On a phone the page title moved up from 1,227px to about 480px (D44)."
+    },
+    {
+     "screen": "hub",
+     "kind": "CHANGED",
+     "what": "The petition story splash no longer opens by itself; watch it from Campaign hub or the masthead (D44)."
+    },
+    {
+     "screen": "home",
+     "kind": "CHANGED",
+     "what": "This screen becomes About this screen: one line, closed until you open it, holding the audience picker, the content class and what changed (D44)."
+    },
+    {
+     "screen": "civic",
+     "kind": "NEW",
+     "what": "Elections and parties, Laws in each nation, Councils and rights, and Organise, report, build: dates and deadlines, parties explained neutrally, Holyrood, Senedd and Stormont stages, council questions and petitions, the four children's commissioners, civic tech, youth journalism, students' unions and careers in Parliament."
+    },
+    {
+     "screen": "numbers",
+     "kind": "NEW",
+     "what": "Who is on the electoral register, by age."
+    },
+    {
+     "screen": "incl",
+     "kind": "CHANGED",
+     "what": "The access features card opens Access settings, and Easy Read can be switched on from Inclusion & reach."
+    },
+    {
+     "screen": "civic",
+     "kind": "FIXED",
+     "what": "Gaps once marked Built in this release now say On Amplify, which stays true after the next release (D45)."
+    },
+    {
+     "screen": "hub",
+     "kind": "FIXED",
+     "what": "A replayed petition story no longer closes itself while you read it (D46)."
+    }
+   ]
   },
   {
    "version": "1.0.0-rc.8",

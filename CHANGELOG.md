@@ -6,6 +6,19 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.9 · 2026-11-17 · Release candidate
+
+**One front door, and the participation gaps filled.** Home now leads with its title and a Who are you? chooser instead of a closed petition's splash and a stack of banners. Every way to take part gains elections and parties, laws in each nation, councils and rights, and organising, reporting and building.
+
+- **CHANGED** `home`: Who are you? opens three places to start and a tour for each of eight audiences. On a phone the page title moved up from 1,227px to about 480px (D44).
+- **CHANGED** `hub`: The petition story splash no longer opens by itself; watch it from Campaign hub or the masthead (D44).
+- **CHANGED** `home`: This screen becomes About this screen: one line, closed until you open it, holding the audience picker, the content class and what changed (D44).
+- **NEW** `civic`: Elections and parties, Laws in each nation, Councils and rights, and Organise, report, build: dates and deadlines, parties explained neutrally, Holyrood, Senedd and Stormont stages, council questions and petitions, the four children's commissioners, civic tech, youth journalism, students' unions and careers in Parliament.
+- **NEW** `numbers`: Who is on the electoral register, by age.
+- **CHANGED** `incl`: The access features card opens Access settings, and Easy Read can be switched on from Inclusion & reach.
+- **FIXED** `civic`: Gaps once marked Built in this release now say On Amplify, which stays true after the next release (D45).
+- **FIXED** `hub`: A replayed petition story no longer closes itself while you read it (D46).
+
 ## 1.0.0-rc.8 · 2026-11-17 · Release candidate
 
 **See the data, read it easily, learn by doing.** Issue domains now show how much each issue matters: what young people voted for, worry about and have actually done, in six views. A new screen sets out young people in the UK in official numbers. Academy lessons are real and interactive, Easy Read summaries cover every screen, and cards that named an issue now open it.
