@@ -55,5 +55,97 @@
    "id": "about",
    "d": "Who is behind Amplify, and why."
   }
+ ],
+ "doors_intro": "Tell us who you are and we will show you where to start. You can change this at any time, and nothing is saved except on this device.",
+ "doors": [
+  {
+   "persona": "young11",
+   "label": "I'm 11 to 15",
+   "icon": "sparkles",
+   "routes": [
+    "civic",
+    "issues",
+    "care"
+   ],
+   "tour": "newhere"
+  },
+  {
+   "persona": "young16",
+   "label": "I'm 16 to 25",
+   "icon": "vote",
+   "routes": [
+    "civic",
+    "issues",
+    "acad"
+   ],
+   "tour": "learn"
+  },
+  {
+   "persona": "parent",
+   "label": "I'm a parent or carer",
+   "icon": "hand-heart",
+   "routes": [
+    "trust",
+    "care",
+    "civic"
+   ],
+   "tour": "parent"
+  },
+  {
+   "persona": "teacher",
+   "label": "I teach",
+   "icon": "graduation-cap",
+   "routes": [
+    "learn",
+    "res",
+    "acad"
+   ],
+   "tour": "ally"
+  },
+  {
+   "persona": "worker",
+   "label": "I run a youth group",
+   "icon": "users",
+   "routes": [
+    "learn",
+    "communities",
+    "care"
+   ],
+   "tour": "ally"
+  },
+  {
+   "persona": "access",
+   "label": "I'm d/Deaf or disabled",
+   "icon": "accessibility",
+   "routes": [
+    "incl",
+    "trust",
+    "care"
+   ],
+   "tour": "newhere",
+   "easy": true
+  },
+  {
+   "persona": "club",
+   "label": "I run a coding or STEM club",
+   "icon": "cpu",
+   "routes": [
+    "stem",
+    "involve",
+    "learn"
+   ],
+   "tour": "supporter"
+  },
+  {
+   "persona": "ally",
+   "label": "I make or report on policy",
+   "icon": "landmark",
+   "routes": [
+    "numbers",
+    "media",
+    "sources"
+   ],
+   "tour": "ally"
+  }
  ]
 }

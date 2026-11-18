@@ -926,32 +926,32 @@
    {
     "t": "The four nations' parliaments: Scottish Youth Parliament, Senedd Ieuenctid, NI Youth Assembly and the devolved legislatures' own days",
     "kind": "Theme",
-    "status": "Candidate",
-    "screen": "state"
+    "status": "On Amplify",
+    "screen": "civic"
    },
    {
     "t": "Local democracy: young mayors, youth councils and council meetings",
     "kind": "Theme",
-    "status": "Candidate",
-    "screen": "communities"
+    "status": "On Amplify",
+    "screen": "civic"
    },
    {
     "t": "Registering to vote, elections and how a general election works",
     "kind": "Topic",
-    "status": "Candidate",
-    "screen": ""
+    "status": "On Amplify",
+    "screen": "civic"
    },
    {
     "t": "How a Bill becomes law, stage by stage, in both Houses",
     "kind": "Topic",
-    "status": "Candidate",
-    "screen": "graph"
+    "status": "On Amplify",
+    "screen": "civic"
    },
    {
     "t": "Lobbying your MP and peers: letters, surgeries and visits",
     "kind": "Skill",
-    "status": "Candidate",
-    "screen": "kit"
+    "status": "On Amplify",
+    "screen": "civic"
    },
    {
     "t": "Media literacy, misinformation and AI in politics",
@@ -962,8 +962,8 @@
    {
     "t": "Careers in Parliament: clerks, researchers, apprenticeships, doorkeepers",
     "kind": "Subject",
-    "status": "Candidate",
-    "screen": "stem"
+    "status": "On Amplify",
+    "screen": "civic"
    },
    {
     "t": "Parliament's history and heritage, including the Restoration and Renewal Programme",
@@ -975,7 +975,7 @@
     "t": "Rights of the child (UNCRC) and children's commissioners in each nation",
     "kind": "Theme",
     "status": "On Amplify",
-    "screen": "care"
+    "screen": "civic"
    }
   ]
  },

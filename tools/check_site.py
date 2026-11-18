@@ -617,6 +617,10 @@ def s23(texts):
             if len(t.split()) > 15: bad.append(f"S23 an Easy Read line for {sid} has more than 15 words: {t[:40]} (D41)")
             if icons and ic not in icons: bad.append(f"S23 an Easy Read line for {sid} uses icon {ic}, which is not vendored (D41)")
     if 'aria-pressed="{{ erPressed }}"' not in page: bad.append("S23 the Easy Read switch has lost its aria-pressed state (D41)")
+    for name in sorted(k for k in texts if k.startswith("data/") and k.endswith(".json")):
+        if '"Built in this release"' in texts[name]: bad.append(f"S23 site/{name} uses the release-relative status Built in this release (D45)")
+    if "}, 55);\n    this.auto = setTimeout" in texts.get("index.html", ""):
+        bad.append("S23 an auto-close timer is armed on arrival although the splash starts closed (D46)")
     for phrase, d in S23_NOT_AGAIN:
         if phrase in page: bad.append(f"S23 the page says '{phrase}' again ({d})")
     return bad
@@ -796,4 +800,6 @@ if __name__ == "__main__":
     expect("S23", s23(texts_of(broken(erj, edit(lambda d: d["screens"]["home"].__setitem__(0, ["unicorn", "Hello."]))))))  # an icon not vendored
     expect("S23", s23(texts_of(broken(idx, lambda s: s + "DfE &middot; petition relaunching"))))                      # relaunch claim back (D42)
     expect("S23", s23(texts_of(broken(idx, lambda s: s + "Report stage and third reading, three days ago."))))         # relative date back (D43)
+    expect("S23", s23(texts_of(broken(idx, lambda s: s.replace("}, 55);\n    if (this.state.splash) this.auto", "}, 55);\n    this.auto", 1)))))  # stale splash timer back (D46)
+    expect("S23", s23(texts_of(broken(cvj, lambda s: s.replace('"On Amplify"', '"Built in this release"', 1)))))                         # release-relative status back (D45)
     sys.exit(1 if fails else 0)

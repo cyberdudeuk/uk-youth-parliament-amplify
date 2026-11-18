@@ -9,7 +9,7 @@
    "@type": "skos:ConceptScheme",
    "dcterms:title": "Amplify glossary and thesaurus",
    "dcterms:modified": "2026-11-17",
-   "dcterms:identifier": "AMP-20261117-eb30db85"
+   "dcterms:identifier": "AMP-20261117-1a6253c8"
   },
   {
    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#myp",
@@ -2078,6 +2078,111 @@
     }
    ],
    "dcterms:created": "1.0.0-rc.8"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#youthwing",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Youth wing",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "youth section",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "young members",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "party youth organisation",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "The section of a political party for its younger members, with its own age range and activities. Each party sets its own rules.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#votes16"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.9"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#communityorganising",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Community organising",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "organising",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "broad-based organising",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "alliance",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "People from different local groups, such as schools, faith groups and unions, listening to each other and acting together on shared issues.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#youngcarer"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.9"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#civictech",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Civic tech",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "civic technology",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "democracy tools",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "open data for democracy",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "Websites and tools that help people find, follow and contact the people who represent them, or take part in decisions.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#easyread"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.9"
   }
  ]
 }

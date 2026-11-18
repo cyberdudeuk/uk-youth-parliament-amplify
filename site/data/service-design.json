@@ -574,6 +574,34 @@
    "proved": [
     "S23"
    ]
+  },
+  {
+   "id": "ST26",
+   "persona": "young11",
+   "want": "to land on a page that tells me what this is and where to start",
+   "so": "I do not give up before I find what I came for",
+   "screen": "home",
+   "accept": [
+    "The page title is on the first screen of a phone",
+    "Choosing who I am shows three places to start"
+   ],
+   "proved": [
+    "W10"
+   ]
+  },
+  {
+   "id": "ST27",
+   "persona": "young16",
+   "want": "the next election dates and the deadlines to register and get voter ID",
+   "so": "I do not miss my first vote",
+   "screen": "civic",
+   "accept": [
+    "Every date and deadline names its source",
+    "Rechecked monthly"
+   ],
+   "proved": [
+    "S21"
+   ]
   }
  ],
  "journeys": [

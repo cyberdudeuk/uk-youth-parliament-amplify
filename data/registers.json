@@ -345,6 +345,30 @@
    "root_cause": "Relative dates were written into static text.",
    "fix": "The date stands on its own; hard-coded relative dates are banned by check.",
    "check": "S23"
+  },
+  {
+   "id": "D44",
+   "found": "2026-11-17",
+   "what": "There was no clear front door: a first visit opened on a splash about a petition that closed in August 2026, and on a phone Home's title sat 1,227px down an 844px screen under the This screen strip, alerts, the news ticker and the launch carousel.",
+   "root_cause": "Each banner was added for a good reason on its own, and no check measured where a screen's title landed.",
+   "fix": "The splash opens only when asked for; Home leads with its title and Who are you?; the strip is a closed one-line disclosure holding the integrity and release notes; the masthead and alerts are compact on phones.",
+   "check": "W10"
+  },
+  {
+   "id": "D45",
+   "found": "2026-11-17",
+   "what": "Gaps on Every way to take part said Built in this release, which became untrue as soon as the next release shipped.",
+   "root_cause": "A status written relative to the current release, the same class as the relative date in D43.",
+   "fix": "Built items now say On Amplify, and the label is banned by check.",
+   "check": "S23"
+  },
+  {
+   "id": "D46",
+   "found": "2026-11-17",
+   "what": "A splash opened from the replay button closed by itself about seven seconds after the page loaded, while the reader was still reading it.",
+   "root_cause": "When D44 stopped the splash opening on arrival, the auto-close timer armed on arrival stayed; replay armed a second timer in the same slot, so the first could no longer be cleared.",
+   "fix": "The arrival timer is armed only if the splash is open, and replay clears any earlier timer before arming its own.",
+   "check": "S23, W6"
   }
  ],
  "open": [

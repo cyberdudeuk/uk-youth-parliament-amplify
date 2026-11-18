@@ -6,7 +6,7 @@ Needs Playwright with Chromium (pip install -r tools/requirements-browser.txt; p
   W3  axe-core finds no serious or critical accessibility issue beyond the recorded baseline for that screen; the
       baseline is the original design's own findings (open item O3) and may only shrink
   W4  the self-reporting screens fill from their data: Trusted sources shows cards, Portal health shows a status
-  W6  the splash is safe to land on: it is a labelled dialog, Tab stays inside it, Escape enters the portal and moves
+  W6  the splash is safe when opened (from the masthead's Splash button since 1.0.0-rc.9): it is a labelled dialog, Tab stays inside it, Escape enters the portal and moves
       focus to the main content, it never closes by itself once someone has interacted, and it fits a 320 px phone
       and a 768 px tablet without sideways scrolling (D16; vaccinated against a splash with no keyboard handling)
   W7  the light theme passes axe-core with no serious or critical issue beyond the baseline on a sample of screens,
@@ -21,6 +21,11 @@ Needs Playwright with Chromium (pip install -r tools/requirements-browser.txt; p
       dismissed; Share opens a menu with a copy option when the device has no share sheet; the backlog filter narrows
       the list; and turning the ticker off on Alerts & notifications removes it (vaccinated against a ticker that
       keeps moving after its pause button is pressed)
+  W10 one clear front door (D44, 17 November 2026: on a phone Home's title sat 1,227px down an 844px screen and every
+      first visit opened on a closed petition's splash): arriving opens no dialog; Home's title starts within the
+      first screen at 390 x 844 and at 1440 x 900; the Who are you? chooser is there and choosing a door shows three
+      places to start; and the This screen strip is a closed disclosure (vaccinated against a page whose title sits
+      below the fold)
 
 Screens are read from data/integrity.json, which check_sources C9 keeps in step with the drawer, so a new screen is
 tested without editing this file.
@@ -44,6 +49,7 @@ async def splash_checks(b, url):
     for width in (1440, 768, 320):
         ctx = await b.new_context(viewport={"width": width, "height": 800}); pg = await ctx.new_page()
         await pg.goto(url, wait_until="networkidle"); await pg.wait_for_timeout(500)
+        await pg.locator('button[data-tip="ui:replay"]').first.click(); await pg.wait_for_timeout(400)
         dlg = pg.locator('[data-amp-splash][role="dialog"]')
         if await dlg.count() == 0: bad.append(f"W6 at {width}px the splash is not a labelled dialog"); await ctx.close(); continue
         over = await pg.evaluate("document.documentElement.scrollWidth - window.innerWidth")
@@ -61,7 +67,7 @@ async def splash_checks(b, url):
             if await dlg.count(): bad.append("W6 Escape does not enter the portal")
             elif await pg.evaluate("document.activeElement && document.activeElement.id") != "amp-main": bad.append("W6 after the splash, focus is not on the main content")
             # interaction holds the splash open past its own timer
-            await pg.goto(url, wait_until="networkidle"); await pg.mouse.move(400, 300); await pg.wait_for_timeout(15500)
+            await pg.goto(url, wait_until="networkidle"); await pg.locator('button[data-tip="ui:replay"]').first.click(); await pg.mouse.move(400, 300); await pg.wait_for_timeout(15500)
             if await dlg.count() == 0: bad.append("W6 the splash closed by itself after the reader had interacted")
         await ctx.close()
     return bad
@@ -143,6 +149,35 @@ async def ticker_and_friends(b, url):
     print(("caught     " if hit else "NOT CAUGHT ") + "W9 (a ticker that keeps moving after pause)")
     if not hit: bad.append("W9 vaccination failed")
     await ctx.close()
+    return bad
+
+
+HEAD_TOP = "(() => { const h = document.querySelector('#amp-main h1'); return h ? Math.round(h.getBoundingClientRect().top + scrollY) : 99999; })()"
+
+
+async def front_door(b, url):
+    """W10 one clear front door (D44)."""
+    bad = []
+    for w, h in ((390, 844), (1440, 900)):
+        ctx = await b.new_context(viewport={"width": w, "height": h}); pg = await ctx.new_page()
+        await pg.goto(url, wait_until="networkidle"); await pg.wait_for_timeout(700)
+        if await pg.locator('[data-amp-splash][role="dialog"]').count(): bad.append(f"W10 at {w}px a dialog opens by itself on arrival (D44)")
+        top = await pg.evaluate(HEAD_TOP)
+        if top > h - 120: bad.append(f"W10 at {w}x{h} Home's title starts at {top}px, below the first screen (D44)")
+        if await pg.locator("#amp-doors").count() == 0: bad.append("W10 Home has no Who are you? chooser")
+        else:
+            await pg.locator('section[aria-labelledby="amp-doors"] ul button').first.click(); await pg.wait_for_timeout(300)
+            n = await pg.locator("#amp-door-panel button.amp-card").count()
+            if n != 3: bad.append(f"W10 choosing a door shows {n} places to start, not three")
+        if await pg.locator("details.amp-explainer[open]").count(): bad.append("W10 the About this screen strip opens by default")
+        await ctx.close()
+    # vaccination: W10 must fail on a page whose title sits below the fold
+    pg = await b.new_page(viewport={"width": 390, "height": 844})
+    await pg.set_content('<!doctype html><html lang="en"><title>t</title><main id="amp-main"><div style="height:1200px"></div><h1>Late</h1></main></html>')
+    hit = await pg.evaluate(HEAD_TOP) > 844 - 120
+    print(("caught     " if hit else "NOT CAUGHT ") + "W10 (a title below the fold)")
+    if not hit: bad.append("W10 vaccination failed")
+    await pg.close()
     return bad
 
 
@@ -235,6 +270,7 @@ async def run(update):
                 await pg.close()
             await ctx.close()
         bad += await splash_checks(b, url)
+        bad += await front_door(b, url)
         bad += await drawer_and_viewer(b, url)
         bad += await ticker_and_friends(b, url)
         bad += await light_and_speed(b, url, axe, base)
@@ -261,7 +297,7 @@ async def run(update):
         for sc, got in found.items():  # the baseline may only shrink: note improvements so it can be tightened
             if set(got) != set(base.get(sc, [])) and not any(b.startswith("W3 #" + sc) for b in bad):
                 print(f"note: #{sc} improved against its baseline; run with --update-baseline to lock that in")
-    print(f"amplify browser: {len(SCREENS)} screens at 1440, 768 and 320 px, W1-W9 problems: {len(bad)}")
+    print(f"amplify browser: {len(SCREENS)} screens at 1440, 768 and 320 px, W1-W10 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 

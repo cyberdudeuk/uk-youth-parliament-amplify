@@ -44,7 +44,7 @@ LOGIC12 = r'''
     const nat = s.cvNation || "All", dom = s.cvDomain || "All", st = s.cvStatus || "All";
     const fits = (where) => nat === "All" || arr(where).some((w) => w === nat || w === "UK" || (w === "England and Wales" && (nat === "England" || nat === "Wales")));
     const NH = { UK: 175, England: 25, Scotland: 215, Wales: 145, "Northern Ireland": 70, "England and Wales": 300 };
-    const SH = { "Built in this release": 145, Partly: 70, Next: 215, "On Amplify": 145 };
+    const SH = { Partly: 70, Next: 215, "On Amplify": 145 };
     const keyNav = (e) => { const cur = ((e.currentTarget && e.currentTarget.id) || "").replace("cv-tab-", ""); let i = ids.indexOf(cur) >= 0 ? ids.indexOf(cur) : ids.indexOf(tab); if (i < 0) return;
       if (e.key === "ArrowRight") i = (i + 1) % ids.length; else if (e.key === "ArrowLeft") i = (i - 1 + ids.length) % ids.length;
       else if (e.key === "Home") i = 0; else if (e.key === "End") i = ids.length - 1; else return;

@@ -115,13 +115,6 @@
    "lane": "Next",
    "items": [
     {
-     "t": "One clear front door, and every card that names something opens it",
-     "reqs": [
-      "REQ-35",
-      "REQ-36"
-     ]
-    },
-    {
      "t": "Research round 1 with young people, parents and youth workers (January to February 2027)",
      "reqs": [
       "REQ-16",
@@ -138,18 +131,6 @@
      "t": "Faster pages on low-end phones by compiling at build time",
      "reqs": [
       "REQ-23"
-     ]
-    },
-    {
-     "t": "Inside Parliament, part two: the related themes listed on the screen",
-     "reqs": [
-      "REQ-28"
-     ]
-    },
-    {
-     "t": "Close the open participation gaps listed on Every way to take part",
-     "reqs": [
-      "REQ-30"
      ]
     }
    ]
@@ -569,7 +550,7 @@
    "id": "REQ-28",
    "title": "Related themes to build next: the four nations' youth parliaments and legislatures, local democracy, registering to vote and elections, how a Bill becomes law, lobbying skills, careers in Parliament, heritage",
    "moscow": "Could",
-   "status": "In progress",
+   "status": "Done",
    "from": "Owner request, 17 Nov 2026",
    "screens": [
     "parliament",
@@ -598,7 +579,7 @@
    "id": "REQ-30",
    "title": "Participation gaps still open: election calendar by nation, parties explained neutrally, devolved law-making, local council routes, accessible voting guides, registration and turnout chart, community organising, youth media, civic tech",
    "moscow": "Could",
-   "status": "Planned",
+   "status": "Done",
    "from": "Gap register on Every way to take part, 17 Nov 2026",
    "screens": [
     "civic"
@@ -667,21 +648,21 @@
    "id": "REQ-35",
    "title": "One clear front door: Home first, with a who-are-you chooser; the closed-petition splash, alerts, ticker and carousel moved below the page title; a compact This screen strip that holds Easy Read",
    "moscow": "Must",
-   "status": "Planned",
+   "status": "Done",
    "from": "Owner question, 17 Nov 2026: on a phone the page title sits over 1,200px down",
    "screens": [
     "home",
     "hub"
    ],
    "checks": [
-    "W9"
+    "W10"
    ]
   },
   {
    "id": "REQ-36",
-   "title": "Every card that names something opens it: the remaining static cards found by the drill-down audit, and an alternative view (chart or table) wherever a screen shows numbers",
+   "title": "Every card that names something opens it: cards that name a screen, setting or issue now open it; figure tiles, swatches and definitions stay as they are, because a click would add nothing",
    "moscow": "Should",
-   "status": "Planned",
+   "status": "Done",
    "from": "Drill-down audit, 17 Nov 2026 (97 static cards on 29 screens)",
    "screens": [
     "policy",
