@@ -64,7 +64,7 @@
   {
    "screen": "acad",
    "class": "Editorial",
-   "why": "Lessons and quiz questions are written for this portal from the sources cited in each lesson."
+   "why": "Lessons are written for this portal. Facts in each step carry their official source; steps marked Editorial are the portal's own advice. Progress is real and stays on this device."
   },
   {
    "screen": "ysc",
@@ -142,9 +142,15 @@
    "why": "Every fact names an official or secondary source in data/parliament.json, each dated; a few campaign tips are marked as Amplify's note. Roles are described, not named, and link to the official page that says who holds them now."
   },
   {
+   "screen": "numbers",
+   "class": "Sourced",
+   "why": "Every figure is copied from a named official or secondary source with its date; shares worked out in the page are labelled.",
+   "check": "Many figures cover England only; each chart says which nation it covers."
+  },
+  {
    "screen": "issues",
    "class": "Sourced",
-   "why": "UKYP positions are quoted from UKYP's manifesto and campaigns."
+   "why": "UKYP positions are quoted from UKYP's manifesto and campaigns. The How much it matters panel uses published Make Your Mark counts and named surveys, with shares worked out in the page."
   },
   {
    "screen": "guide",

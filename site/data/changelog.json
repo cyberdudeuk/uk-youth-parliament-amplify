@@ -2,7 +2,7 @@
  "title": "Release log",
  "checked": "2026-11-17",
  "review_days": 30,
- "current": "1.0.0-rc.7",
+ "current": "1.0.0-rc.8",
  "releases": [
   {
    "version": "1.0.0",
@@ -11,6 +11,45 @@
    "title": "Launch at UK Parliament Week 2026",
    "summary": "Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.",
    "entries": []
+  },
+  {
+   "version": "1.0.0-rc.8",
+   "date": "2026-11-17",
+   "status": "Release candidate",
+   "title": "See the data, read it easily, learn by doing",
+   "summary": "Issue domains now show how much each issue matters: what young people voted for, worry about and have actually done, in six views. A new screen sets out young people in the UK in official numbers. Academy lessons are real and interactive, Easy Read summaries cover every screen, and cards that named an issue now open it.",
+   "entries": [
+    {
+     "screen": "issues",
+     "kind": "NEW",
+     "what": "How much it matters: a wheel of Make Your Mark 2024 votes, shares against 2022, worry beside votes, what young people did, ten years of turnout and a table. Each domain says which ballot topic covers it."
+    },
+    {
+     "screen": "numbers",
+     "kind": "NEW",
+     "what": "Young people in numbers: who they are, stage of life, money and home, where they live, what they face, hopes and voice, and opportunity gaps, with every chart available as a table."
+    },
+    {
+     "screen": "acad",
+     "kind": "FIXED",
+     "what": "The four modules open real, sourced lessons with a question each. Progress starts empty and stays on your device; the fake complete and locked states are gone (D40)."
+    },
+    {
+     "screen": "home",
+     "kind": "NEW",
+     "what": "Easy Read: switch it on in Access and language settings to see a short Easy Read summary at the top of every screen (D41)."
+    },
+    {
+     "screen": "policy",
+     "kind": "CHANGED",
+     "what": "Manifesto cards open their issue domain. A relaunch no source supports and a stale \"three days ago\" are corrected (D42, D43)."
+    },
+    {
+     "screen": "track",
+     "kind": "FIXED",
+     "what": "The petition entry no longer says a relaunch is planned; none has been announced (D42)."
+    }
+   ]
   },
   {
    "version": "1.0.0-rc.7",

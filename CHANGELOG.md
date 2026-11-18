@@ -6,6 +6,17 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.8 · 2026-11-17 · Release candidate
+
+**See the data, read it easily, learn by doing.** Issue domains now show how much each issue matters: what young people voted for, worry about and have actually done, in six views. A new screen sets out young people in the UK in official numbers. Academy lessons are real and interactive, Easy Read summaries cover every screen, and cards that named an issue now open it.
+
+- **NEW** `issues`: How much it matters: a wheel of Make Your Mark 2024 votes, shares against 2022, worry beside votes, what young people did, ten years of turnout and a table. Each domain says which ballot topic covers it.
+- **NEW** `numbers`: Young people in numbers: who they are, stage of life, money and home, where they live, what they face, hopes and voice, and opportunity gaps, with every chart available as a table.
+- **FIXED** `acad`: The four modules open real, sourced lessons with a question each. Progress starts empty and stays on your device; the fake complete and locked states are gone (D40).
+- **NEW** `home`: Easy Read: switch it on in Access and language settings to see a short Easy Read summary at the top of every screen (D41).
+- **CHANGED** `policy`: Manifesto cards open their issue domain. A relaunch no source supports and a stale "three days ago" are corrected (D42, D43).
+- **FIXED** `track`: The petition entry no longer says a relaunch is planned; none has been announced (D42).
+
 ## 1.0.0-rc.7 · 2026-11-17 · Release candidate
 
 **Measure without tracking.** The graphics pack is also published as a GitHub release file so its total downloads can be counted with no tracking on the portal, and the contact form now tells anyone worried about their safety where to go instead.

@@ -115,6 +115,13 @@
    "lane": "Next",
    "items": [
     {
+     "t": "One clear front door, and every card that names something opens it",
+     "reqs": [
+      "REQ-35",
+      "REQ-36"
+     ]
+    },
+    {
      "t": "Research round 1 with young people, parents and youth workers (January to February 2027)",
      "reqs": [
       "REQ-16",
@@ -598,6 +605,96 @@
    ],
    "checks": [
     "S21"
+   ]
+  },
+  {
+   "id": "REQ-31",
+   "title": "Show how much each issue matters to young people: ballot votes, worries and actions, in several views, with domains mapped to ballot topics",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner request, 17 Nov 2026",
+   "screens": [
+    "issues"
+   ],
+   "checks": [
+    "S23",
+    "S12"
+   ]
+  },
+  {
+   "id": "REQ-32",
+   "title": "Young people in numbers: demographic, ethnic and language, socio-economic, geographic, life-stage, challenges, hopes and opportunity data, every figure sourced and explained",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner request, 17 Nov 2026",
+   "screens": [
+    "numbers"
+   ],
+   "checks": [
+    "S23",
+    "S12"
+   ]
+  },
+  {
+   "id": "REQ-33",
+   "title": "Academy lessons that are real, interactive and sourced, with honest progress kept on the device",
+   "moscow": "Must",
+   "status": "Done",
+   "from": "Owner question, 17 Nov 2026 (D40)",
+   "screens": [
+    "acad"
+   ],
+   "checks": [
+    "S23"
+   ]
+  },
+  {
+   "id": "REQ-34",
+   "title": "Easy Read summaries for every screen, switched on in Access and language settings",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner request, 17 Nov 2026 (D41)",
+   "screens": [
+    "incl",
+    "home"
+   ],
+   "checks": [
+    "S23",
+    "S12"
+   ]
+  },
+  {
+   "id": "REQ-35",
+   "title": "One clear front door: Home first, with a who-are-you chooser; the closed-petition splash, alerts, ticker and carousel moved below the page title; a compact This screen strip that holds Easy Read",
+   "moscow": "Must",
+   "status": "Planned",
+   "from": "Owner question, 17 Nov 2026: on a phone the page title sits over 1,200px down",
+   "screens": [
+    "home",
+    "hub"
+   ],
+   "checks": [
+    "W9"
+   ]
+  },
+  {
+   "id": "REQ-36",
+   "title": "Every card that names something opens it: the remaining static cards found by the drill-down audit, and an alternative view (chart or table) wherever a screen shows numbers",
+   "moscow": "Should",
+   "status": "Planned",
+   "from": "Drill-down audit, 17 Nov 2026 (97 static cards on 29 screens)",
+   "screens": [
+    "policy",
+    "coal",
+    "track",
+    "post",
+    "radar",
+    "brand",
+    "trust",
+    "ai"
+   ],
+   "checks": [
+    "S23"
    ]
   }
  ],

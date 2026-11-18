@@ -74,7 +74,7 @@
    }
   },
   "issues": {
-   "tip": "The issues young people raise most, from votes at 16 to transport and mental health."
+   "tip": "The issues young people raise most, from votes at 16 to transport and mental health, and how much each one matters: ballot votes, worries and what young people have actually done."
   },
   "guide": {
    "tip": "Guided tours and how to use each part of the portal."
@@ -110,7 +110,7 @@
    "tip": "Find constituencies and local routes on a map."
   },
   "acad": {
-   "tip": "Short lessons on democracy, campaigning and speaking up.",
+   "tip": "Four short lessons on petitions, wording, coalitions and giving evidence. Open one, read the steps and answer its question. Progress stays on this device.",
    "for": {
     "teacher": "Each lesson can be run in about 20 minutes."
    }
@@ -270,6 +270,13 @@
     "teacher": "How laws are made and By age work as citizenship lessons.",
     "parent": "Civic life covers volunteering ages and protest safety."
    }
+  },
+  "numbers": {
+   "tip": "Facts about young people in the UK: who they are, their stage of life, money and home, where they live, what they face, their hopes and the gaps in opportunity. Every chart says what it shows and what to be careful about.",
+   "for": {
+    "young11": "Start with the big numbers at the top, then pick a tab.",
+    "ally": "Every figure links to its official source; switch every chart to a table for reuse."
+   }
   }
  },
  "terms": {
@@ -367,6 +374,7 @@
   "persona": "Choose who you are to tailor the explainers. The choice stays on this device and is never sent anywhere.",
   "signal": "Signal: the petition's story in numbers, with every constituency as a dot.",
   "manifesto": "Manifesto: one line about why political education matters, typed out, with the petition's figures.",
-  "share": "Share this screen: uses your device's share menu if it has one, otherwise copy the link or share to Teams, Classroom or WhatsApp."
+  "share": "Share this screen: uses your device's share menu if it has one, otherwise copy the link or share to Teams, Classroom or WhatsApp.",
+  "easyread": "Turn on Easy Read summaries: short sentences, one idea each, with a picture beside each one, at the top of every screen."
  }
 }
