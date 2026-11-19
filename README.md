@@ -3,6 +3,15 @@
 A youth voice portal: young people's issues, a local routes map, and a dated
 snapshot of a UK Parliament petition.
 
+**Open the portal:** https://cyberdudeuk.github.io/uk-youth-parliament-amplify/ · launching at UK Parliament Week,
+23 to 29 November 2026.
+
+## Quick start
+
+1. Open the portal and start on the home page: it shows the issues young people have raised.
+2. Use the **local routes map** to find the youth representation routes near you.
+3. Go to **Get involved** to contribute, become an ambassador or champion, or use the campaign kit.
+
 This repository holds the portal as its own project. It sits outside the
 govukOS ecosystem by decision: it is public and written for young people. It
 may reuse govukOS's shared page runtime, but it is not a govukOS app.
