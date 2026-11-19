@@ -1,14 +1,17 @@
 # Content licence
 
 All non-code content written for this portal (its text, layout and images) is
-licensed under the **Open Government Licence v3.0**:
+licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**:
 
-https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+https://creativecommons.org/licenses/by/4.0/
 
 Attribution statement:
 
 > Contains material from the UK Youth Parliament: Amplify portal, © Emanuel Silva 2026,
-> licensed under the Open Government Licence v3.0.
+> licensed under CC BY 4.0.
+
+This is a personal project, not government work, so its own content is not
+under the Open Government Licence.
 
 Third-party material keeps its own licence:
 

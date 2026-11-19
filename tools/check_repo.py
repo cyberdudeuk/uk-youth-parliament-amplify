@@ -165,8 +165,17 @@ def history():
     if sh != "false": return None
     return subprocess.run(["git", "log", "--format=%s"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 
+def r14(read):
+    """D47: this is a personal project, so its own content is CC BY 4.0, not the Open Government Licence."""
+    bad = []
+    for f in ("LICENCE-CONTENT.md", "LICENSE"):
+        t = (read(f) or b"").decode("utf-8", "replace")
+        if "CC BY 4.0" not in t: bad.append(f"R14 {f} does not state CC BY 4.0 for the portal's own content (D47)")
+        if re.search(r"(?:is )?licensed under the Open Government Licence", t): bad.append(f"R14 {f} still puts the portal's own content under the Open Government Licence (D47)")
+    return bad
+
 def run(tracked, texts, src, read):
-    return r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS) + r12(texts) + r13(read)
+    return r14(read) + r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS) + r12(texts) + r13(read)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -181,7 +190,7 @@ def r13(read):
     return [f"R13 the contact form does not signpost {w} for anyone worried about their safety (D39)" for w in ("trusted adult", "Childline", "0800 1111", "999") if w not in form]
 
 bad = run(tracked, texts, SRC, read)
-print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R13 problems: {len(bad)}")
+print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R14 problems: {len(bad)}")
 if bad:
     print("\n".join(bad[:40])); sys.exit(1)
 
@@ -206,6 +215,7 @@ expect("R5", r5(SRC, strip("fetched")))                                         
 expect("R5", r5(SRC, strip("source")))                                                         # summary with no source
 expect("R6", r6({page: '<script src="missing-runtime.js"></script>'}, tracked))
 expect("R13", r13(lambda p: read(p).replace(b"Childline on 0800 1111", b"a helpline") if p.endswith("contact.yml") else read(p)))  # signpost weakened (D39)
+expect("R14", r14(lambda p: read(p).replace(b"CC BY 4.0", b"Open Government Licence v3.0") if p == "LICENCE-CONTENT.md" else read(p)))  # back to OGL (D47)
 expect("R13", r13(lambda p: None if p.endswith("contact.yml") else read(p)))                                       # form lost                # a page loads a missing file
 expect("R7", r7({".github/workflows/x.yml": "run: gh pr merge 5 --squash"}))                 # a workflow that merges
 expect("R7", r7({".github/workflows/x.yml": "permissions:\n  contents: write"}))              # one that may write
