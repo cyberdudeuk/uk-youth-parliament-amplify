@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-GB">
   <title>Amplify: what's new</title>
   <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#feed</id>
-  <updated>2026-11-17T00:00:00Z</updated>
+  <updated>2026-11-19T00:00:00Z</updated>
   <link rel="alternate" href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify"/>
   <author><name>Amplify (independent, unofficial)</name></author>
   <subtitle>Youth voice news and Amplify releases. Generated from data/latest.json and data/changelog.json.</subtitle>

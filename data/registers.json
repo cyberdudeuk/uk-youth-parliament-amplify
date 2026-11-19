@@ -369,6 +369,14 @@
    "root_cause": "When D44 stopped the splash opening on arrival, the auto-close timer armed on arrival stayed; replay armed a second timer in the same slot, so the first could no longer be cleared.",
    "fix": "The arrival timer is armed only if the splash is open, and replay clears any earlier timer before arming its own.",
    "check": "S23, W6"
+  },
+  {
+   "id": "D47",
+   "found": "2026-11-19",
+   "what": "The portal's own content was under the Open Government Licence, although Amplify is a personal project, not government work.",
+   "root_cause": "The licence was copied from the owner's work projects when the repository was set up.",
+   "fix": "Own content is CC BY 4.0 (LICENCE-CONTENT.md, LICENSE scope note); third-party material keeps its own licence.",
+   "check": "R14"
   }
  ],
  "open": [
