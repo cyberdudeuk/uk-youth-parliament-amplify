@@ -35,8 +35,9 @@ artefacts:
     path: docs/artefacts/07-lld.md
     review_date: 2027-02-20
   dpia:
-    status: missing
-    note: required before any sign-up, contact or research; DPIA screening must precede gate G06
+    status: draft
+    path: docs/dpia-totals-counter.md
+    note: covers the totals counter only (O18), awaiting owner sign-off; a DPIA for any sign-up, contact or research is still required and must precede gate G06
   blueprint:
     status: present
     path: docs/service-design/service-blueprints.md

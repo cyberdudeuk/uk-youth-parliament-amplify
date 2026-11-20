@@ -1,6 +1,6 @@
 {
  "title": "Tooltips and explainers",
- "checked": "2026-11-17",
+ "checked": "2026-11-20",
  "review_days": 90,
  "note": "Written for this portal in plain English. Each screen has a short explainer and, where it helps, a line for the person reading it. Choose who you are in the explainer bar; nothing is sent anywhere and the choice stays on this device.",
  "personas": [
@@ -375,6 +375,7 @@
   "signal": "Signal: the petition's story in numbers, with every constituency as a dot.",
   "manifesto": "Manifesto: one line about why political education matters, typed out, with the petition's figures.",
   "share": "Share this screen: uses your device's share menu if it has one, otherwise copy the link or share to Teams, Classroom or WhatsApp.",
-  "easyread": "Turn on Easy Read summaries: short sentences, one idea each, with a picture beside each one, at the top of every screen."
+  "easyread": "Turn on Easy Read summaries: short sentences, one idea each, with a picture beside each one, at the top of every screen.",
+  "counter": "Count your screen visits in Amplify's daily totals, or switch it off. Nothing that identifies you is ever kept. Browsers that ask sites not to track are never counted."
  }
 }

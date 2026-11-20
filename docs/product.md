@@ -71,7 +71,6 @@ Constraints:
 
 - Research round 1 with young people, parents and youth workers (January to February 2027) (REQ-16, REQ-17)
 - Ambassador programme pilot, once safeguarding is confirmed (REQ-14)
-- Faster pages on low-end phones by compiling at build time (REQ-23)
 
 ### Later
 
@@ -105,7 +104,7 @@ Constraints:
 | REQ-20 | Enterprise architecture, government professions, apprenticeships and schemes; science, innovation, data, digital, cyber and technology | Should | Done | Owner, 15 Nov 2026 | stem | C1 |
 | REQ-21 | Glossary, thesaurus, graph and tooltips updated with every new term | Must | Done | Owner, 15 Nov 2026 | graph | S16 |
 | REQ-22 | Transparent vision, strategy, roadmap and backlog, traced on GitHub with follow-up workflows; alerts; news ticker | Must | Done | Owner, 15 Nov 2026 | product, latest | S17, W9 |
-| REQ-23 | Faster loading on low-end phones | Should | Planned | Readiness review, 15 Nov 2026 | golive | W7 |
+| REQ-23 | Faster loading on low-end phones: compiled at build time, with no in-browser compiler shipped and cached formatters | Should | Done | Readiness review, 15 Nov 2026 | golive | S24, W7 |
 | REQ-24 | Availability monitoring and vendored-library watch | Could | Planned | Readiness review, 15 Nov 2026 | golive | S15 |
 | REQ-25 | Owner decisions before the public launch (publishing, merge and propriety decided 15 Nov 2026; safeguarding lead and owner sign-off still open) | Must | Waiting on owner | Readiness review, 15 Nov 2026 | golive | S15 |
 | REQ-26 | The public address opens the built portal, labelled independent and unofficial | Must | Done | Gap review, 15 Nov 2026 | home, about | R8 |
@@ -119,6 +118,7 @@ Constraints:
 | REQ-34 | Easy Read summaries for every screen, switched on in Access and language settings | Should | Done | Owner request, 17 Nov 2026 (D41) | incl, home | S23, S12 |
 | REQ-35 | One clear front door: Home first, with a who-are-you chooser; the closed-petition splash, alerts, ticker and carousel moved below the page title; a compact This screen strip that holds Easy Read | Must | Done | Owner question, 17 Nov 2026: on a phone the page title sits over 1,200px down | home, hub | W10 |
 | REQ-36 | Every card that names something opens it: cards that name a screen, setting or issue now open it; figure tiles, swatches and definitions stay as they are, because a click would add nothing | Should | Done | Drill-down audit, 17 Nov 2026 (97 static cards on 29 screens) | policy, coal, track, post, radar, brand, trust, ai | S23 |
+| REQ-37 | A cookie-free totals counter: one per screen opened per day, nothing that identifies anyone, published on Portal health, built switched off until its DPIA is signed off | Should | Done | Owner, 20 Nov 2026 (O18) | health, incl | S25, W11 |
 
 ## How it is traced, tracked and managed on GitHub
 

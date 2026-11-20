@@ -30,6 +30,8 @@ import extend11  # noqa: E402
 import extend12  # noqa: E402
 import extend13  # noqa: E402
 import extend14  # noqa: E402
+import extend15  # noqa: E402
+import extend16  # noqa: E402
 import make_docs  # noqa: E402
 
 APP, SITE, VENDOR, DATA = (os.path.join(R, d) for d in ("app", "site", "vendor", "data"))
@@ -57,6 +59,9 @@ def mono(size=10.5, alpha=0.7, extra=""):
 
 def footer(meta):
     """The usual footer: disclaimers, disclosures, transparency, contact, then the barcode and QR colophon."""
+    on = bool(extend16.config()["endpoint"])  # the privacy sentence follows the counter's real state (O18)
+    COUNTER_SENTENCE = ("No sign-in and no cookies. A cookie-free counter adds one to a daily total each time a screen opens and stores nothing that identifies you or your browser; switch it off in Access, and browsers that ask sites not to track are never counted."
+                        if on else "No sign-in, no cookies, no analytics.")
     h = html.escape
     col = "display: flex; flex-direction: column; gap: 8px; min-width: 0;"
     p = "margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);"
@@ -68,7 +73,7 @@ def footer(meta):
       <p style="{p}">Links to other organisations are for information, not endorsement. Worried about your safety? Go to <a href="#care">Safeguarding &amp; support</a>.</p>''')
     disclosures = block("Disclosures", f'''
       <p style="{p}">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
-      <p style="{p}">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
+      <p style="{p}">{COUNTER_SENTENCE} Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="{p}">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p>''')
     transparency = block("Transparency", f'''
       <p style="{p}">Build <span style="font-family: 'Space Mono', monospace;">{h(meta["build_id"])}</span>, built {h(meta["built_long"])} from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
@@ -213,6 +218,8 @@ def transforms(meta):
         *extend12.transforms(),
         *extend13.transforms(),
         *extend14.transforms(),
+        *extend15.transforms(),
+        *extend16.transforms(),
         ("footer", "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
          "    </sc-if>\n\n  </div>\n</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;",
          "    </sc-if>\n\n  </div>\n" + footer(meta) + "</div>\n\n\n\n\n<div style=\"position: fixed; right: 18px;", 1),
@@ -335,7 +342,7 @@ def build(date, out=SITE):
     h = hashlib.sha256()
     for f in sorted(src["files"]):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
-    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/extend6.py", "tools/extend7.py", "tools/extend8.py", "tools/extend9.py", "tools/extend10.py", "tools/extend11.py", "tools/extend12.py", "tools/extend13.py", "tools/extend14.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
+    for f in ["tools/build_site.py", "tools/art.py", "tools/extend.py", "tools/extend2.py", "tools/extend3.py", "tools/extend4.py", "tools/extend5.py", "tools/extend6.py", "tools/extend7.py", "tools/extend8.py", "tools/extend9.py", "tools/extend10.py", "tools/extend11.py", "tools/extend12.py", "tools/extend13.py", "tools/extend14.py", "tools/extend15.py", "tools/extend16.py", "tools/make_docs.py", "vendor/VENDOR.json"] + sorted("data/" + n for n in os.listdir(DATA)):
         h.update(f.encode()); h.update(open(os.path.join(R, f), "rb").read())
     digest = h.hexdigest()
     d = datetime.date.fromisoformat(date)
@@ -381,6 +388,8 @@ def build(date, out=SITE):
 
     portal = apply(open(os.path.join(APP, PORTAL_SRC), encoding="utf-8").read(), transforms(meta))
     open(os.path.join(out, "index.html"), "w", encoding="utf-8").write(portal)
+    with open(os.path.join(R, "docs", "counter", "schema.sql"), "w", encoding="utf-8") as fh:  # O18: the database accepts only these screens
+        fh.write(extend16.schema_sql(extend16.screen_ids(portal)))
     mp = apply(open(os.path.join(APP, MAP_SRC), encoding="utf-8").read(), map_transforms())
     open(os.path.join(out, MAP_SRC), "w", encoding="utf-8").write(mp)
     for f in ("support.js", "petition-754954.json"):
@@ -390,9 +399,12 @@ def build(date, out=SITE):
     shutil.copyfile(os.path.join(VENDOR, "outline.json"), os.path.join(out, "vendor", "outline.json"))
     for f in ven:  # runtime, fonts and icons; the test-only axe file stays out of the site
         if f.startswith("test/"): continue
+        if f in ("runtime/babel.min.js", "runtime/LICENSE-babel.txt"): continue  # compiled at build time, not in the browser (O16, D47)
         os.makedirs(os.path.join(out, "vendor", os.path.dirname(f)), exist_ok=True)
         shutil.copyfile(os.path.join(VENDOR, f), os.path.join(out, "vendor", f))
     shutil.copyfile(os.path.join(VENDOR, "fonts", "fonts.css"), os.path.join(out, "vendor", "fonts", "fonts.css"))
+    with open(os.path.join(out, "vendor", "runtime", extend15.STUB_NAME), "w", encoding="utf-8") as fh:
+        fh.write(extend15.STUB)
     media = os.path.join(R, "media")  # campaign films and their poster frames (owner asked for them on the portal, 16 Nov 2026)
     for d, _, names in os.walk(media):
         for n in sorted(names):

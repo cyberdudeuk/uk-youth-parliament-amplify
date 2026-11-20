@@ -21,6 +21,12 @@ Needs Playwright with Chromium (pip install -r tools/requirements-browser.txt; p
       dismissed; Share opens a menu with a copy option when the device has no share sheet; the backlog filter narrows
       the list; and turning the ticker off on Alerts & notifications removes it (vaccinated against a ticker that
       keeps moving after its pause button is pressed)
+  W11 the totals counter counts only what it says (20 November 2026, O18). With a fake counter address served in
+      place of the real one: opening Home sends exactly one request, a POST whose body is {"s": "home"}, with no cookie
+      and no referrer; opening another screen sends one more for that screen; nothing is sent when the browser sends
+      Global Privacy Control or the visitor switched counting off; and Portal health shows the totals it is given.
+      Requests are answered locally, so tests never touch the real totals (vaccinated: a page that sends extra data
+      is caught).
   W10 one clear front door (D44, 17 November 2026: on a phone Home's title sat 1,227px down an 844px screen and every
       first visit opened on a closed petition's splash): arriving opens no dialog; Home's title starts within the
       first screen at 390 x 844 and at 1440 x 900; the Who are you? chooser is there and choosing a door shows three
@@ -181,6 +187,68 @@ async def front_door(b, url):
     return bad
 
 
+W11_EP = "https://abcdefghijklmnopqrst.supabase.co"
+W11_ON = 'window.__ampCount = {"endpoint": "' + W11_EP + '", "key": "sb_publishable_testtesttest"};'
+
+
+def w11_judge(sent, want):
+    """Return problems with the counter requests a page made, given the screens it should have counted."""
+    bad, counts = [], [r for r in sent if r["url"].endswith("/rest/v1/rpc/amp_count")]
+    if [r["body"] for r in counts] != [{"s": w} for w in want]:
+        bad.append(f"W11 the counter sent {[r['body'] for r in counts]} where it should send {[{'s': w} for w in want]}")
+    for r in counts:
+        if r["method"] != "POST": bad.append("W11 a counter request was not a POST")
+        if "cookie" in r["headers"]: bad.append("W11 a counter request carried a cookie")
+        if "referer" in r["headers"]: bad.append("W11 a counter request carried a referrer")
+    return bad
+
+
+async def counter_checks(b, url):
+    bad = []
+
+    async def session(init="", screens=("home",), health=False):
+        ctx = await b.new_context(viewport={"width": 1280, "height": 900})
+        if init: await ctx.add_init_script(init)
+        sent = []
+
+        async def page_route(route):
+            r = await route.fetch(); body = await r.text()
+            await route.fulfill(response=r, body=body.replace('window.__ampCount = {"endpoint": "", "key": ""};', W11_ON))
+
+        async def counter_route(route):
+            req = route.request
+            if req.method == "OPTIONS":
+                await route.fulfill(status=204, headers={"access-control-allow-origin": "*", "access-control-allow-headers": "apikey, content-type", "access-control-allow-methods": "POST"}); return
+            try: body = req.post_data_json
+            except Exception: body = req.post_data
+            sent.append({"url": req.url, "method": req.method, "body": body, "headers": {k.lower(): v for k, v in (await req.all_headers()).items()}})
+            rows = [{"day": "2026-11-20", "screen": "home", "n": 12}, {"day": "2026-11-19", "screen": "numbers", "n": 5}] if req.url.endswith("amp_totals") else None
+            await route.fulfill(status=200, headers={"access-control-allow-origin": "*", "content-type": "application/json"}, body=json.dumps(rows))
+        await ctx.route(lambda u: u.rstrip("/") == url.rstrip("/") or u.endswith("/index.html"), page_route)
+        await ctx.route(W11_EP + "/**", counter_route)
+        pg = await ctx.new_page()
+        await pg.goto(url + "#" + screens[0], wait_until="networkidle"); await pg.wait_for_timeout(600)
+        for sc in screens[1:]:
+            await pg.evaluate("h => { location.hash = h; }", sc); await pg.wait_for_timeout(600)
+        shown = (await pg.inner_text("#amp-ct-h >> xpath=..")) if health else ""
+        await ctx.close()
+        return sent, shown
+
+    sent, _ = await session(screens=("home", "numbers"))
+    bad += w11_judge(sent, ["home", "numbers"])
+    sent, _ = await session(init="Object.defineProperty(Navigator.prototype, 'globalPrivacyControl', { get: () => true });")
+    bad += [x + " (with Global Privacy Control on)" for x in w11_judge(sent, [])]
+    sent, _ = await session(init="localStorage.setItem('amplify.portal.prefs', JSON.stringify({ countOff: true }));")
+    bad += [x + " (with counting switched off)" for x in w11_judge(sent, [])]
+    sent, shown = await session(screens=("health",), health=True)
+    if "17" not in shown or "Last 28 days" not in shown: bad.append("W11 Portal health does not show the totals the counter returns")
+    # vaccination: a page that sends extra data must be caught
+    hit = bool(w11_judge([{"url": W11_EP + "/rest/v1/rpc/amp_count", "method": "POST", "body": {"s": "home", "ua": "x"}, "headers": {}}], ["home"]))
+    print(("caught     " if hit else "NOT CAUGHT ") + "W11 (a counter request with extra data)")
+    if not hit: bad.append("W11 vaccination failed")
+    return bad
+
+
 async def light_and_speed(b, url, axe, base):
     bad = []
     ctx = await b.new_context(viewport={"width": 1440, "height": 900}); pg = await ctx.new_page()
@@ -271,6 +339,7 @@ async def run(update):
             await ctx.close()
         bad += await splash_checks(b, url)
         bad += await front_door(b, url)
+        bad += await counter_checks(b, url)
         bad += await drawer_and_viewer(b, url)
         bad += await ticker_and_friends(b, url)
         bad += await light_and_speed(b, url, axe, base)
@@ -297,7 +366,7 @@ async def run(update):
         for sc, got in found.items():  # the baseline may only shrink: note improvements so it can be tightened
             if set(got) != set(base.get(sc, [])) and not any(b.startswith("W3 #" + sc) for b in bad):
                 print(f"note: #{sc} improved against its baseline; run with --update-baseline to lock that in")
-    print(f"amplify browser: {len(SCREENS)} screens at 1440, 768 and 320 px, W1-W10 problems: {len(bad)}")
+    print(f"amplify browser: {len(SCREENS)} screens at 1440, 768 and 320 px, W1-W11 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 

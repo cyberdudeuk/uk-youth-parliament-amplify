@@ -35,6 +35,8 @@ These are the decisions already recorded in this repository (V):
 ## Constraints
 - Launching at UK Parliament Week, 23 to 29 Nov 2026; research paused until gate G06 (V: README, docs/research).
 - No personal data unless a DPIA has been done first.
+- The only measurement is a cookie-free totals counter (screens opened per day, nothing that identifies anyone), built switched off until its DPIA ([docs/dpia-totals-counter.md](../dpia-totals-counter.md)) is signed off; checks S25 and W11 hold it to that.
+- The page is compiled at build time: no in-browser compiler is shipped (S24).
 - Contact by form only.
 
 ## Risks (proposed ratings)

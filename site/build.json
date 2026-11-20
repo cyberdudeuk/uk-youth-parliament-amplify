@@ -1,10 +1,10 @@
 {
   "what": "The published Amplify portal, built from the design files in app/ by tools/build_site.py",
-  "build_id": "AMP-20261120-70408b18",
+  "build_id": "AMP-20261120-05613b96",
   "built": "2026-11-20",
   "built_long": "20 November 2026",
   "petition_date_long": "1 October 2026",
-  "inputs_sha256": "70408b18d689bc61b8ea1d525cc59b34cabe3ad14fb1ad293769ce1bcc4c6822",
+  "inputs_sha256": "05613b9631c0c3f4f61a0cdf3ef4815071dfe7d6ac14de8278adc9ca52b1292d",
   "review": "2026-12-20",
   "n_sources": 83,
   "n_latest": 15,
@@ -64,6 +64,14 @@
     {
       "id": "R12",
       "what": "generated documents agree in number: no \"1 Must gates\" or \"1 ... gates open\" (defect D29: the go-live verdict read \"1 Must gates open\" when one gate was left)"
+    },
+    {
+      "id": "R14",
+      "what": "the portal's own content is CC BY 4.0, not the Open Government Licence: it is a personal project (defect D47)"
+    },
+    {
+      "id": "R15",
+      "what": "no tool opens a file without closing it (CodeQL \"file is not always closed\", 20 November 2026, on new code in tools/check_site.py and tools/build_site.py): a file opened outside a with-block is counted per tool, and the count may only shrink from the baseline recorded that day (vaccinated against a new bare open(...).read())"
     },
     {
       "id": "R7",
@@ -158,6 +166,14 @@
       "what": "the data screens, Academy and Easy Read stay honest (17 November 2026). Issue salience: every Make Your Mark ballot's topic votes add up to its published total (a count that does not add up is a copying error), every Amplify domain is mapped to a ballot topic or explained, and worry figures point at real topics. Young people in numbers: every figure has a known chart type, a real tab, a nation or coverage label, a plain \"what this shows\", a \"read with care\" (the strongest case against it, stated first) and known sources; percentages stay within 0 to 100 and every source is used. Academy (defect D40): no module claims a hard-coded \"complete\", \"in progress\" or \"locked\" state, the lede does not claim to feed the readiness gate, every lesson step is sourced or marked Editorial, and every question's answer is one of its options. Easy Read (D41): every drawer screen has two to four Easy Read lines of at most 15 words, each with a vendored icon, and the switch keeps aria-pressed. Relaunch claims with no source (D42, the D26 class) and hard-coded relative dates such as \"three days ago\" (D43) do not come back."
     },
     {
+      "id": "S25",
+      "what": "the totals counter stays a totals counter (20 November 2026, O18). data/counter.json is off (no endpoint, no key) or on with a https://<ref>.supabase.co endpoint and a publishable key, never a secret or service key anywhere in the site; the page carries exactly those settings; it sends only the screen id, with credentials omitted and no referrer, and never when the browser sends Global Privacy Control or Do Not Track or the visitor switched counting off; the database schema accepts exactly the portal's screens; and switching on needs a signed-off DPIA and no \"no analytics\" claim left in the footer or About."
+    },
+    {
+      "id": "S24",
+      "what": "the page is compiled at build time, never in the browser (20 November 2026, O16, defect D48). No in-browser compiler (Babel) is shipped; the runtime's Babel slot points at a local stub that throws, so nothing can fetch one from a CDN; the page has no JSX import or text/babel script; and dates use the cached formatter, not a new toLocaleDateString formatter on every call."
+    },
+    {
       "id": "S10",
       "what": "every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources"
     },
@@ -232,6 +248,10 @@
     {
       "id": "W9",
       "what": "the news ticker, alerts, Share and product screens behave: the ticker is a labelled list of links that its button pauses (and says so), that stands still under reduced motion with no duplicate read out; an alert can be dismissed; Share opens a menu with a copy option when the device has no share sheet; the backlog filter narrows the list; and turning the ticker off on Alerts & notifications removes it (vaccinated against a ticker that keeps moving after its pause button is pressed)"
+    },
+    {
+      "id": "W11",
+      "what": "the totals counter counts only what it says (20 November 2026, O18). With a fake counter address served in place of the real one: opening Home sends exactly one request, a POST whose body is {\"s\": \"home\"}, with no cookie and no referrer; opening another screen sends one more for that screen; nothing is sent when the browser sends Global Privacy Control or the visitor switched counting off; and Portal health shows the totals it is given. Requests are answered locally, so tests never touch the real totals (vaccinated: a page that sends extra data is caught)."
     },
     {
       "id": "W10",
@@ -1245,6 +1265,56 @@
       "matches": 1
     },
     {
+      "name": "ext15-no-babel",
+      "why": "O16, D48: the in-browser compiler is not shipped; the runtime's Babel slot points at a local stub that throws",
+      "matches": 1
+    },
+    {
+      "name": "ext15-date",
+      "why": "D48: dates are formatted by one cached Intl formatter, and each value once, instead of a new formatter per call",
+      "matches": 1
+    },
+    {
+      "name": "ext15-fmt",
+      "why": "D48: numbers are formatted by one cached Intl formatter",
+      "matches": 1
+    },
+    {
+      "name": "ext16-head",
+      "why": "O18: the counter's only settings (empty, so off) are given to the page in one inline line",
+      "matches": 1
+    },
+    {
+      "name": "ext16-prefs",
+      "why": "O18: switching counting off is remembered with the other preferences",
+      "matches": 2
+    },
+    {
+      "name": "ext16-access",
+      "why": "O18: a counting switch in Access and language settings",
+      "matches": 1
+    },
+    {
+      "name": "ext16-health",
+      "why": "O18: Portal health publishes the totals, with a read-with-care note",
+      "matches": 1
+    },
+    {
+      "name": "ext16-hook",
+      "why": "O18: one count per screen opened, after the page has rendered it",
+      "matches": 1
+    },
+    {
+      "name": "ext16-logic",
+      "why": "O18: counter logic",
+      "matches": 1
+    },
+    {
+      "name": "ext16-vals",
+      "why": "O18: counter values join renderVals",
+      "matches": 1
+    },
+    {
       "name": "footer",
       "why": "the usual footer: disclaimers, disclosures, transparency, contact and colophon",
       "matches": 1
@@ -1314,7 +1384,7 @@
     "Local Routes Map.html": "30941ecd81d9acf11db66678b24e7cdf5a0b43bf09c3cccbcd5f035941807c78",
     "art/amplify-graphics-pack.zip": "5f8ed6389a27f1bb7247054a0d66f32d0078cf27605dbfa043789c5b7e2e19f5",
     "art/badge-ambassador.svg": "85675c46501b7455179ecd28782cecfc9a00f7d07f7332430f8245a54797f0b9",
-    "art/barcode.svg": "3777bb922bc360e18c7f679e1544a508996de0361aa872c037e2116a61461354",
+    "art/barcode.svg": "addc781f20faebf29d96df515d4f5dfb5734bf71adf0a1fdde3860f338f99948",
     "art/education.svg": "1e654b11eeb077f1cd08a84048bdb3f6aff365a6caa19eb9905fd540cf0e9cee",
     "art/empowerment.svg": "6a1f93604c95d5be736278c8a86c1862ded148dd1c59d81b5a72930d53ed6d86",
     "art/equality.svg": "2a516ba220b00b6d2ca210659da6c92bc08a0911a97cc71bcbc4a0ea0535a67a",
@@ -1328,13 +1398,14 @@
     "art/qr.svg": "f8859fb08c558177c84808a963028e81410458f2de09ccebae362ffac92e90c8",
     "art/social-card.svg": "45cd06792efa1cceddac567cdccc9a6cafcacef15289b8e76d877dc59199523c",
     "art/sticker-sheet.svg": "a99794ac65e3f1c8ec23f26b7f6c427e51e0fd9cda5174f60d27a8fefaf1b057",
-    "data/about.json": "6de9d125cdfb5f6e588463a6565b90d753468b03c8250160e8559ffe43673663",
+    "data/about.json": "29093d77ac9d7212be9a4db7982da4010730932a58ee08cdecd98f6e4e5aa906",
     "data/academy.json": "207ddd07f092a27d6577a678f18c80ad7e85b1bf9de298c730cc44172fd05969",
-    "data/changelog.json": "289f2b8745032207b50d26c369676e34dcaa30c242ab2844fc041d2d888f7ed4",
+    "data/changelog.json": "bd1bf053fac213d2174ef4b1132de39a77d41952c748e9d4ab0cf5a0131b7ff3",
     "data/civic.json": "4c94ab63a9fc615b7b50c8a540ee1bae899f8555cd8b870ec5e106b80cdbaa57",
     "data/communities.json": "1398865a0f63a268fa17424fdcb62f8e52bf535adc61e3acfdce9fa7f2ded4e5",
+    "data/counter.json": "41423f013a92d492528026b98d219796e603f6d2345dc239a9c6096c4e081cc7",
     "data/easyread.json": "9dc334d74049e005f62bd32e6cb522bff83dc2ea7c0215fa6f90077fe55d97c0",
-    "data/glossary.json": "a0d6261b5aa241ce162f3580ebbf49e4683df10cbcafc6d5c62bd38483cc6115",
+    "data/glossary.json": "2f78fbaf1daf8734c187713a2d52d60292209e069d9dbdee0db0688f277e1111",
     "data/help.json": "86315b45d1ae8b53352e6be9daba535a62831640a538e32b15a66a01ade47584",
     "data/home.json": "92a786c69ca7435014ce69fcebb3474a1f8123a38c389eec20976fbb7f1f6637",
     "data/integrity.json": "4b41ae612882c439a2684240d9e18431e04aa884c95e752c05e668127323b5d0",
@@ -1345,18 +1416,18 @@
     "data/moscow.json": "9cc44b2176f2d899c137244567fc45d59b707bfbede87bb1493f21a5c5b99f00",
     "data/numbers.json": "c9efc7d722816adcd5d13addd27d61fb150ab8833afa1406896a86493805ce1e",
     "data/parliament.json": "014cc322c3758b77d6e5ca92cc6e22f9266e8039e31a58aa7ebf9b562aa50b72",
-    "data/product.json": "b1c2b0403dd49a75f460389ba8ef479222d68439db14d92b65ccf44440881256",
-    "data/readiness.json": "90eb418fb91dfcba71d1600840d0fd758b00d19717211fc7b1d1bcaf64de1d29",
-    "data/registers.json": "bb02c2929e5b108d09de06e89433e51a8f45df3463b9c32013f7ba7940f440fa",
+    "data/product.json": "a78aca43a6ef5ca930219e6e5bb89b18f4eccd1d725bb48de8206b1a6950c035",
+    "data/readiness.json": "d716fc4ce9bdd549e21c44e208727868a876b10add21a04a8b579b848c8014b7",
+    "data/registers.json": "ab110879a27aea6324f62a009fe94c1c8db77b1c725e4bb90951e9dcf05c3540",
     "data/research.json": "ba6a0213b267329848fbb134d1f4676993315dfade386cc03ca08795ae726f75",
     "data/safeguards.json": "0333464fc959408db3f06cb4fb23fe9433771820702130e3b893ba088533fd14",
     "data/salience.json": "7495ae577066de51a6ea80ee3778a6abe5bcc8934c860e3909abfb1627905eb5",
-    "data/service-design.json": "34f247f1fe5cb0824c626da7b6f2e6fdc45940dbdf3c013f8f0cb5d232c0b4c5",
-    "data/tooltips.json": "00aa5ed6c2ca0fd6768bc4b54eb802b297f523815c5b37ae717016eae50c4bad",
+    "data/service-design.json": "587193dec522baf055779a708a753013e9c376542291ec93cd8d5882e7d7939c",
+    "data/tooltips.json": "fc0765266c8c9257fce76a23c8d3a62d083a4f610585f64dd15ee0ebc87b7788",
     "data/youth-sources.json": "cf88799955f39e9097dc728b2be7b3683e8a617599dac7e2974bdbd0ae727287",
-    "feed.xml": "76f2815d61f512ef967ec0b6059fc39e1c3eabaf2fe649a19065305627d6e7f3",
-    "glossary-skos.json": "13deb0be4f523681f3de9301f39b12a2cf84565f8e6a7e4abb582ef6da4696fc",
-    "index.html": "e9ffee6d34faa7fc645408786b6efbd620d5d2bb87650c8a014881e87446fc79",
+    "feed.xml": "4eae8abb078963d9e9053858f7cfcea51b4a066f98122aec84a33d4ef34da2c9",
+    "glossary-skos.json": "b80e8911fd51926e3b38ebd4ad59b2e73abfe7e817647eaed8224aae6c487375",
+    "index.html": "15692402d4efdb7ffeadf982eda7a486f4884c476fe824197cf3eebbb2ad36f8",
     "media/campaign/film-youth-voice-16x9-poster.jpg": "96660db02fcf062ad242be2d7234bc4bcb0aef84fad3e6da12612a32e3b80ab5",
     "media/campaign/film-youth-voice-16x9.mp4": "29108a2d18c7894979f16ce0a90e4819cea4550bc5a39c9ea0455e35cf3bd322",
     "media/campaign/share-card.jpg": "da21c7a2551cf528c9aacc49933136876ffd59b1d2161a99d78f346ca661c37d",
@@ -1459,10 +1530,9 @@
     "vendor/leaflet-1.9.4/leaflet.css": "a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6",
     "vendor/leaflet-1.9.4/leaflet.js": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
     "vendor/outline.json": "3b340557f4098a50165a8ec8f25cb77469bc86067455a853ea5710d8ebd3784b",
-    "vendor/runtime/LICENSE-babel.txt": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76",
     "vendor/runtime/LICENSE-react-dom.txt": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
     "vendor/runtime/LICENSE-react.txt": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
-    "vendor/runtime/babel.min.js": "2623a9e22809915ce789b4461154e277ddce520d5a4320c14d44332a5d0dcea0",
+    "vendor/runtime/no-in-browser-compiler.js": "0d251896f7616bdc9fc5918e54c1b2536fdfe5f62436338bfe1453f103f120d1",
     "vendor/runtime/react-dom.production.min.js": "35f4f974f4b2bcd44da73963347f8952e341f83909e4498227d4e26b98f66f0d",
     "vendor/runtime/react.production.min.js": "d949f1c3687aedadcedac85261865f29b17cd273997e7f6b2bfc53b2f9d4c4dd"
   }
