@@ -19,7 +19,7 @@ What must be true before Amplify goes public at UK Parliament Week, what has bee
 | G07 | Accessibility | WCAG 2.2 AA automated checks: axe-core in dark and light themes, keyboard, tooltips on focus, splash dialog | Must | Pass | W3, W5, W6, W7 |  |
 | G08 | Accessibility | Testing with disabled people using their own technology, including d/Deaf BSL and ISL users | Should | Open |  | Owner (research Round 2, O14) |
 | G09 | Phones and tablets | No sideways scrolling at 320 px (small phone), 768 px (tablet) and 1440 px, on every screen and the splash; the drawer scrolls on its own | Must | Pass | W2, W6, W8 |  |
-| G10 | Phones and tablets | Fast enough on a phone: the page is compiled in the browser by a bundled runtime, which is slow on low-end phones | Should | Partial | W7 | Owner decides (O16) |
+| G10 | Phones and tablets | Fast enough on a phone: no in-browser compiler is shipped, and the page shows its title within the W7 budget on a phone-class CPU | Should | Pass | W7, S24 |  |
 | G11 | Privacy and security | Nothing reaches another host on load; no tracking; every library and font served by the portal | Must | Pass | S7, S9, W1 |  |
 | G12 | Privacy and security | No email address anywhere; no personal data collected; contact by form only | Must | Pass | R1, S4 |  |
 | G13 | Privacy and security | Code scanning clean on every change | Should | Pass | CodeQL |  |

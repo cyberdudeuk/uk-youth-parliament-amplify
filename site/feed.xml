@@ -21,6 +21,13 @@
     <summary>Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.</summary>
   </entry>
   <entry>
+    <title>Amplify 1.0.0-rc.10: Compiled at build time, and a totals counter built switched off</title>
+    <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
+    <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.10</id>
+    <updated>2026-11-20T00:00:00Z</updated>
+    <summary>The page no longer ships an in-browser compiler and formats dates and numbers with cached formatters, so it shows its title sooner on low-end phones. A cookie-free totals counter is built, with its data protection impact assessment, and stays off until the owner signs that off.</summary>
+  </entry>
+  <entry>
     <title>Amplify 1.0.0-rc.9: One front door, and the participation gaps filled</title>
     <link href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/CHANGELOG.md"/>
     <id>https://github.com/cyberdudeuk/uk-youth-parliament-amplify#release-1.0.0-rc.9</id>

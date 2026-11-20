@@ -9,7 +9,7 @@
    "@type": "skos:ConceptScheme",
    "dcterms:title": "Amplify glossary and thesaurus",
    "dcterms:modified": "2026-11-17",
-   "dcterms:identifier": "AMP-20261120-70408b18"
+   "dcterms:identifier": "AMP-20261120-ba364fd3"
   },
   {
    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#myp",
@@ -2183,6 +2183,114 @@
     }
    ],
    "dcterms:created": "1.0.0-rc.9"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#totalscounter",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Totals counter",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "cookie-free counter",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "page counter",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "visit totals",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A counter that adds one to a daily total each time a screen opens. It keeps no cookie, no IP address and nothing that identifies a person or browser.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#gpc"
+    },
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#dpia"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.10"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#gpc",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Global Privacy Control",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "GPC",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "Do Not Track",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "DNT",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "browser privacy signal",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A setting in some browsers that tells websites not to sell or share your data or track you. Amplify's counter never counts a browser that sends it.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#totalscounter"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.10"
+  },
+  {
+   "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#dpia",
+   "@type": "skos:Concept",
+   "skos:prefLabel": {
+    "@value": "Data protection impact assessment",
+    "@language": "en-GB"
+   },
+   "skos:altLabel": [
+    {
+     "@value": "DPIA",
+     "@language": "en-GB"
+    },
+    {
+     "@value": "privacy impact assessment",
+     "@language": "en-GB"
+    }
+   ],
+   "skos:definition": {
+    "@value": "A written check, done before using people's data, of what could go wrong for them and how it is prevented. Services likely to be used by children must do one first.",
+    "@language": "en-GB"
+   },
+   "skos:inScheme": {
+    "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#"
+   },
+   "skos:related": [
+    {
+     "@id": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/docs/glossary.md#totalscounter"
+    }
+   ],
+   "dcterms:created": "1.0.0-rc.10"
   }
  ]
 }

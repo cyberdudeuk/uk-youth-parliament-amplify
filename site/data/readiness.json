@@ -120,14 +120,15 @@
   {
    "id": "G10",
    "area": "Phones and tablets",
-   "item": "Fast enough on a phone: the page is compiled in the browser by a bundled runtime, which is slow on low-end phones",
-   "status": "Partial",
+   "item": "Fast enough on a phone: no in-browser compiler is shipped, and the page shows its title within the W7 budget on a phone-class CPU",
+   "status": "Pass",
    "moscow": "Should",
    "evidence": [
-    "W7"
+    "W7",
+    "S24"
    ],
-   "who": "Owner decides (O16)",
-   "note": "Measured every run against a budget. Compiling the page at build time would remove the runtime and make it much faster."
+   "who": "",
+   "note": "20 Nov 2026 (D48): about 1.97 s to the title at 4x CPU slowdown, against a 9 s budget, measured every run. The runtime still builds its templates in the browser (about 0.5 s of that); precompiling them would mean rewriting the vendored runtime."
   },
   {
    "id": "G11",
