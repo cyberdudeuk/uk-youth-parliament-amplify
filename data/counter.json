@@ -1,0 +1,29 @@
+{
+ "title": "Totals counter",
+ "checked": "2026-11-20",
+ "review_days": 100,
+ "status": "off",
+ "endpoint": "",
+ "key": "",
+ "dpia": "docs/dpia-totals-counter.md",
+ "schema": "docs/counter/schema.sql",
+ "review": "2027-02-28",
+ "counts": "One added to a screen's total for the day (UTC date) each time that screen opens.",
+ "never": [
+  "cookies",
+  "device storage used for counting",
+  "IP address",
+  "browser or device details",
+  "referrer",
+  "time finer than a date",
+  "any identifier, hash or fingerprint",
+  "anything typed into the portal"
+ ],
+ "switch_on": [
+  "Create a Supabase project in eu-west-2 (London) used for nothing else.",
+  "Run docs/counter/schema.sql in its SQL editor.",
+  "Sign off docs/dpia-totals-counter.md (owner, with the date).",
+  "Put the project URL (https://<ref>.supabase.co) and its publishable key (sb_publishable_...) in this file, set status to on, rebuild and publish."
+ ],
+ "switch_off": "Empty endpoint and key, set status to off, rebuild and publish. The page then sends nothing anywhere."
+}

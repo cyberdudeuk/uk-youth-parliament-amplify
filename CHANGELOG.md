@@ -6,6 +6,15 @@ Generated from `data/changelog.json` by `tools/make_docs.py`. The portal shows t
 
 **Launch at UK Parliament Week 2026.** Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.
 
+## 1.0.0-rc.10 · 2026-11-20 · Release candidate
+
+**Compiled at build time, and a totals counter built switched off.** The page no longer ships an in-browser compiler and formats dates and numbers with cached formatters, so it shows its title sooner on low-end phones. A cookie-free totals counter is built, with its data protection impact assessment, and stays off until the owner signs that off.
+
+- **CHANGED** `home`: Faster on low-end phones: the 3.1 MB in-browser compiler, which was never used, is no longer shipped, and dates and numbers are formatted once. On a phone-class CPU the title appears in about 1.97 s, down from 2.25 s (O16, D48).
+- **NEW** `health`: Screens opened, totals only: a panel for the cookie-free counter's daily totals with a read-with-care note. It says the counter is off until it is switched on (O18, REQ-37).
+- **NEW** `incl`: A Totals counter switch in Access and language settings. Browsers that send Global Privacy Control or Do Not Track are never counted.
+- **CHANGED** `about`: The privacy wording follows the counter's real state, so it stays true whether the counter is on or off.
+
 ## 1.0.0-rc.9 · 2026-11-17 · Release candidate
 
 **One front door, and the participation gaps filled.** Home now leads with its title and a Who are you? chooser instead of a closed petition's splash and a stack of banners. Every way to take part gains elections and parties, laws in each nation, councils and rights, and organising, reporting and building.

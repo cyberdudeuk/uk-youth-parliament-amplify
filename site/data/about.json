@@ -49,5 +49,5 @@
    "measure": "Safeguarding reports and corrections, handled first"
   }
  ],
- "evidence_note": "Amplify collects no analytics and puts no tracking on the portal, so it cannot claim any of these outcomes yet. What it counts instead needs no tracking: the total downloads of the graphics pack from GitHub, how often the portal appears in search results (once search console verification is set up), and what schools, youth groups and networks tell us. Each outcome will be judged by public data and research with users, and reported on Portal health; until then they are aims, not results."
+ "evidence_note": "Amplify puts no tracking on the portal. Its cookie-free totals counter (screens opened per day, nothing that identifies anyone) is built but switched off until its data protection impact assessment is signed off, so Amplify cannot claim any of these outcomes yet. What it counts instead needs no tracking: the total downloads of the graphics pack from GitHub, how often the portal appears in search results (once search console verification is set up), and what schools, youth groups and networks tell us. Each outcome will be judged by public data and research with users, and reported on Portal health; until then they are aims, not results."
 }

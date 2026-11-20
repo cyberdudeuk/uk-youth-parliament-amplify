@@ -67,6 +67,16 @@ a negative test at the end (a deliberately broken copy it must catch). Exit 1 on
       four Easy Read lines of at most 15 words, each with a vendored icon, and the switch keeps aria-pressed.
       Relaunch claims with no source (D42, the D26 class) and hard-coded relative dates such as "three days ago"
       (D43) do not come back.
+  S25 the totals counter stays a totals counter (20 November 2026, O18). data/counter.json is off (no endpoint, no
+      key) or on with a https://<ref>.supabase.co endpoint and a publishable key, never a secret or service key
+      anywhere in the site; the page carries exactly those settings; it sends only the screen id, with credentials
+      omitted and no referrer, and never when the browser sends Global Privacy Control or Do Not Track or the visitor
+      switched counting off; the database schema accepts exactly the portal's screens; and switching on needs a
+      signed-off DPIA and no "no analytics" claim left in the footer or About.
+  S24 the page is compiled at build time, never in the browser (20 November 2026, O16, defect D48). No in-browser
+      compiler (Babel) is shipped; the runtime's Babel slot points at a local stub that throws, so nothing can fetch one
+      from a CDN; the page has no JSX import or text/babel script; and dates use the cached formatter, not a new
+      toLocaleDateString formatter on every call.
   S10 every CDN file the design runtime would fetch is mapped to the portal's own copy in window.__resources
 """
 import copy, hashlib, json, os, re, sys, tempfile, urllib.parse
@@ -542,6 +552,71 @@ def s21_civic(texts):
     return bad
 
 
+S25_ENDPOINT = re.compile(r"^https://[a-z0-9]{20}\.supabase\.co$")
+S25_MUST = ('credentials: "omit"', 'referrerPolicy: "no-referrer"', "navigator.globalPrivacyControl === true", 'navigator.doNotTrack === "1"', "s.countOff ||",
+            'this.ampCountPost(c, "amp_count", { s: s.screen })')
+
+
+def s25(texts, schema, dpia):
+    """S25 the totals counter stays a totals counter (O18)."""
+    bad, page = [], texts.get("index.html", "")
+    try: cfg = json.loads(texts.get("data/counter.json", ""))
+    except ValueError: return ["S25 site/data/counter.json is missing or not JSON"]
+    ep, key, on = cfg.get("endpoint", ""), cfg.get("key", ""), bool(cfg.get("endpoint"))
+    if bool(ep) != bool(key): bad.append("S25 the counter has an endpoint without a key, or a key without an endpoint")
+    if ep and not S25_ENDPOINT.match(ep): bad.append(f"S25 the counter endpoint is not a https://<ref>.supabase.co address: {ep[:60]}")
+    if key and not key.startswith("sb_publishable_"): bad.append("S25 the counter key is not a publishable key (sb_publishable_...)")
+    if cfg.get("status") != ("on" if on else "off"): bad.append("S25 data/counter.json status does not match whether it has an endpoint")
+    for f, t in texts.items():
+        if "sb_secret_" in t or "service_role" in t: bad.append(f"S25 site/{f} contains a secret or service key marker")
+    want = "window.__ampCount = " + json.dumps({"endpoint": ep, "key": key}, separators=(", ", ": ")) + ";"
+    if want not in page: bad.append("S25 the page's counter settings differ from data/counter.json")
+    for m in S25_MUST:
+        if m not in page: bad.append(f"S25 the counter lost a safeguard: {m}")
+    if page.count('"amp_count"') != 2: bad.append("S25 the counter is called from somewhere other than ampCount, or with other data")
+    ids = re.search(r"\^\(([a-z0-9|-]+)\)\$", page)
+    got = re.search(r"any \(array\[([^\]]*)\]\)", schema or "")
+    if not ids or not got or sorted(ids.group(1).split("|")) != sorted(x.strip().strip("'") for x in got.group(1).split(",")):
+        bad.append("S25 docs/counter/schema.sql does not accept exactly the portal's screens")
+    if on:
+        if "Owner sign-off: pending" in (dpia or "") or "Owner sign-off: signed" not in (dpia or ""):
+            bad.append("S25 the counter is switched on without a signed-off DPIA (docs/dpia-totals-counter.md)")
+        if "no analytics" in page.lower() or "collects no analytics" in texts.get("data/about.json", ""):
+            bad.append("S25 the counter is on but the portal still says it has no analytics")
+    return bad
+
+
+S24_STUB = "vendor/runtime/no-in-browser-compiler.js"
+S24_SLOT = '"https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/no-in-browser-compiler.js"'
+
+
+def S25_SCHEMA():
+    p = os.path.join(R, "docs", "counter", "schema.sql")
+    return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
+
+def S25_DPIA():
+    p = os.path.join(R, "docs", "dpia-totals-counter.md")
+    return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
+
+def s24(texts, files):
+    """S24 the page is compiled at build time, never in the browser (O16, D48)."""
+    bad, page = [], texts.get("index.html", "")
+    if any(f.startswith("vendor/runtime/") and "babel" in f.lower() for f in files):
+        bad.append("S24 an in-browser compiler (Babel) is shipped in site/vendor/runtime again (D48)")
+    if S24_SLOT not in page:
+        bad.append("S24 the runtime's Babel slot no longer points at the local stub, so it could fetch a compiler from a CDN (D48)")
+    stub = texts.get(S24_STUB, "")
+    if "throw new Error" not in stub:
+        bad.append("S24 the in-browser compiler stub is missing or no longer fails closed (D48)")
+    if 'type="text/babel"' in page or "x-import" in page:
+        bad.append("S24 the page has a JSX import or text/babel script, which would need an in-browser compiler (D48)")
+    if "toLocaleDateString(" in page:
+        bad.append("S24 a date is formatted with a new formatter on every call (toLocaleDateString); use the cached one (D48)")
+    return bad
+
+
 S23_TYPES = ("donut", "bars", "columns", "dumbbell", "slope", "waffle", "stack", "tiles", "kpi", "list")
 S23_NOT_AGAIN = (("Re-launch in the autumn term", "D42"), ("petition relaunching", "D42"), ("A relaunch is being planned", "D42"),
                  ("three days ago", "D43"), ("two days ago", "D43"), ("Completion feeds the launch-readiness gate", "D40"))
@@ -647,7 +722,7 @@ def s22(t, files=None):
 
 def run(files, rebuilt):
     t = texts_of(files)
-    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t) + s21_civic(t) + s22(t, files) + s23(t)
+    return s1(files, rebuilt) + s2(t) + s3(t) + s4(t) + s5(t) + s6(t, set(files)) + s7(t) + s8(files) + s9(t) + s10(t) + s12(t) + s13(t) + s14(t) + s15(t) + s16(t) + s17(t) + s18(t) + s19(t) + s20(t, files) + s21(t) + s21_civic(t) + s22(t, files) + s23(t) + s24(t, files) + s25(t, S25_SCHEMA(), S25_DPIA())
 
 
 if __name__ == "__main__":
@@ -659,7 +734,7 @@ if __name__ == "__main__":
         out = os.path.join(tmp, "site"); build_site.build(date, out); rebuilt = tree(out)
     rd = lambda p: open(os.path.join(R, p), encoding='utf-8').read() if os.path.exists(os.path.join(R, p)) else None
     bad = run(files, rebuilt) + s11(rd)
-    print(f"amplify site: {len(files)} files, build of {date}, S1-S23 problems: {len(bad)}")
+    print(f"amplify site: {len(files)} files, build of {date}, S1-S25 problems: {len(bad)}")
     if bad:
         print("\n".join(bad[:40])); sys.exit(1)
 
@@ -802,4 +877,20 @@ if __name__ == "__main__":
     expect("S23", s23(texts_of(broken(idx, lambda s: s + "Report stage and third reading, three days ago."))))         # relative date back (D43)
     expect("S23", s23(texts_of(broken(idx, lambda s: s.replace("}, 55);\n    if (this.state.splash) this.auto", "}, 55);\n    this.auto", 1)))))  # stale splash timer back (D46)
     expect("S23", s23(texts_of(broken(cvj, lambda s: s.replace('"On Amplify"', '"Built in this release"', 1)))))                         # release-relative status back (D45)
+    expect("S24", s24(texts_of(broken(idx, lambda s: s.replace("/no-in-browser-compiler.js", "/babel.min.js"))), files))       # Babel slot back (D48)
+    expect("S24", s24(texts_of(files), {**files, "vendor/runtime/babel.min.js": b"x"}))                                         # Babel shipped again (D48)
+    expect("S24", s24(texts_of(broken("vendor/runtime/no-in-browser-compiler.js", lambda s: "/* empty */\n")), files))          # stub stops failing closed
+    expect("S24", s24(texts_of(broken(idx, lambda s: s + '<script type="text/babel">x</script>')), files))                    # a JSX script added
+    expect("S24", s24(texts_of(broken(idx, lambda s: s + "t.toLocaleDateString('en-GB')")), files))                            # per-call formatter back
+    ctj, SCH, DP = "data/counter.json", S25_SCHEMA(), S25_DPIA()
+    on_cfg = lambda s: s.replace('"endpoint": ""', '"endpoint": "https://abcdefghijklmnopqrst.supabase.co"').replace('"key": ""', '"key": "sb_publishable_abcdefghijkl"').replace('"status": "off"', '"status": "on"')
+    on_page = lambda s: s.replace('window.__ampCount = {"endpoint": "", "key": ""};', 'window.__ampCount = {"endpoint": "https://abcdefghijklmnopqrst.supabase.co", "key": "sb_publishable_abcdefghijkl"};')
+    on_files = broken(idx, on_page); on_files[ctj] = on_cfg(on_files[ctj].decode()).encode()
+    expect("S25", s25(texts_of(on_files), SCH, DP))                                                                          # switched on, DPIA still pending
+    expect("S25", s25(texts_of(on_files), SCH, DP.replace("Owner sign-off: pending", "Owner sign-off: signed 1 Dec 2026")))  # signed, but "no analytics" still claimed
+    expect("S25", s25(texts_of(broken(ctj, lambda s: s.replace('"key": ""', '"key": "sb_secret_x"'))), SCH, DP))             # a secret key
+    expect("S25", s25(texts_of(broken(idx, lambda s: s.replace('credentials: "omit"', 'credentials: "include"'))), SCH, DP))  # cookies sent
+    expect("S25", s25(texts_of(broken(idx, lambda s: s.replace("navigator.globalPrivacyControl === true || ", ""))), SCH, DP))  # GPC ignored
+    expect("S25", s25(texts_of(broken(idx, lambda s: s.replace('{ s: s.screen })', '{ s: s.screen, ua: navigator.userAgent })'))), SCH, DP))  # extra data sent
+    expect("S25", s25(texts_of(files), SCH.replace("'hub', ", ""), DP))                                                  # schema drifts from the screens
     sys.exit(1 if fails else 0)

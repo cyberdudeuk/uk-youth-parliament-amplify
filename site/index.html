@@ -7,11 +7,11 @@
 <meta name="description" content="An unofficial prototype campaign portal for UK Youth Parliament campaigners: petition 754954 against what it needed, launch windows, coalitions, toolkits and safeguarding.">
 <link rel="icon" href="./art/favicon.svg" type="image/svg+xml">
 <meta name="artefact:id" content="amplify-portal">
-<meta name="artefact:version" content="AMP-20261120-70408b18">
+<meta name="artefact:version" content="AMP-20261120-ba364fd3">
 <meta name="artefact:class" content="portal">
 <meta name="artefact:as-of" content="2026-11-20">
 <meta name="artefact:review-date" content="2026-12-20">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261120-70408b18", "version": "AMP-20261120-70408b18", "dateModified": "2026-11-20", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://cyberdudeuk.github.io/uk-youth-parliament-amplify/", "codeRepository": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Amplify", "identifier": "AMP-20261120-ba364fd3", "version": "AMP-20261120-ba364fd3", "dateModified": "2026-11-20", "inLanguage": "en-GB", "audience": [{"@type": "PeopleAudience", "suggestedMinAge": 11, "suggestedMaxAge": 25}, {"@type": "Audience", "audienceType": "Parents, carers and guardians"}], "isAccessibleForFree": true, "license": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify/blob/main/LICENSE", "url": "https://cyberdudeuk.github.io/uk-youth-parliament-amplify/", "codeRepository": "https://github.com/cyberdudeuk/uk-youth-parliament-amplify"}</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Amplify">
 <meta property="og:title" content="Amplify: youth voice, carried further">
@@ -23,7 +23,8 @@
 <meta property="og:image:alt" content="Amplify. Youth voice, carried further. Launches Monday 23 November 2026, UK Parliament Week. Special mentions: STEM, girls and young women in tech, Government Digital and Data careers. Independent and unofficial.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image:alt" content="Amplify. Youth voice, carried further. Launches Monday 23 November 2026, UK Parliament Week. Special mentions: STEM, girls and young women in tech, Government Digital and Data careers. Independent and unofficial.">
-<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/babel.min.js"};</script>
+<script>window.__resources = {"https://unpkg.com/react@18.3.1/umd/react.production.min.js": "./vendor/runtime/react.production.min.js", "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "./vendor/runtime/react-dom.production.min.js", "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js": "./vendor/runtime/no-in-browser-compiler.js"};</script>
+<script>window.__ampCount = {"endpoint": "", "key": ""};</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -311,6 +312,10 @@
     <button onClick="{{ tLang }}" style="text-align: left; border: 1px solid rgb(var(--film-rgb) / 0.13); border-radius: 14px; padding: 11px 13px; background: {{ lBg }}; color: rgb(var(--ink-rgb));">
       <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.7);">Language</div>
       <div style="font-size: 14px; font-weight: 700; margin-top: 2px;">{{ lLabel }}</div>
+    </button>
+    <button onClick="{{ tCount }}" aria-pressed="{{ ctPressed }}" data-tip="ui:counter" style="text-align: left; border: 1px solid rgb(var(--film-rgb) / 0.13); border-radius: 14px; padding: 11px 13px; background: {{ ctBg }}; color: rgb(var(--ink-rgb));">
+      <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.7);">Totals counter</div>
+      <div style="font-size: 14px; font-weight: 700; margin-top: 2px;">{{ ctLabel }}</div>
     </button>
     <button onClick="{{ tEasy }}" aria-pressed="{{ erPressed }}" data-tip="ui:easyread" style="text-align: left; border: 1px solid rgb(var(--film-rgb) / 0.13); border-radius: 14px; padding: 11px 13px; background: {{ erBg }}; color: rgb(var(--ink-rgb));">
       <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.7);">Easy Read</div>
@@ -2502,6 +2507,25 @@
               <div><div class="amp-count" style="font-size: 26px; font-weight: 900;">{{ hK }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Leads</div></div>
             </div>
           </div>
+          <section aria-labelledby="amp-ct-h" style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;">
+            <h2 id="amp-ct-h" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin: 0;">Screens opened: totals only</h2>
+            <sc-if value="{{ ctOff }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 14px; line-height: 1.6;">The totals counter is built but switched off. While it is off the portal sends nothing anywhere, so there are no figures to show here.</p></sc-if>
+            <sc-if value="{{ ctOn }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 14px; line-height: 1.6;">Each time a screen opens, one is added to that screen's total for the day. No cookies, nothing stored on your device for counting, and nothing that identifies you or your browser. Last 28 days, by UTC date.</p></sc-if>
+            <sc-if value="{{ ctHasRows }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-wrap: wrap; gap: 18px;">
+              <div><div class="amp-count" style="font-size: 26px; font-weight: 900;">{{ ct28 }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Last 28 days</div></div>
+              <div><div class="amp-count" style="font-size: 26px; font-weight: 900;">{{ ct7 }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Last 7 days</div></div>
+              <div><div class="amp-count" style="font-size: 26px; font-weight: 900;">{{ ctScreens }}</div><div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Screens listed</div></div>
+            </div>
+            <div role="table" aria-label="The most-opened screens in the last 28 days" style="display: flex; flex-direction: column; font-size: 13.5px;">
+              <div role="row" style="display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgb(var(--film-rgb) / 0.12);"><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Screen</span><span role="columnheader" style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78);">Opened</span></div>
+              <sc-for list="{{ ctTop }}" as="r" hint-placeholder-count="5"><div role="row" style="display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgb(var(--film-rgb) / 0.08);"><span role="cell">{{ r.t }}</span><span role="cell" style="font-variant-numeric: tabular-nums;">{{ r.v }}</span></div></sc-for>
+            </div>
+            </sc-if>
+            <sc-if value="{{ ctNone }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px;">No totals yet.</p></sc-if>
+            <sc-if value="{{ ctHasErr }}" hint-placeholder-val="{{ false }}"><p role="status" style="margin: 0; font-size: 13.5px;">{{ ctErr }}</p></sc-if>
+            <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);"><span style="font-weight: 800;">Read with care:</span> these are screens opened, not people. Anyone can add to the totals, and browsers that ask sites not to track, or people who switch counting off, are never counted. Treat them as a rough guide. Your setting: {{ ctYou }} (change it in Access).</p>
+          </section>
           <div style="border: 1px solid rgb(var(--film-rgb) / 0.12); border-radius: 22px; background: rgb(var(--film-rgb) / 0.04); padding: 20px 22px;">
             <div style="font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.78); margin-bottom: 10px;">Freshness</div>
             <div role="table" aria-label="Each data set, when it was last checked, when it is next due, and its state" style="display: flex; flex-direction: column; font-size: 13.5px;">
@@ -3572,7 +3596,7 @@
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Designed in Claude Design and built with Claude, Anthropic&rsquo;s AI model. AI-made content can contain mistakes: check the linked source before you rely on a figure.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">No sign-in, no cookies, no analytics. Settings and any pledges you add are kept in this browser only and are never sent. Every font, script and icon is served by the portal itself. Links to other sites, and the share and calendar buttons, contact those services only when you choose them, under their own terms and age rules.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">The copilot answers only where a live model connection is available; elsewhere it says so rather than guessing.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Transparency</h2>
-      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261120-70408b18</span>, built 20 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Build <span style="font-family: 'Space Mono', monospace;">AMP-20261120-ba364fd3</span>, built 20 November 2026 from the design project&rsquo;s source files; every transform from design to page is listed in <span style="font-family: 'Space Mono', monospace;">build.json</span>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Next review due 20 December 2026. How the portal is checking itself right now: <a href="#health">Portal health</a>. Who it is for and the safeguards it follows: <a href="#trust">Safeguards &amp; audiences</a>.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Source, checks and history: <a href="https://github.com/cyberdudeuk/uk-youth-parliament-amplify" target="_blank" rel="noopener">github.com/cyberdudeuk/uk-youth-parliament-amplify</a>. Code: MIT. Written content: see the repository&rsquo;s content licence.</p>
       <p style="margin: 0; font-size: 13px; line-height: 1.6; color: rgb(var(--ink-rgb) / 0.8);">Contains Parliamentary information licensed under the <a href="https://www.parliament.uk/site-information/copyright-parliament/open-parliament-licence/" target="_blank" rel="noopener">Open Parliament Licence v3.0</a>.</p></section><section style="display: flex; flex-direction: column; gap: 8px; min-width: 0;"><h2 style="margin: 0; font-family: 'Space Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.72);">Contact</h2>
@@ -3583,8 +3607,8 @@
     </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(var(--film-rgb) / 0.11);">
         <img src="./art/qr.svg" width="76" height="76" alt="QR code linking to the portal's source repository on GitHub" style="display: block; border-radius: 8px; background: #fff; padding: 4px;" />
-        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261120-70408b18" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
-        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261120-70408b18</p>
+        <img src="./art/barcode.svg" width="190" height="56" alt="Barcode of build AMP-20261120-ba364fd3" style="display: block; border-radius: 6px; background: #fff; padding: 4px 6px;" />
+        <p style="margin: 0; flex: 1 1 240px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(var(--ink-rgb) / 0.66); line-height: 1.8; letter-spacing: 0.08em;">Colophon &middot; Amplify &middot; set in Chivo, Space Mono and Atkinson Hyperlegible &middot; six primitives, four cornerstones &middot; build AMP-20261120-ba364fd3</p>
       </div>
   </footer>
 </div>
@@ -3636,7 +3660,8 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:940},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Dark&quot;,&quot;Light&quot;],&quot;default&quot;:&quot;Dark&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;splashTreatment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Signal&quot;,&quot;Manifesto&quot;],&quot;default&quot;:&quot;Manifesto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Front page&quot;},&quot;splashSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:3,&quot;max&quot;:14,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;default&quot;:14,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Front page&quot;},&quot;defaultView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Portal&quot;,&quot;Both&quot;,&quot;App&quot;],&quot;default&quot;:&quot;Portal&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;entryScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Ethics &amp; values&quot;,&quot;Campaign hub&quot;,&quot;Momentum dashboard&quot;,&quot;Constituencies&quot;],&quot;default&quot;:&quot;Campaign hub&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;momentumTreatment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Record&quot;,&quot;Relaunch model&quot;],&quot;default&quot;:&quot;Record&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;ageMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;14–18&quot;,&quot;11–13&quot;],&quot;default&quot;:&quot;14–18&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Access&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Access&quot;}}">
-const fmt = (n) => n.toLocaleString("en-GB");
+const __ampNum = new Intl.NumberFormat("en-GB");
+const fmt = (n) => __ampNum.format(n);
 
 class Component extends DCLogic {
   state = {
@@ -3719,7 +3744,7 @@ class Component extends DCLogic {
     try {
       const raw = localStorage.getItem("amplify.portal.prefs"); if (!raw) return {};
       const p = JSON.parse(raw), out = {};
-      for (const k of ["theme", "motion", "dys", "lang", "lowData", "contrast", "size", "age", "view", "drawer", "ticked", "userPledges", "planTarget", "planDays", "planPledges", "easy", "acadDone"]) if (p[k] !== undefined) out[k] = p[k];
+      for (const k of ["theme", "motion", "dys", "lang", "lowData", "contrast", "size", "age", "view", "drawer", "ticked", "userPledges", "planTarget", "planDays", "planPledges", "easy", "acadDone", "countOff"]) if (p[k] !== undefined) out[k] = p[k];
       return out;
     } catch (e) { return {}; }
   }
@@ -3741,7 +3766,13 @@ class Component extends DCLogic {
     this.setState({ amp: { src, lat, sg, mo, reg, bld, ch, hp, ln, ig, ab, hm, md, cm, tt, iv, rs, sd, rd, gl, pd, pa, cv, sl, nm, ac, er, loaded: true, failed: !(src && lat && sg) } }, () => this.ampCarousel());
   }
   ampDays(d) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : Math.floor((Date.now() - t) / 864e5); }
-  ampDate(d) { const t = new Date(String(d) + "T00:00:00Z"); return isNaN(t) ? String(d) : t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }); }
+  ampDate(d) {
+    const k = String(d), C = this._ampDates || (this._ampDates = new Map());
+    if (C.has(k)) return C.get(k);
+    const F = this._ampDateFmt || (this._ampDateFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }));
+    const t = new Date(k + "T00:00:00Z"), out = isNaN(t) ? k : F.format(t);
+    C.set(k, out); return out;
+  }
   ampAdd(d, n) { const t = Date.parse(String(d) + "T00:00:00Z"); return isNaN(t) ? null : new Date(t + n * 864e5).toISOString().slice(0, 10); }
   ampIcon(name, color, size) {
     const z = size || 18, u = "url(./vendor/icons/" + name + ".svg)";
@@ -4687,6 +4718,50 @@ class Component extends DCLogic {
     };
   }
 
+  ampCountCfg() {
+    const c = (typeof window !== "undefined" && window.__ampCount) || {};
+    return typeof c.endpoint === "string" && /^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(c.endpoint) && typeof c.key === "string" && /^sb_publishable_[A-Za-z0-9_-]{10,}$/.test(c.key) ? c : null;
+  }
+  ampCountRefused() {
+    try { return navigator.globalPrivacyControl === true || navigator.doNotTrack === "1" || window.doNotTrack === "1"; } catch (e) { return true; }
+  }
+  ampCountPost(c, fn, body) {
+    return fetch(c.endpoint + "/rest/v1/rpc/" + fn, { method: "POST", headers: { apikey: c.key, "Content-Type": "application/json" }, body: JSON.stringify(body), credentials: "omit", referrerPolicy: "no-referrer", cache: "no-store", keepalive: fn === "amp_count" });
+  }
+  ampCount() {
+    const s = this.state, c = this.ampCountCfg();
+    if (!c || !s.screen || s.screen === this._ampLast) return;
+    this._ampLast = s.screen;
+    if (s.countOff || this.ampCountRefused() || !/^[a-z0-9-]{1,24}$/.test(s.screen)) return;
+    try { this.ampCountPost(c, "amp_count", { s: s.screen }).catch(() => {}); } catch (e) { /* counting never breaks the page */ }
+    if (s.screen === "health" && !this._ampAsked) {
+      this._ampAsked = true;
+      this.ampCountPost(c, "amp_totals", { days: 28 }).then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((rows) => this.setState({ ctRows: Array.isArray(rows) ? rows.slice(0, 2000) : [], ctErr: "" }))
+        .catch(() => this.setState({ ctErr: "The counter could not be read just now. The totals are safe; try again later." }));
+    }
+  }
+  ampVals16(s) {
+    const c = this.ampCountCfg(), refused = this.ampCountRefused();
+    const names = {}; (this.GROUPS || []).forEach((g) => (g[1] || []).forEach((x) => { names[x[0]] = x[1]; }));
+    const rows = Array.isArray(s.ctRows) ? s.ctRows : [];
+    const n = (x) => { const v = Number(x); return isFinite(v) && v > 0 ? Math.round(v) : 0; };
+    const today = new Date().toISOString().slice(0, 10), wk = new Date(Date.now() - 6 * 864e5).toISOString().slice(0, 10);
+    const by = {}; let t28 = 0, t7 = 0;
+    rows.forEach((r) => { const k = String(r.screen || ""), v = n(r.n), d = String(r.day || ""); if (!/^[a-z0-9-]{1,24}$/.test(k)) return; by[k] = (by[k] || 0) + v; t28 += v; if (d >= wk && d <= today) t7 += v; });
+    const top = Object.keys(by).sort((a, b) => by[b] - by[a]).slice(0, 10);
+    const NF = this._ampNum || (this._ampNum = new Intl.NumberFormat("en-GB"));
+    const label = !c ? "Off for everyone: the counter is not switched on" : refused ? "Not counted: your browser asks sites not to track" : s.countOff ? "Not counted: you switched it off" : "Counted in daily totals";
+    return {
+      tCount: () => this.setState({ countOff: !s.countOff }), ctPressed: c && !refused && !s.countOff ? "true" : "false",
+      ctBg: this.onBg(!!(c && !refused && !s.countOff)), ctLabel: label,
+      ctOn: !!c, ctOff: !c, ctErr: s.ctErr || "", ctHasErr: !!s.ctErr, ctHasRows: !!c && rows.length > 0, ctNone: !!c && !s.ctErr && rows.length === 0,
+      ct28: NF.format(t28), ct7: NF.format(t7), ctScreens: String(top.length),
+      ctTop: top.map((k) => ({ t: names[k] || k, v: NF.format(by[k]) })),
+      ctYou: label,
+    };
+  }
+
   async loadPetition() {
     try {
       const r = await fetch(new URL("./petition-754954.json", document.baseURI).href);
@@ -5176,6 +5251,9 @@ class Component extends DCLogic {
     youthwing: { name: "Youth wing", shape: "dot", hue: 215, url: "https://en.wikipedia.org/wiki/Youth_wing", urlLabel: "Youth wing", def: "The section of a political party for its younger members, with its own age range and activities. Each party sets its own rules.", also: "youth section; young members; party youth organisation", edges: ["votes16"] },
     communityorganising: { name: "Community organising", shape: "ring", hue: 145, url: "https://www.citizensuk.org/leadership-training/community-organising-in-schools/", urlLabel: "Citizens UK", def: "People from different local groups, such as schools, faith groups and unions, listening to each other and acting together on shared issues.", also: "organising; broad-based organising; alliance", edges: ["youngcarer"] },
     civictech: { name: "Civic tech", shape: "sq", hue: 300, url: "https://www.mysociety.org/democracy/", urlLabel: "mySociety", def: "Websites and tools that help people find, follow and contact the people who represent them, or take part in decisions.", also: "civic technology; democracy tools; open data for democracy", edges: ["easyread"] },
+    totalscounter: { name: "Totals counter", shape: "sq", hue: 175, url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/", urlLabel: "ICO Children's code", def: "A counter that adds one to a daily total each time a screen opens. It keeps no cookie, no IP address and nothing that identifies a person or browser.", also: "cookie-free counter; page counter; visit totals", edges: ["gpc", "dpia"] },
+    gpc: { name: "Global Privacy Control", shape: "dot", hue: 215, url: "https://globalprivacycontrol.org/", urlLabel: "Global Privacy Control", def: "A setting in some browsers that tells websites not to sell or share your data or track you. Amplify's counter never counts a browser that sends it.", also: "GPC; Do Not Track; DNT; browser privacy signal", edges: ["totalscounter"] },
+    dpia: { name: "Data protection impact assessment", shape: "ring", hue: 25, url: "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/", urlLabel: "ICO: DPIAs", def: "A written check, done before using people's data, of what could go wrong for them and how it is prevented. Services likely to be used by children must do one first.", also: "DPIA; privacy impact assessment", edges: ["totalscounter"] },
   };
 
   ALLIES = [
@@ -5277,6 +5355,9 @@ class Component extends DCLogic {
         ["Youth wing", "The section of a political party for its younger members, with its own age range and activities. Each party sets its own rules.", 215, "https://en.wikipedia.org/wiki/Youth_wing"],
         ["Community organising", "People from different local groups, such as schools, faith groups and unions, listening to each other and acting together on shared issues.", 145, "https://www.citizensuk.org/leadership-training/community-organising-in-schools/"],
         ["Civic tech", "Websites and tools that help people find, follow and contact the people who represent them, or take part in decisions.", 300, "https://www.mysociety.org/democracy/"],
+        ["Totals counter", "A counter that adds one to a daily total each time a screen opens. It keeps no cookie, no IP address and nothing that identifies a person or browser.", 175, "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/"],
+        ["Global Privacy Control", "A setting in some browsers that tells websites not to sell or share your data or track you. Amplify's counter never counts a browser that sends it.", 215, "https://globalprivacycontrol.org/"],
+        ["Data protection impact assessment", "A written check, done before using people's data, of what could go wrong for them and how it is prevented. Services likely to be used by children must do one first.", 25, "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/"],
       ];
 
   STANDARDS = [
@@ -5602,6 +5683,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
   }
   componentDidUpdate() {
     this.syncBody();
+    this.ampCount();
     const s = this.state;
     const prevState = this._prev || s;
     this._prev = Object.assign({}, s);
@@ -5612,7 +5694,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
       const main = document.getElementById("amp-main"); if (main) main.focus({ preventScroll: true });
     }
     if ((s.chat || []).length !== (prevState.chat || []).length || s.chatBusy !== prevState.chatBusy || (s.chatOpen && !prevState.chatOpen)) { requestAnimationFrame(() => { const el = this.chatRef.current || document.querySelector('[role="dialog"] [aria-live]'); if (el) el.scrollTop = el.scrollHeight; }); }
-    const keys = ["theme", "motion", "dys", "lang", "lowData", "contrast", "size", "age", "view", "drawer", "ticked", "userPledges", "planTarget", "planDays", "planPledges", "easy", "acadDone"];
+    const keys = ["theme", "motion", "dys", "lang", "lowData", "contrast", "size", "age", "view", "drawer", "ticked", "userPledges", "planTarget", "planDays", "planPledges", "easy", "acadDone", "countOff"];
     if (keys.some((k) => prevState[k] !== s[k])) this.savePrefs(keys);
   }
   componentWillUnmount() {
@@ -5932,7 +6014,7 @@ Write in plain British English, concrete and unhedged, no bullet-point padding, 
         br: "oklch(var(--t1) 0.16 " + hue + " / 0.3)", bg: "oklch(var(--t1) 0.16 " + hue + " / 0.08)",
         dot: "oklch(var(--t2) 0.19 " + hue + ")", fg: "oklch(var(--t3) 0.19 " + hue + ")"
       })),
-      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), ...this.ampVals6(s), ...this.ampVals7(s), ...this.ampVals8(s), ...this.ampVals9(s), ...this.ampVals11(s), ...this.ampVals12(s), ...this.ampVals13(s), ...this.ampVals14(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
+      ...this.ampVals(s), ...this.ampVals2(s), ...this.ampVals3(s), ...this.ampVals4(s), ...this.ampVals5(s), ...this.ampVals6(s), ...this.ampVals7(s), ...this.ampVals8(s), ...this.ampVals9(s), ...this.ampVals11(s), ...this.ampVals12(s), ...this.ampVals13(s), ...this.ampVals14(s), ...this.ampVals16(s), sIssues: s.screen === "issues", sCare: s.screen === "care",
       issueTabs: Object.keys(this.ISSUES).map((k) => {
         const it = this.ISSUES[k];
         return {

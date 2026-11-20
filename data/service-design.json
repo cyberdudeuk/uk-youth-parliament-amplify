@@ -602,6 +602,21 @@
    "proved": [
     "S21"
    ]
+  },
+  {
+   "id": "ST28",
+   "persona": "parent",
+   "want": "to know whether Amplify counts my child, and to switch it off",
+   "so": "I can trust it with them",
+   "screen": "incl",
+   "accept": [
+    "The footer says plainly whether a counter is on",
+    "One switch turns counting off, and browser privacy signals are honoured"
+   ],
+   "proved": [
+    "S25",
+    "W11"
+   ]
   }
  ],
  "journeys": [
