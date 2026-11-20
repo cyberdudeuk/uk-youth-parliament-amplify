@@ -126,12 +126,6 @@
      "reqs": [
       "REQ-14"
      ]
-    },
-    {
-     "t": "Faster pages on low-end phones by compiling at build time",
-     "reqs": [
-      "REQ-23"
-     ]
     }
    ]
   },
@@ -480,14 +474,15 @@
   },
   {
    "id": "REQ-23",
-   "title": "Faster loading on low-end phones",
+   "title": "Faster loading on low-end phones: compiled at build time, with no in-browser compiler shipped and cached formatters",
    "moscow": "Should",
-   "status": "Planned",
+   "status": "Done",
    "from": "Readiness review, 15 Nov 2026",
    "screens": [
     "golive"
    ],
    "checks": [
+    "S24",
     "W7"
    ]
   },
@@ -676,6 +671,21 @@
    ],
    "checks": [
     "S23"
+   ]
+  },
+  {
+   "id": "REQ-37",
+   "title": "A cookie-free totals counter: one per screen opened per day, nothing that identifies anyone, published on Portal health, built switched off until its DPIA is signed off",
+   "moscow": "Should",
+   "status": "Done",
+   "from": "Owner, 20 Nov 2026 (O18)",
+   "screens": [
+    "health",
+    "incl"
+   ],
+   "checks": [
+    "S25",
+    "W11"
    ]
   }
  ],

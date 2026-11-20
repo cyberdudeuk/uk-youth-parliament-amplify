@@ -29,11 +29,15 @@ Each rule names the owner's rule or the defect it exists for, and each is proved
       instead: a trusted adult, Childline (0800 1111) and 999 (D39, 17 November 2026: the form signposted nothing)
   R12 generated documents agree in number: no "1 Must gates" or "1 ... gates open" (defect D29: the go-live verdict
       read "1 Must gates open" when one gate was left)
+  R14 the portal's own content is CC BY 4.0, not the Open Government Licence: it is a personal project (defect D47)
+  R15 no tool opens a file without closing it (CodeQL "file is not always closed", 20 November 2026, on new code in
+      tools/check_site.py and tools/build_site.py): a file opened outside a with-block is counted per tool, and the
+      count may only shrink from the baseline recorded that day (vaccinated against a new bare open(...).read())
   R7  people decide the irreversible: no GitHub workflow merges, pushes, force-pushes, deletes a branch, repository or
       release, publishes a release or a site, or asks for write access to contents (vaccinated against a workflow
       that runs gh pr merge)
 """
-import copy, hashlib, json, os, re, subprocess, sys, urllib.parse
+import ast, copy, hashlib, json, os, re, subprocess, sys, urllib.parse
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = json.load(open(os.path.join(R, "tools", "sources.json"), encoding="utf-8"))
@@ -174,8 +178,31 @@ def r14(read):
         if re.search(r"(?:is )?licensed under the Open Government Licence", t): bad.append(f"R14 {f} still puts the portal's own content under the Open Government Licence (D47)")
     return bad
 
+R15_BASELINE = {"tools/build_site.py": 19, "tools/check_browser.py": 4, "tools/check_repo.py": 2, "tools/check_site.py": 2, "tools/check_sources.py": 3,
+                "tools/extend4.py": 1, "tools/make_docs.py": 6, "tools/make_outline.py": 2, "tools/vendor_assets.py": 3}  # 20 Nov 2026; may only shrink
+
+
+def bare_opens(src):
+    """How many times this Python source calls open() outside a with-block (a file that may never be closed)."""
+    tree, managed = ast.parse(src), set()
+    for n in ast.walk(tree):
+        if isinstance(n, (ast.With, ast.AsyncWith)):
+            managed.update(id(i.context_expr) for i in n.items)
+    return sum(1 for n in ast.walk(tree) if isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "open" and id(n) not in managed)
+
+
+def r15(texts):
+    bad = []
+    for f, t in texts.items():
+        if not (f.startswith("tools/") and f.endswith(".py")): continue
+        try: got = bare_opens(t)
+        except SyntaxError: bad.append(f"R15 {f} does not parse"); continue
+        if got > R15_BASELINE.get(f, 0):
+            bad.append(f"R15 {f} opens a file without closing it {got} times, more than its baseline of {R15_BASELINE.get(f, 0)}: use a with-block")
+    return bad
+
 def run(tracked, texts, src, read):
-    return r14(read) + r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS) + r12(texts) + r13(read)
+    return r14(read) + r1(texts) + r2(tracked) + r3(tracked) + r4(src, read) + r5(src, read) + r6(texts, tracked) + r7(texts) + r8(read) + r9(read) + r10(texts, read) + r11(read, SUBJECTS) + r12(texts) + r13(read) + r15(texts)
 
 tracked = subprocess.run(["git", "ls-files"], cwd=R, capture_output=True, text=True).stdout.splitlines()
 def read(path):
@@ -190,7 +217,7 @@ def r13(read):
     return [f"R13 the contact form does not signpost {w} for anyone worried about their safety (D39)" for w in ("trusted adult", "Childline", "0800 1111", "999") if w not in form]
 
 bad = run(tracked, texts, SRC, read)
-print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R14 problems: {len(bad)}")
+print(f"amplify: {len(tracked)} tracked files, {len(SRC['files'])} from the artifact, R1-R15 problems: {len(bad)}")
 if bad:
     print("\n".join(bad[:40])); sys.exit(1)
 
@@ -200,6 +227,8 @@ def expect(rule, got):
     hit = any(b.startswith(rule) for b in got); fails += not hit
     print(("caught     " if hit else "NOT CAUGHT ") + rule)
 page = next(k for k in SRC["files"] if k.endswith(".dc.html"))
+expect("R15", r15({**texts, "tools/extend16.py": texts.get("tools/extend16.py", "") + "\nx = open('a').read()\n"}))   # a new bare open
+expect("R15", r15({**texts, "tools/new_tool.py": "data = open('a').read()\n"}))                                     # a new tool with one
 expect("R1", r1({"README.md": "Write to team" + "@" + "example.gov.uk"}))                     # an address in prose
 expect("R2", r2(tracked + ["app/Amplify Showreel.dc.html"]))                                   # a film added
 expect("R2", r2(tracked + ["app/deck-stage.js"]))                                              # a deck runtime added

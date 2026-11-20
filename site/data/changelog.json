@@ -2,7 +2,7 @@
  "title": "Release log",
  "checked": "2026-11-17",
  "review_days": 30,
- "current": "1.0.0-rc.9",
+ "current": "1.0.0-rc.10",
  "releases": [
   {
    "version": "1.0.0",
@@ -11,6 +11,35 @@
    "title": "Launch at UK Parliament Week 2026",
    "summary": "Public launch planned for the first day of UK Parliament Week (23 to 29 November 2026), subject to the owner's decision to share it.",
    "entries": []
+  },
+  {
+   "version": "1.0.0-rc.10",
+   "date": "2026-11-20",
+   "status": "Release candidate",
+   "title": "Compiled at build time, and a totals counter built switched off",
+   "summary": "The page no longer ships an in-browser compiler and formats dates and numbers with cached formatters, so it shows its title sooner on low-end phones. A cookie-free totals counter is built, with its data protection impact assessment, and stays off until the owner signs that off.",
+   "entries": [
+    {
+     "screen": "home",
+     "kind": "CHANGED",
+     "what": "Faster on low-end phones: the 3.1 MB in-browser compiler, which was never used, is no longer shipped, and dates and numbers are formatted once. On a phone-class CPU the title appears in about 1.97 s, down from 2.25 s (O16, D48)."
+    },
+    {
+     "screen": "health",
+     "kind": "NEW",
+     "what": "Screens opened, totals only: a panel for the cookie-free counter's daily totals with a read-with-care note. It says the counter is off until it is switched on (O18, REQ-37)."
+    },
+    {
+     "screen": "incl",
+     "kind": "NEW",
+     "what": "A Totals counter switch in Access and language settings. Browsers that send Global Privacy Control or Do Not Track are never counted."
+    },
+    {
+     "screen": "about",
+     "kind": "CHANGED",
+     "what": "The privacy wording follows the counter's real state, so it stays true whether the counter is on or off."
+    }
+   ]
   },
   {
    "version": "1.0.0-rc.9",

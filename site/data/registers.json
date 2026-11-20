@@ -377,6 +377,14 @@
    "root_cause": "The licence was copied from the owner's work projects when the repository was set up.",
    "fix": "Own content is CC BY 4.0 (LICENCE-CONTENT.md, LICENSE scope note); third-party material keeps its own licence.",
    "check": "R14"
+  },
+  {
+   "id": "D48",
+   "found": "2026-11-20",
+   "what": "O16 assumed the page compiled itself in the browser on every visit. A profile showed the 3.1 MB in-browser compiler was shipped but never loaded, while a date function rebuilt its formatter on every call (146 ms of a 2.2 s load on a phone-class CPU).",
+   "root_cause": "The design runtime's resource map listed a compiler no screen needed, and the date helper used toLocaleDateString with options, which builds a new formatter each call. Nothing measured where the load time went.",
+   "fix": "The compiler is no longer shipped; its slot points at a local stub that throws. Dates and numbers use cached Intl formatters (146 ms to 14 ms, 53 ms to 14 ms).",
+   "check": "S24, W7"
   }
  ],
  "open": [
@@ -436,13 +444,8 @@
    "who": "Owner"
   },
   {
-   "id": "O16",
-   "what": "Decide whether to compile the page at build time, removing the in-browser compiler so it loads much faster on low-end phones; W7 measures it every run.",
-   "who": "Owner"
-  },
-  {
    "id": "O18",
-   "what": "After UK Parliament Week, decide whether to add a cookie-free counter that only counts totals (allowed for statistics only under the Data (Use and Access) Act 2025), only with a data protection impact assessment, figures published on Portal health, no identifiers stored and a review date; tracking with profiling stays ruled out (Children's code).",
+   "what": "The cookie-free totals counter is built and switched off (REQ-37, 20 Nov 2026). To switch it on, the owner: (1) creates a Supabase project in eu-west-2 used for nothing else; (2) runs docs/counter/schema.sql; (3) reads sections 5 and 6 of docs/dpia-totals-counter.md and signs it off; (4) puts the project URL and publishable key in data/counter.json with status on, then rebuilds and publishes. S25 refuses an endpoint without a signed-off DPIA. Review the counter on 28 Feb 2027.",
    "who": "Owner"
   }
  ],
@@ -488,6 +491,13 @@
    "who": "Owner",
    "closed": "2026-11-20",
    "how": "Release kit-2026-11-17 was published on 17 Nov 2026 with amplify-graphics-pack.zip (1,282,691 bytes) attached; confirmed on 20 Nov 2026 through the GitHub API, with 2 downloads so far. A new tag and release are still needed each time the pack changes."
+  },
+  {
+   "id": "O16",
+   "what": "Decide whether to compile the page at build time, removing the in-browser compiler so it loads much faster on low-end phones; W7 measures it every run.",
+   "who": "Owner",
+   "closed": "2026-11-20",
+   "how": "Compiled at build time where it counts: the in-browser compiler (Babel, 3.1 MB) was shipped but, as a profile showed, never loaded, so it is no longer shipped and its slot points at a local stub that fails closed (S24); dates and numbers use cached formatters. On a phone-class CPU the page title appears in about 1.97 s, down from 2.25 s (W7). Precompiling the runtime's own templates, about 0.5 s of what remains, would mean rewriting the vendored runtime and is not done."
   }
  ]
 }
